@@ -595,8 +595,12 @@ export default function SettingsManager({
             <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mt-0.5">Central Integrations & Google Authorization Console</p>
           </div>
         </div>
-        <div className="text-xs text-slate-400 font-mono hidden md:block">
-          System Sync Room Localized
+        <div className="text-right hidden md:block bg-slate-50 border border-slate-100 px-3 py-1.5 rounded-xl">
+          <div className="text-xs font-extrabold text-slate-800 flex items-center gap-1.5 justify-end">
+            <Users size={12} className="text-teal-600" />
+            {user?.displayName || 'Authorized User'}
+          </div>
+          <div className="text-[10px] font-mono text-slate-500 mt-0.5">{user?.email || 'No email linked'}</div>
         </div>
       </div>
 
@@ -812,6 +816,7 @@ export default function SettingsManager({
               cyan: { bg: 'bg-cyan-50', text: 'text-cyan-700', border: 'border-cyan-100', accent: 'text-cyan-600' },
               violet: { bg: 'bg-violet-50', text: 'text-violet-700', border: 'border-violet-100', accent: 'text-violet-600' },
               amber: { bg: 'bg-amber-50', text: 'text-amber-700', border: 'border-amber-100', accent: 'text-amber-600' },
+              yellow: { bg: 'bg-yellow-50', text: 'text-yellow-700', border: 'border-yellow-100', accent: 'text-yellow-600' },
             }[srv.themeColor];
 
             return (

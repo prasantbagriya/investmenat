@@ -150,7 +150,7 @@ function NavButton({ active, onClick, icon, label, isSuite = false }: { active: 
     >
       {icon}
       {label}
-      {isSuite && <span className="absolute right-3 bg-red-500 text-white rounded-full text-[8px] p-0.5 px-1.5 font-bold animate-pulse">10 Apps</span>}
+      {isSuite && <span className="absolute right-3 bg-red-500 text-white rounded-full text-[8px] p-0.5 px-1.5 font-bold animate-pulse">11 Apps</span>}
     </button>
   );
 }

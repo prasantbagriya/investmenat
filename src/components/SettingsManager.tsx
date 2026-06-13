@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { 
   Settings, FileSpreadsheet, Users, ShieldCheck, ShieldAlert, Check, RefreshCw, 
   HelpCircle, Trash2, Key, Info, ExternalLink, Link2, Copy, AlertTriangle, Play,
-  Calendar, FolderOpen, Mail, Video, CheckSquare, MessageSquare, FileText, GraduationCap, Presentation
+  Calendar, FolderOpen, Mail, Video, CheckSquare, MessageSquare, FileText, GraduationCap, Presentation, Image
 } from 'lucide-react';
 import { getAccessToken, setAccessToken } from '../firebase';
 import { UserSettings } from '../types';
@@ -16,7 +16,7 @@ interface SettingsManagerProps {
   onNavigateToTab: (tab: string) => void;
 }
 
-type ServiceType = 'sheets' | 'contacts' | 'calendar' | 'drive' | 'gmail' | 'meet' | 'tasks' | 'chat' | 'forms' | 'classroom' | 'docs' | 'slides';
+type ServiceType = 'sheets' | 'contacts' | 'calendar' | 'drive' | 'gmail' | 'meet' | 'tasks' | 'chat' | 'forms' | 'classroom' | 'docs' | 'slides' | 'photos';
 
 interface ServiceConfig {
   id: ServiceType;
@@ -110,6 +110,12 @@ export default function SettingsManager({
     return stored === 'true' && !!getAccessToken();
   });
 
+  const [isPhotosLinked, setIsPhotosLinked] = useState(() => {
+    const stored = localStorage.getItem('google_photos_linked');
+    if (stored === null) return !!getAccessToken();
+    return stored === 'true' && !!getAccessToken();
+  });
+
   // Google OAuth setup states
   const [showCustomConfig, setShowCustomConfig] = useState(false);
   const [customClientId, setCustomClientId] = useState(() => localStorage.getItem('custom_google_client_id') || import.meta.env.VITE_GOOGLE_CLIENT_ID || '');
@@ -151,6 +157,7 @@ export default function SettingsManager({
         setIsClassroomLinked(false);
         setIsDocsLinked(false);
         setIsSlidesLinked(false);
+        setIsPhotosLinked(false);
         
         localStorage.setItem('google_sheets_linked', 'false');
         localStorage.setItem('google_contacts_linked', 'false');
@@ -164,6 +171,7 @@ export default function SettingsManager({
         localStorage.setItem('google_classroom_linked', 'false');
         localStorage.setItem('google_docs_linked', 'false');
         localStorage.setItem('google_slides_linked', 'false');
+        localStorage.setItem('google_photos_linked', 'false');
       }
     };
     window.addEventListener('google-token-changed', handleTokenChange);
@@ -197,6 +205,7 @@ export default function SettingsManager({
       case 'forms': return 'Google Forms';
       case 'docs': return 'Google Docs';
       case 'slides': return 'Google Slides';
+      case 'photos': return 'Google Photos';
     }
   };
 
@@ -213,6 +222,7 @@ export default function SettingsManager({
       case 'forms': return isFormsLinked;
       case 'docs': return isDocsLinked;
       case 'slides': return isSlidesLinked;
+      case 'photos': return isPhotosLinked;
     }
   };
 
@@ -229,6 +239,7 @@ export default function SettingsManager({
       case 'forms': setIsFormsLinked(state); break;
       case 'docs': setIsDocsLinked(state); break;
       case 'slides': setIsSlidesLinked(state); break;
+      case 'photos': setIsPhotosLinked(state); break;
     }
   };
 
@@ -313,7 +324,7 @@ export default function SettingsManager({
         setAccessToken(resData.accessToken);
         setToken(resData.accessToken);
         
-        const list: ServiceType[] = ['sheets', 'contacts', 'calendar', 'drive', 'gmail', 'meet', 'tasks', 'chat', 'forms', 'classroom', 'docs', 'slides'];
+        const list: ServiceType[] = ['sheets', 'contacts', 'calendar', 'drive', 'gmail', 'meet', 'tasks', 'chat', 'forms', 'classroom', 'docs', 'slides', 'photos'];
         list.forEach(srv => {
           setServiceLinkedState(srv, true);
           localStorage.setItem(`google_${srv}_linked`, 'true');
@@ -358,7 +369,8 @@ export default function SettingsManager({
       'https://www.googleapis.com/auth/chat.messages.create ' +
       'https://www.googleapis.com/auth/classroom.courses.readonly ' +
       'https://www.googleapis.com/auth/documents ' +
-      'https://www.googleapis.com/auth/presentations'
+      'https://www.googleapis.com/auth/presentations ' +
+      'https://www.googleapis.com/auth/photoslibrary.readonly'
     );
     const oauthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${customClientId.trim()}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=token&scope=${scopes}`;
     
@@ -434,7 +446,7 @@ export default function SettingsManager({
       setServiceLinkedState(targetService, false);
       localStorage.setItem(`google_${targetService}_linked`, 'false');
 
-      const services: ServiceType[] = ['sheets', 'contacts', 'calendar', 'drive', 'gmail', 'meet', 'tasks', 'chat', 'forms', 'classroom', 'docs', 'slides'];
+      const services: ServiceType[] = ['sheets', 'contacts', 'calendar', 'drive', 'gmail', 'meet', 'tasks', 'chat', 'forms', 'classroom', 'docs', 'slides', 'photos'];
       const remainsAny = services.some(srv => localStorage.getItem(`google_${srv}_linked`) === 'true');
       
       if (!remainsAny) {
@@ -556,6 +568,15 @@ export default function SettingsManager({
       description: 'Create dynamic presentation decks for clients and pitch updates automatically.',
       icon: Presentation,
       themeColor: 'yellow',
+      tabName: 'workspace'
+    },
+    {
+      id: 'photos',
+      name: 'Google Photos API',
+      category: 'Media & Albums',
+      description: 'Access client media libraries, upload receipt images, and curate custom photo albums automatically.',
+      icon: Image,
+      themeColor: 'cyan',
       tabName: 'workspace'
     }
   ];

@@ -13,6 +13,8 @@ googleProvider.addScope('https://www.googleapis.com/auth/spreadsheets');
 googleProvider.addScope('https://www.googleapis.com/auth/contacts');
 googleProvider.addScope('https://www.googleapis.com/auth/drive.readonly');
 googleProvider.addScope('https://www.googleapis.com/auth/documents');
+googleProvider.addScope('https://www.googleapis.com/auth/presentations');
+googleProvider.addScope('https://www.googleapis.com/auth/photoslibrary.readonly');
 
 googleProvider.addScope('https://www.googleapis.com/auth/calendar');
 googleProvider.addScope('https://www.googleapis.com/auth/drive.file');
@@ -24,6 +26,7 @@ googleProvider.addScope('https://www.googleapis.com/auth/chat.spaces.readonly');
 googleProvider.addScope('https://www.googleapis.com/auth/chat.messages.create');
 googleProvider.addScope('https://www.googleapis.com/auth/classroom.courses.readonly');
 googleProvider.addScope('https://www.googleapis.com/auth/presentations');
+googleProvider.addScope('https://www.googleapis.com/auth/photoslibrary.readonly');
 
 // Memory cache for the OAuth access token
 let cachedAccessToken: string | null = null;

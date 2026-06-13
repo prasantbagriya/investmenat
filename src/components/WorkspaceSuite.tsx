@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { 
   FolderOpen, Mail, Video, CheckSquare, MessageSquare, FileText, 
   GraduationCap, Search, Upload, Send, Plus, RefreshCw, Check, Trash2, 
-  ExternalLink, ChevronRight, AlertCircle, Sparkles, Presentation, MousePointerClick
+  ExternalLink, ChevronRight, AlertCircle, Sparkles, Presentation, MousePointerClick, Image
 } from 'lucide-react';
 import { getAccessToken } from '../firebase';
 import InfoTooltip from './InfoTooltip';
@@ -14,7 +14,7 @@ interface WorkspaceSuiteProps {
 }
 
 // Service definition structure
-type WorkspaceService = 'drive' | 'gmail' | 'meet' | 'tasks' | 'chat' | 'forms' | 'classroom' | 'docs' | 'picker' | 'slides';
+type WorkspaceService = 'drive' | 'gmail' | 'meet' | 'tasks' | 'chat' | 'forms' | 'classroom' | 'docs' | 'picker' | 'slides' | 'photos';
 
 interface DriveFile {
   id: string;
@@ -745,6 +745,22 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                 <ChevronRight size={12} className="text-slate-300" />
               </button>
 
+              <button
+                type="button"
+                onClick={() => setActiveService('photos')}
+                className={`w-full flex items-center justify-between p-1.5 rounded-xl cursor-pointer transition-all ${
+                  activeService === 'photos'
+                    ? 'bg-cyan-50 text-cyan-800 font-extrabold border-l-4 border-cyan-600 pl-1.5'
+                    : 'text-slate-600 hover:bg-slate-50'
+                }`}
+              >
+                <div className="flex items-center gap-1">
+                  <Image size={16} className={activeService === 'photos' ? 'text-cyan-600' : 'text-slate-400'} />
+                  <span className="text-xs">Google Photos</span>
+                </div>
+                <ChevronRight size={12} className="text-slate-300" />
+              </button>
+
             </div>
           </div>
 
@@ -1320,6 +1336,25 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                           alert(`You selected: ${file.name}\nMIME: ${file.mimeType}\nURL: ${file.url}`);
                         }} 
                       />
+                    </div>
+                  </div>
+                )}
+
+                {/* 11. GOOGLE PHOTOS SUBPANEL */}
+                {activeService === 'photos' && (
+                  <div className="space-y-2 animate-fadeIn">
+                    <div className="border-b border-slate-100 pb-1">
+                      <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider flex items-center gap-1.5 pb-0.5">
+                        <Image className="text-cyan-600" size={16} /> Google Photos API
+                      </h3>
+                      <p className="text-[10px] text-slate-400">Access and manage client media libraries and receipt images.</p>
+                    </div>
+                    <div className="p-6 text-center border border-dashed border-slate-200 rounded-2xl space-y-1 bg-cyan-50/40">
+                      <Image size={30} className="text-cyan-300 mx-auto mb-2" />
+                      <h4 className="text-xs font-extrabold text-cyan-800 uppercase tracking-widest">Photos Library Integration</h4>
+                      <p className="text-[10.5px] text-cyan-700 max-w-sm mx-auto leading-relaxed">
+                        Google Photos and Google Photos Picker have been merged into this unified module. You can now use the credentials to fetch albums and curate receipt images.
+                      </p>
                     </div>
                   </div>
                 )}

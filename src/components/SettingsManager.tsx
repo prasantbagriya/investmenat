@@ -7,6 +7,7 @@ import {
 import { getAccessToken, setAccessToken } from '../firebase';
 import { UserSettings } from '../types';
 import InfoTooltip from './InfoTooltip';
+import GooglePicker from './GooglePicker';
 
 interface SettingsManagerProps {
   user: any;
@@ -15,7 +16,7 @@ interface SettingsManagerProps {
   onNavigateToTab: (tab: string) => void;
 }
 
-type ServiceType = 'sheets' | 'contacts' | 'calendar' | 'drive' | 'gmail' | 'meet' | 'tasks' | 'chat' | 'forms' | 'classroom';
+type ServiceType = 'sheets' | 'contacts' | 'calendar' | 'drive' | 'gmail' | 'meet' | 'tasks' | 'chat' | 'forms' | 'classroom' | 'docs';
 
 interface ServiceConfig {
   id: ServiceType;
@@ -97,6 +98,12 @@ export default function SettingsManager({
     return stored === 'true' && !!getAccessToken();
   });
 
+  const [isDocsLinked, setIsDocsLinked] = useState(() => {
+    const stored = localStorage.getItem('google_docs_linked');
+    if (stored === null) return !!getAccessToken();
+    return stored === 'true' && !!getAccessToken();
+  });
+
   // Google OAuth setup states
   const [showCustomConfig, setShowCustomConfig] = useState(false);
   const [customClientId, setCustomClientId] = useState(() => localStorage.getItem('custom_google_client_id') || import.meta.env.VITE_GOOGLE_CLIENT_ID || '');
@@ -136,6 +143,7 @@ export default function SettingsManager({
         setIsChatLinked(false);
         setIsFormsLinked(false);
         setIsClassroomLinked(false);
+        setIsDocsLinked(false);
         
         localStorage.setItem('google_sheets_linked', 'false');
         localStorage.setItem('google_contacts_linked', 'false');
@@ -147,6 +155,7 @@ export default function SettingsManager({
         localStorage.setItem('google_chat_linked', 'false');
         localStorage.setItem('google_forms_linked', 'false');
         localStorage.setItem('google_classroom_linked', 'false');
+        localStorage.setItem('google_docs_linked', 'false');
       }
     };
     window.addEventListener('google-token-changed', handleTokenChange);
@@ -179,6 +188,7 @@ export default function SettingsManager({
       case 'chat': return 'Google Chat';
       case 'forms': return 'Google Forms';
       case 'classroom': return 'Google Classroom';
+      case 'docs': return 'Google Docs';
     }
   };
 
@@ -194,6 +204,7 @@ export default function SettingsManager({
       case 'chat': return isChatLinked;
       case 'forms': return isFormsLinked;
       case 'classroom': return isClassroomLinked;
+      case 'docs': return isDocsLinked;
     }
   };
 
@@ -209,6 +220,7 @@ export default function SettingsManager({
       case 'chat': setIsChatLinked(state); break;
       case 'forms': setIsFormsLinked(state); break;
       case 'classroom': setIsClassroomLinked(state); break;
+      case 'docs': setIsDocsLinked(state); break;
     }
   };
 
@@ -293,7 +305,7 @@ export default function SettingsManager({
         setAccessToken(resData.accessToken);
         setToken(resData.accessToken);
         
-        const list: ServiceType[] = ['sheets', 'contacts', 'calendar', 'drive', 'gmail', 'meet', 'tasks', 'chat', 'forms', 'classroom'];
+        const list: ServiceType[] = ['sheets', 'contacts', 'calendar', 'drive', 'gmail', 'meet', 'tasks', 'chat', 'forms', 'classroom', 'docs'];
         list.forEach(srv => {
           setServiceLinkedState(srv, true);
           localStorage.setItem(`google_${srv}_linked`, 'true');
@@ -330,12 +342,14 @@ export default function SettingsManager({
       'https://www.googleapis.com/auth/contacts ' + 
       'https://www.googleapis.com/auth/calendar ' + 
       'https://www.googleapis.com/auth/drive ' + 
+      'https://www.googleapis.com/auth/drive.readonly ' + 
       'https://www.googleapis.com/auth/tasks ' +
       'https://www.googleapis.com/auth/gmail.send ' +
       'https://www.googleapis.com/auth/gmail.readonly ' +
       'https://www.googleapis.com/auth/chat.spaces.readonly ' +
       'https://www.googleapis.com/auth/chat.messages.create ' +
-      'https://www.googleapis.com/auth/classroom.courses.readonly'
+      'https://www.googleapis.com/auth/classroom.courses.readonly ' +
+      'https://www.googleapis.com/auth/documents'
     );
     const oauthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${customClientId.trim()}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=token&scope=${scopes}`;
     
@@ -411,7 +425,7 @@ export default function SettingsManager({
       setServiceLinkedState(targetService, false);
       localStorage.setItem(`google_${targetService}_linked`, 'false');
 
-      const services: ServiceType[] = ['sheets', 'contacts', 'calendar', 'drive', 'gmail', 'meet', 'tasks', 'chat', 'forms', 'classroom'];
+      const services: ServiceType[] = ['sheets', 'contacts', 'calendar', 'drive', 'gmail', 'meet', 'tasks', 'chat', 'forms', 'classroom', 'docs'];
       const remainsAny = services.some(srv => localStorage.getItem(`google_${srv}_linked`) === 'true');
       
       if (!remainsAny) {
@@ -515,6 +529,15 @@ export default function SettingsManager({
       description: 'Manage active student details, track investment training classes, and direct custom coursework outlines.',
       icon: GraduationCap,
       themeColor: 'amber',
+      tabName: 'workspace'
+    },
+    {
+      id: 'docs',
+      name: 'Google Docs API',
+      category: 'Cloud Document Engine',
+      description: 'Auto-generate structured reports, export financial summaries, and create client text invoices dynamically.',
+      icon: FileText,
+      themeColor: 'blue',
       tabName: 'workspace'
     }
   ];
@@ -685,6 +708,45 @@ export default function SettingsManager({
           </button>
         </div>
         <p className="text-[10px] text-slate-400 font-sans italic pl-1">The Spreadsheet ID is found inside the Google Sheets browser URL between <b>/d/</b> and <b>/edit</b>. Ensure you shared your sheet with the Service Account email above!</p>
+      </div>
+
+      {/* GOOGLE PICKER TEST PANEL */}
+      <div className="bg-blue-50/40 border border-blue-200/40 rounded-3xl p-2.5 space-y-1.5">
+        <div className="flex items-center gap-1">
+          <div className="p-1 px-1.5 bg-blue-500 text-white rounded-lg text-xs font-extrabold">GOOGLE PICKER & DOCS API (TEST)</div>
+          <p className="text-xs text-slate-600 font-medium">Select a Google file or generate a new Google Doc dynamically.</p>
+        </div>
+        <div className="flex gap-2 max-w-2xl mt-1">
+          <GooglePicker 
+            label="Open Google Drive Picker" 
+            onSelect={(file) => {
+              addLog(`📄 Selected file via Picker: ${file.name} (URL: ${file.url})`);
+              alert(`You selected: ${file.name}\nURL: ${file.url}`);
+            }} 
+          />
+          <button
+            type="button"
+            onClick={async () => {
+              if (!isDocsLinked) {
+                alert("Please authorize Google Docs API in the grid below first.");
+                return;
+              }
+              try {
+                addLog(`📄 Generating Sample Google Doc...`);
+                const { generateSampleReportDoc } = await import('./GoogleDocsManager');
+                const docId = await generateSampleReportDoc({ message: "Hello from InvestMant Test!" });
+                addLog(`✅ Google Doc Created! ID: ${docId}`);
+                window.open(`https://docs.google.com/document/d/${docId}/edit`, '_blank');
+              } catch (err: any) {
+                alert(`Error creating Google Doc: ${err.message}`);
+                addLog(`❌ Google Docs creation failed: ${err.message}`);
+              }
+            }}
+            className="flex items-center gap-1.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-1.5 px-3 rounded-lg text-xs cursor-pointer transition-colors shadow-sm"
+          >
+            Create Test Google Doc
+          </button>
+        </div>
       </div>
 
       {/* ALL 10 APPS INTEGRATIONS GRID */}

@@ -12,7 +12,7 @@ export default defineConfig(() => {
       VitePWA({
         registerType: 'autoUpdate',
         injectRegister: 'auto',
-        includeAssets: ['vite.svg'],
+        includeAssets: ['pwa-192x192.png', 'pwa-512x512.png'],
         manifest: {
           name: "InvestMant App",
           short_name: "InvestMant",
@@ -22,9 +22,16 @@ export default defineConfig(() => {
           display: "standalone",
           icons: [
             {
-              src: "vite.svg",
-              sizes: "192x192 512x512",
-              type: "image/svg+xml"
+              src: "pwa-192x192.png",
+              sizes: "192x192",
+              type: "image/png",
+              purpose: "any maskable"
+            },
+            {
+              src: "pwa-512x512.png",
+              sizes: "512x512",
+              type: "image/png",
+              purpose: "any maskable"
             }
           ]
         }

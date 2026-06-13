@@ -23,6 +23,7 @@ googleProvider.addScope('https://www.googleapis.com/auth/gmail.readonly');
 googleProvider.addScope('https://www.googleapis.com/auth/chat.spaces.readonly');
 googleProvider.addScope('https://www.googleapis.com/auth/chat.messages.create');
 googleProvider.addScope('https://www.googleapis.com/auth/classroom.courses.readonly');
+googleProvider.addScope('https://www.googleapis.com/auth/presentations');
 
 // Memory cache for the OAuth access token
 let cachedAccessToken: string | null = null;

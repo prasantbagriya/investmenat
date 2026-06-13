@@ -134,7 +134,7 @@ export default function App() {
     localStorage.setItem('custom_google_client_secret', customLoginClientSecret.trim());
     
     const redirectUri = window.location.origin;
-    const scopes = encodeURIComponent('https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/contacts https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/documents');
+    const scopes = encodeURIComponent('https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/contacts https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/documents https://www.googleapis.com/auth/presentations');
     
     const oauthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${customLoginClientId.trim()}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=token&scope=${scopes}`;
     

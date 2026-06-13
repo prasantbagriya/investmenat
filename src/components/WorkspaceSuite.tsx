@@ -1271,16 +1271,31 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                   <div className="space-y-2 animate-fadeIn">
                     <div className="border-b border-slate-100 pb-1">
                       <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider flex items-center gap-1.5 pb-0.5">
-                        <Presentation className="text-yellow-600" size={16} /> Google Slides (Upcoming)
+                        <Presentation className="text-yellow-600" size={16} /> Google Slides API
                       </h3>
                       <p className="text-[10px] text-slate-400">Create dynamic presentation decks for clients and pitches.</p>
                     </div>
-                    <div className="p-6 text-center border border-dashed border-slate-200 rounded-2xl space-y-1 bg-yellow-50/40">
-                      <Presentation size={30} className="text-yellow-300 mx-auto mb-2" />
-                      <h4 className="text-xs font-extrabold text-yellow-800 uppercase tracking-widest">Slides API Integration in Progress</h4>
-                      <p className="text-[10.5px] text-yellow-700 max-w-sm mx-auto leading-relaxed">
-                        Google Slides creation will be enabled in the next update. You will be able to export charts and text directly into Google Presentations.
+                    <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl flex flex-col items-center justify-center text-center space-y-2">
+                      <Presentation size={32} className="text-yellow-500" />
+                      <p className="text-xs text-slate-600 max-w-sm mb-2">
+                        Use the automated presentation generator to quickly create a test Google Slide deck with your credentials.
                       </p>
+                      <button
+                        type="button"
+                        onClick={async () => {
+                          try {
+                            const { generateSampleSlideDeck } = await import('./GoogleSlidesManager');
+                            const deckId = await generateSampleSlideDeck({ title: "InvestMant Pitch Deck" });
+                            alert(`✅ Google Slide Created! ID: ${deckId}`);
+                            window.open(`https://docs.google.com/presentation/d/${deckId}/edit`, '_blank');
+                          } catch (err: any) {
+                            alert(`Error creating Google Slide: ${err.message}`);
+                          }
+                        }}
+                        className="bg-yellow-600 hover:bg-yellow-700 text-white font-extrabold text-[11px] uppercase py-2 px-4 rounded-xl transition-colors"
+                      >
+                        Create Auto-Generated Slide Deck
+                      </button>
                     </div>
                   </div>
                 )}

@@ -17,13 +17,12 @@ import {
   where, 
   onSnapshot, 
   doc, 
-  setDoc, 
-  updateDoc, 
-  deleteDoc, 
   serverTimestamp,
   writeBatch,
-  getDocs
+  getDocs,
+  Timestamp
 } from 'firebase/firestore';
+import { setDoc, updateDoc, deleteDoc } from './firebase-sync';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
@@ -58,7 +57,7 @@ import BrokerManager from './components/BrokerManager';
 
 import { exportTransactionsToCSV } from './utils/csvExport';
 import { useTaskReminder } from './utils/useTaskReminder';
-import { Timestamp } from 'firebase/firestore';
+
 
 import LoginScreen from './components/auth/LoginScreen';
 import PinLockScreen from './components/auth/PinLockScreen';

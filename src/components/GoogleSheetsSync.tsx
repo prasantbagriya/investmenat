@@ -5,7 +5,8 @@ import {
   ExternalLink, Settings, Plus, CheckCircle2, AlertTriangle, HelpCircle, Loader2
 } from 'lucide-react';
 import { getAccessToken, setAccessToken, db, signInWithGoogle } from '../firebase';
-import { doc, setDoc } from 'firebase/firestore';
+import { doc } from 'firebase/firestore';
+import { setDoc } from '../firebase-sync';
 import { Transaction, Holding, Sip, Fd, UserSettings } from '../types';
 
 interface GoogleSheetsSyncProps {

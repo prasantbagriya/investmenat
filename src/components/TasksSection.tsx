@@ -20,7 +20,8 @@ import TaskCard from './TaskCard';
 import InfoTooltip from './InfoTooltip';
 import { getMessaging, getToken } from 'firebase/messaging';
 import { app, db, getAccessToken } from '../firebase';
-import { doc, setDoc, serverTimestamp, Timestamp } from 'firebase/firestore';
+import { doc, serverTimestamp, Timestamp } from 'firebase/firestore';
+import { setDoc } from '../firebase-sync';
 
 interface TasksSectionProps {
   tasks: ScheduledTask[];

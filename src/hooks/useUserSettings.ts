@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { doc, onSnapshot, setDoc } from 'firebase/firestore';
+import { doc, onSnapshot } from 'firebase/firestore';
+import { setDoc } from '../firebase-sync';
 import { db } from '../firebase';
 import { User } from 'firebase/auth';
 import { UserSettings } from '../types';

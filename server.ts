@@ -3,6 +3,7 @@ import path from "path";
 import { createServer as createViteServer } from "vite";
 import { JWT } from "google-auth-library";
 import dotenv from "dotenv";
+import Database from 'better-sqlite3';
 import { setupUpstoxRoutes } from "./upstoxProxy";
 import { setupDhanRoutes } from "./dhanProxy";
 import { setupAngelRoutes } from "./angelProxy";
@@ -94,6 +95,48 @@ async function startServer() {
 
   // Body parser to accept Service Account configurations
   app.use(express.json());
+
+  // Initialize SQLite database
+  const sqliteDb = new Database('investmant.sqlite');
+
+  // Create the generic table to perfectly mirror Firestore NoSQL documents
+  sqliteDb.exec(`
+    CREATE TABLE IF NOT EXISTS firestore_sync (
+      collection TEXT,
+      doc_id TEXT,
+      data JSON,
+      updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      PRIMARY KEY (collection, doc_id)
+    )
+  `);
+
+  // Add SQLite sync endpoint for Firebase dual-write
+  app.post("/api/sync-sqlite", (req, res) => {
+    try {
+      const { collection, id, operation, data } = req.body;
+      if (!collection || !id || !operation) {
+        return res.status(400).json({ error: "Missing required fields" });
+      }
+
+      if (operation === 'delete') {
+        const stmt = sqliteDb.prepare('DELETE FROM firestore_sync WHERE collection = ? AND doc_id = ?');
+        stmt.run(collection, id);
+      } else if (operation === 'set' || operation === 'update') {
+        const stmt = sqliteDb.prepare(`
+          INSERT INTO firestore_sync (collection, doc_id, data, updated_at) 
+          VALUES (?, ?, ?, CURRENT_TIMESTAMP)
+          ON CONFLICT(collection, doc_id) DO UPDATE SET 
+          data=excluded.data, updated_at=CURRENT_TIMESTAMP
+        `);
+        stmt.run(collection, id, JSON.stringify(data || {}));
+      }
+      
+      res.json({ success: true });
+    } catch (err: any) {
+      console.error("[SQLiteSync] Error:", err);
+      res.status(500).json({ error: err.message });
+    }
+  });
 
   // Default preselected service account parameters shared by the user
   const DEFAULT_SA_EMAIL = "investment@gen-lang-client-0137730538.iam.gserviceaccount.com";

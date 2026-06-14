@@ -62,12 +62,13 @@ service cloud.firestore {
     match /pendingPayments/{id} {
       function isValidPendingPayment(data) {
         return data.userId == request.auth.uid
-          && data.keys().hasOnly(['id', 'userId', 'type', 'person', 'amount', 'dueDate', 'completed', 'notes', 'createdAt'])
+          && data.keys().hasOnly(['id', 'userId', 'type', 'person', 'contactResourceName', 'amount', 'dueDate', 'completed', 'notes', 'createdAt'])
           && data.type in ['owe', 'owed']
           && isPositiveNumber(data.amount)
           && isValidString(data.person, 1, 100)
           && data.completed is bool
           && (!('notes' in data) || isValidString(data.notes, 0, 500))
+          && (!('contactResourceName' in data) || data.contactResourceName is string)
           && data.dueDate is string && data.dueDate.size() == 10;
       }
 

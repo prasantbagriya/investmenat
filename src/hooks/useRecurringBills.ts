@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { collection, doc, setDoc, updateDoc, deleteDoc, serverTimestamp, query, where, onSnapshot } from 'firebase/firestore';
+import { collection, doc, serverTimestamp, query, where, onSnapshot } from 'firebase/firestore';
+import { setDoc, updateDoc, deleteDoc } from '../firebase-sync';
 import { db, handleFirestoreError, OperationType } from '../firebase';
 import { RecurringBill } from '../types';
 import { User } from 'firebase/auth';

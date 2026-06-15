@@ -19,7 +19,7 @@ import { ScheduledTask } from '../types';
 import TaskCard from './TaskCard';
 import InfoTooltip from './InfoTooltip';
 import { getMessaging, getToken } from 'firebase/messaging';
-import { app, db, getAccessToken } from '../firebase';
+import { app, db, auth, getAccessToken } from '../firebase';
 import { doc, serverTimestamp, Timestamp } from 'firebase/firestore';
 import { setDoc } from '../firebase-sync';
 
@@ -240,14 +240,36 @@ export default function TasksSection({
     }
   };
 
-  // Retrieve browser status on load
+  // Retrieve browser status on load and auto-register if granted
   React.useEffect(() => {
     if (!('Notification' in window)) {
       setNotificationStatus('unsupported');
     } else {
       setNotificationStatus(Notification.permission as any);
+      if (Notification.permission === 'granted') {
+        // Automatically attempt to register token if already granted
+        const registerToken = async () => {
+          try {
+            const messaging = getMessaging(app);
+            const token = await getToken(messaging, { vapidKey: vapidKeyString });
+            if (token) {
+              const tokenRef = doc(db, 'fcmTokens', token);
+              await setDoc(tokenRef, {
+                token: token,
+                userId: auth.currentUser?.uid || 'shared_user_session',
+                deviceType: 'Web Console',
+                registeredAt: serverTimestamp(),
+                lastActive: serverTimestamp()
+              });
+            }
+          } catch (e) {
+            console.error('Auto-registration of FCM token failed:', e);
+          }
+        };
+        registerToken();
+      }
     }
-  }, []);
+  }, [vapidKeyString, tasks]);
 
   // Request notifications of device registry
   const handleEnableNotifications = async () => {
@@ -277,7 +299,7 @@ export default function TasksSection({
 
           await setDoc(tokenRef, {
             token: token,
-            userId: tasks[0]?.userId || 'shared_user_session',
+            userId: auth.currentUser?.uid || 'shared_user_session',
             deviceType: 'Web Console',
             registeredAt: serverTimestamp(),
             lastActive: serverTimestamp()

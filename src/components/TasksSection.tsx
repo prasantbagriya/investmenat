@@ -58,7 +58,7 @@ export default function TasksSection({
 
   // Notification States
   const [notificationStatus, setNotificationStatus] = useState<'default' | 'granted' | 'denied' | 'unsupported'>('default');
-  const [vapidKeyString, setVapidKeyString] = useState('BMDDRKstn1fby843M2Yw5I6R1E55p6_UjWq9yLgZpTeyO0uSj-K6S_Z_yqN1G6T6W217gLgB9-wB9t9p8_qg088'); // Standard web push key
+  const [vapidKeyString, setVapidKeyString] = useState('BBID7d5bsQ8KqrEfVPUwdVogI8u7Un9mZP1WTEA6R8BfTxL_8m9Dx2Q1IO4dYVFr70b56hSjCCqinHM3Y-_J6gU'); // User's custom VAPID key
   const [isRegisteringToken, setIsRegisteringToken] = useState(false);
   const [tokenStatusMessage, setTokenStatusMessage] = useState('');
 

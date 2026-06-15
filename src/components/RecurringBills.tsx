@@ -75,9 +75,9 @@ export default function RecurringBills({
       setAmount('');
       setNextDueDate(todayStr);
       setFrequency('monthly');
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
-      alert('Error saving recurring bill.');
+      alert('Error saving recurring bill: ' + (err.message || String(err)));
     } finally {
       setIsSubmitting(false);
     }

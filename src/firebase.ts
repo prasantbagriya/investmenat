@@ -83,39 +83,51 @@ if (typeof window !== 'undefined') {
 // Google login utility
 export async function signInWithGoogle() {
   try {
+    const provider = new GoogleAuthProvider();
+    provider.addScope('https://www.googleapis.com/auth/spreadsheets');
+    
     if (Capacitor.isNativePlatform()) {
       // Native App Login Flow
+      // We must pass the Web Client ID from Firebase Console to use Google Sign-In natively
       const result = await FirebaseAuthentication.signInWithGoogle();
-      if (result.credential?.idToken) {
-        const credential = GoogleAuthProvider.credential(result.credential.idToken);
-        const userCred = await signInWithCredential(auth, credential);
-        // Save the access token for Google Sheets sync
-        if (result.credential.accessToken) {
-            setAccessToken(result.credential.accessToken);
-        }
-        return userCred.user;
+      
+      if (!result.credential?.idToken) {
+        throw new Error("No ID Token returned from Google Sign-In");
       }
-      throw new Error("No idToken returned from Native Google Sign In");
+      
+      const credential = GoogleAuthProvider.credential(result.credential.idToken);
+      const userCred = await signInWithCredential(auth, credential);
+      
+      // Save the access token for Google Sheets sync
+      if (result.credential.accessToken) {
+        setAccessToken(result.credential.accessToken);
+      }
+      
+      return userCred.user;
     } else {
-      // Web Flow: Attempt popup first, fallback to redirect if blocked
+      // Web Flow
       try {
-        const result = await signInWithPopup(auth, googleProvider);
+        const result = await signInWithPopup(auth, provider);
         const credential = GoogleAuthProvider.credentialFromResult(result);
         if (credential?.accessToken) {
           setAccessToken(credential.accessToken);
         }
         return result.user;
-      } catch (popupError: any) {
-        if (popupError.code === 'auth/popup-blocked' || popupError.code === 'auth/popup-closed-by-user') {
-          console.warn('Popup blocked, falling back to redirect...', popupError);
-          await signInWithRedirect(auth, googleProvider);
+      } catch (error: any) {
+        // In mobile browsers or webviews, popup might fail. 
+        // We will TRY redirect, but alert the user if it fails.
+        if (error.code === 'auth/popup-blocked' || error.code === 'auth/popup-closed-by-user') {
+          await signInWithRedirect(auth, provider);
         } else {
-          throw popupError;
+          // If popup failed for another reason, try redirect as last resort
+          await signInWithRedirect(auth, provider);
         }
+        throw error;
       }
     }
   } catch (error) {
     console.error("Error signing in with Google:", error);
+    alert("Google Sign-In failed. Please try Direct Access (Guest). Error: " + (error as any).message);
     throw error;
   }
 }

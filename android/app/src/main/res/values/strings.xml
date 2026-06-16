@@ -4,4 +4,5 @@
     <string name="title_activity_main">InvestMant</string>
     <string name="package_name">com.investmant.app</string>
     <string name="custom_url_scheme">com.investmant.app</string>
+    <string name="server_client_id">970852092792-27e232kcal2ng8tef13bdf5gnshb1gd6.apps.googleusercontent.com</string>
 </resources>

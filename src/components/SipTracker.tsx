@@ -155,6 +155,10 @@ export default function SipTracker({ sips, onAddSip, onDeleteSip }: SipTrackerPr
       setAlertSent(null);
     }, 4500);
 
+    // Note: Since SipTracker doesn't use usePushNotifications directly, we can fire a standard Notification if we want, or pass a handler from App.tsx. 
+    // To avoid hooks rules errors or messing up the imports, I will dispatch a custom event.
+    window.dispatchEvent(new CustomEvent('sip-notification-trigger', { detail: { sipName, date } }));
+
     // Beep acoustically if web audio API is loaded
     try {
       const audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();

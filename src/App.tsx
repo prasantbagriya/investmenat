@@ -54,7 +54,8 @@ import ContactsManager from './components/ContactsManager';
 import SettingsManager from './components/SettingsManager';
 import WorkspaceSuite from './components/WorkspaceSuite';
 import BrokerManager from './components/BrokerManager';
-
+import AnalyticsDashboard from './components/AnalyticsDashboard';
+import { CreditCardsEMI } from './components/CreditCardsEMI';
 import { exportTransactionsToCSV } from './utils/csvExport';
 import { useTaskReminder } from './utils/useTaskReminder';
 
@@ -68,8 +69,10 @@ import NotificationCenter from './components/layout/NotificationCenter';
 import NavigationDrawer from './components/layout/NavigationDrawer';
 import { useRecurringBills } from './hooks/useRecurringBills';
 import { usePushNotifications } from './hooks/usePushNotifications';
+import { useSmsListener } from './hooks/useSmsListener';
 import { useLivePrices } from './hooks/useLivePrices';
 import { useBrokerSync } from './hooks/useBrokerSync';
+import { useBankAccounts } from './hooks/useBankAccounts';
 
 export default function App() {
   const [user, setUser] = useState<User | null>(null);
@@ -97,12 +100,60 @@ export default function App() {
   const [confirmPin, setConfirmPin] = useState('');
 
   const { recurringBills, handleAddRecurringBill, handleEditRecurringBill, handleDeleteRecurringBill } = useRecurringBills(user);
+  const { bankAccounts, handleAddBankAccount, handleEditBankAccount, handleDeleteBankAccount } = useBankAccounts(user);
 
-  const { brokerHoldings, brokerFunds, isSyncing, refreshBrokerData } = useBrokerSync(user?.uid);
+  const { brokerFunds, brokerHoldings, brokerRealizedTrades, isSyncing, refreshBrokerData } = useBrokerSync(user?.uid);
 
   const unifiedHoldings = useMemo(() => {
-    return [...holdings, ...brokerHoldings];
+    return [...holdings, ...(brokerHoldings || [])];
   }, [holdings, brokerHoldings]);
+
+  // Capacitor Background SMS Listener
+  useSmsListener(async (smsText) => {
+    if (!user) return;
+    try {
+      const response = await fetch('/api/parse-sms-ai', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          text: smsText, 
+          pendingPayments: pendingPayments.filter(p => !p.completed),
+          recurringBills,
+          bankAccounts 
+        })
+      });
+      if (response.ok) {
+        const parsed = await response.json();
+        if (parsed.amount && parsed.amount > 0) {
+          await handleAddTransaction({
+            type: parsed.type === 'CR' || parsed.type === 'income' ? 'income' : 'expense',
+            category: parsed.category || 'Others',
+            amount: parsed.amount,
+            date: new Date().toISOString().split('T')[0],
+            notes: parsed.description || `[${parsed.merchant || 'Auto-SMS'}] ${smsText.substring(0, 30)}...`,
+            bankAccountId: parsed.matched_bank_account_id || undefined
+          });
+
+          // Auto-pay logic
+          if (parsed.matched_pending_id) {
+            const p = pendingPayments.find(x => x.id === parsed.matched_pending_id);
+            if (p) await handleEditPayment(p.id, { completed: true });
+          } else if (parsed.matched_recurring_id) {
+            const b = recurringBills.find(x => x.id === parsed.matched_recurring_id);
+            if (b) {
+              const nextDate = new Date(b.nextDueDate);
+              if (b.frequency === 'monthly') nextDate.setMonth(nextDate.getMonth() + 1);
+              else nextDate.setFullYear(nextDate.getFullYear() + 1);
+              await handleEditRecurringBill(b.id, { nextDueDate: nextDate.toISOString().split('T')[0] });
+            }
+          }
+          // Trigger a silent visual toast or notification (optional)
+        }
+      }
+    } catch (e) {
+      console.error('Background SMS Parsing failed:', e);
+    }
+  });
 
   const { livePrices, refreshPrices, loadingPrices } = useLivePrices(unifiedHoldings, watchlist);
 
@@ -122,6 +173,24 @@ export default function App() {
   const [isNavDrawerOpen, setIsNavDrawerOpen] = useState(false);
   const [activeToasts, setActiveToasts] = useState<{ id: string; title: string; message: string }[]>([]);
   const { permission, requestPermission, sendNotification } = usePushNotifications();
+
+  // Snooze modal state
+  const [snoozingTask, setSnoozingTask] = useState<{ id: string; title: string } | null>(null);
+  const [snoozeDate, setSnoozeDate] = useState('');
+  const [snoozeTime, setSnoozeTime] = useState('');
+
+  // Listen for SIP Notifications
+  useEffect(() => {
+    const handleSipNotification = (e: any) => {
+      const { sipName } = e.detail;
+      sendNotification(`SIP Auto-Debit Reminder`, { 
+        body: `We will notify you 2 days prior to "${sipName}" SIP auto-debit window!`,
+        requireInteraction: true
+      });
+    };
+    window.addEventListener('sip-notification-trigger', handleSipNotification);
+    return () => window.removeEventListener('sip-notification-trigger', handleSipNotification);
+  }, [sendNotification]);
 
   // Migration structures for offline guest data to Google Firebase
   const [pendingMigrationData, setPendingMigrationData] = useState<any | null>(null);
@@ -195,6 +264,12 @@ export default function App() {
     } catch (e) {
       console.log('Audio notification sound bypassed.');
     }
+
+    sendNotification(`Task Overdue: ${task.title}`, {
+      body: `This task requires your attention immediately!`,
+      tag: `task_overdue_${task.id}`,
+      requireInteraction: true
+    });
   };
 
   const { tasks: scheduledTasks } = useTaskReminder(user?.uid, handleTaskOverdueClientAlert);
@@ -559,6 +634,16 @@ export default function App() {
   // mutations
   const handleAddTransaction = async (txData: Omit<Transaction, 'id' | 'userId'>) => {
     if (!user) return;
+    
+    // Adjust Bank Account balance if linked
+    if (txData.bankAccountId) {
+      const bank = bankAccounts.find(b => b.id === txData.bankAccountId);
+      if (bank) {
+        const diff = txData.type === 'income' ? txData.amount : -txData.amount;
+        await handleEditBankAccount(bank.id, { currentBalance: bank.currentBalance + diff });
+      }
+    }
+
     if (user.uid.startsWith('guest_offline_')) {
       const newTx: Transaction = {
         ...txData,
@@ -587,6 +672,15 @@ export default function App() {
 
   const handleDeleteTransaction = async (id: string) => {
     if (!user) return;
+    const tx = transactions.find(t => t.id === id);
+    if (tx?.bankAccountId) {
+      const bank = bankAccounts.find(b => b.id === tx.bankAccountId);
+      if (bank) {
+        const reverseDiff = tx.type === 'income' ? -tx.amount : tx.amount;
+        await handleEditBankAccount(bank.id, { currentBalance: bank.currentBalance + reverseDiff });
+      }
+    }
+
     if (user.uid.startsWith('guest_offline_')) {
       const updated = transactions.filter(t => t.id !== id);
       setTransactions(updated);
@@ -713,7 +807,7 @@ export default function App() {
   }, [user, permission, requestPermission]);
 
   useEffect(() => {
-    if (!user || permission !== 'granted') return;
+    if (!user || !('Notification' in window) || Notification.permission !== 'granted') return;
     
     const todayStr = new Date().toISOString().split('T')[0];
     
@@ -724,7 +818,7 @@ export default function App() {
       const storageKey = `notif_bill_${b.id}_${todayStr}`;
       if (!localStorage.getItem(storageKey)) {
         sendNotification(`${isIncome ? 'Income Due' : 'Bill Due'}: ${b.title}`, {
-          body: `Amount: ₹${b.amount.toLocaleString()}\nClick to manage via Notification Center`,
+          body: `Amount: ₹${b.amount?.toLocaleString() || b.amount}\nClick to manage via Notification Center`,
           tag: storageKey
         });
         localStorage.setItem(storageKey, 'true');
@@ -738,14 +832,14 @@ export default function App() {
       const storageKey = `notif_pay_${p.id}_${todayStr}`;
       if (!localStorage.getItem(storageKey)) {
         sendNotification(`Pending ${isOwed ? 'Collection' : 'Payment'} Due: ${p.person}`, {
-          body: `Amount: ₹${p.amount.toLocaleString()}\nClick to manage via Notification Center`,
+          body: `Amount: ₹${p.amount?.toLocaleString() || p.amount}\nClick to manage via Notification Center`,
           tag: storageKey
         });
         localStorage.setItem(storageKey, 'true');
       }
     });
 
-  }, [recurringBills, pendingPayments, user, permission, sendNotification]);
+  }, [recurringBills, pendingPayments, user, sendNotification]);
 
 
   const handleAddTask = async (taskData: { title: string; description: string; dueDate: Date }): Promise<string> => {
@@ -1421,11 +1515,11 @@ export default function App() {
       />
 
       {/* Primary Display Content Container */}
-      <main className="max-w-8xl mx-auto px-2 sm:px-3 lg:px-4 mt-3 w-full flex-grow">
+      <main className="max-w-8xl mx-auto px-2 sm:px-3 lg:px-4 mt-3 w-full grow">
         <div className="transition-all duration-300">
           <Routes>
             <Route path="/" element={<Navigate to={currentWorkspace === 'ledger' ? '/dashboard' : '/portfolio'} replace />} />
-            <Route path="/dashboard" element={<Dashboard
+          <Route path="/dashboard" element={<Dashboard
               transactions={transactions}
               pendingPayments={pendingPayments}
               savingsGoals={savingsGoals}
@@ -1439,9 +1533,19 @@ export default function App() {
               livePrices={livePrices}
             />} />
 
+          <Route path="/analytics" element={<AnalyticsDashboard
+              transactions={transactions}
+              bankAccounts={bankAccounts}
+              holdings={unifiedHoldings}
+              fds={fds}
+              sips={sips}
+              pendingPayments={pendingPayments}
+              brokerFunds={brokerFunds}
+            />} />
+
           <Route path="/portfolio" element={<PortfolioTracker
                     holdings={unifiedHoldings}
-                    realizedTrades={realizedTrades}
+                    realizedTrades={[...realizedTrades, ...(brokerRealizedTrades || [])]}
                     watchlist={watchlist}
                     onAddHolding={handleAddHolding}
                     onDeleteHolding={handleDeleteHolding}
@@ -1482,6 +1586,25 @@ export default function App() {
               onAddTransaction={handleAddTransaction}
               onEditTransaction={handleEditTransaction}
               onDeleteTransaction={handleDeleteTransaction}
+              pendingPayments={pendingPayments}
+              recurringBills={recurringBills}
+              bankAccounts={bankAccounts}
+              onAddBankAccount={handleAddBankAccount}
+              onEditBankAccount={handleEditBankAccount}
+              onDeleteBankAccount={handleDeleteBankAccount}
+              onAutoPayPending={async (id) => {
+                const p = pendingPayments.find(x => x.id === id);
+                if (p) await handleEditPayment(id, { completed: true });
+              }}
+              onAutoPayRecurring={async (id) => {
+                const b = recurringBills.find(x => x.id === id);
+                if (b) {
+                  const nextDate = new Date(b.nextDueDate);
+                  if (b.frequency === 'monthly') nextDate.setMonth(nextDate.getMonth() + 1);
+                  else nextDate.setFullYear(nextDate.getFullYear() + 1);
+                  await handleEditRecurringBill(b.id, { nextDueDate: nextDate.toISOString().split('T')[0] });
+                }
+              }}
             />} />
 
           <Route path="/pending" element={<PendingPayments
@@ -1498,6 +1621,8 @@ export default function App() {
               onEditGoal={handleEditGoal}
               onDeleteGoal={handleDeleteGoal}
             />} />
+
+          <Route path="/credit-cards-emi" element={<CreditCardsEMI />} />
 
           <Route path="/budgets" element={<BudgetLimits
               budgetLimits={budgetLimits}
@@ -1580,7 +1705,7 @@ export default function App() {
               exit={{ opacity: 0, scale: 0.8, transition: { duration: 0.15 } }}
               className="bg-slate-900 text-white rounded-2xl p-2 shadow-xl border border-slate-700 pointer-events-auto flex gap-1.5 items-start justify-between"
             >
-              <div className="flex-1 space-y-1">
+              <div className="grow space-y-1">
                 <div className="flex items-center gap-1.5 text-xs font-bold text-indigo-400">
                   <AlertTriangle className="w-4 h-4 text-indigo-400 shrink-0" />
                   <span>DUE RELEASE WARNING</span>
@@ -1589,16 +1714,68 @@ export default function App() {
                   {toast.message}
                 </p>
               </div>
-              <button
-                onClick={() => setActiveToasts((prev) => prev.filter((t) => t.id !== toast.id))}
-                className="text-slate-400 hover:text-white p-1 hover:bg-slate-800 rounded-lg transition-all cursor-pointer"
-              >
-                <X className="w-4 h-4" />
-              </button>
+              <div className="flex flex-col gap-1 ml-2">
+                <button
+                  onClick={() => {
+                     setSnoozingTask({ id: toast.id, title: toast.title });
+                     const now = new Date();
+                     setSnoozeDate(now.toISOString().substring(0, 10));
+                     setSnoozeTime(now.toTimeString().substring(0, 5));
+                     setActiveToasts((prev) => prev.filter((t) => t.id !== toast.id));
+                  }}
+                  className="px-2 py-1 text-[10px] font-bold bg-indigo-600/20 text-indigo-300 hover:bg-indigo-600/40 rounded transition-colors cursor-pointer"
+                >
+                  Snooze
+                </button>
+                <button
+                  onClick={() => setActiveToasts((prev) => prev.filter((t) => t.id !== toast.id))}
+                  className="text-slate-400 hover:text-white p-1 hover:bg-slate-800 rounded-lg transition-all cursor-pointer flex justify-center items-center"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
             </motion.div>
           ))}
         </AnimatePresence>
       </div>
+
+      {/* Snooze Modal */}
+      <AnimatePresence>
+        {snoozingTask && (
+          <motion.div 
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            className="fixed inset-0 z-100 flex items-center justify-center bg-black/60 p-4"
+          >
+            <motion.div initial={{ scale: 0.95 }} animate={{ scale: 1 }} exit={{ scale: 0.95 }} className="bg-white rounded-2xl p-4 w-full max-w-xs shadow-2xl space-y-3">
+              <h3 className="font-bold text-slate-900">Snooze Task</h3>
+              <p className="text-xs text-slate-500">Select a new date and time for: <br/><b className="text-slate-800">{snoozingTask.title}</b></p>
+              <div className="space-y-2 pt-1">
+                <input type="date" value={snoozeDate} onChange={e => setSnoozeDate(e.target.value)} className="w-full text-sm p-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-indigo-500" />
+                <input type="time" value={snoozeTime} onChange={e => setSnoozeTime(e.target.value)} className="w-full text-sm p-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-indigo-500" />
+              </div>
+              <div className="flex justify-end gap-2 pt-2 border-t border-slate-100 mt-2">
+                <button onClick={() => setSnoozingTask(null)} className="px-3 py-1.5 text-xs font-bold text-slate-500 hover:bg-slate-50 rounded-lg cursor-pointer">Cancel</button>
+                <button 
+                  onClick={async () => {
+                     if (!snoozeDate || !snoozeTime) return alert("Please select date and time.");
+                     try {
+                       const d = new Date(`${snoozeDate}T${snoozeTime}`);
+                       await updateDoc(doc(db, 'tasks', snoozingTask.id), { 
+                         dueDate: Timestamp.fromDate(d), 
+                         notified: false 
+                       });
+                       setActiveToasts((prev) => prev.filter(t => t.taskId !== snoozingTask.id));
+                       setSnoozingTask(null);
+                     } catch(e) { alert("Failed to snooze: " + e); }
+                  }} 
+                  className="px-3 py-1.5 text-xs font-bold bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 cursor-pointer">
+                  Save & Snooze
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <NotificationCenter
         isOpen={isNotificationOpen}
@@ -1618,11 +1795,17 @@ export default function App() {
           else nextDate.setFullYear(nextDate.getFullYear() + 1);
           await handleEditRecurringBill(b.id, { nextDueDate: nextDate.toISOString().split('T')[0] });
         }}
-        onSkipBill={async (b) => {
-          const nextDate = new Date(b.nextDueDate);
-          if (b.frequency === 'monthly') nextDate.setMonth(nextDate.getMonth() + 1);
-          else nextDate.setFullYear(nextDate.getFullYear() + 1);
-          await handleEditRecurringBill(b.id, { nextDueDate: nextDate.toISOString().split('T')[0] });
+        onSkipBill={async (b, customDate) => {
+          let nextDateStr = '';
+          if (customDate) {
+            nextDateStr = customDate;
+          } else {
+            const nextDate = new Date(b.nextDueDate);
+            if (b.frequency === 'monthly') nextDate.setMonth(nextDate.getMonth() + 1);
+            else nextDate.setFullYear(nextDate.getFullYear() + 1);
+            nextDateStr = nextDate.toISOString().split('T')[0];
+          }
+          await handleEditRecurringBill(b.id, { nextDueDate: nextDateStr });
         }}
         onPayPending={async (p) => {
           await handleAddTransaction({
@@ -1663,3 +1846,4 @@ export default function App() {
     </div>
   );
 }
+

@@ -3,32 +3,55 @@ import { motion, AnimatePresence } from 'motion/react';
 import { 
   Plus, Search, Trash2, Edit2, X, Filter, Sparkles, Clipboard, CheckCircle 
 } from 'lucide-react';
-import { Transaction, EXPENSE_CATEGORIES, INCOME_CATEGORIES, ALL_CATEGORIES } from '../types';
+import { Transaction, EXPENSE_CATEGORIES, INCOME_CATEGORIES, ALL_CATEGORIES, PendingPayment, RecurringBill } from '../types';
 import { parseBankSMS } from '../utils/financeHelpers';
 import InfoTooltip from './InfoTooltip';
+
+import BankProfiles from './BankProfiles';
+import CsvImportWizard from './CsvImportWizard';
+import { UploadCloud } from 'lucide-react';
 
 interface TransactionTrackerProps {
   transactions: Transaction[];
   onAddTransaction: (t: Omit<Transaction, 'id' | 'userId'>) => Promise<void>;
   onEditTransaction: (id: string, t: Partial<Transaction>) => Promise<void>;
   onDeleteTransaction: (id: string) => Promise<void>;
+  pendingPayments?: PendingPayment[];
+  recurringBills?: RecurringBill[];
+  bankAccounts?: any[]; // Array of BankAccount
+  onAddBankAccount?: (acc: any) => Promise<void>;
+  onEditBankAccount?: (id: string, updates: any) => Promise<void>;
+  onDeleteBankAccount?: (id: string) => Promise<void>;
+  onAutoPayPending?: (id: string) => Promise<void>;
+  onAutoPayRecurring?: (id: string) => Promise<void>;
 }
 
 export default function TransactionTracker({
   transactions,
   onAddTransaction,
   onEditTransaction,
-  onDeleteTransaction
+  onDeleteTransaction,
+  pendingPayments = [],
+  recurringBills = [],
+  bankAccounts = [],
+  onAddBankAccount,
+  onEditBankAccount,
+  onDeleteBankAccount,
+  onAutoPayPending,
+  onAutoPayRecurring
 }: TransactionTrackerProps) {
 
   // Form State
+  // Form State
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [isCsvWizardOpen, setIsCsvWizardOpen] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [type, setType] = useState<'income' | 'expense'>('expense');
   const [category, setCategory] = useState<string>(EXPENSE_CATEGORIES[0]);
   const [amount, setAmount] = useState<string>('');
   const [date, setDate] = useState<string>(new Date().toISOString().split('T')[0]);
   const [notes, setNotes] = useState<string>('');
+  const [bankAccountId, setBankAccountId] = useState<string>('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // SMS Parser state
@@ -52,27 +75,78 @@ export default function TransactionTracker({
     }
   };
 
-  const handleSmsParse = () => {
-    if (!smsText.trim()) return;
-    const parsed = parseBankSMS(smsText);
-    if (parsed.detected && parsed.amount > 0) {
-      setAmount(parsed.amount.toString());
-      setType(parsed.type);
-      setCategory(parsed.category);
-      setNotes(`SMS parsed from ${parsed.bankName}`);
-      setIsSmsParsed(true);
-      setSmsStatus(`✔ Successfully extracted ₹${parsed.amount} from ${parsed.bankName} transaction!`);
-      // Open form
-      setIsFormOpen(true);
-    } else {
-      setSmsStatus('❌ Could not parse amount or type from this text format.');
+  const handleSmsParse = async (textToParse?: string) => {
+    const text = textToParse || smsText;
+    if (!text.trim()) return;
+    
+    setSmsStatus('🤖 Parsing with AI...');
+    try {
+      const response = await fetch('/api/parse-sms-ai', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          text, 
+          pendingPayments: pendingPayments.filter(p => !p.completed),
+          recurringBills,
+          bankAccounts 
+        })
+      });
+      
+      if (!response.ok) {
+        throw new Error('AI parsing failed');
+      }
+      
+      const parsed = await response.json();
+      
+      if (parsed.amount && parsed.amount > 0) {
+        setAmount(parsed.amount.toString());
+        setType(parsed.type === 'CR' || parsed.type === 'income' ? 'income' : 'expense');
+        setCategory(parsed.category || 'Others');
+        setNotes(parsed.description || `[${parsed.merchant || 'SMS'}] ${text.substring(0, 30)}...`);
+        if (parsed.matched_bank_account_id) {
+          setBankAccountId(parsed.matched_bank_account_id);
+        }
+        setIsSmsParsed(true);
+        
+        let matchMsg = '';
+        if (parsed.matched_pending_id && onAutoPayPending) {
+           await onAutoPayPending(parsed.matched_pending_id);
+           matchMsg = ' 🌟 Auto-Paid Pending Payment!';
+        } else if (parsed.matched_recurring_id && onAutoPayRecurring) {
+           await onAutoPayRecurring(parsed.matched_recurring_id);
+           matchMsg = ' 🌟 Auto-Paid Recurring Bill!';
+        }
+
+        setSmsStatus(`✔ Successfully extracted ₹${parsed.amount} for ${parsed.merchant || 'Unknown'}${matchMsg}`);
+        // Open form
+        setIsFormOpen(true);
+      } else {
+        setSmsStatus('❌ Could not parse amount or type from this text format.');
+      }
+    } catch (err) {
+      console.error(err);
+      setSmsStatus('❌ AI Parsing error or GEMINI_API_KEY missing.');
     }
+    
     setSmsText('');
     setTimeout(() => {
       setIsSmsParsed(false);
       setSmsStatus('');
     }, 4000);
   };
+
+  // PWA Web Share Target Interceptor
+  React.useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const sharedText = params.get('share_text');
+    if (sharedText) {
+      setSmsText(sharedText);
+      // Clean URL immediately
+      window.history.replaceState(null, '', window.location.pathname);
+      // Auto-trigger parse
+      handleSmsParse(sharedText);
+    }
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -96,7 +170,8 @@ export default function TransactionTracker({
           category,
           amount: parsedAmount,
           date,
-          notes: notes.trim() || undefined
+          notes: notes.trim() || undefined,
+          bankAccountId: bankAccountId || undefined
         });
         setEditingId(null);
       } else {
@@ -105,12 +180,14 @@ export default function TransactionTracker({
           category,
           amount: parsedAmount,
           date,
-          notes: notes.trim() || undefined
+          notes: notes.trim() || undefined,
+          bankAccountId: bankAccountId || undefined
         });
       }
       setIsFormOpen(false);
       setAmount('');
       setNotes('');
+      setBankAccountId('');
       setDate(new Date().toISOString().split('T')[0]);
       setType('expense');
       setCategory(EXPENSE_CATEGORIES[0]);
@@ -129,6 +206,7 @@ export default function TransactionTracker({
     setAmount(t.amount.toString());
     setDate(t.date);
     setNotes(t.notes || '');
+    setBankAccountId(t.bankAccountId || '');
     setIsFormOpen(true);
   };
 
@@ -152,6 +230,17 @@ export default function TransactionTracker({
 
   return (
     <div className="space-y-3" id="transaction-tab">
+
+      {/* Bank Profiles Hub */}
+      {onAddBankAccount && onEditBankAccount && onDeleteBankAccount && (
+        <BankProfiles 
+          bankAccounts={bankAccounts}
+          transactions={transactions}
+          onAddBankAccount={onAddBankAccount}
+          onEditBankAccount={onEditBankAccount}
+          onDeleteBankAccount={onDeleteBankAccount}
+        />
+      )}
       
       {/* Header */}
       <div className="flex md:flex-row flex-col justify-between items-start md:items-center gap-2 bg-white p-2 rounded-2xl border border-slate-200/85">
@@ -163,16 +252,25 @@ export default function TransactionTracker({
           </p>
         </div>
         
-        <button
-          id="new-transaction-button"
-          onClick={() => {
-            setEditingId(null);
-            setIsFormOpen(true);
-          }}
-          className="flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-white px-1.5 py-1.5 rounded-lg font-bold text-xs cursor-pointer transition-all shadow-xs"
-        >
-          <Plus size={14} /> Log Entry
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            id="import-csv-button"
+            onClick={() => setIsCsvWizardOpen(true)}
+            className="flex items-center gap-1.5 bg-slate-100 hover:bg-slate-200 text-slate-800 px-1.5 py-1.5 rounded-lg font-bold text-xs cursor-pointer transition-all border border-slate-200"
+          >
+            <UploadCloud size={14} /> Bulk Import
+          </button>
+          <button
+            id="new-transaction-button"
+            onClick={() => {
+              setEditingId(null);
+              setIsFormOpen(true);
+            }}
+            className="flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-white px-1.5 py-1.5 rounded-lg font-bold text-xs cursor-pointer transition-all shadow-xs"
+          >
+            <Plus size={14} /> Log Entry
+          </button>
+        </div>
       </div>
 
       {/* SMS Parser Card Box */}
@@ -285,6 +383,25 @@ export default function TransactionTracker({
                   </select>
                 </div>
 
+                {/* Bank Account */}
+                {bankAccounts.length > 0 && (
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-sans">Bank Account</label>
+                    <select
+                      value={bankAccountId}
+                      onChange={(e) => setBankAccountId(e.target.value)}
+                      className="w-full px-1 py-1.5 text-xs border border-slate-200 bg-white rounded-lg focus:outline-hidden font-mono"
+                    >
+                      <option value="">-- No Bank (Cash/Other) --</option>
+                      {bankAccounts.map(b => (
+                        <option key={b.id} value={b.id}>
+                          {b.bankName} - {b.accountName} (₹{b.currentBalance.toLocaleString()})
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                )}
+
                 {/* Date */}
                 <div className="space-y-1.5">
                   <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-sans">Date stamp</label>
@@ -330,6 +447,29 @@ export default function TransactionTracker({
               </div>
             </form>
           </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* CSV Wizard Modal */}
+      <AnimatePresence>
+        {isCsvWizardOpen && (
+          <>
+            <motion.div 
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+              onClick={() => setIsCsvWizardOpen(false)}
+              className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-40"
+            />
+            <motion.div
+              initial={{ opacity: 0, y: 50, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 20, scale: 0.95 }}
+              className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-2xl px-4"
+            >
+              <CsvImportWizard 
+                onAddTransaction={onAddTransaction} 
+                bankAccounts={bankAccounts}
+                onClose={() => setIsCsvWizardOpen(false)}
+              />
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
 

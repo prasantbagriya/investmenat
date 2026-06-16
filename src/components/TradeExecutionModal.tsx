@@ -19,6 +19,10 @@ export default function TradeExecutionModal({ isOpen, onClose, symbol, ltp }: Tr
   const [isExecuting, setIsExecuting] = useState(false);
   const [tradeMessage, setTradeMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
 
+  // GTT Support
+  const [isGtt, setIsGtt] = useState<boolean>(false);
+  const [triggerPrice, setTriggerPrice] = useState<number>(ltp || 0);
+
   if (!isOpen) return null;
 
   const handleExecute = async () => {
@@ -38,19 +42,41 @@ export default function TradeExecutionModal({ isOpen, onClose, symbol, ltp }: Tr
       if (selectedBroker === 'upstox') {
         const token = localStorage.getItem('upstox_access_token');
         if (!token) throw new Error('Upstox not connected.');
-        endpoint = '/api/upstox/order';
-        headers['Authorization'] = `Bearer ${token}`;
-        payload = {
-          instrument_token: symbol,
-          quantity: quantity,
-          product: productType === 'DELIVERY' ? 'D' : 'I',
-          validity: 'DAY',
-          price: orderType === 'LIMIT' ? price : 0,
-          tag: 'unified_dashboard',
-          transaction_type: orderSide,
-          order_type: orderType,
-          is_amo: false
-        };
+        
+        if (isGtt) {
+          endpoint = '/api/upstox/gtt-order';
+          headers['Authorization'] = `Bearer ${token}`;
+          payload = {
+            instrument_token: symbol,
+            quantity: quantity,
+            product: productType === 'DELIVERY' ? 'D' : 'I',
+            transaction_type: orderSide,
+            type: orderType,
+            price: 0,
+            rules: [
+              {
+                strategy: 'ENTRY',
+                trigger_type: 'SINGLE',
+                trigger_price: triggerPrice,
+                limit_price: orderType === 'LIMIT' ? price : triggerPrice
+              }
+            ]
+          };
+        } else {
+          endpoint = '/api/upstox/order';
+          headers['Authorization'] = `Bearer ${token}`;
+          payload = {
+            instrument_token: symbol,
+            quantity: quantity,
+            product: productType === 'DELIVERY' ? 'D' : 'I',
+            validity: 'DAY',
+            price: orderType === 'LIMIT' ? price : 0,
+            tag: 'unified_dashboard',
+            transaction_type: orderSide,
+            order_type: orderType,
+            is_amo: false
+          };
+        }
       } else if (selectedBroker === 'angel') {
         const token = localStorage.getItem('angel_access_token');
         const apiKey = localStorage.getItem('angel_api_key');
@@ -134,7 +160,7 @@ export default function TradeExecutionModal({ isOpen, onClose, symbol, ltp }: Tr
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-100 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -203,8 +229,22 @@ export default function TradeExecutionModal({ isOpen, onClose, symbol, ltp }: Tr
                 </div>
               </div>
 
+              {/* GTT Toggle */}
+              <div className="flex items-center gap-2">
+                <input 
+                  type="checkbox" 
+                  id="gtt-toggle" 
+                  checked={isGtt} 
+                  onChange={(e) => setIsGtt(e.target.checked)} 
+                  className="w-4 h-4 rounded text-indigo-600 focus:ring-indigo-500"
+                />
+                <label htmlFor="gtt-toggle" className="text-xs font-bold text-slate-700">
+                  Create GTT (Good-Till-Triggered) Order
+                </label>
+              </div>
+
               {/* Qty & Price */}
-              <div className="grid grid-cols-2 gap-3">
+              <div className={`grid ${isGtt ? 'grid-cols-3' : 'grid-cols-2'} gap-3`}>
                 <div>
                   <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Quantity</label>
                   <input 
@@ -215,14 +255,25 @@ export default function TradeExecutionModal({ isOpen, onClose, symbol, ltp }: Tr
                     className="w-full bg-slate-50 border border-slate-200 p-2.5 rounded-xl text-sm font-bold text-slate-800 focus:outline-none focus:border-indigo-400"
                   />
                 </div>
+                {isGtt && (
+                  <div>
+                    <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Trigger Price</label>
+                    <input 
+                      type="number" 
+                      value={triggerPrice}
+                      onChange={(e) => setTriggerPrice(Number(e.target.value))}
+                      className="w-full bg-slate-50 border border-slate-200 p-2.5 rounded-xl text-sm font-bold text-slate-800 focus:outline-none focus:border-indigo-400"
+                    />
+                  </div>
+                )}
                 <div>
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Price</label>
+                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">{isGtt ? 'Limit Price' : 'Price'}</label>
                   <input 
                     type="number" 
                     value={price}
                     onChange={(e) => setPrice(Number(e.target.value))}
-                    disabled={orderType === 'MARKET'}
-                    className={`w-full bg-slate-50 border border-slate-200 p-2.5 rounded-xl text-sm font-bold focus:outline-none focus:border-indigo-400 ${orderType === 'MARKET' ? 'text-slate-400' : 'text-slate-800'}`}
+                    disabled={!isGtt && orderType === 'MARKET'}
+                    className={`w-full bg-slate-50 border border-slate-200 p-2.5 rounded-xl text-sm font-bold focus:outline-none focus:border-indigo-400 ${!isGtt && orderType === 'MARKET' ? 'text-slate-400' : 'text-slate-800'}`}
                   />
                 </div>
               </div>

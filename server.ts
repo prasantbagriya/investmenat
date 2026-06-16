@@ -4,6 +4,7 @@ import { createServer as createViteServer } from "vite";
 import { JWT } from "google-auth-library";
 import dotenv from "dotenv";
 import Database from 'better-sqlite3';
+import { GoogleGenAI } from "@google/genai";
 import { setupUpstoxRoutes } from "./upstoxProxy";
 import { setupDhanRoutes } from "./dhanProxy";
 import { setupAngelRoutes } from "./angelProxy";
@@ -135,6 +136,67 @@ async function startServer() {
     } catch (err: any) {
       console.error("[SQLiteSync] Error:", err);
       res.status(500).json({ error: err.message });
+    }
+  });
+
+  // AI SMS/Email parsing endpoint using Gemini
+  app.post("/api/parse-sms-ai", async (req, res) => {
+    try {
+      const { text, pendingPayments = [], recurringBills = [] } = req.body;
+      if (!text) return res.status(400).json({ error: "Missing text payload" });
+
+      const apiKey = process.env.GEMINI_API_KEY;
+      if (!apiKey) {
+        return res.status(500).json({ error: "GEMINI_API_KEY not configured on server" });
+      }
+
+      const ai = new GoogleGenAI({ apiKey });
+
+      const pendingList = pendingPayments.map((p: any) => `[ID: ${p.id}] ${p.person} owes/owed ₹${p.amount} on ${p.dueDate}`).join('\n');
+      const billsList = recurringBills.map((b: any) => `[ID: ${b.id}] ${b.title} of ₹${b.amount} due on ${b.nextDueDate}`).join('\n');
+      const bankAccsList = (req.body.bankAccounts || []).map((b: any) => `[ID: ${b.id}] ${b.bankName} (${b.accountName} - ${b.accountNumber || ''})`).join('\n');
+
+      const prompt = `You are an expert Automation Architect and Financial Data Parser. Your task is to extract transaction data from a raw bank SMS/Email and map it to a predefined JSON schema for my Personal Finance Manager.
+
+Input SMS: ${text}
+
+Available Pending Payments:
+${pendingList || 'None'}
+
+Available Recurring Bills:
+${billsList || 'None'}
+
+Available Bank Accounts:
+${bankAccsList || 'None'}
+
+Rules:
+Extract: Amount, Transaction Type (Credit/Debit), Date, Payee/Merchant, and Transaction Reference Number.
+Detail Extraction: Explicitly capture the Name of the sender/receiver and the UPI ID if present.
+Categorize: Based on the description, automatically assign a category (e.g., 'Business', 'Trading', 'Shopping', 'Institutional', 'Utilities', 'Dining Out', 'Groceries', 'Entertainment', 'Housing', 'Transportation').
+Format: Output the result as a strict JSON object without markdown formatting or code blocks.
+Alignment: Ensure the data maps directly to my database schema: { "transaction_id": "", "amount": 0.00, "type": "CR/DR", "category": "", "merchant": "", "description": "", "matched_pending_id": "", "matched_recurring_id": "", "matched_bank_account_id": "" }. The "description" should combine the Merchant Name, UPI ID, and Reference Number in a clean readable format.
+Cleanse: Remove any extra text, disclaimers, or noise from the input.
+Matching Pending/Bills: If the SMS perfectly matches the amount and context of an available Pending Payment, set its ID in "matched_pending_id". If it matches a Recurring Bill, set its ID in "matched_recurring_id". Otherwise leave them blank strings.
+Matching Bank Account: Identify which Bank Account this SMS belongs to by checking the bank name (e.g. HDFC, SBI) or the account number suffix (e.g. a/c XX1234). If it matches, set its ID in "matched_bank_account_id". Otherwise leave blank.
+If the input is for Trading (e.g., deposits to a Brokerage/Prop Firm), tag it as 'Investment/Trading' category specifically.`;
+
+      const response = await ai.models.generateContent({
+        model: 'gemini-2.5-flash',
+        contents: prompt,
+        config: {
+          temperature: 0.1
+        }
+      });
+
+      let jsonStr = response.text || "{}";
+      // Clean up markdown block if present
+      jsonStr = jsonStr.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
+
+      const parsedData = JSON.parse(jsonStr);
+      res.json(parsedData);
+    } catch (err: any) {
+      console.error("[Parse SMS AI] Error:", err);
+      res.status(500).json({ error: err.message || "Failed to parse SMS via AI" });
     }
   });
 
@@ -472,6 +534,70 @@ async function startServer() {
 
   app.get("/api/health", (req, res) => {
     res.json({ status: "ok", message: "Financial Rolodex fully active" });
+  });
+
+  // Bulk CSV Parser Endpoint
+  app.post("/api/parse-csv-ai", async (req, res) => {
+    try {
+      const { csvText, bankAccounts } = req.body;
+      if (!csvText) {
+        return res.status(400).json({ error: "csvText is required" });
+      }
+
+      const apiKey = process.env.GEMINI_API_KEY;
+      if (!apiKey) {
+        return res.status(500).json({ error: "GEMINI_API_KEY not configured on server" });
+      }
+
+      console.log(`[CSV-AI] Processing CSV text length: ${csvText.length}`);
+
+      const ai = new GoogleGenAI({ apiKey });
+
+      const bankContext = bankAccounts && Array.isArray(bankAccounts) && bankAccounts.length > 0 
+        ? `Here are the user's available bank accounts:\n${bankAccounts.map((b: any) => `- ID: ${b.id}, Name: ${b.bankName}, Number: ${b.accountNumber}`).join('\n')}\nIf the CSV statement mentions one of these banks or account numbers, assign that bank ID to "matched_bank_account_id".`
+        : '';
+
+      const prompt = `You are a strict financial transaction parser. You are given the raw text contents of a bank statement CSV.
+Your job is to extract all the transactions and return them as a JSON array.
+${bankContext}
+
+Output a JSON array where each element has this exact structure:
+{
+  "date": "YYYY-MM-DD",
+  "amount": number (positive),
+  "type": "income" or "expense",
+  "category": "Food" | "Transport" | "Shopping" | "Utilities" | "Trading" | "Salary" | "Investment" | "Entertainment" | "Healthcare" | "Transfer" | "Other",
+  "note": "A short, clean description of the transaction (e.g. Amazon, Zomato, Salary, ATM Withdrawal)",
+  "matched_bank_account_id": "string ID of the bank account if matched, else null"
+}
+
+Rules:
+1. Ignore header rows, balances, or useless rows. Only extract actual transactions.
+2. Determine if it's income or expense based on debit/credit columns or sign.
+3. Guess the best category based on the description.
+4. Output ONLY the JSON array, nothing else.
+
+Raw CSV Text:
+${csvText}
+`;
+
+      const result = await ai.models.generateContent({
+        model: 'gemini-2.5-flash',
+        contents: prompt,
+        config: {
+          responseMimeType: "application/json",
+          temperature: 0.1
+        }
+      });
+      
+      const responseText = result.text || "[]";
+      const transactions = JSON.parse(responseText);
+
+      return res.json({ transactions });
+    } catch (err: any) {
+      console.error("[CSV-AI] Failed to parse CSV:", err);
+      res.status(500).json({ error: err.message || "Failed to process CSV" });
+    }
   });
 
   // Vite integration

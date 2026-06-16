@@ -95,11 +95,11 @@ export default function RecurringBills({
   };
 
   const dueThisMonth = useMemo(() => {
-    return recurringBills.filter(b => b.nextDueDate.startsWith(currentMonthPrefix));
+    return recurringBills.filter(b => (b.nextDueDate || '').startsWith(currentMonthPrefix));
   }, [recurringBills, currentMonthPrefix]);
 
   const otherBills = useMemo(() => {
-    return recurringBills.filter(b => !b.nextDueDate.startsWith(currentMonthPrefix));
+    return recurringBills.filter(b => !(b.nextDueDate || '').startsWith(currentMonthPrefix));
   }, [recurringBills, currentMonthPrefix]);
 
   return (
@@ -263,8 +263,8 @@ export default function RecurringBills({
           <div className="p-4 text-center text-orange-600/70 text-xs">No bills left for this month.</div>
         ) : (
           <div className="divide-y divide-orange-100">
-            {dueThisMonth.sort((a,b) => a.nextDueDate.localeCompare(b.nextDueDate)).map((b) => {
-               const isOverdue = b.nextDueDate < todayStr;
+            {dueThisMonth.sort((a,b) => (a.nextDueDate || '').localeCompare(b.nextDueDate || '')).map((b) => {
+               const isOverdue = (b.nextDueDate || '') < todayStr;
                const isToday = b.nextDueDate === todayStr;
                return (
                 <div key={b.id} className={`p-2 flex justify-between items-center ${isOverdue ? 'bg-red-50/50' : ''}`}>
@@ -304,7 +304,7 @@ export default function RecurringBills({
             <span className="text-[11px] font-bold text-slate-500 uppercase tracking-widest font-sans">Future / Other Bills ({otherBills.length})</span>
           </div>
           <div className="divide-y divide-slate-100">
-            {otherBills.sort((a,b) => a.nextDueDate.localeCompare(b.nextDueDate)).map((b) => (
+            {otherBills.sort((a,b) => (a.nextDueDate || '').localeCompare(b.nextDueDate || '')).map((b) => (
               <div key={b.id} className="p-2 flex justify-between items-center">
                 <div>
                   <div className="flex items-center gap-1.5">

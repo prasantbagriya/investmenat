@@ -170,4 +170,152 @@ export function setupUpstoxRoutes(app: express.Application) {
       res.status(500).json({ error: err.message });
     }
   });
+
+  // --- UPSTOX BROKER API PROXIES (PHASE 3) ---
+
+  // 8. Historical Data
+  app.get("/api/upstox/historical-data", async (req, res) => {
+    try {
+      const token = req.headers.authorization;
+      const { instrument_key, interval, to_date, from_date } = req.query;
+      if (!token) return res.status(401).json({ error: "Missing authorization token" });
+      if (!instrument_key) return res.status(400).json({ error: "Missing instrument_key" });
+
+      // Support for both intraday (no to/from date) and historical
+      let url = `https://api.upstox.com/v2/historical-candle/intraday/${encodeURIComponent(instrument_key as string)}/1minute`;
+      if (interval && to_date && from_date) {
+        url = `https://api.upstox.com/v2/historical-candle/${encodeURIComponent(instrument_key as string)}/${encodeURIComponent(interval as string)}/${encodeURIComponent(to_date as string)}/${encodeURIComponent(from_date as string)}`;
+      }
+
+      const response = await fetch(url, {
+        headers: {
+          'Api-Version': '2.0',
+          'Authorization': token,
+          'Accept': 'application/json'
+        }
+      });
+      const data = await response.json();
+      res.status(response.status).json(data);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  // 9. Mutual Funds Holdings
+  app.get("/api/upstox/mutual-funds", async (req, res) => {
+    try {
+      const token = req.headers.authorization;
+      if (!token) return res.status(401).json({ error: "Missing authorization token" });
+
+      const response = await fetch('https://api.upstox.com/v2/portfolio/mutual-fund-holdings', {
+        headers: {
+          'Api-Version': '2.0',
+          'Authorization': token,
+          'Accept': 'application/json'
+        }
+      });
+      const data = await response.json();
+      res.status(response.status).json(data);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  // 10. Trade Profit & Loss
+  app.get("/api/upstox/trade-pnl", async (req, res) => {
+    try {
+      const token = req.headers.authorization;
+      const { segment, financial_year, page_number, page_size } = req.query;
+      if (!token) return res.status(401).json({ error: "Missing authorization token" });
+
+      let queryParams = new URLSearchParams();
+      if (segment) queryParams.append('segment', segment as string);
+      if (financial_year) queryParams.append('financial_year', financial_year as string);
+      if (page_number) queryParams.append('page_number', page_number as string);
+      if (page_size) queryParams.append('page_size', page_size as string);
+
+      const response = await fetch(`https://api.upstox.com/v2/trade/profit-loss/data?${queryParams.toString()}`, {
+        headers: {
+          'Api-Version': '2.0',
+          'Authorization': token,
+          'Accept': 'application/json'
+        }
+      });
+      const data = await response.json();
+      res.status(response.status).json(data);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  // 11. GTT Orders
+  app.post("/api/upstox/gtt-order", async (req, res) => {
+    try {
+      const token = req.headers.authorization;
+      if (!token) return res.status(401).json({ error: "Missing authorization token" });
+
+      const response = await fetch('https://api.upstox.com/v2/order/gtt/place', {
+        method: 'POST',
+        headers: {
+          'Api-Version': '2.0',
+          'Authorization': token,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(req.body)
+      });
+      
+      const data = await response.json();
+      res.status(response.status).json(data);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  // 12. Market News
+  app.get("/api/upstox/news", async (req, res) => {
+    try {
+      const token = req.headers.authorization;
+      const symbol = req.query.symbol as string;
+      if (!token) return res.status(401).json({ error: "Missing authorization token" });
+
+      const url = symbol 
+        ? `https://api.upstox.com/v2/market-news/instrument?instrument_key=${encodeURIComponent(symbol)}`
+        : `https://api.upstox.com/v2/market-news/top`;
+
+      const response = await fetch(url, {
+        headers: {
+          'Api-Version': '2.0',
+          'Authorization': token,
+          'Accept': 'application/json'
+        }
+      });
+      const data = await response.json();
+      res.status(response.status).json(data);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  // 13. Fundamentals
+  app.get("/api/upstox/fundamentals", async (req, res) => {
+    try {
+      const token = req.headers.authorization;
+      const symbol = req.query.symbol as string;
+      if (!token) return res.status(401).json({ error: "Missing authorization token" });
+      if (!symbol) return res.status(400).json({ error: "Missing symbol" });
+
+      const response = await fetch(`https://api.upstox.com/v2/fundamentals/company-essential?instrument_key=${encodeURIComponent(symbol)}`, {
+        headers: {
+          'Api-Version': '2.0',
+          'Authorization': token,
+          'Accept': 'application/json'
+        }
+      });
+      const data = await response.json();
+      res.status(response.status).json(data);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
 }

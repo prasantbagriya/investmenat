@@ -479,6 +479,27 @@ export default function TasksSection({
               {tokenStatusMessage}
             </span>
           )}
+          {notificationStatus === 'granted' && (
+            <button
+              onClick={async () => {
+                alert("Triggering test notification now. If you don't see a popup after this alert closes, your browser is blocking it.");
+                try {
+                  const reg = await navigator.serviceWorker?.getRegistration();
+                  if (reg && reg.showNotification) {
+                    await reg.showNotification("Test Notification", { body: "Service Worker notification working!" });
+                  } else {
+                    const n = new Notification("Test Notification", { body: "Native notification working!" });
+                    n.onclick = () => { window.focus(); n.close(); };
+                  }
+                } catch (e) {
+                  alert("Error triggering notification: " + e);
+                }
+              }}
+              className="mt-1 flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs py-1 px-2 rounded-xl transition-all shadow-xs cursor-pointer"
+            >
+              Test Notification
+            </button>
+          )}
         </div>
       </div>
 
@@ -516,7 +537,7 @@ export default function TasksSection({
 
               {/* Description */}
               <div className="space-y-1.5">
-                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-sans font-medium">Description (Optional)</label>
+                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-sans">Description (Optional)</label>
                 <textarea
                   placeholder="Provide payment URL or reference numbers here..."
                   maxLength={1000}
@@ -530,7 +551,7 @@ export default function TasksSection({
               {/* Due Date & Time Picker Group */}
               <div className="grid grid-cols-2 gap-1">
                 <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-sans font-medium">Due Date</label>
+                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-sans">Due Date</label>
                   <div className="relative">
                     <Calendar className="absolute right-3 top-2.5 w-4 h-4 text-slate-400 pointer-events-none" />
                     <input
@@ -544,7 +565,7 @@ export default function TasksSection({
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-sans font-medium">Due Time</label>
+                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-sans">Due Time</label>
                   <div className="relative">
                     <Clock className="absolute right-3 top-2.5 w-4 h-4 text-slate-400 pointer-events-none" />
                     <input

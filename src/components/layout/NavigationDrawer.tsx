@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { 
   X, LayoutDashboard, ArrowLeftRight, Clock, Target, Sliders, 
   Bell, Users, Briefcase, Settings, TrendingUp, CalendarRange, 
-  Landmark, Percent, Repeat, BarChart3 
+  Landmark, Percent, Repeat, BarChart3, Activity 
 } from 'lucide-react';
 
 interface NavigationDrawerProps {
@@ -107,9 +107,11 @@ export default function NavigationDrawer({
                   {currentWorkspace === 'ledger' ? (
                     <>
                       <NavButton active={activeTab === 'dashboard'} onClick={() => handleTabClick('dashboard')} icon={<LayoutDashboard size={16} />} label="Dashboard" />
+                      <NavButton active={activeTab === 'analytics'} onClick={() => handleTabClick('analytics')} icon={<Activity size={16} className="text-indigo-500" />} label="AI Analytics" />
                       <NavButton active={activeTab === 'transactions'} onClick={() => handleTabClick('transactions')} icon={<ArrowLeftRight size={16} />} label="Journal ledger" />
                       <NavButton active={activeTab === 'pending'} onClick={() => handleTabClick('pending')} icon={<Clock size={16} />} label="Len Den (Dues)" />
                       <NavButton active={activeTab === 'recurring-bills'} onClick={() => handleTabClick('recurring-bills')} icon={<Repeat size={16} />} label="Auto Billing" />
+                      <NavButton active={activeTab === 'credit-cards-emi'} onClick={() => handleTabClick('credit-cards-emi')} icon={<Briefcase size={16} />} label="Credit Cards & EMIs" />
                       <NavButton active={activeTab === 'savings'} onClick={() => handleTabClick('savings')} icon={<Target size={16} />} label="Goals" />
                       <NavButton active={activeTab === 'budgets'} onClick={() => handleTabClick('budgets')} icon={<Sliders size={16} />} label="Budgets" />
                       <NavButton active={activeTab === 'tasks'} onClick={() => handleTabClick('tasks')} icon={<Bell size={16} />} label="Reminders" />

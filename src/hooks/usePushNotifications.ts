@@ -5,21 +5,32 @@ import { app } from '../firebase';
 export function usePushNotifications() {
   const [permission, setPermission] = useState<NotificationPermission>('default');
 
-  const sendNotification = useCallback((title: string, options?: NotificationOptions) => {
+  const sendNotification = useCallback(async (title: string, options?: NotificationOptions) => {
     if (!('Notification' in window)) return;
     
     if (Notification.permission === 'granted') {
-      const notification = new Notification(title, {
-        icon: '/vite.svg', // Fallback icon
-        badge: '/vite.svg',
-        ...options
-      });
-      
-      // Focus window when notification clicked
-      notification.onclick = function() {
-        window.focus();
-        this.close();
-      };
+      try {
+        const registration = await navigator.serviceWorker?.getRegistration();
+        if (registration && registration.showNotification) {
+          await registration.showNotification(title, {
+            icon: '/vite.svg',
+            badge: '/vite.svg',
+            ...options
+          });
+        } else {
+          const notification = new Notification(title, {
+            icon: '/vite.svg',
+            badge: '/vite.svg',
+            ...options
+          });
+          notification.onclick = function() {
+            window.focus();
+            this.close();
+          };
+        }
+      } catch (e) {
+        console.error('Failed to send notification', e);
+      }
     }
   }, []);
 

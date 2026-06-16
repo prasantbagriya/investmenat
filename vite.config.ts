@@ -37,7 +37,16 @@ export default defineConfig(() => {
               type: "image/png",
               purpose: "any maskable"
             }
-          ]
+          ],
+          share_target: {
+            action: "/",
+            method: "GET",
+            params: {
+              title: "title",
+              text: "share_text",
+              url: "url"
+            }
+          }
         },
         devOptions: {
           enabled: true,

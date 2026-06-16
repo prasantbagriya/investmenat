@@ -9,7 +9,7 @@ interface NotificationCenterProps {
   recurringBills: RecurringBill[];
   pendingPayments: PendingPayment[];
   onPayBill: (bill: RecurringBill) => Promise<void>;
-  onSkipBill: (bill: RecurringBill) => Promise<void>;
+  onSkipBill: (bill: RecurringBill, newDate?: string) => Promise<void>;
   onPayPending: (payment: PendingPayment) => Promise<void>;
   onRejectPending: (payment: PendingPayment) => Promise<void>;
   onReschedulePending: (payment: PendingPayment, newDate: string) => Promise<void>;
@@ -38,6 +38,7 @@ export default function NotificationCenter({
   }, [pendingPayments, todayStr]);
 
   const [rescheduleData, setRescheduleData] = useState<{id: string, date: string} | null>(null);
+  const [skipData, setSkipData] = useState<{id: string, date: string} | null>(null);
 
   const totalNotifications = dueBills.length + duePayments.length;
 
@@ -105,20 +106,47 @@ export default function NotificationCenter({
                               {isIncome ? '+' : '-'}₹{b.amount.toLocaleString()}
                             </span>
                           </p>
-                          <div className="mt-3 flex gap-2">
-                            <button
-                              onClick={() => onPayBill(b)}
-                              className={`flex-1 flex justify-center items-center gap-1 text-[11px] font-bold uppercase tracking-wider py-1.5 rounded text-white ${isIncome ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-orange-500 hover:bg-orange-600'} transition-colors cursor-pointer`}
-                            >
-                              <CheckCircle size={14} /> {isIncome ? 'Received' : 'Paid'}
-                            </button>
-                            <button
-                              onClick={() => onSkipBill(b)}
-                              className="flex-1 flex justify-center items-center gap-1 text-[11px] font-bold uppercase tracking-wider py-1.5 rounded bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors cursor-pointer"
-                            >
-                              <ChevronRight size={14} /> Skip
-                            </button>
-                          </div>
+                          {skipData?.id === b.id ? (
+                            <div className="mt-3 bg-slate-50 p-2 rounded-lg border border-slate-200 flex items-center gap-1">
+                              <input 
+                                type="date" 
+                                min={todayStr}
+                                value={skipData.date}
+                                onChange={(e) => setSkipData({ id: b.id, date: e.target.value })}
+                                className="flex-1 text-xs px-2 py-1.5 border border-slate-300 rounded focus:outline-none"
+                              />
+                              <button 
+                                onClick={() => {
+                                  onSkipBill(b, skipData.date);
+                                  setSkipData(null);
+                                }}
+                                className="bg-slate-900 text-white p-1.5 rounded hover:bg-slate-800 transition-colors cursor-pointer"
+                              >
+                                <Check size={14} />
+                              </button>
+                              <button 
+                                onClick={() => setSkipData(null)}
+                                className="bg-slate-200 text-slate-600 p-1.5 rounded hover:bg-slate-300 transition-colors cursor-pointer"
+                              >
+                                <X size={14} />
+                              </button>
+                            </div>
+                          ) : (
+                            <div className="mt-3 flex gap-2">
+                              <button
+                                onClick={() => onPayBill(b)}
+                                className={`flex-1 flex justify-center items-center gap-1 text-[11px] font-bold uppercase tracking-wider py-1.5 rounded text-white ${isIncome ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-orange-500 hover:bg-orange-600'} transition-colors cursor-pointer`}
+                              >
+                                <CheckCircle size={14} /> {isIncome ? 'Received' : 'Paid'}
+                              </button>
+                              <button
+                                onClick={() => setSkipData({ id: b.id, date: todayStr })}
+                                className="flex-1 flex justify-center items-center gap-1 text-[11px] font-bold uppercase tracking-wider py-1.5 rounded bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors cursor-pointer"
+                              >
+                                <Calendar size={14} /> Shift / Skip
+                              </button>
+                            </div>
+                          )}
                         </div>
                       </div>
                     );

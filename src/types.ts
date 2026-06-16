@@ -6,6 +6,18 @@ export interface Transaction {
   amount: number;
   date: string; // YYYY-MM-DD
   notes?: string;
+  bankAccountId?: string; // Links transaction to a specific bank account profile
+  createdAt?: any;
+}
+
+export interface BankAccount {
+  id: string;
+  userId: string;
+  bankName: string; // e.g. HDFC, SBI, Paytm
+  accountName: string; // e.g. Savings, Salary
+  accountNumber?: string; // Optional last 4 digits
+  initialBalance: number;
+  currentBalance: number;
   createdAt?: any;
 }
 
@@ -18,6 +30,7 @@ export interface PendingPayment {
   amount: number;
   dueDate: string; // YYYY-MM-DD
   completed: boolean;
+  notified?: boolean;
   notes?: string;
   createdAt?: any;
 }
@@ -50,6 +63,7 @@ export interface RecurringBill {
   category: string;
   nextDueDate: string; // YYYY-MM-DD
   frequency: 'monthly' | 'yearly';
+  notified?: boolean;
   createdAt?: any;
 }
 

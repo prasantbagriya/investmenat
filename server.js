@@ -5,6 +5,7 @@ import { createServer as createViteServer } from "vite";
 import { JWT } from "google-auth-library";
 import dotenv from "dotenv";
 import Database from "better-sqlite3";
+import { GoogleGenAI } from "@google/genai";
 
 // upstoxProxy.ts
 function setupUpstoxRoutes(app) {
@@ -142,6 +143,127 @@ function setupUpstoxRoutes(app) {
           "Accept": "application/json"
         },
         body: JSON.stringify(req.body)
+      });
+      const data = await response.json();
+      res.status(response.status).json(data);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app.get("/api/upstox/historical-data", async (req, res) => {
+    try {
+      const token = req.headers.authorization;
+      const { instrument_key, interval, to_date, from_date } = req.query;
+      if (!token) return res.status(401).json({ error: "Missing authorization token" });
+      if (!instrument_key) return res.status(400).json({ error: "Missing instrument_key" });
+      let url = `https://api.upstox.com/v2/historical-candle/intraday/${encodeURIComponent(instrument_key)}/1minute`;
+      if (interval && to_date && from_date) {
+        url = `https://api.upstox.com/v2/historical-candle/${encodeURIComponent(instrument_key)}/${encodeURIComponent(interval)}/${encodeURIComponent(to_date)}/${encodeURIComponent(from_date)}`;
+      }
+      const response = await fetch(url, {
+        headers: {
+          "Api-Version": "2.0",
+          "Authorization": token,
+          "Accept": "application/json"
+        }
+      });
+      const data = await response.json();
+      res.status(response.status).json(data);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app.get("/api/upstox/mutual-funds", async (req, res) => {
+    try {
+      const token = req.headers.authorization;
+      if (!token) return res.status(401).json({ error: "Missing authorization token" });
+      const response = await fetch("https://api.upstox.com/v2/portfolio/mutual-fund-holdings", {
+        headers: {
+          "Api-Version": "2.0",
+          "Authorization": token,
+          "Accept": "application/json"
+        }
+      });
+      const data = await response.json();
+      res.status(response.status).json(data);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app.get("/api/upstox/trade-pnl", async (req, res) => {
+    try {
+      const token = req.headers.authorization;
+      const { segment, financial_year, page_number, page_size } = req.query;
+      if (!token) return res.status(401).json({ error: "Missing authorization token" });
+      let queryParams = new URLSearchParams();
+      if (segment) queryParams.append("segment", segment);
+      if (financial_year) queryParams.append("financial_year", financial_year);
+      if (page_number) queryParams.append("page_number", page_number);
+      if (page_size) queryParams.append("page_size", page_size);
+      const response = await fetch(`https://api.upstox.com/v2/trade/profit-loss/data?${queryParams.toString()}`, {
+        headers: {
+          "Api-Version": "2.0",
+          "Authorization": token,
+          "Accept": "application/json"
+        }
+      });
+      const data = await response.json();
+      res.status(response.status).json(data);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app.post("/api/upstox/gtt-order", async (req, res) => {
+    try {
+      const token = req.headers.authorization;
+      if (!token) return res.status(401).json({ error: "Missing authorization token" });
+      const response = await fetch("https://api.upstox.com/v2/order/gtt/place", {
+        method: "POST",
+        headers: {
+          "Api-Version": "2.0",
+          "Authorization": token,
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(req.body)
+      });
+      const data = await response.json();
+      res.status(response.status).json(data);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app.get("/api/upstox/news", async (req, res) => {
+    try {
+      const token = req.headers.authorization;
+      const symbol = req.query.symbol;
+      if (!token) return res.status(401).json({ error: "Missing authorization token" });
+      const url = symbol ? `https://api.upstox.com/v2/market-news/instrument?instrument_key=${encodeURIComponent(symbol)}` : `https://api.upstox.com/v2/market-news/top`;
+      const response = await fetch(url, {
+        headers: {
+          "Api-Version": "2.0",
+          "Authorization": token,
+          "Accept": "application/json"
+        }
+      });
+      const data = await response.json();
+      res.status(response.status).json(data);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app.get("/api/upstox/fundamentals", async (req, res) => {
+    try {
+      const token = req.headers.authorization;
+      const symbol = req.query.symbol;
+      if (!token) return res.status(401).json({ error: "Missing authorization token" });
+      if (!symbol) return res.status(400).json({ error: "Missing symbol" });
+      const response = await fetch(`https://api.upstox.com/v2/fundamentals/company-essential?instrument_key=${encodeURIComponent(symbol)}`, {
+        headers: {
+          "Api-Version": "2.0",
+          "Authorization": token,
+          "Accept": "application/json"
+        }
       });
       const data = await response.json();
       res.status(response.status).json(data);
@@ -523,6 +645,57 @@ async function startServer() {
       res.status(500).json({ error: err.message });
     }
   });
+  app.post("/api/parse-sms-ai", async (req, res) => {
+    try {
+      const { text, pendingPayments = [], recurringBills = [] } = req.body;
+      if (!text) return res.status(400).json({ error: "Missing text payload" });
+      const apiKey = process.env.GEMINI_API_KEY;
+      if (!apiKey) {
+        return res.status(500).json({ error: "GEMINI_API_KEY not configured on server" });
+      }
+      const ai = new GoogleGenAI({ apiKey });
+      const pendingList = pendingPayments.map((p) => `[ID: ${p.id}] ${p.person} owes/owed \u20B9${p.amount} on ${p.dueDate}`).join("\n");
+      const billsList = recurringBills.map((b) => `[ID: ${b.id}] ${b.title} of \u20B9${b.amount} due on ${b.nextDueDate}`).join("\n");
+      const bankAccsList = (req.body.bankAccounts || []).map((b) => `[ID: ${b.id}] ${b.bankName} (${b.accountName} - ${b.accountNumber || ""})`).join("\n");
+      const prompt = `You are an expert Automation Architect and Financial Data Parser. Your task is to extract transaction data from a raw bank SMS/Email and map it to a predefined JSON schema for my Personal Finance Manager.
+
+Input SMS: ${text}
+
+Available Pending Payments:
+${pendingList || "None"}
+
+Available Recurring Bills:
+${billsList || "None"}
+
+Available Bank Accounts:
+${bankAccsList || "None"}
+
+Rules:
+Extract: Amount, Transaction Type (Credit/Debit), Date, Payee/Merchant, and Transaction Reference Number.
+Detail Extraction: Explicitly capture the Name of the sender/receiver and the UPI ID if present.
+Categorize: Based on the description, automatically assign a category (e.g., 'Business', 'Trading', 'Shopping', 'Institutional', 'Utilities', 'Dining Out', 'Groceries', 'Entertainment', 'Housing', 'Transportation').
+Format: Output the result as a strict JSON object without markdown formatting or code blocks.
+Alignment: Ensure the data maps directly to my database schema: { "transaction_id": "", "amount": 0.00, "type": "CR/DR", "category": "", "merchant": "", "description": "", "matched_pending_id": "", "matched_recurring_id": "", "matched_bank_account_id": "" }. The "description" should combine the Merchant Name, UPI ID, and Reference Number in a clean readable format.
+Cleanse: Remove any extra text, disclaimers, or noise from the input.
+Matching Pending/Bills: If the SMS perfectly matches the amount and context of an available Pending Payment, set its ID in "matched_pending_id". If it matches a Recurring Bill, set its ID in "matched_recurring_id". Otherwise leave them blank strings.
+Matching Bank Account: Identify which Bank Account this SMS belongs to by checking the bank name (e.g. HDFC, SBI) or the account number suffix (e.g. a/c XX1234). If it matches, set its ID in "matched_bank_account_id". Otherwise leave blank.
+If the input is for Trading (e.g., deposits to a Brokerage/Prop Firm), tag it as 'Investment/Trading' category specifically.`;
+      const response = await ai.models.generateContent({
+        model: "gemini-2.5-flash",
+        contents: prompt,
+        config: {
+          temperature: 0.1
+        }
+      });
+      let jsonStr = response.text || "{}";
+      jsonStr = jsonStr.replace(/```json\n?/g, "").replace(/```\n?/g, "").trim();
+      const parsedData = JSON.parse(jsonStr);
+      res.json(parsedData);
+    } catch (err) {
+      console.error("[Parse SMS AI] Error:", err);
+      res.status(500).json({ error: err.message || "Failed to parse SMS via AI" });
+    }
+  });
   const DEFAULT_SA_EMAIL = "investment@gen-lang-client-0137730538.iam.gserviceaccount.com";
   const DEFAULT_SA_PK = "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDJepRZg5aEDDYm\nXRFHcrOHBPxFU/LGj+NmY39G7VSUaKC99tXpTN2SRQUEPWaVD76gJlI8bHZCqSnr\nLhfZlE7SWZrzJTAt+q5r/rskKQfYKbzmjS0/GCUmdaZAgr3K/LzwTKlUKMa0wIrQ\nGuz9un9oXBVL404ZaMzwzcMfRJ+douHCNo1qTdG+bzuyaUwCIsaFW6U15iC8VOi0\nSocNQ7qvZ5tJppRUzU8hPszF/s4kow6JjicoOddKGuwcATSEBivdejA+4us0rAC6\ngCBz8dS9QFwF8HWJPLpcHAplQAN16YFsxnbcN5PZYPEw71VbNz6M3acP5sYzmjTQ\nlIB+vWObAgMBAAECggEADmlkvtRr9KJqUICGvGLG1wkdwcMZUhJidI/4ajU5asDj\nLUNrQLFoBfmcPBXnm7umaePj16ugd/CMGDpR/Wp04D9a7I/ZQZNgB5yPJq0tVk0s\nqccpGI1xwYMCiInG6VlTwH09/Xr0imMIFY5fgQoRPqtGNglFLF8ejbkCKd8+6vJm\nPnQ7b6Cqt6OePeEpBd6DvYSW4mffKKsNeOyp+SikHmHRbU72OKBMdlj/ui42xRqe\n0gz5TxaZlbHNTZNxqiLkcUosj1zAuVfnUt1EnJe7SSay/5GSp5bRC+KQ6xelHo+W\nH59DILkiIZoHKDqUfKgLo9Ny5CiIp+fgJg4ZVly9QKBgQD6SJ7711sLows/E7/M\neJUserAqVh0kal5R3bRioNdsy0Kr5khqBojWtjGqW6g4bISO2TqNlpRtUA41NHj2\ncE0a1th6UfYvjWqUIeaZwJtvPtsDub9IgZ077YCre/RJ/ZgDOcnTSJNaqRZ5/YGg\nIxH1JBivOtzIVHC93RxPPz45DQKBgQDOFJov0lgjMLcnhlRwsOgCwztV8LM2DJ2r\nEoD6Q/8pRjeakEydpSsQJH0pYJyiHcx/al1o8eZ4wDAjT5O3LZ91n/D8BhnO89jy\ne9xsjy98GW7UZrN65N2dI4yXZ72S2ZEF6IgulciXQgYmnRZV5++527IeF+A0W6FO\nrH4LkqOVRwKBgEh58x/2kvThuAYCEA6D9J62wIDiAvpimwGV9ACDlx54Fcx1mQ6q\n6cFTbTpp5GLCefhry1ro+f5VqmeZ1FV427sj7/gr9+B5UR2oW4C2l8w1JXMEvPGg\nJwoNkq8V6/3pI7X7bAh1AcbFJC8bTAg1X6PfWg6UOw7/9M3mU6ZXKAuZAoGADIV3\n8Nvo+wpktoQU8VvuXOyb2FbtrKULl29iYtJq2Ikpq7yEyzdT7IErEa6LFdaVrFA8\nKLo59LBIvHyDTyf4fl8fd1CvlMGANwuLkxUIH5Q0BbfPw/HP/VJBopltDVUm2KMO\nUzZKn9YlJYd56fJTwIk2w1lUCBphLLSSXAWm5tUCgYEApOxpCADglz/dEH8XnBtX\nSe6/totOPnWx0Fah7m6L4dm2GtBGGiD7G4XoiGT7uoFyQxUGZDhXYkofoDgu3wuw\nDxBNQ7/mxche6MVXbrJOkOtUG9ME9rJjUPG0yDbJeJqWC/IzWxWphDYnT1MaE77v\nyvlaT7zW9Xd5RqUUd3EyN05=\n-----END PRIVATE KEY-----\n";
   app.post("/api/get-google-service-token", async (req, res) => {
@@ -778,6 +951,60 @@ async function startServer() {
   });
   app.get("/api/health", (req, res) => {
     res.json({ status: "ok", message: "Financial Rolodex fully active" });
+  });
+  app.post("/api/parse-csv-ai", async (req, res) => {
+    try {
+      const { csvText, bankAccounts } = req.body;
+      if (!csvText) {
+        return res.status(400).json({ error: "csvText is required" });
+      }
+      const apiKey = process.env.GEMINI_API_KEY;
+      if (!apiKey) {
+        return res.status(500).json({ error: "GEMINI_API_KEY not configured on server" });
+      }
+      console.log(`[CSV-AI] Processing CSV text length: ${csvText.length}`);
+      const ai = new GoogleGenAI({ apiKey });
+      const bankContext = bankAccounts && Array.isArray(bankAccounts) && bankAccounts.length > 0 ? `Here are the user's available bank accounts:
+${bankAccounts.map((b) => `- ID: ${b.id}, Name: ${b.bankName}, Number: ${b.accountNumber}`).join("\n")}
+If the CSV statement mentions one of these banks or account numbers, assign that bank ID to "matched_bank_account_id".` : "";
+      const prompt = `You are a strict financial transaction parser. You are given the raw text contents of a bank statement CSV.
+Your job is to extract all the transactions and return them as a JSON array.
+${bankContext}
+
+Output a JSON array where each element has this exact structure:
+{
+  "date": "YYYY-MM-DD",
+  "amount": number (positive),
+  "type": "income" or "expense",
+  "category": "Food" | "Transport" | "Shopping" | "Utilities" | "Trading" | "Salary" | "Investment" | "Entertainment" | "Healthcare" | "Transfer" | "Other",
+  "note": "A short, clean description of the transaction (e.g. Amazon, Zomato, Salary, ATM Withdrawal)",
+  "matched_bank_account_id": "string ID of the bank account if matched, else null"
+}
+
+Rules:
+1. Ignore header rows, balances, or useless rows. Only extract actual transactions.
+2. Determine if it's income or expense based on debit/credit columns or sign.
+3. Guess the best category based on the description.
+4. Output ONLY the JSON array, nothing else.
+
+Raw CSV Text:
+${csvText}
+`;
+      const result = await ai.models.generateContent({
+        model: "gemini-2.5-flash",
+        contents: prompt,
+        config: {
+          responseMimeType: "application/json",
+          temperature: 0.1
+        }
+      });
+      const responseText = result.text || "[]";
+      const transactions = JSON.parse(responseText);
+      return res.json({ transactions });
+    } catch (err) {
+      console.error("[CSV-AI] Failed to parse CSV:", err);
+      res.status(500).json({ error: err.message || "Failed to process CSV" });
+    }
   });
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({

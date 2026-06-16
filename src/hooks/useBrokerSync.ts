@@ -11,6 +11,7 @@ export interface BrokerFunds {
 
 export function useBrokerSync(userId: string | undefined) {
   const [brokerHoldings, setBrokerHoldings] = useState<Holding[]>([]);
+  const [brokerRealizedTrades, setBrokerRealizedTrades] = useState<any[]>([]);
   const [brokerFunds, setBrokerFunds] = useState<BrokerFunds>({
     upstox: { available: 0, utilized: 0 },
     dhan: { available: 0, utilized: 0 },
@@ -41,9 +42,11 @@ export function useBrokerSync(userId: string | undefined) {
     // 1. Fetch Upstox
     if (upstoxToken) {
       try {
-        const [fundsRes, holdingsRes] = await Promise.all([
+        const [fundsRes, holdingsRes, mfRes, pnlRes] = await Promise.all([
           fetch('/api/upstox/funds', { headers: { 'Authorization': `Bearer ${upstoxToken}` } }),
-          fetch('/api/upstox/holdings', { headers: { 'Authorization': `Bearer ${upstoxToken}` } })
+          fetch('/api/upstox/holdings', { headers: { 'Authorization': `Bearer ${upstoxToken}` } }),
+          fetch('/api/upstox/mutual-funds', { headers: { 'Authorization': `Bearer ${upstoxToken}` } }),
+          fetch('/api/upstox/trade-pnl?segment=EQ&financial_year=2425&page_number=1&page_size=1000', { headers: { 'Authorization': `Bearer ${upstoxToken}` } })
         ]);
 
         if (fundsRes.ok) {
@@ -72,6 +75,48 @@ export function useBrokerSync(userId: string | undefined) {
                 isAutoSynced: true
               });
             });
+          }
+        }
+
+        if (mfRes.ok) {
+          const mData = await mfRes.json();
+          if (mData.data) {
+            mData.data.forEach((m: any) => {
+              allHoldings.push({
+                id: `upstox_mf_${m.isin}`,
+                userId,
+                type: 'mf',
+                symbol: m.fund_name,
+                name: m.fund_name,
+                buyPrice: parseFloat(m.average_price),
+                quantity: parseFloat(m.quantity),
+                buyDate: new Date().toISOString().split('T')[0],
+                assetClass: 'Equity',
+                broker: 'Upstox',
+                isAutoSynced: true
+              });
+            });
+          }
+        }
+
+        if (pnlRes.ok) {
+          const pData = await pnlRes.json();
+          if (pData.data) {
+             const mappedPnl = (Array.isArray(pData.data) ? pData.data : (pData.data.profit_loss || [])).map((t: any) => ({
+                id: `upstox_pnl_${t.isin || t.instrument_token || Math.random()}`,
+                userId,
+                type: 'stock',
+                symbol: t.trading_symbol || t.scrip_name || t.instrument_token || 'Unknown',
+                name: t.trading_symbol || t.scrip_name || t.instrument_token || 'Unknown',
+                buyPrice: parseFloat(t.buy_average || t.buy_price || 0),
+                exitPrice: parseFloat(t.sell_average || t.sell_price || 0),
+                quantity: parseFloat(t.quantity || 0),
+                pnl: parseFloat(t.realised_profit || t.profit_loss || 0),
+                exitDate: t.exit_date || new Date().toISOString().split('T')[0],
+                broker: 'Upstox',
+                isAutoSynced: true
+             }));
+             setBrokerRealizedTrades((prev) => [...prev, ...mappedPnl]);
           }
         }
       } catch (err) {
@@ -228,5 +273,5 @@ export function useBrokerSync(userId: string | undefined) {
     return () => clearInterval(interval);
   }, [userId]);
 
-  return { brokerHoldings, brokerFunds, isSyncing, refreshBrokerData: fetchBrokerData };
+  return { brokerHoldings, brokerRealizedTrades, brokerFunds, isSyncing, refreshBrokerData: fetchBrokerData };
 }

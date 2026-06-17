@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1004464827659",
+    "project_id": "investstment",
+    "storage_bucket": "investstment.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1004464827659:android:d280d35adb8396fe7e860e",
+        "android_client_info": {
+          "package_name": "com.investmant.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1004464827659-jgehat52fojuf25t2orebncmkhr0n2oo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.investmant.app",
+            "certificate_hash": "585ef976d06870d4e6a0af8af389eeef86325fb3"
+          }
+        },
+        {
+          "client_id": "1004464827659-398srk3lhku1n04ghpd45nqgkel66j8h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2t5WTFRmTyKRU4XORruEsXD3bYSoCdKk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1004464827659-398srk3lhku1n04ghpd45nqgkel66j8h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

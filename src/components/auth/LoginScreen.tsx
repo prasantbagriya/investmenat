@@ -28,7 +28,7 @@ export default function LoginScreen({
   handleApplyLoginManualToken
 }: LoginScreenProps) {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-emerald-50 flex items-center justify-center p-4 font-sans relative overflow-hidden">
+    <div className="min-h-screen bg-linear-to-br from-indigo-50 via-white to-emerald-50 flex items-center justify-center p-4 font-sans relative overflow-hidden">
       {/* Decorative Orbs */}
       <div className="absolute top-[-20%] left-[-10%] w-[70vw] h-[70vw] bg-indigo-200/40 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-[-20%] right-[-10%] w-[70vw] h-[70vw] bg-emerald-200/40 rounded-full blur-[100px] pointer-events-none" />
@@ -42,7 +42,7 @@ export default function LoginScreen({
         <div className="bg-white/80 backdrop-blur-2xl border border-white/50 rounded-[2.5rem] p-8 shadow-[0_8px_40px_rgb(0,0,0,0.06)] flex flex-col items-center text-center space-y-8 relative overflow-hidden">
           
           {/* Top subtle highlight */}
-          <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-indigo-200 to-transparent opacity-50" />
+          <div className="absolute top-0 inset-x-0 h-px bg-linear-to-r from-transparent via-indigo-200 to-transparent opacity-50" />
 
           {/* Logo Section */}
           <motion.div 
@@ -52,7 +52,7 @@ export default function LoginScreen({
             className="relative"
           >
             <div className="absolute inset-0 bg-indigo-600 rounded-2xl blur-lg opacity-20" />
-            <div className="relative p-5 bg-gradient-to-b from-slate-800 to-slate-950 rounded-2xl shadow-xl border border-slate-700/50">
+            <div className="relative p-5 bg-linear-to-b from-slate-800 to-slate-950 rounded-2xl shadow-xl border border-slate-700/50">
               <Coins size={44} className="text-white" strokeWidth={1.5} />
             </div>
           </motion.div>

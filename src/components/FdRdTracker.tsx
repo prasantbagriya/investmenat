@@ -371,7 +371,7 @@ export default function FdRdTracker({ fds, onAddFd, onDeleteFd, onEditFd }: FdRd
           </div>
 
           {/* Quick Stats */}
-          <div className="bg-gradient-to-br from-slate-900 to-indigo-950 text-white rounded-2xl p-3 shadow-sm space-y-2">
+          <div className="bg-linear-to-br from-slate-900 to-indigo-950 text-white rounded-2xl p-3 shadow-sm space-y-2">
             <p className="text-[9px] uppercase tracking-widest text-indigo-300 font-black">Quick Stats</p>
             <div className="grid grid-cols-2 gap-2">
               <div>

@@ -21,6 +21,7 @@ googleProvider.addScope('https://www.googleapis.com/auth/presentations');
 googleProvider.addScope('https://www.googleapis.com/auth/photoslibrary.readonly');
 
 googleProvider.addScope('https://www.googleapis.com/auth/calendar');
+googleProvider.addScope('https://www.googleapis.com/auth/drive');
 googleProvider.addScope('https://www.googleapis.com/auth/drive.file');
 googleProvider.addScope('https://www.googleapis.com/auth/drive.readonly');
 googleProvider.addScope('https://www.googleapis.com/auth/tasks');

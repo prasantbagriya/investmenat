@@ -28,6 +28,12 @@ googleProvider.addScope('https://www.googleapis.com/auth/tasks');
 googleProvider.addScope('https://www.googleapis.com/auth/gmail.send');
 googleProvider.addScope('https://www.googleapis.com/auth/gmail.readonly');
 googleProvider.addScope('https://www.googleapis.com/auth/chat.spaces.readonly');
+
+// Force Google to show the consent screen again so it asks for the new Drive scopes
+googleProvider.setCustomParameters({
+  prompt: 'consent',
+  access_type: 'offline' // Good for getting refresh tokens if needed
+});
 googleProvider.addScope('https://www.googleapis.com/auth/chat.messages.create');
 googleProvider.addScope('https://www.googleapis.com/auth/classroom.courses.readonly');
 googleProvider.addScope('https://www.googleapis.com/auth/presentations');

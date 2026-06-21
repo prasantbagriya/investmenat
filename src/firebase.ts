@@ -99,9 +99,7 @@ export async function signInWithGoogle() {
     if (Capacitor.isNativePlatform()) {
       // Native App Login Flow
       // We must pass the Web Client ID from Firebase Console to use Google Sign-In natively
-      const result = await FirebaseAuthentication.signInWithGoogle({
-        webClientId: "1004464827659-398srk3lhku1n04ghpd45nqgkel66j8h.apps.googleusercontent.com"
-      });
+      const result = await FirebaseAuthentication.signInWithGoogle();
       
       if (!result.credential?.idToken) {
         throw new Error("No ID Token returned from Google Sign-In");

@@ -122,38 +122,12 @@ export default function SettingsManager({
   const [customClientSecret, setCustomClientSecret] = useState(() => localStorage.getItem('custom_google_client_secret') || import.meta.env.VITE_GOOGLE_CLIENT_SECRET || '');
   const [manualAccessToken, setManualAccessToken] = useState('');
   
-  // Service Account States
-  const [isExchangingSA, setIsExchangingSA] = useState(false);
-  const [saEmailInput, setSaEmailInput] = useState(() => localStorage.getItem('sa_email') || 'investment@gen-lang-client-0137730538.iam.gserviceaccount.com');
-  const [saKeyInput, setSaKeyInput] = useState(() => localStorage.getItem('sa_key') || '');
-
-  // Auto-load SA credentials from server .env on mount
-  useEffect(() => {
-    const savedKey = localStorage.getItem('sa_key');
-    if (!savedKey) {
-      fetch('/api/get-sa-credentials')
-        .then(r => r.ok ? r.json() : null)
-        .then(data => {
-          if (data?.email) {
-            setSaEmailInput(data.email);
-            localStorage.setItem('sa_email', data.email);
-          }
-          if (data?.privateKey) {
-            setSaKeyInput(data.privateKey);
-            localStorage.setItem('sa_key', data.privateKey);
-          }
-        })
-        .catch(() => {/* silently ignore */});
-    }
-  }, []);
-
   // Spreadsheet settings configuration
   const [spreadsheetId, setSpreadsheetId] = useState(userSettings?.googleSpreadsheetId || '');
   const [savingSpreadsheetId, setSavingSpreadsheetId] = useState(false);
-
+  
   // Status and logs state for transparency
   const [logs, setLogs] = useState<string[]>([]);
-  const [copiedEmail, setCopiedEmail] = useState(false);
 
   const addLog = (message: string) => {
     const time = new Date().toLocaleTimeString();
@@ -203,15 +177,6 @@ export default function SettingsManager({
       setSpreadsheetId(userSettings.googleSpreadsheetId);
     }
   }, [userSettings]);
-
-  // Copy helper
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText(saEmailInput.trim());
-    setCopiedEmail(true);
-    setTimeout(() => setCopiedEmail(false), 2000);
-    addLog("📋 Service Account email copied to clipboard.");
-  };
-
   const getServiceLabel = (service: ServiceType): string => {
     switch (service) {
       case 'sheets': return 'Google Sheets';
@@ -260,107 +225,6 @@ export default function SettingsManager({
       case 'docs': setIsDocsLinked(state); break;
       case 'slides': setIsSlidesLinked(state); break;
       case 'photos': setIsPhotosLinked(state); break;
-    }
-  };
-
-  // Service Account handshake for an individual app
-  const handleLinkService = async (serviceId: ServiceType) => {
-    if (!saEmailInput.trim() || !saKeyInput.trim()) {
-      alert("Please save your Google Service Account credentials in the panel above before continuing.");
-      return;
-    }
-    setIsExchangingSA(true);
-    const serviceName = getServiceLabel(serviceId);
-    addLog(`🔐 Performing targeted handshake for ${serviceName}...`);
-    try {
-      localStorage.setItem('sa_email', saEmailInput.trim());
-      localStorage.setItem('sa_key', saKeyInput.trim());
-
-      const res = await fetch('/api/get-google-service-token', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          clientEmail: saEmailInput.trim(),
-          privateKey: saKeyInput.trim()
-        })
-      });
-
-      if (!res.ok) {
-        const errText = await res.text();
-        throw new Error(errText || `Server returned ${res.status}`);
-      }
-
-      const resData = await res.json();
-      if (resData.accessToken) {
-        setAccessToken(resData.accessToken);
-        setToken(resData.accessToken);
-        
-        setServiceLinkedState(serviceId, true);
-        localStorage.setItem(`google_${serviceId}_linked`, 'true');
-        addLog(`✅ Successfully linked ${serviceName} integration.`);
-        alert(`🎉 Google ${serviceName} has been successfully authorized and enabled!`);
-        
-        window.dispatchEvent(new Event('google-token-changed'));
-      } else {
-        throw new Error('Empty access token negotiated.');
-      }
-    } catch (err: any) {
-      addLog(`❌ Handshake failed: ${err.message || err}`);
-      alert(`Bypass Error: ${err.message || String(err)}`);
-    } finally {
-      setIsExchangingSA(false);
-    }
-  };
-
-  // Service Account handshake to authorize ALL 10 apps simultaneously
-  const handleLinkAllServices = async () => {
-    if (!saEmailInput.trim() || !saKeyInput.trim()) {
-      alert("Please enter both Service Account Email and Private Key first!");
-      return;
-    }
-    
-    setIsExchangingSA(true);
-    addLog(`🚀 Launching full-scope handshake for all 10 Google Suite APIs...`);
-    try {
-      localStorage.setItem('sa_email', saEmailInput.trim());
-      localStorage.setItem('sa_key', saKeyInput.trim());
-
-      const res = await fetch('/api/get-google-service-token', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          clientEmail: saEmailInput.trim(),
-          privateKey: saKeyInput.trim()
-        })
-      });
-
-      if (!res.ok) {
-        const errText = await res.text();
-        throw new Error(errText || `Server returned ${res.status}`);
-      }
-
-      const resData = await res.json();
-      if (resData.accessToken) {
-        setAccessToken(resData.accessToken);
-        setToken(resData.accessToken);
-        
-        const list: ServiceType[] = ['sheets', 'contacts', 'calendar', 'drive', 'gmail', 'meet', 'tasks', 'chat', 'forms', 'classroom', 'docs', 'slides', 'photos'];
-        list.forEach(srv => {
-          setServiceLinkedState(srv, true);
-          localStorage.setItem(`google_${srv}_linked`, 'true');
-        });
-        
-        addLog(`✅ Full authorization success! 10 apps are now fully synchronized.`);
-        alert(`🎉 Awesome! All 10 Google Workspace Suite applications have been successfully authorized and connected!`);
-        window.dispatchEvent(new Event('google-token-changed'));
-      } else {
-        throw new Error('Empty access token negotiated.');
-      }
-    } catch (err: any) {
-      addLog(`❌ Joint Handshake failed: ${err.message || err}`);
-      alert(`Bypass Error: ${err.message || String(err)}`);
-    } finally {
-      setIsExchangingSA(false);
     }
   };
 
@@ -629,10 +493,10 @@ export default function SettingsManager({
         <ShieldCheck size={20} className="text-teal-600 shrink-0 mt-0.5" />
         <div className="space-y-1">
           <h4 className="font-bold text-slate-900 flex items-center gap-1.5">
-            🔑 Google Services 10-App Linking System Installed
+            🔑 Google Services Authorization System
           </h4>
           <p className="leading-relaxed text-slate-600 mt-1">
-            Configure your <b>Unified Google Service Account</b> credentials below just once, then select and activate any of the 10 services with 1-click! This prevents popup blockages and avoids 403 access codes.
+            Connect and synchronize your Google account across various integrations. Authorize each service below using standard Google Authentication.
           </p>
         </div>
       </div>
@@ -675,77 +539,7 @@ export default function SettingsManager({
         </div>
       )}
 
-      {/* UNIQUE CENTRAL SERVICE ACCOUNT PANEL */}
-      <div className="bg-slate-50 border border-slate-200/90 rounded-3xl p-2 space-y-2">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-1 border-b border-slate-200/60 pb-1">
-          <div>
-            <span className="text-[9px] font-black uppercase tracking-wider text-teal-700 bg-teal-50 p-1 px-1 rounded-lg">🛡️ Central Credentials</span>
-            <h3 className="font-extrabold text-slate-800 text-sm mt-1.5 flex items-center">
-              Google Service Account Setup
-              <InfoTooltip text="This credentials block powers secure, zero-interaction connections for all 10 apps below." />
-            </h3>
-          </div>
-          <div className="flex gap-1">
-            <button
-              type="button"
-              onClick={handleLinkAllServices}
-              disabled={isExchangingSA}
-              className="bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold py-1.5 px-1 rounded-lg text-[10.5px] cursor-pointer transition-colors shadow-xs flex items-center gap-1"
-            >
-              <RefreshCw size={12} className={isExchangingSA ? 'animate-spin' : ''} />
-              Link All 10 Services at Once ⚡
-            </button>
-          </div>
-        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-          <div className="space-y-1">
-            <label className="block text-[9px] font-black text-slate-500 uppercase tracking-widest">
-              1. Service Account Email
-            </label>
-            <div className="flex gap-1.5">
-              <input
-                type="text"
-                value={saEmailInput}
-                onChange={(e) => {
-                  setSaEmailInput(e.target.value);
-                  localStorage.setItem('sa_email', e.target.value);
-                }}
-                placeholder="investment@gen-lang-client..."
-                className="flex-1 bg-white border border-slate-200 rounded-xl p-1 text-[11px] font-mono text-slate-700 outline-none focus:ring-1 focus:ring-teal-500"
-              />
-              <button
-                type="button"
-                onClick={handleCopyEmail}
-                className="bg-white hover:bg-slate-100 border border-slate-200 p-1 rounded-xl text-slate-500 cursor-pointer"
-                title="Copy Email"
-              >
-                {copiedEmail ? <Check size={12} className="text-emerald-600" /> : <Copy size={12} />}
-              </button>
-            </div>
-            <p className="text-[10px] text-slate-400 font-sans">Share your target Sheets, Drive folders, and calendars with this email as an <strong className="text-teal-700 font-extrabold">Editor</strong>.</p>
-          </div>
-
-          <div className="space-y-1">
-            <div className="flex justify-between items-center">
-              <label className="block text-[9px] font-black text-slate-500 uppercase tracking-widest">
-                2. Private Key PEM (or entire Credentials .json string)
-              </label>
-              <span className="text-[8px] text-teal-600 bg-teal-50 px-1.5 py-0.5 rounded-sm font-bold uppercase tracking-wider">Normalize & Cleaned</span>
-            </div>
-            <textarea
-              rows={2}
-              value={saKeyInput}
-              onChange={(e) => {
-                setSaKeyInput(e.target.value);
-                localStorage.setItem('sa_key', e.target.value);
-              }}
-              placeholder="Paste private key text starting with -----BEGIN PRIVATE KEY----- ... or paste downloaded JSON file contents"
-              className="w-full bg-white border border-slate-200 rounded-xl p-1 text-[9.5px] font-mono text-slate-700 outline-none focus:ring-1 focus:ring-teal-500 focus:border-teal-500"
-            />
-          </div>
-        </div>
-      </div>
 
       {/* SPREADSHEET TARGET PATH SPECIFICATION */}
       <div className="bg-emerald-50/40 border border-emerald-200/40 rounded-3xl p-2.5 space-y-1.5">
@@ -770,7 +564,7 @@ export default function SettingsManager({
             {savingSpreadsheetId ? "Saving..." : "Commit ID"}
           </button>
         </div>
-        <p className="text-[10px] text-slate-400 font-sans italic pl-1">The Spreadsheet ID is found inside the Google Sheets browser URL between <b>/d/</b> and <b>/edit</b>. Ensure you shared your sheet with the Service Account email above!</p>
+        <p className="text-[10px] text-slate-400 font-sans italic pl-1">The Spreadsheet ID is found inside the Google Sheets browser URL between <b>/d/</b> and <b>/edit</b>.</p>
       </div>
 
       {/* GOOGLE PICKER TEST PANEL */}
@@ -883,8 +677,7 @@ export default function SettingsManager({
                     ) : (
                       <button
                         type="button"
-                        onClick={() => handleLinkService(srv.id)}
-                        disabled={isExchangingSA}
+                        onClick={() => handleOAuthLogin(srv.id)}
                         className="w-full bg-slate-100 hover:bg-slate-200 text-slate-800 font-extrabold py-1 px-1 rounded-xl text-[10.5px] flex items-center justify-center gap-1.5 cursor-pointer transition-colors"
                       >
                         ⚡ Authorize & Link App
@@ -1027,7 +820,7 @@ export default function SettingsManager({
         
         <div className="font-mono text-[9px] md:text-[10px] text-emerald-400 space-y-1 max-h-[120px] overflow-y-auto scrollbar-hide py-1">
           {logs.length === 0 ? (
-            <p className="text-slate-500 text-center italic py-1">Waiting for interaction. Configure a Service Account above to watch handshakes...</p>
+            <p className="text-slate-500 text-center italic py-1">Waiting for interaction. Authorize a service below to watch authorization handshakes...</p>
           ) : (
             logs.map((log, index) => (
               <div key={index} className="transition-all animate-fadeIn leading-relaxed border-b border-slate-850/30 pb-1 wrap-break-word">

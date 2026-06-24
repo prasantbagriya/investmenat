@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { UploadCloud, FileText, Check, AlertCircle, Trash2, ArrowRight } from 'lucide-react';
 import { Transaction, BankAccount } from '../types';
+import { proxyFetch } from '../utils/proxyFetch';
 
 interface CsvImportWizardProps {
   onAddTransaction: (t: Omit<Transaction, 'id' | 'userId'>) => Promise<void>;
@@ -36,7 +37,7 @@ export default function CsvImportWizard({ onAddTransaction, bankAccounts, onClos
       // E.g., max 20,000 chars. If it's too big, we should chunk it, but for now we'll pass it whole.
       const safeText = text.length > 30000 ? text.substring(0, 30000) + "\n...[TRUNCATED]" : text;
 
-      const res = await fetch('/api/parse-csv-ai', {
+      const res = await proxyFetch('/api/parse-csv-ai', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ csvText: safeText, bankAccounts })

@@ -1,6 +1,7 @@
 /**
  * Extended Internal Rate of Return (XIRR) and general financial utilities
  */
+import { proxyFetch } from './proxyFetch';
 
 /**
  * Calculates Net Present Value (NPV) for a given rate, list of cashflows, and dates.
@@ -159,7 +160,7 @@ export async function fetchStockPrice(symbol: string): Promise<{
 
   // --- CHAIN 1: Fetch via secure backend proxy route (No-CORS, highly reliable, uses server-auth) ---
   try {
-    const backendRes = await fetch(`/api/stock-price?symbol=${encodeURIComponent(checkSymbol)}`);
+    const backendRes = await proxyFetch(`/api/stock-price?symbol=${encodeURIComponent(checkSymbol)}`);
     if (backendRes.ok) {
       const parsedData = await backendRes.json();
       if (parsedData && parsedData.currentPrice) {
@@ -171,50 +172,11 @@ export async function fetchStockPrice(symbol: string): Promise<{
       }
     }
   } catch (backendError) {
-    console.warn("[financeHelpers] Backend stock proxy error, falling back to AllOrigins:", backendError);
+    console.warn("[financeHelpers] Backend stock proxy error:", backendError);
   }
 
-  // --- CHAIN 2: Try AllOrigins RAW proxy as backup ---
+  // --- CHAIN 2: Direct fetch as a last-resort (Bypasses AllOrigins to make it fast) ---
   const targetUrl = `https://query2.finance.yahoo.com/v8/finance/chart/${checkSymbol}`;
-  try {
-    const rawProxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(targetUrl)}`;
-    const response = await fetch(rawProxyUrl);
-    if (response.ok) {
-      const data = await response.json();
-      const result = data?.chart?.result?.[0];
-      const meta = result?.meta;
-      
-      let currentPrice = meta?.regularMarketPrice || meta?.previousClose;
-      if (!currentPrice) {
-        const closes = result?.indicators?.quote?.[0]?.close;
-        if (Array.isArray(closes) && closes.length > 0) {
-          currentPrice = closes.filter((val: any) => val !== null).pop();
-        }
-      }
-
-      let previousClose = meta?.chartPreviousClose || meta?.previousClose || currentPrice;
-      if (!previousClose) {
-        const opens = result?.indicators?.quote?.[0]?.open;
-        if (Array.isArray(opens) && opens.length > 0) {
-          previousClose = opens.filter((val: any) => val !== null)[0];
-        }
-      }
-
-      if (currentPrice) {
-        const diff = currentPrice - previousClose;
-        const dayChangePercent = previousClose ? (diff / previousClose) * 100 : 0;
-        return {
-          currentPrice: parseFloat(currentPrice.toFixed(2)),
-          dayChangePercent: parseFloat(dayChangePercent.toFixed(2)),
-          longName: (meta?.longName || checkSymbol.split('.')[0]).toUpperCase()
-        };
-      }
-    }
-  } catch (rawProxyErr) {
-    console.warn("Raw proxy fetch failed:", rawProxyErr);
-  }
-
-  // --- CHAIN 3: Direct fetch as a last-resort ---
   try {
     const response = await fetch(targetUrl);
     if (response.ok) {
@@ -265,7 +227,7 @@ export async function fetchMutualFundNav(schemeCode: string): Promise<{
 }> {
   const code = schemeCode.trim();
   try {
-    const response = await fetch(`/api/mf-nav?code=${code}`);
+    const response = await proxyFetch(`/api/mf-nav?code=${code}`);
     if (!response.ok) {
       throw new Error('Failed to reach MF proxy API');
     }
@@ -303,7 +265,7 @@ export async function fetchStockSearch(queryStr: string): Promise<Array<{
   exch: string;
 }>> {
   try {
-    const response = await fetch(`/api/stock-search?q=${encodeURIComponent(queryStr)}`);
+    const response = await proxyFetch(`/api/stock-search?q=${encodeURIComponent(queryStr)}`);
     if (!response.ok) {
       throw new Error('Failed to fetch stock search results from proxy');
     }

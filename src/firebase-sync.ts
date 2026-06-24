@@ -9,13 +9,14 @@ import {
   PartialWithFieldValue,
   DocumentData
 } from "firebase/firestore";
+import { proxyFetch } from './utils/proxyFetch';
 
 /**
  * Asynchronously posts data to the local Express SQLite backup server
  */
 async function syncToSqlite(collectionName: string, docId: string, operation: 'set' | 'update' | 'delete', data?: any) {
   try {
-    await fetch('/api/sync-sqlite', {
+    await proxyFetch('/api/sync-sqlite', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ collection: collectionName, id: docId, operation, data })

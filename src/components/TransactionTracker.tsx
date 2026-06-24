@@ -5,6 +5,7 @@ import {
 } from 'lucide-react';
 import { Transaction, EXPENSE_CATEGORIES, INCOME_CATEGORIES, ALL_CATEGORIES, PendingPayment, RecurringBill } from '../types';
 import { parseBankSMS } from '../utils/financeHelpers';
+import { proxyFetch } from '../utils/proxyFetch';
 import InfoTooltip from './InfoTooltip';
 
 import BankProfiles from './BankProfiles';
@@ -81,7 +82,7 @@ export default function TransactionTracker({
     
     setSmsStatus('🤖 Parsing with AI...');
     try {
-      const response = await fetch('/api/parse-sms-ai', {
+      const response = await proxyFetch('/api/parse-sms-ai', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 

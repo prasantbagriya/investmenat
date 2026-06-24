@@ -166,5 +166,11 @@ export async function proxyFetch(url: string | URL | Request, options: RequestIn
     }
   }
 
+  // If no native mapping matched but it's a backend proxy route, route it to Render
+  if (nativeUrl === urlStr && urlStr.startsWith('/api/')) {
+    const backendUrl = import.meta.env.VITE_BACKEND_URL || '';
+    nativeUrl = `${backendUrl}${urlStr}`;
+  }
+
   return fetch(nativeUrl, nativeOptions);
 }

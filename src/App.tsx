@@ -55,6 +55,8 @@ import ContactsManager from './components/ContactsManager';
 import SettingsManager from './components/SettingsManager';
 import WorkspaceSuite from './components/WorkspaceSuite';
 import BrokerManager from './components/BrokerManager';
+import { BrokerSyncProgress } from './components/BrokerSyncProgress';
+import { proxyFetch } from './utils/proxyFetch';
 import AnalyticsDashboard from './components/AnalyticsDashboard';
 import { CreditCardsEMI } from './components/CreditCardsEMI';
 import BankProfiles from './components/BankProfiles';
@@ -118,7 +120,7 @@ export default function App() {
   useSmsListener(async (smsText) => {
     if (!user) return;
     try {
-      const response = await fetch('/api/parse-sms-ai', {
+      const response = await proxyFetch('/api/parse-sms-ai', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 

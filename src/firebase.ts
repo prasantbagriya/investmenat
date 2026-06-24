@@ -17,31 +17,31 @@ export const auth = getAuth(app);
 
 // Initialize provider and configure Google Sheets scope permissions
 export const googleProvider = new GoogleAuthProvider();
-googleProvider.addScope('https://www.googleapis.com/auth/spreadsheets');
-googleProvider.addScope('https://www.googleapis.com/auth/contacts');
-googleProvider.addScope('https://www.googleapis.com/auth/drive.readonly');
-googleProvider.addScope('https://www.googleapis.com/auth/documents');
-googleProvider.addScope('https://www.googleapis.com/auth/presentations');
-googleProvider.addScope('https://www.googleapis.com/auth/photoslibrary.readonly');
+export const ALL_GOOGLE_SCOPES = [
+  'https://www.googleapis.com/auth/spreadsheets',
+  'https://www.googleapis.com/auth/contacts',
+  'https://www.googleapis.com/auth/drive.readonly',
+  'https://www.googleapis.com/auth/documents',
+  'https://www.googleapis.com/auth/presentations',
+  'https://www.googleapis.com/auth/photoslibrary.readonly',
+  'https://www.googleapis.com/auth/calendar',
+  'https://www.googleapis.com/auth/drive',
+  'https://www.googleapis.com/auth/drive.file',
+  'https://www.googleapis.com/auth/tasks',
+  'https://www.googleapis.com/auth/gmail.send',
+  'https://www.googleapis.com/auth/gmail.readonly',
+  'https://www.googleapis.com/auth/chat.spaces.readonly',
+  'https://www.googleapis.com/auth/chat.messages.create',
+  'https://www.googleapis.com/auth/classroom.courses.readonly'
+];
 
-googleProvider.addScope('https://www.googleapis.com/auth/calendar');
-googleProvider.addScope('https://www.googleapis.com/auth/drive');
-googleProvider.addScope('https://www.googleapis.com/auth/drive.file');
-googleProvider.addScope('https://www.googleapis.com/auth/drive.readonly');
-googleProvider.addScope('https://www.googleapis.com/auth/tasks');
-googleProvider.addScope('https://www.googleapis.com/auth/gmail.send');
-googleProvider.addScope('https://www.googleapis.com/auth/gmail.readonly');
-googleProvider.addScope('https://www.googleapis.com/auth/chat.spaces.readonly');
+ALL_GOOGLE_SCOPES.forEach(scope => googleProvider.addScope(scope));
 
 // Force Google to show the consent screen again so it asks for the new Drive scopes
 googleProvider.setCustomParameters({
   prompt: 'consent',
   access_type: 'offline' // Good for getting refresh tokens if needed
 });
-googleProvider.addScope('https://www.googleapis.com/auth/chat.messages.create');
-googleProvider.addScope('https://www.googleapis.com/auth/classroom.courses.readonly');
-googleProvider.addScope('https://www.googleapis.com/auth/presentations');
-googleProvider.addScope('https://www.googleapis.com/auth/photoslibrary.readonly');
 
 // Memory cache for the OAuth access token
 let cachedAccessToken: string | null = null;
@@ -99,7 +99,13 @@ export async function signInWithGoogle() {
     if (Capacitor.isNativePlatform()) {
       // Native App Login Flow
       // We must pass the Web Client ID from Firebase Console to use Google Sign-In natively
-      const result = await FirebaseAuthentication.signInWithGoogle();
+      const result = await FirebaseAuthentication.signInWithGoogle({
+        scopes: ALL_GOOGLE_SCOPES,
+        customParameters: [
+          { key: 'prompt', value: 'consent' },
+          { key: 'access_type', value: 'offline' }
+        ]
+      });
       
       if (!result.credential?.idToken) {
         throw new Error("No ID Token returned from Google Sign-In");

@@ -243,14 +243,51 @@ export default function SettingsManager({
   };
 
   // Standard Google Sign in Redirect Auth flow
-  const handleOAuthLogin = (targetService: ServiceType) => {
+  const handleOAuthLogin = async (targetService: ServiceType) => {
+    const serviceName = getServiceLabel(targetService);
+
+    // NATIVE FLOW
+    const { Capacitor } = await import('@capacitor/core');
+    if (Capacitor.isNativePlatform()) {
+      addLog(`📱 Native environment detected. Requesting Google Auth natively for ${serviceName}...`);
+      try {
+        const { FirebaseAuthentication } = await import('@capacitor-firebase/authentication');
+        const { ALL_GOOGLE_SCOPES } = await import('../firebase');
+        
+        const result = await FirebaseAuthentication.signInWithGoogle({
+          scopes: ALL_GOOGLE_SCOPES,
+          customParameters: [
+             { key: 'prompt', value: 'consent' },
+             { key: 'access_type', value: 'offline' }
+          ]
+        });
+        
+        if (result.credential?.accessToken) {
+          setAccessToken(result.credential.accessToken);
+          setToken(result.credential.accessToken);
+          
+          setServiceLinkedState(targetService, true);
+          localStorage.setItem(`google_${targetService}_linked`, 'true');
+          
+          window.dispatchEvent(new Event('google-token-changed'));
+          addLog(`✅ Google Auth connection linked successfully via native flow.`);
+          alert(`🎉 Successfully connected and configured ${serviceName}!`);
+        } else {
+          throw new Error("No access token returned from native Google Auth");
+        }
+      } catch (err: any) {
+         addLog(`❌ Native Auth error: ${err.message}`);
+         alert(`Native Google Sign-In Error: ${err.message}`);
+      }
+      return;
+    }
+
     if (!customClientId) {
       alert("Please enter a valid Google Client ID first.");
       return;
     }
     localStorage.setItem('custom_google_client_id', customClientId.trim());
     localStorage.setItem('custom_google_client_secret', customClientSecret.trim());
-    const serviceName = getServiceLabel(targetService);
     
     const redirectUri = window.location.origin;
     const scopes = encodeURIComponent(

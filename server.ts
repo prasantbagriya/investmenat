@@ -4,6 +4,7 @@ import { createServer as createViteServer } from "vite";
 import { JWT } from "google-auth-library";
 import dotenv from "dotenv";
 import fs from 'fs';
+import cors from 'cors';
 import { GoogleGenAI } from "@google/genai";
 import { setupUpstoxRoutes } from "./upstoxProxy";
 import { setupDhanRoutes } from "./dhanProxy";
@@ -96,6 +97,8 @@ async function startServer() {
   app = express();
   const PORT = process.env.PORT || 3000;
 
+  // Enable CORS so Firebase hosted frontend can call this backend
+  app.use(cors({ origin: true }));
   // Body parser to accept Service Account configurations
   app.use(express.json());
 

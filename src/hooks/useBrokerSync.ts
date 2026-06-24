@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Holding } from '../types';
+import { proxyFetch } from '../utils/proxyFetch';
 
 export interface BrokerFunds {
   upstox: { available: number; utilized: number };
@@ -43,10 +44,10 @@ export function useBrokerSync(userId: string | undefined) {
     if (upstoxToken) {
       try {
         const [fundsRes, holdingsRes, mfRes, pnlRes] = await Promise.all([
-          fetch('/api/upstox/funds', { headers: { 'Authorization': `Bearer ${upstoxToken}` } }),
-          fetch('/api/upstox/holdings', { headers: { 'Authorization': `Bearer ${upstoxToken}` } }),
-          fetch('/api/upstox/mutual-funds', { headers: { 'Authorization': `Bearer ${upstoxToken}` } }),
-          fetch('/api/upstox/trade-pnl?segment=EQ&financial_year=2425&page_number=1&page_size=1000', { headers: { 'Authorization': `Bearer ${upstoxToken}` } })
+          proxyFetch('/api/upstox/funds', { headers: { 'Authorization': `Bearer ${upstoxToken}` } }),
+          proxyFetch('/api/upstox/holdings', { headers: { 'Authorization': `Bearer ${upstoxToken}` } }),
+          proxyFetch('/api/upstox/mutual-funds', { headers: { 'Authorization': `Bearer ${upstoxToken}` } }),
+          proxyFetch('/api/upstox/trade-pnl?segment=EQ&financial_year=2425&page_number=1&page_size=1000', { headers: { 'Authorization': `Bearer ${upstoxToken}` } })
         ]);
 
         if (fundsRes.ok) {
@@ -128,8 +129,8 @@ export function useBrokerSync(userId: string | undefined) {
     if (dhanToken) {
       try {
         const [fundsRes, holdingsRes] = await Promise.all([
-          fetch('/api/dhan/funds', { headers: { 'Authorization': `Bearer ${dhanToken}` } }),
-          fetch('/api/dhan/holdings', { headers: { 'Authorization': `Bearer ${dhanToken}` } })
+          proxyFetch('/api/dhan/funds', { headers: { 'Authorization': `Bearer ${dhanToken}` } }),
+          proxyFetch('/api/dhan/holdings', { headers: { 'Authorization': `Bearer ${dhanToken}` } })
         ]);
 
         if (fundsRes.ok) {
@@ -175,8 +176,8 @@ export function useBrokerSync(userId: string | undefined) {
             'X-PrivateKey': apiKey
           };
           const [fundsRes, holdingsRes] = await Promise.all([
-            fetch('/api/angel/funds', { headers }),
-            fetch('/api/angel/holdings', { headers })
+            proxyFetch('/api/angel/funds', { headers }),
+            proxyFetch('/api/angel/holdings', { headers })
           ]);
 
           if (fundsRes.ok) {
@@ -222,8 +223,8 @@ export function useBrokerSync(userId: string | undefined) {
             'Authorization': `token ${kiteApiKey}:${kiteToken}`
           };
           const [fundsRes, holdingsRes] = await Promise.all([
-            fetch('/api/kite/funds', { headers }),
-            fetch('/api/kite/holdings', { headers })
+            proxyFetch('/api/kite/funds', { headers }),
+            proxyFetch('/api/kite/holdings', { headers })
           ]);
 
           if (fundsRes.ok) {

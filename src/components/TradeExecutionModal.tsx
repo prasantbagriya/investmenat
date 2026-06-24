@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, TrendingUp, TrendingDown, Building2, AlertCircle } from 'lucide-react';
+import { proxyFetch } from '../utils/proxyFetch';
 
 interface TradeExecutionModalProps {
   isOpen: boolean;
@@ -135,7 +136,7 @@ export default function TradeExecutionModal({ isOpen, onClose, symbol, ltp }: Tr
         };
       }
 
-      const res = await fetch(endpoint, {
+      const res = await proxyFetch(endpoint, {
         method: 'POST',
         headers,
         body: JSON.stringify(payload)

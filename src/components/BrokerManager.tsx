@@ -5,6 +5,7 @@ import {
   RefreshCw, TrendingUp, BarChart3, ShieldCheck
 } from 'lucide-react';
 import InfoTooltip from './InfoTooltip';
+import { proxyFetch } from '../utils/proxyFetch';
 
 interface BrokerManagerProps {
   user: any;
@@ -86,9 +87,9 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
     setUpstoxLoading(true);
     try {
       const [profileRes, fundsRes, holdingsRes] = await Promise.all([
-        fetch('/api/upstox/profile', { headers: { 'Authorization': `Bearer ${upstoxToken}` } }),
-        fetch('/api/upstox/funds', { headers: { 'Authorization': `Bearer ${upstoxToken}` } }),
-        fetch('/api/upstox/holdings', { headers: { 'Authorization': `Bearer ${upstoxToken}` } })
+        proxyFetch('/api/upstox/profile', { headers: { 'Authorization': `Bearer ${upstoxToken}` } }),
+        proxyFetch('/api/upstox/funds', { headers: { 'Authorization': `Bearer ${upstoxToken}` } }),
+        proxyFetch('/api/upstox/holdings', { headers: { 'Authorization': `Bearer ${upstoxToken}` } })
       ]);
       if (profileRes.ok) setUpstoxProfile((await profileRes.json()).data);
       if (fundsRes.ok) {
@@ -109,7 +110,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
 
   const handleUpstoxAuthCallback = async (code: string) => {
     try {
-      const res = await fetch('/api/upstox/token', {
+      const res = await proxyFetch('/api/upstox/token', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -158,8 +159,8 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
     setDhanLoading(true);
     try {
       const [fundsRes, holdingsRes] = await Promise.all([
-        fetch('/api/dhan/funds', { headers: { 'access-token': dhanAccessToken, 'client-id': dhanClientId } }),
-        fetch('/api/dhan/holdings', { headers: { 'access-token': dhanAccessToken, 'client-id': dhanClientId } })
+        proxyFetch('/api/dhan/funds', { headers: { 'access-token': dhanAccessToken, 'client-id': dhanClientId } }),
+        proxyFetch('/api/dhan/holdings', { headers: { 'access-token': dhanAccessToken, 'client-id': dhanClientId } })
       ]);
       if (fundsRes.ok) setDhanFunds((await fundsRes.json()).data);
       if (holdingsRes.ok) setDhanHoldings((await holdingsRes.json()).data || []);
@@ -188,8 +189,8 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
     setAngelLoading(true);
     try {
       const [fundsRes, holdingsRes] = await Promise.all([
-        fetch('/api/angel/funds', { headers: { 'Authorization': `Bearer ${angelToken}`, 'X-PrivateKey': angelApiKey } }),
-        fetch('/api/angel/holdings', { headers: { 'Authorization': `Bearer ${angelToken}`, 'X-PrivateKey': angelApiKey } })
+        proxyFetch('/api/angel/funds', { headers: { 'Authorization': `Bearer ${angelToken}`, 'X-PrivateKey': angelApiKey } }),
+        proxyFetch('/api/angel/holdings', { headers: { 'Authorization': `Bearer ${angelToken}`, 'X-PrivateKey': angelApiKey } })
       ]);
       if (fundsRes.ok) setAngelFunds((await fundsRes.json()).data);
       if (holdingsRes.ok) setAngelHoldings((await holdingsRes.json()).data || []);
@@ -211,8 +212,8 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
     setKiteLoading(true);
     try {
       const [fundsRes, holdingsRes] = await Promise.all([
-        fetch('/api/kite/funds', { headers: { 'Authorization': `token ${kiteApiKey}:${kiteToken}` } }),
-        fetch('/api/kite/holdings', { headers: { 'Authorization': `token ${kiteApiKey}:${kiteToken}` } })
+        proxyFetch('/api/kite/funds', { headers: { 'Authorization': `token ${kiteApiKey}:${kiteToken}` } }),
+        proxyFetch('/api/kite/holdings', { headers: { 'Authorization': `token ${kiteApiKey}:${kiteToken}` } })
       ]);
       if (fundsRes.ok) {
         const data = await fundsRes.json();
@@ -231,7 +232,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
 
   const handleKiteAuthCallback = async (request_token: string) => {
     try {
-      const res = await fetch('/api/kite/token', {
+      const res = await proxyFetch('/api/kite/token', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -306,7 +307,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
     }
     setAngelLoading(true);
     try {
-      const res = await fetch('/api/angel/login', {
+      const res = await proxyFetch('/api/angel/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

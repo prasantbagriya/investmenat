@@ -3,6 +3,7 @@ import { Search, TrendingUp, TrendingDown, ArrowLeftRight, BarChart3, Clock, Ale
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { motion, AnimatePresence } from 'motion/react';
 import TradeExecutionModal from './TradeExecutionModal';
+import { proxyFetch } from '../utils/proxyFetch';
 
 interface MarketQuote {
   instrument_token: string;
@@ -47,7 +48,7 @@ export default function MarketView() {
     setLoadingQuote(true);
     setErrorMsg('');
     try {
-      const res = await fetch(`/api/upstox/market-quote?symbol=${encodeURIComponent(key)}`, {
+      const res = await proxyFetch(`/api/upstox/market-quote?symbol=${encodeURIComponent(key)}`, {
         headers: { 'Authorization': `Bearer ${upstoxToken}` }
       });
       const data = await res.json();
@@ -86,7 +87,7 @@ export default function MarketView() {
     if (!upstoxToken || !instrumentKey || !expiryDate) return;
     setLoadingChain(true);
     try {
-      const res = await fetch(`/api/upstox/option-chain?instrument_key=${encodeURIComponent(instrumentKey)}&expiry_date=${encodeURIComponent(expiryDate)}`, {
+      const res = await proxyFetch(`/api/upstox/option-chain?instrument_key=${encodeURIComponent(instrumentKey)}&expiry_date=${encodeURIComponent(expiryDate)}`, {
         headers: { 'Authorization': `Bearer ${upstoxToken}` }
       });
       const data = await res.json();
@@ -108,9 +109,9 @@ export default function MarketView() {
     setLoadingExtra(true);
     try {
       const [newsRes, fundRes, histRes] = await Promise.all([
-        fetch(`/api/upstox/news?symbol=${encodeURIComponent(key)}`, { headers: { 'Authorization': `Bearer ${upstoxToken}` } }),
-        fetch(`/api/upstox/fundamentals?symbol=${encodeURIComponent(key)}`, { headers: { 'Authorization': `Bearer ${upstoxToken}` } }),
-        fetch(`/api/upstox/historical-data?instrument_key=${encodeURIComponent(key)}`, { headers: { 'Authorization': `Bearer ${upstoxToken}` } })
+        proxyFetch(`/api/upstox/news?symbol=${encodeURIComponent(key)}`, { headers: { 'Authorization': `Bearer ${upstoxToken}` } }),
+        proxyFetch(`/api/upstox/fundamentals?symbol=${encodeURIComponent(key)}`, { headers: { 'Authorization': `Bearer ${upstoxToken}` } }),
+        proxyFetch(`/api/upstox/historical-data?instrument_key=${encodeURIComponent(key)}`, { headers: { 'Authorization': `Bearer ${upstoxToken}` } })
       ]);
 
       if (newsRes.ok) {

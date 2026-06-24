@@ -1,20 +1,58 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Lock } from 'lucide-react';
+import { Lock, Fingerprint } from 'lucide-react';
+import { BiometricAuth } from '@aparajita/capacitor-biometric-auth';
 
 interface PinLockScreenProps {
   pinValue: string;
   setPinValue: (val: string) => void;
   handleNumpadPress: (num: string) => void;
   handleLogout: () => void;
+  handleUnlock: () => void;
 }
 
 export default function PinLockScreen({
   pinValue,
   setPinValue,
   handleNumpadPress,
-  handleLogout
+  handleLogout,
+  handleUnlock
 }: PinLockScreenProps) {
+  const [isBiometryAvailable, setIsBiometryAvailable] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkAndTriggerBiometry = async () => {
+      try {
+        const info = await BiometricAuth.checkBiometry();
+        if (info.isAvailable) {
+          setIsBiometryAvailable(true);
+          // Auto-trigger on load
+          const result = await BiometricAuth.authenticate({
+            reason: 'Authenticate to unlock your private ledger'
+          });
+          if (result.hasVerified) {
+            handleUnlock();
+          }
+        }
+      } catch (e) {
+        console.warn('Biometric auth failed', e);
+      }
+    };
+    checkAndTriggerBiometry();
+  }, []);
+
+  const manualTriggerBiometric = async () => {
+    try {
+      const result = await BiometricAuth.authenticate({
+        reason: 'Authenticate to unlock your private ledger'
+      });
+      if (result.hasVerified) {
+        handleUnlock();
+      }
+    } catch (e) {
+      console.warn('Biometric auth failed', e);
+    }
+  };
   return (
     <div className="min-h-screen bg-slate-900 text-white flex flex-col items-center justify-center p-2 font-sans select-none">
       <motion.div 
@@ -63,11 +101,24 @@ export default function PinLockScreen({
           >
             0
           </button>
+          {isBiometryAvailable ? (
+            <button 
+              onClick={manualTriggerBiometric}
+              className="col-span-1 h-14 w-14 text-indigo-400 hover:text-indigo-300 rounded-full flex items-center justify-center mx-auto cursor-pointer bg-slate-800 hover:bg-slate-700 transition-colors"
+            >
+              <Fingerprint size={22} />
+            </button>
+          ) : (
+            <div className="col-span-1 h-14 w-14"></div>
+          )}
+        </div>
+        
+        <div className="pt-2">
           <button 
             onClick={handleLogout}
-            className="col-span-1 h-14 w-14 text-rose-450 hover:text-red-500 rounded-full font-semibold text-[10px] uppercase flex items-center justify-center mx-auto cursor-pointer"
+            className="text-rose-450 hover:text-red-500 rounded-full font-semibold text-[10px] uppercase flex items-center justify-center mx-auto cursor-pointer border border-rose-900/30 px-3 py-1.5"
           >
-            LogOut
+            Log Out Account
           </button>
         </div>
 

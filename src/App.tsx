@@ -370,8 +370,9 @@ export default function App() {
     const resetInactivityTimer = () => {
       clearTimeout(logoutTimer);
       logoutTimer = setTimeout(() => {
-        handleLogout();
-        alert('Security Guard: You have been logged out due to 10 minutes of inactivity to protect your private ledger.');
+        if (userSettings?.pin) {
+          setIsLocked(true);
+        }
       }, 10 * 60 * 1000); // 10 mins
     };
 
@@ -1315,6 +1316,11 @@ export default function App() {
     }
   };
 
+  const handleBiometricUnlock = () => {
+    setIsLocked(false);
+    setPinValue('');
+  };
+
   const handleNumpadPress = (num: string) => {
     if (pinValue.length < 4) {
       const nextPin = pinValue + num;
@@ -1526,6 +1532,7 @@ export default function App() {
         setPinValue={setPinValue}
         handleNumpadPress={handleNumpadPress}
         handleLogout={handleLogout}
+        handleUnlock={handleBiometricUnlock}
       />
     );
   }

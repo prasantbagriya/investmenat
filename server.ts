@@ -95,7 +95,7 @@ export let app: express.Application;
 
 async function startServer() {
   app = express();
-  const PORT = process.env.PORT || 3000;
+  const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 
   // Enable CORS so Firebase hosted frontend can call this backend
   app.use(cors({ origin: true }));

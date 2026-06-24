@@ -37,7 +37,7 @@ export default function MigrationModal({
                   <h3 className="font-extrabold text-slate-900 text-sm">
                     📥 Local Offline Workspace Data Found!
                   </h3>
-                  <p className="text-[10px] text-slate-500 font-semibold uppercase mt-0.5 tracking-wider">
+                  <p className="text-[10px] text-slate-700 font-semibold uppercase mt-0.5 tracking-wider">
                     Migrate guest ledger details to secured cloud profile
                   </p>
                 </div>
@@ -90,7 +90,7 @@ export default function MigrationModal({
                 </div>
               )}
 
-              <p className="text-[10px] text-slate-400 italic">
+              <p className="text-[10px] text-slate-500 italic">
                 * Note: Once migrated, this data will be securely backed up forever in Google Cloud Run / Cloud FireStore database, and will be cleared from Local Storage for optimum browser speed.
               </p>
 
@@ -98,7 +98,7 @@ export default function MigrationModal({
                 <button
                   type="button"
                   onClick={handleCancelMigration}
-                  className="flex-1 py-1 border border-slate-205 hover:bg-slate-50 text-slate-500 rounded-xl text-xs font-bold cursor-pointer text-center"
+                  className="flex-1 py-1 border border-slate-205 hover:bg-slate-50 text-slate-700 rounded-xl text-xs font-bold cursor-pointer text-center"
                 >
                   No, Skip (नया अकाउंट शुरू करें)
                 </button>

@@ -55,7 +55,7 @@ export default function NavigationDrawer({
               <h2 className="font-extrabold text-slate-800 text-lg font-sans">Navigation</h2>
               <button 
                 onClick={onClose}
-                className="p-1.5 text-slate-400 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer"
+                className="p-1.5 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer"
               >
                 <X size={20} />
               </button>
@@ -66,7 +66,7 @@ export default function NavigationDrawer({
               
               {/* Workspace Switcher */}
               <div className="space-y-2">
-                <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Workspace</p>
+                <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Workspace</p>
                 <div className="flex flex-col gap-2">
                   <button
                     onClick={() => {
@@ -79,7 +79,7 @@ export default function NavigationDrawer({
                         : 'bg-white border border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-50'
                     }`}
                   >
-                    <ArrowLeftRight size={18} className={currentWorkspace === 'ledger' ? 'text-emerald-400' : 'text-slate-400'} />
+                    <ArrowLeftRight size={18} className={currentWorkspace === 'ledger' ? 'text-emerald-400' : 'text-slate-500'} />
                     Ledger Space
                   </button>
                   
@@ -94,7 +94,7 @@ export default function NavigationDrawer({
                         : 'bg-white border border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-50'
                     }`}
                   >
-                    <TrendingUp size={18} className={currentWorkspace === 'investmant' ? 'text-emerald-400' : 'text-slate-400'} />
+                    <TrendingUp size={18} className={currentWorkspace === 'investmant' ? 'text-emerald-400' : 'text-slate-500'} />
                     InvestMant Space
                   </button>
                 </div>
@@ -102,7 +102,7 @@ export default function NavigationDrawer({
 
               {/* Page Links */}
               <div className="space-y-2">
-                <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Pages</p>
+                <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Pages</p>
                 <div className="flex flex-col gap-1">
                   {currentWorkspace === 'ledger' ? (
                     <>

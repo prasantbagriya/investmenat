@@ -125,7 +125,7 @@ export default function Header({
                     : 'text-slate-600 hover:text-slate-950 hover:bg-slate-200/50'
                 }`}
               >
-                <ArrowLeftRight size={11} className={currentWorkspace === 'ledger' ? 'text-emerald-400' : 'text-slate-400'} /> 
+                <ArrowLeftRight size={11} className={currentWorkspace === 'ledger' ? 'text-emerald-400' : 'text-slate-500'} /> 
                 <span className="hidden xs:inline">Ledger</span>
               </button>
               <button
@@ -140,7 +140,7 @@ export default function Header({
                     : 'text-slate-600 hover:text-slate-950 hover:bg-slate-200/50'
                 }`}
               >
-                <TrendingUp size={11} className={currentWorkspace === 'investmant' ? 'text-emerald-400' : 'text-slate-400'} /> 
+                <TrendingUp size={11} className={currentWorkspace === 'investmant' ? 'text-emerald-400' : 'text-slate-500'} /> 
                 <span className="hidden xs:inline">InvestMant</span>
               </button>
             </div>
@@ -183,7 +183,7 @@ export default function Header({
               className="bg-slate-50 hover:bg-slate-100 p-1 rounded-lg border border-slate-200 cursor-pointer text-slate-600 transition-colors"
               title="Configure Security PIN Lock"
             >
-              <ShieldCheck size={14} className={userSettings?.pin ? "text-emerald-600 animate-pulse" : "text-slate-500"} />
+              <ShieldCheck size={14} className={userSettings?.pin ? "text-emerald-600 animate-pulse" : "text-slate-700"} />
             </button>
 
             {/* Profile details */}
@@ -195,14 +195,14 @@ export default function Header({
               )}
               <div className="text-left leading-tight text-[10px]">
                 <p className="font-extrabold text-slate-800">{user?.displayName || 'Guest User'}</p>
-                <p className="text-slate-400 font-mono scale-90 -translate-x-1 truncate max-w-[80px]">{user?.email}</p>
+                <p className="text-slate-500 font-mono scale-90 -translate-x-1 truncate max-w-[80px]">{user?.email}</p>
               </div>
             </div>
 
             {/* Log out */}
             <button
               onClick={handleLogout}
-              className="p-1 bg-slate-50 hover:bg-red-50 text-slate-400 hover:text-red-500 rounded-lg transition-colors border border-slate-200 cursor-pointer"
+              className="p-1 bg-slate-50 hover:bg-red-50 text-slate-500 hover:text-red-500 rounded-lg transition-colors border border-slate-200 cursor-pointer"
               title="Log out of application"
               id="logout-button"
             >

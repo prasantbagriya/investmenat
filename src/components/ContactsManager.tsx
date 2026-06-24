@@ -518,7 +518,7 @@ export default function ContactsManager({
         </div>
         <div className="space-y-1">
           <h2 className="text-lg font-extrabold text-slate-900 tracking-tight">Google Contacts Integration Disconnected</h2>
-          <p className="text-xs text-slate-500 font-medium uppercase tracking-wider">Contacts Disabled</p>
+          <p className="text-xs text-slate-700 font-medium uppercase tracking-wider">Contacts Disabled</p>
         </div>
         <div className="p-2 bg-slate-50 border border-slate-200 rounded-2xl max-w-lg mx-auto text-xs text-slate-600 leading-relaxed font-sans">
           👥 Google Contacts integration is currently deactivated. Setup must be initiated exclusively from the central <b>Settings</b> page/tab. We have hidden configuration blocks. Please toggle settings to complete authentication blocks in 1-Click!
@@ -577,10 +577,10 @@ export default function ContactsManager({
       {/* Financial Rolodex KPI Overview slots */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-2" id="contacts-kpi-grid">
         <div className="bg-white rounded-2xl border border-slate-100 p-2 shadow-xs" id="contacts-kpi-total">
-          <p className="text-[10px] uppercase font-bold tracking-wider text-slate-400">Rolodex Capacity</p>
+          <p className="text-[10px] uppercase font-bold tracking-wider text-slate-500">Rolodex Capacity</p>
           <div className="flex items-baseline gap-1 mt-1">
             <span className="text-2xl font-black text-slate-900">{contacts.length}</span>
-            <span className="text-xs text-slate-500">active associates</span>
+            <span className="text-xs text-slate-700">active associates</span>
           </div>
         </div>
 
@@ -610,7 +610,7 @@ export default function ContactsManager({
               <button
                 key={tag}
                 onClick={() => setSelectedTag(tag)}
-                className={`px-1 py-1.5 rounded-lg transition-colors cursor-pointer shrink-0 ${selectedTag === tag ? 'bg-slate-900 text-white shadow-xs' : 'text-slate-500 hover:bg-slate-50'}`}
+                className={`px-1 py-1.5 rounded-lg transition-colors cursor-pointer shrink-0 ${selectedTag === tag ? 'bg-slate-900 text-white shadow-xs' : 'text-slate-700 hover:bg-slate-50'}`}
               >
                 {tag}
               </button>
@@ -619,7 +619,7 @@ export default function ContactsManager({
 
           {/* Search bar input container */}
           <div className="relative max-w-sm w-full" id="contacts-search-box">
-            <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
+            <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-500" />
             <input
               type="text"
               value={searchQuery}
@@ -633,14 +633,14 @@ export default function ContactsManager({
         {/* Contacts Matrix */}
         {loading ? (
           <div className="flex flex-col items-center justify-center py-8 gap-1" id="contacts-skeleton-loader">
-            <RefreshCw className="h-8 w-8 text-slate-400 animate-spin" />
-            <span className="text-xs text-slate-500 font-mono">Synchronizing directories...</span>
+            <RefreshCw className="h-8 w-8 text-slate-500 animate-spin" />
+            <span className="text-xs text-slate-700 font-mono">Synchronizing directories...</span>
           </div>
         ) : filteredContacts.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-8 text-center gap-1" id="contacts-empty-state">
             <Users className="h-10 w-10 text-slate-300" />
             <h4 className="text-sm font-bold text-slate-700">No matching contacts</h4>
-            <p className="text-xs text-slate-400 max-w-xs leading-relaxed">
+            <p className="text-xs text-slate-500 max-w-xs leading-relaxed">
               We couldn't find any contact records matching "{searchQuery}" under "{selectedTag}" group.
             </p>
             <button
@@ -693,14 +693,14 @@ export default function ContactsManager({
                                   contact.category === 'Family' ? 'bg-indigo-50 text-indigo-650' :
                                   contact.category === 'Business' ? 'bg-slate-100 text-slate-700' :
                                   contact.category === 'Friend' ? 'bg-sky-50 text-sky-650' :
-                                  contact.category === 'Lender' ? 'bg-amber-50 text-amber-700' : 'bg-slate-50 text-slate-500'
+                                  contact.category === 'Lender' ? 'bg-amber-50 text-amber-700' : 'bg-slate-50 text-slate-700'
                                 }`}>
                                   {contact.category}
                                 </span>
                               )}
                             </h4>
                             {contact.organization && (
-                              <p className="text-[10px] text-slate-400 font-medium leading-none mt-1">{contact.organization}</p>
+                              <p className="text-[10px] text-slate-500 font-medium leading-none mt-1">{contact.organization}</p>
                             )}
                           </div>
                         </div>
@@ -710,7 +710,7 @@ export default function ContactsManager({
                           <button
                             title="Edit Contact profile"
                             onClick={() => handleOpenForm(contact)}
-                            className="p-1.5 text-slate-400 hover:text-slate-900 hover:bg-slate-50 rounded-lg transition-colors cursor-pointer"
+                            className="p-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-50 rounded-lg transition-colors cursor-pointer"
                           >
                             <Edit3 size={12} />
                           </button>
@@ -734,14 +734,14 @@ export default function ContactsManager({
                       {/* Communications Details */}
                       <div className="mt-2 space-y-1.5">
                         {contact.phone && (
-                          <div className="flex items-center gap-1 text-[11px] text-slate-500">
-                            <Phone className="h-3.5 w-3.5 text-slate-400 shrink-0" />
+                          <div className="flex items-center gap-1 text-[11px] text-slate-700">
+                            <Phone className="h-3.5 w-3.5 text-slate-500 shrink-0" />
                             <span className="font-mono">{contact.phone}</span>
                           </div>
                         )}
                         {contact.email && (
-                          <div className="flex items-center gap-1 text-[11px] text-slate-500 truncate">
-                            <Mail className="h-3.5 w-3.5 text-slate-400 shrink-0" />
+                          <div className="flex items-center gap-1 text-[11px] text-slate-700 truncate">
+                            <Mail className="h-3.5 w-3.5 text-slate-500 shrink-0" />
                             <span className="truncate">{contact.email}</span>
                           </div>
                         )}
@@ -751,7 +751,7 @@ export default function ContactsManager({
                     {/* Integrated Money Flow Widget */}
                     <div className="mt-2 pt-1 border-t border-slate-50 flex items-center justify-between text-[10px] font-mono">
                       {OweAmount === 0 && OwedAmount === 0 ? (
-                        <span className="text-slate-400">No active dues link</span>
+                        <span className="text-slate-500">No active dues link</span>
                       ) : (
                         <div className="flex flex-col gap-1 w-full">
                           {OwedAmount > 0 && (
@@ -772,23 +772,23 @@ export default function ContactsManager({
                     
                     <button
                       onClick={() => setExpandedContact(expandedContact === contact.resourceName ? null : contact.resourceName)}
-                      className="mt-2 w-full text-center text-[10px] font-bold text-slate-500 hover:text-slate-900 border border-slate-100 bg-slate-50 hover:bg-slate-100 py-1 rounded-md transition-colors"
+                      className="mt-2 w-full text-center text-[10px] font-bold text-slate-700 hover:text-slate-900 border border-slate-100 bg-slate-50 hover:bg-slate-100 py-1 rounded-md transition-colors"
                     >
                       {expandedContact === contact.resourceName ? 'Hide Track Record' : 'View Track Record'}
                     </button>
 
                     {expandedContact === contact.resourceName && (
                       <div className="mt-2 pt-2 border-t border-slate-100 space-y-1.5">
-                        <h5 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">History</h5>
+                        <h5 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">History</h5>
                         {(() => {
                           const history = pendingPayments.filter(p => p.person.toLowerCase() === contact.name.toLowerCase());
-                          if (history.length === 0) return <p className="text-[10px] text-slate-400">No transactions recorded.</p>;
+                          if (history.length === 0) return <p className="text-[10px] text-slate-500">No transactions recorded.</p>;
                           
                           return history.map(h => (
                             <div key={h.id} className="flex items-center justify-between text-[10px] bg-white border border-slate-100 p-1 rounded">
                               <div className="flex items-center gap-1">
                                 {h.completed ? <CheckCircle2 size={10} className="text-emerald-500" /> : <Clock size={10} className="text-amber-500" />}
-                                <span className={h.completed ? 'text-slate-500 line-through' : 'text-slate-800'}>{h.dueDate}</span>
+                                <span className={h.completed ? 'text-slate-700 line-through' : 'text-slate-800'}>{h.dueDate}</span>
                               </div>
                               <span className={`font-mono font-bold ${h.type === 'owe' ? 'text-rose-500' : 'text-emerald-500'}`}>
                                 {h.type === 'owe' ? '-' : '+'}₹{h.amount}
@@ -818,7 +818,7 @@ export default function ContactsManager({
           >
             <button
               onClick={() => setIsFormOpen(false)}
-              className="absolute top-4 right-4 text-slate-400 hover:text-slate-900 p-1 rounded-full hover:bg-slate-100"
+              className="absolute top-4 right-4 text-slate-500 hover:text-slate-900 p-1 rounded-full hover:bg-slate-100"
             >
               <X size={18} />
             </button>
@@ -826,14 +826,14 @@ export default function ContactsManager({
             <h3 className="text-lg font-black text-slate-900 tracking-tight">
               {editingContact ? 'Edit Contact Record' : 'Add New Contact Record'}
             </h3>
-            <p className="text-xs text-slate-400 mt-1">
+            <p className="text-xs text-slate-500 mt-1">
               {isLocalStorageMode ? 'Saving in Instant Local Offline Index' : 'Synchronizing direct with Google Servers'}
             </p>
 
             <form onSubmit={handleSaveContact} className="mt-3 space-y-2">
               <div className="grid grid-cols-2 gap-1">
                 <div>
-                  <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">First (Given) Name *</label>
+                  <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">First (Given) Name *</label>
                   <input
                     type="text"
                     required
@@ -843,7 +843,7 @@ export default function ContactsManager({
                   />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Surname (Family Name)</label>
+                  <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Surname (Family Name)</label>
                   <input
                     type="text"
                     value={formFamilyName}
@@ -854,7 +854,7 @@ export default function ContactsManager({
               </div>
 
               <div>
-                <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Mobile / Phone Number</label>
+                <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Mobile / Phone Number</label>
                 <input
                   type="text"
                   placeholder="+91 99999 99999"
@@ -865,7 +865,7 @@ export default function ContactsManager({
               </div>
 
               <div>
-                <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Email Address</label>
+                <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Email Address</label>
                 <input
                   type="email"
                   placeholder="name@gmail.com"
@@ -876,7 +876,7 @@ export default function ContactsManager({
               </div>
 
               <div>
-                <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Company / Organization</label>
+                <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Company / Organization</label>
                 <input
                   type="text"
                   placeholder="e.g. HDFC, Zerodha"
@@ -887,7 +887,7 @@ export default function ContactsManager({
               </div>
 
               <div>
-                <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Associate Tag Classification</label>
+                <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Associate Tag Classification</label>
                 <select
                   value={formCategory}
                   onChange={(e) => setFormCategory(e.target.value as any)}
@@ -933,7 +933,7 @@ export default function ContactsManager({
           >
             <button
               onClick={() => setIsDueFormOpen(false)}
-              className="absolute top-4 right-4 text-slate-400 hover:text-slate-900 p-1 rounded-full hover:bg-slate-100"
+              className="absolute top-4 right-4 text-slate-500 hover:text-slate-900 p-1 rounded-full hover:bg-slate-100"
             >
               <X size={18} />
             </button>
@@ -941,13 +941,13 @@ export default function ContactsManager({
             <h3 className="text-lg font-black text-slate-900 tracking-tight">
               Config Pending Due for {selectedContactForDue.name}
             </h3>
-            <p className="text-xs text-slate-400 mt-1">
+            <p className="text-xs text-slate-500 mt-1">
               Associate this record into your active Ledger Dues tracking stream
             </p>
 
             <form onSubmit={handleSaveDue} className="mt-3 space-y-2">
               <div>
-                <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Due Type</label>
+                <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Due Type</label>
                 <div className="grid grid-cols-2 gap-1">
                   <button
                     type="button"
@@ -955,7 +955,7 @@ export default function ContactsManager({
                     className={`p-1.5 text-xs font-bold rounded-xl border text-center transition-all cursor-pointer ${
                       dueType === 'owe' 
                         ? 'bg-rose-50 border-rose-200 text-rose-700 shadow-xs' 
-                        : 'bg-white text-slate-500 hover:bg-slate-50'
+                        : 'bg-white text-slate-700 hover:bg-slate-50'
                     }`}
                   >
                     I Owe Them (We Pay)
@@ -966,7 +966,7 @@ export default function ContactsManager({
                     className={`p-1.5 text-xs font-bold rounded-xl border text-center transition-all cursor-pointer ${
                       dueType === 'owed' 
                         ? 'bg-emerald-50 border-emerald-205 text-emerald-750 shadow-xs' 
-                        : 'bg-white text-slate-500 hover:bg-slate-50'
+                        : 'bg-white text-slate-700 hover:bg-slate-50'
                     }`}
                   >
                     They Owe Me (We Get)
@@ -975,7 +975,7 @@ export default function ContactsManager({
               </div>
 
               <div>
-                <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Lump Sum Amount (INR) *</label>
+                <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Lump Sum Amount (INR) *</label>
                 <input
                   type="number"
                   required
@@ -988,7 +988,7 @@ export default function ContactsManager({
               </div>
 
               <div>
-                <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Payment Settlement Date</label>
+                <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Payment Settlement Date</label>
                 <input
                   type="date"
                   required
@@ -999,7 +999,7 @@ export default function ContactsManager({
               </div>
 
               <div>
-                <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Notes / Terms</label>
+                <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Notes / Terms</label>
                 <textarea
                   placeholder="Terms, rate of interest, or security details..."
                   value={dueNotes}

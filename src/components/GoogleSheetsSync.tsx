@@ -373,7 +373,7 @@ export default function GoogleSheetsSync({
         </div>
         <div className="space-y-1">
           <h2 className="text-lg font-extrabold text-slate-900 tracking-tight">Google Sheets Integration Disconnected</h2>
-          <p className="text-xs text-slate-500 font-medium uppercase tracking-wider">Sync Disabled</p>
+          <p className="text-xs text-slate-700 font-medium uppercase tracking-wider">Sync Disabled</p>
         </div>
         <div className="p-2 bg-slate-50 border border-slate-200 rounded-2xl max-w-lg mx-auto text-xs text-slate-600 leading-relaxed font-sans">
           📝 Google Sheets backing up service is currently deactivated. Setup must be initiated exclusively from the central <b>Settings</b> page/tab. We have hidden configuration blocks. Please toggle settings to complete authentication blocks in 1-Click!
@@ -400,7 +400,7 @@ export default function GoogleSheetsSync({
           </div>
           <div>
             <h2 className="text-base font-extrabold text-slate-900 tracking-tight">Google Sheets Integration</h2>
-            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mt-0.5">Real-Two Way Cloud Sync</p>
+            <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-0.5">Real-Two Way Cloud Sync</p>
           </div>
         </div>
 
@@ -412,7 +412,7 @@ export default function GoogleSheetsSync({
           {onNavigateToTab && (
             <button
               onClick={() => onNavigateToTab('settings')}
-              className="text-[9.5px] text-slate-400 hover:text-slate-650 uppercase font-black tracking-widest cursor-pointer"
+              className="text-[9.5px] text-slate-500 hover:text-slate-650 uppercase font-black tracking-widest cursor-pointer"
             >
               Configure Settings ⚙️
             </button>
@@ -426,11 +426,11 @@ export default function GoogleSheetsSync({
         <div className="md:col-span-3 space-y-2">
           <div className="p-2 bg-slate-50 border border-slate-150 rounded-2xl space-y-1.5">
             <h3 className="text-xs font-extrabold text-slate-800 uppercase tracking-wide flex items-center gap-1.5">
-              <Settings size={13} className="text-slate-500" /> Sheets Configuration
+              <Settings size={13} className="text-slate-700" /> Sheets Configuration
             </h3>
 
             <div className="space-y-1">
-              <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">Spreadsheet ID</label>
+              <label className="block text-[10px] font-bold text-slate-700 uppercase tracking-wider">Spreadsheet ID</label>
               <div className="flex gap-1">
                 <input
                   type="text"
@@ -446,7 +446,7 @@ export default function GoogleSheetsSync({
                   Save ID
                 </button>
               </div>
-              <p className="text-[9px] text-slate-400 leading-normal mt-1">
+              <p className="text-[9px] text-slate-500 leading-normal mt-1">
                 Found in your Google Spreadsheet URL: <code>https://docs.google.com/spreadsheets/d/<b>SPREADSHEET_ID</b>/edit</code>
               </p>
             </div>
@@ -493,7 +493,7 @@ export default function GoogleSheetsSync({
                   <h4 className="font-extrabold text-xs text-slate-800 flex items-center gap-1">
                     <ArrowUpRight size={14} className="text-emerald-600" /> Export to Sheets
                   </h4>
-                  <p className="text-[10px] text-slate-400 leading-normal mt-1">
+                  <p className="text-[10px] text-slate-500 leading-normal mt-1">
                     Upload transactions, SIPs, holdings, FDs instantly. Overwrites the sheet.
                   </p>
                 </div>
@@ -518,7 +518,7 @@ export default function GoogleSheetsSync({
                   <h4 className="font-extrabold text-xs text-slate-800 flex items-center gap-1">
                     <ArrowDownLeft size={14} className="text-indigo-600" /> Import from Sheets
                   </h4>
-                  <p className="text-[10px] text-slate-400 leading-normal mt-1">
+                  <p className="text-[10px] text-slate-500 leading-normal mt-1">
                     Download ledger entries from Google Sheet rows back into your private dashboard.
                   </p>
                 </div>
@@ -556,12 +556,12 @@ export default function GoogleSheetsSync({
         <div className="md:col-span-2 flex flex-col justify-between border border-slate-200 rounded-2xl p-2 bg-slate-900 text-white min-h-[300px] shadow-sm">
           <div className="space-y-1">
             <div className="flex justify-between items-center pb-1 border-b border-slate-800">
-              <span className="text-[9px] font-extrabold uppercase tracking-widest text-slate-400 flex items-center gap-1.5">
+              <span className="text-[9px] font-extrabold uppercase tracking-widest text-slate-500 flex items-center gap-1.5">
                 <RefreshCw size={11} className="animate-spin" /> Live Transmit Logs
               </span>
               <button
                 onClick={() => setActiveLogs([])}
-                className="text-[9px] hover:text-slate-200 text-slate-500 font-bold cursor-pointer"
+                className="text-[9px] hover:text-slate-200 text-slate-700 font-bold cursor-pointer"
               >
                 Clear
               </button>
@@ -569,7 +569,7 @@ export default function GoogleSheetsSync({
 
             <div className="max-h-64 overflow-y-auto font-mono text-[9px] text-slate-350 space-y-1.5 scrollbar-thin">
               {activeLogs.length === 0 ? (
-                <p className="text-slate-500 italic py-1 truncate">Database ready for secure transmission handshake...</p>
+                <p className="text-slate-700 italic py-1 truncate">Database ready for secure transmission handshake...</p>
               ) : (
                 activeLogs.map((log, idx) => (
                   <p key={idx} className="leading-relaxed whitespace-pre-wrap select-text">{log}</p>
@@ -578,7 +578,7 @@ export default function GoogleSheetsSync({
             </div>
           </div>
 
-          <div className="border-t border-slate-800 pt-1 text-[9px] text-slate-500 font-semibold uppercase font-sans flex items-center justify-between">
+          <div className="border-t border-slate-800 pt-1 text-[9px] text-slate-700 font-semibold uppercase font-sans flex items-center justify-between">
             <span>InvestMant Sync Logs</span>
             <span>v1.2.0 API Connected</span>
           </div>

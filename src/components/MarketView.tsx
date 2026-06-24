@@ -168,7 +168,7 @@ export default function MarketView() {
             <BarChart3 className="text-indigo-600" size={28} />
             <h1 className="text-2xl font-black text-slate-900 tracking-tight font-display">Live Market Data</h1>
           </div>
-          <p className="text-xs text-slate-500 font-medium mt-1 ml-9">
+          <p className="text-xs text-slate-700 font-medium mt-1 ml-9">
             Powered by Upstox API. Real-time quotes and Option Chain.
           </p>
         </div>
@@ -201,18 +201,18 @@ export default function MarketView() {
                   <Search size={14} />
                 </button>
               </div>
-              <p className="text-[10px] text-slate-400">Prefix with NSE_EQ| or NSE_INDEX|</p>
+              <p className="text-[10px] text-slate-500">Prefix with NSE_EQ| or NSE_INDEX|</p>
             </form>
 
             <div className="mt-4 pt-4 border-t border-slate-100">
               {loadingQuote ? (
-                <div className="text-center text-slate-400 py-4"><span className="animate-pulse">Fetching live quote...</span></div>
+                <div className="text-center text-slate-500 py-4"><span className="animate-pulse">Fetching live quote...</span></div>
               ) : quoteData ? (
                 <div className="space-y-3">
                   <div className="flex justify-between items-start">
                     <div>
                       <h2 className="font-bold text-slate-800 text-sm">{quoteData.symbol}</h2>
-                      <p className="text-[10px] text-slate-400 font-mono break-all">{quoteData.instrument_token}</p>
+                      <p className="text-[10px] text-slate-500 font-mono break-all">{quoteData.instrument_token}</p>
                     </div>
                   </div>
                   
@@ -223,7 +223,7 @@ export default function MarketView() {
                     <div className={`text-xs font-bold flex items-center gap-1 ${quoteData.net_change >= 0 ? 'text-emerald-500' : 'text-rose-500'}`}>
                       {quoteData.net_change >= 0 ? <TrendingUp size={14} /> : <TrendingDown size={14} />}
                       {quoteData.net_change >= 0 ? '+' : ''}{quoteData.net_change?.toFixed(2)}
-                      <span className="text-slate-400 font-normal">
+                      <span className="text-slate-500 font-normal">
                         ({((quoteData.net_change / quoteData.close) * 100).toFixed(2)}%)
                       </span>
                     </div>
@@ -255,19 +255,19 @@ export default function MarketView() {
 
                   <div className="grid grid-cols-2 gap-2 text-[10px] pt-2 border-t border-slate-50">
                     <div className="bg-slate-50 p-1.5 rounded border border-slate-100">
-                      <div className="text-slate-400 font-bold uppercase tracking-wide">Open</div>
+                      <div className="text-slate-500 font-bold uppercase tracking-wide">Open</div>
                       <div className="font-mono text-slate-700 font-semibold">{quoteData.open?.toFixed(2)}</div>
                     </div>
                     <div className="bg-slate-50 p-1.5 rounded border border-slate-100">
-                      <div className="text-slate-400 font-bold uppercase tracking-wide">High</div>
+                      <div className="text-slate-500 font-bold uppercase tracking-wide">High</div>
                       <div className="font-mono text-slate-700 font-semibold">{quoteData.high?.toFixed(2)}</div>
                     </div>
                     <div className="bg-slate-50 p-1.5 rounded border border-slate-100">
-                      <div className="text-slate-400 font-bold uppercase tracking-wide">Low</div>
+                      <div className="text-slate-500 font-bold uppercase tracking-wide">Low</div>
                       <div className="font-mono text-slate-700 font-semibold">{quoteData.low?.toFixed(2)}</div>
                     </div>
                     <div className="bg-slate-50 p-1.5 rounded border border-slate-100">
-                      <div className="text-slate-400 font-bold uppercase tracking-wide">Prev Close</div>
+                      <div className="text-slate-500 font-bold uppercase tracking-wide">Prev Close</div>
                       <div className="font-mono text-slate-700 font-semibold">{quoteData.close?.toFixed(2)}</div>
                     </div>
                   </div>
@@ -287,19 +287,19 @@ export default function MarketView() {
                       <h3 className="text-xs font-bold text-indigo-900 mb-2">Fundamentals</h3>
                       <div className="grid grid-cols-2 gap-2 text-[10px]">
                         <div>
-                          <span className="text-slate-500">Market Cap:</span>
+                          <span className="text-slate-700">Market Cap:</span>
                           <span className="font-bold ml-1 text-slate-800">{fundamentals.market_cap ? `₹${fundamentals.market_cap}Cr` : '-'}</span>
                         </div>
                         <div>
-                          <span className="text-slate-500">P/E Ratio:</span>
+                          <span className="text-slate-700">P/E Ratio:</span>
                           <span className="font-bold ml-1 text-slate-800">{fundamentals.pe || '-'}</span>
                         </div>
                         <div>
-                          <span className="text-slate-500">52W High:</span>
+                          <span className="text-slate-700">52W High:</span>
                           <span className="font-bold ml-1 text-emerald-600">{fundamentals.high_52_week || '-'}</span>
                         </div>
                         <div>
-                          <span className="text-slate-500">52W Low:</span>
+                          <span className="text-slate-700">52W Low:</span>
                           <span className="font-bold ml-1 text-rose-600">{fundamentals.low_52_week || '-'}</span>
                         </div>
                       </div>
@@ -314,7 +314,7 @@ export default function MarketView() {
                         {news.slice(0, 5).map((n, i) => (
                           <a key={i} href={n.link || '#'} target="_blank" rel="noreferrer" className="block p-2 bg-slate-50 hover:bg-slate-100 rounded-lg border border-slate-100 transition-colors">
                             <p className="text-[10px] font-semibold text-slate-700 line-clamp-2">{n.headline || n.title}</p>
-                            <span className="text-[9px] text-slate-400 mt-1 block">{n.source || 'Market News'}</span>
+                            <span className="text-[9px] text-slate-500 mt-1 block">{n.source || 'Market News'}</span>
                           </a>
                         ))}
                       </div>
@@ -322,7 +322,7 @@ export default function MarketView() {
                   )}
                 </div>
               ) : (
-                <div className="text-center text-slate-400 text-xs py-4">No quote loaded</div>
+                <div className="text-center text-slate-500 text-xs py-4">No quote loaded</div>
               )}
             </div>
           </div>
@@ -361,7 +361,7 @@ export default function MarketView() {
                     <th className="p-1 border-b border-r border-slate-200 bg-slate-200/50">STRIKE</th>
                     <th colSpan={4} className="p-1 border-b border-slate-200 text-rose-700 font-black">PUTS (PE)</th>
                   </tr>
-                  <tr className="bg-slate-50 text-slate-500 font-bold tracking-wider">
+                  <tr className="bg-slate-50 text-slate-700 font-bold tracking-wider">
                     <th className="p-1.5 border-r border-b border-slate-200">OI</th>
                     <th className="p-1.5 border-r border-b border-slate-200">Vol</th>
                     <th className="p-1.5 border-r border-b border-slate-200">LTP</th>
@@ -378,7 +378,7 @@ export default function MarketView() {
                 <tbody className="bg-white">
                   {optionChainData.length === 0 ? (
                     <tr>
-                      <td colSpan={9} className="p-8 text-slate-400">
+                      <td colSpan={9} className="p-8 text-slate-500">
                         {expiryDate ? "No chain data found for this expiry." : "Select expiry date and fetch."}
                       </td>
                     </tr>

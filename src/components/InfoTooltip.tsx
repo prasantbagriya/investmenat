@@ -11,7 +11,7 @@ export default function InfoTooltip({ text }: { text: string }) {
       onMouseLeave={() => setShow(false)}
       onClick={() => setShow(!show)}
     >
-      <Info size={14} className="text-slate-400 hover:text-slate-600 transition-colors" />
+      <Info size={14} className="text-slate-500 hover:text-slate-600 transition-colors" />
       {show && (
         <div className="absolute z-50 left-1/2 -translate-x-1/2 bottom-full mb-1 w-48 bg-slate-800 text-white text-[10px] font-medium p-1.5 rounded shadow-lg text-center leading-relaxed">
           {text}

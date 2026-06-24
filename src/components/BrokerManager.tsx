@@ -349,7 +349,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
           </div>
           <div>
             <h1 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Broker API Center</h1>
-            <p className="text-xs text-slate-500 font-medium">Link your Upstox, Dhan, or Angel One accounts for live portfolio sync.</p>
+            <p className="text-xs text-slate-700 font-medium">Link your Upstox, Dhan, or Angel One accounts for live portfolio sync.</p>
           </div>
         </div>
       </div>
@@ -399,7 +399,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                   <h3 className="text-lg font-black text-indigo-900 flex items-center gap-2">
                     Upstox Developer API
                   </h3>
-                  <p className="text-xs text-slate-500">Requires OAuth 2.0 flow using API Key and Secret.</p>
+                  <p className="text-xs text-slate-700">Requires OAuth 2.0 flow using API Key and Secret.</p>
                 </div>
                 {upstoxToken ? (
                   <span className="bg-emerald-50 text-emerald-700 text-[10px] font-black uppercase tracking-wider px-2 py-1 rounded-lg flex items-center gap-1 border border-emerald-200">
@@ -414,7 +414,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
 
               <div className="bg-slate-50 rounded-2xl p-4 border border-slate-150 space-y-3">
                 <div>
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">API Key (Client ID)</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">API Key (Client ID)</label>
                   <input
                     type="password"
                     value={upstoxApiKey}
@@ -424,7 +424,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                   />
                 </div>
                 <div>
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">API Secret</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">API Secret</label>
                   <input
                     type="password"
                     value={upstoxApiSecret}
@@ -434,7 +434,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                   />
                 </div>
                 <div>
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Redirect URI (Configure in Upstox Portal)</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">Redirect URI (Configure in Upstox Portal)</label>
                   <code className="block w-full px-3 py-2 bg-slate-100 border border-slate-200 rounded-xl text-xs text-slate-600 font-mono select-all">
                     {redirectUri}
                   </code>
@@ -458,18 +458,18 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                   </h4>
                   
                   {upstoxLoading ? (
-                    <div className="text-xs text-slate-500 font-medium animate-pulse">Fetching Account Data...</div>
+                    <div className="text-xs text-slate-700 font-medium animate-pulse">Fetching Account Data...</div>
                   ) : (
                     <div className="grid grid-cols-2 gap-4">
                       <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
-                        <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">User Name</label>
+                        <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">User Name</label>
                         <div className="text-sm font-black text-slate-900">{upstoxProfile?.user_name || 'N/A'}</div>
-                        <div className="text-[10px] text-slate-500">{upstoxProfile?.email || ''}</div>
+                        <div className="text-[10px] text-slate-700">{upstoxProfile?.email || ''}</div>
                       </div>
                       <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
-                        <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Available Margin</label>
+                        <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">Available Margin</label>
                         <div className="text-lg font-black text-indigo-700">₹{upstoxFunds?.available_margin ? Number(upstoxFunds.available_margin).toLocaleString() : '0.00'}</div>
-                        <div className="text-[10px] text-slate-500 font-medium">Used: ₹{upstoxFunds?.used_margin ? Number(upstoxFunds.used_margin).toLocaleString() : '0.00'}</div>
+                        <div className="text-[10px] text-slate-700 font-medium">Used: ₹{upstoxFunds?.used_margin ? Number(upstoxFunds.used_margin).toLocaleString() : '0.00'}</div>
                       </div>
                     </div>
                   )}
@@ -483,10 +483,10 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                         <table className="w-full text-left text-xs">
                           <thead className="bg-slate-50 sticky top-0 z-10">
                             <tr>
-                              <th className="p-2 font-bold text-slate-500">Symbol</th>
-                              <th className="p-2 font-bold text-slate-500 text-right">Qty</th>
-                              <th className="p-2 font-bold text-slate-500 text-right">Avg Price</th>
-                              <th className="p-2 font-bold text-slate-500 text-right">LTP</th>
+                              <th className="p-2 font-bold text-slate-700">Symbol</th>
+                              <th className="p-2 font-bold text-slate-700 text-right">Qty</th>
+                              <th className="p-2 font-bold text-slate-700 text-right">Avg Price</th>
+                              <th className="p-2 font-bold text-slate-700 text-right">LTP</th>
                             </tr>
                           </thead>
                           <tbody className="divide-y divide-slate-100">
@@ -524,13 +524,13 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                   <h3 className="text-lg font-black text-emerald-900 flex items-center gap-2">
                     Dhan HQ API
                   </h3>
-                  <p className="text-xs text-slate-500">Requires direct API Access Token generation from Dhan HQ.</p>
+                  <p className="text-xs text-slate-700">Requires direct API Access Token generation from Dhan HQ.</p>
                 </div>
               </div>
 
               <div className="bg-slate-50 rounded-2xl p-4 border border-slate-150 space-y-3">
                 <div>
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Client ID</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">Client ID</label>
                   <input
                     type="text"
                     value={dhanClientId}
@@ -540,7 +540,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                   />
                 </div>
                 <div>
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Access Token (JWT)</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">Access Token (JWT)</label>
                   <textarea
                     value={dhanAccessToken}
                     onChange={(e) => setDhanAccessToken(e.target.value)}
@@ -567,13 +567,13 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                   </h4>
                   
                   {dhanLoading ? (
-                    <div className="text-xs text-slate-500 font-medium animate-pulse">Fetching Account Data...</div>
+                    <div className="text-xs text-slate-700 font-medium animate-pulse">Fetching Account Data...</div>
                   ) : (
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
-                        <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Available Margin</label>
+                        <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">Available Margin</label>
                         <div className="text-lg font-black text-emerald-700">₹{dhanFunds?.availabelBalance ? Number(dhanFunds.availabelBalance).toLocaleString() : '0.00'}</div>
-                        <div className="text-[10px] text-slate-500 font-medium">Used: ₹{dhanFunds?.utilizedAmount ? Number(dhanFunds.utilizedAmount).toLocaleString() : '0.00'}</div>
+                        <div className="text-[10px] text-slate-700 font-medium">Used: ₹{dhanFunds?.utilizedAmount ? Number(dhanFunds.utilizedAmount).toLocaleString() : '0.00'}</div>
                       </div>
                     </div>
                   )}
@@ -587,9 +587,9 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                         <table className="w-full text-left text-xs">
                           <thead className="bg-slate-50 sticky top-0 z-10">
                             <tr>
-                              <th className="p-2 font-bold text-slate-500">Symbol</th>
-                              <th className="p-2 font-bold text-slate-500 text-right">Qty</th>
-                              <th className="p-2 font-bold text-slate-500 text-right">Avg Price</th>
+                              <th className="p-2 font-bold text-slate-700">Symbol</th>
+                              <th className="p-2 font-bold text-slate-700 text-right">Qty</th>
+                              <th className="p-2 font-bold text-slate-700 text-right">Avg Price</th>
                             </tr>
                           </thead>
                           <tbody className="divide-y divide-slate-100">
@@ -618,13 +618,13 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                   <h3 className="text-lg font-black text-orange-900 flex items-center gap-2">
                     Angel SmartAPI
                   </h3>
-                  <p className="text-xs text-slate-500">Requires API Key, Client Code, and PIN for TOTP generation.</p>
+                  <p className="text-xs text-slate-700">Requires API Key, Client Code, and PIN for TOTP generation.</p>
                 </div>
               </div>
 
               <div className="bg-slate-50 rounded-2xl p-4 border border-slate-150 space-y-3">
                 <div>
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">SmartAPI Key</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">SmartAPI Key</label>
                   <input
                     type="password"
                     value={angelApiKey}
@@ -634,7 +634,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                   />
                 </div>
                 <div>
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Client Code</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">Client Code</label>
                   <input
                     type="text"
                     value={angelClientCode}
@@ -644,7 +644,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                   />
                 </div>
                 <div>
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">MPIN / Password</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">MPIN / Password</label>
                   <input
                     type="password"
                     value={angelPin}
@@ -655,7 +655,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                 </div>
 
                 <div>
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">TOTP Code (Google Authenticator)</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">TOTP Code (Google Authenticator)</label>
                   <input
                     type="text"
                     maxLength={6}
@@ -685,13 +685,13 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                   </h4>
                   
                   {angelLoading ? (
-                    <div className="text-xs text-slate-500 font-medium animate-pulse">Fetching Account Data...</div>
+                    <div className="text-xs text-slate-700 font-medium animate-pulse">Fetching Account Data...</div>
                   ) : (
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
-                        <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Available Margin</label>
+                        <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">Available Margin</label>
                         <div className="text-lg font-black text-orange-700">₹{angelFunds?.availablecash ? Number(angelFunds.availablecash).toLocaleString() : '0.00'}</div>
-                        <div className="text-[10px] text-slate-500 font-medium">Net: ₹{angelFunds?.net || '0.00'}</div>
+                        <div className="text-[10px] text-slate-700 font-medium">Net: ₹{angelFunds?.net || '0.00'}</div>
                       </div>
                     </div>
                   )}
@@ -705,10 +705,10 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                         <table className="w-full text-left text-xs">
                           <thead className="bg-slate-50 sticky top-0 z-10">
                             <tr>
-                              <th className="p-2 font-bold text-slate-500">Symbol</th>
-                              <th className="p-2 font-bold text-slate-500 text-right">Qty</th>
-                              <th className="p-2 font-bold text-slate-500 text-right">Avg Price</th>
-                              <th className="p-2 font-bold text-slate-500 text-right">LTP</th>
+                              <th className="p-2 font-bold text-slate-700">Symbol</th>
+                              <th className="p-2 font-bold text-slate-700 text-right">Qty</th>
+                              <th className="p-2 font-bold text-slate-700 text-right">Avg Price</th>
+                              <th className="p-2 font-bold text-slate-700 text-right">LTP</th>
                             </tr>
                           </thead>
                           <tbody className="divide-y divide-slate-100">
@@ -778,7 +778,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                         <p className="font-bold text-slate-700">Update App Registry</p>
                         <div className="grid grid-cols-1 md:grid-cols-4 gap-1">
                           <div>
-                            <label className="block text-[10px] uppercase font-bold text-slate-400 mb-1">App Name</label>
+                            <label className="block text-[10px] uppercase font-bold text-slate-500 mb-1">App Name</label>
                             <input
                               type="text"
                               value={smartAppName}
@@ -787,7 +787,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                             />
                           </div>
                           <div>
-                            <label className="block text-[10px] uppercase font-bold text-slate-400 mb-1">Redirect URL</label>
+                            <label className="block text-[10px] uppercase font-bold text-slate-500 mb-1">Redirect URL</label>
                             <input
                               type="text"
                               value={smartRedirectUrl}
@@ -796,7 +796,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                             />
                           </div>
                           <div>
-                            <label className="block text-[10px] uppercase font-bold text-slate-400 mb-1">Authorization IP</label>
+                            <label className="block text-[10px] uppercase font-bold text-slate-500 mb-1">Authorization IP</label>
                             <input
                               type="text"
                               value={smartPrimaryIp}
@@ -838,7 +838,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                     
                     <div className="p-1 border-b border-slate-100 bg-slate-50/20 flex flex-wrap gap-2 items-center justify-between text-[11px]">
                       <div className="flex items-center gap-1">
-                        <span className="text-slate-400 font-bold uppercase tracking-wider text-[9px]">API Key:</span>
+                        <span className="text-slate-500 font-bold uppercase tracking-wider text-[9px]">API Key:</span>
                         <span className="font-mono bg-slate-100 px-1 py-1 rounded select-all font-semibold text-slate-705">
                           {angelApiKey || 'fy2JiRJ2'}
                         </span>
@@ -864,7 +864,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                     <div className="overflow-x-auto">
                       <table className="w-full text-left border-collapse text-[11px]">
                         <thead>
-                          <tr className="bg-slate-50/60 border-b border-slate-250 text-slate-500 text-[9px] uppercase font-bold tracking-wider">
+                          <tr className="bg-slate-50/60 border-b border-slate-250 text-slate-700 text-[9px] uppercase font-bold tracking-wider">
                             <th className="p-1">App Name</th>
                             <th className="p-1">Redirect URL</th>
                             <th className="p-1">Postback URL</th>
@@ -881,9 +881,9 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                                 {smartRedirectUrl || 'https://prasantbagriya.online/'}
                               </a>
                             </td>
-                            <td className="p-1 font-mono text-slate-400">{smartPostbackUrl || '-'}</td>
+                            <td className="p-1 font-mono text-slate-500">{smartPostbackUrl || '-'}</td>
                             <td className="p-1 font-mono text-slate-650">{smartPrimaryIp || '47.15.92.237'}</td>
-                            <td className="p-1 font-mono text-slate-400">{smartSecondaryIp || '-'}</td>
+                            <td className="p-1 font-mono text-slate-500">{smartSecondaryIp || '-'}</td>
                             <td className="p-1 text-right font-bold">
                               <div className="flex justify-end gap-1 text-indigo-650">
                                 <button 
@@ -899,7 +899,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                                     setSmartPrimaryIp('');
                                     alert('Row cleared. Fill form & save to reset App registry.');
                                   }}
-                                  className="text-slate-400 hover:text-red-500 text-[10px] font-bold cursor-pointer"
+                                  className="text-slate-500 hover:text-red-500 text-[10px] font-bold cursor-pointer"
                                 >
                                   DELETE
                                 </button>
@@ -943,7 +943,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                   <h3 className="text-lg font-black text-rose-900 flex items-center gap-2">
                     Zerodha Kite Connect
                   </h3>
-                  <p className="text-xs text-slate-500">Connect using Kite API Key and Secret.</p>
+                  <p className="text-xs text-slate-700">Connect using Kite API Key and Secret.</p>
                 </div>
                 {kiteToken ? (
                   <span className="bg-emerald-50 text-emerald-700 text-[10px] font-black uppercase tracking-wider px-2 py-1 rounded-lg flex items-center gap-1 border border-emerald-200">
@@ -958,7 +958,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
 
               <div className="bg-slate-50 rounded-2xl p-4 border border-slate-150 space-y-3">
                 <div>
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Kite API Key</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">Kite API Key</label>
                   <input
                     type="password"
                     value={kiteApiKey}
@@ -968,7 +968,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                   />
                 </div>
                 <div>
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Kite API Secret</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">Kite API Secret</label>
                   <input
                     type="password"
                     value={kiteApiSecret}
@@ -978,7 +978,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                   />
                 </div>
                 <div>
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Redirect URI (Configure in Kite Developer)</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">Redirect URI (Configure in Kite Developer)</label>
                   <code className="block w-full px-3 py-2 bg-slate-100 border border-slate-200 rounded-xl text-xs text-slate-600 font-mono select-all">
                     {redirectUri}
                   </code>
@@ -1005,26 +1005,26 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                           <Building2 size={16} className="text-rose-500" />
                           Zerodha Funds
                         </h4>
-                        {kiteLoading && <RefreshCw size={14} className="animate-spin text-slate-400" />}
+                        {kiteLoading && <RefreshCw size={14} className="animate-spin text-slate-500" />}
                       </div>
                       
                       {kiteFunds ? (
                         <div className="space-y-1">
                           <div className="flex justify-between text-xs">
-                            <span className="text-slate-500 font-bold">Available Margin</span>
+                            <span className="text-slate-700 font-bold">Available Margin</span>
                             <span className="font-black text-slate-800">₹{kiteFunds.available?.margin?.toLocaleString('en-IN') || 0}</span>
                           </div>
                           <div className="flex justify-between text-xs">
-                            <span className="text-slate-500 font-bold">Used Margin</span>
+                            <span className="text-slate-700 font-bold">Used Margin</span>
                             <span className="font-bold text-slate-800">₹{kiteFunds.utilised?.debits?.toLocaleString('en-IN') || 0}</span>
                           </div>
                           <div className="flex justify-between text-xs pt-1 border-t border-slate-100 mt-1">
-                            <span className="text-slate-500 font-bold">Net Balance</span>
+                            <span className="text-slate-700 font-bold">Net Balance</span>
                             <span className="font-black text-rose-600">₹{kiteFunds.net?.toLocaleString('en-IN') || 0}</span>
                           </div>
                         </div>
                       ) : (
-                        <p className="text-xs text-slate-400">Loading funds data...</p>
+                        <p className="text-xs text-slate-500">Loading funds data...</p>
                       )}
                     </div>
                   </div>
@@ -1045,10 +1045,10 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                         <table className="w-full text-left text-xs">
                           <thead className="bg-slate-50 sticky top-0 z-10">
                             <tr>
-                              <th className="p-2 font-bold text-slate-500">Symbol</th>
-                              <th className="p-2 font-bold text-slate-500 text-right">Qty</th>
-                              <th className="p-2 font-bold text-slate-500 text-right">Avg Price</th>
-                              <th className="p-2 font-bold text-slate-500 text-right">LTP</th>
+                              <th className="p-2 font-bold text-slate-700">Symbol</th>
+                              <th className="p-2 font-bold text-slate-700 text-right">Qty</th>
+                              <th className="p-2 font-bold text-slate-700 text-right">Avg Price</th>
+                              <th className="p-2 font-bold text-slate-700 text-right">LTP</th>
                             </tr>
                           </thead>
                           <tbody className="divide-y divide-slate-100">

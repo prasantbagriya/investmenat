@@ -141,7 +141,7 @@ export function WealthForecaster({ sips, fds, holdings, livePrices }: WealthFore
         
         <div>
           <div className="flex justify-between mb-1">
-            <label className="text-xs font-semibold text-slate-500">Projection Period</label>
+            <label className="text-xs font-semibold text-slate-700">Projection Period</label>
             <span className="text-xs font-bold text-indigo-600">{projectionYears} Years</span>
           </div>
           <input 
@@ -154,7 +154,7 @@ export function WealthForecaster({ sips, fds, holdings, livePrices }: WealthFore
 
         <div>
           <div className="flex justify-between mb-1">
-            <label className="text-xs font-semibold text-slate-500">Expected Equity Return (SIPs & Stocks)</label>
+            <label className="text-xs font-semibold text-slate-700">Expected Equity Return (SIPs & Stocks)</label>
             <span className="text-xs font-bold text-indigo-600">{expectedEquityReturn}% p.a.</span>
           </div>
           <input 
@@ -167,7 +167,7 @@ export function WealthForecaster({ sips, fds, holdings, livePrices }: WealthFore
 
         <div>
           <div className="flex justify-between mb-1">
-            <label className="text-xs font-semibold text-slate-500">Expected Debt Return (FDs)</label>
+            <label className="text-xs font-semibold text-slate-700">Expected Debt Return (FDs)</label>
             <span className="text-xs font-bold text-indigo-600">{expectedDebtReturn}% p.a.</span>
           </div>
           <input 
@@ -178,7 +178,7 @@ export function WealthForecaster({ sips, fds, holdings, livePrices }: WealthFore
           />
         </div>
 
-        <div className="bg-slate-50 p-3 rounded-xl flex gap-3 text-xs text-slate-500 mt-2">
+        <div className="bg-slate-50 p-3 rounded-xl flex gap-3 text-xs text-slate-700 mt-2">
           <Info size={16} className="text-indigo-400 shrink-0 mt-0.5" />
           <p>This forecast calculates exponential growth compounded monthly based on your current active SIPs ({formatCurrency(sips.reduce((s,x)=>s+x.amount,0))}/mo), FDs, and Stock Holdings. Inflation is not factored in.</p>
         </div>

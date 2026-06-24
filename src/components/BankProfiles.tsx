@@ -61,7 +61,7 @@ export default function BankProfiles({
       {/* Header */}
       <div className="flex justify-between items-center bg-white p-3 rounded-2xl border border-slate-200 shadow-xs">
         <div>
-          <h2 className="text-xs font-bold text-slate-400 uppercase tracking-widest font-sans">Banking Hub</h2>
+          <h2 className="text-xs font-bold text-slate-500 uppercase tracking-widest font-sans">Banking Hub</h2>
           <p className="text-xl font-black text-slate-900 tracking-tight flex items-center gap-1.5">
             <Building2 size={20} className="text-indigo-600" /> Bank Profiles
           </p>
@@ -85,26 +85,26 @@ export default function BankProfiles({
           >
             <button
               onClick={() => setIsFormOpen(false)}
-              className="absolute top-3 right-3 text-slate-400 hover:text-slate-600 p-1"
+              className="absolute top-3 right-3 text-slate-500 hover:text-slate-600 p-1"
             >
               <X size={16} />
             </button>
             <h3 className="font-bold text-slate-800 mb-3 text-sm">Add New Bank Account</h3>
             <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-3">
               <div>
-                <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wide mb-1">Bank Name</label>
+                <label className="block text-[10px] font-bold text-slate-700 uppercase tracking-wide mb-1">Bank Name</label>
                 <input required placeholder="e.g. HDFC, SBI" value={bankName} onChange={e => setBankName(e.target.value)} className="w-full border border-slate-200 rounded-lg p-2 text-sm bg-slate-50 focus:bg-white" />
               </div>
               <div>
-                <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wide mb-1">Account Label</label>
+                <label className="block text-[10px] font-bold text-slate-700 uppercase tracking-wide mb-1">Account Label</label>
                 <input required placeholder="e.g. Primary Savings" value={accountName} onChange={e => setAccountName(e.target.value)} className="w-full border border-slate-200 rounded-lg p-2 text-sm bg-slate-50 focus:bg-white" />
               </div>
               <div>
-                <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wide mb-1">A/C Number (Last 4 digits)</label>
+                <label className="block text-[10px] font-bold text-slate-700 uppercase tracking-wide mb-1">A/C Number (Last 4 digits)</label>
                 <input placeholder="e.g. 1234 (Optional)" value={accountNumber} onChange={e => setAccountNumber(e.target.value)} className="w-full border border-slate-200 rounded-lg p-2 text-sm bg-slate-50 focus:bg-white" />
               </div>
               <div>
-                <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wide mb-1">Initial Balance (₹)</label>
+                <label className="block text-[10px] font-bold text-slate-700 uppercase tracking-wide mb-1">Initial Balance (₹)</label>
                 <input required type="number" step="0.01" placeholder="0.00" value={initialBalance} onChange={e => setInitialBalance(e.target.value)} className="w-full border border-slate-200 rounded-lg p-2 text-sm font-mono bg-slate-50 focus:bg-white" />
               </div>
               <div className="md:col-span-2 pt-2">
@@ -119,7 +119,7 @@ export default function BankProfiles({
       {!selectedBankId && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {bankAccounts.length === 0 ? (
-            <div className="col-span-full py-10 text-center text-slate-400 border border-dashed border-slate-300 rounded-2xl">
+            <div className="col-span-full py-10 text-center text-slate-500 border border-dashed border-slate-300 rounded-2xl">
               <Landmark size={32} className="mx-auto mb-2 opacity-50" />
               <p className="text-sm">No bank profiles added yet.</p>
             </div>
@@ -138,13 +138,13 @@ export default function BankProfiles({
                     </div>
                     <div>
                       <h4 className="font-bold text-slate-800 leading-tight">{b.bankName}</h4>
-                      <p className="text-xs text-slate-500">{b.accountName} {b.accountNumber ? `(..${b.accountNumber})` : ''}</p>
+                      <p className="text-xs text-slate-700">{b.accountName} {b.accountNumber ? `(..${b.accountNumber})` : ''}</p>
                     </div>
                   </div>
                   <ChevronRight size={18} className="text-slate-300 group-hover:text-indigo-500 transition-colors" />
                 </div>
                 <div className="mt-4 border-t border-slate-100 pt-3">
-                  <p className="text-[10px] uppercase font-bold text-slate-400">Current Balance</p>
+                  <p className="text-[10px] uppercase font-bold text-slate-500">Current Balance</p>
                   <p className="text-2xl font-black text-slate-900 font-mono tracking-tight">₹{b.currentBalance.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</p>
                 </div>
               </motion.div>
@@ -162,7 +162,7 @@ export default function BankProfiles({
         >
           <div className="bg-slate-900 p-4 text-white flex justify-between items-center">
             <div>
-              <button onClick={() => setSelectedBankId(null)} className="text-slate-400 hover:text-white text-xs font-bold mb-1 flex items-center gap-1">
+              <button onClick={() => setSelectedBankId(null)} className="text-slate-500 hover:text-white text-xs font-bold mb-1 flex items-center gap-1">
                 &larr; Back to Profiles
               </button>
               <h3 className="text-lg font-black flex items-center gap-2">
@@ -170,14 +170,14 @@ export default function BankProfiles({
               </h3>
             </div>
             <div className="text-right">
-              <p className="text-[10px] text-slate-400 uppercase font-bold tracking-widest">Live Balance</p>
+              <p className="text-[10px] text-slate-500 uppercase font-bold tracking-widest">Live Balance</p>
               <p className="text-xl font-mono font-bold">₹{selectedBank.currentBalance.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</p>
             </div>
           </div>
 
           <div className="p-0">
             <div className="bg-slate-50 px-4 py-2 border-b border-slate-200 flex justify-between items-center">
-              <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">Passbook History</span>
+              <span className="text-xs font-bold text-slate-700 uppercase tracking-widest">Passbook History</span>
               <button 
                 onClick={async () => {
                   if (window.confirm('Are you sure you want to delete this bank profile? Transactions will not be deleted but will lose linkage.')) {
@@ -192,7 +192,7 @@ export default function BankProfiles({
             </div>
 
             {bankTransactions.length === 0 ? (
-              <p className="text-center text-slate-500 py-8 text-sm">No transactions logged for this bank yet.</p>
+              <p className="text-center text-slate-700 py-8 text-sm">No transactions logged for this bank yet.</p>
             ) : (
               <div className="divide-y divide-slate-100 max-h-[60vh] overflow-y-auto">
                 {bankTransactions.map(t => (
@@ -203,14 +203,14 @@ export default function BankProfiles({
                       </div>
                       <div>
                         <p className="text-sm font-bold text-slate-800">{t.category}</p>
-                        <p className="text-[10px] text-slate-500 truncate max-w-[150px] md:max-w-xs">{t.notes || t.type}</p>
+                        <p className="text-[10px] text-slate-700 truncate max-w-[150px] md:max-w-xs">{t.notes || t.type}</p>
                       </div>
                     </div>
                     <div className="text-right">
                       <p className={`font-mono font-bold text-sm ${t.type === 'income' ? 'text-emerald-600' : 'text-slate-900'}`}>
                         {t.type === 'income' ? '+' : '-'}₹{t.amount.toLocaleString()}
                       </p>
-                      <p className="text-[10px] text-slate-400">{t.date}</p>
+                      <p className="text-[10px] text-slate-500">{t.date}</p>
                     </div>
                   </div>
                 ))}

@@ -159,7 +159,7 @@ export default function SavingsGoals({
       {/* Header element */}
       <div className="flex md:flex-row flex-col justify-between items-start md:items-center gap-2 bg-white p-2 rounded-xl border border-slate-200/80">
         <div>
-          <h2 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest font-sans">Accumulation targets</h2>
+          <h2 className="text-[11px] font-bold text-slate-500 uppercase tracking-widest font-sans">Accumulation targets</h2>
           <p className="text-xl font-bold text-slate-900 tracking-tight font-sans mt-0.5">Savings Campaigns</p>
           <p className="text-xs text-slate-450 mt-1 font-sans">Establish goal metrics and track capital progression dynamically.</p>
         </div>
@@ -180,13 +180,13 @@ export default function SavingsGoals({
       {savingsGoals.length > 0 && (
         <div className="bg-slate-50/50 p-2 rounded-xl border border-slate-200/80 flex flex-col md:flex-row justify-between items-start md:items-center gap-3" id="goals-total-overview">
           <div className="space-y-1">
-            <h3 className="text-[11px] font-bold uppercase tracking-widest text-slate-400 font-sans">Active Savings Portfolio</h3>
+            <h3 className="text-[11px] font-bold uppercase tracking-widest text-slate-500 font-sans">Active Savings Portfolio</h3>
             <p className="text-2xl font-bold tracking-tight text-slate-950 font-sans">
               ₹{aggregations.totalSaved.toLocaleString('en-IN', { maximumFractionDigits: 0 })}
-              <span className="text-slate-400 text-sm font-normal"> saved of </span>
+              <span className="text-slate-500 text-sm font-normal"> saved of </span>
               ₹{aggregations.totalTarget.toLocaleString('en-IN', { maximumFractionDigits: 0 })}
             </p>
-            <p className="text-xs text-slate-400 font-sans font-medium mt-1">Reconciled {aggregations.completedGoals} of {savingsGoals.length} targets currently</p>
+            <p className="text-xs text-slate-500 font-sans font-medium mt-1">Reconciled {aggregations.completedGoals} of {savingsGoals.length} targets currently</p>
           </div>
 
           <div className="md:w-64 w-full space-y-1.5 font-sans">
@@ -222,7 +222,7 @@ export default function SavingsGoals({
                 <button
                   type="button"
                   onClick={() => setIsFormOpen(false)}
-                  className="p-1 text-slate-400 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors cursor-pointer"
+                  className="p-1 text-slate-500 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors cursor-pointer"
                 >
                   <X size={16} />
                 </button>
@@ -232,7 +232,7 @@ export default function SavingsGoals({
                 
                 {/* Title */}
                 <div className="space-y-1.5 md:col-span-2">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-sans">Goal Name</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block font-sans">Goal Name</label>
                   <input
                     type="text"
                     required
@@ -246,7 +246,7 @@ export default function SavingsGoals({
 
                 {/* Target amount */}
                 <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-sans">Total Target (₹)</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block font-sans">Total Target (₹)</label>
                   <div className="relative">
                     <span className="absolute left-3 top-2 text-slate-450 text-xs font-semibold">₹</span>
                     <input
@@ -264,7 +264,7 @@ export default function SavingsGoals({
 
                 {/* Current Savings */}
                 <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-sans">Initial Savings (₹)</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block font-sans">Initial Savings (₹)</label>
                   <div className="relative">
                     <span className="absolute left-3 top-2 text-slate-450 text-xs font-semibold">₹</span>
                     <input
@@ -281,7 +281,7 @@ export default function SavingsGoals({
 
                 {/* Target Deadline */}
                 <div className="space-y-1.5 md:col-span-2">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-sans">Target Deadline</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block font-sans">Target Deadline</label>
                   <input
                     type="date"
                     required
@@ -299,7 +299,7 @@ export default function SavingsGoals({
                 <button
                   type="button"
                   onClick={() => setIsFormOpen(false)}
-                  className="px-1 py-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-50 font-semibold text-xs rounded transition-colors"
+                  className="px-1 py-1.5 text-slate-700 hover:text-slate-900 hover:bg-slate-50 font-semibold text-xs rounded transition-colors"
                 >
                   Cancel
                 </button>
@@ -319,7 +319,7 @@ export default function SavingsGoals({
 
       {/* Grid listing goals */}
       {savingsGoals.length === 0 ? (
-        <div className="bg-white p-6 text-center text-slate-400 rounded-xl border border-slate-205 border-slate-200/80" id="no-goals-container">
+        <div className="bg-white p-6 text-center text-slate-500 rounded-xl border border-slate-205 border-slate-200/80" id="no-goals-container">
           <p className="text-xs">You have not established savings metrics yet. Create your first goal metric above.</p>
         </div>
       ) : (
@@ -351,17 +351,17 @@ export default function SavingsGoals({
 
                   <div className="flex items-baseline gap-1 mt-1 font-mono text-[11px]">
                     <span className="text-sm font-bold text-slate-955">₹{g.currentSavings.toLocaleString('en-IN')}</span>
-                    <span className="text-slate-400"> of ₹{g.targetAmount.toLocaleString('en-IN')} Target</span>
+                    <span className="text-slate-500"> of ₹{g.targetAmount.toLocaleString('en-IN')} Target</span>
                   </div>
 
                   {/* Deadline countdown */}
-                  <div className="flex items-center gap-1.5 text-[10px] text-slate-400 mt-1 font-mono">
+                  <div className="flex items-center gap-1.5 text-[10px] text-slate-500 mt-1 font-mono">
                     <Calendar size={11} /> Deadline: {g.deadline}
                   </div>
 
                   {/* Animated Progress Bar */}
                   <div className="space-y-1.5 mt-2 font-sans">
-                    <div className="flex justify-between text-[10px] font-bold text-slate-500 font-mono">
+                    <div className="flex justify-between text-[10px] font-bold text-slate-700 font-mono">
                       <span>Utilization</span>
                       <span>{pct.toFixed(0)}%</span>
                     </div>
@@ -381,7 +381,7 @@ export default function SavingsGoals({
                   {contributingId === g.id ? (
                     <div className="flex gap-1 items-center">
                       <div className="relative shrink min-w-0">
-                        <span className="absolute left-2 top-1 text-[10px] text-slate-400 font-semibold">₹</span>
+                        <span className="absolute left-2 top-1 text-[10px] text-slate-500 font-semibold">₹</span>
                         <input
                           type="number"
                           placeholder="Sum"
@@ -399,7 +399,7 @@ export default function SavingsGoals({
                       </button>
                       <button
                         onClick={() => setContributingId(null)}
-                        className="text-slate-400 hover:text-slate-955 p-1"
+                        className="text-slate-500 hover:text-slate-955 p-1"
                       >
                         <X size={12} />
                       </button>
@@ -411,20 +411,20 @@ export default function SavingsGoals({
                           setContributingId(g.id);
                           setQuickAmount('');
                         }}
-                        className="text-[10px] text-slate-500 hover:text-slate-950 font-semibold text-left flex items-center gap-1 cursor-pointer font-sans"
+                        className="text-[10px] text-slate-700 hover:text-slate-950 font-semibold text-left flex items-center gap-1 cursor-pointer font-sans"
                       >
                         <Plus size={12} /> Live capital deposit
                       </button>
                     )
                   )}
 
-                  <div className="flex justify-between items-center text-[10px] mt-1 text-slate-400 font-mono">
+                  <div className="flex justify-between items-center text-[10px] mt-1 text-slate-500 font-mono">
                     <span>ID: {g.id.substring(0,6)}</span>
                     
                     <div className="flex gap-1.5">
                       <button
                         onClick={() => startEdit(g)}
-                        className="p-1 text-slate-400 hover:text-slate-955 transition-colors cursor-pointer"
+                        className="p-1 text-slate-500 hover:text-slate-955 transition-colors cursor-pointer"
                         title="Edit target fields"
                       >
                         <Edit2 size={11} />
@@ -435,7 +435,7 @@ export default function SavingsGoals({
                             onDeleteGoal(g.id).catch(console.error);
                           }
                         }}
-                        className="p-1 text-slate-400 hover:text-red-655 transition-colors cursor-pointer"
+                        className="p-1 text-slate-500 hover:text-red-655 transition-colors cursor-pointer"
                         title="Delete goal"
                       >
                         <Trash2 size={11} />

@@ -178,7 +178,7 @@ export default function PendingPayments({
       {/* Header and Trigger button */}
       <div className="flex md:flex-row flex-col justify-between items-start md:items-center gap-2 bg-white p-2 rounded-xl border border-slate-200/80">
         <div>
-          <h2 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest font-sans">Payment Ledger</h2>
+          <h2 className="text-[11px] font-bold text-slate-500 uppercase tracking-widest font-sans">Payment Ledger</h2>
           <p className="text-xl font-bold text-slate-900 tracking-tight font-sans mt-0.5">Outstanding Balances</p>
           <p className="text-xs text-slate-450 mt-1 font-sans font-medium">Clear track of payments due or receivable, with date and alerts.</p>
         </div>
@@ -201,7 +201,7 @@ export default function PendingPayments({
         {/* Money you owe */}
         <div className="bg-white p-2 rounded-xl border border-slate-200/80">
           <div className="flex justify-between items-start">
-            <span className="text-[11px] font-bold text-slate-400 uppercase tracking-widest font-sans">I owe others</span>
+            <span className="text-[11px] font-bold text-slate-500 uppercase tracking-widest font-sans">I owe others</span>
             <span className="text-[10px] bg-red-50 text-red-700 px-1 py-0.5 rounded-full uppercase tracking-wider font-semibold scale-90">Debit Ledger</span>
           </div>
           <div className="mt-1">
@@ -214,7 +214,7 @@ export default function PendingPayments({
         {/* Money owed to you */}
         <div className="bg-white p-2 rounded-xl border border-slate-200/80">
           <div className="flex justify-between items-start">
-            <span className="text-[11px] font-bold text-slate-400 uppercase tracking-widest font-sans">Others owe me</span>
+            <span className="text-[11px] font-bold text-slate-500 uppercase tracking-widest font-sans">Others owe me</span>
             <span className="text-[10px] bg-emerald-50 text-emerald-700 px-1 py-0.5 rounded-full uppercase tracking-wider font-semibold scale-90">Credit Ledger</span>
           </div>
           <div className="mt-1">
@@ -227,7 +227,7 @@ export default function PendingPayments({
         {/* Net Outstanding Balance */}
         <div className="bg-white p-2 rounded-xl border border-slate-200/80">
           <div className="flex justify-between items-start">
-            <span className="text-[11px] font-bold text-slate-400 uppercase tracking-widest font-sans">Net Balance</span>
+            <span className="text-[11px] font-bold text-slate-500 uppercase tracking-widest font-sans">Net Balance</span>
             <span className="text-[10px] bg-slate-100 text-slate-700 px-1 py-0.5 rounded-full uppercase tracking-wider font-semibold scale-90 font-sans">Ledger</span>
           </div>
           <div className="mt-1">
@@ -257,7 +257,7 @@ export default function PendingPayments({
                 <button
                   type="button"
                   onClick={() => setIsFormOpen(false)}
-                  className="p-1 text-slate-400 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors cursor-pointer"
+                  className="p-1 text-slate-500 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors cursor-pointer"
                 >
                   <X size={16} />
                 </button>
@@ -267,7 +267,7 @@ export default function PendingPayments({
                 
                 {/* Owe / Owed type selection */}
                 <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-sans">Ledger Classification</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block font-sans">Ledger Classification</label>
                   <div className="grid grid-cols-2 gap-1 bg-slate-50 p-1 rounded-md border border-slate-200">
                     <button
                       type="button"
@@ -290,7 +290,7 @@ export default function PendingPayments({
 
                 {/* Target Person */}
                 <div className="space-y-1.5 relative">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-sans">Name / Entity</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block font-sans">Name / Entity</label>
                   <div className="relative">
                     <input
                       type="text"
@@ -333,7 +333,7 @@ export default function PendingPayments({
                               >
                                 <div className="font-bold text-slate-800">{c.name}</div>
                                 {(c.phone || c.email) && (
-                                  <div className="text-[9px] text-slate-400 font-mono mt-0.5">{c.phone || c.email}</div>
+                                  <div className="text-[9px] text-slate-500 font-mono mt-0.5">{c.phone || c.email}</div>
                                 )}
                               </div>
                             ))}
@@ -352,7 +352,7 @@ export default function PendingPayments({
                           )}
                           
                           {(contacts.length === 0 && person.length === 0) && (
-                            <div className="px-3 py-3 text-xs text-slate-500 italic text-center border-b border-slate-100">
+                            <div className="px-3 py-3 text-xs text-slate-700 italic text-center border-b border-slate-100">
                               Start typing to add a new name manually.
                             </div>
                           )}
@@ -370,7 +370,7 @@ export default function PendingPayments({
 
                 {/* Due Amount */}
                 <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-sans">Amount (₹)</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block font-sans">Amount (₹)</label>
                   <div className="relative">
                     <span className="absolute left-3 top-2 text-slate-450 text-xs font-sans font-semibold">₹</span>
                     <input
@@ -388,7 +388,7 @@ export default function PendingPayments({
 
                 {/* Calendar Due Date */}
                 <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-sans">Due Date</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block font-sans">Due Date</label>
                   <input
                     type="date"
                     required
@@ -403,7 +403,7 @@ export default function PendingPayments({
 
               {/* Optional Memo Notes */}
               <div className="space-y-1.5">
-                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-sans">Memo Notes (Optional)</label>
+                <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block font-sans">Memo Notes (Optional)</label>
                 <input
                   type="text"
                   placeholder="e.g. dinner bill, refunds..."
@@ -419,7 +419,7 @@ export default function PendingPayments({
                 <button
                   type="button"
                   onClick={() => setIsFormOpen(false)}
-                  className="px-1 py-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-50 font-semibold text-xs rounded transition-colors"
+                  className="px-1 py-1.5 text-slate-700 hover:text-slate-900 hover:bg-slate-50 font-semibold text-xs rounded transition-colors"
                 >
                   Cancel
                 </button>
@@ -445,14 +445,14 @@ export default function PendingPayments({
           <div className="flex bg-slate-100/80 p-0.5 rounded-md">
             <button
               onClick={() => setActiveTab('active')}
-              className={`flex items-center gap-1.5 px-1 py-1 text-[11px] font-bold rounded-sm cursor-pointer transition-all ${activeTab === 'active' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-500 hover:text-slate-900'}`}
+              className={`flex items-center gap-1.5 px-1 py-1 text-[11px] font-bold rounded-sm cursor-pointer transition-all ${activeTab === 'active' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-700 hover:text-slate-900'}`}
               id="active-tab-selector"
             >
               <Clock size={12} /> Active ({pendingPayments.filter(p => !p.completed).length})
             </button>
             <button
               onClick={() => setActiveTab('settled')}
-              className={`flex items-center gap-1.5 px-1 py-1 text-[11px] font-bold rounded-sm cursor-pointer transition-all ${activeTab === 'settled' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-500 hover:text-slate-900'}`}
+              className={`flex items-center gap-1.5 px-1 py-1 text-[11px] font-bold rounded-sm cursor-pointer transition-all ${activeTab === 'settled' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-700 hover:text-slate-900'}`}
               id="settled-tab-selector"
             >
               <CheckCircle size={12} /> Settled ({pendingPayments.filter(p => p.completed).length})
@@ -468,7 +468,7 @@ export default function PendingPayments({
 
         {/* Content list */}
         {filteredPayments.length === 0 ? (
-          <div className="p-6 text-center text-slate-400 bg-white">
+          <div className="p-6 text-center text-slate-500 bg-white">
             <p className="text-xs">No ledger entries match this state.</p>
           </div>
         ) : (
@@ -484,8 +484,8 @@ export default function PendingPayments({
               return (
                 <div key={personName} className="p-2">
                   <div className="flex justify-between items-center mb-2 px-1 border-b border-slate-100 pb-1">
-                    <span className="font-bold text-slate-800 text-sm flex items-center gap-1.5"><User size={14} className="text-slate-400"/> {personName}</span>
-                    <span className={`text-xs font-bold ${netGroup > 0 ? 'text-emerald-600' : netGroup < 0 ? 'text-rose-600' : 'text-slate-500'}`}>
+                    <span className="font-bold text-slate-800 text-sm flex items-center gap-1.5"><User size={14} className="text-slate-500"/> {personName}</span>
+                    <span className={`text-xs font-bold ${netGroup > 0 ? 'text-emerald-600' : netGroup < 0 ? 'text-rose-600' : 'text-slate-700'}`}>
                       Net: {netGroup < 0 ? '-' : ''}₹{Math.abs(netGroup).toLocaleString('en-IN', { minimumFractionDigits: 2 })}
                     </span>
                   </div>
@@ -515,7 +515,7 @@ export default function PendingPayments({
                                 )}
                               </div>
                               {p.notes && <p className="text-xs text-slate-600 mt-1">{p.notes}</p>}
-                              <div className="flex items-center gap-1 mt-1 text-[10px] text-slate-500 font-mono">
+                              <div className="flex items-center gap-1 mt-1 text-[10px] text-slate-700 font-mono">
                                 <span className="flex items-center gap-1">
                                   <Calendar size={10} /> Due: {p.dueDate}
                                 </span>
@@ -536,7 +536,7 @@ export default function PendingPayments({
                               {!p.completed && (
                                 <button
                                   onClick={() => startEdit(p)}
-                                  className="p-1 text-slate-400 hover:text-slate-950 rounded transition-colors cursor-pointer"
+                                  className="p-1 text-slate-500 hover:text-slate-950 rounded transition-colors cursor-pointer"
                                   title="Edit log details"
                                 >
                                   <Edit2 size={12} />
@@ -548,7 +548,7 @@ export default function PendingPayments({
                                     onDeletePayment(p.id).catch(console.error);
                                   }
                                 }}
-                                className="p-1 text-slate-400 hover:text-rose-600 rounded transition-colors cursor-pointer"
+                                className="p-1 text-slate-500 hover:text-rose-600 rounded transition-colors cursor-pointer"
                                 title="Delete entry"
                               >
                                 <Trash2 size={12} />

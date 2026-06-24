@@ -62,7 +62,7 @@ export default function LoginScreen({
             <h1 className="text-3xl font-black tracking-tight text-slate-900 font-display">
               Invest<span className="text-indigo-600">Mant</span>
             </h1>
-            <p className="text-[13px] text-slate-500 font-medium px-4 leading-relaxed">
+            <p className="text-[13px] text-slate-700 font-medium px-4 leading-relaxed">
               India's premium offline-safe PWA investment tracker. Manage stock holdings, live NAV SIP triggers, and financial goals.
             </p>
           </div>
@@ -101,7 +101,7 @@ export default function LoginScreen({
             <button
               type="button"
               onClick={() => setShowCustomLoginConfig(!showCustomLoginConfig)}
-              className="text-[11px] font-bold text-slate-400 hover:text-slate-600 transition-colors uppercase tracking-wider flex items-center justify-center gap-1.5 mx-auto cursor-pointer group"
+              className="text-[11px] font-bold text-slate-500 hover:text-slate-600 transition-colors uppercase tracking-wider flex items-center justify-center gap-1.5 mx-auto cursor-pointer group"
             >
               <Settings size={14} className="group-hover:rotate-90 transition-transform duration-300" />
               Advanced Setup
@@ -115,12 +115,12 @@ export default function LoginScreen({
                 animate={{ opacity: 1, height: 'auto' }}
                 className="mt-5 p-5 bg-slate-50 border border-slate-100 rounded-2xl text-left space-y-4"
               >
-                <p className="text-xs text-slate-500 leading-relaxed font-medium">
+                <p className="text-xs text-slate-700 leading-relaxed font-medium">
                   Add custom developer credentials or paste a temporary access token from Google OAuth playground.
                 </p>
 
                 <div className="space-y-1.5">
-                  <label className="block font-bold text-slate-400 uppercase tracking-widest text-[10px]">Google Client ID</label>
+                  <label className="block font-bold text-slate-500 uppercase tracking-widest text-[10px]">Google Client ID</label>
                   <input
                     type="text"
                     value={customLoginClientId}
@@ -139,7 +139,7 @@ export default function LoginScreen({
                 </button>
 
                 <div className="pt-4 border-t border-slate-200 space-y-1.5">
-                  <label className="block font-bold text-slate-400 uppercase tracking-widest text-[10px]">Access Token Bypass</label>
+                  <label className="block font-bold text-slate-500 uppercase tracking-widest text-[10px]">Access Token Bypass</label>
                   <div className="flex gap-2">
                     <input
                       type="text"
@@ -162,7 +162,7 @@ export default function LoginScreen({
           </div>
         </div>
 
-        <p className="text-center mt-6 text-[11px] text-slate-400 font-medium">
+        <p className="text-center mt-6 text-[11px] text-slate-500 font-medium">
           Your data remains secure and private.
         </p>
       </motion.div>

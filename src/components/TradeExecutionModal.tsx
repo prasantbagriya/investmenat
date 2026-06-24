@@ -201,13 +201,13 @@ export default function TradeExecutionModal({ isOpen, onClose, symbol, ltp }: Tr
               <div className="flex bg-slate-100 p-1 rounded-xl">
                 <button
                   onClick={() => setOrderSide('BUY')}
-                  className={`flex-1 py-2 font-bold text-sm rounded-lg transition-all ${orderSide === 'BUY' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-500'}`}
+                  className={`flex-1 py-2 font-bold text-sm rounded-lg transition-all ${orderSide === 'BUY' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-700'}`}
                 >
                   <TrendingUp size={16} className="inline mr-1" /> BUY
                 </button>
                 <button
                   onClick={() => setOrderSide('SELL')}
-                  className={`flex-1 py-2 font-bold text-sm rounded-lg transition-all ${orderSide === 'SELL' ? 'bg-white text-rose-700 shadow-sm' : 'text-slate-500'}`}
+                  className={`flex-1 py-2 font-bold text-sm rounded-lg transition-all ${orderSide === 'SELL' ? 'bg-white text-rose-700 shadow-sm' : 'text-slate-700'}`}
                 >
                   <TrendingDown size={16} className="inline mr-1" /> SELL
                 </button>
@@ -216,7 +216,7 @@ export default function TradeExecutionModal({ isOpen, onClose, symbol, ltp }: Tr
               {/* Order Options */}
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Product</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">Product</label>
                   <select 
                     value={productType} 
                     onChange={(e: any) => setProductType(e.target.value)}
@@ -227,7 +227,7 @@ export default function TradeExecutionModal({ isOpen, onClose, symbol, ltp }: Tr
                   </select>
                 </div>
                 <div>
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Type</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">Type</label>
                   <select 
                     value={orderType} 
                     onChange={(e: any) => setOrderType(e.target.value)}
@@ -256,7 +256,7 @@ export default function TradeExecutionModal({ isOpen, onClose, symbol, ltp }: Tr
               {/* Qty & Price */}
               <div className={`grid ${isGtt ? 'grid-cols-3' : 'grid-cols-2'} gap-3`}>
                 <div>
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Quantity</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">Quantity</label>
                   <input 
                     type="number" 
                     min="1"
@@ -267,7 +267,7 @@ export default function TradeExecutionModal({ isOpen, onClose, symbol, ltp }: Tr
                 </div>
                 {isGtt && (
                   <div>
-                    <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Trigger Price</label>
+                    <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">Trigger Price</label>
                     <input 
                       type="number" 
                       value={triggerPrice}
@@ -277,20 +277,20 @@ export default function TradeExecutionModal({ isOpen, onClose, symbol, ltp }: Tr
                   </div>
                 )}
                 <div>
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">{isGtt ? 'Limit Price' : 'Price'}</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">{isGtt ? 'Limit Price' : 'Price'}</label>
                   <input 
                     type="number" 
                     value={price}
                     onChange={(e) => setPrice(Number(e.target.value))}
                     disabled={!isGtt && orderType === 'MARKET'}
-                    className={`w-full bg-slate-50 border border-slate-200 p-2.5 rounded-xl text-sm font-bold focus:outline-none focus:border-indigo-400 ${!isGtt && orderType === 'MARKET' ? 'text-slate-400' : 'text-slate-800'}`}
+                    className={`w-full bg-slate-50 border border-slate-200 p-2.5 rounded-xl text-sm font-bold focus:outline-none focus:border-indigo-400 ${!isGtt && orderType === 'MARKET' ? 'text-slate-500' : 'text-slate-800'}`}
                   />
                 </div>
               </div>
 
               {/* Broker Selection */}
               <div>
-                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-2">Route Order Via</label>
+                <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-2">Route Order Via</label>
                 <div className="grid grid-cols-2 gap-2">
                   {[
                     { id: 'upstox', name: 'Upstox', color: 'indigo' },

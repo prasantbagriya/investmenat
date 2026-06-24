@@ -282,7 +282,7 @@ export default function TaxCapitalGains({ holdings, livePrices = {} }: TaxCapita
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-1 bg-white p-2.5 border border-slate-200/80 rounded-2xl shadow-xs">
         <div>
           <h2 className="font-bold text-sm text-slate-800 font-display">Indian Capital Gains & Tax-Saving Ledger</h2>
-          <p className="text-[10px] text-slate-400 mt-1">Estimating STCG/LTCG taxes under 2024 budget rules and mapping 80C relief benchmarks.</p>
+          <p className="text-[10px] text-slate-500 mt-1">Estimating STCG/LTCG taxes under 2024 budget rules and mapping 80C relief benchmarks.</p>
         </div>
         <div className="flex gap-1.5 text-xs text-sans font-bold">
           <select 
@@ -315,20 +315,20 @@ export default function TaxCapitalGains({ holdings, livePrices = {} }: TaxCapita
             </div>
 
             {holdings.length === 0 ? (
-              <p className="text-[11px] text-slate-400 text-center py-3">Register holdings inside the Stock & MF Tracker to calculate gains.</p>
+              <p className="text-[11px] text-slate-500 text-center py-3">Register holdings inside the Stock & MF Tracker to calculate gains.</p>
             ) : (
               <div className="space-y-2">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                   {/* Short term card */}
                   <div className="border border-slate-100 p-2 rounded-xl space-y-1 bg-slate-50/20">
-                    <div className="flex justify-between items-center text-[10px] uppercase tracking-wider text-slate-400 font-bold">
+                    <div className="flex justify-between items-center text-[10px] uppercase tracking-wider text-slate-500 font-bold">
                       <span>Short-Term Gains (STCG)</span>
                       <span className="bg-amber-100 text-amber-800 p-0.5 px-1 rounded font-bold text-[9px]">HELD &lt; 365 Days</span>
                     </div>
                     <p className="text-xl font-black font-mono text-slate-800">
                       ₹{aggregateGains.stcgGains.toLocaleString('en-IN', { maximumFractionDigits: 1 })}
                     </p>
-                    <div className="flex justify-between text-[10px] text-slate-400 pt-1.5 border-t border-slate-100">
+                    <div className="flex justify-between text-[10px] text-slate-500 pt-1.5 border-t border-slate-100">
                       <span>Tax Rate:</span>
                       <span className="font-bold text-slate-700">20% under 2024 budget</span>
                     </div>
@@ -340,18 +340,18 @@ export default function TaxCapitalGains({ holdings, livePrices = {} }: TaxCapita
 
                   {/* Long term card */}
                   <div className="border border-slate-100 p-2 rounded-xl space-y-1 bg-slate-50/20">
-                    <div className="flex justify-between items-center text-[10px] uppercase tracking-wider text-slate-400 font-bold">
+                    <div className="flex justify-between items-center text-[10px] uppercase tracking-wider text-slate-500 font-bold">
                       <span>Long-Term Gains (LTCG)</span>
                       <span className="bg-emerald-100 text-emerald-800 p-0.5 px-1 rounded font-bold text-[9px]">HELD &gt; 365 Days</span>
                     </div>
                     <p className="text-xl font-black font-mono text-slate-800">
                       ₹{aggregateGains.ltcgGains.toLocaleString('en-IN', { maximumFractionDigits: 1 })}
                     </p>
-                    <div className="flex justify-between text-[10px] text-slate-400 pt-1.5 border-t border-slate-100">
+                    <div className="flex justify-between text-[10px] text-slate-500 pt-1.5 border-t border-slate-100">
                       <span>LTCG Free Threshold Exemption:</span>
                       <span className="font-bold text-slate-700">₹1,25,000</span>
                     </div>
-                    <div className="flex justify-between text-[10px] text-slate-400">
+                    <div className="flex justify-between text-[10px] text-slate-500">
                       <span>Tax Rate (above exempt):</span>
                       <span className="font-bold text-slate-700">12.5%</span>
                     </div>
@@ -365,7 +365,7 @@ export default function TaxCapitalGains({ holdings, livePrices = {} }: TaxCapita
                 <div className="bg-slate-900 text-white rounded-xl p-2 flex justify-between items-center">
                   <div>
                     <h5 className="font-bold text-xs text-slate-350 uppercase tracking-widest">Aggregate Estimated Gains Tax Liability</h5>
-                    <p className="text-xs text-slate-400 mt-0.5">Indicative tax payable based on total profit declarations.</p>
+                    <p className="text-xs text-slate-500 mt-0.5">Indicative tax payable based on total profit declarations.</p>
                   </div>
                   <div className="text-right font-mono">
                     <span className="text-lg font-black text-rose-400">₹{totalTaxLiability.toLocaleString('en-IN', { maximumFractionDigits: 1 })}</span>
@@ -394,7 +394,7 @@ export default function TaxCapitalGains({ holdings, livePrices = {} }: TaxCapita
             
             {/* Limit Progress bar */}
             <div className="space-y-1.5">
-              <div className="flex justify-between items-center text-[10px] font-bold text-slate-400 font-mono">
+              <div className="flex justify-between items-center text-[10px] font-bold text-slate-500 font-mono">
                 <span>Deduction Base</span>
                 <span>₹{total80C.toLocaleString()} / ₹1,50,000 max</span>
               </div>
@@ -405,7 +405,7 @@ export default function TaxCapitalGains({ holdings, livePrices = {} }: TaxCapita
                 />
               </div>
               <div className="flex justify-between text-[10px] leading-relaxed mt-1">
-                <span className="text-slate-400">Term coverage: <strong className="text-slate-700 font-mono">{percent80C.toFixed(0)}%</strong></span>
+                <span className="text-slate-500">Term coverage: <strong className="text-slate-700 font-mono">{percent80C.toFixed(0)}%</strong></span>
                 {remaining80C > 0 ? (
                   <span className="text-blue-600 font-bold">Lacks ₹{remaining80C.toLocaleString()} more</span>
                 ) : (
@@ -416,7 +416,7 @@ export default function TaxCapitalGains({ holdings, livePrices = {} }: TaxCapita
 
             {/* List Declarations */}
             <div className="space-y-1 border-t border-slate-100 pt-1">
-              <div className="flex justify-between text-[10px] font-bold text-slate-400">
+              <div className="flex justify-between text-[10px] font-bold text-slate-500">
                 <span>ACTIVE DECLARATIONS</span>
                 <span>MOUNTED</span>
               </div>
@@ -424,7 +424,7 @@ export default function TaxCapitalGains({ holdings, livePrices = {} }: TaxCapita
                 <div key={d.id} className="flex justify-between items-center bg-slate-50/50 p-1 border border-slate-100 rounded-lg text-xs font-sans">
                   <div>
                     <span className="font-black text-slate-900 tracking-wide bg-white border border-slate-100 px-1 py-0.5 rounded text-[9px]">{d.category}</span>
-                    <span className="text-[10px] text-slate-500 ml-1.5">{d.note}</span>
+                    <span className="text-[10px] text-slate-700 ml-1.5">{d.note}</span>
                   </div>
                   <div className="flex items-center gap-1 font-mono">
                     <span className="font-bold">₹{d.amount.toLocaleString()}</span>
@@ -442,7 +442,7 @@ export default function TaxCapitalGains({ holdings, livePrices = {} }: TaxCapita
             {/* Form Declaration */}
             <form onSubmit={handleAddDeclaration} className="space-y-1.5 border-t border-slate-100 pt-1.5 text-xs font-sans">
               <div>
-                <label className="block text-slate-400 font-bold text-[10px] mb-1">DEDUCTION CATEGORY</label>
+                <label className="block text-slate-500 font-bold text-[10px] mb-1">DEDUCTION CATEGORY</label>
                 <select 
                   value={newCat} 
                   onChange={(e: any) => setNewCat(e.target.value)}
@@ -459,7 +459,7 @@ export default function TaxCapitalGains({ holdings, livePrices = {} }: TaxCapita
 
               <div className="grid grid-cols-2 gap-1">
                 <div>
-                  <label className="block text-slate-400 font-bold text-[10px] mb-1">AMOUNT (₹)</label>
+                  <label className="block text-slate-500 font-bold text-[10px] mb-1">AMOUNT (₹)</label>
                   <input 
                     type="number"
                     required
@@ -470,7 +470,7 @@ export default function TaxCapitalGains({ holdings, livePrices = {} }: TaxCapita
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 font-bold text-[10px] mb-1">NOTE</label>
+                  <label className="block text-slate-500 font-bold text-[10px] mb-1">NOTE</label>
                   <input 
                     type="text"
                     placeholder="e.g. SBI, LIC"
@@ -502,14 +502,14 @@ export default function TaxCapitalGains({ holdings, livePrices = {} }: TaxCapita
         
         <div className="flex flex-col md:flex-row gap-6 items-center">
           <div className="w-full md:w-1/3">
-            <label className="block text-slate-500 font-bold text-xs mb-1">GROSS ANNUAL SALARY (₹)</label>
+            <label className="block text-slate-700 font-bold text-xs mb-1">GROSS ANNUAL SALARY (₹)</label>
             <input 
               type="number" 
               value={grossSalary} 
               onChange={(e) => saveGrossSalary(parseInt(e.target.value) || 0)}
               className="w-full text-lg font-bold p-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 text-slate-800"
             />
-            <p className="text-[10px] text-slate-400 mt-2">
+            <p className="text-[10px] text-slate-500 mt-2">
               Note: This calculator assumes standard deduction (₹50k Old / ₹75k New) and maps your logged 80C deductions (₹{total80C.toLocaleString()}).
             </p>
           </div>
@@ -517,9 +517,9 @@ export default function TaxCapitalGains({ holdings, livePrices = {} }: TaxCapita
           <div className="w-full md:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-3">
             {/* Old Regime Box */}
             <div className={`p-3 rounded-2xl border-2 transition-all ${recommendedRegime === 'OLD REGIME' ? 'border-emerald-500 bg-emerald-50/50' : 'border-slate-100 bg-slate-50'}`}>
-              <h4 className="text-xs font-bold text-slate-500 uppercase">Old Tax Regime</h4>
+              <h4 className="text-xs font-bold text-slate-700 uppercase">Old Tax Regime</h4>
               <p className="text-2xl font-black text-slate-800 my-1">₹{oldTotalWithCess.toLocaleString('en-IN', { maximumFractionDigits: 0 })}</p>
-              <div className="text-[10px] text-slate-500 space-y-0.5 mt-2">
+              <div className="text-[10px] text-slate-700 space-y-0.5 mt-2">
                 <p>Taxable Base: ₹{netIncomeOld.toLocaleString('en-IN')}</p>
                 <p>80C Deductions Used: ₹{total80C.toLocaleString('en-IN')}</p>
                 <p>Std. Deduction: ₹50,000</p>
@@ -531,9 +531,9 @@ export default function TaxCapitalGains({ holdings, livePrices = {} }: TaxCapita
 
             {/* New Regime Box */}
             <div className={`p-3 rounded-2xl border-2 transition-all ${recommendedRegime === 'NEW REGIME' ? 'border-emerald-500 bg-emerald-50/50' : 'border-slate-100 bg-slate-50'}`}>
-              <h4 className="text-xs font-bold text-slate-500 uppercase">New Tax Regime</h4>
+              <h4 className="text-xs font-bold text-slate-700 uppercase">New Tax Regime</h4>
               <p className="text-2xl font-black text-slate-800 my-1">₹{newTotalWithCess.toLocaleString('en-IN', { maximumFractionDigits: 0 })}</p>
-              <div className="text-[10px] text-slate-500 space-y-0.5 mt-2">
+              <div className="text-[10px] text-slate-700 space-y-0.5 mt-2">
                 <p>Taxable Base: ₹{netIncomeNew.toLocaleString('en-IN')}</p>
                 <p>80C Disabled (0 mapped)</p>
                 <p>Std. Deduction: ₹75,000</p>

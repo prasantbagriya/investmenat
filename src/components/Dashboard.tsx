@@ -244,7 +244,7 @@ export default function Dashboard({
       {/* Month Navigator Header */}
       <div className="flex md:flex-row flex-col justify-between items-start md:items-center gap-2 bg-white p-2 rounded-2xl border border-slate-200/85">
         <div>
-          <h2 className="text-[11px] font-black text-slate-400 uppercase tracking-widest font-sans">InvestMant Dashboard</h2>
+          <h2 className="text-[11px] font-black text-slate-500 uppercase tracking-widest font-sans">InvestMant Dashboard</h2>
           <p className="text-lg font-extrabold text-slate-900 tracking-tight font-sans mt-0.5">Financial Year Overview • {monthLabel}</p>
         </div>
         
@@ -289,7 +289,7 @@ export default function Dashboard({
         <div className="bg-slate-900 text-white rounded-2xl p-3 shadow-md border border-slate-800 flex flex-col justify-between space-y-2">
           <div className="flex justify-between items-start">
             <div className="space-y-0.5">
-              <span className="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Total Net Worth</span>
+              <span className="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Total Net Worth</span>
               <p className="text-3xl font-black font-display text-white mt-1">
                 ₹{netWorthSummary.netWorth.toLocaleString('en-IN', { maximumFractionDigits: 0 })}
               </p>
@@ -298,11 +298,11 @@ export default function Dashboard({
 
           <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-800 text-xs">
             <div className="space-y-1">
-              <span className="text-[10px] text-slate-400 font-bold">Total Assets</span>
+              <span className="text-[10px] text-slate-500 font-bold">Total Assets</span>
               <p className="font-extrabold text-slate-100">₹{netWorthSummary.assets.toLocaleString('en-IN', { maximumFractionDigits: 0 })}</p>
             </div>
             <div className="space-y-1">
-              <span className="text-[10px] text-slate-400 font-bold">Total Liabilities</span>
+              <span className="text-[10px] text-slate-500 font-bold">Total Liabilities</span>
               <p className="font-extrabold text-slate-100">₹{netWorthSummary.liabilities.toLocaleString('en-IN', { maximumFractionDigits: 0 })}</p>
             </div>
           </div>
@@ -310,7 +310,7 @@ export default function Dashboard({
           <div className="pt-1 -ml-2 -mb-2">
             <button
               onClick={() => setShowPreferences(!showPreferences)}
-              className="text-[10px] text-slate-400 hover:text-white active:text-white font-bold underline cursor-pointer px-2 py-2"
+              className="text-[10px] text-slate-500 hover:text-white active:text-white font-bold underline cursor-pointer px-2 py-2"
             >
               {showPreferences ? 'Close Asset Declarations' : 'Configure Manual Balances'}
             </button>
@@ -413,12 +413,12 @@ export default function Dashboard({
             <div className="col-span-1 md:col-span-5 border-b border-slate-200/50 pb-1 flex justify-between items-end">
               <div>
                 <h4 className="font-extrabold text-slate-800">Declare Physical Assets & Loan Accounts</h4>
-                <p className="text-[10px] text-slate-400">Ledger Cash (₹{lifetimeLedgerCash.toLocaleString()}) is already auto-included in Net Worth.</p>
+                <p className="text-[10px] text-slate-500">Ledger Cash (₹{lifetimeLedgerCash.toLocaleString()}) is already auto-included in Net Worth.</p>
               </div>
             </div>
             
             <div>
-              <label className="block text-slate-500 font-bold text-[10px] mb-1">EXTERNAL SAVINGS (₹)</label>
+              <label className="block text-slate-700 font-bold text-[10px] mb-1">EXTERNAL SAVINGS (₹)</label>
               <input 
                 type="number" 
                 value={manualSavings} 
@@ -428,7 +428,7 @@ export default function Dashboard({
             </div>
 
             <div>
-              <label className="block text-slate-500 font-bold text-[10px] mb-1">GOLD RESERVES (₹)</label>
+              <label className="block text-slate-700 font-bold text-[10px] mb-1">GOLD RESERVES (₹)</label>
               <input 
                 type="number" 
                 value={manualGold} 
@@ -438,7 +438,7 @@ export default function Dashboard({
             </div>
 
             <div>
-              <label className="block text-slate-500 font-bold text-[10px] mb-1">PROPERTY VALUATION (₹)</label>
+              <label className="block text-slate-700 font-bold text-[10px] mb-1">PROPERTY VALUATION (₹)</label>
               <input 
                 type="number" 
                 value={manualProperty} 
@@ -448,7 +448,7 @@ export default function Dashboard({
             </div>
 
             <div>
-              <label className="block text-slate-500 font-bold text-[10px] mb-1">CAR LOAN (LIABILITY - ₹)</label>
+              <label className="block text-slate-700 font-bold text-[10px] mb-1">CAR LOAN (LIABILITY - ₹)</label>
               <input 
                 type="number" 
                 value={manualCarLoan} 
@@ -458,7 +458,7 @@ export default function Dashboard({
             </div>
 
             <div>
-              <label className="block text-slate-500 font-bold text-[10px] mb-1">HOME LOAN (LIABILITY - ₹)</label>
+              <label className="block text-slate-700 font-bold text-[10px] mb-1">HOME LOAN (LIABILITY - ₹)</label>
               <input 
                 type="number" 
                 value={manualHomeLoan} 
@@ -477,7 +477,7 @@ export default function Dashboard({
             <PiggyBank size={16} />
           </div>
           <div>
-            <span className="text-[10px] text-slate-400 font-bold">ACTIVE SIP COUNT</span>
+            <span className="text-[10px] text-slate-500 font-bold">ACTIVE SIP COUNT</span>
             <p className="font-extrabold text-[13px]">{activeSipsCount} systematic plans</p>
           </div>
         </div>
@@ -487,7 +487,7 @@ export default function Dashboard({
             <Calendar size={16} />
           </div>
           <div>
-            <span className="text-[10px] text-slate-400 font-bold font-sans">PENDING COLLECTIONS</span>
+            <span className="text-[10px] text-slate-500 font-bold font-sans">PENDING COLLECTIONS</span>
             <p className="font-extrabold text-[13px]">{pendingCollectionsCount} receivables</p>
           </div>
         </div>
@@ -497,7 +497,7 @@ export default function Dashboard({
             <Wallet size={16} />
           </div>
           <div>
-            <span className="text-[10px] text-slate-400 font-bold">CREDIT CARDS</span>
+            <span className="text-[10px] text-slate-500 font-bold">CREDIT CARDS</span>
             <p className="font-extrabold text-[13px]">{unpaidCcBillsCount} pending bills</p>
           </div>
         </div>
@@ -507,8 +507,8 @@ export default function Dashboard({
             <TrendingDown size={16} className="text-red-600" />
           </div>
           <div>
-            <span className="text-[10px] text-slate-400 font-bold">ACTIVE EMIs</span>
-            <p className="font-extrabold text-[13px]">{activeEmis.length} running <span className="text-[10px] font-mono text-slate-400">(-₹{totalMonthlyEmi}/mo)</span></p>
+            <span className="text-[10px] text-slate-500 font-bold">ACTIVE EMIs</span>
+            <p className="font-extrabold text-[13px]">{activeEmis.length} running <span className="text-[10px] font-mono text-slate-500">(-₹{totalMonthlyEmi}/mo)</span></p>
           </div>
         </div>
       </div>
@@ -563,14 +563,14 @@ export default function Dashboard({
             </div>
 
             {recentTransactions.length === 0 ? (
-              <p className="text-[10px] text-slate-400 py-3 text-center">Your transactions ledger is currently empty.</p>
+              <p className="text-[10px] text-slate-500 py-3 text-center">Your transactions ledger is currently empty.</p>
             ) : (
               <div className="divide-y divide-slate-100/80 font-sans text-xs">
                 {recentTransactions.map((t) => (
                   <div key={t.id} className="py-1.5 flex justify-between items-center first:pt-0 last:pb-0">
                     <div>
                       <p className="font-bold text-slate-800 leading-normal">{t.category}</p>
-                      <p className="text-[10px] text-slate-400 font-mono mt-0.5">{t.date} {t.notes && `• ${t.notes}`}</p>
+                      <p className="text-[10px] text-slate-500 font-mono mt-0.5">{t.date} {t.notes && `• ${t.notes}`}</p>
                     </div>
                     <span className={`font-bold font-mono text-[11px] ${t.type === 'income' ? 'text-emerald-600' : 'text-slate-900'}`}>
                       {t.type === 'income' ? '+' : '-'}₹{t.amount.toLocaleString('en-IN')}
@@ -582,7 +582,7 @@ export default function Dashboard({
           </div>
 
           <div className="border-t border-slate-100 pt-1">
-            <span className="text-[9px] text-slate-400 font-semibold uppercase tracking-wider font-sans">AUDIT CONTROL ASSURANCE</span>
+            <span className="text-[9px] text-slate-500 font-semibold uppercase tracking-wider font-sans">AUDIT CONTROL ASSURANCE</span>
           </div>
         </div>
 

@@ -454,7 +454,7 @@ export default function TasksSection({
 
         {/* Display Push Authorization Status Badge */}
         <div className="flex flex-col items-start md:items-end gap-1.5 shrink-0">
-          <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Web-Push Protocol</span>
+          <span className="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Web-Push Protocol</span>
           {notificationStatus === 'granted' ? (
             <div className="inline-flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold px-1 py-1.5 rounded-xl">
               <Bell className="w-3.5 h-3.5 text-emerald-600" /> Notifications Active
@@ -475,7 +475,7 @@ export default function TasksSection({
           )}
 
           {tokenStatusMessage && (
-            <span className="text-[10px] font-medium text-slate-400 leading-none mt-1">
+            <span className="text-[10px] font-medium text-slate-500 leading-none mt-1">
               {tokenStatusMessage}
             </span>
           )}
@@ -510,7 +510,7 @@ export default function TasksSection({
         <div className="lg:col-span-1">
           <div className="bg-white rounded-3xl border border-slate-200/80 p-3 shadow-xs sticky top-24">
             <h3 className="text-sm font-bold text-slate-900 tracking-tight mb-2 flex items-center gap-1 border-b border-slate-100 pb-1">
-              <Plus className="text-slate-500 w-4 h-4" /> Schedule New Reminder
+              <Plus className="text-slate-700 w-4 h-4" /> Schedule New Reminder
             </h3>
 
             {formError && (
@@ -523,7 +523,7 @@ export default function TasksSection({
             <form onSubmit={handleSubmit} className="space-y-2">
               {/* Task Title */}
               <div className="space-y-1.5">
-                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-sans">Task Name / Alert</label>
+                <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block font-sans">Task Name / Alert</label>
                 <input
                   type="text"
                   placeholder="e.g. Electricity Bill payment, Credit payment"
@@ -537,7 +537,7 @@ export default function TasksSection({
 
               {/* Description */}
               <div className="space-y-1.5">
-                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-sans">Description (Optional)</label>
+                <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block font-sans">Description (Optional)</label>
                 <textarea
                   placeholder="Provide payment URL or reference numbers here..."
                   maxLength={1000}
@@ -551,9 +551,9 @@ export default function TasksSection({
               {/* Due Date & Time Picker Group */}
               <div className="grid grid-cols-2 gap-1">
                 <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-sans">Due Date</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block font-sans">Due Date</label>
                   <div className="relative">
-                    <Calendar className="absolute right-3 top-2.5 w-4 h-4 text-slate-400 pointer-events-none" />
+                    <Calendar className="absolute right-3 top-2.5 w-4 h-4 text-slate-500 pointer-events-none" />
                     <input
                       type="date"
                       value={dueDateStr}
@@ -565,9 +565,9 @@ export default function TasksSection({
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-sans">Due Time</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block font-sans">Due Time</label>
                   <div className="relative">
-                    <Clock className="absolute right-3 top-2.5 w-4 h-4 text-slate-400 pointer-events-none" />
+                    <Clock className="absolute right-3 top-2.5 w-4 h-4 text-slate-500 pointer-events-none" />
                     <input
                       type="time"
                       value={dueTimeStr}
@@ -602,7 +602,7 @@ export default function TasksSection({
                   <span className="text-[11px] font-extrabold text-slate-700">Auto-Sync to Google Tasks</span>
                 </label>
                 {(!isCalendarLinked && !isTasksLinked) ? (
-                  <p className="text-[9px] text-slate-400 leading-normal font-sans">
+                  <p className="text-[9px] text-slate-500 leading-normal font-sans">
                     * Link Google Calendar or Google Tasks on the Settings page to unlock automatic, instant, real-time publishing as tasks are added.
                   </p>
                 ) : (
@@ -628,8 +628,8 @@ export default function TasksSection({
               </button>
             </form>
 
-            <div className="bg-slate-50 border border-slate-100 rounded-2xl p-2 mt-2 text-[10px] text-slate-400 flex items-start gap-1">
-              <AlertTriangle className="w-4 h-4 text-slate-500 shrink-0 mt-0.5" />
+            <div className="bg-slate-50 border border-slate-100 rounded-2xl p-2 mt-2 text-[10px] text-slate-500 flex items-start gap-1">
+              <AlertTriangle className="w-4 h-4 text-slate-700 shrink-0 mt-0.5" />
               <div>
                 <span className="font-bold text-slate-600 block">Reminder Automation Matrix</span>
                 Tasks will shift <span className="text-rose-500 font-bold">Overdue</span> and trigger browser alerts in real time once their target timeline is breached.
@@ -645,7 +645,7 @@ export default function TasksSection({
           <div className="flex flex-col sm:flex-row gap-2 items-center justify-between">
             {/* Search inputs */}
             <div className="relative w-full sm:max-w-xs">
-              <Search className="absolute left-3 top-2.5 text-slate-400 w-4 h-4" />
+              <Search className="absolute left-3 top-2.5 text-slate-500 w-4 h-4" />
               <input
                 type="text"
                 placeholder="Search tasks..."
@@ -665,7 +665,7 @@ export default function TasksSection({
                   className={`px-1 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wide transition-all cursor-pointer shrink-0 truncate ${
                     filter === tab
                       ? 'bg-white text-slate-900 shadow-xs'
-                      : 'text-slate-400 hover:text-slate-800'
+                      : 'text-slate-500 hover:text-slate-800'
                     }`}
                 >
                   {tab}
@@ -699,12 +699,12 @@ export default function TasksSection({
                   animate={{ opacity: 1 }}
                   className="bg-white border border-slate-100 rounded-3xl p-6 text-center flex flex-col items-center justify-center space-y-1 font-sans"
                 >
-                  <div className="p-1 bg-slate-100 text-slate-400 rounded-full">
+                  <div className="p-1 bg-slate-100 text-slate-500 rounded-full">
                     <CheckCircle className="w-8 h-8" />
                   </div>
                   <div>
                     <h4 className="text-sm font-bold text-slate-700">No active tasks logged</h4>
-                    <p className="text-xs text-slate-400 max-w-sm mt-1">
+                    <p className="text-xs text-slate-500 max-w-sm mt-1">
                       No tasks matched the filter "{filter}". Create a tasks schedule with combined timers to configure a daemon tracker.
                     </p>
                   </div>
@@ -740,7 +740,7 @@ export default function TasksSection({
               {isLoadingEvents ? (
                 <div className="py-20 text-center flex flex-col items-center justify-center space-y-1">
                   <RefreshCw size={24} className="animate-spin text-rose-500" />
-                  <p className="text-xs font-bold text-slate-500 font-sans">Querying Calendar API...</p>
+                  <p className="text-xs font-bold text-slate-700 font-sans">Querying Calendar API...</p>
                 </div>
               ) : eventsError ? (
                 <div className="p-2 bg-amber-50 text-amber-700 rounded-2xl text-[11px] font-semibold border border-amber-200 leading-relaxed font-sans">
@@ -767,9 +767,9 @@ export default function TasksSection({
                           )}
                         </div>
                         {event.description && (
-                          <p className="text-[10px] text-slate-500 line-clamp-2 leading-relaxed">{event.description}</p>
+                          <p className="text-[10px] text-slate-700 line-clamp-2 leading-relaxed">{event.description}</p>
                         )}
-                        <div className="flex items-center justify-between text-[10px] text-slate-400 font-mono pt-1 border-t border-slate-100/50">
+                        <div className="flex items-center justify-between text-[10px] text-slate-500 font-mono pt-1 border-t border-slate-100/50">
                           <div className="flex items-center gap-1">
                             <Clock size={11} className="text-rose-400" />
                             <span>{startDate ? startDate.toLocaleString() : 'No Scheduled Time'}</span>
@@ -797,8 +797,8 @@ export default function TasksSection({
               ) : (
                 <div className="py-6 border border-dashed border-slate-200 rounded-2xl text-center space-y-1 font-sans">
                   <Calendar size={28} className="text-slate-300 mx-auto" />
-                  <p className="text-[11px] font-bold text-slate-400">No upcoming events detected</p>
-                  <p className="text-[9px] text-slate-500 max-w-xs mx-auto px-2 leading-relaxed">
+                  <p className="text-[11px] font-bold text-slate-500">No upcoming events detected</p>
+                  <p className="text-[9px] text-slate-700 max-w-xs mx-auto px-2 leading-relaxed">
                     Your scheduled tasks synced using the "Sync Cal" badge will pop up here instantly!
                   </p>
                 </div>

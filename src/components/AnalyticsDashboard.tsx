@@ -123,7 +123,7 @@ export default function AnalyticsDashboard({
       
       {/* Header */}
       <div className="flex flex-col gap-1 bg-white p-4 rounded-3xl border border-slate-200/85 shadow-xs">
-        <h2 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Financial Intelligence</h2>
+        <h2 className="text-[11px] font-bold text-slate-500 uppercase tracking-widest">Financial Intelligence</h2>
         <p className="text-xl font-black text-slate-900 tracking-tight flex items-center gap-2">
           <Activity size={20} className="text-indigo-600" />
           AI Analytics Dashboard
@@ -137,7 +137,7 @@ export default function AnalyticsDashboard({
           className="bg-slate-900 p-5 rounded-3xl text-white shadow-lg relative overflow-hidden"
         >
           <div className="absolute -right-4 -top-4 w-24 h-24 bg-indigo-500 rounded-full blur-3xl opacity-30"></div>
-          <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1 flex items-center gap-1">
+          <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1 flex items-center gap-1">
             <IndianRupee size={12} /> Live Net Worth
           </p>
           <p className="text-3xl font-black font-mono tracking-tight">₹{netWorth.toLocaleString('en-IN', { maximumFractionDigits: 0 })}</p>
@@ -147,7 +147,7 @@ export default function AnalyticsDashboard({
           initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
           className="bg-white border border-slate-200 p-5 rounded-3xl shadow-xs"
         >
-          <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1 flex items-center gap-1">
+          <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1 flex items-center gap-1">
             <TrendingUp size={12} className="text-emerald-500" /> Total Assets
           </p>
           <p className="text-2xl font-black text-slate-900 font-mono tracking-tight">₹{totalAssets.toLocaleString('en-IN', { maximumFractionDigits: 0 })}</p>
@@ -157,7 +157,7 @@ export default function AnalyticsDashboard({
           initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
           className="bg-white border border-slate-200 p-5 rounded-3xl shadow-xs"
         >
-          <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1 flex items-center gap-1">
+          <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1 flex items-center gap-1">
             <ShieldAlert size={12} className="text-red-500" /> Total Liabilities
           </p>
           <p className="text-2xl font-black text-slate-900 font-mono tracking-tight">₹{totalLiabilities.toLocaleString('en-IN', { maximumFractionDigits: 0 })}</p>
@@ -176,7 +176,7 @@ export default function AnalyticsDashboard({
             <PieChartIcon size={16} className="text-indigo-500" /> Expenses by Category
           </h3>
           {expensesByCategory.length === 0 ? (
-            <p className="text-xs text-slate-400 text-center py-20">No expense data available.</p>
+            <p className="text-xs text-slate-500 text-center py-20">No expense data available.</p>
           ) : (
             <div className="h-[300px] w-full">
               <ResponsiveContainer width="100%" height="100%">
@@ -218,7 +218,7 @@ export default function AnalyticsDashboard({
             <Activity size={16} className="text-indigo-500" /> Monthly Cashflow Trend
           </h3>
           {monthlyTrend.length === 0 ? (
-            <p className="text-xs text-slate-400 text-center py-20">No monthly data available.</p>
+            <p className="text-xs text-slate-500 text-center py-20">No monthly data available.</p>
           ) : (
             <div className="h-[300px] w-full">
               <ResponsiveContainer width="100%" height="100%">
@@ -256,7 +256,7 @@ export default function AnalyticsDashboard({
             <TrendingUp size={16} className="text-pink-500" /> Expense Velocity Curve
           </h3>
           {monthlyTrend.length === 0 ? (
-            <p className="text-xs text-slate-400 text-center py-20">No monthly data available.</p>
+            <p className="text-xs text-slate-500 text-center py-20">No monthly data available.</p>
           ) : (
             <div className="h-[250px] w-full">
               <ResponsiveContainer width="100%" height="100%">

@@ -585,7 +585,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
           
           {/* Left panel: Vertical Menu selection */}
           <div className="lg:col-span-3 space-y-1">
-            <p className="text-[9.5px] font-black uppercase tracking-widest text-slate-400 pl-1">Select Google Application</p>
+            <p className="text-[9.5px] font-black uppercase tracking-widest text-slate-500 pl-1">Select Google Application</p>
             <div className="bg-white border border-slate-100 rounded-3xl p-1 shadow-xs space-y-1">
               
               <button
@@ -598,7 +598,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                 }`}
               >
                 <div className="flex items-center gap-1">
-                  <FolderOpen size={16} className={activeService === 'drive' ? 'text-blue-600' : 'text-slate-400'} />
+                  <FolderOpen size={16} className={activeService === 'drive' ? 'text-blue-600' : 'text-slate-500'} />
                   <span className="text-xs">Google Drive</span>
                 </div>
                 <ChevronRight size={12} className="text-slate-300" />
@@ -614,7 +614,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                 }`}
               >
                 <div className="flex items-center gap-1">
-                  <Mail size={16} className={activeService === 'gmail' ? 'text-red-500' : 'text-slate-400'} />
+                  <Mail size={16} className={activeService === 'gmail' ? 'text-red-500' : 'text-slate-500'} />
                   <span className="text-xs">Gmail Message</span>
                 </div>
                 <ChevronRight size={12} className="text-slate-300" />
@@ -630,7 +630,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                 }`}
               >
                 <div className="flex items-center gap-1">
-                  <Video size={16} className={activeService === 'meet' ? 'text-emerald-600' : 'text-slate-400'} />
+                  <Video size={16} className={activeService === 'meet' ? 'text-emerald-600' : 'text-slate-500'} />
                   <span className="text-xs">Google Meet</span>
                 </div>
                 <ChevronRight size={12} className="text-slate-300" />
@@ -646,7 +646,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                 }`}
               >
                 <div className="flex items-center gap-1">
-                  <CheckSquare size={16} className={activeService === 'tasks' ? 'text-cyan-600' : 'text-slate-400'} />
+                  <CheckSquare size={16} className={activeService === 'tasks' ? 'text-cyan-600' : 'text-slate-500'} />
                   <span className="text-xs">Google Tasks</span>
                 </div>
                 <ChevronRight size={12} className="text-slate-300" />
@@ -662,7 +662,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                 }`}
               >
                 <div className="flex items-center gap-1">
-                  <MessageSquare size={16} className={activeService === 'chat' ? 'text-indigo-600' : 'text-slate-400'} />
+                  <MessageSquare size={16} className={activeService === 'chat' ? 'text-indigo-600' : 'text-slate-500'} />
                   <span className="text-xs">Google Chat</span>
                 </div>
                 <ChevronRight size={12} className="text-slate-300" />
@@ -678,7 +678,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                 }`}
               >
                 <div className="flex items-center gap-1">
-                  <FileText size={16} className={activeService === 'forms' ? 'text-purple-600' : 'text-slate-400'} />
+                  <FileText size={16} className={activeService === 'forms' ? 'text-purple-600' : 'text-slate-500'} />
                   <span className="text-xs">Google Forms</span>
                 </div>
                 <ChevronRight size={12} className="text-slate-300" />
@@ -694,7 +694,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                 }`}
               >
                 <div className="flex items-center gap-1">
-                  <GraduationCap size={16} className={activeService === 'classroom' ? 'text-amber-650' : 'text-slate-400'} />
+                  <GraduationCap size={16} className={activeService === 'classroom' ? 'text-amber-650' : 'text-slate-500'} />
                   <span className="text-xs">Google Classroom</span>
                 </div>
                 <ChevronRight size={12} className="text-slate-300" />
@@ -710,7 +710,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                 }`}
               >
                 <div className="flex items-center gap-1">
-                  <FileText size={16} className={activeService === 'docs' ? 'text-blue-600' : 'text-slate-400'} />
+                  <FileText size={16} className={activeService === 'docs' ? 'text-blue-600' : 'text-slate-500'} />
                   <span className="text-xs">Google Docs</span>
                 </div>
                 <ChevronRight size={12} className="text-slate-300" />
@@ -726,7 +726,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                 }`}
               >
                 <div className="flex items-center gap-1">
-                  <Presentation size={16} className={activeService === 'slides' ? 'text-yellow-600' : 'text-slate-400'} />
+                  <Presentation size={16} className={activeService === 'slides' ? 'text-yellow-600' : 'text-slate-500'} />
                   <span className="text-xs">Google Slides</span>
                 </div>
                 <ChevronRight size={12} className="text-slate-300" />
@@ -742,7 +742,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                 }`}
               >
                 <div className="flex items-center gap-1">
-                  <MousePointerClick size={16} className={activeService === 'picker' ? 'text-slate-600' : 'text-slate-400'} />
+                  <MousePointerClick size={16} className={activeService === 'picker' ? 'text-slate-600' : 'text-slate-500'} />
                   <span className="text-xs">Google Picker</span>
                 </div>
                 <ChevronRight size={12} className="text-slate-300" />
@@ -758,7 +758,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                 }`}
               >
                 <div className="flex items-center gap-1">
-                  <Image size={16} className={activeService === 'photos' ? 'text-cyan-600' : 'text-slate-400'} />
+                  <Image size={16} className={activeService === 'photos' ? 'text-cyan-600' : 'text-slate-500'} />
                   <span className="text-xs">Google Photos</span>
                 </div>
                 <ChevronRight size={12} className="text-slate-300" />
@@ -774,7 +774,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                 }`}
               >
                 <div className="flex items-center gap-1">
-                  <Calendar size={16} className={activeService === 'calendar' ? 'text-orange-500' : 'text-slate-400'} />
+                  <Calendar size={16} className={activeService === 'calendar' ? 'text-orange-500' : 'text-slate-500'} />
                   <span className="text-xs">Google Calendar</span>
                 </div>
                 <ChevronRight size={12} className="text-slate-300" />
@@ -793,8 +793,8 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
 
             {isLoading && (
               <div className="py-24 text-center flex flex-col items-center justify-center space-y-1">
-                <RefreshCw size={24} className="animate-spin text-slate-500" />
-                <p className="text-xs font-bold text-slate-500 font-sans italic">Loading workspace connection...</p>
+                <RefreshCw size={24} className="animate-spin text-slate-700" />
+                <p className="text-xs font-bold text-slate-700 font-sans italic">Loading workspace connection...</p>
               </div>
             )}
 
@@ -809,12 +809,12 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                         <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider flex items-center gap-1.5 pb-0.5">
                           <FolderOpen className="text-blue-600" size={16} /> Google Drive File Library
                         </h3>
-                        <p className="text-[10px] text-slate-400">Search and read documents directly inside Drive cloud storage.</p>
+                        <p className="text-[10px] text-slate-500">Search and read documents directly inside Drive cloud storage.</p>
                       </div>
                       
                       {/* Search box */}
                       <div className="relative w-full sm:w-64">
-                        <Search size={12} className="absolute left-3 top-2.5 text-slate-400" />
+                        <Search size={12} className="absolute left-3 top-2.5 text-slate-500" />
                         <input
                           type="text"
                           placeholder="Search document name..."
@@ -829,7 +829,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                       {/* Left side: upload file */}
                       <form onSubmit={handleCreateTextFile} className="p-2 bg-slate-50 rounded-2xl border border-slate-150 space-y-1">
-                        <div className="flex items-center gap-1 text-[10px] uppercase font-black text-slate-500">
+                        <div className="flex items-center gap-1 text-[10px] uppercase font-black text-slate-700">
                           <Plus size={12} className="text-blue-500" /> Draft & Upload Document
                         </div>
                         <div className="space-y-1">
@@ -861,15 +861,15 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
 
                       {/* Right side: files listings */}
                       <div className="space-y-1 border border-slate-100 rounded-2xl p-2 max-h-[280px] overflow-y-auto">
-                        <span className="text-[9px] font-black uppercase tracking-wider text-slate-400 block mb-1">Cloud Files Content</span>
+                        <span className="text-[9px] font-black uppercase tracking-wider text-slate-500 block mb-1">Cloud Files Content</span>
                         {driveFiles.length === 0 ? (
-                          <div className="text-center py-5 text-slate-400 text-xs italic">No matching document objects detected.</div>
+                          <div className="text-center py-5 text-slate-500 text-xs italic">No matching document objects detected.</div>
                         ) : (
                           driveFiles.map((file) => (
                             <div key={file.id} className="p-1.5 bg-white border border-slate-100 rounded-xl flex justify-between items-center gap-1 hover:border-blue-200 transition-all font-sans">
                               <div className="min-w-0">
                                 <h5 className="text-xs font-bold text-slate-800 truncate">{file.name}</h5>
-                                <p className="text-[8.5px] font-mono text-slate-400 mt-0.5 max-w-[200px] truncate">{file.mimeType.split('/').pop()}</p>
+                                <p className="text-[8.5px] font-mono text-slate-500 mt-0.5 max-w-[200px] truncate">{file.mimeType.split('/').pop()}</p>
                               </div>
                               {file.id && (
                                 <button 
@@ -895,13 +895,13 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                       <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider flex items-center gap-1.5 pb-0.5">
                         <Mail className="text-red-500" size={16} /> Secure Gmail Mailbox
                       </h3>
-                      <p className="text-[10px] text-slate-400">Dispatch messages and query inbox feeds using verified credentials.</p>
+                      <p className="text-[10px] text-slate-500">Dispatch messages and query inbox feeds using verified credentials.</p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                       {/* Send message form */}
                       <form onSubmit={handleSendEmail} className="p-2 bg-slate-50 border border-slate-100 rounded-2xl space-y-1">
-                        <span className="text-[10px] font-black uppercase tracking-wider text-slate-500 block mb-1">Dispatch Email</span>
+                        <span className="text-[10px] font-black uppercase tracking-wider text-slate-700 block mb-1">Dispatch Email</span>
                         <div className="space-y-1">
                           <input
                             type="email"
@@ -939,18 +939,18 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
 
                       {/* Inbox list */}
                       <div className="border border-slate-100 rounded-2xl p-2 space-y-1.5 max-h-[300px] overflow-y-auto">
-                        <span className="text-[9px] font-black uppercase tracking-wider text-slate-400 block">Inbox feed</span>
+                        <span className="text-[9px] font-black uppercase tracking-wider text-slate-500 block">Inbox feed</span>
                         {emails.length === 0 ? (
-                          <div className="text-center py-5 text-slate-400 text-xs italic">Email list is empty or restricted.</div>
+                          <div className="text-center py-5 text-slate-500 text-xs italic">Email list is empty or restricted.</div>
                         ) : (
                           emails.map((email) => (
                             <div key={email.id} className="p-1.5 bg-slate-50/50 hover:bg-white border border-slate-100 rounded-xl space-y-1 hover:border-red-200 transition-all">
                               <div className="flex justify-between items-start gap-1">
-                                <span className="text-[9px] font-bold text-slate-400 line-clamp-1 max-w-[120px]">{email.from}</span>
-                                <span className="text-[7.5px] font-mono text-slate-400">{email.date ? new Date(email.date).toLocaleDateString() : ''}</span>
+                                <span className="text-[9px] font-bold text-slate-500 line-clamp-1 max-w-[120px]">{email.from}</span>
+                                <span className="text-[7.5px] font-mono text-slate-500">{email.date ? new Date(email.date).toLocaleDateString() : ''}</span>
                               </div>
                               <h5 className="text-[11px] font-extrabold text-slate-800 line-clamp-1 leading-tight">{email.subject}</h5>
-                              <p className="text-[10px] text-slate-500 line-clamp-2 italic text-ellipsis leading-tight pb-0.5">{email.snippet}</p>
+                              <p className="text-[10px] text-slate-700 line-clamp-2 italic text-ellipsis leading-tight pb-0.5">{email.snippet}</p>
                               <div className="flex gap-1 mt-1 border-t border-slate-100 pt-1">
                                 <button
                                   type="button"
@@ -982,13 +982,13 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                     <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-widest leading-relaxed">
                       Instant Google Meet Rooms Creator
                     </h3>
-                    <p className="text-[11px] text-slate-500 max-w-sm mx-auto leading-relaxed font-sans">
+                    <p className="text-[11px] text-slate-700 max-w-sm mx-auto leading-relaxed font-sans">
                       Schedule a custom online audio/video space instantly. We negotiate your scope credentials with standard calendar integrations to return a valid joining link.
                     </p>
 
                     <form onSubmit={handleCreateMeet} className="p-2 bg-slate-50 border border-slate-150 rounded-3xl mt-2 space-y-1 text-left">
                       <div className="space-y-1">
-                        <label className="block text-[9px] font-black text-slate-400 uppercase tracking-wider">Meeting Room Topic Title</label>
+                        <label className="block text-[9px] font-black text-slate-500 uppercase tracking-wider">Meeting Room Topic Title</label>
                         <input
                           type="text"
                           value={meetTitle}
@@ -1030,13 +1030,13 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                         <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider flex items-center gap-1.5 pb-0.5">
                           <CheckSquare className="text-cyan-600" size={16} /> Google Tasks synchronization
                         </h3>
-                        <p className="text-[10px] text-slate-400">Map local checklists directly with official Google Tasks schedules.</p>
+                        <p className="text-[10px] text-slate-500">Map local checklists directly with official Google Tasks schedules.</p>
                       </div>
 
                       {/* Dropdown lists selection */}
                       {taskLists.length > 0 && (
                         <div className="flex items-center gap-1.5 w-full sm:w-auto shrink-0">
-                          <span className="text-[9px] font-black uppercase text-slate-400 shrink-0">List:</span>
+                          <span className="text-[9px] font-black uppercase text-slate-500 shrink-0">List:</span>
                           <select
                             value={selectedTaskListId}
                             onChange={(e) => setSelectedTaskListId(e.target.value)}
@@ -1053,7 +1053,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                       {/* Add new task */}
                       <form onSubmit={handleCreateGoogleTask} className="p-2 bg-slate-50 border border-slate-150 rounded-2xl space-y-1 text-left">
-                        <span className="text-[10px] font-black uppercase tracking-wider text-slate-500 block">Create Google Task</span>
+                        <span className="text-[10px] font-black uppercase tracking-wider text-slate-700 block">Create Google Task</span>
                         <div className="space-y-1">
                           <input
                             type="text"
@@ -1081,18 +1081,18 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
 
                       {/* Active tasks listings */}
                       <div className="border border-slate-100 rounded-2xl p-2 space-y-1 max-h-[290px] overflow-y-auto">
-                        <span className="text-[9px] font-black uppercase tracking-wider text-slate-400 block mb-1">My Tasks List</span>
+                        <span className="text-[9px] font-black uppercase tracking-wider text-slate-500 block mb-1">My Tasks List</span>
                         {tasks.length === 0 ? (
-                          <div className="text-center py-5 text-slate-400 text-xs italic">All caught up! No tasks left in this list.</div>
+                          <div className="text-center py-5 text-slate-500 text-xs italic">All caught up! No tasks left in this list.</div>
                         ) : (
                           tasks.map((task) => (
                             <div key={task.id} className="p-1.5 bg-white border border-slate-100 rounded-xl flex items-center justify-between gap-1 text-left hover:border-cyan-200 transition-all font-sans">
                               <div className="min-w-0 flex-1">
-                                <h5 className={`text-xs font-bold truncate leading-tight ${task.status === 'completed' ? 'line-through text-slate-400 font-medium' : 'text-slate-800'}`}>
+                                <h5 className={`text-xs font-bold truncate leading-tight ${task.status === 'completed' ? 'line-through text-slate-500 font-medium' : 'text-slate-800'}`}>
                                   {task.title}
                                 </h5>
                                 {task.notes && (
-                                  <p className="text-[9px] text-slate-400 truncate leading-relaxed max-w-[200px] mt-0.5">{task.notes}</p>
+                                  <p className="text-[9px] text-slate-500 truncate leading-relaxed max-w-[200px] mt-0.5">{task.notes}</p>
                                 )}
                               </div>
                               {task.status !== 'completed' && (
@@ -1120,12 +1120,12 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                         <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider flex items-center gap-1.5 pb-0.5">
                           <MessageSquare className="text-indigo-650" size={16} /> Google Chat Rooms
                         </h3>
-                        <p className="text-[10px] text-slate-400">Post messages inside security room alerts or corporate threads.</p>
+                        <p className="text-[10px] text-slate-500">Post messages inside security room alerts or corporate threads.</p>
                       </div>
 
                       {chatSpaces.length > 0 && (
                         <div className="flex items-center gap-1.5 shrink-0 w-full sm:w-auto">
-                          <span className="text-[9px] font-black uppercase text-slate-400 shrink-0">Space:</span>
+                          <span className="text-[9px] font-black uppercase text-slate-500 shrink-0">Space:</span>
                           <select
                             value={selectedSpaceName}
                             onChange={(e) => setSelectedSpaceName(e.target.value)}
@@ -1140,7 +1140,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                     </div>
 
                     <div className="max-w-md mx-auto p-2 bg-slate-50 border border-slate-150 rounded-2xl text-left space-y-1 mt-2">
-                      <span className="text-[10px] font-black uppercase tracking-wider text-slate-500 block">Post Quick Message</span>
+                      <span className="text-[10px] font-black uppercase tracking-wider text-slate-700 block">Post Quick Message</span>
                       
                       <form onSubmit={handleSendChatMessage} className="space-y-1">
                         <textarea
@@ -1161,7 +1161,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                       </form>
                       
                       {chatSpaces.length === 0 && (
-                        <p className="text-[9px] text-slate-400 text-center leading-normal mt-1">
+                        <p className="text-[9px] text-slate-500 text-center leading-normal mt-1">
                           Note: Google Chat spaces usually populate for Business/Enterprise accounts with workspace memberships.
                         </p>
                       )}
@@ -1176,13 +1176,13 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                       <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider flex items-center gap-1.5 pb-0.5">
                         <FileText className="text-purple-650" size={16} /> Google Forms
                       </h3>
-                      <p className="text-[10px] text-slate-400">View active surveys, question structures, and spreadsheet links.</p>
+                      <p className="text-[10px] text-slate-500">View active surveys, question structures, and spreadsheet links.</p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                       {/* Create form */}
                       <form onSubmit={handleCreateNewForm} className="p-2 bg-slate-50 border border-slate-150 rounded-2xl space-y-1 text-left">
-                        <span className="text-[10px] font-black uppercase tracking-wider text-slate-500 block">Create Google Form</span>
+                        <span className="text-[10px] font-black uppercase tracking-wider text-slate-700 block">Create Google Form</span>
                         <div className="space-y-1">
                           <input
                             type="text"
@@ -1203,15 +1203,15 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
 
                       {/* Forms listing */}
                       <div className="border border-slate-100 rounded-2xl p-2 max-h-[290px] overflow-y-auto">
-                        <span className="text-[9px] font-black uppercase tracking-wider text-slate-400 block mb-1">My Google Forms</span>
+                        <span className="text-[9px] font-black uppercase tracking-wider text-slate-500 block mb-1">My Google Forms</span>
                         {formsList.length === 0 ? (
-                          <div className="text-center py-5 text-slate-400 text-xs italic">No Forms objects found in your Drive container.</div>
+                          <div className="text-center py-5 text-slate-500 text-xs italic">No Forms objects found in your Drive container.</div>
                         ) : (
                           formsList.map((form) => (
                             <div key={form.id} className="p-1.5 bg-white border border-slate-100 rounded-xl flex items-center justify-between gap-1 text-left hover:border-purple-200 transition-all font-sans">
                               <div className="min-w-0 flex-1">
                                 <h5 className="text-xs font-bold text-slate-800 truncate leading-tight">{form.name}</h5>
-                                <p className="text-[8px] font-mono text-slate-400 mt-0.5">Updated: {new Date(form.modifiedTime).toLocaleDateString()}</p>
+                                <p className="text-[8px] font-mono text-slate-500 mt-0.5">Updated: {new Date(form.modifiedTime).toLocaleDateString()}</p>
                               </div>
                               {form.webViewLink && (
                                 <a
@@ -1238,14 +1238,14 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                       <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider flex items-center gap-1.5 pb-0.5">
                         <GraduationCap className="text-amber-650" size={16} /> Google Classroom course roster
                       </h3>
-                      <p className="text-[10px] text-slate-400">Manage enrolled classroom sections, coursework files, and user streams.</p>
+                      <p className="text-[10px] text-slate-500">Manage enrolled classroom sections, coursework files, and user streams.</p>
                     </div>
 
                     {courses.length === 0 ? (
                       <div className="py-14 text-center border border-dashed border-slate-200 rounded-2xl space-y-1 bg-slate-50/40">
                         <GraduationCap size={30} className="text-slate-300 mx-auto" />
-                        <h4 className="text-xs font-extrabold text-slate-400 uppercase tracking-widest">No Active Google Classes</h4>
-                        <p className="text-[10px] text-slate-500 max-w-sm mx-auto leading-relaxed">
+                        <h4 className="text-xs font-extrabold text-slate-500 uppercase tracking-widest">No Active Google Classes</h4>
+                        <p className="text-[10px] text-slate-700 max-w-sm mx-auto leading-relaxed">
                           Your account doesn't seem to have any registered classes as student or instructor. Enroll or create a class in Google Classroom to display them here.
                         </p>
                       </div>
@@ -1257,10 +1257,10 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                               <span className="text-[8px] font-black bg-amber-50 text-amber-700 px-1 py-0.5 rounded uppercase tracking-wider">Course ACTIVE</span>
                               <h4 className="text-xs font-bold text-slate-800 line-clamp-1 leading-tight">{course.name}</h4>
                               {course.section && (
-                                <p className="text-[9.5px] text-slate-400 font-bold">Section: {course.section}</p>
+                                <p className="text-[9.5px] text-slate-500 font-bold">Section: {course.section}</p>
                               )}
                               {course.descriptionHeading && (
-                                <p className="text-[10px] text-slate-500 line-clamp-2 leading-relaxed">{course.descriptionHeading}</p>
+                                <p className="text-[10px] text-slate-700 line-clamp-2 leading-relaxed">{course.descriptionHeading}</p>
                               )}
                             </div>
                             {course.alternateLink && (
@@ -1287,7 +1287,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                       <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider flex items-center gap-1.5 pb-0.5">
                         <FileText className="text-blue-600" size={16} /> Google Docs Integration
                       </h3>
-                      <p className="text-[10px] text-slate-400">Create, edit, and read dynamic Google Documents instantly.</p>
+                      <p className="text-[10px] text-slate-500">Create, edit, and read dynamic Google Documents instantly.</p>
                     </div>
                     <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl flex flex-col items-center justify-center text-center space-y-2">
                       <FileText size={32} className="text-blue-500" />
@@ -1321,7 +1321,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                       <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider flex items-center gap-1.5 pb-0.5">
                         <Presentation className="text-yellow-600" size={16} /> Google Slides API
                       </h3>
-                      <p className="text-[10px] text-slate-400">Create dynamic presentation decks for clients and pitches.</p>
+                      <p className="text-[10px] text-slate-500">Create dynamic presentation decks for clients and pitches.</p>
                     </div>
                     <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl flex flex-col items-center justify-center text-center space-y-2">
                       <Presentation size={32} className="text-yellow-500" />
@@ -1355,10 +1355,10 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                       <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider flex items-center gap-1.5 pb-0.5">
                         <MousePointerClick className="text-slate-600" size={16} /> Google File Picker
                       </h3>
-                      <p className="text-[10px] text-slate-400">Launch the official Google Picker UI to select any file from your Drive.</p>
+                      <p className="text-[10px] text-slate-500">Launch the official Google Picker UI to select any file from your Drive.</p>
                     </div>
                     <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl flex flex-col items-center justify-center text-center space-y-2">
-                      <FolderOpen size={32} className="text-slate-500" />
+                      <FolderOpen size={32} className="text-slate-700" />
                       <p className="text-xs text-slate-600 max-w-sm mb-2">
                         Select a spreadsheet, document, image, or folder from your personal Google Drive account.
                       </p>
@@ -1379,7 +1379,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                       <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider flex items-center gap-1.5 pb-0.5">
                         <Image className="text-cyan-600" size={16} /> Google Photos API
                       </h3>
-                      <p className="text-[10px] text-slate-400">Access and manage client media libraries and receipt images.</p>
+                      <p className="text-[10px] text-slate-500">Access and manage client media libraries and receipt images.</p>
                     </div>
                     <div className="p-6 text-center border border-dashed border-slate-200 rounded-2xl space-y-1 bg-cyan-50/40">
                       <Image size={30} className="text-cyan-300 mx-auto mb-2" />
@@ -1398,7 +1398,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                       <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider flex items-center gap-1.5 pb-0.5">
                         <Calendar className="text-orange-500" size={16} /> Google Calendar Integration
                       </h3>
-                      <p className="text-[10px] text-slate-400">Manage your schedule and view upcoming events natively.</p>
+                      <p className="text-[10px] text-slate-500">Manage your schedule and view upcoming events natively.</p>
                     </div>
                     <div className="flex-1 border border-slate-200 rounded-xl overflow-hidden bg-slate-50 relative">
                       {user?.email ? (
@@ -1408,7 +1408,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                           title="Google Calendar Embedded"
                         />
                       ) : (
-                        <div className="absolute inset-0 flex flex-col items-center justify-center text-slate-500 p-6 text-center">
+                        <div className="absolute inset-0 flex flex-col items-center justify-center text-slate-700 p-6 text-center">
                           <Calendar size={32} className="text-slate-300 mb-2" />
                           <p className="text-sm font-bold">Email Required</p>
                           <p className="text-xs">Your Google account email is required to fetch the default embedded calendar.</p>
@@ -1445,7 +1445,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                  </a>
                  <button 
                    onClick={() => setPreviewFile(null)} 
-                   className="text-xs font-bold text-slate-500 hover:text-red-600 flex items-center gap-1 bg-white hover:bg-red-50 border border-slate-200 hover:border-red-200 px-3 py-1.5 rounded-lg transition-colors cursor-pointer"
+                   className="text-xs font-bold text-slate-700 hover:text-red-600 flex items-center gap-1 bg-white hover:bg-red-50 border border-slate-200 hover:border-red-200 px-3 py-1.5 rounded-lg transition-colors cursor-pointer"
                  >
                    Close Viewer
                  </button>

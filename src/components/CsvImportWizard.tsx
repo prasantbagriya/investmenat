@@ -91,7 +91,7 @@ export default function CsvImportWizard({ onAddTransaction, bankAccounts, onClos
       <div className="flex justify-between items-center mb-6">
         <div>
           <h2 className="text-lg font-black text-slate-800">AI Bank Statement Import</h2>
-          <p className="text-xs text-slate-500 font-bold mt-1">Upload your Bank CSV and let AI do the data entry.</p>
+          <p className="text-xs text-slate-700 font-bold mt-1">Upload your Bank CSV and let AI do the data entry.</p>
         </div>
       </div>
 
@@ -108,7 +108,7 @@ export default function CsvImportWizard({ onAddTransaction, bankAccounts, onClos
             <p className="font-bold text-slate-700 text-sm">
               {file ? file.name : 'Tap to upload or drag & drop CSV'}
             </p>
-            <p className="text-[10px] text-slate-400 font-bold mt-1">Only CSV files supported</p>
+            <p className="text-[10px] text-slate-500 font-bold mt-1">Only CSV files supported</p>
           </div>
 
           {error && (
@@ -160,7 +160,7 @@ export default function CsvImportWizard({ onAddTransaction, bankAccounts, onClos
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="font-bold text-slate-800 text-sm truncate">{item.note}</p>
-                    <div className="flex items-center gap-2 mt-0.5 text-[10px] font-bold text-slate-400">
+                    <div className="flex items-center gap-2 mt-0.5 text-[10px] font-bold text-slate-500">
                       <span>{item.date}</span>
                       <span>•</span>
                       <span className="bg-slate-100 px-1.5 rounded">{item.category}</span>

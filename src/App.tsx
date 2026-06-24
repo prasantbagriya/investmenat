@@ -55,7 +55,6 @@ import ContactsManager from './components/ContactsManager';
 import SettingsManager from './components/SettingsManager';
 import WorkspaceSuite from './components/WorkspaceSuite';
 import BrokerManager from './components/BrokerManager';
-import { BrokerSyncProgress } from './components/BrokerSyncProgress';
 import { proxyFetch } from './utils/proxyFetch';
 import AnalyticsDashboard from './components/AnalyticsDashboard';
 import { CreditCardsEMI } from './components/CreditCardsEMI';
@@ -1503,7 +1502,7 @@ export default function App() {
     return (
       <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center">
         <div className="h-10 w-10 border-4 border-slate-300 border-t-slate-900 rounded-full animate-spin" />
-        <p className="mt-2 text-xs font-bold text-slate-500">Securing environment...</p>
+        <p className="mt-2 text-xs font-bold text-slate-700">Securing environment...</p>
       </div>
     );
   }
@@ -1579,11 +1578,11 @@ export default function App() {
                   <Lock size={12} className="text-indigo-600" /> 
                   {userSettings?.pin ? 'Modify Security Lock PIN' : 'Initialize App Protection PIN'}
                 </h4>
-                <p className="text-[9px] text-slate-400 mt-0.5">Protect your investment sheets. Input exactly 4 digits.</p>
+                <p className="text-[9px] text-slate-500 mt-0.5">Protect your investment sheets. Input exactly 4 digits.</p>
               </div>
 
               <div>
-                <label className="block text-slate-500 font-bold text-[10px] mb-1">CHOOSE 4-DIGIT PIN</label>
+                <label className="block text-slate-700 font-bold text-[10px] mb-1">CHOOSE 4-DIGIT PIN</label>
                 <input 
                   type="password" 
                   maxLength={4}
@@ -1595,7 +1594,7 @@ export default function App() {
               </div>
 
               <div>
-                <label className="block text-slate-500 font-bold text-[10px] mb-1">CONFIRM PIN</label>
+                <label className="block text-slate-700 font-bold text-[10px] mb-1">CONFIRM PIN</label>
                 <input 
                   type="password" 
                   maxLength={4}
@@ -1610,7 +1609,7 @@ export default function App() {
                 <button
                   type="button"
                   onClick={() => setPinSetupActive(false)}
-                  className="px-1.5 py-1.5 border border-slate-205 text-slate-500 rounded-lg text-[11px] font-bold cursor-pointer"
+                  className="px-1.5 py-1.5 border border-slate-205 text-slate-700 rounded-lg text-[11px] font-bold cursor-pointer"
                 >
                   Cancel
                 </button>
@@ -1872,7 +1871,7 @@ export default function App() {
                 </button>
                 <button
                   onClick={() => setActiveToasts((prev) => prev.filter((t) => t.id !== toast.id))}
-                  className="text-slate-400 hover:text-white p-1 hover:bg-slate-800 rounded-lg transition-all cursor-pointer flex justify-center items-center"
+                  className="text-slate-500 hover:text-white p-1 hover:bg-slate-800 rounded-lg transition-all cursor-pointer flex justify-center items-center"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -1891,13 +1890,13 @@ export default function App() {
           >
             <motion.div initial={{ scale: 0.95 }} animate={{ scale: 1 }} exit={{ scale: 0.95 }} className="bg-white rounded-2xl p-4 w-full max-w-xs shadow-2xl space-y-3">
               <h3 className="font-bold text-slate-900">Snooze Task</h3>
-              <p className="text-xs text-slate-500">Select a new date and time for: <br/><b className="text-slate-800">{snoozingTask.title}</b></p>
+              <p className="text-xs text-slate-700">Select a new date and time for: <br/><b className="text-slate-800">{snoozingTask.title}</b></p>
               <div className="space-y-2 pt-1">
                 <input type="date" value={snoozeDate} onChange={e => setSnoozeDate(e.target.value)} className="w-full text-sm p-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-indigo-500" />
                 <input type="time" value={snoozeTime} onChange={e => setSnoozeTime(e.target.value)} className="w-full text-sm p-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-indigo-500" />
               </div>
               <div className="flex justify-end gap-2 pt-2 border-t border-slate-100 mt-2">
-                <button onClick={() => setSnoozingTask(null)} className="px-3 py-1.5 text-xs font-bold text-slate-500 hover:bg-slate-50 rounded-lg cursor-pointer">Cancel</button>
+                <button onClick={() => setSnoozingTask(null)} className="px-3 py-1.5 text-xs font-bold text-slate-700 hover:bg-slate-50 rounded-lg cursor-pointer">Cancel</button>
                 <button 
                   onClick={async () => {
                      if (!snoozeDate || !snoozeTime) return alert("Please select date and time.");

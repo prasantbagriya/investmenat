@@ -76,7 +76,7 @@ export default function NotificationCenter({
               </div>
               <button 
                 onClick={onClose}
-                className="p-1.5 text-slate-400 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer"
+                className="p-1.5 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer"
               >
                 <X size={20} />
               </button>
@@ -85,7 +85,7 @@ export default function NotificationCenter({
             {/* Content List */}
             <div className="flex-1 overflow-y-auto p-3 space-y-3">
               {totalNotifications === 0 ? (
-                <div className="h-full flex flex-col items-center justify-center text-slate-400 space-y-2 opacity-60">
+                <div className="h-full flex flex-col items-center justify-center text-slate-500 space-y-2 opacity-60">
                   <Bell size={40} />
                   <p className="text-sm font-bold">All caught up!</p>
                 </div>

@@ -105,7 +105,7 @@ export default function TaskCard({
               <AlertTriangle className="w-2.5 h-2.5" /> ⚠️ Overdue
             </span>
           ) : (
-            <span className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 text-slate-500 text-[10px] font-bold px-1 py-0.5 rounded-full uppercase tracking-wide">
+            <span className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 text-slate-700 text-[10px] font-bold px-1 py-0.5 rounded-full uppercase tracking-wide">
               <Clock className="w-2.5 h-2.5" /> Pending
             </span>
           )}
@@ -119,19 +119,19 @@ export default function TaskCard({
         </div>
 
         <div>
-          <h3 className={`text-sm font-bold leading-snug ${!isPending ? 'line-through text-slate-400' : 'text-slate-900'}`}>
+          <h3 className={`text-sm font-bold leading-snug ${!isPending ? 'line-through text-slate-500' : 'text-slate-900'}`}>
             {task.title}
           </h3>
           {task.description && (
-            <p className={`text-xs mt-1 md:max-w-2xl leading-relaxed ${!isPending ? 'text-slate-400' : 'text-slate-500'}`}>
+            <p className={`text-xs mt-1 md:max-w-2xl leading-relaxed ${!isPending ? 'text-slate-500' : 'text-slate-700'}`}>
               {task.description}
             </p>
           )}
         </div>
 
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-slate-400">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-slate-500">
           <div className="flex items-center gap-1 font-sans">
-            <Calendar className="w-3.5 h-3.5 shrink-0 text-slate-400" />
+            <Calendar className="w-3.5 h-3.5 shrink-0 text-slate-500" />
             <span>Due: {dueDateObj.toLocaleString()}</span>
           </div>
         </div>
@@ -142,7 +142,7 @@ export default function TaskCard({
         {/* Real-time Ticker countdown */}
         {isPending && (
           <div className="text-right flex flex-col justify-center">
-            <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Time Remaining</span>
+            <span className="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Time Remaining</span>
             <span className={`text-xs font-mono font-bold tracking-tight px-1.5 py-1 rounded-md mt-0.5 ${
               isOverdue 
                 ? 'bg-rose-100 text-rose-700 ring-1 ring-rose-300' 
@@ -188,7 +188,7 @@ export default function TaskCard({
 
           <button
             onClick={() => onDelete(task.id)}
-            className="p-1 bg-slate-50 hover:bg-rose-50 text-slate-400 hover:text-rose-600 rounded-lg border border-slate-200 transition-colors cursor-pointer"
+            className="p-1 bg-slate-50 hover:bg-rose-50 text-slate-500 hover:text-rose-600 rounded-lg border border-slate-200 transition-colors cursor-pointer"
             title="Delete task permanently"
             id={`delete-task-${task.id}`}
           >

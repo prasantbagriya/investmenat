@@ -107,7 +107,7 @@ export default function RecurringBills({
       {/* Header */}
       <div className="flex md:flex-row flex-col justify-between items-start md:items-center gap-2 bg-white p-2 rounded-xl border border-slate-200/80">
         <div>
-          <h2 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest font-sans">Automated Alerts</h2>
+          <h2 className="text-[11px] font-bold text-slate-500 uppercase tracking-widest font-sans">Automated Alerts</h2>
           <p className="text-xl font-bold text-slate-900 tracking-tight font-sans mt-0.5">Auto-Bills & Salary</p>
           <p className="text-xs text-slate-450 mt-1 font-sans font-medium">Track your recurring income and expenses.</p>
         </div>
@@ -141,7 +141,7 @@ export default function RecurringBills({
                 <button
                   type="button"
                   onClick={() => setIsFormOpen(false)}
-                  className="p-1 text-slate-400 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors cursor-pointer"
+                  className="p-1 text-slate-500 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors cursor-pointer"
                 >
                   <X size={16} />
                 </button>
@@ -149,7 +149,7 @@ export default function RecurringBills({
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
                 <div className="space-y-1.5 md:col-span-4 mb-2">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-sans">Flow Direction</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block font-sans">Flow Direction</label>
                   <div className="grid grid-cols-2 gap-1 bg-slate-50 p-1 rounded-md border border-slate-200">
                     <button
                       type="button"
@@ -169,7 +169,7 @@ export default function RecurringBills({
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-sans">Title / Name</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block font-sans">Title / Name</label>
                   <input
                     type="text"
                     required
@@ -181,7 +181,7 @@ export default function RecurringBills({
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-sans">Amount (₹)</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block font-sans">Amount (₹)</label>
                   <div className="relative">
                     <span className="absolute left-3 top-2 text-slate-450 text-xs font-semibold">₹</span>
                     <input
@@ -197,7 +197,7 @@ export default function RecurringBills({
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-sans">Category</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block font-sans">Category</label>
                   <select
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
@@ -208,7 +208,7 @@ export default function RecurringBills({
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-sans">Frequency</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block font-sans">Frequency</label>
                   <select
                     value={frequency}
                     onChange={(e) => setFrequency(e.target.value as 'monthly' | 'yearly')}
@@ -220,7 +220,7 @@ export default function RecurringBills({
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-sans">Next Due Date</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block font-sans">Next Due Date</label>
                   <input
                     type="date"
                     required
@@ -235,7 +235,7 @@ export default function RecurringBills({
                 <button
                   type="button"
                   onClick={() => setIsFormOpen(false)}
-                  className="px-1 py-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-50 font-semibold text-xs rounded transition-colors"
+                  className="px-1 py-1.5 text-slate-700 hover:text-slate-900 hover:bg-slate-50 font-semibold text-xs rounded transition-colors"
                 >
                   Cancel
                 </button>
@@ -278,7 +278,7 @@ export default function RecurringBills({
                         {(!b.type || b.type === 'expense') ? '-' : '+'}₹{b.amount.toLocaleString()}
                       </span>
                       <span className="text-slate-300">•</span>
-                      <span className={`text-xs font-mono flex items-center gap-1 ${isOverdue ? 'text-red-600 font-bold' : isToday ? 'text-orange-600 font-bold' : 'text-slate-500'}`}>
+                      <span className={`text-xs font-mono flex items-center gap-1 ${isOverdue ? 'text-red-600 font-bold' : isToday ? 'text-orange-600 font-bold' : 'text-slate-700'}`}>
                         <Calendar size={11} /> {b.nextDueDate}
                         {isOverdue && ' (Overdue)'}
                         {isToday && ' (Today)'}
@@ -286,8 +286,8 @@ export default function RecurringBills({
                     </div>
                   </div>
                   <div className="flex gap-1 border-l border-orange-200 pl-2">
-                    <button onClick={() => startEdit(b)} className="p-1 text-slate-400 hover:text-slate-900 rounded"><Edit2 size={12} /></button>
-                    <button onClick={() => { if(confirm('Delete bill?')) onDeleteBill(b.id); }} className="p-1 text-slate-400 hover:text-red-600 rounded"><Trash2 size={12} /></button>
+                    <button onClick={() => startEdit(b)} className="p-1 text-slate-500 hover:text-slate-900 rounded"><Edit2 size={12} /></button>
+                    <button onClick={() => { if(confirm('Delete bill?')) onDeleteBill(b.id); }} className="p-1 text-slate-500 hover:text-red-600 rounded"><Trash2 size={12} /></button>
                   </div>
                 </div>
                );
@@ -300,8 +300,8 @@ export default function RecurringBills({
       {otherBills.length > 0 && (
         <div className="bg-white rounded-xl border border-slate-200/80 shadow-xs overflow-hidden mt-3">
           <div className="px-2 py-1.5 flex items-center gap-1.5 bg-slate-50/50 border-b border-slate-200">
-            <Repeat size={14} className="text-slate-500" />
-            <span className="text-[11px] font-bold text-slate-500 uppercase tracking-widest font-sans">Future / Other Bills ({otherBills.length})</span>
+            <Repeat size={14} className="text-slate-700" />
+            <span className="text-[11px] font-bold text-slate-700 uppercase tracking-widest font-sans">Future / Other Bills ({otherBills.length})</span>
           </div>
           <div className="divide-y divide-slate-100">
             {otherBills.sort((a,b) => (a.nextDueDate || '').localeCompare(b.nextDueDate || '')).map((b) => (
@@ -309,14 +309,14 @@ export default function RecurringBills({
                 <div>
                   <div className="flex items-center gap-1.5">
                     <span className="font-bold text-slate-800 text-sm">{b.title}</span>
-                    <span className="text-[9px] px-1 py-0.5 rounded uppercase tracking-wider font-bold bg-slate-100 text-slate-500">{b.frequency}</span>
+                    <span className="text-[9px] px-1 py-0.5 rounded uppercase tracking-wider font-bold bg-slate-100 text-slate-700">{b.frequency}</span>
                   </div>
                   <div className="flex items-center gap-1.5 mt-0.5">
-                    <span className={`text-xs font-mono font-bold ${(!b.type || b.type === 'expense') ? 'text-slate-500' : 'text-emerald-600/80'}`}>
+                    <span className={`text-xs font-mono font-bold ${(!b.type || b.type === 'expense') ? 'text-slate-700' : 'text-emerald-600/80'}`}>
                       {(!b.type || b.type === 'expense') ? '-' : '+'}₹{b.amount.toLocaleString()}
                     </span>
                     <span className="text-slate-300">•</span>
-                    <span className="text-xs font-mono text-slate-400 flex items-center gap-1">
+                    <span className="text-xs font-mono text-slate-500 flex items-center gap-1">
                       <Calendar size={11} /> {b.nextDueDate}
                     </span>
                   </div>

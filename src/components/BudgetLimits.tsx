@@ -146,9 +146,9 @@ export default function BudgetLimits({
       {/* Navigator headers */}
       <div className="flex md:flex-row flex-col justify-between items-start md:items-center gap-2 bg-white p-2 rounded-xl border border-slate-200/80 animate-fade-in">
         <div>
-          <h2 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest font-sans">Monthly Budgets</h2>
+          <h2 className="text-[11px] font-bold text-slate-500 uppercase tracking-widest font-sans">Monthly Budgets</h2>
           <p className="text-xl font-bold text-slate-900 tracking-tight font-sans mt-0.5">Category Allocations</p>
-          <p className="text-xs text-slate-400 mt-1 font-sans">Current parameter: <span className="font-semibold text-slate-950">{monthName}</span></p>
+          <p className="text-xs text-slate-500 mt-1 font-sans">Current parameter: <span className="font-semibold text-slate-950">{monthName}</span></p>
         </div>
         
         <div className="flex items-center gap-1">
@@ -194,7 +194,7 @@ export default function BudgetLimits({
                 <button
                   type="button"
                   onClick={() => setIsFormOpen(false)}
-                  className="p-1 text-slate-400 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors cursor-pointer"
+                  className="p-1 text-slate-500 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors cursor-pointer"
                 >
                   <X size={16} />
                 </button>
@@ -204,7 +204,7 @@ export default function BudgetLimits({
                 
                 {/* Category Selection restriction to Expense categories only */}
                 <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-sans">Expense Category</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block font-sans">Expense Category</label>
                   <select
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
@@ -219,7 +219,7 @@ export default function BudgetLimits({
 
                 {/* Limit Amount */}
                 <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-sans">Spending Limit (₹)</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block font-sans">Spending Limit (₹)</label>
                   <div className="relative">
                     <span className="absolute left-3 top-2 text-slate-450 text-xs font-medium font-sans">₹</span>
                     <input
@@ -242,7 +242,7 @@ export default function BudgetLimits({
                 <button
                   type="button"
                   onClick={() => setIsFormOpen(false)}
-                  className="px-1 py-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-50 font-semibold text-xs rounded transition-colors"
+                  className="px-1 py-1.5 text-slate-700 hover:text-slate-900 hover:bg-slate-50 font-semibold text-xs rounded transition-colors"
                 >
                   Cancel
                 </button>
@@ -263,17 +263,17 @@ export default function BudgetLimits({
       {/* Grid displays */}
       <div className="bg-white rounded-xl border border-slate-200/80 shadow-xs overflow-hidden" id="budgets-details-container">
         <div className="px-2 py-1.5 flex border-b border-slate-200/50 justify-between items-center bg-slate-50/40">
-          <span className="text-[11px] font-bold text-slate-400 uppercase tracking-widest font-sans">Allocated spending caps ({mergedBudgets.length})</span>
+          <span className="text-[11px] font-bold text-slate-500 uppercase tracking-widest font-sans">Allocated spending caps ({mergedBudgets.length})</span>
         </div>
 
         {mergedBudgets.length === 0 ? (
-          <div className="p-6 text-center text-slate-400/80 bg-white" id="no-limits-banner">
+          <div className="p-6 text-center text-slate-500/80 bg-white" id="no-limits-banner">
             <p className="text-xs">No active spending limits assigned for {monthName}. Use the button above to add limits.</p>
           </div>
         ) : (
           <div className="divide-y divide-slate-100">
             {mergedBudgets.map((b) => {
-              const pillStyle = b.status === 'red' ? 'text-red-700 bg-red-50' : b.status === 'orange' ? 'text-amber-700 bg-amber-50' : 'text-slate-500 bg-slate-50/80';
+              const pillStyle = b.status === 'red' ? 'text-red-700 bg-red-50' : b.status === 'orange' ? 'text-amber-700 bg-amber-50' : 'text-slate-700 bg-slate-50/80';
               const barColor = b.status === 'red' ? 'bg-red-500' : b.status === 'orange' ? 'bg-amber-400' : 'bg-slate-950';
               
               return (
@@ -286,7 +286,7 @@ export default function BudgetLimits({
                       <span className={`text-[9px] px-1.5 py-0.5 rounded-full font-bold uppercase tracking-wider ${pillStyle}`}>
                         {b.status === 'red' ? 'Exceeded' : b.status === 'orange' ? 'Warning 80%+' : 'Within Limit'}
                       </span>
-                      <span className="text-[10px] text-slate-400 font-mono">Limit: {b.id.substring(0,6)}</span>
+                      <span className="text-[10px] text-slate-500 font-mono">Limit: {b.id.substring(0,6)}</span>
                     </div>
                   </div>
 
@@ -295,9 +295,9 @@ export default function BudgetLimits({
                     <div className="flex justify-between items-baseline">
                       <div className="flex items-baseline gap-1 font-mono text-[11px]">
                         <span className="text-xs font-bold text-slate-900">₹{b.spent.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
-                        <span className="text-slate-400"> of ₹{b.limitAmount.toLocaleString('en-IN')} Spend Cap</span>
+                        <span className="text-slate-500"> of ₹{b.limitAmount.toLocaleString('en-IN')} Spend Cap</span>
                       </div>
-                      <span className="text-[10px] font-bold font-mono text-slate-500">{b.pct.toFixed(0)}% Used</span>
+                      <span className="text-[10px] font-bold font-mono text-slate-700">{b.pct.toFixed(0)}% Used</span>
                     </div>
 
                     <div className="relative w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
@@ -316,7 +316,7 @@ export default function BudgetLimits({
                           onDeleteLimit(b.id).catch(console.error);
                         }
                       }}
-                      className="p-1.5 text-slate-400 hover:text-red-650 hover:bg-neutral-50 rounded transition-colors cursor-pointer"
+                      className="p-1.5 text-slate-500 hover:text-red-650 hover:bg-neutral-50 rounded transition-colors cursor-pointer"
                       title="Deallocate budget limit"
                     >
                       <Trash2 size={14} />

@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult, signOut, signInAnonymously, signInWithCredential, setPersistence, indexedDBLocalPersistence } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult, signOut, signInAnonymously, signInWithCredential, setPersistence, browserLocalPersistence } from 'firebase/auth';
 import { Capacitor } from '@capacitor/core';
 import { FirebaseAuthentication } from '@capacitor-firebase/authentication';
 import { getFirestore, doc, getDocFromServer, initializeFirestore, persistentLocalCache, persistentMultipleTabManager } from 'firebase/firestore';
@@ -15,7 +15,7 @@ export const db = initializeFirestore(app, {
 }, (firebaseConfig as any).firestoreDatabaseId);
 export const auth = getAuth(app);
 // Set auth persistence to LOCAL so the user never logs out
-setPersistence(auth, indexedDBLocalPersistence).catch(err => {
+setPersistence(auth, browserLocalPersistence).catch(err => {
   console.warn("Failed to set auth persistence:", err);
 });
 // Initialize provider and configure Google Sheets scope permissions
@@ -35,7 +35,9 @@ export const ALL_GOOGLE_SCOPES = [
   'https://www.googleapis.com/auth/gmail.readonly',
   'https://www.googleapis.com/auth/chat.spaces.readonly',
   'https://www.googleapis.com/auth/chat.messages.create',
-  'https://www.googleapis.com/auth/classroom.courses.readonly'
+  'https://www.googleapis.com/auth/classroom.courses.readonly',
+  'https://www.googleapis.com/auth/classroom.coursework.me.readonly',
+  'https://www.googleapis.com/auth/classroom.announcements.readonly'
 ];
 
 ALL_GOOGLE_SCOPES.forEach(scope => googleProvider.addScope(scope));

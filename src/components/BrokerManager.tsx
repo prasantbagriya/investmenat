@@ -267,7 +267,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
     localStorage.setItem('kite_api_key', kiteApiKey);
     localStorage.setItem('kite_api_secret', kiteApiSecret);
     
-    // Using default version 3 login
+    // Using default version 3 login. Note: Kite tokens expire daily.
     const kiteAuthUrl = `https://kite.zerodha.com/connect/login?v=3&api_key=${kiteApiKey}`;
     window.location.href = kiteAuthUrl;
   };
@@ -399,7 +399,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                   <h3 className="text-lg font-black text-indigo-900 flex items-center gap-2">
                     Upstox Developer API
                   </h3>
-                  <p className="text-xs text-slate-700">Requires OAuth 2.0 flow using API Key and Secret.</p>
+                  <p className="text-xs text-slate-700">Requires OAuth 2.0. Note: Token expires daily for security. Reconnect if data stops syncing.</p>
                 </div>
                 {upstoxToken ? (
                   <span className="bg-emerald-50 text-emerald-700 text-[10px] font-black uppercase tracking-wider px-2 py-1 rounded-lg flex items-center gap-1 border border-emerald-200">
@@ -618,7 +618,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                   <h3 className="text-lg font-black text-orange-900 flex items-center gap-2">
                     Angel SmartAPI
                   </h3>
-                  <p className="text-xs text-slate-700">Requires API Key, Client Code, and PIN for TOTP generation.</p>
+                  <p className="text-xs text-slate-700">Requires API Key, Client Code, and TOTP. Note: Token expires daily for security. Reconnect if data stops.</p>
                 </div>
               </div>
 

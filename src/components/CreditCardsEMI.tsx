@@ -111,9 +111,9 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [] }: CreditCardsE
       localStorage.setItem(`ccbills_${user.uid}`, JSON.stringify(updated));
       setBills(updated);
     } else if (editingCard) {
-      await updateDoc(doc(db, 'creditCardBills', editingCard.id), data);
+      await updateDoc(doc(db, 'ccbills', editingCard.id), data);
     } else {
-      const ref = doc(collection(db, 'creditCardBills'));
+      const ref = doc(collection(db, 'ccbills'));
       await setDoc(ref, { ...data, id: ref.id, createdAt: serverTimestamp() });
     }
     resetCardForm();
@@ -126,7 +126,7 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [] }: CreditCardsE
       localStorage.setItem(`ccbills_${user.uid}`, JSON.stringify(updatedBills));
       setBills(updatedBills);
     } else {
-      await updateDoc(doc(db, 'creditCardBills', bill.id), updates);
+      await updateDoc(doc(db, 'ccbills', bill.id), updates);
     }
   };
 
@@ -137,7 +137,7 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [] }: CreditCardsE
       localStorage.setItem(`ccbills_${user.uid}`, JSON.stringify(updated));
       setBills(updated);
     } else {
-      await deleteDoc(doc(db, 'creditCardBills', id));
+      await deleteDoc(doc(db, 'ccbills', id));
     }
   };
 
@@ -163,9 +163,9 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [] }: CreditCardsE
       localStorage.setItem(`ccemis_${user.uid}`, JSON.stringify(updated));
       setEmis(updated);
     } else if (editingEmi) {
-      await updateDoc(doc(db, 'emiItems', editingEmi.id), data);
+      await updateDoc(doc(db, 'ccemis', editingEmi.id), data);
     } else {
-      const ref = doc(collection(db, 'emiItems'));
+      const ref = doc(collection(db, 'ccemis'));
       await setDoc(ref, { ...data, id: ref.id, createdAt: serverTimestamp() });
     }
     resetEmiForm();
@@ -179,7 +179,7 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [] }: CreditCardsE
       localStorage.setItem(`ccemis_${user.uid}`, JSON.stringify(updatedEmis));
       setEmis(updatedEmis);
     } else {
-      await updateDoc(doc(db, 'emiItems', emi.id), updates);
+      await updateDoc(doc(db, 'ccemis', emi.id), updates);
     }
   };
 
@@ -190,7 +190,7 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [] }: CreditCardsE
       localStorage.setItem(`ccemis_${user.uid}`, JSON.stringify(updated));
       setEmis(updated);
     } else {
-      await deleteDoc(doc(db, 'emiItems', id));
+      await deleteDoc(doc(db, 'ccemis', id));
     }
   };
 

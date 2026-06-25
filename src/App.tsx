@@ -1,22 +1,22 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
-import { 
-  auth, 
-  db, 
-  signInWithGoogle, 
+import {
+  auth,
+  db,
+  signInWithGoogle,
   signInGuestAnonymously,
-  logout as firebaseLogout, 
-  handleFirestoreError, 
+  logout as firebaseLogout,
+  handleFirestoreError,
   OperationType,
   setAccessToken,
   getAccessToken
 } from './firebase';
-import { 
-  collection, 
-  query, 
-  where, 
-  onSnapshot, 
-  doc, 
+import {
+  collection,
+  query,
+  where,
+  onSnapshot,
+  doc,
   serverTimestamp,
   writeBatch,
   getDocs,
@@ -25,14 +25,14 @@ import {
 import { setDoc, updateDoc, deleteDoc } from './firebase-sync';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { motion, AnimatePresence } from 'motion/react';
-import { 
-  LayoutDashboard, ArrowLeftRight, Clock, Target, Sliders, LogOut, 
-  Download, Coins, User as UserIcon, HelpCircle, TrendingUp, Bell, X, 
-  AlertTriangle, Landmark, Landmark as FdIcon, CalendarRange, Percent, 
+import {
+  LayoutDashboard, ArrowLeftRight, Clock, Target, Sliders, LogOut,
+  Download, Coins, User as UserIcon, HelpCircle, TrendingUp, Bell, X,
+  AlertTriangle, Landmark, Landmark as FdIcon, CalendarRange, Percent,
   Lock, ShieldCheck, RefreshCw, Key, FileSpreadsheet, Users, Settings, Compass, Briefcase, CheckCircle
 } from 'lucide-react';
 
-import { 
+import {
   Transaction, PendingPayment, SavingsGoal, BudgetLimit, ScheduledTask,
   Holding, Sip, Fd, WatchlistItem, UserSettings, RealizedTrade, RecurringBill, BankAccount, CreditCardBill, EmiItem
 } from './types';
@@ -122,11 +122,11 @@ export default function App() {
       const response = await proxyFetch('/api/parse-sms-ai', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          text: smsText, 
+        body: JSON.stringify({
+          text: smsText,
           pendingPayments: pendingPayments.filter(p => !p.completed),
           recurringBills,
-          bankAccounts 
+          bankAccounts
         })
       });
       if (response.ok) {
@@ -190,7 +190,7 @@ export default function App() {
   useEffect(() => {
     const handleSipNotification = (e: any) => {
       const { sipName } = e.detail;
-      sendNotification(`SIP Auto-Debit Reminder`, { 
+      sendNotification(`SIP Auto-Debit Reminder`, {
         body: `We will notify you 2 days prior to "${sipName}" SIP auto-debit window!`,
         requireInteraction: true
       });
@@ -216,14 +216,14 @@ export default function App() {
     }
     localStorage.setItem('custom_google_client_id', customLoginClientId.trim());
     localStorage.setItem('custom_google_client_secret', customLoginClientSecret.trim());
-    
+
     const redirectUri = window.location.origin;
     const scopes = encodeURIComponent('https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/contacts https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/documents https://www.googleapis.com/auth/presentations');
-    
+
     const oauthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${customLoginClientId.trim()}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=token&scope=${scopes}&prompt=consent`;
-    
+
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
-    
+
     if (isMobile) {
       localStorage.setItem('oauth_trigger_guest_sign_in', 'true');
       localStorage.setItem('oauth_return_tab', 'settings');
@@ -306,7 +306,7 @@ export default function App() {
           // Standard state cleanup: remove token from URL immediately for clean design
           window.history.replaceState(null, '', window.location.pathname);
           console.log("🎯 Google Implicit access token grabbed and stored.");
-          
+
           // Check for redirect state:
           const targetService = localStorage.getItem('oauth_target_service');
           if (targetService) {
@@ -314,7 +314,7 @@ export default function App() {
             localStorage.removeItem('oauth_target_service');
             console.log(`✅ Automatically linked ${targetService} from redirect state.`);
           }
-          
+
           // Dispatch custom event to notify all listening components
           window.dispatchEvent(new Event('google-token-changed'));
 
@@ -431,9 +431,9 @@ export default function App() {
           const guestWatch = JSON.parse(localStorage.getItem(`watchlist_${guestId}`) || '[]');
           const guestSettings = JSON.parse(localStorage.getItem(`settings_${guestId}`) || 'null');
 
-          const hasData = guestTxs.length || guestPay.length || guestGoals.length || guestLimits.length || 
-                          guestHoldings.length || guestRealized.length || guestSips.length || guestFds.length || 
-                          guestWatch.length;
+          const hasData = guestTxs.length || guestPay.length || guestGoals.length || guestLimits.length ||
+            guestHoldings.length || guestRealized.length || guestSips.length || guestFds.length ||
+            guestWatch.length;
 
           if (hasData) {
             setPendingMigrationData({
@@ -525,7 +525,7 @@ export default function App() {
         }
       };
       loadLocalData();
-      return () => {};
+      return () => { };
     }
 
     // Subscribe UserSettings (PIN lock profile)
@@ -727,7 +727,7 @@ export default function App() {
   // mutations
   const handleAddTransaction = async (txData: Omit<Transaction, 'id' | 'userId'>) => {
     if (!user) return;
-    
+
     // Adjust Bank Account balance if linked
     if (txData.bankAccountId) {
       const bank = bankAccounts.find(b => b.id === txData.bankAccountId);
@@ -901,9 +901,9 @@ export default function App() {
 
   useEffect(() => {
     if (!user || !('Notification' in window) || Notification.permission !== 'granted') return;
-    
+
     const todayStr = new Date().toISOString().split('T')[0];
-    
+
     // Check due bills
     const dueBills = recurringBills.filter(b => b.nextDueDate <= todayStr);
     dueBills.forEach(b => {
@@ -1540,9 +1540,9 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#f8fafc] flex flex-col pb-8 font-sans text-slate-900">
-      
+
       {/* Guest Mode Notification Bar Removed */}
-      
+
       {/* Top Navigation */}
       <Header
         user={user}
@@ -1558,7 +1558,7 @@ export default function App() {
         onOpenNotifications={() => setIsNotificationOpen(true)}
         onOpenNavDrawer={() => setIsNavDrawerOpen(true)}
         unreadCount={
-          recurringBills.filter(b => b.nextDueDate <= new Date().toISOString().split('T')[0]).length + 
+          recurringBills.filter(b => b.nextDueDate <= new Date().toISOString().split('T')[0]).length +
           pendingPayments.filter(p => !p.completed && p.dueDate <= new Date().toISOString().split('T')[0]).length
         }
       />
@@ -1575,7 +1575,7 @@ export default function App() {
             <div className="max-w-md mx-auto grid grid-cols-1 md:grid-cols-3 gap-2 text-xs font-sans items-end">
               <div>
                 <h4 className="font-extrabold text-slate-800 flex items-center gap-1">
-                  <Lock size={12} className="text-indigo-600" /> 
+                  <Lock size={12} className="text-indigo-600" />
                   {userSettings?.pin ? 'Modify Security Lock PIN' : 'Initialize App Protection PIN'}
                 </h4>
                 <p className="text-[9px] text-slate-500 mt-0.5">Protect your investment sheets. Input exactly 4 digits.</p>
@@ -1583,11 +1583,11 @@ export default function App() {
 
               <div>
                 <label className="block text-slate-700 font-bold text-[10px] mb-1">CHOOSE 4-DIGIT PIN</label>
-                <input 
-                  type="password" 
+                <input
+                  type="password"
                   maxLength={4}
                   placeholder="••••"
-                  value={newPin} 
+                  value={newPin}
                   onChange={(e) => setNewPin(e.target.value.replace(/\D/g, ''))}
                   className="w-full bg-white border border-slate-200 rounded-lg p-1.5 font-bold tracking-widest text-center"
                 />
@@ -1595,11 +1595,11 @@ export default function App() {
 
               <div>
                 <label className="block text-slate-700 font-bold text-[10px] mb-1">CONFIRM PIN</label>
-                <input 
-                  type="password" 
+                <input
+                  type="password"
                   maxLength={4}
                   placeholder="••••"
-                  value={confirmPin} 
+                  value={confirmPin}
                   onChange={(e) => setConfirmPin(e.target.value.replace(/\D/g, ''))}
                   className="w-full bg-white border border-slate-200 rounded-lg p-1.5 font-bold tracking-widest text-center"
                 />
@@ -1639,7 +1639,7 @@ export default function App() {
         <div className="transition-all duration-300">
           <Routes>
             <Route path="/" element={<Navigate to={currentWorkspace === 'ledger' ? '/dashboard' : '/portfolio'} replace />} />
-          <Route path="/dashboard" element={<Dashboard
+            <Route path="/dashboard" element={<Dashboard
               transactions={transactions}
               pendingPayments={pendingPayments}
               savingsGoals={savingsGoals}
@@ -1655,7 +1655,7 @@ export default function App() {
               livePrices={livePrices}
             />} />
 
-          <Route path="/analytics" element={<AnalyticsDashboard
+            <Route path="/analytics" element={<AnalyticsDashboard
               transactions={transactions}
               bankAccounts={bankAccounts}
               holdings={unifiedHoldings}
@@ -1667,55 +1667,55 @@ export default function App() {
               ccEmis={ccEmis}
             />} />
 
-          <Route path="/portfolio" element={<PortfolioTracker
-                    holdings={unifiedHoldings}
-                    realizedTrades={[...realizedTrades, ...(brokerRealizedTrades || [])]}
-                    watchlist={watchlist}
-                    onAddHolding={handleAddHolding}
-                    onDeleteHolding={handleDeleteHolding}
-                    onUpdateHolding={handleUpdateHolding}
-                    onAddRealizedTrade={handleAddRealizedTrade}
-                    onAddToWatchlist={handleAddToWatchlist}
-                    onRemoveFromWatchlist={handleRemoveFromWatchlist}
-                    userSettings={userSettings}
-                    onUpdateSmartApiSettings={handleUpdateSmartApiSettings}
-                    livePrices={livePrices}
-                    refreshPrices={refreshPrices}
-                    loadingPrices={loadingPrices}
-                    brokerFunds={brokerFunds}
-                    isSyncingBrokerData={isSyncing}
-                    onRefreshBrokerData={refreshBrokerData}
-                  />} />
+            <Route path="/portfolio" element={<PortfolioTracker
+              holdings={unifiedHoldings}
+              realizedTrades={[...realizedTrades, ...(brokerRealizedTrades || [])]}
+              watchlist={watchlist}
+              onAddHolding={handleAddHolding}
+              onDeleteHolding={handleDeleteHolding}
+              onUpdateHolding={handleUpdateHolding}
+              onAddRealizedTrade={handleAddRealizedTrade}
+              onAddToWatchlist={handleAddToWatchlist}
+              onRemoveFromWatchlist={handleRemoveFromWatchlist}
+              userSettings={userSettings}
+              onUpdateSmartApiSettings={handleUpdateSmartApiSettings}
+              livePrices={livePrices}
+              refreshPrices={refreshPrices}
+              loadingPrices={loadingPrices}
+              brokerFunds={brokerFunds}
+              isSyncingBrokerData={isSyncing}
+              onRefreshBrokerData={refreshBrokerData}
+            />} />
 
-          <Route path="/market-data" element={<MarketView />} />
+            <Route path="/market-data" element={<MarketView />} />
 
-          <Route path="/sips" element={<SipTracker
+            <Route path="/sips" element={<SipTracker
               sips={sips}
               onAddSip={handleAddSip}
               onDeleteSip={handleDeleteSip}
               onEditSip={handleEditSip}
             />} />
 
-          <Route path="/fds" element={<FdRdTracker
+            <Route path="/fds" element={<FdRdTracker
               fds={fds}
               onAddFd={handleAddFd}
               onDeleteFd={handleDeleteFd}
               onEditFd={handleEditFd}
             />} />
 
-          <Route path="/tax" element={<TaxCapitalGains
+            <Route path="/tax" element={<TaxCapitalGains
               holdings={unifiedHoldings}
               livePrices={livePrices}
             />} />
 
-          <Route path="/forecaster" element={<WealthForecaster 
-              fds={fds} 
-              sips={sips} 
-              holdings={unifiedHoldings} 
+            <Route path="/forecaster" element={<WealthForecaster
+              fds={fds}
+              sips={sips}
+              holdings={unifiedHoldings}
               livePrices={livePrices}
             />} />
 
-          <Route path="/transactions" element={<TransactionTracker
+            <Route path="/transactions" element={<TransactionTracker
               transactions={transactions}
               onAddTransaction={handleAddTransaction}
               onEditTransaction={handleEditTransaction}
@@ -1741,7 +1741,7 @@ export default function App() {
               }}
             />} />
 
-          <Route path="/pending" element={<PendingPayments
+            <Route path="/pending" element={<PendingPayments
               user={user}
               pendingPayments={pendingPayments}
               onAddPayment={handleAddPayment}
@@ -1749,16 +1749,16 @@ export default function App() {
               onDeletePayment={handleDeletePayment}
             />} />
 
-          <Route path="/savings" element={<SavingsGoals
+            <Route path="/savings" element={<SavingsGoals
               savingsGoals={savingsGoals}
               onAddGoal={handleAddGoal}
               onEditGoal={handleEditGoal}
               onDeleteGoal={handleDeleteGoal}
             />} />
 
-          <Route path="/credit-cards" element={<CreditCardsEMI user={user} ccBills={ccBills} ccEmis={ccEmis} />} />
+            <Route path="/credit-cards" element={<CreditCardsEMI user={user} ccBills={ccBills} ccEmis={ccEmis} />} />
 
-          <Route path="/bank-profiles" element={<BankProfiles
+            <Route path="/bank-profiles" element={<BankProfiles
               bankAccounts={bankAccounts}
               transactions={transactions}
               onAddBankAccount={handleAddBankAccount}
@@ -1766,7 +1766,7 @@ export default function App() {
               onDeleteBankAccount={handleDeleteBankAccount}
             />} />
 
-          <Route path="/budgets" element={<BudgetLimits
+            <Route path="/budgets" element={<BudgetLimits
               budgetLimits={budgetLimits}
               transactions={transactions}
               onAddLimit={handleAddLimit}
@@ -1775,24 +1775,24 @@ export default function App() {
               onMonthChange={setSelectedMonth}
             />} />
 
-          <Route path="/sheets" element={<GoogleSheetsSync
+            <Route path="/sheets" element={<GoogleSheetsSync
               transactions={transactions}
-               holdings={unifiedHoldings}
-               sips={sips}
-               fds={fds}
-               userSettings={userSettings}
-               onUpdateUserSettings={handleUpdateSmartApiSettings}
-               onReloadData={() => {
-                 console.log('Google Sheets Sync completed data refresh.');
-               }}
-               onNavigateToTab={setActiveTab}
-               onOverwriteTransactions={handleOverwriteTransactions}
-               onOverwriteHoldings={handleOverwriteHoldings}
-               onOverwriteSips={handleOverwriteSips}
-               onOverwriteFds={handleOverwriteFds}
+              holdings={unifiedHoldings}
+              sips={sips}
+              fds={fds}
+              userSettings={userSettings}
+              onUpdateUserSettings={handleUpdateSmartApiSettings}
+              onReloadData={() => {
+                console.log('Google Sheets Sync completed data refresh.');
+              }}
+              onNavigateToTab={setActiveTab}
+              onOverwriteTransactions={handleOverwriteTransactions}
+              onOverwriteHoldings={handleOverwriteHoldings}
+              onOverwriteSips={handleOverwriteSips}
+              onOverwriteFds={handleOverwriteFds}
             />} />
 
-          <Route path="/contacts" element={<ContactsManager
+            <Route path="/contacts" element={<ContactsManager
               user={user}
               pendingPayments={pendingPayments}
               transactions={transactions}
@@ -1800,14 +1800,14 @@ export default function App() {
               onNavigateToTab={setActiveTab}
             />} />
 
-          <Route path="/settings" element={<SettingsManager
+            <Route path="/settings" element={<SettingsManager
               user={user}
               userSettings={userSettings}
               onUpdateUserSettings={handleUpdateSmartApiSettings}
               onNavigateToTab={setActiveTab}
             />} />
 
-          <Route path="/tasks" element={<TasksSection
+            <Route path="/tasks" element={<TasksSection
               tasks={scheduledTasks}
               onAddTask={handleAddTask}
               onCompleteTask={handleCompleteTask}
@@ -1816,20 +1816,20 @@ export default function App() {
               userEmail={user?.email || ''}
             />} />
 
-          <Route path="/recurring-bills" element={<RecurringBills
+            <Route path="/recurring-bills" element={<RecurringBills
               recurringBills={recurringBills}
               onAddBill={handleAddRecurringBill}
               onEditBill={handleEditRecurringBill}
               onDeleteBill={handleDeleteRecurringBill}
             />} />
 
-          <Route path="/workspace" element={<WorkspaceSuite
+            <Route path="/workspace" element={<WorkspaceSuite
               user={user}
               onNavigateToTab={setActiveTab}
             />} />
-            
-          <Route path="/brokers" element={<BrokerManager 
-              user={user} 
+
+            <Route path="/brokers" element={<BrokerManager
+              user={user}
             />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
@@ -1859,11 +1859,11 @@ export default function App() {
               <div className="flex flex-col gap-1 ml-2">
                 <button
                   onClick={() => {
-                     setSnoozingTask({ id: toast.id, title: toast.title });
-                     const now = new Date();
-                     setSnoozeDate(now.toISOString().substring(0, 10));
-                     setSnoozeTime(now.toTimeString().substring(0, 5));
-                     setActiveToasts((prev) => prev.filter((t) => t.id !== toast.id));
+                    setSnoozingTask({ id: toast.id, title: toast.title });
+                    const now = new Date();
+                    setSnoozeDate(now.toISOString().substring(0, 10));
+                    setSnoozeTime(now.toTimeString().substring(0, 5));
+                    setActiveToasts((prev) => prev.filter((t) => t.id !== toast.id));
                   }}
                   className="px-2 py-1 text-[10px] font-bold bg-indigo-600/20 text-indigo-300 hover:bg-indigo-600/40 rounded transition-colors cursor-pointer"
                 >
@@ -1884,32 +1884,32 @@ export default function App() {
       {/* Snooze Modal */}
       <AnimatePresence>
         {snoozingTask && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             className="fixed inset-0 z-100 flex items-center justify-center bg-black/60 p-4"
           >
             <motion.div initial={{ scale: 0.95 }} animate={{ scale: 1 }} exit={{ scale: 0.95 }} className="bg-white rounded-2xl p-4 w-full max-w-xs shadow-2xl space-y-3">
               <h3 className="font-bold text-slate-900">Snooze Task</h3>
-              <p className="text-xs text-slate-700">Select a new date and time for: <br/><b className="text-slate-800">{snoozingTask.title}</b></p>
+              <p className="text-xs text-slate-700">Select a new date and time for: <br /><b className="text-slate-800">{snoozingTask.title}</b></p>
               <div className="space-y-2 pt-1">
                 <input type="date" value={snoozeDate} onChange={e => setSnoozeDate(e.target.value)} className="w-full text-sm p-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-indigo-500" />
                 <input type="time" value={snoozeTime} onChange={e => setSnoozeTime(e.target.value)} className="w-full text-sm p-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-indigo-500" />
               </div>
               <div className="flex justify-end gap-2 pt-2 border-t border-slate-100 mt-2">
                 <button onClick={() => setSnoozingTask(null)} className="px-3 py-1.5 text-xs font-bold text-slate-700 hover:bg-slate-50 rounded-lg cursor-pointer">Cancel</button>
-                <button 
+                <button
                   onClick={async () => {
-                     if (!snoozeDate || !snoozeTime) return alert("Please select date and time.");
-                     try {
-                       const d = new Date(`${snoozeDate}T${snoozeTime}`);
-                       await updateDoc(doc(db, 'tasks', snoozingTask.id), { 
-                         dueDate: Timestamp.fromDate(d), 
-                         notified: false 
-                       });
-                       setActiveToasts((prev) => prev.filter(t => t.id !== snoozingTask.id));
-                       setSnoozingTask(null);
-                     } catch(e) { alert("Failed to snooze: " + e); }
-                  }} 
+                    if (!snoozeDate || !snoozeTime) return alert("Please select date and time.");
+                    try {
+                      const d = new Date(`${snoozeDate}T${snoozeTime}`);
+                      await updateDoc(doc(db, 'tasks', snoozingTask.id), {
+                        dueDate: Timestamp.fromDate(d),
+                        notified: false
+                      });
+                      setActiveToasts((prev) => prev.filter(t => t.id !== snoozingTask.id));
+                      setSnoozingTask(null);
+                    } catch (e) { alert("Failed to snooze: " + e); }
+                  }}
                   className="px-3 py-1.5 text-xs font-bold bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 cursor-pointer">
                   Save & Snooze
                 </button>

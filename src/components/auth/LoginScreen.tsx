@@ -87,13 +87,15 @@ export default function LoginScreen({
               <span className="text-[15px]">Direct Access (Guest)</span>
             </button>
 
-            <button
-              onClick={() => alert("Apne build kiye hue APK ko Google Drive ya mediafire par upload karein aur is button ke code (LoginScreen.tsx) mein woh link daal dein. Firebase free plan par direct APK hosting allowed nahi hai.")}
+            <a
+              href="https://investmant.onrender.com/app.apk"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-full flex items-center justify-center gap-3 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-semibold py-4 px-6 rounded-2xl transition-all border border-indigo-100 hover:border-indigo-200 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer text-decoration-none mt-2"
             >
               <Download className="w-5 h-5 shrink-0" strokeWidth={2} />
               <span className="text-[15px]">Download Android App (APK)</span>
-            </button>
+            </a>
           </div>
 
           {/* Advanced Config Toggle */}

@@ -31,6 +31,7 @@ interface GmailMessage {
   from?: string;
   date?: string;
   snippet?: string;
+  fullBody?: string;
 }
 
 interface GoogleTaskList {
@@ -84,6 +85,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
   const [gmailSubject, setGmailSubject] = useState<string>('');
   const [gmailBody, setGmailBody] = useState<string>('');
   const [isSendingEmail, setIsSendingEmail] = useState<boolean>(false);
+  const [selectedEmail, setSelectedEmail] = useState<GmailMessage | null>(null);
 
   // 3. Meet states
   const [createdMeetLink, setCreatedMeetLink] = useState<string | null>(null);
@@ -101,13 +103,27 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
   const [chatSpaces, setChatSpaces] = useState<ChatSpace[]>([]);
   const [selectedSpaceName, setSelectedSpaceName] = useState<string>('');
   const [chatMessage, setChatMessage] = useState<string>('');
+  const [chatMessagesList, setChatMessagesList] = useState<any[]>([]);
 
   // 6. Forms states
   const [formsList, setFormsList] = useState<DriveFile[]>([]);
   const [newFormTitle, setNewFormTitle] = useState<string>('Feedback Form');
 
+  const [docsList, setDocsList] = useState<DriveFile[]>([]);
+  const [newDocTitle, setNewDocTitle] = useState<string>('Untitled Document');
+
+  const [slidesList, setSlidesList] = useState<DriveFile[]>([]);
+  const [newSlideTitle, setNewSlideTitle] = useState<string>('Untitled Presentation');
+
+  const [photosList, setPhotosList] = useState<any[]>([]);
+
+  const [calendarEvents, setCalendarEvents] = useState<any[]>([]);
+
   // 7. Classroom states
   const [courses, setCourses] = useState<ClassroomCourse[]>([]);
+  const [selectedCourse, setSelectedCourse] = useState<ClassroomCourse | null>(null);
+  const [courseWork, setCourseWork] = useState<any[]>([]);
+  const [announcements, setAnnouncements] = useState<any[]>([]);
 
   // Listen for changes in Google token
   useEffect(() => {
@@ -125,6 +141,12 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
       fetchActiveServiceData();
     }
   }, [activeService, token, selectedTaskListId]);
+
+  useEffect(() => {
+    if (activeService === 'chat' && selectedSpaceName && token) {
+      handleFetchChatMessages(selectedSpaceName);
+    }
+  }, [activeService, selectedSpaceName, token]);
 
   const fetchActiveServiceData = async () => {
     if (!token) return;
@@ -144,6 +166,14 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
         await handleFetchForms();
       } else if (activeService === 'classroom') {
         await handleFetchCourses();
+      } else if (activeService === 'docs') {
+        await handleFetchDocs();
+      } else if (activeService === 'slides') {
+        await handleFetchSlides();
+      } else if (activeService === 'photos') {
+        await handleFetchPhotos();
+      } else if (activeService === 'calendar' || activeService === 'meet') {
+        await handleFetchCalendarEvents();
       }
     } catch (err: any) {
       console.error(`Error loading service ${activeService}:`, err);
@@ -420,11 +450,33 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
 
       if (!res.ok) throw new Error(await res.text() || res.statusText);
       
-      alert('🌟 Google Task marked completed successfully.');
+      alert('✅ Google Task marked completed successfully.');
       await handleFetchTasks(selectedTaskListId);
     } catch (err: any) {
       console.error(err);
-      alert(`Complete failed: ${err.message}`);
+      alert(`Task completion fail: ${err.message}`);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleDeleteGoogleTask = async (taskId: string, title: string) => {
+    if (!window.confirm(`Delete Google Task "${title}" forever?`)) return;
+
+    setIsLoading(true);
+    try {
+      const res = await fetch(`https://www.googleapis.com/tasks/v1/lists/${selectedTaskListId}/tasks/${taskId}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      if (!res.ok) throw new Error(await res.text() || res.statusText);
+      
+      await handleFetchTasks(selectedTaskListId);
+    } catch (err: any) {
+      console.error(err);
+      alert(`Task delete fail: ${err.message}`);
     } finally {
       setIsLoading(false);
     }
@@ -441,6 +493,20 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
     setChatSpaces(data.spaces || []);
     if (data.spaces && data.spaces.length > 0 && !selectedSpaceName) {
       setSelectedSpaceName(data.spaces[0].name);
+    }
+  };
+
+  const handleFetchChatMessages = async (space: string) => {
+    try {
+      const res = await fetch(`https://chat.googleapis.com/v1/${space}/messages?pageSize=10`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setChatMessagesList(data.messages || []);
+      }
+    } catch (err) {
+      console.error(err);
     }
   };
 
@@ -463,8 +529,9 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
 
       if (!res.ok) throw new Error(await res.text() || res.statusText);
       
-      alert('💬 Message posted successfully inside Google Chat room!');
+      alert('💬 Message posted successfully!');
       setChatMessage('');
+      handleFetchChatMessages(selectedSpaceName);
     } catch (err: any) {
       console.error(err);
       alert(`Chat Post error: ${err.message}`);
@@ -528,20 +595,88 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
     setCourses(data.courses || []);
   };
 
+  const handleFetchCourseDetails = async (course: ClassroomCourse) => {
+    setIsLoading(true);
+    setSelectedCourse(course);
+    try {
+      const cwRes = await fetch(`https://classroom.googleapis.com/v1/courses/${course.id}/courseWork`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      if (cwRes.ok) {
+        const cwData = await cwRes.json();
+        setCourseWork(cwData.courseWork || []);
+      } else {
+        setCourseWork([]);
+      }
+
+      const annRes = await fetch(`https://classroom.googleapis.com/v1/courses/${course.id}/announcements`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      if (annRes.ok) {
+        const annData = await annRes.json();
+        setAnnouncements(annData.announcements || []);
+      } else {
+        setAnnouncements([]);
+      }
+    } catch (e: any) {
+      console.error('Error fetching course details:', e);
+      alert('Failed to load course details');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleFetchDocs = async () => {
+    const res = await fetch(`https://www.googleapis.com/drive/v3/files?pageSize=10&q=${encodeURIComponent("mimeType = 'application/vnd.google-apps.document'")}&fields=files(id,name,mimeType,modifiedTime,webViewLink)`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    if (!res.ok) throw new Error(await res.text());
+    const data = await res.json();
+    setDocsList(data.files || []);
+  };
+
+  const handleFetchSlides = async () => {
+    const res = await fetch(`https://www.googleapis.com/drive/v3/files?pageSize=10&q=${encodeURIComponent("mimeType = 'application/vnd.google-apps.presentation'")}&fields=files(id,name,mimeType,modifiedTime,webViewLink)`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    if (!res.ok) throw new Error(await res.text());
+    const data = await res.json();
+    setSlidesList(data.files || []);
+  };
+
+  const handleFetchPhotos = async () => {
+    const res = await fetch('https://photoslibrary.googleapis.com/v1/mediaItems?pageSize=20', {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    if (!res.ok) throw new Error(await res.text());
+    const data = await res.json();
+    setPhotosList(data.mediaItems || []);
+  };
+
+  const handleFetchCalendarEvents = async () => {
+    const timeMin = new Date().toISOString();
+    const res = await fetch(`https://www.googleapis.com/calendar/v3/calendars/primary/events?timeMin=${timeMin}&maxResults=10&singleEvents=true&orderBy=startTime`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    if (!res.ok) throw new Error(await res.text());
+    const data = await res.json();
+    setCalendarEvents(data.items || []);
+  };
+
   // Handle manual login refresh callback
   const handleLinkNewScopes = () => {
     onNavigateToTab('settings');
   };
 
   return (
-    <div className="space-y-3 w-[100vw] relative left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] py-2 px-3 sm:px-4 md:px-6">
+    <div className="space-y-3 w-screen relative left-[50%] right-[50%] ml-[-50vw] mr-[-50vw] py-2 px-3 sm:px-4 md:px-6">
       
       {/* Title block */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-slate-100 pb-2">
         <div>
           <div className="flex items-center gap-1.5 md:gap-1 mb-1">
-            <span className="p-1 px-1.5 bg-gradient-to-r from-teal-500 to-emerald-500 text-white rounded-full text-[10px] font-black uppercase tracking-wider animate-pulse">
-              Workspace Hub
+            <span className="p-1 px-1.5 bg-linear-to-r from-teal-500 to-emerald-500 text-white rounded-full text-[10px] font-black uppercase tracking-wider animate-pulse">
+              Active Session
             </span>
             <span className="p-1 px-1.5 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-full text-[9px] font-bold uppercase tracking-wider">
               Google Apps Suite
@@ -575,7 +710,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
           <button
             type="button"
             onClick={handleLinkNewScopes}
-            className="inline-flex items-center gap-1 bg-gradient-to-r from-amber-600 to-orange-600 text-white font-extrabold text-[11px] uppercase tracking-wide p-1.5 px-2 rounded-xl cursor-pointer shadow-xs hover:from-amber-700 transition-colors"
+            className="inline-flex items-center gap-1 bg-linear-to-r from-amber-600 to-orange-600 text-white font-extrabold text-[11px] uppercase tracking-wide p-1.5 px-2 rounded-xl cursor-pointer shadow-xs hover:from-amber-700 transition-colors"
           >
             🔌 Connect Google Services in Settings
           </button>
@@ -955,10 +1090,11 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                                 <button
                                   type="button"
                                   onClick={() => {
-                                    const match = email.from?.match(/<([^>]+)>/);
+                                    const regex = new RegExp("\\x3C([^>]+)>");
+                                    const match = email.from?.match(regex);
                                     setGmailRecipient(match ? match[1] : (email.from || ''));
                                     setGmailSubject(email.subject?.startsWith('Re:') ? email.subject : `Re: ${email.subject}`);
-                                    setGmailBody(`\n\n--- On ${email.date}, ${email.from} wrote:\n> ${email.snippet}`);
+                                    setGmailBody(`\n\n--- On ${email.date}, ${email.from} wrote:\n ${email.snippet}`);
                                   }}
                                   className="text-[9px] font-bold text-red-600 hover:text-red-800 flex items-center gap-0.5 px-1 py-0.5 rounded hover:bg-red-50 cursor-pointer"
                                 >
@@ -1007,7 +1143,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
 
                     {createdMeetLink && (
                       <div className="p-2 bg-emerald-50 border border-emerald-250/50 rounded-2xl mt-2 space-y-1 animate-bounce">
-                        <p className="text-[10px] uppercase font-black text-emerald-800">Room is Live! 🟢</p>
+                        <p className="text-[10px] uppercase font-black text-emerald-800">Room is Live! 🎉</p>
                         <p className="text-xs font-bold text-slate-800 truncate select-all">{createdMeetLink}</p>
                         <a
                           href={createdMeetLink}
@@ -1019,7 +1155,34 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                         </a>
                       </div>
                     )}
+
+                    <div className="mt-4 border-t border-slate-100 pt-3">
+                      <h4 className="text-[10px] font-black text-slate-500 uppercase tracking-wider mb-2 text-left px-1">Upcoming Meetings</h4>
+                      <div className="space-y-1.5 h-[150px] overflow-y-auto">
+                        {calendarEvents.filter(ev => ev.hangoutLink).length === 0 ? (
+                          <p className="text-xs text-slate-400 italic">No upcoming meetings found.</p>
+                        ) : (
+                          calendarEvents.filter(ev => ev.hangoutLink).map((ev) => (
+                            <div key={ev.id} className="p-2 border border-slate-150 rounded-2xl bg-white flex items-center justify-between text-left hover:border-emerald-200 transition-all">
+                              <div>
+                                <h5 className="text-xs font-bold text-slate-800 truncate w-40 sm:w-60">{ev.summary || 'Untitled Event'}</h5>
+                                <p className="text-[9px] text-slate-500">{new Date(ev.start?.dateTime || ev.start?.date).toLocaleString()}</p>
+                              </div>
+                              <a
+                                href={ev.hangoutLink}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="bg-emerald-100 text-emerald-800 px-2 py-1 rounded-lg text-[9px] font-bold uppercase hover:bg-emerald-200 transition-colors shrink-0 flex items-center gap-1"
+                              >
+                                <Video size={10} /> Join
+                              </a>
+                            </div>
+                          ))
+                        )}
+                      </div>
+                    </div>
                   </div>
+                )}      </div>
                 )}
 
                 {/* 4. GOOGLE TASKS SUBPANEL */}
@@ -1095,15 +1258,24 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                                   <p className="text-[9px] text-slate-500 truncate leading-relaxed max-w-[200px] mt-0.5">{task.notes}</p>
                                 )}
                               </div>
-                              {task.status !== 'completed' && (
+                              <div className="flex items-center gap-1 shrink-0">
+                                {task.status !== 'completed' && (
+                                  <button
+                                    type="button"
+                                    onClick={() => handleCompleteGoogleTask(task.id, task.title)}
+                                    className="p-1 px-1.5 bg-slate-50 hover:bg-cyan-50 text-[9px] font-bold text-cyan-600 rounded-lg hover:text-cyan-700 cursor-pointer border border-slate-200/50 flex items-center gap-0.5 shrink-0"
+                                  >
+                                    <Check size={10} /> Done
+                                  </button>
+                                )}
                                 <button
                                   type="button"
-                                  onClick={() => handleCompleteGoogleTask(task.id, task.title)}
-                                  className="p-1 px-1.5 bg-slate-50 hover:bg-cyan-50 text-[9px] font-bold text-cyan-600 rounded-lg hover:text-cyan-700 cursor-pointer border border-slate-200/50 flex items-center gap-0.5 shrink-0"
+                                  onClick={() => handleDeleteGoogleTask(task.id, task.title)}
+                                  className="p-1 px-1.5 bg-red-50 hover:bg-red-100 text-[9px] font-bold text-red-600 rounded-lg hover:text-red-700 cursor-pointer border border-red-200/50 flex items-center gap-0.5 shrink-0"
                                 >
-                                  <Check size={10} /> Done
+                                  <Trash2 size={10} /> Delete
                                 </button>
-                              )}
+                              </div>
                             </div>
                           ))
                         )}
@@ -1164,6 +1336,34 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                         <p className="text-[9px] text-slate-500 text-center leading-normal mt-1">
                           Note: Google Chat spaces usually populate for Business/Enterprise accounts with workspace memberships.
                         </p>
+                      )}
+                    </div>
+
+                    <div className="mt-4 border border-slate-100 rounded-2xl p-2 bg-white max-h-[300px] overflow-y-auto">
+                      <span className="text-[9px] font-black uppercase tracking-wider text-slate-500 block mb-2 px-1">Recent Messages</span>
+                      {chatMessagesList.length === 0 ? (
+                        <div className="text-center py-5 text-slate-500 text-xs italic">No recent messages in this space.</div>
+                      ) : (
+                        <div className="space-y-1.5">
+                          {chatMessagesList.map((msg) => (
+                            <div key={msg.name} className="p-2 border border-slate-100 rounded-xl bg-slate-50 hover:bg-slate-100 transition-all text-left">
+                              <div className="flex items-center gap-1.5 mb-1">
+                                {msg.sender?.avatarUrl ? (
+                                  <img src={msg.sender.avatarUrl} alt="avatar" className="w-4 h-4 rounded-full" />
+                                ) : (
+                                  <div className="w-4 h-4 rounded-full bg-indigo-200 flex items-center justify-center shrink-0">
+                                    <MessageSquare size={8} className="text-indigo-600" />
+                                  </div>
+                                )}
+                                <span className="text-[10px] font-bold text-slate-800">{msg.sender?.displayName || 'User'}</span>
+                                <span className="text-[8px] text-slate-400 font-mono ml-auto">
+                                  {new Date(msg.createTime).toLocaleString()}
+                                </span>
+                              </div>
+                              <p className="text-[11px] text-slate-700 leading-relaxed font-sans">{msg.text}</p>
+                            </div>
+                          ))}
+                        </div>
                       )}
                     </div>
                   </div>
@@ -1233,48 +1433,137 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
 
                 {/* 7. GOOGLE CLASSROOM SUBPANEL */}
                 {activeService === 'classroom' && (
-                  <div className="space-y-2 animate-fadeIn">
-                    <div className="border-b border-slate-100 pb-1">
-                      <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider flex items-center gap-1.5 pb-0.5">
-                        <GraduationCap className="text-amber-650" size={16} /> Google Classroom course roster
-                      </h3>
-                      <p className="text-[10px] text-slate-500">Manage enrolled classroom sections, coursework files, and user streams.</p>
+                  <div className="space-y-2 animate-fadeIn flex flex-col h-full">
+                    <div className="border-b border-slate-100 pb-1 flex justify-between items-center">
+                      <div>
+                        <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider flex items-center gap-1.5 pb-0.5">
+                          <GraduationCap className="text-amber-650" size={16} /> Google Classroom course roster
+                        </h3>
+                        <p className="text-[10px] text-slate-500">Manage enrolled classroom sections, coursework files, and user streams.</p>
+                      </div>
+                      {selectedCourse && (
+                        <button
+                          onClick={() => setSelectedCourse(null)}
+                          className="text-[10px] font-bold text-amber-700 bg-amber-50 hover:bg-amber-100 px-2 py-1 rounded flex items-center gap-1 transition-colors"
+                        >
+                          <ChevronRight size={12} className="rotate-180" /> Back to Courses
+                        </button>
+                      )}
                     </div>
 
-                    {courses.length === 0 ? (
-                      <div className="py-14 text-center border border-dashed border-slate-200 rounded-2xl space-y-1 bg-slate-50/40">
-                        <GraduationCap size={30} className="text-slate-300 mx-auto" />
-                        <h4 className="text-xs font-extrabold text-slate-500 uppercase tracking-widest">No Active Google Classes</h4>
-                        <p className="text-[10px] text-slate-700 max-w-sm mx-auto leading-relaxed">
-                          Your account doesn't seem to have any registered classes as student or instructor. Enroll or create a class in Google Classroom to display them here.
-                        </p>
-                      </div>
-                    ) : (
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                        {courses.map((course) => (
-                          <div key={course.id} className="p-2 bg-slate-50/40 border border-slate-150 rounded-2xl flex flex-col justify-between hover:border-amber-400 transition-all text-left space-y-1 font-sans">
-                            <div className="space-y-1">
-                              <span className="text-[8px] font-black bg-amber-50 text-amber-700 px-1 py-0.5 rounded uppercase tracking-wider">Course ACTIVE</span>
-                              <h4 className="text-xs font-bold text-slate-800 line-clamp-1 leading-tight">{course.name}</h4>
-                              {course.section && (
-                                <p className="text-[9.5px] text-slate-500 font-bold">Section: {course.section}</p>
-                              )}
-                              {course.descriptionHeading && (
-                                <p className="text-[10px] text-slate-700 line-clamp-2 leading-relaxed">{course.descriptionHeading}</p>
+                    {!selectedCourse ? (
+                      courses.length === 0 ? (
+                        <div className="py-14 text-center border border-dashed border-slate-200 rounded-2xl space-y-1 bg-slate-50/40">
+                          <GraduationCap size={30} className="text-slate-300 mx-auto" />
+                          <h4 className="text-xs font-extrabold text-slate-500 uppercase tracking-widest">No Active Google Classes</h4>
+                          <p className="text-[10px] text-slate-700 max-w-sm mx-auto leading-relaxed">
+                            Your account doesn't seem to have any registered classes as student or instructor. Enroll or create a class in Google Classroom to display them here.
+                          </p>
+                        </div>
+                      ) : (
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 overflow-y-auto">
+                          {courses.map((course) => (
+                            <div 
+                              key={course.id} 
+                              onClick={() => handleFetchCourseDetails(course)}
+                              className="p-2 bg-slate-50/40 border border-slate-150 rounded-2xl flex flex-col justify-between hover:border-amber-400 cursor-pointer transition-all text-left space-y-1 font-sans"
+                            >
+                              <div className="space-y-1">
+                                <span className="text-[8px] font-black bg-amber-50 text-amber-700 px-1 py-0.5 rounded uppercase tracking-wider">Course ACTIVE</span>
+                                <h4 className="text-xs font-bold text-slate-800 line-clamp-1 leading-tight">{course.name}</h4>
+                                {course.section && (
+                                  <p className="text-[9.5px] text-slate-500 font-bold">Section: {course.section}</p>
+                                )}
+                                {course.descriptionHeading && (
+                                  <p className="text-[10px] text-slate-700 line-clamp-2 leading-relaxed">{course.descriptionHeading}</p>
+                                )}
+                              </div>
+                              {course.alternateLink && (
+                                <a
+                                  href={course.alternateLink}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  onClick={(e) => e.stopPropagation()}
+                                  className="inline-flex self-start items-center gap-1.5 text-[9.5px] font-black text-amber-700 hover:underline"
+                                >
+                                  Go to Classroom Class <ExternalLink size={10} />
+                                </a>
                               )}
                             </div>
-                            {course.alternateLink && (
-                              <a
-                                href={course.alternateLink}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="inline-flex self-start items-center gap-1.5 text-[9.5px] font-black text-amber-700 hover:underline"
-                              >
-                                Go to Classroom Class <ExternalLink size={10} />
-                              </a>
+                          ))}
+                        </div>
+                      )
+                    ) : (
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 h-full min-h-[300px] overflow-hidden">
+                        {/* Coursework column */}
+                        <div className="border border-slate-200 rounded-2xl p-2 bg-white flex flex-col overflow-hidden">
+                          <h4 className="text-[10px] font-black uppercase tracking-wider text-slate-600 mb-2 pb-1 border-b border-slate-100 flex justify-between items-center">
+                            Coursework ({courseWork.length})
+                          </h4>
+                          <div className="flex-1 overflow-y-auto space-y-1.5 pr-1">
+                            {courseWork.length === 0 ? (
+                              <p className="text-[10px] text-slate-400 italic text-center py-4">No coursework available.</p>
+                            ) : (
+                              courseWork.map((cw) => (
+                                <div key={cw.id} className="p-1.5 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
+                                  <div className="flex justify-between items-start gap-1">
+                                    <h5 className="text-[11px] font-bold text-slate-800 line-clamp-2 leading-tight">{cw.title}</h5>
+                                    {cw.dueDate && (
+                                      <span className="text-[8px] font-black bg-red-50 text-red-600 px-1 py-0.5 rounded shrink-0">
+                                        Due {cw.dueDate.month}/{cw.dueDate.day}
+                                      </span>
+                                    )}
+                                  </div>
+                                  <p className="text-[9.5px] text-slate-600 line-clamp-2">{cw.description}</p>
+                                  {cw.alternateLink && (
+                                    <a
+                                      href={cw.alternateLink}
+                                      target="_blank"
+                                      rel="noreferrer"
+                                      className="inline-flex text-[9px] font-black text-blue-600 hover:underline"
+                                    >
+                                      View Details
+                                    </a>
+                                  )}
+                                </div>
+                              ))
                             )}
                           </div>
-                        ))}
+                        </div>
+
+                        {/* Announcements column */}
+                        <div className="border border-slate-200 rounded-2xl p-2 bg-white flex flex-col overflow-hidden">
+                          <h4 className="text-[10px] font-black uppercase tracking-wider text-slate-600 mb-2 pb-1 border-b border-slate-100 flex justify-between items-center">
+                            Announcements ({announcements.length})
+                          </h4>
+                          <div className="flex-1 overflow-y-auto space-y-1.5 pr-1">
+                            {announcements.length === 0 ? (
+                              <p className="text-[10px] text-slate-400 italic text-center py-4">No announcements available.</p>
+                            ) : (
+                              announcements.map((ann) => (
+                                <div key={ann.id} className="p-1.5 bg-amber-50/30 rounded-xl border border-amber-100 space-y-1">
+                                  <div className="flex justify-between items-start gap-1">
+                                    <span className="text-[9px] font-bold text-amber-800">{ann.creatorUserId ? 'Teacher' : 'Student'}</span>
+                                    {ann.creationTime && (
+                                      <span className="text-[8px] font-mono text-slate-500">{new Date(ann.creationTime).toLocaleDateString()}</span>
+                                    )}
+                                  </div>
+                                  <p className="text-[9.5px] text-slate-700 whitespace-pre-wrap line-clamp-3">{ann.text}</p>
+                                  {ann.alternateLink && (
+                                    <a
+                                      href={ann.alternateLink}
+                                      target="_blank"
+                                      rel="noreferrer"
+                                      className="inline-flex text-[9px] font-black text-blue-600 hover:underline mt-1"
+                                    >
+                                      Read Post
+                                    </a>
+                                  )}
+                                </div>
+                              ))
+                            )}
+                          </div>
+                        </div>
                       </div>
                     )}
                   </div>
@@ -1289,27 +1578,71 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                       </h3>
                       <p className="text-[10px] text-slate-500">Create, edit, and read dynamic Google Documents instantly.</p>
                     </div>
-                    <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl flex flex-col items-center justify-center text-center space-y-2">
-                      <FileText size={32} className="text-blue-500" />
-                      <p className="text-xs text-slate-600 max-w-sm">
-                        Use the automated report generator to quickly create a test Google Document with your credentials.
-                      </p>
-                      <button
-                        type="button"
-                        onClick={async () => {
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                      <form 
+                        onSubmit={async (e) => {
+                          e.preventDefault();
+                          setIsLoading(true);
                           try {
-                            const { generateSampleReportDoc } = await import('./GoogleDocsManager');
-                            const docId = await generateSampleReportDoc({ message: "Hello from Central Workspace Suite!" });
-                            alert(`✅ Google Doc Created! ID: ${docId}`);
-                            window.open(`https://docs.google.com/document/d/${docId}/edit`, '_blank');
+                            const { createGoogleDoc } = await import('./GoogleDocsManager');
+                            const doc = await createGoogleDoc(newDocTitle || 'Untitled Document');
+                            alert(`✅ Google Doc Created Successfully!`);
+                            setNewDocTitle('');
+                            handleFetchDocs();
                           } catch (err: any) {
                             alert(`Error creating Google Doc: ${err.message}`);
+                          } finally {
+                            setIsLoading(false);
                           }
-                        }}
-                        className="bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-[11px] uppercase py-2 px-4 rounded-xl transition-colors"
+                        }} 
+                        className="p-2 bg-slate-50 border border-slate-150 rounded-2xl space-y-1 text-left"
                       >
-                        Create Auto-Generated Doc
-                      </button>
+                        <span className="text-[10px] font-black uppercase tracking-wider text-slate-700 block">Create Blank Document</span>
+                        <div className="space-y-1">
+                          <input
+                            type="text"
+                            placeholder="Enter Document Title"
+                            value={newDocTitle}
+                            onChange={(e) => setNewDocTitle(e.target.value)}
+                            className="w-full bg-white border border-slate-200 rounded-xl p-1 text-xs font-bold outline-none"
+                            required
+                          />
+                          <button
+                            type="submit"
+                            disabled={isLoading}
+                            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-[10.5px] uppercase py-1 rounded-xl transition-colors shrink-0 flex items-center justify-center gap-1 cursor-pointer"
+                          >
+                            <Plus size={11} /> Create Blank Doc
+                          </button>
+                        </div>
+                      </form>
+
+                      <div className="border border-slate-100 rounded-2xl p-2 max-h-[290px] overflow-y-auto">
+                        <span className="text-[9px] font-black uppercase tracking-wider text-slate-500 block mb-1">My Recent Docs</span>
+                        {docsList.length === 0 ? (
+                          <div className="text-center py-5 text-slate-500 text-xs italic">No Docs found.</div>
+                        ) : (
+                          docsList.map((doc) => (
+                            <div key={doc.id} className="p-1.5 bg-white border border-slate-100 rounded-xl flex items-center justify-between gap-1 text-left hover:border-blue-200 transition-all font-sans">
+                              <div className="min-w-0 flex-1">
+                                <h5 className="text-xs font-bold text-slate-800 truncate leading-tight">{doc.name}</h5>
+                                <p className="text-[8px] font-mono text-slate-500 mt-0.5">Updated: {new Date(doc.modifiedTime).toLocaleDateString()}</p>
+                              </div>
+                              {doc.webViewLink && (
+                                <a
+                                  href={doc.webViewLink}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="text-[9.5px] font-black text-blue-650 hover:underline flex items-center gap-0.5 shrink-0"
+                                >
+                                  Open <ExternalLink size={10} />
+                                </a>
+                              )}
+                            </div>
+                          ))
+                        )}
+                      </div>
                     </div>
                   </div>
                 )}
@@ -1323,27 +1656,71 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                       </h3>
                       <p className="text-[10px] text-slate-500">Create dynamic presentation decks for clients and pitches.</p>
                     </div>
-                    <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl flex flex-col items-center justify-center text-center space-y-2">
-                      <Presentation size={32} className="text-yellow-500" />
-                      <p className="text-xs text-slate-600 max-w-sm mb-2">
-                        Use the automated presentation generator to quickly create a test Google Slide deck with your credentials.
-                      </p>
-                      <button
-                        type="button"
-                        onClick={async () => {
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                      <form 
+                        onSubmit={async (e) => {
+                          e.preventDefault();
+                          setIsLoading(true);
                           try {
-                            const { generateSampleSlideDeck } = await import('./GoogleSlidesManager');
-                            const deckId = await generateSampleSlideDeck({ title: "InvestMant Pitch Deck" });
-                            alert(`✅ Google Slide Created! ID: ${deckId}`);
-                            window.open(`https://docs.google.com/presentation/d/${deckId}/edit`, '_blank');
+                            const { createGoogleSlide } = await import('./GoogleSlidesManager');
+                            const deckId = await createGoogleSlide(newSlideTitle || 'Untitled Presentation');
+                            alert(`✅ Google Slide Created Successfully!`);
+                            setNewSlideTitle('');
+                            handleFetchSlides();
                           } catch (err: any) {
                             alert(`Error creating Google Slide: ${err.message}`);
+                          } finally {
+                            setIsLoading(false);
                           }
-                        }}
-                        className="bg-yellow-600 hover:bg-yellow-700 text-white font-extrabold text-[11px] uppercase py-2 px-4 rounded-xl transition-colors"
+                        }} 
+                        className="p-2 bg-slate-50 border border-slate-150 rounded-2xl space-y-1 text-left"
                       >
-                        Create Auto-Generated Slide Deck
-                      </button>
+                        <span className="text-[10px] font-black uppercase tracking-wider text-slate-700 block">Create Blank Presentation</span>
+                        <div className="space-y-1">
+                          <input
+                            type="text"
+                            placeholder="Enter Presentation Title"
+                            value={newSlideTitle}
+                            onChange={(e) => setNewSlideTitle(e.target.value)}
+                            className="w-full bg-white border border-slate-200 rounded-xl p-1 text-xs font-bold outline-none"
+                            required
+                          />
+                          <button
+                            type="submit"
+                            disabled={isLoading}
+                            className="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-extrabold text-[10.5px] uppercase py-1 rounded-xl transition-colors shrink-0 flex items-center justify-center gap-1 cursor-pointer"
+                          >
+                            <Plus size={11} /> Create Blank Deck
+                          </button>
+                        </div>
+                      </form>
+
+                      <div className="border border-slate-100 rounded-2xl p-2 max-h-[290px] overflow-y-auto">
+                        <span className="text-[9px] font-black uppercase tracking-wider text-slate-500 block mb-1">My Recent Slides</span>
+                        {slidesList.length === 0 ? (
+                          <div className="text-center py-5 text-slate-500 text-xs italic">No Slides found.</div>
+                        ) : (
+                          slidesList.map((slide) => (
+                            <div key={slide.id} className="p-1.5 bg-white border border-slate-100 rounded-xl flex items-center justify-between gap-1 text-left hover:border-yellow-200 transition-all font-sans">
+                              <div className="min-w-0 flex-1">
+                                <h5 className="text-xs font-bold text-slate-800 truncate leading-tight">{slide.name}</h5>
+                                <p className="text-[8px] font-mono text-slate-500 mt-0.5">Updated: {new Date(slide.modifiedTime).toLocaleDateString()}</p>
+                              </div>
+                              {slide.webViewLink && (
+                                <a
+                                  href={slide.webViewLink}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="text-[9.5px] font-black text-yellow-650 hover:underline flex items-center gap-0.5 shrink-0"
+                                >
+                                  Open <ExternalLink size={10} />
+                                </a>
+                              )}
+                            </div>
+                          ))
+                        )}
+                      </div>
                     </div>
                   </div>
                 )}
@@ -1381,12 +1758,33 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                       </h3>
                       <p className="text-[10px] text-slate-500">Access and manage client media libraries and receipt images.</p>
                     </div>
-                    <div className="p-6 text-center border border-dashed border-slate-200 rounded-2xl space-y-1 bg-cyan-50/40">
-                      <Image size={30} className="text-cyan-300 mx-auto mb-2" />
-                      <h4 className="text-xs font-extrabold text-cyan-800 uppercase tracking-widest">Photos Library Integration</h4>
-                      <p className="text-[10.5px] text-cyan-700 max-w-sm mx-auto leading-relaxed">
-                        Google Photos and Google Photos Picker have been merged into this unified module. You can now use the credentials to fetch albums and curate receipt images.
-                      </p>
+                    <div className="p-2 border border-slate-100 rounded-2xl bg-white max-h-[400px] overflow-y-auto">
+                      <span className="text-[10px] font-black uppercase tracking-wider text-slate-500 block mb-2 px-1">Recent Media</span>
+                      {photosList.length === 0 ? (
+                        <div className="text-center py-8 text-slate-500 text-xs italic">No photos found or API restricted.</div>
+                      ) : (
+                        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2">
+                          {photosList.map((photo) => (
+                            <a 
+                              key={photo.id} 
+                              href={photo.productUrl} 
+                              target="_blank" 
+                              rel="noreferrer"
+                              className="group block relative aspect-square bg-slate-100 rounded-xl overflow-hidden hover:ring-2 hover:ring-cyan-500 transition-all"
+                            >
+                              <img 
+                                src={`${photo.baseUrl}=w300-h300-c`} 
+                                alt={photo.filename} 
+                                className="w-full h-full object-cover transition-transform group-hover:scale-110"
+                                loading="lazy"
+                              />
+                              <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-slate-900/80 to-transparent p-1 pt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <p className="text-[8px] font-mono text-white truncate">{new Date(photo.mediaMetadata?.creationTime).toLocaleDateString()}</p>
+                              </div>
+                            </a>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   </div>
                 )}
@@ -1400,26 +1798,54 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                       </h3>
                       <p className="text-[10px] text-slate-500">Manage your schedule and view upcoming events natively.</p>
                     </div>
-                    <div className="flex-1 border border-slate-200 rounded-xl overflow-hidden bg-slate-50 relative">
-                      {user?.email ? (
-                        <iframe 
-                          src={`https://calendar.google.com/calendar/embed?src=${encodeURIComponent(user.email)}&ctz=Asia%2FKolkata`} 
-                          className="absolute inset-0 w-full h-full border-0"
-                          title="Google Calendar Embedded"
-                        />
-                      ) : (
-                        <div className="absolute inset-0 flex flex-col items-center justify-center text-slate-700 p-6 text-center">
-                          <Calendar size={32} className="text-slate-300 mb-2" />
-                          <p className="text-sm font-bold">Email Required</p>
-                          <p className="text-xs">Your Google account email is required to fetch the default embedded calendar.</p>
+                    <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-2 min-h-0">
+                      <div className="lg:col-span-2 border border-slate-200 rounded-xl overflow-hidden bg-slate-50 relative h-full">
+                        {user?.email ? (
+                          <iframe 
+                            src={`https://calendar.google.com/calendar/embed?src=${encodeURIComponent(user.email)}&ctz=Asia%2FKolkata`} 
+                            className="absolute inset-0 w-full h-full border-0"
+                            title="Google Calendar Embedded"
+                          />
+                        ) : (
+                          <div className="absolute inset-0 flex flex-col items-center justify-center text-slate-700 p-6 text-center">
+                            <Calendar size={32} className="text-slate-300 mb-2" />
+                            <p className="text-sm font-bold">Email Required</p>
+                            <p className="text-xs">Your Google account email is required to fetch the default embedded calendar.</p>
+                          </div>
+                        )}
+                      </div>
+                      
+                      <div className="border border-slate-100 rounded-2xl p-2 bg-white flex flex-col h-full overflow-hidden">
+                        <span className="text-[10px] font-black uppercase tracking-wider text-slate-500 block mb-2 px-1">Upcoming Events</span>
+                        <div className="flex-1 overflow-y-auto space-y-1.5 pr-1">
+                          {calendarEvents.length === 0 ? (
+                            <div className="text-center py-5 text-slate-500 text-xs italic">No upcoming events.</div>
+                          ) : (
+                            calendarEvents.map((ev) => (
+                              <div key={ev.id} className="p-2 border border-slate-100 rounded-xl bg-orange-50/30 hover:border-orange-200 transition-all">
+                                <h4 className="text-xs font-bold text-slate-800 truncate">{ev.summary || 'Untitled Event'}</h4>
+                                <p className="text-[9px] text-slate-500 mt-0.5">
+                                  {new Date(ev.start?.dateTime || ev.start?.date).toLocaleString()}
+                                </p>
+                                {ev.hangoutLink && (
+                                  <a
+                                    href={ev.hangoutLink}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="inline-flex items-center gap-1 bg-emerald-100 text-emerald-800 text-[9px] font-bold py-1 px-2 rounded-lg mt-1 hover:bg-emerald-200 transition-colors"
+                                  >
+                                    <Video size={10} /> Join Meet
+                                  </a>
+                                )}
+                              </div>
+                            ))
+                          )}
                         </div>
-                      )}
+                      </div>
                     </div>
                   </div>
                 )}
 
-              </div>
-            )}
           </div>
 
         </div>
@@ -1427,7 +1853,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
 
       {/* File Preview Modal */}
       {previewFile && (
-        <div className="fixed inset-0 z-[100] bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 animate-fadeIn">
+        <div className="fixed inset-0 z-100 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 animate-fadeIn">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-6xl h-[90vh] flex flex-col overflow-hidden animate-slideUp">
              <div className="flex justify-between items-center px-4 py-3 border-b border-slate-200 bg-slate-50 shrink-0">
                <h3 className="font-extrabold text-slate-800 uppercase tracking-wider text-sm flex items-center gap-2">

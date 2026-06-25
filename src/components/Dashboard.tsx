@@ -6,7 +6,7 @@ import {
 import { 
   ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Cell
 } from 'recharts';
-import { Transaction, PendingPayment, SavingsGoal, BudgetLimit, Holding, Sip, Fd, CreditCardBill, EmiItem } from '../types';
+import { Transaction, PendingPayment, SavingsGoal, BudgetLimit, Holding, Sip, Fd, CreditCardBill, EmiItem, PhysicalAsset } from '../types';
 
 
 interface DashboardProps {
@@ -19,6 +19,7 @@ interface DashboardProps {
   fds: Fd[];
   ccBills?: CreditCardBill[];
   ccEmis?: EmiItem[];
+  physicalAssets?: PhysicalAsset[];
   selectedMonth: string; // YYYY-MM
   onMonthChange: (month: string) => void;
   onNavigateToTab: (tab: string) => void;
@@ -35,6 +36,7 @@ export default function Dashboard({
   fds,
   ccBills = [],
   ccEmis = [],
+  physicalAssets = [],
   selectedMonth,
   onMonthChange,
   onNavigateToTab,
@@ -166,8 +168,10 @@ export default function Dashboard({
 
   // Net Worth (Total Assets - Total Liabilities)
   const netWorthSummary = useMemo(() => {
-    // Assets: Stock & MF Portfolio + FD Deposits + Manual Gold/Savings/Property + Lifetime Ledger Cash
-    const totalAssets = holdingsValuation.current + fdsValuation + manualSavings + manualGold + manualProperty + Math.max(0, lifetimeLedgerCash);
+    const physicalAssetsValuation = physicalAssets.reduce((sum, a) => sum + a.currentValue, 0);
+
+    // Assets: Stock & MF Portfolio + FD Deposits + Manual Gold/Savings/Property + Lifetime Ledger Cash + Physical Assets
+    const totalAssets = holdingsValuation.current + fdsValuation + manualSavings + manualGold + manualProperty + Math.max(0, lifetimeLedgerCash) + physicalAssetsValuation;
     
     // Liabilities: Owe type debts + Manual Home Loan / Car Loan + Negative Ledger Cash (if any)
     const outstandingOwes = pendingPayments
@@ -185,7 +189,7 @@ export default function Dashboard({
       liabilities: totalLiabilities,
       netWorth
     };
-  }, [holdingsValuation, fdsValuation, pendingPayments, manualSavings, manualGold, manualProperty, manualCarLoan, manualHomeLoan, lifetimeLedgerCash, ccBills, ccEmis]);
+  }, [holdingsValuation, fdsValuation, pendingPayments, manualSavings, manualGold, manualProperty, manualCarLoan, manualHomeLoan, lifetimeLedgerCash, ccBills, ccEmis, physicalAssets]);
 
   // Quick stats
   const activeSipsCount = sips.length;

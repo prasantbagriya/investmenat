@@ -110,6 +110,7 @@ export default function NavigationDrawer({
                       <NavButton active={activeTab === 'analytics'} onClick={() => handleTabClick('analytics')} icon={<Activity size={16} className="text-indigo-500" />} label="AI Analytics" />
                       <NavButton active={activeTab === 'transactions'} onClick={() => handleTabClick('transactions')} icon={<ArrowLeftRight size={16} />} label="Journal ledger" />
                       <NavButton active={activeTab === 'bank-profiles'} onClick={() => handleTabClick('bank-profiles')} icon={<Landmark size={16} className="text-indigo-500" />} label="Bank Profiles" />
+                      <NavButton active={activeTab === 'assets'} onClick={() => handleTabClick('assets')} icon={<Landmark size={16} className="text-yellow-500" />} label="Physical Assets (Net Worth)" />
                       <NavButton active={activeTab === 'pending'} onClick={() => handleTabClick('pending')} icon={<Clock size={16} />} label="Len Den (Dues)" />
                       <NavButton active={activeTab === 'recurring-bills'} onClick={() => handleTabClick('recurring-bills')} icon={<Repeat size={16} />} label="Auto Billing" />
                       <NavButton active={activeTab === 'credit-cards'} onClick={() => handleTabClick('credit-cards')} icon={<Briefcase size={16} />} label="Credit Cards & EMIs" />

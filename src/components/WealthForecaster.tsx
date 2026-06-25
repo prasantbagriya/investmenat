@@ -1,29 +1,35 @@
 import React, { useMemo, useState } from 'react';
 import { motion } from 'motion/react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { Sip, Fd, Holding } from '../types';
+import { Sip, Fd, Holding, PhysicalAsset, BankAccount } from '../types';
 import { IndianRupee, TrendingUp, Info } from 'lucide-react';
 
 interface WealthForecasterProps {
   sips: Sip[];
   fds: Fd[];
   holdings: Holding[];
+  physicalAssets?: PhysicalAsset[];
+  bankAccounts?: BankAccount[];
   livePrices?: Record<string, any>;
 }
 
-export function WealthForecaster({ sips, fds, holdings, livePrices }: WealthForecasterProps) {
+export function WealthForecaster({ sips, fds, holdings, physicalAssets = [], bankAccounts = [], livePrices }: WealthForecasterProps) {
   const [projectionYears, setProjectionYears] = useState<number>(20);
   const [expectedEquityReturn, setExpectedEquityReturn] = useState<number>(12);
   const [expectedDebtReturn, setExpectedDebtReturn] = useState<number>(7);
+  const [expectedPhysicalReturn, setExpectedPhysicalReturn] = useState<number>(6);
+  const [expectedBankReturn, setExpectedBankReturn] = useState<number>(4);
 
   const forecastData = useMemo(() => {
-    // Current lumpsum (Holdings + FDs)
+    // Current lumpsum (Holdings + FDs + Physical + Bank)
     const currentEquity = holdings.reduce((sum, h) => {
       const live = livePrices?.[h.type === 'stock' ? `stock_${h.symbol}` : `mf_${h.schemeCode}`];
       const price = live ? live.currentPrice : h.buyPrice;
       return sum + (price * h.quantity);
     }, 0);
     const currentDebt = fds.reduce((sum, f) => sum + f.principal, 0);
+    const currentPhysical = physicalAssets.reduce((sum, a) => sum + a.currentValue, 0);
+    const currentBank = bankAccounts.reduce((sum, b) => sum + b.currentBalance, 0);
 
     // Monthly SIP (Assume all are equity for simplicity, unless we check risk level)
     const monthlySip = sips.reduce((sum, s) => sum + s.amount, 0);
@@ -31,38 +37,44 @@ export function WealthForecaster({ sips, fds, holdings, livePrices }: WealthFore
     const data = [];
     let accumulatedEquity = currentEquity;
     let accumulatedDebt = currentDebt;
+    let accumulatedPhysical = currentPhysical;
+    let accumulatedBank = currentBank;
     
     // Monthly interest rates
     const monthlyEquityRate = (expectedEquityReturn / 100) / 12;
     const monthlyDebtRate = (expectedDebtReturn / 100) / 12;
+    const monthlyPhysicalRate = (expectedPhysicalReturn / 100) / 12;
+    const monthlyBankRate = (expectedBankReturn / 100) / 12;
 
     for (let year = 0; year <= projectionYears; year++) {
       if (year === 0) {
         data.push({
           year: 'Now',
-          Invested: currentEquity + currentDebt,
-          Wealth: currentEquity + currentDebt
+          Invested: currentEquity + currentDebt + currentPhysical + currentBank,
+          Wealth: currentEquity + currentDebt + currentPhysical + currentBank
         });
         continue;
       }
 
-      let yearInvested = currentEquity + currentDebt + (monthlySip * 12 * year);
+      let yearInvested = currentEquity + currentDebt + currentPhysical + currentBank + (monthlySip * 12 * year);
       
       // Calculate 1 year growth
       for(let m = 1; m <= 12; m++) {
         accumulatedEquity = accumulatedEquity * (1 + monthlyEquityRate) + monthlySip;
         accumulatedDebt = accumulatedDebt * (1 + monthlyDebtRate);
+        accumulatedPhysical = accumulatedPhysical * (1 + monthlyPhysicalRate);
+        accumulatedBank = accumulatedBank * (1 + monthlyBankRate);
       }
 
       data.push({
         year: `Year ${year}`,
         Invested: Math.round(yearInvested),
-        Wealth: Math.round(accumulatedEquity + accumulatedDebt)
+        Wealth: Math.round(accumulatedEquity + accumulatedDebt + accumulatedPhysical + accumulatedBank)
       });
     }
     
     return data;
-  }, [sips, fds, holdings, projectionYears, expectedEquityReturn, expectedDebtReturn]);
+  }, [sips, fds, holdings, physicalAssets, bankAccounts, projectionYears, expectedEquityReturn, expectedDebtReturn, expectedPhysicalReturn, expectedBankReturn, livePrices]);
 
   const finalWealth = forecastData[forecastData.length - 1]?.Wealth || 0;
   const finalInvested = forecastData[forecastData.length - 1]?.Invested || 0;
@@ -178,9 +190,35 @@ export function WealthForecaster({ sips, fds, holdings, livePrices }: WealthFore
           />
         </div>
 
+        <div>
+          <div className="flex justify-between mb-1">
+            <label className="text-xs font-semibold text-slate-700">Expected Physical Asset Return (Real Estate/Gold)</label>
+            <span className="text-xs font-bold text-indigo-600">{expectedPhysicalReturn}% p.a.</span>
+          </div>
+          <input 
+            type="range" min="0" max="15" step="0.5"
+            value={expectedPhysicalReturn} 
+            onChange={(e) => setExpectedPhysicalReturn(parseFloat(e.target.value))}
+            className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600"
+          />
+        </div>
+
+        <div>
+          <div className="flex justify-between mb-1">
+            <label className="text-xs font-semibold text-slate-700">Expected Bank Savings Return</label>
+            <span className="text-xs font-bold text-indigo-600">{expectedBankReturn}% p.a.</span>
+          </div>
+          <input 
+            type="range" min="0" max="8" step="0.5"
+            value={expectedBankReturn} 
+            onChange={(e) => setExpectedBankReturn(parseFloat(e.target.value))}
+            className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600"
+          />
+        </div>
+
         <div className="bg-slate-50 p-3 rounded-xl flex gap-3 text-xs text-slate-700 mt-2">
           <Info size={16} className="text-indigo-400 shrink-0 mt-0.5" />
-          <p>This forecast calculates exponential growth compounded monthly based on your current active SIPs ({formatCurrency(sips.reduce((s,x)=>s+x.amount,0))}/mo), FDs, and Stock Holdings. Inflation is not factored in.</p>
+          <p>This forecast calculates exponential growth compounded monthly based on your current active SIPs ({formatCurrency(sips.reduce((s,x)=>s+x.amount,0))}/mo), FDs, Bank Balances, Physical Assets, and Stock Holdings. Inflation is not factored in.</p>
         </div>
       </div>
     </div>

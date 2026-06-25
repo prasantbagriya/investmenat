@@ -59,6 +59,7 @@ import { proxyFetch } from './utils/proxyFetch';
 import AnalyticsDashboard from './components/AnalyticsDashboard';
 import { CreditCardsEMI } from './components/CreditCardsEMI';
 import BankProfiles from './components/BankProfiles';
+import { PhysicalAssets } from './components/PhysicalAssets';
 import { exportFullLedgerToCSV } from './utils/csvExport';
 import { useTaskReminder } from './utils/useTaskReminder';
 
@@ -70,6 +71,7 @@ import Header from './components/layout/Header';
 import BottomNavigation from './components/layout/BottomNavigation';
 import NotificationCenter from './components/layout/NotificationCenter';
 import NavigationDrawer from './components/layout/NavigationDrawer';
+import ChatAssistant from './components/layout/ChatAssistant';
 import { useRecurringBills } from './hooks/useRecurringBills';
 import { usePushNotifications } from './hooks/usePushNotifications';
 import { useSmsListener } from './hooks/useSmsListener';
@@ -77,6 +79,7 @@ import { useLivePrices } from './hooks/useLivePrices';
 import { useSmsTracker } from './hooks/useSmsTracker';
 import { useBrokerSync } from './hooks/useBrokerSync';
 import { useBankAccounts } from './hooks/useBankAccounts';
+import { usePhysicalAssets } from './hooks/usePhysicalAssets';
 
 export default function App() {
   const [user, setUser] = useState<User | null>(null);
@@ -108,6 +111,7 @@ export default function App() {
 
   const { recurringBills, handleAddRecurringBill, handleEditRecurringBill, handleDeleteRecurringBill } = useRecurringBills(user);
   const { handleAddBankAccount, handleEditBankAccount, handleDeleteBankAccount } = useBankAccounts(user);
+  const { physicalAssets, handleAddPhysicalAsset, handleEditPhysicalAsset, handleDeletePhysicalAsset } = usePhysicalAssets(user);
 
   const { brokerFunds, brokerHoldings, brokerRealizedTrades, isSyncing, refreshBrokerData } = useBrokerSync(user?.uid);
 
@@ -1649,6 +1653,7 @@ export default function App() {
               fds={fds}
               ccBills={ccBills}
               ccEmis={ccEmis}
+              physicalAssets={physicalAssets}
               selectedMonth={selectedMonth}
               onMonthChange={setSelectedMonth}
               onNavigateToTab={setActiveTab}
@@ -1713,6 +1718,8 @@ export default function App() {
               sips={sips}
               holdings={unifiedHoldings}
               livePrices={livePrices}
+              physicalAssets={physicalAssets}
+              bankAccounts={bankAccounts}
             />} />
 
             <Route path="/transactions" element={<TransactionTracker
@@ -1764,6 +1771,13 @@ export default function App() {
               onAddBankAccount={handleAddBankAccount}
               onEditBankAccount={handleEditBankAccount}
               onDeleteBankAccount={handleDeleteBankAccount}
+            />} />
+
+            <Route path="/assets" element={<PhysicalAssets
+              assets={physicalAssets}
+              onAdd={handleAddPhysicalAsset}
+              onEdit={handleEditPhysicalAsset}
+              onDelete={handleDeletePhysicalAsset}
             />} />
 
             <Route path="/budgets" element={<BudgetLimits
@@ -1834,6 +1848,15 @@ export default function App() {
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </div>
+
+        {/* Global Floating AI Chatbot */}
+        {user && (
+          <ChatAssistant 
+            bankAccounts={bankAccounts}
+            transactions={transactions}
+            physicalAssets={physicalAssets}
+          />
+        )}
       </main>
 
       {/* Toasts overlay notifications on overdue task alarms */}

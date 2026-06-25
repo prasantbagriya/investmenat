@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   Plus, Search, Trash2, Edit2, X, Filter, Sparkles, Clipboard, CheckCircle 
@@ -55,10 +55,12 @@ export default function TransactionTracker({
   const [bankAccountId, setBankAccountId] = useState<string>('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // SMS Parser state
+  // SMS & Receipt Parser state
   const [smsText, setSmsText] = useState('');
   const [isSmsParsed, setIsSmsParsed] = useState(false);
   const [smsStatus, setSmsStatus] = useState('');
+  const [isScanning, setIsScanning] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Filter and Search States
   const [search, setSearch] = useState('');
@@ -134,6 +136,66 @@ export default function TransactionTracker({
       setIsSmsParsed(false);
       setSmsStatus('');
     }, 4000);
+  };
+
+  const handleReceiptScan = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setIsScanning(true);
+    setSmsStatus('📷 Scanning receipt with AI...');
+    try {
+      const reader = new FileReader();
+      reader.onloadend = async () => {
+        try {
+          const base64Data = (reader.result as string).split(',')[1];
+          const response = await proxyFetch('/api/parse-receipt', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ base64Image: base64Data })
+          });
+          
+          if (!response.ok) throw new Error('Receipt parsing failed');
+          
+          const parsed = await response.json();
+          let data;
+          try {
+            data = JSON.parse(parsed.result);
+          } catch (e) {
+            data = {};
+          }
+          
+          if (data.amount) {
+            setAmount(data.amount.toString());
+            setType('expense');
+            if (data.category && EXPENSE_CATEGORIES.includes(data.category)) {
+              setCategory(data.category);
+            } else {
+              setCategory('Others');
+            }
+            if (data.date) setDate(data.date);
+            if (data.note) setNotes(data.note);
+            
+            setSmsStatus(`✔ Successfully extracted ₹${data.amount} from receipt!`);
+            setIsFormOpen(true);
+          } else {
+            setSmsStatus('❌ Could not parse amount from this receipt.');
+          }
+        } catch (err) {
+          console.error(err);
+          setSmsStatus('❌ AI Receipt Parsing error.');
+        } finally {
+          setIsScanning(false);
+          if (fileInputRef.current) fileInputRef.current.value = '';
+          setTimeout(() => setSmsStatus(''), 4000);
+        }
+      };
+      reader.readAsDataURL(file);
+    } catch (err) {
+      console.error(err);
+      setIsScanning(false);
+      setSmsStatus('❌ Error reading file.');
+    }
   };
 
   // PWA Web Share Target Interceptor
@@ -254,6 +316,21 @@ export default function TransactionTracker({
         </div>
         
         <div className="flex items-center gap-2">
+          <input 
+            type="file" 
+            accept="image/*" 
+            className="hidden" 
+            ref={fileInputRef}
+            onChange={handleReceiptScan}
+            disabled={isScanning}
+          />
+          <button
+            onClick={() => fileInputRef.current?.click()}
+            disabled={isScanning}
+            className="flex items-center gap-1.5 bg-slate-100 hover:bg-slate-200 text-indigo-700 px-1.5 py-1.5 rounded-lg font-bold text-xs cursor-pointer transition-all border border-indigo-200 disabled:opacity-50"
+          >
+            <Sparkles size={14} className={isScanning ? "animate-spin" : ""} /> Scan Receipt
+          </button>
           <button
             id="import-csv-button"
             onClick={() => setIsCsvWizardOpen(true)}

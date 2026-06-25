@@ -1,7 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Plus, Edit2, Trash2, X, Calendar, AlertCircle, CheckCircle, Repeat } from 'lucide-react';
+import { Plus, Edit2, Trash2, X, Calendar, AlertCircle, CheckCircle, Repeat, Sparkles, Mail } from 'lucide-react';
 import { RecurringBill, EXPENSE_CATEGORIES, INCOME_CATEGORIES } from '../types';
+import { proxyFetch } from '../utils/proxyFetch';
 
 interface RecurringBillsProps {
   recurringBills: RecurringBill[];
@@ -26,6 +27,8 @@ export default function RecurringBills({
   const [nextDueDate, setNextDueDate] = useState(new Date().toISOString().split('T')[0]);
   const [frequency, setFrequency] = useState<'monthly' | 'yearly'>('monthly');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [emailText, setEmailText] = useState('');
+  const [isParsingEmail, setIsParsingEmail] = useState(false);
 
   // Handle type switch to reset category
   const handleTypeChange = (newType: 'income' | 'expense') => {
@@ -92,6 +95,44 @@ export default function RecurringBills({
     setNextDueDate(b.nextDueDate);
     setFrequency(b.frequency);
     setIsFormOpen(true);
+  };
+
+  const handleParseEmail = async () => {
+    if (!emailText.trim()) return;
+    setIsParsingEmail(true);
+    try {
+      const response = await proxyFetch('/api/parse-subscriptions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ emailSnippets: emailText })
+      });
+      if (!response.ok) throw new Error('Failed to parse subscriptions');
+      const data = await response.json();
+      const subs = JSON.parse(data.result);
+      if (Array.isArray(subs) && subs.length > 0) {
+        for (const sub of subs) {
+          if (sub.name && sub.amount) {
+            await onAddBill({
+              title: sub.name,
+              amount: parseFloat(sub.amount),
+              category: sub.category || 'Others',
+              frequency: 'monthly',
+              nextDueDate: sub.dueDate || todayStr,
+              type: 'expense'
+            });
+          }
+        }
+        setEmailText('');
+        alert(`Successfully added ${subs.length} subscription(s)!`);
+      } else {
+        alert('No subscriptions found in the text.');
+      }
+    } catch (err: any) {
+      console.error(err);
+      alert('Error parsing email snippets: ' + (err.message || String(err)));
+    } finally {
+      setIsParsingEmail(false);
+    }
   };
 
   const dueThisMonth = useMemo(() => {
@@ -251,6 +292,39 @@ export default function RecurringBills({
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* AI Subscription Scanner */}
+      <div className="bg-slate-50 border border-slate-200 rounded-xl p-2.5 shadow-xs text-xs space-y-2">
+        <div className="flex items-center gap-1.5">
+          <Sparkles size={14} className="text-indigo-600 animate-pulse" />
+          <h4 className="font-bold text-slate-800 text-xs font-sans uppercase tracking-widest">AI Subscriptions Scanner</h4>
+        </div>
+        <p className="text-[10px] text-slate-500">
+          Paste promotional emails or invoices mentioning subscriptions (Netflix, AWS, Spotify). Our AI will automatically add them to your Auto-Bills.
+        </p>
+        <div className="flex flex-col gap-1.5">
+          <textarea 
+            placeholder="Paste email snippet here..." 
+            value={emailText}
+            onChange={(e) => setEmailText(e.target.value)}
+            className="w-full bg-white border border-slate-200 rounded-lg p-2 text-xs focus:ring-1 focus:ring-indigo-500 h-16 resize-none"
+          />
+          <div className="flex justify-end">
+            <button 
+              type="button" 
+              onClick={handleParseEmail}
+              disabled={isParsingEmail || !emailText.trim()}
+              className="bg-indigo-600 text-white hover:bg-indigo-700 disabled:opacity-50 font-bold px-3 py-1.5 rounded-lg transition-all cursor-pointer flex items-center gap-1.5"
+            >
+              {isParsingEmail ? (
+                <> <Sparkles size={12} className="animate-spin" /> Analyzing... </>
+              ) : (
+                <> <Mail size={12} /> Extract Subscriptions </>
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
 
       {/* Due This Month Section */}
       <div className="bg-orange-50 rounded-xl border border-orange-200/80 shadow-xs overflow-hidden">

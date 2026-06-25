@@ -99,8 +99,9 @@ async function startServer() {
 
   // Enable CORS so Firebase hosted frontend can call this backend
   app.use(cors({ origin: true }));
-  // Body parser to accept Service Account configurations
-  app.use(express.json());
+  // Body parser to accept Service Account configurations and Base64 images
+  app.use(express.json({ limit: '50mb' }));
+  app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
   // Initialize JSON file-based database for Firestore sync backup
   const syncFilePath = path.join(process.cwd(), 'firestore_sync.json');
@@ -628,6 +629,106 @@ ${csvText}
   });
 
   // Vite integration
+  // --- AI Chatbot Endpoint ---
+  app.post("/api/chat", async (req, res) => {
+    try {
+      const { message, context } = req.body;
+      const apiKey = process.env.GEMINI_API_KEY;
+      if (!apiKey) return res.status(500).json({ error: "No GEMINI_API_KEY" });
+
+      const ai = new GoogleGenAI({ apiKey });
+      const prompt = `You are a highly professional, expert AI Financial Assistant for the app InvestMant. 
+Context of user's current finances (bank balances, recent transactions, assets, net worth):
+${context}
+
+User's Query: ${message}
+
+Provide a concise, highly analytical, and tailored response. Use clear markdown formatting (bolding, lists) to make it easy to read.`;
+
+      const response = await ai.models.generateContent({
+        model: "gemini-2.5-flash",
+        contents: prompt,
+      });
+
+      res.json({ reply: response.text });
+    } catch (err: any) {
+      console.error("[Chat-AI] Error:", err);
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  // --- AI Parse Receipt Endpoint ---
+  app.post("/api/parse-receipt", async (req, res) => {
+    try {
+      const { base64Image } = req.body;
+      const apiKey = process.env.GEMINI_API_KEY;
+      if (!apiKey) return res.status(500).json({ error: "No GEMINI_API_KEY" });
+
+      const ai = new GoogleGenAI({ apiKey });
+      const prompt = `You are an expert OCR and financial data extractor. You are provided with an image of a receipt or bill.
+Extract the transaction details and output EXACTLY a JSON object with this structure:
+{
+  "amount": number (total amount of the bill),
+  "date": "YYYY-MM-DD" (extract date if visible, else leave blank),
+  "category": "Food" | "Transport" | "Shopping" | "Utilities" | "Other" (guess based on the receipt),
+  "note": "Vendor name or short description"
+}
+Output ONLY the raw JSON object, without any markdown blocks or formatting.`;
+
+      const response = await ai.models.generateContent({
+        model: "gemini-2.5-flash",
+        contents: [
+          { inlineData: { data: base64Image, mimeType: "image/jpeg" } },
+          prompt
+        ]
+      });
+
+      let cleanJson = response.text || "";
+      cleanJson = cleanJson.replace(/```json\n/g, '').replace(/```\n/g, '').replace(/```/g, '').trim();
+
+      res.json({ result: cleanJson });
+    } catch (err: any) {
+      console.error("[Receipt-AI] Error:", err);
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  // --- AI Parse Subscriptions Endpoint ---
+  app.post("/api/parse-subscriptions", async (req, res) => {
+    try {
+      const { emailSnippets } = req.body;
+      const apiKey = process.env.GEMINI_API_KEY;
+      if (!apiKey) return res.status(500).json({ error: "No GEMINI_API_KEY" });
+
+      const ai = new GoogleGenAI({ apiKey });
+      const prompt = `You are an AI that extracts recurring subscriptions from email snippets.
+Here are recent emails that match 'subscription' or 'invoice':
+${emailSnippets}
+
+Extract any active recurring subscriptions. Output EXACTLY a JSON array of objects:
+[{
+  "name": "Netflix, Spotify, AWS, etc.",
+  "amount": number (monthly cost in INR or local currency),
+  "category": "Entertainment, Software, Utility, etc.",
+  "dueDate": "YYYY-MM-DD" (guess next billing date if mentioned, else leave blank)
+}]
+Output ONLY the raw JSON array, without any markdown blocks or formatting.`;
+
+      const response = await ai.models.generateContent({
+        model: "gemini-2.5-flash",
+        contents: prompt,
+      });
+
+      let cleanJson = response.text || "[]";
+      cleanJson = cleanJson.replace(/```json\n/g, '').replace(/```\n/g, '').replace(/```/g, '').trim();
+
+      res.json({ result: cleanJson });
+    } catch (err: any) {
+      console.error("[Subscriptions-AI] Error:", err);
+      res.status(500).json({ error: err.message });
+    }
+  });
+
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({
       server: { middlewareMode: true },

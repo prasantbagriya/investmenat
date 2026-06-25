@@ -181,14 +181,20 @@ service cloud.firestore {
       allow delete: if isOwner(resource.data.userId);
     }
 
-    match /creditCardBills/{id} {
+    match /ccbills/{id} {
       allow read: if isOwner(resource.data.userId);
       allow create: if isOwner(request.resource.data.userId) && isSafeId(id);
       allow update: if isOwner(resource.data.userId) && isOwner(request.resource.data.userId);
       allow delete: if isOwner(resource.data.userId);
     }
 
-    match /emiItems/{id} {
+    match /ccemis/{id} {
+      allow read: if isOwner(resource.data.userId);
+      allow create: if isOwner(request.resource.data.userId) && isSafeId(id);
+      allow update: if isOwner(resource.data.userId) && isOwner(request.resource.data.userId);
+      allow delete: if isOwner(resource.data.userId);
+    }
+    match /physicalAssets/{id} {
       allow read: if isOwner(resource.data.userId);
       allow create: if isOwner(request.resource.data.userId) && isSafeId(id);
       allow update: if isOwner(resource.data.userId) && isOwner(request.resource.data.userId);
@@ -196,3 +202,4 @@ service cloud.firestore {
     }
   }
 }
+

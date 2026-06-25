@@ -218,3 +218,16 @@ export interface EmiItem {
   notes?: string;
   createdAt?: any;
 }
+
+export interface PhysicalAsset {
+  id: string;
+  userId: string;
+  name: string;
+  type: 'Real Estate' | 'Gold' | 'Vehicle' | 'Other';
+  purchasePrice: number;
+  purchaseDate: string; // YYYY-MM-DD
+  currentValue: number;
+  notes?: string;
+  createdAt?: any;
+}
+

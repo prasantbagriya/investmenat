@@ -1,6 +1,6 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Plus, Trash2, Edit2, X, Building2, Wallet, Landmark, TrendingUp, TrendingDown, ArrowRight, ArrowLeftRight, ChevronRight, ArrowDownRight, ArrowUpRight } from 'lucide-react';
+import { Plus, Trash2, Edit2, X, Building2, Wallet, Landmark, TrendingUp, TrendingDown, ArrowRight, ArrowLeftRight, ChevronRight, ArrowDownRight, ArrowUpRight, Save } from 'lucide-react';
 import { BankAccount, Transaction } from '../types';
 
 interface BankProfilesProps {
@@ -21,6 +21,7 @@ export default function BankProfiles({
   onNavigateToTab
 }: BankProfilesProps) {
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [editingBank, setEditingBank] = useState<BankAccount | null>(null);
   const [bankName, setBankName] = useState('');
   const [accountName, setAccountName] = useState('');
   const [accountNumber, setAccountNumber] = useState('');
@@ -28,32 +29,65 @@ export default function BankProfiles({
 
   const [selectedBankId, setSelectedBankId] = useState<string | null>(null);
 
+  const openAddForm = () => {
+    setEditingBank(null);
+    setBankName('');
+    setAccountName('');
+    setAccountNumber('');
+    setInitialBalance('');
+    setIsFormOpen(true);
+  };
+
+  const openEditForm = (bank: BankAccount, e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent card click from navigating
+    setEditingBank(bank);
+    setBankName(bank.bankName);
+    setAccountName(bank.accountName);
+    setAccountNumber(bank.accountNumber || '');
+    setInitialBalance(String(bank.initialBalance ?? bank.currentBalance));
+    setIsFormOpen(true);
+  };
+
+  const closeForm = () => {
+    setIsFormOpen(false);
+    setEditingBank(null);
+    setBankName('');
+    setAccountName('');
+    setAccountNumber('');
+    setInitialBalance('');
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const balanceNum = parseFloat(initialBalance);
     if (isNaN(balanceNum)) return;
 
-    const accPayload: Omit<BankAccount, 'id' | 'userId' | 'currentBalance'> = {
-      bankName: bankName.trim(),
-      accountName: accountName.trim(),
-      initialBalance: balanceNum
-    };
-    if (accountNumber.trim()) {
-      accPayload.accountNumber = accountNumber.trim();
+    if (editingBank) {
+      // Edit mode — only update name/label/accountNumber fields, not balance
+      await onEditBankAccount(editingBank.id, {
+        bankName: bankName.trim(),
+        accountName: accountName.trim(),
+        accountNumber: accountNumber.trim() || undefined,
+      });
+    } else {
+      // Add mode
+      const accPayload: Omit<BankAccount, 'id' | 'userId' | 'currentBalance'> = {
+        bankName: bankName.trim(),
+        accountName: accountName.trim(),
+        initialBalance: balanceNum
+      };
+      if (accountNumber.trim()) {
+        accPayload.accountNumber = accountNumber.trim();
+      }
+      await onAddBankAccount(accPayload);
     }
 
-    await onAddBankAccount(accPayload);
-
-    setBankName('');
-    setAccountName('');
-    setAccountNumber('');
-    setInitialBalance('');
-    setIsFormOpen(false);
+    closeForm();
   };
 
   const selectedBank = bankAccounts.find(b => b.id === selectedBankId);
   
-  const bankTransactions = useMemo(() => {
+  const bankTransactions = React.useMemo(() => {
     if (!selectedBankId) return [];
     return transactions.filter(t => t.bankAccountId === selectedBankId).sort((a, b) => b.date.localeCompare(a.date));
   }, [transactions, selectedBankId]);
@@ -78,7 +112,7 @@ export default function BankProfiles({
             </button>
           )}
           <button
-            onClick={() => setIsFormOpen(true)}
+            onClick={openAddForm}
             className="flex items-center gap-1 bg-slate-900 hover:bg-slate-800 text-white px-3 py-1.5 rounded-lg font-bold text-xs transition-colors"
           >
             <Plus size={14} /> Add Bank
@@ -86,7 +120,7 @@ export default function BankProfiles({
         </div>
       </div>
 
-      {/* Form Modal */}
+      {/* Add / Edit Form Modal */}
       <AnimatePresence>
         {isFormOpen && (
           <motion.div
@@ -96,31 +130,42 @@ export default function BankProfiles({
             className="bg-white p-4 rounded-2xl border border-slate-200 shadow-xl relative"
           >
             <button
-              onClick={() => setIsFormOpen(false)}
-              className="absolute top-3 right-3 text-slate-500 hover:text-slate-600 p-1"
+              onClick={closeForm}
+              className="absolute top-3 right-3 text-slate-500 hover:text-slate-600 p-1 cursor-pointer"
             >
               <X size={16} />
             </button>
-            <h3 className="font-bold text-slate-800 mb-3 text-sm">Add New Bank Account</h3>
+            <h3 className="font-bold text-slate-800 mb-3 text-sm flex items-center gap-1.5">
+              {editingBank ? <><Edit2 size={14} className="text-indigo-600" /> Edit Bank Profile</> : <><Plus size={14} className="text-indigo-600" /> Add New Bank Account</>}
+            </h3>
             <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-3">
               <div>
                 <label className="block text-[10px] font-bold text-slate-700 uppercase tracking-wide mb-1">Bank Name</label>
-                <input required placeholder="e.g. HDFC, SBI" value={bankName} onChange={e => setBankName(e.target.value)} className="w-full border border-slate-200 rounded-lg p-2 text-sm bg-slate-50 focus:bg-white" />
+                <input required placeholder="e.g. HDFC, SBI" value={bankName} onChange={e => setBankName(e.target.value)} className="w-full border border-slate-200 rounded-lg p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-indigo-400" />
               </div>
               <div>
                 <label className="block text-[10px] font-bold text-slate-700 uppercase tracking-wide mb-1">Account Label</label>
-                <input required placeholder="e.g. Primary Savings" value={accountName} onChange={e => setAccountName(e.target.value)} className="w-full border border-slate-200 rounded-lg p-2 text-sm bg-slate-50 focus:bg-white" />
+                <input required placeholder="e.g. Primary Savings" value={accountName} onChange={e => setAccountName(e.target.value)} className="w-full border border-slate-200 rounded-lg p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-indigo-400" />
               </div>
               <div>
                 <label className="block text-[10px] font-bold text-slate-700 uppercase tracking-wide mb-1">A/C Number (Last 4 digits)</label>
-                <input placeholder="e.g. 1234 (Optional)" value={accountNumber} onChange={e => setAccountNumber(e.target.value)} className="w-full border border-slate-200 rounded-lg p-2 text-sm bg-slate-50 focus:bg-white" />
+                <input placeholder="e.g. 1234 (Optional)" value={accountNumber} onChange={e => setAccountNumber(e.target.value)} className="w-full border border-slate-200 rounded-lg p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none" />
               </div>
-              <div>
-                <label className="block text-[10px] font-bold text-slate-700 uppercase tracking-wide mb-1">Initial Balance (₹)</label>
-                <input required type="number" step="0.01" placeholder="0.00" value={initialBalance} onChange={e => setInitialBalance(e.target.value)} className="w-full border border-slate-200 rounded-lg p-2 text-sm font-mono bg-slate-50 focus:bg-white" />
-              </div>
+              {!editingBank && (
+                <div>
+                  <label className="block text-[10px] font-bold text-slate-700 uppercase tracking-wide mb-1">Initial Balance (₹)</label>
+                  <input required type="number" step="0.01" placeholder="0.00" value={initialBalance} onChange={e => setInitialBalance(e.target.value)} className="w-full border border-slate-200 rounded-lg p-2 text-sm font-mono bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-indigo-400" />
+                </div>
+              )}
+              {editingBank && (
+                <div className="flex items-end">
+                  <p className="text-[10px] text-slate-500 italic">Current balance is auto-managed by transactions. Edit the initial balance via a manual correction transaction.</p>
+                </div>
+              )}
               <div className="md:col-span-2 pt-2">
-                <button type="submit" className="w-full bg-indigo-600 text-white font-bold py-2 rounded-xl text-sm">Save Bank Account</button>
+                <button type="submit" className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 rounded-xl text-sm flex items-center justify-center gap-1.5 cursor-pointer transition-colors">
+                  <Save size={14} /> {editingBank ? 'Save Changes' : 'Save Bank Account'}
+                </button>
               </div>
             </form>
           </motion.div>
@@ -134,6 +179,7 @@ export default function BankProfiles({
             <div className="col-span-full py-10 text-center text-slate-500 border border-dashed border-slate-300 rounded-2xl">
               <Landmark size={32} className="mx-auto mb-2 opacity-50" />
               <p className="text-sm">No bank profiles added yet.</p>
+              <button onClick={openAddForm} className="mt-3 text-indigo-600 font-bold text-xs hover:underline cursor-pointer">+ Add your first bank</button>
             </div>
           ) : (
             bankAccounts.map(b => (
@@ -153,7 +199,16 @@ export default function BankProfiles({
                       <p className="text-xs text-slate-700">{b.accountName} {b.accountNumber ? `(..${b.accountNumber})` : ''}</p>
                     </div>
                   </div>
-                  <ChevronRight size={18} className="text-slate-300 group-hover:text-indigo-500 transition-colors" />
+                  <div className="flex items-center gap-1">
+                    <button
+                      onClick={(e) => openEditForm(b, e)}
+                      className="p-1.5 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors"
+                      title="Edit profile"
+                    >
+                      <Edit2 size={13} />
+                    </button>
+                    <ChevronRight size={18} className="text-slate-300 group-hover:text-indigo-500 transition-colors" />
+                  </div>
                 </div>
                 <div className="mt-4 border-t border-slate-100 pt-3">
                   <p className="text-[10px] uppercase font-bold text-slate-500">Current Balance</p>
@@ -174,8 +229,8 @@ export default function BankProfiles({
         >
           <div className="bg-slate-900 p-4 text-white flex justify-between items-center">
             <div>
-              <button onClick={() => setSelectedBankId(null)} className="text-slate-500 hover:text-white text-xs font-bold mb-1 flex items-center gap-1">
-                &larr; Back to Profiles
+              <button onClick={() => setSelectedBankId(null)} className="text-slate-500 hover:text-white text-xs font-bold mb-1 flex items-center gap-1 cursor-pointer">
+                ← Back to Profiles
               </button>
               <h3 className="text-lg font-black flex items-center gap-2">
                 <Landmark size={18} className="text-indigo-400" /> {selectedBank.bankName} - {selectedBank.accountName}
@@ -190,17 +245,29 @@ export default function BankProfiles({
           <div className="p-0">
             <div className="bg-slate-50 px-4 py-2 border-b border-slate-200 flex justify-between items-center">
               <span className="text-xs font-bold text-slate-700 uppercase tracking-widest">Passbook History</span>
-              <button 
-                onClick={async () => {
-                  if (window.confirm('Are you sure you want to delete this bank profile? Transactions will not be deleted but will lose linkage.')) {
-                    await onDeleteBankAccount(selectedBank.id);
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    openEditForm(selectedBank, e as any);
                     setSelectedBankId(null);
-                  }
-                }}
-                className="text-red-500 hover:text-red-700 text-xs font-bold flex items-center gap-1"
-              >
-                <Trash2 size={12} /> Remove Profile
-              </button>
+                  }}
+                  className="text-indigo-600 hover:text-indigo-800 text-xs font-bold flex items-center gap-1 cursor-pointer"
+                >
+                  <Edit2 size={12} /> Edit Profile
+                </button>
+                <button 
+                  onClick={async () => {
+                    if (window.confirm('Are you sure you want to delete this bank profile? Transactions will not be deleted but will lose linkage.')) {
+                      await onDeleteBankAccount(selectedBank.id);
+                      setSelectedBankId(null);
+                    }
+                  }}
+                  className="text-red-500 hover:text-red-700 text-xs font-bold flex items-center gap-1 cursor-pointer"
+                >
+                  <Trash2 size={12} /> Remove Profile
+                </button>
+              </div>
             </div>
 
             {bankTransactions.length === 0 ? (

@@ -27,12 +27,10 @@ export default function PinLockScreen({
         if (info.isAvailable) {
           setIsBiometryAvailable(true);
           // Auto-trigger on load
-          const result = await BiometricAuth.authenticate({
+          await BiometricAuth.authenticate({
             reason: 'Authenticate to unlock your private ledger'
           });
-          if (result.hasVerified) {
-            handleUnlock();
-          }
+          handleUnlock();
         }
       } catch (e) {
         console.warn('Biometric auth failed', e);
@@ -43,12 +41,10 @@ export default function PinLockScreen({
 
   const manualTriggerBiometric = async () => {
     try {
-      const result = await BiometricAuth.authenticate({
+      await BiometricAuth.authenticate({
         reason: 'Authenticate to unlock your private ledger'
       });
-      if (result.hasVerified) {
-        handleUnlock();
-      }
+      handleUnlock();
     } catch (e) {
       console.warn('Biometric auth failed', e);
     }

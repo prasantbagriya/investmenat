@@ -60,7 +60,7 @@ import { proxyFetch } from './utils/proxyFetch';
 import AnalyticsDashboard from './components/AnalyticsDashboard';
 import { CreditCardsEMI } from './components/CreditCardsEMI';
 import BankProfiles from './components/BankProfiles';
-import { PhysicalAssets } from './components/PhysicalAssets';
+import PhysicalAssetsManager from './components/PhysicalAssetsManager';
 import { exportFullLedgerToCSV } from './utils/csvExport';
 import { useTaskReminder } from './utils/useTaskReminder';
 
@@ -1847,7 +1847,7 @@ export default function App() {
               onNavigateToTab={setActiveTab}
             />} />
 
-            <Route path="/assets" element={<PhysicalAssets
+            <Route path="/assets" element={<PhysicalAssetsManager
               assets={physicalAssets}
               onAdd={handleAddPhysicalAsset}
               onEdit={handleEditPhysicalAsset}

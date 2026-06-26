@@ -18,7 +18,7 @@ export interface BankAccount {
   accountName: string; // e.g. Savings, Salary
   accountNumber?: string; // Optional last 4 digits
   ifscCode?: string;
-  upiIds?: string[];
+  upiIds?: string[]; // E.g. user@okhdfcbank
   cards?: { id: string; type: 'debit' | 'credit'; name: string; last4: string; expiry: string }[];
   initialBalance: number;
   currentBalance: number;

@@ -17,7 +17,7 @@ export default function PhysicalAssetsManager({ assets, onAdd, onEdit, onDelete 
   const [name, setName] = useState('');
   const [type, setType] = useState<PhysicalAsset['type']>('Vehicle');
   const [purchasePrice, setPurchasePrice] = useState('');
-  const [currentEstimatedValue, setCurrentEstimatedValue] = useState('');
+  const [currentValue, setcurrentValue] = useState('');
   const [purchaseDate, setPurchaseDate] = useState(new Date().toISOString().split('T')[0]);
   const [notes, setNotes] = useState('');
 
@@ -26,7 +26,7 @@ export default function PhysicalAssetsManager({ assets, onAdd, onEdit, onDelete 
     setName('');
     setType('Vehicle');
     setPurchasePrice('');
-    setCurrentEstimatedValue('');
+    setcurrentValue('');
     setPurchaseDate(new Date().toISOString().split('T')[0]);
     setNotes('');
     setIsFormOpen(true);
@@ -37,7 +37,7 @@ export default function PhysicalAssetsManager({ assets, onAdd, onEdit, onDelete 
     setName(asset.name);
     setType(asset.type);
     setPurchasePrice(asset.purchasePrice.toString());
-    setCurrentEstimatedValue(asset.currentEstimatedValue ? asset.currentEstimatedValue.toString() : asset.purchasePrice.toString());
+    setcurrentValue(asset.currentValue ? asset.currentValue.toString() : asset.purchasePrice.toString());
     setPurchaseDate(asset.purchaseDate);
     setNotes(asset.notes || '');
     setIsFormOpen(true);
@@ -46,14 +46,14 @@ export default function PhysicalAssetsManager({ assets, onAdd, onEdit, onDelete 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const pp = parseFloat(purchasePrice);
-    const cv = parseFloat(currentEstimatedValue);
+    const cv = parseFloat(currentValue);
     if (isNaN(pp) || isNaN(cv)) return;
 
     const payload: Omit<PhysicalAsset, 'id' | 'userId'> = {
       name: name.trim(),
       type,
       purchasePrice: pp,
-      currentEstimatedValue: cv,
+      currentValue: cv,
       purchaseDate,
       notes: notes.trim() || undefined
     };
@@ -69,7 +69,7 @@ export default function PhysicalAssetsManager({ assets, onAdd, onEdit, onDelete 
   const getIcon = (t: PhysicalAsset['type']) => {
     switch(t) {
       case 'Vehicle': return <Car size={20} className="text-blue-500" />;
-      case 'Property': return <Home size={20} className="text-emerald-500" />;
+      case 'Real Estate': return <Home size={20} className="text-emerald-500" />;
       case 'Jewellery': return <Diamond size={20} className="text-purple-500" />;
       case 'Electronics': return <Camera size={20} className="text-orange-500" />;
       default: return <MoreHorizontal size={20} className="text-slate-500" />;
@@ -121,7 +121,7 @@ export default function PhysicalAssetsManager({ assets, onAdd, onEdit, onDelete 
                 <label className="block text-[10px] font-bold text-slate-700 uppercase tracking-wide mb-1">Asset Category</label>
                 <select value={type} onChange={e => setType(e.target.value as any)} className="w-full border border-slate-200 rounded-lg p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none">
                   <option value="Vehicle">Vehicle / Auto</option>
-                  <option value="Property">Real Estate / Land</option>
+                  <option value="Real Estate">Real Estate / Land</option>
                   <option value="Jewellery">Gold / Jewellery</option>
                   <option value="Electronics">Electronics / Gadgets</option>
                   <option value="Other">Other Assets</option>
@@ -136,7 +136,7 @@ export default function PhysicalAssetsManager({ assets, onAdd, onEdit, onDelete 
                   <span>Current Valuation (₹)</span>
                   <span className="text-[9px] text-indigo-500 font-normal flex items-center gap-0.5"><Calculator size={10}/> Estimate</span>
                 </label>
-                <input required type="number" step="0.01" value={currentEstimatedValue} onChange={e => setCurrentEstimatedValue(e.target.value)} className="w-full font-mono border border-slate-200 rounded-lg p-2 text-sm bg-indigo-50/30 focus:bg-white focus:outline-none border-indigo-200" />
+                <input required type="number" step="0.01" value={currentValue} onChange={e => setcurrentValue(e.target.value)} className="w-full font-mono border border-slate-200 rounded-lg p-2 text-sm bg-indigo-50/30 focus:bg-white focus:outline-none border-indigo-200" />
               </div>
               <div>
                 <label className="block text-[10px] font-bold text-slate-700 uppercase tracking-wide mb-1">Purchase Date</label>
@@ -167,7 +167,7 @@ export default function PhysicalAssetsManager({ assets, onAdd, onEdit, onDelete 
           </div>
         ) : (
           assets.map(a => {
-            const appreciation = a.currentEstimatedValue - a.purchasePrice;
+            const appreciation = a.currentValue - a.purchasePrice;
             const pct = a.purchasePrice > 0 ? (appreciation / a.purchasePrice) * 100 : 0;
             return (
               <motion.div 
@@ -201,7 +201,7 @@ export default function PhysicalAssetsManager({ assets, onAdd, onEdit, onDelete 
                   </div>
                   <div className="text-right">
                     <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Valuation</p>
-                    <p className="font-mono font-black text-slate-900 text-sm">₹{a.currentEstimatedValue.toLocaleString('en-IN')}</p>
+                    <p className="font-mono font-black text-slate-900 text-sm">₹{a.currentValue.toLocaleString('en-IN')}</p>
                   </div>
                 </div>
                 

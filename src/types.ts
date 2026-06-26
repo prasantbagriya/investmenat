@@ -227,7 +227,7 @@ export interface PhysicalAsset {
   id: string;
   userId: string;
   name: string;
-  type: 'Real Estate' | 'Gold' | 'Vehicle' | 'Other';
+  type: 'Real Estate' | 'Gold' | 'Vehicle' | 'Jewellery' | 'Electronics' | 'Other';
   purchasePrice: number;
   purchaseDate: string; // YYYY-MM-DD
   currentValue: number;

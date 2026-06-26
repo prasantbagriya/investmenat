@@ -7,8 +7,8 @@ import { User } from 'firebase/auth';
 
 interface HeaderProps {
   user: User;
-  currentWorkspace: 'ledger' | 'investmant';
-  setCurrentWorkspace: (workspace: 'ledger' | 'investmant') => void;
+  currentWorkspace: 'ledger' | 'investmant' | 'research';
+  setCurrentWorkspace: (workspace: 'ledger' | 'investmant' | 'research') => void;
   activeTab?: string;
   setActiveTab?: (tab: string) => void;
   exportFullLedgerToCSV: () => void;

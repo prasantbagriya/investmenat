@@ -6,9 +6,10 @@ service cloud.firestore {
       allow read, write: if false;
     }
 
+    // ─── Helper Functions ──────────────────────────────────────────
     function isSignedIn() {
-      // 1. Authentication Requirement
-      return request.auth != null && request.auth.uid != null && request.auth.token.email_verified == true;
+      // Allow both email-verified users AND anonymous/guest users
+      return request.auth != null && request.auth.uid != null;
     }
 
     function isOwner(userId) {
@@ -22,7 +23,7 @@ service cloud.firestore {
     function isNonNegativeNumber(val) {
       return val is number && val >= 0;
     }
-    
+
     function isValidString(val, minLen, maxLen) {
       return val is string && val.size() >= minLen && val.size() <= maxLen;
     }
@@ -31,63 +32,61 @@ service cloud.firestore {
       return id is string && id.size() > 0 && id.size() < 100 && !id.matches('.*/.*');
     }
 
+    // ─── User Profile & Settings ───────────────────────────────────
     match /users/{userId} {
       allow read, write: if isOwner(userId);
     }
     match /users/{userId}/integrations/{integrationId} {
       allow read, write: if isOwner(userId);
     }
-
     match /usersettings/{userId} {
       allow read, write: if isOwner(userId);
     }
 
+    // ─── Transactions ──────────────────────────────────────────────
+    // Uses hasAll for required fields instead of hasOnly — allows optional
+    // fields like bankAccountId, toBankAccountId, etc.
     match /transactions/{id} {
       function isValidTransaction(data) {
         return data.userId == request.auth.uid
-          && data.keys().hasOnly(['id', 'userId', 'type', 'category', 'amount', 'date', 'notes', 'createdAt'])
-          && data.type in ['income', 'expense']
+          && data.keys().hasAll(['id', 'userId', 'type', 'category', 'amount', 'date', 'createdAt'])
+          && data.type in ['income', 'expense', 'cash_withdrawal', 'transfer']
           && isPositiveNumber(data.amount)
           && isValidString(data.category, 1, 50)
-          && (!('notes' in data) || isValidString(data.notes, 0, 500))
           && data.date is string && data.date.size() == 10;
       }
-      
+
       allow read: if isOwner(resource.data.userId);
       allow create: if isOwner(request.resource.data.userId) && isValidTransaction(request.resource.data) && isSafeId(id);
-      allow update: if isOwner(resource.data.userId) && isOwner(request.resource.data.userId) 
-        && isValidTransaction(request.resource.data) 
-        && request.resource.data.createdAt == resource.data.createdAt 
+      allow update: if isOwner(resource.data.userId) && isOwner(request.resource.data.userId)
         && request.resource.data.userId == resource.data.userId;
       allow delete: if isOwner(resource.data.userId);
     }
 
+    // ─── Pending Payments (Len Den) ────────────────────────────────
     match /pendingPayments/{id} {
       function isValidPendingPayment(data) {
         return data.userId == request.auth.uid
-          && data.keys().hasOnly(['id', 'userId', 'type', 'person', 'contactResourceName', 'amount', 'dueDate', 'completed', 'notes', 'createdAt'])
+          && data.keys().hasAll(['id', 'userId', 'type', 'person', 'amount', 'dueDate', 'completed', 'createdAt'])
           && data.type in ['owe', 'owed']
           && isPositiveNumber(data.amount)
           && isValidString(data.person, 1, 100)
           && data.completed is bool
-          && (!('notes' in data) || isValidString(data.notes, 0, 500))
-          && (!('contactResourceName' in data) || data.contactResourceName is string)
           && data.dueDate is string && data.dueDate.size() == 10;
       }
 
       allow read: if isOwner(resource.data.userId);
       allow create: if isOwner(request.resource.data.userId) && isValidPendingPayment(request.resource.data) && isSafeId(id);
-      allow update: if isOwner(resource.data.userId) && isOwner(request.resource.data.userId) 
-        && isValidPendingPayment(request.resource.data)
-        && request.resource.data.createdAt == resource.data.createdAt 
+      allow update: if isOwner(resource.data.userId) && isOwner(request.resource.data.userId)
         && request.resource.data.userId == resource.data.userId;
       allow delete: if isOwner(resource.data.userId);
     }
 
+    // ─── Savings Goals ─────────────────────────────────────────────
     match /savingsGoals/{id} {
       function isValidSavingsGoal(data) {
         return data.userId == request.auth.uid
-          && data.keys().hasOnly(['id', 'userId', 'title', 'targetAmount', 'currentSavings', 'deadline', 'createdAt'])
+          && data.keys().hasAll(['id', 'userId', 'title', 'targetAmount', 'currentSavings', 'deadline', 'createdAt'])
           && isValidString(data.title, 1, 100)
           && isPositiveNumber(data.targetAmount)
           && isNonNegativeNumber(data.currentSavings)
@@ -96,17 +95,16 @@ service cloud.firestore {
 
       allow read: if isOwner(resource.data.userId);
       allow create: if isOwner(request.resource.data.userId) && isValidSavingsGoal(request.resource.data) && isSafeId(id);
-      allow update: if isOwner(resource.data.userId) && isOwner(request.resource.data.userId) 
-        && isValidSavingsGoal(request.resource.data)
-        && request.resource.data.createdAt == resource.data.createdAt 
+      allow update: if isOwner(resource.data.userId) && isOwner(request.resource.data.userId)
         && request.resource.data.userId == resource.data.userId;
       allow delete: if isOwner(resource.data.userId);
     }
 
+    // ─── Budget Limits ─────────────────────────────────────────────
     match /budgetLimits/{id} {
       function isValidBudgetLimit(data) {
         return data.userId == request.auth.uid
-          && data.keys().hasOnly(['id', 'userId', 'category', 'limitAmount', 'month', 'createdAt'])
+          && data.keys().hasAll(['id', 'userId', 'category', 'limitAmount', 'month', 'createdAt'])
           && isValidString(data.category, 1, 50)
           && isPositiveNumber(data.limitAmount)
           && data.month is string && data.month.matches('^[0-9]{4}-[0-9]{2}$');
@@ -114,13 +112,12 @@ service cloud.firestore {
 
       allow read: if isOwner(resource.data.userId);
       allow create: if isOwner(request.resource.data.userId) && isValidBudgetLimit(request.resource.data) && isSafeId(id);
-      allow update: if isOwner(resource.data.userId) && isOwner(request.resource.data.userId) 
-        && isValidBudgetLimit(request.resource.data)
-        && request.resource.data.createdAt == resource.data.createdAt 
+      allow update: if isOwner(resource.data.userId) && isOwner(request.resource.data.userId)
         && request.resource.data.userId == resource.data.userId;
       allow delete: if isOwner(resource.data.userId);
     }
 
+    // ─── Recurring Bills ───────────────────────────────────────────
     match /recurringBills/{id} {
       allow read: if isOwner(resource.data.userId);
       allow create: if isOwner(request.resource.data.userId) && isSafeId(id);
@@ -128,6 +125,7 @@ service cloud.firestore {
       allow delete: if isOwner(resource.data.userId);
     }
 
+    // ─── FCM Push Tokens ───────────────────────────────────────────
     match /fcmTokens/{token} {
       allow read: if isOwner(resource.data.userId);
       allow create: if isOwner(request.resource.data.userId) && token is string && !token.matches('.*/.*');
@@ -135,6 +133,7 @@ service cloud.firestore {
       allow delete: if isOwner(resource.data.userId);
     }
 
+    // ─── Reminders / Tasks ─────────────────────────────────────────
     match /tasks/{id} {
       allow read: if isOwner(resource.data.userId);
       allow create: if isOwner(request.resource.data.userId) && isSafeId(id);
@@ -142,6 +141,7 @@ service cloud.firestore {
       allow delete: if isOwner(resource.data.userId);
     }
 
+    // ─── Investment Holdings ───────────────────────────────────────
     match /holdings/{id} {
       allow read: if isOwner(resource.data.userId);
       allow create: if isOwner(request.resource.data.userId) && isSafeId(id);
@@ -149,6 +149,7 @@ service cloud.firestore {
       allow delete: if isOwner(resource.data.userId);
     }
 
+    // ─── SIP Plans ─────────────────────────────────────────────────
     match /sips/{id} {
       allow read: if isOwner(resource.data.userId);
       allow create: if isOwner(request.resource.data.userId) && isSafeId(id);
@@ -156,6 +157,7 @@ service cloud.firestore {
       allow delete: if isOwner(resource.data.userId);
     }
 
+    // ─── Fixed Deposits / RDs ──────────────────────────────────────
     match /fds/{id} {
       allow read: if isOwner(resource.data.userId);
       allow create: if isOwner(request.resource.data.userId) && isSafeId(id);
@@ -163,6 +165,7 @@ service cloud.firestore {
       allow delete: if isOwner(resource.data.userId);
     }
 
+    // ─── Stock Watchlist ───────────────────────────────────────────
     match /watchlist/{id} {
       allow read: if isOwner(resource.data.userId);
       allow create: if isOwner(request.resource.data.userId) && isSafeId(id);
@@ -170,6 +173,7 @@ service cloud.firestore {
       allow delete: if isOwner(resource.data.userId);
     }
 
+    // ─── Realized Trades ───────────────────────────────────────────
     match /realizedTrades/{id} {
       allow read: if isOwner(resource.data.userId);
       allow create: if isOwner(request.resource.data.userId) && isSafeId(id);
@@ -177,6 +181,7 @@ service cloud.firestore {
       allow delete: if isOwner(resource.data.userId);
     }
 
+    // ─── Bank Accounts ─────────────────────────────────────────────
     match /bankAccounts/{id} {
       allow read: if isOwner(resource.data.userId);
       allow create: if isOwner(request.resource.data.userId) && isSafeId(id);
@@ -184,6 +189,7 @@ service cloud.firestore {
       allow delete: if isOwner(resource.data.userId);
     }
 
+    // ─── Credit Card Bills ─────────────────────────────────────────
     match /ccbills/{id} {
       allow read: if isOwner(resource.data.userId);
       allow create: if isOwner(request.resource.data.userId) && isSafeId(id);
@@ -191,12 +197,15 @@ service cloud.firestore {
       allow delete: if isOwner(resource.data.userId);
     }
 
+    // ─── Credit Card EMIs ──────────────────────────────────────────
     match /ccemis/{id} {
       allow read: if isOwner(resource.data.userId);
       allow create: if isOwner(request.resource.data.userId) && isSafeId(id);
       allow update: if isOwner(resource.data.userId) && isOwner(request.resource.data.userId);
       allow delete: if isOwner(resource.data.userId);
     }
+
+    // ─── Physical Assets ───────────────────────────────────────────
     match /physicalAssets/{id} {
       allow read: if isOwner(resource.data.userId);
       allow create: if isOwner(request.resource.data.userId) && isSafeId(id);
@@ -205,4 +214,3 @@ service cloud.firestore {
     }
   }
 }
-

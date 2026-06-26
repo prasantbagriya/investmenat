@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { createChart, ColorType, CrosshairMode, ISeriesApi } from 'lightweight-charts';
+import { createChart, ColorType, CrosshairMode, ISeriesApi, CandlestickSeries } from 'lightweight-charts';
 import { proxyFetch } from '../utils/proxyFetch';
 import { ArrowLeft, Maximize, Minimize, RefreshCw, Activity, TrendingUp, TrendingDown } from 'lucide-react';
 import { motion } from 'motion/react';
@@ -46,7 +46,7 @@ export default function StockTerminal() {
       autoSize: true,
     });
 
-    const candlestickSeries = chart.addCandlestickSeries({
+    const candlestickSeries = chart.addSeries(CandlestickSeries, {
       upColor: '#10b981',
       downColor: '#ef4444',
       borderVisible: false,

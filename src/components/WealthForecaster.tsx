@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { motion } from 'motion/react';
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import ReactECharts from 'echarts-for-react';
 import { Sip, Fd, Holding, PhysicalAsset, BankAccount } from '../types';
 import { IndianRupee, TrendingUp, Info } from 'lucide-react';
 
@@ -116,35 +116,75 @@ export function WealthForecaster({ sips, fds, holdings, physicalAssets = [], ban
           <h3 className="font-bold text-slate-800">Growth Trajectory</h3>
         </div>
         <div className="h-64 w-full">
-          <ResponsiveContainer width="100%" height="100%">
-            <AreaChart data={forecastData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
-              <defs>
-                <linearGradient id="colorWealth" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#4f46e5" stopOpacity={0.3}/>
-                  <stop offset="95%" stopColor="#4f46e5" stopOpacity={0}/>
-                </linearGradient>
-                <linearGradient id="colorInvested" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#94a3b8" stopOpacity={0.2}/>
-                  <stop offset="95%" stopColor="#94a3b8" stopOpacity={0}/>
-                </linearGradient>
-              </defs>
-              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-              <XAxis dataKey="year" fontSize={10} tickMargin={10} axisLine={false} tickLine={false} stroke="#94a3b8" />
-              <YAxis 
-                fontSize={10} 
-                axisLine={false} 
-                tickLine={false} 
-                stroke="#94a3b8"
-                tickFormatter={(value) => value >= 10000000 ? `${(value/10000000).toFixed(0)}Cr` : value >= 100000 ? `${(value/100000).toFixed(0)}L` : value}
-              />
-              <Tooltip 
-                formatter={(value: number) => formatCurrency(value)}
-                contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
-              />
-              <Area type="monotone" dataKey="Wealth" stroke="#4f46e5" strokeWidth={3} fillOpacity={1} fill="url(#colorWealth)" />
-              <Area type="monotone" dataKey="Invested" stroke="#94a3b8" strokeWidth={2} fillOpacity={1} fill="url(#colorInvested)" />
-            </AreaChart>
-          </ResponsiveContainer>
+          <ReactECharts 
+            option={{
+              tooltip: { 
+                trigger: 'axis', 
+                backgroundColor: '#0f172a', 
+                textStyle: { color: '#fff', fontSize: 12 }, 
+                borderColor: '#334155',
+                formatter: (params: any) => {
+                  let res = `<div style="font-weight:bold;margin-bottom:4px;">${params[0].name}</div>`;
+                  params.forEach((p: any) => {
+                    res += `<div style="display:flex;justify-content:space-between;gap:12px;">
+                              <span>${p.marker} ${p.seriesName}</span>
+                              <span style="font-weight:bold;">${formatCurrency(p.value)}</span>
+                            </div>`;
+                  });
+                  return res;
+                }
+              },
+              legend: { bottom: 0, textStyle: { fontSize: 10, fontWeight: 'bold' }, icon: 'circle' },
+              grid: { left: '3%', right: '4%', bottom: '15%', top: '5%', containLabel: true },
+              xAxis: { 
+                type: 'category', 
+                boundaryGap: false, 
+                data: forecastData.map(d => d.year),
+                axisLine: { show: false },
+                axisTick: { show: false },
+                axisLabel: { color: '#94a3b8', fontSize: 10 }
+              },
+              yAxis: { 
+                type: 'value',
+                splitLine: { lineStyle: { type: 'dashed', color: '#f1f5f9' } },
+                axisLabel: { 
+                  formatter: (val: number) => val >= 10000000 ? `₹${(val/10000000).toFixed(0)}Cr` : val >= 100000 ? `₹${(val/100000).toFixed(0)}L` : `₹${val}`,
+                  color: '#94a3b8', fontSize: 10 
+                }
+              },
+              series: [
+                {
+                  name: 'Wealth',
+                  type: 'line',
+                  smooth: true,
+                  symbol: 'none',
+                  lineStyle: { color: '#4f46e5', width: 3 },
+                  areaStyle: {
+                    color: {
+                      type: 'linear', x: 0, y: 0, x2: 0, y2: 1,
+                      colorStops: [{ offset: 0, color: 'rgba(79, 70, 229, 0.3)' }, { offset: 1, color: 'rgba(79, 70, 229, 0)' }]
+                    }
+                  },
+                  data: forecastData.map(d => d.Wealth)
+                },
+                {
+                  name: 'Invested',
+                  type: 'line',
+                  smooth: true,
+                  symbol: 'none',
+                  lineStyle: { color: '#94a3b8', width: 2 },
+                  areaStyle: {
+                    color: {
+                      type: 'linear', x: 0, y: 0, x2: 0, y2: 1,
+                      colorStops: [{ offset: 0, color: 'rgba(148, 163, 184, 0.2)' }, { offset: 1, color: 'rgba(148, 163, 184, 0)' }]
+                    }
+                  },
+                  data: forecastData.map(d => d.Invested)
+                }
+              ]
+            }} 
+            style={{ height: '100%', width: '100%' }} 
+          />
         </div>
       </div>
 

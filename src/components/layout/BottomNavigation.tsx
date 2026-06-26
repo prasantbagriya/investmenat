@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { 
   ArrowLeftRight, TrendingUp, LayoutDashboard, Clock, 
   Bell, Repeat, CalendarRange, Landmark, Percent,
-  ChevronLeft, ChevronRight
+  ChevronLeft, ChevronRight, Activity, LineChart
 } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 interface BottomNavigationProps {
-  currentWorkspace: 'ledger' | 'investmant';
-  setCurrentWorkspace: (workspace: 'ledger' | 'investmant') => void;
+  currentWorkspace: 'ledger' | 'investmant' | 'research';
+  setCurrentWorkspace: (workspace: 'ledger' | 'investmant' | 'research') => void;
   activeTab?: string;
   setActiveTab?: (tab: string) => void;
 }
@@ -26,9 +26,9 @@ export default function BottomNavigation({
   };
 
   const toggleWorkspace = () => {
-    const next = currentWorkspace === 'ledger' ? 'investmant' : 'ledger';
+    const next = currentWorkspace === 'ledger' ? 'investmant' : currentWorkspace === 'investmant' ? 'research' : 'ledger';
     setCurrentWorkspace(next);
-    navigate(next === 'ledger' ? '/dashboard' : '/portfolio');
+    navigate(next === 'ledger' ? '/dashboard' : next === 'investmant' ? '/portfolio' : '/market');
   };
 
   const ledgerTabs = [
@@ -46,26 +46,29 @@ export default function BottomNavigation({
     { id: 'tax', label: 'Tax', icon: Percent },
   ];
 
-  const tabs = currentWorkspace === 'ledger' ? ledgerTabs : investmantTabs;
+  const researchTabs = [
+    { id: 'market', label: 'Terminal', icon: LineChart },
+    { id: 'forecaster', label: 'Forecaster', icon: Activity },
+  ];
+
+  const tabs = currentWorkspace === 'ledger' ? ledgerTabs : currentWorkspace === 'investmant' ? investmantTabs : researchTabs;
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 bg-white/97 backdrop-blur-md border-t border-slate-200/80 lg:hidden shadow-[0_-4px_20px_rgba(0,0,0,0.08)] font-sans">
       {/* Workspace Switcher Row */}
       <div className="flex items-center justify-center gap-1 pt-1 pb-0.5">
         <button
-          onClick={toggleWorkspace}
+          onClick={() => { setCurrentWorkspace('ledger'); navigate('/dashboard'); }}
           className={`flex items-center gap-1 px-3 py-0.5 rounded-full text-[10px] font-black tracking-wide transition-all ${
             currentWorkspace === 'ledger'
               ? 'bg-slate-900 text-white'
               : 'bg-slate-100 text-slate-500 hover:bg-slate-200'
           }`}
         >
-          {currentWorkspace === 'investmant' && <ChevronLeft size={11} />}
           💳 Ledger
         </button>
-        <div className="w-px h-3 bg-slate-200" />
         <button
-          onClick={toggleWorkspace}
+          onClick={() => { setCurrentWorkspace('investmant'); navigate('/portfolio'); }}
           className={`flex items-center gap-1 px-3 py-0.5 rounded-full text-[10px] font-black tracking-wide transition-all ${
             currentWorkspace === 'investmant'
               ? 'bg-indigo-600 text-white'
@@ -73,7 +76,16 @@ export default function BottomNavigation({
           }`}
         >
           📈 Invest
-          {currentWorkspace === 'ledger' && <ChevronRight size={11} />}
+        </button>
+        <button
+          onClick={() => { setCurrentWorkspace('research'); navigate('/market'); }}
+          className={`flex items-center gap-1 px-3 py-0.5 rounded-full text-[10px] font-black tracking-wide transition-all ${
+            currentWorkspace === 'research'
+              ? 'bg-blue-600 text-white'
+              : 'bg-slate-100 text-slate-500 hover:bg-slate-200'
+          }`}
+        >
+          🔬 Research
         </button>
       </div>
 

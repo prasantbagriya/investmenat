@@ -62,6 +62,7 @@ import { CreditCardsEMI } from './components/CreditCardsEMI';
 import BankProfiles from './components/BankProfiles';
 import PhysicalAssetsManager from './components/PhysicalAssetsManager';
 import StockTerminal from './components/StockTerminal';
+import ResearchTerminal from './components/ResearchTerminal';
 import { exportFullLedgerToCSV } from './utils/csvExport';
 import { useTaskReminder } from './utils/useTaskReminder';
 
@@ -170,12 +171,12 @@ export default function App() {
   const { livePrices, refreshPrices, loadingPrices } = useLivePrices(unifiedHoldings, watchlist);
 
   // Workspace controller: 'ledger' (Daily Finance) vs 'investmant' (Investment Suite)
-  const [currentWorkspace, setCurrentWorkspace] = useState<'ledger' | 'investmant'>('ledger');
+  const [currentWorkspace, setCurrentWorkspace] = useState<'ledger' | 'investmant' | 'research'>('ledger');
 
   // Tab & month controller
   const navigate = useNavigate();
   const location = useLocation();
-  const activeTab = location.pathname.split('/')[1] || (currentWorkspace === 'ledger' ? 'dashboard' : 'portfolio');
+  const activeTab = location.pathname.split('/')[1] || (currentWorkspace === 'ledger' ? 'dashboard' : currentWorkspace === 'research' ? 'market-data' : 'portfolio');
   const setActiveTab = (tab: string) => navigate(`/${tab}`);
   const [selectedMonth, setSelectedMonth] = useState<string>(
     new Date().toISOString().substring(0, 7)
@@ -1713,7 +1714,7 @@ export default function App() {
       <main className="max-w-8xl mx-auto px-2 sm:px-3 lg:px-4 mt-3 w-full grow pb-24 lg:pb-4">
         <div className="transition-all duration-300">
           <Routes>
-            <Route path="/" element={<Navigate to={currentWorkspace === 'ledger' ? '/dashboard' : '/portfolio'} replace />} />
+            <Route path="/" element={<Navigate to={currentWorkspace === 'ledger' ? '/dashboard' : currentWorkspace === 'research' ? '/market-data' : '/portfolio'} replace />} />
             <Route path="/dashboard" element={<Dashboard
               transactions={transactions}
               pendingPayments={pendingPayments}
@@ -1766,6 +1767,7 @@ export default function App() {
             />} />
 
             <Route path="/market-data" element={<MarketView />} />
+            <Route path="/market" element={<ResearchTerminal />} />
             <Route path="/terminal" element={<StockTerminal />} />
 
             <Route path="/sips" element={<SipTracker

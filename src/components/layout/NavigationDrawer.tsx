@@ -9,8 +9,8 @@ import {
 interface NavigationDrawerProps {
   isOpen: boolean;
   onClose: () => void;
-  currentWorkspace: 'ledger' | 'investmant';
-  setCurrentWorkspace: (workspace: 'ledger' | 'investmant') => void;
+  currentWorkspace: 'ledger' | 'investmant' | 'research';
+  setCurrentWorkspace: (workspace: 'ledger' | 'investmant' | 'research') => void;
   activeTab: string;
   setActiveTab: (tab: string) => void;
 }
@@ -97,6 +97,21 @@ export default function NavigationDrawer({
                     <TrendingUp size={18} className={currentWorkspace === 'investmant' ? 'text-emerald-400' : 'text-slate-500'} />
                     InvestMant Space
                   </button>
+
+                  <button
+                    onClick={() => {
+                      setCurrentWorkspace('research');
+                      handleTabClick('market');
+                    }}
+                    className={`flex items-center gap-3 p-3 rounded-xl text-sm font-bold transition-all cursor-pointer ${
+                      currentWorkspace === 'research'
+                        ? 'bg-slate-900 text-white shadow-md'
+                        : 'bg-white border border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-50'
+                    }`}
+                  >
+                    <Activity size={18} className={currentWorkspace === 'research' ? 'text-indigo-400' : 'text-slate-500'} />
+                    Research Terminal
+                  </button>
                 </div>
               </div>
 
@@ -120,15 +135,21 @@ export default function NavigationDrawer({
                       <NavButton active={activeTab === 'workspace'} onClick={() => handleTabClick('workspace')} icon={<Briefcase size={16} className="text-teal-500" />} label="Workspace Suite" isSuite />
                       <NavButton active={activeTab === 'settings'} onClick={() => handleTabClick('settings')} icon={<Settings size={16} />} label="Settings & Links" />
                     </>
-                  ) : (
+                  ) : currentWorkspace === 'investmant' ? (
                     <>
                       <NavButton active={activeTab === 'portfolio'} onClick={() => handleTabClick('portfolio')} icon={<TrendingUp size={16} />} label="Stock & MFs" />
-                      <NavButton active={activeTab === 'market-data'} onClick={() => handleTabClick('market-data')} icon={<BarChart3 size={16} />} label="Live Market Data" />
-                      <NavButton active={activeTab === 'terminal'} onClick={() => handleTabClick('terminal')} icon={<Activity size={16} className="text-indigo-500" />} label="Stock Terminal" />
                       <NavButton active={activeTab === 'sips'} onClick={() => handleTabClick('sips')} icon={<CalendarRange size={16} />} label="Active SIPs" />
                       <NavButton active={activeTab === 'fds'} onClick={() => handleTabClick('fds')} icon={<Landmark size={16} />} label="FD/RD Lockers" />
                       <NavButton active={activeTab === 'tax'} onClick={() => handleTabClick('tax')} icon={<Percent size={16} />} label="Tax Capital Gains" />
                       <NavButton active={activeTab === 'brokers'} onClick={() => handleTabClick('brokers')} icon={<ArrowLeftRight size={16} className="text-indigo-500" />} label="Broker Connect" />
+                      <NavButton active={activeTab === 'workspace'} onClick={() => handleTabClick('workspace')} icon={<Briefcase size={16} className="text-teal-500" />} label="Workspace Suite" isSuite />
+                      <NavButton active={activeTab === 'settings'} onClick={() => handleTabClick('settings')} icon={<Settings size={16} />} label="Settings & Links" />
+                    </>
+                  ) : (
+                    <>
+                      <NavButton active={activeTab === 'market'} onClick={() => handleTabClick('market')} icon={<Activity size={16} className="text-blue-500" />} label="Research Terminal" />
+                      <NavButton active={activeTab === 'market-data'} onClick={() => handleTabClick('market-data')} icon={<BarChart3 size={16} />} label="Live Market Data" />
+                      <NavButton active={activeTab === 'terminal'} onClick={() => handleTabClick('terminal')} icon={<Activity size={16} className="text-indigo-500" />} label="Stock Terminal" />
                       <NavButton active={activeTab === 'workspace'} onClick={() => handleTabClick('workspace')} icon={<Briefcase size={16} className="text-teal-500" />} label="Workspace Suite" isSuite />
                       <NavButton active={activeTab === 'settings'} onClick={() => handleTabClick('settings')} icon={<Settings size={16} />} label="Settings & Links" />
                     </>

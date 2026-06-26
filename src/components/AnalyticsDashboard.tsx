@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { motion } from 'motion/react';
-import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, Legend, ResponsiveContainer, AreaChart, Area } from 'recharts';
+import ReactECharts from 'echarts-for-react';
 import { Transaction, BankAccount, Holding, Fd, Sip, PendingPayment, CreditCardBill, EmiItem } from '../types';
 import { BrokerFunds } from '../hooks/useBrokerSync';
 import { Activity, TrendingUp, PieChart as PieChartIcon, IndianRupee, ShieldAlert } from 'lucide-react';
@@ -101,22 +101,89 @@ export default function AnalyticsDashboard({
     return Object.values(monthsData).sort((a, b) => a.month.localeCompare(b.month));
   }, [transactions]);
 
-  const CustomTooltip = ({ active, payload, label }: any) => {
-    if (active && payload && payload.length) {
-      return (
-        <div className="bg-slate-900 text-white p-3 rounded-xl border border-slate-700 shadow-xl text-xs font-sans">
-          <p className="font-bold mb-1 opacity-80">{label}</p>
-          {payload.map((p: any, idx: number) => (
-            <p key={idx} className="flex justify-between gap-4 font-mono">
-              <span style={{ color: p.color }}>{p.name}:</span>
-              <span className="font-bold">₹{p.value.toLocaleString()}</span>
-            </p>
-          ))}
-        </div>
-      );
-    }
-    return null;
-  };
+  // ECharts Theme/Options configuration
+  const pieOptions = useMemo(() => {
+    return {
+      tooltip: { trigger: 'item', backgroundColor: '#0f172a', textStyle: { color: '#fff' }, borderColor: '#334155' },
+      legend: { orient: 'vertical', right: 10, top: 'center', itemWidth: 10, itemHeight: 10, textStyle: { fontSize: 10, fontWeight: 'bold' } },
+      series: [
+        {
+          name: 'Expenses',
+          type: 'pie',
+          radius: ['40%', '70%'],
+          avoidLabelOverlap: false,
+          itemStyle: {
+            borderRadius: 5,
+            borderColor: '#fff',
+            borderWidth: 2
+          },
+          label: { show: false },
+          labelLine: { show: false },
+          data: expensesByCategory.map((d, i) => ({ value: d.value, name: d.name, itemStyle: { color: COLORS[i % COLORS.length] } }))
+        }
+      ]
+    };
+  }, [expensesByCategory]);
+
+  const barOptions = useMemo(() => {
+    return {
+      tooltip: { trigger: 'axis', backgroundColor: '#0f172a', textStyle: { color: '#fff' }, borderColor: '#334155' },
+      legend: { bottom: 0, textStyle: { fontSize: 10, fontWeight: 'bold' }, icon: 'circle' },
+      grid: { left: '3%', right: '4%', bottom: '15%', top: '5%', containLabel: true },
+      xAxis: { 
+        type: 'category', 
+        data: monthlyTrend.map(d => d.month), 
+        axisLine: { show: false }, 
+        axisTick: { show: false },
+        axisLabel: { color: '#64748b', fontSize: 10, fontWeight: 'bold' }
+      },
+      yAxis: { 
+        type: 'value',
+        splitLine: { lineStyle: { type: 'dashed', color: '#e2e8f0' } },
+        axisLabel: { formatter: (val: number) => `₹${(val/1000).toFixed(0)}k`, color: '#64748b', fontSize: 10, fontWeight: 'bold' }
+      },
+      series: [
+        { name: 'Income', type: 'bar', barMaxWidth: 40, itemStyle: { color: '#10b981', borderRadius: [4, 4, 0, 0] }, data: monthlyTrend.map(d => d.Income) },
+        { name: 'Expense', type: 'bar', barMaxWidth: 40, itemStyle: { color: '#ef4444', borderRadius: [4, 4, 0, 0] }, data: monthlyTrend.map(d => d.Expense) }
+      ]
+    };
+  }, [monthlyTrend]);
+
+  const areaOptions = useMemo(() => {
+    return {
+      tooltip: { trigger: 'axis', backgroundColor: '#0f172a', textStyle: { color: '#fff' }, borderColor: '#334155' },
+      grid: { left: '3%', right: '4%', bottom: '5%', top: '5%', containLabel: true },
+      xAxis: { 
+        type: 'category', 
+        boundaryGap: false, 
+        data: monthlyTrend.map(d => d.month),
+        axisLine: { show: false },
+        axisTick: { show: false },
+        axisLabel: { color: '#64748b', fontSize: 10, fontWeight: 'bold' }
+      },
+      yAxis: { 
+        type: 'value',
+        splitLine: { lineStyle: { type: 'dashed', color: '#e2e8f0' } },
+        axisLabel: { formatter: (val: number) => `₹${(val/1000).toFixed(0)}k`, color: '#64748b', fontSize: 10, fontWeight: 'bold' }
+      },
+      series: [
+        {
+          name: 'Expense Velocity',
+          type: 'line',
+          smooth: true,
+          symbol: 'none',
+          lineStyle: { color: '#ef4444', width: 3 },
+          areaStyle: {
+            color: {
+              type: 'linear', x: 0, y: 0, x2: 0, y2: 1,
+              colorStops: [{ offset: 0, color: 'rgba(239, 68, 68, 0.3)' }, { offset: 1, color: 'rgba(239, 68, 68, 0)' }]
+            }
+          },
+          data: monthlyTrend.map(d => d.Expense)
+        }
+      ]
+    };
+  }, [monthlyTrend]);
 
   return (
     <div className="space-y-4 font-sans pb-10">
@@ -179,32 +246,7 @@ export default function AnalyticsDashboard({
             <p className="text-xs text-slate-500 text-center py-20">No expense data available.</p>
           ) : (
             <div className="h-[300px] w-full">
-              <ResponsiveContainer width="100%" height="100%">
-                <PieChart>
-                  <Pie
-                    data={expensesByCategory}
-                    cx="50%"
-                    cy="50%"
-                    innerRadius={60}
-                    outerRadius={100}
-                    paddingAngle={5}
-                    dataKey="value"
-                    stroke="none"
-                  >
-                    {expensesByCategory.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                    ))}
-                  </Pie>
-                  <RechartsTooltip content={<CustomTooltip />} />
-                  <Legend 
-                    layout="vertical" 
-                    verticalAlign="middle" 
-                    align="right"
-                    wrapperStyle={{ fontSize: '10px', fontWeight: 'bold' }}
-                    iconType="circle"
-                  />
-                </PieChart>
-              </ResponsiveContainer>
+              <ReactECharts option={pieOptions} style={{ height: '100%', width: '100%' }} />
             </div>
           )}
         </motion.div>
@@ -221,28 +263,7 @@ export default function AnalyticsDashboard({
             <p className="text-xs text-slate-500 text-center py-20">No monthly data available.</p>
           ) : (
             <div className="h-[300px] w-full">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={monthlyTrend} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
-                  <XAxis 
-                    dataKey="month" 
-                    axisLine={false} 
-                    tickLine={false} 
-                    tick={{ fontSize: 10, fontWeight: 'bold', fill: '#64748b' }} 
-                    dy={10}
-                  />
-                  <YAxis 
-                    axisLine={false} 
-                    tickLine={false} 
-                    tick={{ fontSize: 10, fontWeight: 'bold', fill: '#64748b' }}
-                    tickFormatter={(value) => `₹${(value / 1000).toFixed(0)}k`}
-                  />
-                  <RechartsTooltip content={<CustomTooltip />} cursor={{ fill: '#f8fafc' }} />
-                  <Legend wrapperStyle={{ fontSize: '10px', fontWeight: 'bold', paddingTop: '10px' }} iconType="circle" />
-                  <Bar dataKey="Income" fill="#10b981" radius={[4, 4, 0, 0]} maxBarSize={40} />
-                  <Bar dataKey="Expense" fill="#ef4444" radius={[4, 4, 0, 0]} maxBarSize={40} />
-                </BarChart>
-              </ResponsiveContainer>
+              <ReactECharts option={barOptions} style={{ height: '100%', width: '100%' }} />
             </div>
           )}
         </motion.div>
@@ -259,21 +280,7 @@ export default function AnalyticsDashboard({
             <p className="text-xs text-slate-500 text-center py-20">No monthly data available.</p>
           ) : (
             <div className="h-[250px] w-full">
-              <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={monthlyTrend} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                  <defs>
-                    <linearGradient id="colorExpense" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#ef4444" stopOpacity={0.3}/>
-                      <stop offset="95%" stopColor="#ef4444" stopOpacity={0}/>
-                    </linearGradient>
-                  </defs>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
-                  <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fontSize: 10, fontWeight: 'bold', fill: '#64748b' }} dy={10} />
-                  <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 10, fontWeight: 'bold', fill: '#64748b' }} tickFormatter={(value) => `₹${(value / 1000).toFixed(0)}k`} />
-                  <RechartsTooltip content={<CustomTooltip />} />
-                  <Area type="monotone" dataKey="Expense" stroke="#ef4444" strokeWidth={3} fillOpacity={1} fill="url(#colorExpense)" />
-                </AreaChart>
-              </ResponsiveContainer>
+              <ReactECharts option={areaOptions} style={{ height: '100%', width: '100%' }} />
             </div>
           )}
         </motion.div>

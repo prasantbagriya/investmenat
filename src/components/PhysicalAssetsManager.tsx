@@ -132,11 +132,11 @@ export default function PhysicalAssetsManager({ assets, onAdd, onEdit, onDelete 
                 <input required type="number" step="0.01" value={purchasePrice} onChange={e => setPurchasePrice(e.target.value)} className="w-full font-mono border border-slate-200 rounded-lg p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none" />
               </div>
               <div>
-                <label className="block text-[10px] font-bold text-slate-700 uppercase tracking-wide mb-1 flex justify-between">
+                <label className="text-[10px] font-bold text-slate-700 uppercase tracking-wide mb-1 flex justify-between">
                   <span>Current Valuation (₹)</span>
                   <span className="text-[9px] text-indigo-500 font-normal flex items-center gap-0.5"><Calculator size={10}/> Estimate</span>
                 </label>
-                <input required type="number" step="0.01" value={currentValue} onChange={e => setcurrentValue(e.target.value)} className="w-full font-mono border border-slate-200 rounded-lg p-2 text-sm bg-indigo-50/30 focus:bg-white focus:outline-none border-indigo-200" />
+                <input required type="number" step="0.01" value={currentValue} onChange={e => setcurrentValue(e.target.value)} className="w-full font-mono border border-indigo-200 rounded-lg p-2 text-sm bg-indigo-50/30 focus:bg-white focus:outline-none" />
               </div>
               <div>
                 <label className="block text-[10px] font-bold text-slate-700 uppercase tracking-wide mb-1">Purchase Date</label>

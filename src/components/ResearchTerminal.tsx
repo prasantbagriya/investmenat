@@ -305,78 +305,25 @@ export default function ResearchTerminal() {
         </div>
       )}
 
-      {/* ─── HEADER ─────────────────────────────────────────────── */}
-      <div className="bg-white border-b border-slate-200 px-4 py-4 shadow-sm">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-blue-600 rounded-xl flex items-center justify-center shadow-md">
-              <Activity size={18} className="text-white" />
-            </div>
-            <div>
-              <h1 className="font-black text-slate-900 text-lg leading-tight">Research Terminal</h1>
-              <p className="text-xs text-slate-400 font-medium">
-                {isConnected ? '🟢 Live Upstox Data' : '🟡 Demo Mode — Connect Upstox for Live Data'}
-              </p>
+      {/* ─── HEADER (Only visible on Dashboard) ─────────────────────────────────────────────── */}
+      {activeTab === 'dashboard' && (
+        <div className="bg-white border-b border-slate-200 px-4 py-4 shadow-sm">
+          <div className="max-w-7xl mx-auto flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-blue-600 rounded-xl flex items-center justify-center shadow-md">
+                <Activity size={18} className="text-white" />
+              </div>
+              <div>
+                <h1 className="font-black text-slate-900 text-lg leading-tight">Research Terminal</h1>
+                <p className="text-xs text-slate-400 font-medium">
+                  {isConnected ? '🟢 Live Upstox Data' : '🟡 Demo Mode — Connect Upstox for Live Data'}
+                </p>
+              </div>
             </div>
           </div>
-
-          {/* Symbol Picker */}
-          {(activeTab === 'candlestick' || activeTab === 'options') && (
-            <form onSubmit={handleLoad} className="flex items-center gap-2 w-full sm:w-auto">
-              <div className="relative flex-1 sm:w-60">
-                <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
-                <input
-                  type="text"
-                  value={inputKey}
-                  onChange={e => setInputKey(e.target.value)}
-                  placeholder="NSE_EQ|INE002A01018"
-                  className="pl-8 pr-3 py-2 bg-slate-100 border border-slate-200 rounded-xl text-xs w-full focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono"
-                />
-              </div>
-              <button type="submit" className="px-3 py-2 bg-blue-600 text-white text-xs font-bold rounded-xl hover:bg-blue-700 transition-colors flex items-center gap-1">
-                <Zap size={13} /> Load
-              </button>
-              <button type="button" onClick={fetchData} className="p-2 bg-slate-100 text-slate-600 rounded-xl hover:bg-slate-200 transition-colors">
-                <RefreshCw size={14} className={isLoading ? 'animate-spin' : ''} />
-              </button>
-            </form>
-          )}
         </div>
+      )}
 
-        {/* Quick Stock Chips + Interval Selector */}
-        {(activeTab === 'candlestick' || activeTab === 'options') && (
-          <div className="max-w-7xl mx-auto mt-2 flex gap-1.5 overflow-x-auto pb-1">
-            {POPULAR_STOCKS.map(s => (
-              <button
-                key={s.key}
-                onClick={() => { setInputKey(s.key); setInstrumentKey(s.key); }}
-                className={`shrink-0 px-2.5 py-1 rounded-lg text-[10px] font-bold transition-all border ${
-                  instrumentKey === s.key
-                    ? 'bg-blue-600 text-white border-blue-600'
-                    : 'bg-white text-slate-600 border-slate-200 hover:border-blue-300'
-                }`}
-              >
-                {s.label}
-              </button>
-            ))}
-            {activeTab === 'candlestick' && (
-              <div className="ml-auto flex gap-1 shrink-0">
-                {INTERVALS.map(iv => (
-                  <button
-                    key={iv}
-                    onClick={() => setIntervalVal(iv)}
-                    className={`px-2 py-1 rounded-lg text-[10px] font-bold transition-all ${
-                      interval === iv ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'
-                    }`}
-                  >
-                    {iv.replace('minute', 'm').replace('hour', 'h')}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
-      </div>
 
       {activeTab === 'dashboard' ? (
         <div className="max-w-7xl mx-auto px-4 py-8">
@@ -402,63 +349,99 @@ export default function ResearchTerminal() {
           </div>
         </div>
       ) : (
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          {/* Tab Bar */}
-          <div className="flex gap-1 bg-white border border-slate-200 p-1 rounded-2xl shadow-sm mb-4 overflow-x-auto relative">
-            <button
-              onClick={() => setActiveTab('dashboard')}
-              className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-bold text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all shrink-0 border-r border-slate-200 pr-4 mr-1"
-            >
-              ← Back
-            </button>
-            {TABS.map(({ id, label, icon: Icon, color }) => (
-              <button
-                key={id}
-                onClick={() => setActiveTab(id)}
-                className={`flex-1 min-w-fit flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-bold transition-all ${
-                  activeTab === id
-                    ? 'bg-slate-900 text-white shadow-md'
-                    : 'text-slate-500 hover:text-slate-700 hover:bg-slate-50'
-                }`}
-              >
-                <Icon size={14} className={activeTab === id ? 'text-white' : color} />
-                <span className="hidden sm:inline">{label}</span>
-              </button>
-            ))}
-          </div>
-
-          {/* Chart Card */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-          <div className="flex items-center justify-between px-4 py-3 bg-slate-50/70 border-b border-slate-100">
-            <div className="flex items-center gap-2">
-              <activeTabDef.icon size={16} className={activeTabDef.color} />
-              <span className="font-bold text-slate-800 text-sm">{activeTabDef.label}</span>
-              {(activeTab === 'candlestick' || activeTab === 'options') && (
-                <span className="text-xs text-slate-400 font-mono ml-1">{stockLabel}</span>
-              )}
-              {/* MOCK badge */}
-              {isMock && (
-                <span className="text-[9px] font-black bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded-full uppercase tracking-wider ml-1">
-                  DEMO
-                </span>
-              )}
-              {!isMock && !isLoading && (
-                <span className="text-[9px] font-black bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded-full uppercase tracking-wider ml-1">
-                  LIVE
-                </span>
+        <div className="max-w-7xl mx-auto px-4 py-4 mt-2 mb-8">
+          {/* Quick Stock Chips + Interval Selector (Only when inside relevant tool) */}
+          {(activeTab === 'candlestick' || activeTab === 'options') && (
+            <div className="flex gap-1.5 overflow-x-auto pb-3 mb-2 scrollbar-hide">
+              {POPULAR_STOCKS.map(s => (
+                <button
+                  key={s.key}
+                  onClick={() => { setInputKey(s.key); setInstrumentKey(s.key); }}
+                  className={`shrink-0 px-3 py-1.5 rounded-xl text-[11px] font-bold transition-all border shadow-sm ${
+                    instrumentKey === s.key
+                      ? 'bg-blue-600 text-white border-blue-600'
+                      : 'bg-white text-slate-600 border-slate-200 hover:border-blue-300 hover:shadow-md'
+                  }`}
+                >
+                  {s.label}
+                </button>
+              ))}
+              {activeTab === 'candlestick' && (
+                <div className="ml-auto flex gap-1 shrink-0 bg-white border border-slate-200 p-0.5 rounded-xl shadow-sm">
+                  {INTERVALS.map(iv => (
+                    <button
+                      key={iv}
+                      onClick={() => setIntervalVal(iv)}
+                      className={`px-2.5 py-1 rounded-lg text-[10px] font-bold transition-all ${
+                        interval === iv ? 'bg-slate-900 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700'
+                      }`}
+                    >
+                      {iv.replace('minute', 'm').replace('hour', 'h')}
+                    </button>
+                  ))}
+                </div>
               )}
             </div>
-            <div className="flex items-center gap-2">
-              {isLoading ? (
-                <span className="text-[10px] font-bold text-blue-500 flex items-center gap-1">
-                  <RefreshCw size={10} className="animate-spin" /> Fetching...
-                </span>
-              ) : (
-                <span className={`text-[10px] font-bold flex items-center gap-1 ${isMock ? 'text-amber-500' : 'text-emerald-500'}`}>
-                  <span className={`w-1.5 h-1.5 rounded-full animate-pulse ${isMock ? 'bg-amber-400' : 'bg-emerald-500'}`} />
-                  {isMock ? 'Demo' : 'Live'}
-                </span>
+          )}
+
+          {/* Chart Card */}
+        <div className="bg-white rounded-3xl shadow-lg border border-slate-200/60 overflow-hidden ring-1 ring-slate-900/5">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 px-4 py-4 bg-slate-50/50 border-b border-slate-100">
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => setActiveTab('dashboard')}
+                className="p-2 bg-white rounded-xl shadow-sm border border-slate-200 text-slate-500 hover:text-slate-900 hover:bg-slate-50 transition-all"
+                title="Back to Dashboard"
+              >
+                <ArrowLeft size={16} />
+              </button>
+              <div className={`p-2 rounded-xl bg-white shadow-sm border border-slate-100 ${activeTabDef.color}`}>
+                <activeTabDef.icon size={16} />
+              </div>
+              <div>
+                <h3 className="font-black text-slate-900 text-sm leading-tight flex items-center gap-2">
+                  {activeTabDef.label}
+                  {(activeTab === 'candlestick' || activeTab === 'options') && (
+                    <span className="text-xs text-slate-500 font-mono font-medium">{stockLabel}</span>
+                  )}
+                </h3>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3 w-full lg:w-auto">
+              {(activeTab === 'candlestick' || activeTab === 'options') && (
+                <form onSubmit={handleLoad} className="flex flex-1 items-center gap-2">
+                  <div className="relative flex-1 lg:w-60">
+                    <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+                    <input
+                      type="text"
+                      value={inputKey}
+                      onChange={e => setInputKey(e.target.value)}
+                      placeholder="NSE_EQ|INE002A01018"
+                      className="pl-8 pr-3 py-1.5 bg-white border border-slate-200 rounded-lg text-xs w-full focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono shadow-sm"
+                    />
+                  </div>
+                  <button type="submit" className="p-1.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors shadow-sm">
+                    <Zap size={14} />
+                  </button>
+                  <button type="button" onClick={fetchData} className="p-1.5 bg-white text-slate-600 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors shadow-sm">
+                    <RefreshCw size={14} className={isLoading ? 'animate-spin' : ''} />
+                  </button>
+                </form>
               )}
+
+              <div className="hidden sm:flex items-center gap-2 border-l border-slate-200 pl-3">
+                {isLoading ? (
+                  <span className="text-[10px] font-bold text-blue-500 flex items-center gap-1 bg-blue-50 px-2 py-1 rounded-full">
+                    <RefreshCw size={10} className="animate-spin" /> Fetching...
+                  </span>
+                ) : (
+                  <span className={`text-[10px] font-bold flex items-center gap-1.5 px-2 py-1 rounded-full ${isMock ? 'bg-amber-50 text-amber-600 border border-amber-200' : 'bg-emerald-50 text-emerald-600 border border-emerald-200'}`}>
+                    <span className={`w-1.5 h-1.5 rounded-full animate-pulse ${isMock ? 'bg-amber-500' : 'bg-emerald-500'}`} />
+                    {isMock ? 'DEMO' : 'LIVE'}
+                  </span>
+                )}
+              </div>
             </div>
           </div>
 

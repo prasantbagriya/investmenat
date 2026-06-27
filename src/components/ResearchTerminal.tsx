@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { LineChart, BarChart2, Activity, PieChart, TrendingUp, Search, RefreshCw, Zap, Globe, AlertTriangle, ExternalLink, CheckCircle } from 'lucide-react';
+import { LineChart, BarChart2, Activity, PieChart, TrendingUp, Search, RefreshCw, Zap, Globe, AlertTriangle, ExternalLink, CheckCircle, ArrowLeft } from 'lucide-react';
 import CandlestickChart from './charts/CandlestickChart';
 import OptionChainChart from './charts/OptionChainChart';
 import PortfolioDonutChart from './charts/PortfolioDonutChart';
@@ -277,8 +277,8 @@ export default function ResearchTerminal() {
   return (
     <div className="min-h-screen bg-slate-50 pb-24">
 
-      {/* ─── NOT CONNECTED BANNER ───────────────────────────────── */}
-      {!isConnected && (
+      {/* ─── BANNERS (Only visible on Dashboard) ───────────────────────────────── */}
+      {activeTab === 'dashboard' && !isConnected && (
         <div className="bg-amber-50 border-b border-amber-200 px-4 py-2.5 flex items-center justify-between gap-3">
           <div className="flex items-center gap-2 text-amber-800">
             <AlertTriangle size={15} className="shrink-0 text-amber-500" />
@@ -295,8 +295,7 @@ export default function ResearchTerminal() {
         </div>
       )}
 
-      {/* ─── CONNECTED BANNER ───────────────────────────────────── */}
-      {isConnected && (
+      {activeTab === 'dashboard' && isConnected && (
         <div className="bg-emerald-50 border-b border-emerald-200 px-4 py-2 flex items-center gap-2">
           <CheckCircle size={14} className="text-emerald-600 shrink-0" />
           <span className="text-xs font-semibold text-emerald-800">

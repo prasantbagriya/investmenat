@@ -194,7 +194,7 @@ export default function ResearchTerminal() {
           } catch (err: any) {
             setPortfolioData(generateMockPortfolio());
             setIsMock(true);
-            setErrorMsg(`Portfolio Error: ${err.message}`);
+            console.error('Portfolio Error:', err.message);
           }
         }
       }
@@ -223,7 +223,7 @@ export default function ResearchTerminal() {
           } catch (err: any) {
             setHeatmapData(generateMockHeatmapData());
             setIsMock(true);
-            setErrorMsg(`Market Heatmap Error: ${err.message}`);
+            console.error('Market Heatmap Error:', err.message);
           }
         }
       }
@@ -253,7 +253,7 @@ export default function ResearchTerminal() {
           } catch (err: any) {
             setPlData(generateMockPLData());
             setIsMock(true);
-            setErrorMsg(`Trade P&L Error: ${err.message}`);
+            console.error('Trade P&L Error:', err.message);
           }
         }
       }
@@ -367,7 +367,7 @@ export default function ResearchTerminal() {
           )}
 
           {/* Chart Card */}
-        <div className="bg-white rounded-3xl shadow-lg border border-slate-200/60 overflow-hidden ring-1 ring-slate-900/5">
+        <div className="bg-white rounded-3xl border border-slate-200/60 overflow-hidden ring-1 ring-slate-900/5">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 px-4 py-4 bg-slate-50/50 border-b border-slate-100">
             <div className="flex items-center gap-3">
               <button
@@ -377,7 +377,7 @@ export default function ResearchTerminal() {
               >
                 <ArrowLeft size={16} />
               </button>
-              <div className={`p-2 rounded-xl bg-white shadow-sm border border-slate-100 ${activeTabDef.color}`}>
+              <div className={`p-2 rounded-xl bg-white border border-slate-100 ${activeTabDef.color}`}>
                 <activeTabDef.icon size={16} />
               </div>
               <div>
@@ -463,29 +463,7 @@ export default function ResearchTerminal() {
           </div>
         )}
 
-        {/* Bottom message */}
-        {isMock && (
-          <div className="mt-4 bg-amber-50 border border-amber-200 rounded-xl p-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-            <div className="flex items-center gap-2">
-              <AlertTriangle size={14} className="text-amber-500 shrink-0" />
-              <div className="flex flex-col">
-                <p className="text-xs text-amber-800 font-semibold">
-                  Yeh demo data hai. Live Upstox data ke liye Broker Settings mein jaake connect karo.
-                </p>
-                {errorMsg && (
-                  <p className="text-[11px] text-rose-600 font-medium mt-0.5">
-                    Live Error: {errorMsg}
-                  </p>
-                )}
-              </div>
-            </div>
-            {!isConnected && (
-              <a href="/brokers" className="shrink-0 text-[11px] font-bold text-amber-600 hover:text-amber-800 flex items-center gap-1 underline">
-                Connect <ExternalLink size={11} />
-              </a>
-            )}
-          </div>
-        )}
+
       </div>
     )}
     </div>

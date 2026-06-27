@@ -80,14 +80,14 @@ export const upstoxApi = {
 
   // ─── Trade P&L ─────────────────────────────────────
   getTradePnl: (token: string, segment = 'EQ', financialYear = '2023-24', fromDate?: string, toDate?: string) => {
-    let url = `${BASE_URL}/trade-pnl?segment=${segment}&financial_year=${financialYear}&page_number=1`;
+    let url = `${BASE_URL}/trade-pnl?segment=${segment}&financial_year=${financialYear}&page_number=1&page_size=100`;
     if (fromDate) url += `&from_date=${fromDate}`;
     if (toDate) url += `&to_date=${toDate}`;
     return get(url, token);
   },
 
   getTradePnlCharges: (token: string, segment = 'EQ', financialYear = '2023-24') =>
-    get(`${BASE_URL}/trade-pnl-charges?segment=${segment}&financial_year=${financialYear}`, token),
+    get(`${BASE_URL}/trade-pnl-charges?segment=${segment}&financial_year=${financialYear}&page_number=1&page_size=100`, token),
 
   // ─── Market Information ────────────────────────────
   getMarketInfo: (token: string, infoType = 'gainers', dataType = 'cash_leaders') =>

@@ -1,22 +1,33 @@
-const BASE_URL = `${import.meta.env.VITE_BACKEND_URL || 'http://127.0.0.1:8000'}/api/v1/upstox`;
+import { proxyFetch } from '../utils/proxyFetch';
+
+// proxyFetch will route `/api/upstox/...` correctly on web and native
+const BASE_URL = `/api/upstox`;
 
 function headers(token: string) {
   return { 'Authorization': `Bearer ${token}` };
 }
 
 async function get(url: string, token: string) {
-  const res = await fetch(url, { headers: headers(token) });
-  if (!res.ok) throw new Error(`${res.status}: ${res.statusText}`);
+  const res = await proxyFetch(url, { headers: headers(token) });
+  if (!res.ok) {
+    let msg = `${res.status}: ${res.statusText}`;
+    try { const errObj = await res.json(); if(errObj.errors) msg = errObj.errors[0].message; } catch {}
+    throw new Error(msg);
+  }
   return res.json();
 }
 
 async function post(url: string, token: string, body: any) {
-  const res = await fetch(url, {
+  const res = await proxyFetch(url, {
     method: 'POST',
     headers: { ...headers(token), 'Content-Type': 'application/json' },
     body: JSON.stringify(body)
   });
-  if (!res.ok) throw new Error(`${res.status}: ${res.statusText}`);
+  if (!res.ok) {
+    let msg = `${res.status}: ${res.statusText}`;
+    try { const errObj = await res.json(); if(errObj.errors) msg = errObj.errors[0].message; } catch {}
+    throw new Error(msg);
+  }
   return res.json();
 }
 

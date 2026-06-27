@@ -110,6 +110,7 @@ export default function ResearchTerminal() {
   const [inputKey, setInputKey] = useState('NSE_EQ|INE002A01018');
   const [interval, setIntervalVal] = useState('day');
   const [expiryDate, setExpiryDate] = useState('2024-12-26');
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   // Check if real Upstox token is available
   const token = localStorage.getItem('upstox_access_token') || '';
@@ -119,6 +120,7 @@ export default function ResearchTerminal() {
   const fetchData = useCallback(async () => {
     setIsLoading(true);
     setIsMock(false);
+    setErrorMsg(null);
 
     try {
       if (activeTab === 'candlestick') {
@@ -138,9 +140,10 @@ export default function ResearchTerminal() {
               setHistoricalData(generateMockCandlesticks());
               setIsMock(true);
             }
-          } catch {
+          } catch (err: any) {
             setHistoricalData(generateMockCandlesticks());
             setIsMock(true);
+            setErrorMsg(`Historical Data Error: ${err.message}`);
           }
         }
       }
@@ -160,9 +163,10 @@ export default function ResearchTerminal() {
               setOptionChainData(generateMockOptionChain());
               setIsMock(true);
             }
-          } catch {
+          } catch (err: any) {
             setOptionChainData(generateMockOptionChain());
             setIsMock(true);
+            setErrorMsg(`Option Chain Error: ${err.message}`);
           }
         }
       }
@@ -187,9 +191,10 @@ export default function ResearchTerminal() {
               setPortfolioData(generateMockPortfolio());
               setIsMock(true);
             }
-          } catch {
+          } catch (err: any) {
             setPortfolioData(generateMockPortfolio());
             setIsMock(true);
+            setErrorMsg(`Portfolio Error: ${err.message}`);
           }
         }
       }
@@ -215,9 +220,10 @@ export default function ResearchTerminal() {
               setHeatmapData(generateMockHeatmapData());
               setIsMock(true);
             }
-          } catch {
+          } catch (err: any) {
             setHeatmapData(generateMockHeatmapData());
             setIsMock(true);
+            setErrorMsg(`Market Heatmap Error: ${err.message}`);
           }
         }
       }
@@ -244,9 +250,10 @@ export default function ResearchTerminal() {
               setPlData(generateMockPLData());
               setIsMock(true);
             }
-          } catch {
+          } catch (err: any) {
             setPlData(generateMockPLData());
             setIsMock(true);
+            setErrorMsg(`Trade P&L Error: ${err.message}`);
           }
         }
       }
@@ -462,16 +469,25 @@ export default function ResearchTerminal() {
 
         {/* Bottom message */}
         {isMock && (
-          <div className="mt-4 bg-amber-50 border border-amber-200 rounded-xl p-3 flex items-center justify-between gap-3">
+          <div className="mt-4 bg-amber-50 border border-amber-200 rounded-xl p-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <div className="flex items-center gap-2">
               <AlertTriangle size={14} className="text-amber-500 shrink-0" />
-              <p className="text-xs text-amber-800 font-semibold">
-                Yeh demo data hai. Live Upstox data ke liye Broker Settings mein jaake connect karo.
-              </p>
+              <div className="flex flex-col">
+                <p className="text-xs text-amber-800 font-semibold">
+                  Yeh demo data hai. Live Upstox data ke liye Broker Settings mein jaake connect karo.
+                </p>
+                {errorMsg && (
+                  <p className="text-[11px] text-rose-600 font-medium mt-0.5">
+                    Live Error: {errorMsg}
+                  </p>
+                )}
+              </div>
             </div>
-            <a href="/brokers" className="shrink-0 text-[11px] font-bold text-amber-600 hover:text-amber-800 flex items-center gap-1 underline">
-              Connect <ExternalLink size={11} />
-            </a>
+            {!isConnected && (
+              <a href="/brokers" className="shrink-0 text-[11px] font-bold text-amber-600 hover:text-amber-800 flex items-center gap-1 underline">
+                Connect <ExternalLink size={11} />
+              </a>
+            )}
           </div>
         )}
       </div>

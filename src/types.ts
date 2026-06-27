@@ -1,7 +1,7 @@
 export interface Transaction {
   id: string;
   userId: string;
-  type: 'income' | 'expense' | 'transfer' | 'cash_withdrawal';
+  type: 'income' | 'expense' | 'transfer' | 'cash_withdrawal' | 'refund';
   category: string;
   amount: number;
   date: string; // YYYY-MM-DD

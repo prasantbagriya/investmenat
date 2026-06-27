@@ -98,7 +98,7 @@ export default function Dashboard({
     monthlyTransactions.forEach(t => {
       if (t.type === 'income') {
         income += t.amount;
-      } else {
+      } else if (t.type !== 'refund') {
         expenses += t.amount;
         if (t.notes?.startsWith('Auto-paid bill:')) {
           autoBillsAmount += t.amount;
@@ -166,7 +166,7 @@ export default function Dashboard({
   // Calculate Lifetime Uninvested Cash from all transactions
   const lifetimeLedgerCash = useMemo(() => {
     return transactions.reduce((acc, t) => {
-      return t.type === 'income' ? acc + t.amount : acc - t.amount;
+      return (t.type === 'income' || t.type === 'refund') ? acc + t.amount : acc - t.amount;
     }, 0);
   }, [transactions]);
 
@@ -590,8 +590,8 @@ export default function Dashboard({
                       <p className="font-bold text-slate-800 leading-normal">{t.category}</p>
                       <p className="text-[10px] text-slate-500 font-mono mt-0.5">{t.date} {t.notes && `• ${t.notes}`}</p>
                     </div>
-                    <span className={`font-bold font-mono text-[11px] ${t.type === 'income' ? 'text-emerald-600' : 'text-slate-900'}`}>
-                      {t.type === 'income' ? '+' : '-'}₹{t.amount.toLocaleString('en-IN')}
+                    <span className={`font-bold font-mono text-[11px] ${(t.type === 'income' || t.type === 'refund') ? 'text-emerald-600' : 'text-slate-900'}`}>
+                      {(t.type === 'income' || t.type === 'refund') ? '+' : '-'}₹{t.amount.toLocaleString('en-IN')}
                     </span>
                   </div>
                 ))}

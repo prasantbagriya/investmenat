@@ -272,7 +272,8 @@ export default function TransactionTracker({
 
   const startEdit = (t: Transaction) => {
     setEditingId(t.id);
-    setType(t.type);
+    // 'refund' is system-generated and not manually editable — treat as expense in the edit form
+    setType(t.type === 'refund' ? 'expense' : t.type);
     setCategory(t.category);
     setAmount(t.amount.toString());
     setDate(t.date);
@@ -692,8 +693,8 @@ export default function TransactionTracker({
                 {filteredTransactions.map((t) => (
                   <tr key={t.id} className="hover:bg-slate-50/30">
                     <td className="p-2 px-2">
-                      <span className={`inline-block px-1.5 py-0.5 rounded text-[9px] font-bold ${t.type === 'income' ? 'bg-emerald-55 text-emerald-800' : 'bg-slate-100 text-slate-705'}`}>
-                        {t.type === 'income' ? 'CREDIT' : 'DEBIT'}
+                      <span className={`inline-block px-1.5 py-0.5 rounded text-[9px] font-bold ${t.type === 'income' ? 'bg-emerald-100 text-emerald-800' : t.type === 'refund' ? 'bg-indigo-100 text-indigo-800' : 'bg-slate-100 text-slate-700'}`}>
+                        {t.type === 'income' ? 'CREDIT' : t.type === 'refund' ? 'REFUND' : 'DEBIT'}
                       </span>
                     </td>
                     <td className="p-2 font-extrabold text-slate-800">{t.category}</td>

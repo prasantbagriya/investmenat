@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import {
   auth,
   db,
@@ -354,6 +355,62 @@ export default function App() {
     window.addEventListener('hashchange', handleHashAndToken);
     return () => window.removeEventListener('hashchange', handleHashAndToken);
   }, []);
+
+  // PWA Notification Action handler — processes hash actions from Service Worker
+  // E.g. user taps "Mark Paid" on a push notification → SW opens /#action=mark_paid&id=...
+  useEffect(() => {
+    if (!user || !pendingPayments.length) return;
+
+    const processNotificationAction = async () => {
+      const hash = window.location.hash;
+      if (!hash.includes('action=')) return;
+
+      const params = new URLSearchParams(hash.replace('#', '?'));
+      const action = params.get('action');
+      const id = params.get('id');
+
+      if (!action || !id) return;
+
+      // Clear the hash immediately so it doesn't re-trigger
+      window.history.replaceState(null, '', window.location.pathname);
+
+      const payment = pendingPayments.find(p => p.id === id);
+
+      if (action === 'mark_paid' && payment) {
+        try {
+          await handleAddTransaction({
+            type: payment.type === 'owed' ? 'refund' : 'expense',
+            category: 'Others',
+            amount: payment.amount,
+            date: new Date().toISOString().split('T')[0],
+            notes: `Settled (notification): ${payment.person} - ${payment.notes || ''}`
+          });
+          await handleEditPayment(id, { completed: true });
+          toast.success(`✅ ${payment.person} - marked as paid!`);
+        } catch (err) {
+          console.error('Notification action mark_paid failed:', err);
+          toast.error('Failed to mark as paid. Please try in-app.');
+        }
+      } else if (action === 'remind_later') {
+        // Push due date by 1 day
+        if (payment) {
+          const tomorrow = new Date();
+          tomorrow.setDate(tomorrow.getDate() + 1);
+          const newDate = tomorrow.toISOString().split('T')[0];
+          try {
+            await handleEditPayment(id, { dueDate: newDate });
+            toast.success(`⏰ Reminder rescheduled to ${newDate}.`);
+          } catch (err) {
+            console.error('Notification action remind_later failed:', err);
+          }
+        }
+      }
+    };
+
+    processNotificationAction();
+    window.addEventListener('hashchange', processNotificationAction);
+    return () => window.removeEventListener('hashchange', processNotificationAction);
+  }, [user, pendingPayments]);
 
   // Frame cross-tab popup listener
   useEffect(() => {
@@ -746,7 +803,7 @@ export default function App() {
       const bank = bankAccounts.find(b => b.id === txData.bankAccountId);
       if (bank) {
         let diff = 0;
-        if (txData.type === 'income') diff = txData.amount;
+        if (txData.type === 'income' || txData.type === 'refund') diff = txData.amount;
         else if (txData.type === 'expense' || txData.type === 'cash_withdrawal' || txData.type === 'transfer') diff = -txData.amount;
         await handleEditBankAccount(bank.id, { currentBalance: bank.currentBalance + diff });
       }
@@ -2043,14 +2100,19 @@ export default function App() {
           await handleEditRecurringBill(b.id, { nextDueDate: nextDateStr });
         }}
         onPayPending={async (p) => {
-          await handleAddTransaction({
-            type: p.type === 'owed' ? 'income' : 'expense',
-            category: 'Others',
-            amount: p.amount,
-            date: new Date().toISOString().split('T')[0],
-            notes: `Settled pending: ${p.person} - ${p.notes || ''}`
-          });
-          await handleEditPayment(p.id, { completed: true });
+          try {
+            await handleAddTransaction({
+              type: p.type === 'owed' ? 'refund' : 'expense',
+              category: 'Others',
+              amount: p.amount,
+              date: new Date().toISOString().split('T')[0],
+              notes: `Settled pending: ${p.person} - ${p.notes || ''}`
+            });
+            await handleEditPayment(p.id, { completed: true });
+          } catch (err) {
+            console.error("Failed to pay pending:", err);
+            toast.error("Failed to mark as paid");
+          }
         }}
         onRejectPending={async (p) => {
           await handleDeletePayment(p.id);

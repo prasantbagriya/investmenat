@@ -93,7 +93,7 @@ export default function AnalyticsDashboard({
       }
       if (t.type === 'income') {
         monthsData[monthKey].Income += t.amount;
-      } else {
+      } else if (t.type !== 'refund') {
         monthsData[monthKey].Expense += t.amount;
       }
     });

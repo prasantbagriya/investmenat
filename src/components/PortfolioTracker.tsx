@@ -599,23 +599,6 @@ export default function PortfolioTracker({
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl p-2 shadow-sm border border-slate-150 flex flex-col justify-between">
-          <div className="flex justify-between items-start">
-            <div>
-              <p className="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Sync Gateway</p>
-              <p className="text-xs font-bold text-slate-700 mt-1">Live NSE/BSE & AMFI</p>
-            </div>
-            <button 
-              onClick={refreshPrices} 
-              disabled={loadingPrices}
-              className="p-1 px-1.5 rounded-lg text-[10px] font-bold bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center gap-1 transition-all cursor-pointer"
-            >
-              <RefreshCw size={10} className={loadingPrices ? 'animate-spin' : ''} />
-              {loadingPrices ? 'Refreshing...' : 'Sync'}
-            </button>
-          </div>
-          <p className="text-[10px] text-slate-500 mt-1">Active holdings automatically fetch real-time valuations.</p>
-        </div>
       </div>
 
       {/* Cash Wallet & Realized P&L Bento Segment */}
@@ -1278,9 +1261,16 @@ export default function PortfolioTracker({
                                   </button>
                                   <button
                                     type="button"
-                                    onClick={() => onDeleteHolding(h.id)}
+                                    onClick={() => {
+                                      if (confirm(`Are you sure you want to delete ${h.displayName}? This will refund the invested amount (₹${h.investedValue.toLocaleString('en-IN')}) to your cash balance.`)) {
+                                        const currentCash = userSettings?.investmentCashBalance || 0;
+                                        onUpdateSmartApiSettings({
+                                          investmentCashBalance: parseFloat((currentCash + h.investedValue).toFixed(2))
+                                        }).then(() => onDeleteHolding(h.id));
+                                      }
+                                    }}
                                     className="text-slate-500 hover:text-red-500 p-1 rounded-md transition-colors cursor-pointer border-0 bg-transparent"
-                                    title="Delete Holding record"
+                                    title="Delete Holding record & Refund Capital"
                                   >
                                     <Trash2 size={13} />
                                   </button>

@@ -1,0 +1,16 @@
+import { ethers } from 'ethers';
+const seed = 'test test test test test test test test test test test junk';
+const hdWallet = ethers.HDNodeWallet.fromPhrase(seed, undefined, "m/44'/0'/0'/0/0");
+const pubKeyBytes = ethers.getBytes(hdWallet.publicKey);
+const sha256_pubKey = ethers.getBytes(ethers.sha256(pubKeyBytes));
+const ripemd160_pubKey = ethers.getBytes(ethers.ripemd160(sha256_pubKey));
+const payload = new Uint8Array(21);
+payload.set([0x00]);
+payload.set(ripemd160_pubKey, 1);
+const hash1 = ethers.getBytes(ethers.sha256(payload));
+const hash2 = ethers.getBytes(ethers.sha256(hash1));
+const checksum = hash2.slice(0, 4);
+const finalPayload = new Uint8Array(25);
+finalPayload.set(payload);
+finalPayload.set(checksum, 21);
+console.log('BTC:', ethers.encodeBase58(finalPayload));

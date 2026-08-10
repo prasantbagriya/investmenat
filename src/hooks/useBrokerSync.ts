@@ -1,0 +1,347 @@
+import { useState, useEffect } from 'react';
+import { Holding } from '../types';
+import { proxyFetch } from '../utils/proxyFetch';
+import { getBinanceAccountBalances } from '../services/binanceApi';
+
+export interface BrokerFunds {
+  upstox: { available: number; utilized: number };
+  dhan: { available: number; utilized: number };
+  angel: { available: number; utilized: number };
+  zerodha: { available: number; utilized: number };
+  binance: { available: number; utilized: number };
+  totalAvailable: number;
+}
+
+export function useBrokerSync(userId: string | undefined) {
+  const [brokerHoldings, setBrokerHoldings] = useState<Holding[]>([]);
+  const [brokerRealizedTrades, setBrokerRealizedTrades] = useState<any[]>([]);
+  const [brokerOrders, setBrokerOrders] = useState<any[]>([]); // New state for Orders
+  // We collect all realized trades in a local array per-refresh to avoid accumulation
+  const [brokerFunds, setBrokerFunds] = useState<BrokerFunds>({
+    upstox: { available: 0, utilized: 0 },
+    dhan: { available: 0, utilized: 0 },
+    angel: { available: 0, utilized: 0 },
+    zerodha: { available: 0, utilized: 0 },
+    binance: { available: 0, utilized: 0 },
+    totalAvailable: 0
+  });
+  const [isSyncing, setIsSyncing] = useState(false);
+
+  const fetchBrokerData = async () => {
+    if (!userId) return;
+    setIsSyncing(true);
+
+    const upstoxToken = localStorage.getItem('upstox_access_token');
+    const dhanToken = localStorage.getItem('dhan_access_token');
+    const angelToken = localStorage.getItem('angel_access_token');
+    const kiteToken = localStorage.getItem('kite_access_token');
+    const binanceApiKey = localStorage.getItem('binance_api_key');
+    const binanceApiSecret = localStorage.getItem('binance_api_secret');
+
+    let allHoldings: Holding[] = [];
+    let allRealizedTrades: any[] = []; // collect fresh each refresh, never accumulate
+    let allOrders: any[] = []; // New local array
+    let fundsState = {
+      upstox: { available: 0, utilized: 0 },
+      dhan: { available: 0, utilized: 0 },
+      angel: { available: 0, utilized: 0 },
+      zerodha: { available: 0, utilized: 0 },
+      binance: { available: 0, utilized: 0 },
+      totalAvailable: 0
+    };
+
+    // 1. Fetch Upstox
+    if (upstoxToken) {
+      try {
+        const [fundsRes, holdingsRes, mfRes, pnlRes, posRes, ordersRes] = await Promise.all([
+          proxyFetch('/api/upstox/funds', { headers: { 'Authorization': `Bearer ${upstoxToken}` } }),
+          proxyFetch('/api/upstox/holdings', { headers: { 'Authorization': `Bearer ${upstoxToken}` } }),
+          proxyFetch('/api/upstox/mutual-funds', { headers: { 'Authorization': `Bearer ${upstoxToken}` } }),
+          proxyFetch('/api/upstox/trade-pnl?segment=EQ&financial_year=2425&page_number=1&page_size=1000', { headers: { 'Authorization': `Bearer ${upstoxToken}` } }),
+          proxyFetch('/api/upstox/short-term-positions', { headers: { 'Authorization': `Bearer ${upstoxToken}` } }),
+          proxyFetch('/api/upstox/orders', { headers: { 'Authorization': `Bearer ${upstoxToken}` } })
+        ]);
+
+        if (fundsRes.ok) {
+          const fData = await fundsRes.json();
+          if (fData.data?.equity) {
+            fundsState.upstox.available = parseFloat(fData.data.equity.available_margin || 0);
+            fundsState.upstox.utilized = parseFloat(fData.data.equity.used_margin || 0);
+          }
+        }
+
+        if (holdingsRes.ok) {
+          const hData = await holdingsRes.json();
+          if (hData.data) {
+            hData.data.forEach((h: any) => {
+              allHoldings.push({
+                id: `upstox_${h.instrument_token}`,
+                userId,
+                type: 'stock',
+                symbol: h.trading_symbol || h.instrument_token,
+                name: h.company_name || h.trading_symbol,
+                buyPrice: parseFloat(h.average_price),
+                quantity: parseInt(h.quantity),
+                buyDate: new Date().toISOString().split('T')[0],
+                assetClass: 'Equity',
+                broker: 'Upstox',
+                isAutoSynced: true
+              });
+            });
+          }
+        }
+
+        if (mfRes.ok) {
+          const mData = await mfRes.json();
+          if (mData.data) {
+            mData.data.forEach((m: any) => {
+              allHoldings.push({
+                id: `upstox_mf_${m.isin}`,
+                userId,
+                type: 'mf',
+                symbol: m.fund_name,
+                name: m.fund_name,
+                buyPrice: parseFloat(m.average_price),
+                quantity: parseFloat(m.quantity),
+                buyDate: new Date().toISOString().split('T')[0],
+                assetClass: 'Equity',
+                broker: 'Upstox',
+                isAutoSynced: true
+              });
+            });
+          }
+        }
+
+        if (pnlRes.ok) {
+          const pData = await pnlRes.json();
+          if (pData.data) {
+             const mappedPnl = (Array.isArray(pData.data) ? pData.data : (pData.data.profit_loss || [])).map((t: any) => ({
+                id: `upstox_pnl_${t.isin || t.instrument_token || Math.random()}`,
+                userId,
+                type: 'stock',
+                symbol: t.trading_symbol || t.scrip_name || t.instrument_token || 'Unknown',
+                name: t.trading_symbol || t.scrip_name || t.instrument_token || 'Unknown',
+                buyPrice: parseFloat(t.buy_average || t.buy_price || 0),
+                exitPrice: parseFloat(t.sell_average || t.sell_price || 0),
+                quantity: parseFloat(t.quantity || 0),
+                pnl: parseFloat(t.realised_profit || t.profit_loss || 0),
+                exitDate: t.exit_date || new Date().toISOString().split('T')[0],
+                broker: 'Upstox',
+                isAutoSynced: true
+             }));
+             allRealizedTrades.push(...mappedPnl); // collect, don't set yet
+          }
+        }
+
+        if (posRes.ok) {
+          const posData = await posRes.json();
+          if (posData.data) {
+            posData.data.forEach((pos: any) => {
+              allHoldings.push({
+                id: `upstox_pos_${pos.instrument_token}`,
+                userId,
+                type: 'stock', // or option, depending on segment
+                symbol: pos.trading_symbol || pos.instrument_token,
+                name: pos.trading_symbol,
+                buyPrice: parseFloat(pos.buy_price || pos.average_price || 0),
+                quantity: parseInt(pos.net_quantity || pos.quantity || 0),
+                buyDate: new Date().toISOString().split('T')[0],
+                assetClass: pos.instrument_token?.includes('|OPT') ? 'Options' : (pos.product === 'I' ? 'Intraday' : 'F&O'),
+                broker: 'Upstox',
+                isAutoSynced: true
+              });
+            });
+          }
+        }
+
+        if (ordersRes.ok) {
+          const ordData = await ordersRes.json();
+          if (ordData.data) {
+            allOrders.push(...ordData.data);
+          }
+        }
+      } catch (err) {
+        console.error("Upstox sync error:", err);
+      }
+    }
+
+    // 2. Fetch Dhan
+    if (dhanToken) {
+      try {
+        const [fundsRes, holdingsRes] = await Promise.all([
+          proxyFetch('/api/dhan/funds', { headers: { 'Authorization': `Bearer ${dhanToken}` } }),
+          proxyFetch('/api/dhan/holdings', { headers: { 'Authorization': `Bearer ${dhanToken}` } })
+        ]);
+
+        if (fundsRes.ok) {
+          const fData = await fundsRes.json();
+          fundsState.dhan.available = parseFloat(fData.availabelBalance || 0);
+          fundsState.dhan.utilized = parseFloat(fData.utilizedAmount || 0);
+        }
+
+        if (holdingsRes.ok) {
+          const hData = await holdingsRes.json();
+          if (Array.isArray(hData)) {
+            hData.forEach((h: any) => {
+              allHoldings.push({
+                id: `dhan_${h.tradingSymbol}`,
+                userId,
+                type: 'stock',
+                symbol: h.tradingSymbol,
+                name: h.tradingSymbol, // Dhan API might not return full company name
+                buyPrice: parseFloat(h.avgCostPrice),
+                quantity: parseInt(h.totalQty),
+                buyDate: new Date().toISOString().split('T')[0],
+                assetClass: 'Equity',
+                broker: 'Dhan',
+                isAutoSynced: true
+              });
+            });
+          }
+        }
+      } catch (err) {
+        console.error("Dhan sync error:", err);
+      }
+    }
+
+    // 3. Fetch Angel One
+    if (angelToken) {
+      const clientCode = localStorage.getItem('angel_client_code');
+      const apiKey = localStorage.getItem('angel_api_key');
+      if (clientCode && apiKey) {
+        try {
+          const headers = {
+            'Authorization': `Bearer ${angelToken}`,
+            'X-ClientCode': clientCode,
+            'X-PrivateKey': apiKey
+          };
+          const [fundsRes, holdingsRes] = await Promise.all([
+            proxyFetch('/api/angel/funds', { headers }),
+            proxyFetch('/api/angel/holdings', { headers })
+          ]);
+
+          if (fundsRes.ok) {
+            const fData = await fundsRes.json();
+            if (fData.data) {
+              fundsState.angel.available = parseFloat(fData.data.net || 0);
+              fundsState.angel.utilized = parseFloat(fData.data.utilizedmargin || 0);
+            }
+          }
+
+          if (holdingsRes.ok) {
+            const hData = await holdingsRes.json();
+            if (hData.data) {
+              hData.data.forEach((h: any) => {
+                allHoldings.push({
+                  id: `angel_${h.tradingsymbol}`,
+                  userId,
+                  type: 'stock',
+                  symbol: h.tradingsymbol,
+                  name: h.tradingsymbol,
+                  buyPrice: parseFloat(h.averageprice),
+                  quantity: parseInt(h.quantity),
+                  buyDate: new Date().toISOString().split('T')[0],
+                  assetClass: 'Equity',
+                  broker: 'Angel One',
+                  isAutoSynced: true
+                });
+              });
+            }
+          }
+        } catch (err) {
+          console.error("Angel One sync error:", err);
+        }
+      }
+    }
+
+    // 4. Fetch Zerodha Kite
+    if (kiteToken) {
+      const kiteApiKey = localStorage.getItem('kite_api_key');
+      if (kiteApiKey) {
+        try {
+          const headers = {
+            'Authorization': `token ${kiteApiKey}:${kiteToken}`
+          };
+          const [fundsRes, holdingsRes] = await Promise.all([
+            proxyFetch('/api/kite/funds', { headers }),
+            proxyFetch('/api/kite/holdings', { headers })
+          ]);
+
+          if (fundsRes.ok) {
+            const fData = await fundsRes.json();
+            if (fData.data?.equity) {
+              fundsState.zerodha.available = parseFloat(fData.data.equity.available?.margin || 0);
+              fundsState.zerodha.utilized = parseFloat(fData.data.equity.utilised?.debits || 0);
+            }
+          }
+
+          if (holdingsRes.ok) {
+            const hData = await holdingsRes.json();
+            if (hData.data) {
+              hData.data.forEach((h: any) => {
+                allHoldings.push({
+                  id: `zerodha_${h.tradingsymbol}`,
+                  userId,
+                  type: 'stock',
+                  symbol: h.tradingsymbol,
+                  name: h.tradingsymbol,
+                  buyPrice: parseFloat(h.average_price),
+                  quantity: parseInt(h.quantity),
+                  buyDate: new Date().toISOString().split('T')[0],
+                  assetClass: 'Equity',
+                  broker: 'Zerodha',
+                  isAutoSynced: true
+                });
+              });
+            }
+          }
+        } catch (err) {
+          console.error("Zerodha sync error:", err);
+        }
+      }
+    }
+
+    // 5. Fetch Binance
+    if (binanceApiKey && binanceApiSecret) {
+      try {
+        const balances = await getBinanceAccountBalances(binanceApiKey, binanceApiSecret);
+        balances.forEach((b: any) => {
+          const qty = parseFloat(b.free) + parseFloat(b.locked);
+          if (qty > 0) {
+            allHoldings.push({
+              id: `binance_${b.asset}`,
+              userId: userId || 'unknown',
+              type: 'crypto',
+              symbol: `BINANCE:${b.asset}USDT`, // approximate ticker for tradingview lookup if needed
+              name: b.asset,
+              buyPrice: 0, // We don't have average buy price from just balances
+              quantity: qty,
+              buyDate: new Date().toISOString().split('T')[0],
+              assetClass: 'Crypto',
+              broker: 'Binance',
+              isAutoSynced: true
+            });
+          }
+        });
+      } catch (err) {
+        console.error("Binance sync error:", err);
+      }
+    }
+
+    fundsState.totalAvailable = fundsState.upstox.available + fundsState.dhan.available + fundsState.angel.available + fundsState.zerodha.available + fundsState.binance.available;
+
+    setBrokerHoldings(allHoldings);
+    setBrokerRealizedTrades(allRealizedTrades); // Set once, fresh — avoids accumulation bug
+    setBrokerOrders(allOrders);
+    setBrokerFunds(fundsState);
+    setIsSyncing(false);
+  };
+
+  useEffect(() => {
+    fetchBrokerData();
+    const interval = setInterval(fetchBrokerData, 60000); // refresh every minute
+    return () => clearInterval(interval);
+  }, [userId]);
+
+  return { brokerHoldings, brokerRealizedTrades, brokerOrders, brokerFunds, isSyncing, refreshBrokerData: fetchBrokerData };
+}

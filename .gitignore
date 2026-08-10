@@ -1,0 +1,31 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+serviceAccountKey.json
+*.zip
+*.apk
+*.bak
+
+# Python virtual environment
+venv/
+.venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.pytest_cache/
+*.so
+
+# IDE
+.vscode/
+.idea/
+
+jdk-17.0.2/
+

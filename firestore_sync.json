@@ -1,0 +1,390 @@
+{
+  "fcmTokens:dSrupNRFll2yBVWuYke39X:APA91bGVCqEEzaTBXfRmpcpJCDmjUEaCG0KrvIe7Q0wWV1PWkLQaVyy7Q_62IIPJVOdPNXjxlBMLDogcwfUPdIxFr6VjuXyqMbWcotAFYH73Wz__X5fhHHs": {
+    "collection": "fcmTokens",
+    "doc_id": "dSrupNRFll2yBVWuYke39X:APA91bGVCqEEzaTBXfRmpcpJCDmjUEaCG0KrvIe7Q0wWV1PWkLQaVyy7Q_62IIPJVOdPNXjxlBMLDogcwfUPdIxFr6VjuXyqMbWcotAFYH73Wz__X5fhHHs",
+    "data": {
+      "token": "dSrupNRFll2yBVWuYke39X:APA91bGVCqEEzaTBXfRmpcpJCDmjUEaCG0KrvIe7Q0wWV1PWkLQaVyy7Q_62IIPJVOdPNXjxlBMLDogcwfUPdIxFr6VjuXyqMbWcotAFYH73Wz__X5fhHHs",
+      "userId": "hWMNQeFSxEUTBpUB3I8UkT5qteg2",
+      "deviceType": "Web Console",
+      "registeredAt": {
+        "_methodName": "serverTimestamp"
+      },
+      "lastActive": {
+        "_methodName": "serverTimestamp"
+      }
+    },
+    "updated_at": "2026-07-13T05:08:55.662Z"
+  },
+  "fcmTokens:dSrupNRFll2yBVWuYke39X:APA91bHxcT-_yNPHlHeylW1QFn4UxYQ8U4-kV6oPumaEaEAWsvUiPk_f7CDCdea07wmWSk622yhWHd2ekZdcXJa4fNf_i39cyjyENVdApaApllEm8ltvwGw": {
+    "collection": "fcmTokens",
+    "doc_id": "dSrupNRFll2yBVWuYke39X:APA91bHxcT-_yNPHlHeylW1QFn4UxYQ8U4-kV6oPumaEaEAWsvUiPk_f7CDCdea07wmWSk622yhWHd2ekZdcXJa4fNf_i39cyjyENVdApaApllEm8ltvwGw",
+    "data": {
+      "token": "dSrupNRFll2yBVWuYke39X:APA91bHxcT-_yNPHlHeylW1QFn4UxYQ8U4-kV6oPumaEaEAWsvUiPk_f7CDCdea07wmWSk622yhWHd2ekZdcXJa4fNf_i39cyjyENVdApaApllEm8ltvwGw",
+      "userId": "hWMNQeFSxEUTBpUB3I8UkT5qteg2",
+      "deviceType": "Web Console",
+      "registeredAt": {
+        "_methodName": "serverTimestamp"
+      },
+      "lastActive": {
+        "_methodName": "serverTimestamp"
+      }
+    },
+    "updated_at": "2026-07-13T05:08:56.231Z"
+  },
+  "fcmTokens:dSrupNRFll2yBVWuYke39X:APA91bFh7HKDnWGAjX53nsbGWRil6jWhuxIr5ogvYXrYUIgcQge_izSsJcAEdCuLFmhvFDou9DTHFo68W3OVI1ODG79DMcbTRV2Q8CdXycomZ10bjspDKow": {
+    "collection": "fcmTokens",
+    "doc_id": "dSrupNRFll2yBVWuYke39X:APA91bFh7HKDnWGAjX53nsbGWRil6jWhuxIr5ogvYXrYUIgcQge_izSsJcAEdCuLFmhvFDou9DTHFo68W3OVI1ODG79DMcbTRV2Q8CdXycomZ10bjspDKow",
+    "data": {
+      "token": "dSrupNRFll2yBVWuYke39X:APA91bFh7HKDnWGAjX53nsbGWRil6jWhuxIr5ogvYXrYUIgcQge_izSsJcAEdCuLFmhvFDou9DTHFo68W3OVI1ODG79DMcbTRV2Q8CdXycomZ10bjspDKow",
+      "userId": "hWMNQeFSxEUTBpUB3I8UkT5qteg2",
+      "deviceType": "Web Console",
+      "registeredAt": {
+        "_methodName": "serverTimestamp"
+      },
+      "lastActive": {
+        "_methodName": "serverTimestamp"
+      }
+    },
+    "updated_at": "2026-07-18T09:22:08.117Z"
+  },
+  "ledger_profiles:e1d2f503-3002-4479-92df-ed790eb97c37": {
+    "collection": "ledger_profiles",
+    "doc_id": "e1d2f503-3002-4479-92df-ed790eb97c37",
+    "data": {
+      "id": "e1d2f503-3002-4479-92df-ed790eb97c37",
+      "userId": "hWMNQeFSxEUTBpUB3I8UkT5qteg2",
+      "name": "Monika Jiji",
+      "phone": "+918619571686",
+      "netBalance": 0,
+      "createdAt": "2026-07-13T05:15:03.109Z"
+    },
+    "updated_at": "2026-07-13T05:15:03.351Z"
+  },
+  "ledger_profiles:2bec558d-a02e-4ae6-a35d-77a82d019159": {
+    "collection": "ledger_profiles",
+    "doc_id": "2bec558d-a02e-4ae6-a35d-77a82d019159",
+    "data": {
+      "id": "2bec558d-a02e-4ae6-a35d-77a82d019159",
+      "userId": "hWMNQeFSxEUTBpUB3I8UkT5qteg2",
+      "name": "Police",
+      "phone": "100",
+      "netBalance": 0,
+      "createdAt": "2026-07-13T05:15:30.692Z"
+    },
+    "updated_at": "2026-07-13T05:15:30.912Z"
+  },
+  "ledger_profiles:0c9f4f1b-005a-4e7e-9eef-a629d6cfa2ed": {
+    "collection": "ledger_profiles",
+    "doc_id": "0c9f4f1b-005a-4e7e-9eef-a629d6cfa2ed",
+    "data": {
+      "id": "0c9f4f1b-005a-4e7e-9eef-a629d6cfa2ed",
+      "userId": "hWMNQeFSxEUTBpUB3I8UkT5qteg2",
+      "name": "Cyber Crime Helpline",
+      "phone": "1930",
+      "netBalance": 0,
+      "createdAt": "2026-07-13T05:20:41.236Z"
+    },
+    "updated_at": "2026-07-13T05:20:41.435Z"
+  },
+  "ledger_profiles:cc926de7-7d0a-4f66-a4de-9a2d8a3f6280": {
+    "collection": "ledger_profiles",
+    "doc_id": "cc926de7-7d0a-4f66-a4de-9a2d8a3f6280",
+    "data": {
+      "id": "cc926de7-7d0a-4f66-a4de-9a2d8a3f6280",
+      "userId": "hWMNQeFSxEUTBpUB3I8UkT5qteg2",
+      "name": "Fire",
+      "phone": "101",
+      "netBalance": 0,
+      "createdAt": "2026-07-13T05:23:55.171Z"
+    },
+    "updated_at": "2026-07-13T05:23:55.414Z"
+  },
+  "ledger_profiles:5cee67c2-78a1-4bda-9a73-bdd052033745": {
+    "collection": "ledger_profiles",
+    "doc_id": "5cee67c2-78a1-4bda-9a73-bdd052033745",
+    "data": {
+      "id": "5cee67c2-78a1-4bda-9a73-bdd052033745",
+      "userId": "hWMNQeFSxEUTBpUB3I8UkT5qteg2",
+      "name": "Karsan Nani",
+      "phone": "+918955813672",
+      "netBalance": 0,
+      "createdAt": "2026-07-13T05:26:01.787Z"
+    },
+    "updated_at": "2026-07-13T05:26:02.004Z"
+  },
+  "ledger_transactions:43b4ae78-646e-4b01-af8d-aa6110db6819": {
+    "collection": "ledger_transactions",
+    "doc_id": "43b4ae78-646e-4b01-af8d-aa6110db6819",
+    "data": {
+      "id": "43b4ae78-646e-4b01-af8d-aa6110db6819",
+      "ledgerId": "3d63ba63-5a56-4fdd-8b1e-d038d9438ecb",
+      "userId": "hWMNQeFSxEUTBpUB3I8UkT5qteg2",
+      "type": "gave",
+      "amount": 20000,
+      "date": "2026-07-13",
+      "memo": "",
+      "createdAt": "2026-07-13T05:48:38.353Z"
+    },
+    "updated_at": "2026-07-13T05:48:38.878Z"
+  },
+  "ledger_transactions:1a726dc0-253b-4339-a819-93fc3c79c785": {
+    "collection": "ledger_transactions",
+    "doc_id": "1a726dc0-253b-4339-a819-93fc3c79c785",
+    "data": {
+      "id": "1a726dc0-253b-4339-a819-93fc3c79c785",
+      "ledgerId": "3d63ba63-5a56-4fdd-8b1e-d038d9438ecb",
+      "userId": "hWMNQeFSxEUTBpUB3I8UkT5qteg2",
+      "type": "got",
+      "amount": 15000,
+      "date": "2026-07-13",
+      "memo": "",
+      "createdAt": "2026-07-13T05:49:00.873Z"
+    },
+    "updated_at": "2026-07-13T05:49:01.062Z"
+  },
+  "ledger_transactions:35b58874-a059-4a16-8fd6-7b7a4d4445f1": {
+    "collection": "ledger_transactions",
+    "doc_id": "35b58874-a059-4a16-8fd6-7b7a4d4445f1",
+    "data": {
+      "id": "35b58874-a059-4a16-8fd6-7b7a4d4445f1",
+      "ledgerId": "3d63ba63-5a56-4fdd-8b1e-d038d9438ecb",
+      "userId": "hWMNQeFSxEUTBpUB3I8UkT5qteg2",
+      "type": "got",
+      "amount": 53655,
+      "date": "2026-07-13",
+      "memo": "",
+      "createdAt": "2026-07-13T05:56:28.360Z"
+    },
+    "updated_at": "2026-07-13T05:56:28.618Z"
+  },
+  "ledger_transactions:10c5d9ad-d9d2-47ec-96c1-589b47904870": {
+    "collection": "ledger_transactions",
+    "doc_id": "10c5d9ad-d9d2-47ec-96c1-589b47904870",
+    "data": {
+      "id": "10c5d9ad-d9d2-47ec-96c1-589b47904870",
+      "ledgerId": "3d63ba63-5a56-4fdd-8b1e-d038d9438ecb",
+      "userId": "hWMNQeFSxEUTBpUB3I8UkT5qteg2",
+      "type": "gave",
+      "amount": 4252,
+      "date": "2026-07-13",
+      "memo": "",
+      "createdAt": "2026-07-13T05:58:35.705Z"
+    },
+    "updated_at": "2026-07-13T05:58:36.242Z"
+  },
+  "ledger_transactions:c15fbb09-5b79-4434-b003-1592c71331cb": {
+    "collection": "ledger_transactions",
+    "doc_id": "c15fbb09-5b79-4434-b003-1592c71331cb",
+    "data": {
+      "id": "c15fbb09-5b79-4434-b003-1592c71331cb",
+      "ledgerId": "3d63ba63-5a56-4fdd-8b1e-d038d9438ecb",
+      "userId": "hWMNQeFSxEUTBpUB3I8UkT5qteg2",
+      "type": "gave",
+      "amount": 22,
+      "date": "2026-07-13",
+      "memo": "",
+      "createdAt": "2026-07-13T05:59:00.599Z"
+    },
+    "updated_at": "2026-07-13T05:59:00.826Z"
+  },
+  "ledger_transactions:7f7aa08e-c7f6-4417-a0b2-ffee394510b3": {
+    "collection": "ledger_transactions",
+    "doc_id": "7f7aa08e-c7f6-4417-a0b2-ffee394510b3",
+    "data": {
+      "id": "7f7aa08e-c7f6-4417-a0b2-ffee394510b3",
+      "ledgerId": "3d63ba63-5a56-4fdd-8b1e-d038d9438ecb",
+      "userId": "hWMNQeFSxEUTBpUB3I8UkT5qteg2",
+      "type": "got",
+      "amount": 525,
+      "date": "2026-07-13",
+      "memo": "",
+      "createdAt": "2026-07-13T06:02:08.567Z"
+    },
+    "updated_at": "2026-07-13T06:02:09.067Z"
+  },
+  "ledger_transactions:27e75bed-5405-4e20-8587-f8549faf9180": {
+    "collection": "ledger_transactions",
+    "doc_id": "27e75bed-5405-4e20-8587-f8549faf9180",
+    "data": {
+      "id": "27e75bed-5405-4e20-8587-f8549faf9180",
+      "ledgerId": "3d63ba63-5a56-4fdd-8b1e-d038d9438ecb",
+      "userId": "hWMNQeFSxEUTBpUB3I8UkT5qteg2",
+      "type": "got",
+      "amount": 55555,
+      "date": "2026-07-13",
+      "memo": "",
+      "createdAt": "2026-07-13T06:02:44.719Z"
+    },
+    "updated_at": "2026-07-13T06:02:44.937Z"
+  },
+  "transactions:cuig3NepolN8YFm8bnex": {
+    "collection": "transactions",
+    "doc_id": "cuig3NepolN8YFm8bnex",
+    "data": {
+      "id": "cuig3NepolN8YFm8bnex",
+      "userId": "hWMNQeFSxEUTBpUB3I8UkT5qteg2",
+      "type": "expense",
+      "category": "Ledger Settlement",
+      "amount": 5000,
+      "date": "2026-07-13",
+      "notes": "Khata: Cyber Crime Helpline",
+      "createdAt": {
+        "_methodName": "serverTimestamp"
+      }
+    },
+    "updated_at": "2026-07-13T06:12:46.117Z"
+  },
+  "ledger_transactions:61e92097-c718-432c-bfd9-a7103af017e7": {
+    "collection": "ledger_transactions",
+    "doc_id": "61e92097-c718-432c-bfd9-a7103af017e7",
+    "data": {
+      "id": "61e92097-c718-432c-bfd9-a7103af017e7",
+      "ledgerId": "0c9f4f1b-005a-4e7e-9eef-a629d6cfa2ed",
+      "userId": "hWMNQeFSxEUTBpUB3I8UkT5qteg2",
+      "type": "gave",
+      "amount": 5000,
+      "date": "2026-07-13",
+      "memo": "",
+      "paymentMethod": "cash",
+      "linkedGlobalTxId": "e1a7efe4-d667-4ef9-bb99-0b3ea23b644e",
+      "createdAt": "2026-07-13T06:12:46.112Z"
+    },
+    "updated_at": "2026-07-13T06:12:46.245Z"
+  },
+  "ccemis:BRDoxkAwiJK3vPQi4Szt": {
+    "collection": "ccemis",
+    "doc_id": "BRDoxkAwiJK3vPQi4Szt",
+    "data": {
+      "userId": "hWMNQeFSxEUTBpUB3I8UkT5qteg2",
+      "itemName": "Scooty",
+      "totalAmount": 72000,
+      "emiAmount": 4000,
+      "totalMonths": 23,
+      "paidMonths": 50000,
+      "startDate": "2024-01-07",
+      "bank": "Shiriram Finance",
+      "bankAccountId": "7ZUtZOfNNlbKW5P31ePy",
+      "notes": "11% Interest",
+      "id": "BRDoxkAwiJK3vPQi4Szt",
+      "createdAt": {
+        "_methodName": "serverTimestamp"
+      }
+    },
+    "updated_at": "2026-07-18T06:44:56.820Z"
+  },
+  "ccemis:hNn0BMFrNYP5A3wodPyp": {
+    "collection": "ccemis",
+    "doc_id": "hNn0BMFrNYP5A3wodPyp",
+    "data": {
+      "userId": "hWMNQeFSxEUTBpUB3I8UkT5qteg2",
+      "itemName": "Scooty",
+      "totalAmount": 72000,
+      "emiAmount": 4000,
+      "totalMonths": 23,
+      "paidMonths": 12,
+      "startDate": "2024-01-07",
+      "bank": "Shiriram Finance",
+      "bankAccountId": "7ZUtZOfNNlbKW5P31ePy",
+      "notes": "11% interest",
+      "id": "hNn0BMFrNYP5A3wodPyp",
+      "createdAt": {
+        "_methodName": "serverTimestamp"
+      }
+    },
+    "updated_at": "2026-07-18T06:52:43.617Z"
+  },
+  "ccemis:3Ntfsmf6QR9TDdRLHUxR": {
+    "collection": "ccemis",
+    "doc_id": "3Ntfsmf6QR9TDdRLHUxR",
+    "data": {
+      "userId": "hWMNQeFSxEUTBpUB3I8UkT5qteg2",
+      "itemName": "Scooty",
+      "loanType": "Car Loan",
+      "frequency": "monthly",
+      "totalAmount": 72000,
+      "emiAmount": 4000,
+      "totalMonths": 23,
+      "paidMonths": 50000,
+      "startDate": "2025-01-07",
+      "bank": "Shriram Finance",
+      "bankAccountId": "7ZUtZOfNNlbKW5P31ePy",
+      "notes": "11% interest",
+      "paymentHistory": [],
+      "id": "3Ntfsmf6QR9TDdRLHUxR",
+      "createdAt": {
+        "_methodName": "serverTimestamp"
+      }
+    },
+    "updated_at": "2026-07-18T07:06:59.588Z"
+  },
+  "fcmTokens:c8oYrN9bzgQiLelDiUsKRB:APA91bG72bMd93i_W3i18IPQ9XifmxTQc9vgaB-lvuRBVaBHzIPhkIoi1dtEEWXOXrxFkmTGXbEJ9eKWQkN0tKoLA-QrODSvTWw1XS-4Pif9Bbgf34xCHYc": {
+    "collection": "fcmTokens",
+    "doc_id": "c8oYrN9bzgQiLelDiUsKRB:APA91bG72bMd93i_W3i18IPQ9XifmxTQc9vgaB-lvuRBVaBHzIPhkIoi1dtEEWXOXrxFkmTGXbEJ9eKWQkN0tKoLA-QrODSvTWw1XS-4Pif9Bbgf34xCHYc",
+    "data": {
+      "token": "c8oYrN9bzgQiLelDiUsKRB:APA91bG72bMd93i_W3i18IPQ9XifmxTQc9vgaB-lvuRBVaBHzIPhkIoi1dtEEWXOXrxFkmTGXbEJ9eKWQkN0tKoLA-QrODSvTWw1XS-4Pif9Bbgf34xCHYc",
+      "userId": "hWMNQeFSxEUTBpUB3I8UkT5qteg2",
+      "deviceType": "Web Console",
+      "registeredAt": {
+        "_methodName": "serverTimestamp"
+      },
+      "lastActive": {
+        "_methodName": "serverTimestamp"
+      }
+    },
+    "updated_at": "2026-07-20T09:24:37.056Z"
+  },
+  "usersettings:hWMNQeFSxEUTBpUB3I8UkT5qteg2": {
+    "collection": "usersettings",
+    "doc_id": "hWMNQeFSxEUTBpUB3I8UkT5qteg2",
+    "data": {
+      "id": "hWMNQeFSxEUTBpUB3I8UkT5qteg2",
+      "researchTerminal": {
+        "tvNativeWatchlist": [
+          "OANDA:XAUUSD"
+        ],
+        "tvChartSymbolsV3": [
+          "TVC:GOLD",
+          "NSE_EQ|INE040A01034",
+          "NSE_EQ|INE467B01029",
+          "NSE_EQ|INE009A01021",
+          "NSE_EQ|INE090A01021",
+          "NSE_EQ|INE062A01020",
+          "NSE_EQ|INE075A01022",
+          "NSE_EQ|INE112A01023"
+        ],
+        "lastInputKey": "NSE_EQ|INE002A01018",
+        "lastInstrumentKey": "NSE_EQ|INE002A01018"
+      }
+    },
+    "updated_at": "2026-08-06T11:46:56.132Z"
+  },
+  "ledger_profiles:a4a8ec4a-1266-4143-bbba-57d784df166f": {
+    "collection": "ledger_profiles",
+    "doc_id": "a4a8ec4a-1266-4143-bbba-57d784df166f",
+    "data": {
+      "id": "a4a8ec4a-1266-4143-bbba-57d784df166f",
+      "userId": "hWMNQeFSxEUTBpUB3I8UkT5qteg2",
+      "name": "Monika Jiji",
+      "phone": "+918619571686",
+      "netBalance": 0,
+      "createdAt": "2026-08-05T09:57:02.952Z"
+    },
+    "updated_at": "2026-08-05T09:57:03.048Z"
+  },
+  "fcmTokens:eLK7tm4H0s0AXU4QWTA0tM:APA91bFlHnUpgZ3VK9Z2fzIGmN7p-h5Kh8OoITcs7sYujqeAxjmS3wIdXGKmW3sQJF9fj_Wwpg-xTwd-h7Dpx8IaLwjH4NPvTmVlb91ea0Hw-_qkC76ye5E": {
+    "collection": "fcmTokens",
+    "doc_id": "eLK7tm4H0s0AXU4QWTA0tM:APA91bFlHnUpgZ3VK9Z2fzIGmN7p-h5Kh8OoITcs7sYujqeAxjmS3wIdXGKmW3sQJF9fj_Wwpg-xTwd-h7Dpx8IaLwjH4NPvTmVlb91ea0Hw-_qkC76ye5E",
+    "data": {
+      "token": "eLK7tm4H0s0AXU4QWTA0tM:APA91bFlHnUpgZ3VK9Z2fzIGmN7p-h5Kh8OoITcs7sYujqeAxjmS3wIdXGKmW3sQJF9fj_Wwpg-xTwd-h7Dpx8IaLwjH4NPvTmVlb91ea0Hw-_qkC76ye5E",
+      "userId": "hWMNQeFSxEUTBpUB3I8UkT5qteg2",
+      "deviceType": "Web Console",
+      "registeredAt": {
+        "_methodName": "serverTimestamp"
+      },
+      "lastActive": {
+        "_methodName": "serverTimestamp"
+      }
+    },
+    "updated_at": "2026-08-07T04:28:42.795Z"
+  }
+}

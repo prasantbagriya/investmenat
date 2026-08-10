@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">InvestMant</string>
+    <string name="title_activity_main">InvestMant</string>
+    <string name="package_name">com.investmant.app</string>
+    <string name="custom_url_scheme">com.investmant.app</string>
+    <string name="server_client_id">1004464827659-398srk3lhku1n04ghpd45nqgkel66j8h.apps.googleusercontent.com</string>
+    <string name="default_web_client_id">1004464827659-398srk3lhku1n04ghpd45nqgkel66j8h.apps.googleusercontent.com</string>
+</resources>

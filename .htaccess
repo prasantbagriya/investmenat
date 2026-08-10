@@ -1,0 +1,27 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Hostinger fix for missing Authorization header
+  SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+  SetEnvIf X-Authorization "(.*)" HTTP_X_AUTHORIZATION=$1
+  
+  RewriteCond %{HTTP:Authorization} ^(.*)
+  RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
+</IfModule>
+
+<IfModule mod_passenger.c>
+  PassengerAppType node
+  PassengerStartupFile server.cjs
+</IfModule>
+
+<IfModule passenger_module>
+  PassengerAppType node
+  PassengerStartupFile server.cjs
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, OPTIONS, PUT, DELETE"
+    Header set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept, Authorization, X-Authorization"
+</IfModule>

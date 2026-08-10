@@ -1,0 +1,264 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "User specific configurations including dark mode and secure security PIN.",
+      "type": "object",
+      "properties": {
+        "pin": {
+          "type": "string",
+          "description": "4-digit secure local lock PIN."
+        },
+        "darkMode": {
+          "type": "boolean",
+          "description": "Dark mode status."
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "ISO timestamp of configuration change."
+        }
+      }
+    },
+    "Transaction": {
+      "title": "Transaction",
+      "description": "A record of income or expense.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The UID of the owner."
+        },
+        "type": {
+          "type": "string",
+          "enum": ["income", "expense"],
+          "description": "Type of transaction."
+        },
+        "category": {
+          "type": "string",
+          "description": "The category of the transaction."
+        },
+        "amount": {
+          "type": "number",
+          "description": "The Rupee value of the transaction."
+        },
+        "date": {
+          "type": "string",
+          "description": "ISO format date string of the transaction."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Optional notes."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Server timestamp of creation."
+        }
+      },
+      "required": ["userId", "type", "category", "amount", "date"]
+    },
+    "PendingPayment": {
+      "title": "Pending Payment",
+      "description": "A record of who owes money or is owed money.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The UID of the owner."
+        },
+        "type": {
+          "type": "string",
+          "enum": ["owe", "owed"],
+          "description": "Whether the user owes money ('owe') or is owed money ('owed')."
+        },
+        "person": {
+          "type": "string",
+          "description": "The name of the person involved."
+        },
+        "amount": {
+          "type": "number",
+          "description": "Debt amount."
+        },
+        "dueDate": {
+          "type": "string",
+          "description": "ISO date string when payment is due."
+        },
+        "completed": {
+          "type": "boolean",
+          "description": "Whether this payment is marked as paid/settled."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Optional notes."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Server timestamp of creation."
+        }
+      },
+      "required": ["userId", "type", "person", "amount", "dueDate", "completed"]
+    },
+    "SavingsGoal": {
+      "title": "Savings Goal",
+      "description": "A financial savings target with active progress tracking.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The UID of the owner."
+        },
+        "title": {
+          "type": "string",
+          "description": "Title of the goal."
+        },
+        "targetAmount": {
+          "type": "number",
+          "description": "The total goal targets."
+        },
+        "currentSavings": {
+          "type": "number",
+          "description": "How much has currently been set aside."
+        },
+        "deadline": {
+          "type": "string",
+          "description": "ISO formatted target deadline date."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Server timestamp of creation."
+        }
+      },
+      "required": ["userId", "title", "targetAmount", "currentSavings", "deadline"]
+    },
+    "BudgetLimit": {
+      "title": "Budget Limit",
+      "description": "Monthly limit allocated for a category.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The UID of the owner."
+        },
+        "category": {
+          "type": "string",
+          "description": "The spending category name."
+        },
+        "limitAmount": {
+          "type": "number",
+          "description": "Maximum spending budget allowed."
+        },
+        "month": {
+          "type": "string",
+          "description": "Representing Year-Month target like '2026-06'."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Server timestamp of creation."
+        }
+      },
+      "required": ["userId", "category", "limitAmount", "month"]
+    },
+    "Holding": {
+      "title": "Holding",
+      "description": "A stock or mutual fund holding entry.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "type": { "type": "string", "enum": ["stock", "mf"] },
+        "symbol": { "type": "string" },
+        "name": { "type": "string" },
+        "buyPrice": { "type": "number" },
+        "quantity": { "type": "number" },
+        "buyDate": { "type": "string" },
+        "assetClass": { "type": "string", "enum": ["Equity", "Debt", "Gold", "Cash"] },
+        "broker": { "type": "string" },
+        "schemaCode": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["userId", "type", "buyPrice", "quantity", "buyDate", "assetClass"]
+    },
+    "Sip": {
+      "title": "Systematic Investment Plan",
+      "description": "Active SIP tracker.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "name": { "type": "string" },
+        "amount": { "type": "number" },
+        "startDate": { "type": "string" },
+        "sipDate": { "type": "number" },
+        "assetClass": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["userId", "name", "amount", "startDate", "sipDate"]
+    },
+    "Fd": {
+      "title": "Fixed / Recurring Deposit",
+      "description": "FD/RD tracker for bank investments.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "bankName": { "type": "string" },
+        "principal": { "type": "number" },
+        "interestRate": { "type": "number" },
+        "tenure": { "type": "number" },
+        "startDate": { "type": "string" },
+        "maturityDate": { "type": "string" },
+        "isRd": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["userId", "bankName", "principal", "interestRate", "startDate", "maturityDate"]
+    },
+    "WatchlistItem": {
+      "title": "Watchlist Item",
+      "description": "A stock or Mutual Fund added to watch without buying.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "type": { "type": "string", "enum": ["stock", "mf"] },
+        "symbol": { "type": "string" },
+        "name": { "type": "string" },
+        "schemeCode": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["userId", "type"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "User lock PIN and display pref."
+    },
+    "/transactions/{transactionId}": {
+      "schema": { "$ref": "#/entities/Transaction" },
+      "description": "Personal transactions log."
+    },
+    "/pendingPayments/{paymentId}": {
+      "schema": { "$ref": "#/entities/PendingPayment" },
+      "description": "Debts and credits tracker."
+    },
+    "/savingsGoals/{goalId}": {
+      "schema": { "$ref": "#/entities/SavingsGoal" },
+      "description": "User savings goals."
+    },
+    "/budgetLimits/{limitId}": {
+      "schema": { "$ref": "#/entities/BudgetLimit" },
+      "description": "Category monthly spending budgets."
+    },
+    "/holdings/{holdingId}": {
+      "schema": { "$ref": "#/entities/Holding" },
+      "description": "Stocks and MF holdings."
+    },
+    "/sips/{sipId}": {
+      "schema": { "$ref": "#/entities/Sip" },
+      "description": "SIP plans list."
+    },
+    "/fds/{fdId}": {
+      "schema": { "$ref": "#/entities/Fd" },
+      "description": "FD and RD tracker list."
+    },
+    "/watchlist/{watchId}": {
+      "schema": { "$ref": "#/entities/WatchlistItem" },
+      "description": "Watchlist of shares and mutual funds."
+    }
+  }
+}

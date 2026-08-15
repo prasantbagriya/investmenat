@@ -189,7 +189,7 @@ export const LedgerProfileView: React.FC<LedgerProfileViewProps> = ({
   };
 
   return (
-    <div className="space-y-3 pb-5">
+    <div className="space-y-3 pb-30">
       {/* Compact Header */}
       <div className={`p-3 rounded-md shadow-xs border flex items-center justify-between gap-2 ${profileBalance === 0 ? 'bg-slate-50 border-slate-200/80' : profileBalance > 0 ? 'bg-emerald-50 border-emerald-100' : 'bg-rose-50 border-rose-100'}`}>
         <div className="flex items-center gap-2">
@@ -218,7 +218,7 @@ export const LedgerProfileView: React.FC<LedgerProfileViewProps> = ({
       </div>
 
       {/* Transaction List (Chat Style) */}
-      <div className="mt-4 bg-slate-50/50 p-4 rounded-md border border-slate-200/50 flex flex-col gap-4 max-h-[500px] overflow-y-auto">
+      <div className="mt-4 bg-slate-50/50 p-4 rounded-md border border-slate-200/50 flex flex-col gap-4">
         {loading ? (
           <div className="text-center text-slate-500 text-xs py-10">Loading...</div>
         ) : transactions.length === 0 ? (

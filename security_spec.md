@@ -27,3 +27,12 @@ Below are 12 specific payloads or actions designed to bypass client-side code, w
 
 ## 3. The Rules Architecture
 Rules are structured to use standalone validate helpers `isValidTransaction()`, `isValidPendingPayment()`, `isValidSavingsGoal()`, and `isValidBudgetLimit()`. A robust global catch-all `allow: if false` is added at the root. All update operations will evaluate the change-diff and use `affectedKeys().hasOnly()` gates to prevent state shortcutting or ghost field injections.
+
+
+
+git init
+git add .
+git commit -m "Initial commit"
+git branch -M main
+git remote add origin https://github.com/prasantbagriya/investmenat.git
+git push -u origin main

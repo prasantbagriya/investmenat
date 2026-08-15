@@ -60,13 +60,27 @@ export default defineConfig(() => {
       },
     },
     build: {
+      target: 'esnext',
+      minify: 'esbuild',
+      cssMinify: 'esbuild',
+      sourcemap: false,
       chunkSizeWarningLimit: 1500,
       rollupOptions: {
         output: {
-          manualChunks: {
-            'vendor-react': ['react', 'react-dom', 'react-router-dom'],
-            'vendor-firebase': ['firebase/app', 'firebase/auth', 'firebase/firestore', 'firebase/storage'],
-            'vendor-ui': ['lucide-react', 'motion', 'react-hot-toast']
+          manualChunks: (id) => {
+            if (id.includes('node_modules')) {
+              if (id.includes('react') || id.includes('react-dom') || id.includes('react-router-dom')) {
+                return 'vendor-react';
+              }
+              if (id.includes('firebase')) {
+                return 'vendor-firebase';
+              }
+              if (id.includes('lucide-react') || id.includes('motion') || id.includes('react-hot-toast')) {
+                return 'vendor-ui';
+              }
+              // Removed manual chunks for charts, pdf, and crypto to allow Vite to 
+              // automatically code-split them into feature-specific lazy chunks.
+            }
           }
         }
       }

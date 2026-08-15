@@ -45,6 +45,10 @@ export default function LogEntryForm({ onAddTransaction, bankAccounts = [], isFo
       toast.error('Please select a category.');
       return;
     }
+    if (type === 'transfer' && !toBankAccountId) {
+      toast.error('Please select a destination Bank Account for the transfer.');
+      return;
+    }
 
     if (!onAddTransaction) {
       toast.error('Transaction logging is unavailable.');

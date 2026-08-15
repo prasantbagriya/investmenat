@@ -246,6 +246,10 @@ export default function TransactionTracker({
       toast.error('Please select a category.');
       return;
     }
+    if (type === 'transfer' && !toBankAccountId) {
+      toast.error('Please select a destination Bank Account for the transfer.');
+      return;
+    }
 
     setIsSubmitting(true);
     try {
@@ -592,7 +596,7 @@ export default function TransactionTracker({
                     required
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
-                    className="w-full px-1 py-1.5 text-xs border border-slate-200 rounded-lg bg-white font-mono"
+                    className="w-full px-2 py-1.5 text-xs border border-slate-200 rounded-lg bg-white font-mono focus:outline-hidden transition-all"
                   />
                 </div>
 
@@ -606,7 +610,7 @@ export default function TransactionTracker({
                   placeholder="e.g., Zerodha brokerage charges, grocery, etc."
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
-                  className="w-full px-1 py-1.5 text-xs border border-slate-200 rounded-lg bg-white"
+                  className="w-full px-2 py-1.5 text-xs border border-slate-200 rounded-lg bg-white focus:outline-hidden transition-all"
                 />
               </div>
 
@@ -774,8 +778,8 @@ export default function TransactionTracker({
                   return (
                   <tr key={t.id} className="hover:bg-slate-50/30">
                     <td className="p-2 px-2">
-                      <span className={`inline-block px-1.5 py-0.5 rounded text-xs font-bold ${t.type === 'income' ? 'bg-emerald-100 text-emerald-800' : t.type === 'refund' ? 'bg-indigo-100 text-indigo-800' : 'bg-slate-100 text-slate-700'}`}>
-                        {t.type === 'income' ? 'CREDIT' : t.type === 'refund' ? 'REFUND' : 'DEBIT'}
+                      <span className={`inline-block px-1.5 py-0.5 rounded text-xs font-bold ${t.type === 'income' ? 'bg-emerald-100 text-emerald-800' : t.type === 'refund' ? 'bg-indigo-100 text-indigo-800' : t.type === 'transfer' ? 'bg-blue-100 text-blue-800' : 'bg-slate-100 text-slate-700'}`}>
+                        {t.type === 'income' ? 'CREDIT' : t.type === 'refund' ? 'REFUND' : t.type === 'transfer' ? 'TRANSFER' : 'DEBIT'}
                       </span>
                     </td>
                     <td className="p-2 font-extrabold text-slate-800">{t.category}</td>

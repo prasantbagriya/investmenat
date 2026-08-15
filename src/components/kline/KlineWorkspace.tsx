@@ -7,7 +7,8 @@ import BottomPanel from './BottomPanel';
 import ChartSettingsModal from './ChartSettingsModal';
 import CreateAlertModal from './CreateAlertModal';
 import { fetchBinanceBars, subscribeToBinanceTicks } from '../../services/binanceApi';
-
+import { fetchAngelBars } from '../../services/angelApi';
+import { fetchFmpBars } from '../../services/fmpApi';
 export const getPeriod = (tf: string) => {
   const match = tf.match(/(\d+)([a-zA-Z]+)/);
   if (!match) return { span: 1, type: 'day' };
@@ -135,14 +136,12 @@ export default function KlineWorkspace() {
             );
           }
         } else if (assetType === 'angel') {
-          const { fetchAngelBars } = await import('../../services/angelApi');
           historical = await fetchAngelBars(assetExchange, assetToken, timeframe) || [];
           if (isSubscribed && historical) {
             setData(historical);
             if (wsUnsubscribeRef.current) { wsUnsubscribeRef.current(); wsUnsubscribeRef.current = null; }
           }
         } else {
-          const { fetchFmpBars } = await import('../../services/fmpApi');
           historical = await fetchFmpBars(symbol, timeframe) || [];
           if (isSubscribed && historical) {
             setData(historical);

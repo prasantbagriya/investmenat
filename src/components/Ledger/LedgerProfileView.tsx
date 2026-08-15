@@ -189,7 +189,7 @@ export const LedgerProfileView: React.FC<LedgerProfileViewProps> = ({
   };
 
   return (
-    <div className="space-y-3 pb-32">
+    <div className="space-y-3 pb-5">
       {/* Compact Header */}
       <div className={`p-3 rounded-md shadow-xs border flex items-center justify-between gap-2 ${profileBalance === 0 ? 'bg-slate-50 border-slate-200/80' : profileBalance > 0 ? 'bg-emerald-50 border-emerald-100' : 'bg-rose-50 border-rose-100'}`}>
         <div className="flex items-center gap-2">

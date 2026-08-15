@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { List, Settings, LayoutGrid, Flame, Calendar, Bell, MessageSquare, Plus, ChevronDown, FileText, Maximize2, Newspaper } from 'lucide-react';
 import FinnhubNews from './FinnhubNews';
 import { getQuote, getCompanyProfile, FMPProfile } from '../../services/fmpApi';
+import { getAngelQuote } from '../../services/angelApi';
 
 interface WatchlistSidebarProps {
   theme: 'light' | 'dark';
@@ -76,7 +77,6 @@ export default function WatchlistSidebar({ theme, activeSymbol, onSymbolSelect, 
 
       // Angel Fetch
       const angelItems = watchlistItems.filter(i => i.type === 'angel');
-      const { getAngelQuote } = await import('../../services/angelApi');
       await Promise.all(angelItems.map(item =>
         getAngelQuote(item.exchange || 'NSE', item.symbol, item.angelToken || '')
           .then(data => data ? {

@@ -1994,7 +1994,7 @@ export default function App() {
       )}
 
       {/* Primary Display Content Container */}
-      <main className={`w-full grow ${(location.pathname === '/market' || location.pathname === '/kline-test') ? '' : 'pb-16 md:pb-0 max-w-8xl mx-auto px-2 sm:px-3 lg:px-4 mt-3'}`}>
+      <main className={`w-full grow ${(location.pathname === '/market' || location.pathname === '/kline-test') ? '' : 'md:pb-0 max-w-8xl mx-auto px-2 sm:px-3 lg:px-4 mt-3'}`}>
         <div className="transition-all duration-300 h-full">
           <ErrorBoundary>
             <React.Suspense key={location.pathname} fallback={<div className="flex h-64 items-center justify-center"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-500"></div></div>}>

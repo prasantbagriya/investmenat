@@ -3,6 +3,7 @@ import { ethers } from 'ethers';
 import { Wallet, Send, ArrowDownToLine, RefreshCw, Key, ShieldCheck, Copy, Eye, EyeOff, ExternalLink, Mail } from 'lucide-react';
 import toast from 'react-hot-toast';
 import CryptoJS from 'crypto-js';
+import { proxyFetch } from '../utils/proxyFetch';
 
 const STORAGE_KEY = 'trustvalot-wallet-v5-secure'; // Legacy
 const META_KEY = 'trustvalot-wallet-v5-metadata';
@@ -33,7 +34,7 @@ const hashPassword = (password: string) => {
 
 const NETWORKS = {
   ethereum: { name: 'Ethereum', rpc: 'https://eth.drpc.org', symbol: 'ETH', explorer: 'https://etherscan.io/address/' },
-  bnb: { name: 'BNB Chain', rpc: 'https://bsc.drpc.org', symbol: 'BNB', explorer: 'https://bscscan.com/address/' },
+  bnb: { name: 'BNB Chain', rpc: 'https://bsc-dataseed.binance.org', symbol: 'BNB', explorer: 'https://bscscan.com/address/' },
   polygon: { name: 'Polygon', rpc: 'https://polygon.drpc.org', symbol: 'MATIC', explorer: 'https://polygonscan.com/address/' },
 };
 
@@ -418,7 +419,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
       const totpCode = prompt("Enter your Authenticator Code to authorize pack export:");
       if (!totpCode) { setIsExporting(false); return; }
       const totpCiphertext = encryptData({ timestamp: Date.now(), action: "pack_export" }, totpCode);
-      const totpRes = await fetch("http://localhost:3000/api/pack/export-temporal", {
+      const totpRes = await proxyFetch("/api/pack/export-temporal", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ e2eNode: getE2ENode(route), ciphertext: totpCiphertext })
@@ -507,7 +508,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
 
       // 5. Re-register TOTP on server
       if (pack.temporalSecret) {
-        const serverRes = await fetch("http://localhost:3000/api/pack/import-temporal", {
+        const serverRes = await proxyFetch("/api/pack/import-temporal", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ e2eNode: getE2ENode(pack.route), temporalSecret: pack.temporalSecret })
@@ -549,7 +550,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
 
     setIsSending(true);
     try {
-      const res = await fetch("http://localhost:3000/api/send-crypto-otp", {
+      const res = await proxyFetch("/api/send-crypto-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ e2eNode: getE2ENode(routeToUse) })
@@ -604,7 +605,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
       const totpPayload = { timestamp: Date.now(), action: "verify_totp" };
       const totpCiphertext = encryptData(totpPayload, totpInput);
       
-      const totpRes = await fetch("http://localhost:3000/api/totp/verify", {
+      const totpRes = await proxyFetch("/api/totp/verify", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ e2eNode: getE2ENode(sendRoute), ciphertext: totpCiphertext })
@@ -616,7 +617,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
       const payload = { timestamp: Date.now(), action: "verify_crypto" };
       const ciphertext = encryptData(payload, otpInput);
 
-      const verifyRes = await fetch("http://localhost:3000/api/verify-crypto-otp", {
+      const verifyRes = await proxyFetch("/api/verify-crypto-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ e2eNode: getE2ENode(sendRoute), ciphertext })
@@ -699,7 +700,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
   const handleSendBindEmailOtp = async () => {
     if (!setupBoundRoute) return toast.error("Enter an email first");
     try {
-      const res = await fetch("http://localhost:3000/api/send-crypto-otp", {
+      const res = await proxyFetch("/api/send-crypto-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ e2eNode: getE2ENode(setupBoundRoute) })
@@ -720,7 +721,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
       const payload = { timestamp: Date.now(), action: "verify_crypto" };
       const ciphertext = encryptData(payload, setupBoundRouteOtp);
 
-      const res = await fetch("http://localhost:3000/api/verify-crypto-otp", {
+      const res = await proxyFetch("/api/verify-crypto-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ e2eNode: getE2ENode(setupBoundRoute), ciphertext })
@@ -770,7 +771,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
     
     setIsVerifyingOtp(true);
     try {
-      const res = await fetch("http://localhost:3000/api/send-crypto-otp", {
+      const res = await proxyFetch("/api/send-crypto-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ e2eNode: getE2ENode(routeToUse) })
@@ -804,7 +805,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
       const totpPayload = { timestamp: Date.now(), action: "verify_totp" };
       const totpCiphertext = encryptData(totpPayload, totpInput);
       
-      const totpRes = await fetch("http://localhost:3000/api/totp/verify", {
+      const totpRes = await proxyFetch("/api/totp/verify", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ e2eNode: getE2ENode(setupTotpRoute), ciphertext: totpCiphertext })
@@ -816,7 +817,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
       const payload = { timestamp: Date.now(), action: "verify_crypto" };
       const ciphertext = encryptData(payload, otpInput);
 
-      const verifyRes = await fetch("http://localhost:3000/api/verify-crypto-otp", {
+      const verifyRes = await proxyFetch("/api/verify-crypto-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ e2eNode: getE2ENode(setupTotpRoute), ciphertext })
@@ -855,7 +856,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
     if (!routeToUse) return toast.error("Please enter routing destination to setup TOTP");
     setIsSettingUpTotp(true);
     try {
-      const res = await fetch("http://localhost:3000/api/totp/generate", {
+      const res = await proxyFetch("/api/totp/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ e2eNode: getE2ENode(routeToUse) })
@@ -875,7 +876,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
     if (!totpSetupCode || totpSetupCode.length !== 6) return toast.error("Enter 6 digit code");
     setIsSettingUpTotp(true);
     try {
-      const res = await fetch("http://localhost:3000/api/totp/confirm", {
+      const res = await proxyFetch("/api/totp/confirm", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ e2eNode: getE2ENode(setupTotpRoute), secret: totpSecret, token: totpSetupCode })
@@ -900,22 +901,22 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
   if (viewState === 'onboarding') {
     return (
       <div className="flex flex-col items-center justify-center min-h-[400px] bg-white border border-slate-200 rounded-xl p-6 sm:p-10 shadow-sm text-center">
-        <div className="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center mb-6">
+        <div className="w-14 h-14 bg-slate-100 rounded-xl flex items-center justify-center mb-6">
           <Wallet size={40} className="text-slate-900" />
         </div>
-        <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-2">Welcome to Crypto Space</h2>
+        <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900 mb-2">Welcome to Crypto Space</h2>
         <p className="text-slate-500 font-medium mb-8 max-w-md mx-auto">Your secure, non-custodial Web3 wallet. Store, send, and receive crypto directly on your device.</p>
         
         <div className="flex flex-col gap-3 w-full max-w-md mx-auto">
           <div className="flex flex-col sm:flex-row gap-3">
-            <button onClick={startCreate} className="flex-1 bg-slate-900 hover:bg-slate-800 text-white font-bold py-3.5 px-6 rounded-xl transition-colors shadow-md shadow-slate-900/20">
+            <button onClick={startCreate} className="flex-1 bg-slate-900 hover:bg-slate-800 text-white font-medium py-3 px-5 rounded-xl transition-colors shadow-xs">
               Create New Wallet
             </button>
-            <button onClick={() => setViewState('restore')} className="flex-1 bg-white hover:bg-slate-50 border-2 border-slate-200 text-slate-700 font-bold py-3.5 px-6 rounded-xl transition-colors">
+            <button onClick={() => setViewState('restore')} className="flex-1 bg-white hover:bg-slate-50 border-2 border-slate-200 text-slate-700 font-medium py-3 px-5 rounded-xl transition-colors">
               Restore Wallet
             </button>
           </div>
-          <button onClick={() => setViewState('import-pack')} className="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3.5 px-6 rounded-xl transition-colors flex items-center justify-center gap-2 shadow-md shadow-purple-900/20">
+          <button onClick={() => setViewState('import-pack')} className="w-full bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-200 font-medium py-3 px-5 rounded-xl transition-colors flex items-center justify-center gap-2">
             <ShieldCheck size={18} /> Import from Secure Pack
           </button>
         </div>
@@ -926,7 +927,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
   if (viewState === 'create') {
     return (
       <div className="bg-white border border-slate-200 rounded-xl p-6 sm:p-10 shadow-sm max-w-2xl mx-auto w-full text-left">
-        <h2 className="text-xl sm:text-2xl font-black text-slate-900 mb-2">Secret Recovery Phrase</h2>
+        <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-slate-900 mb-2">Secret Recovery Phrase</h2>
         <p className="text-slate-500 text-sm font-medium mb-6">Write down these 12 words in order and keep them safe. If you lose them, you lose your crypto.</p>
         
         <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 mb-6">
@@ -945,7 +946,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
 
         <div className="flex gap-3">
           <button onClick={() => setViewState('onboarding')} className="px-6 py-3 border border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50">Back</button>
-          <button onClick={confirmCreate} className="flex-1 bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-6 rounded-xl transition-colors shadow-md shadow-slate-900/20">
+          <button onClick={confirmCreate} className="flex-1 bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-6 rounded-xl transition-colors shadow-xs">
             I've Saved It, Open Wallet
           </button>
         </div>
@@ -956,7 +957,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
   if (viewState === 'restore') {
     return (
       <div className="bg-white border border-slate-200 rounded-xl p-6 sm:p-10 shadow-sm max-w-2xl mx-auto w-full text-left">
-        <h2 className="text-xl sm:text-2xl font-black text-slate-900 mb-2">Restore Existing Wallet</h2>
+        <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-slate-900 mb-2">Restore Existing Wallet</h2>
         <p className="text-slate-500 text-sm font-medium mb-6">Enter your 12-word Secret Recovery Phrase to restore your funds.</p>
         
         <textarea 
@@ -968,7 +969,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
 
         <div className="flex gap-3">
           <button onClick={() => setViewState('onboarding')} className="px-6 py-3 border border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50">Back</button>
-          <button onClick={handleRestore} className="flex-1 bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-6 rounded-xl transition-colors shadow-md shadow-slate-900/20">
+          <button onClick={handleRestore} className="flex-1 bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-6 rounded-xl transition-colors shadow-xs">
             Restore Wallet
           </button>
         </div>
@@ -980,11 +981,11 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
     return (
       <div className="bg-white border border-slate-200 rounded-xl p-6 sm:p-10 shadow-sm max-w-2xl mx-auto w-full text-left">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
-            <ShieldCheck size={24} className="text-purple-700" />
+          <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center">
+            <ShieldCheck size={24} className="text-slate-700" />
           </div>
           <div>
-            <h2 className="text-xl sm:text-2xl font-black text-slate-900">Import Secure Pack</h2>
+            <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-slate-900">Import Secure Pack</h2>
             <p className="text-slate-500 text-sm font-medium">Restore your wallet from an encrypted .tvpack file</p>
           </div>
         </div>
@@ -996,10 +997,10 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
               value={importPackText}
               onChange={e => setImportPackText(e.target.value)}
               placeholder="Paste the contents of your .tvpack file here..."
-              className="w-full bg-slate-50 border border-slate-200 text-slate-900 rounded-xl p-4 font-mono text-xs focus:ring-0 focus:border-purple-400 outline-none transition-colors min-h-[120px] resize-none"
+              className="w-full bg-slate-50 border border-slate-200 text-slate-900 rounded-xl p-4 font-mono text-xs focus:ring-0 focus:border-slate-400 outline-none transition-colors min-h-[120px] resize-none"
             />
             <label className="block mt-2">
-              <span className="text-xs text-purple-600 font-semibold cursor-pointer hover:underline">Or click to upload .tvpack file</span>
+              <span className="text-xs text-slate-600 hover:text-slate-900 font-medium cursor-pointer underline underline-offset-2">Or click to upload .tvpack file</span>
               <input
                 type="file"
                 accept=".tvpack,.txt"
@@ -1022,7 +1023,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
               value={importPackPassword}
               onChange={e => setImportPackPassword(e.target.value)}
               placeholder="Enter the Pack Password..."
-              className="w-full bg-slate-50 border border-slate-200 text-slate-900 rounded-xl px-4 py-3 text-sm font-medium focus:ring-0 focus:border-purple-400 outline-none transition-colors"
+              className="w-full bg-slate-50 border border-slate-200 text-slate-900 rounded-xl px-4 py-3 text-sm font-medium focus:ring-0 focus:border-slate-400 outline-none transition-colors"
             />
           </div>
 
@@ -1036,7 +1037,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
           <button
             onClick={handleImportPack}
             disabled={isImporting}
-            className="flex-1 bg-purple-600 hover:bg-purple-700 disabled:opacity-50 text-white font-bold py-3 px-6 rounded-xl transition-colors shadow-md shadow-purple-900/20 flex items-center justify-center gap-2"
+            className="flex-1 bg-slate-900 hover:bg-slate-800 disabled:opacity-50 text-white font-medium text-sm py-2.5 px-5 rounded-xl transition-colors shadow-xs flex items-center justify-center gap-2"
           >
             {isImporting ? <RefreshCw size={16} className="animate-spin" /> : <ShieldCheck size={16} />}
             {isImporting ? 'Importing...' : 'Import & Restore Wallet'}
@@ -1059,7 +1060,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
             <div className="bg-white border border-slate-200 p-3 sm:p-4 rounded-xl shadow-sm mb-3 sm:mb-4">
               <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
                 <div>
-                  <h1 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+                  <h1 className="text-xl sm:text-2xl font-semibold tracking-tight text-slate-900 tracking-tight flex items-center gap-2">
                     <Wallet className="text-slate-900" />
                     Crypto Space
                   </h1>
@@ -1068,9 +1069,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
               </div>
             </div>
             <div className="bg-slate-950 rounded-xl p-4 sm:p-6 text-white shadow-md border border-slate-800 relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-8 opacity-10">
-                <Wallet size={120} />
-              </div>
+
               <div className="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
                 <div>
                   <p className="text-slate-400 font-medium text-xs sm:text-sm mb-1 capitalize ">Wallet Address</p>
@@ -1084,7 +1083,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                   </div>
                   
                   <p className="text-slate-400 font-medium text-xs sm:text-sm mb-1 capitalize ">Total Value (Approx)</p>
-                  <h2 className="text-3xl sm:text-4xl font-black">
+                  <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight font-mono tabular-nums">
                     Live Balances
                   </h2>
                 </div>
@@ -1113,12 +1112,12 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                       <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-700">
                         {asset.symbol[0]}
                       </div>
-                      <span className="text-xs sm:text-xs font-bold px-2 py-1 bg-emerald-100 text-emerald-700 rounded-full">Mainnet</span>
+                      <span className="text-[11px] font-medium px-2 py-0.5 bg-emerald-50 text-emerald-700 border border-emerald-200/80 rounded-md">Mainnet</span>
                     </div>
                     <p className="text-slate-500 font-medium text-xs sm:text-sm">{asset.net.name}</p>
                   </div>
                   <div className="flex items-center justify-between mt-1">
-                    <h3 className="text-lg sm:text-xl font-black text-slate-900 truncate">
+                    <h3 className="text-lg sm:text-xl font-semibold tracking-tight text-slate-900 truncate">
                       {parseFloat(asset.bal).toFixed(4)} {asset.symbol}
                     </h3>
                     <div className="flex items-center gap-1">
@@ -1147,7 +1146,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
             <div className="grid grid-cols-1 gap-3 sm:gap-4 mt-4">
               {/* Transaction History */}
               <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
-                <h3 className="text-base font-black text-slate-900 mb-3">Recent Transactions</h3>
+                <h3 className="text-base font-semibold tracking-tight text-slate-900 mb-3">Recent Transactions</h3>
                 {txHistory.length > 0 ? (
                   <div className="space-y-2 sm:space-y-3">
                     {txHistory.slice(0, 3).map((tx, i) => (
@@ -1187,7 +1186,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                 <Send size={20} className="sm:w-6 sm:h-6" />
               </div>
               <div>
-                <h2 className="text-lg sm:text-xl font-black text-slate-900">Send Crypto</h2>
+                <h2 className="text-lg sm:text-xl font-semibold tracking-tight text-slate-900">Send Crypto</h2>
                 <p className="text-xs sm:text-xs text-slate-500 font-medium">Transfer funds directly on-chain.</p>
               </div>
             </div>
@@ -1249,7 +1248,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
               <button 
                 type="submit" 
                 disabled={isSending}
-                className="w-full bg-slate-900 hover:bg-slate-800 text-white rounded-xl py-3.5 sm:py-4 font-bold text-base sm:text-lg transition-colors mt-4 sm:mt-6 flex items-center justify-center gap-2 disabled:opacity-70 shadow-md shadow-slate-900/20"
+                className="w-full bg-slate-900 hover:bg-slate-800 text-white rounded-xl py-3.5 sm:py-4 font-bold text-base sm:text-lg transition-colors mt-4 sm:mt-6 flex items-center justify-center gap-2 disabled:opacity-70 shadow-xs"
               >
                 {isSending ? <RefreshCw className="animate-spin" size={18} /> : <Send size={18} />}
                 {isSending ? 'Sending Transaction...' : 'Send Now'}
@@ -1264,7 +1263,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
             <div className="w-12 h-12 sm:w-16 sm:h-16 bg-emerald-50 text-emerald-600 rounded-xl sm:rounded-lg flex items-center justify-center mx-auto mb-3 sm:mb-4">
               <ArrowDownToLine size={24} className="sm:w-8 sm:h-8" />
             </div>
-            <h2 className="text-lg sm:text-xl font-black text-slate-900 mb-1">Receive Crypto</h2>
+            <h2 className="text-lg sm:text-xl font-semibold tracking-tight text-slate-900 mb-1">Receive Crypto</h2>
             <p className="text-xs sm:text-xs text-slate-500 font-medium mb-4 sm:mb-6 mx-auto">
               Send ETH, BNB, MATIC, or supported ERC20 tokens to this universal EVM address.
             </p>
@@ -1282,7 +1281,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
 
             {wallet.btcAddress && (
               <div className="pt-6 border-t border-slate-200">
-                <h3 className="text-base font-black text-amber-500 mb-2">Native Bitcoin (BTC) Receive Address</h3>
+                <h3 className="text-base font-semibold tracking-tight text-amber-500 mb-2">Native Bitcoin (BTC) Receive Address</h3>
                 <p className="text-xs sm:text-xs text-slate-500 font-medium mb-4 mx-auto">Send ONLY Native Bitcoin (BTC) to this address.</p>
                 <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 flex flex-col sm:flex-row items-center justify-between gap-3 mx-auto w-full">
                   <span className="font-mono text-xs sm:text-sm text-amber-800 truncate w-full sm:w-auto text-center sm:text-left">{wallet.btcAddress}</span>
@@ -1303,7 +1302,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                 <ShieldCheck size={20} className="sm:w-6 sm:h-6" />
               </div>
               <div>
-                <h2 className="text-lg sm:text-xl font-black text-slate-900">Security & Backup</h2>
+                <h2 className="text-lg sm:text-xl font-semibold tracking-tight text-slate-900">Security & Backup</h2>
                 <p className="text-xs sm:text-xs text-slate-500 font-medium">Protect your seed phrase.</p>
               </div>
             </div>
@@ -1383,7 +1382,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                         Verify &amp; Lock
                       </button>
                     </div>
-                    <p className="text-xs text-purple-700 font-medium">⚠️ This Routing Password is separate from your Master Password. Store it safely — it cannot be recovered.</p>
+                    <p className="text-xs text-slate-700 font-medium">⚠️ This Routing Password is separate from your Master Password. Store it safely — it cannot be recovered.</p>
                   </div>
                 )}
               </div>
@@ -1395,7 +1394,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                 </h3>
                 {!localStorage.getItem(ROUTING_SECRET_KEY) ? (
                   <>
-                    <p className="text-purple-700 text-xs sm:text-sm font-medium mb-3">
+                    <p className="text-slate-700 text-xs sm:text-sm font-medium mb-3">
                       ⚡ <strong>Action Required:</strong> Create a Routing Password to fully isolate your routing destination from your Master Password.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-2">
@@ -1557,14 +1556,14 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
 
       {/* ── EXPORT WALLET PACK ── */}
       {activeTab === 'security' && (
-        <div className={`border rounded-xl p-4 sm:p-6 w-full mt-2 transition-all ${hasExportedPack ? 'bg-slate-800/60 border-slate-700 opacity-70' : 'bg-gradient-to-br from-purple-900 to-slate-900 border-purple-800'}`}>
+        <div className={`border rounded-xl p-4 sm:p-6 w-full mt-2 transition-all ${hasExportedPack ? 'bg-slate-800/60 border-slate-700 opacity-70' : 'bg-slate-950 border-slate-800 text-white'}`}>
           <div className="flex items-center gap-3 mb-3">
-            <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${hasExportedPack ? 'bg-slate-700' : 'bg-purple-800/60'}`}>
-              <ShieldCheck size={20} className={hasExportedPack ? 'text-slate-400' : 'text-purple-300'} />
+            <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${hasExportedPack ? 'bg-slate-700' : 'bg-slate-800'}`}>
+              <ShieldCheck size={20} className={hasExportedPack ? 'text-slate-400' : 'text-slate-400'} />
             </div>
             <div>
               <h3 className={`font-black text-sm sm:text-base ${hasExportedPack ? 'text-slate-400' : 'text-white'}`}>Export Secure Pack</h3>
-              <p className={`text-xs font-medium ${hasExportedPack ? 'text-slate-500' : 'text-purple-300'}`}>
+              <p className={`text-xs font-medium ${hasExportedPack ? 'text-slate-500' : 'text-slate-400'}`}>
                 {hasExportedPack ? 'Pack has been created — this device stores nothing about it' : 'Portable encrypted wallet for any device'}
               </p>
             </div>
@@ -1578,7 +1577,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
             </>
           ) : (
             <>
-              <p className="text-purple-200 text-xs font-medium mb-4 leading-relaxed">
+              <p className="text-slate-300 text-xs font-medium mb-4 leading-relaxed">
                 Creates a <strong>.tvpack</strong> file containing your private key, seed phrase, routing destination, and Authenticator secret — all encrypted with a <strong>12+ character Pack Password</strong>. Use it to restore your complete wallet on any device instantly.
               </p>
               <div className="flex flex-col sm:flex-row gap-2">
@@ -1587,18 +1586,18 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                   placeholder="Create Pack Password (min 12 chars)..."
                   value={packPassword}
                   onChange={e => setPackPassword(e.target.value)}
-                  className="flex-1 bg-purple-900/50 border border-purple-700 text-white placeholder:text-purple-400 rounded-lg px-3 py-2.5 text-sm outline-none focus:border-purple-400"
+                  className="flex-1 bg-purple-900/50 border border-purple-700 text-white placeholder:text-slate-400 rounded-lg px-3 py-2.5 text-sm outline-none focus:border-slate-400"
                 />
                 <button
                   onClick={handleExportPack}
                   disabled={isExporting}
-                  className="bg-purple-500 hover:bg-purple-400 disabled:opacity-50 text-white font-bold py-2.5 px-4 rounded-lg text-sm transition-colors whitespace-nowrap flex items-center justify-center gap-1.5"
+                  className="bg-white hover:bg-slate-100 disabled:opacity-50 text-slate-900 font-medium py-2.5 px-4 rounded-lg text-sm transition-colors whitespace-nowrap flex items-center justify-center gap-1.5"
                 >
                   {isExporting ? <RefreshCw size={14} className="animate-spin" /> : <ShieldCheck size={14} />}
                   {isExporting ? 'Exporting...' : 'Export'}
                 </button>
               </div>
-              <p className="text-purple-400 text-xs font-medium mt-2">⚠️ Keep the .tvpack file and Pack Password separately. If lost, there is NO recovery.</p>
+              <p className="text-slate-400 text-xs font-medium mt-2">⚠️ Keep the .tvpack file and Pack Password separately. If lost, there is NO recovery.</p>
             </>
           )}
         </div>
@@ -1615,7 +1614,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
               00:{otpTimeLeft.toString().padStart(2, '0')}
             </div>
 
-            <h3 className="text-xl font-black text-slate-900 mb-2 mt-2">
+            <h3 className="text-xl font-semibold tracking-tight text-slate-900 mb-2 mt-2">
               {otpIntent === 'send' ? 'Dual Verification' : 'Verify to Reveal Seed'}
             </h3>
             <p className="text-sm text-slate-500 mb-6">

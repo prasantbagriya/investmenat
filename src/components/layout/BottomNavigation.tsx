@@ -3,7 +3,7 @@ import {
   ArrowLeftRight, TrendingUp, LayoutDashboard, Clock, 
   Bell, Repeat, CalendarRange, Landmark, Percent,
   ChevronLeft, ChevronRight, Activity, LineChart, Users, Eye, Wallet, ShieldCheck,
-  Fingerprint, Building2, Receipt, Link as LinkIcon
+  Fingerprint, Building2, Receipt, Link as LinkIcon, Send, ArrowDownToLine
 } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -44,10 +44,10 @@ export default function BottomNavigation({
   ];
 
   const cryptoTabs = [
-    { id: 'crypto-wallet', label: 'Dashboard', icon: Wallet },
-    { id: 'crypto-send', label: 'Send', icon: Activity },
-    { id: 'crypto-receive', label: 'Receive', icon: Users },
-    { id: 'crypto-security', label: 'Security', icon: Eye },
+    { id: 'crypto-wallet', label: 'Wallet', icon: Wallet },
+    { id: 'crypto-send', label: 'Send', icon: Send },
+    { id: 'crypto-receive', label: 'Receive', icon: ArrowDownToLine },
+    { id: 'crypto-security', label: 'Security', icon: ShieldCheck },
   ];
 
   const quickoTabs = [
@@ -70,7 +70,7 @@ export default function BottomNavigation({
   const tabs = currentWorkspace === 'ledger' ? ledgerTabs : currentWorkspace === 'investmant' ? investmantTabs : currentWorkspace === 'research' ? researchTabs : currentWorkspace === 'crypto' ? cryptoTabs : currentWorkspace === 'propfirm' ? propfirmTabs : quickoTabs;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 bg-white/97 backdrop-blur-md border-t border-slate-200/80 lg:hidden shadow-[0_-4px_20px_rgba(0,0,0,0.08)] ">
+    <div className="fixed bottom-0 left-0 right-0 z-50 bg-white/97 backdrop-blur-md border-t border-slate-200/80 lg:hidden shadow-xs ">
 
       {/* Tab Row */}
       <div className="flex justify-around py-3 px-2 pb-safe">
@@ -81,13 +81,13 @@ export default function BottomNavigation({
               key={id}
               to={`/${id}`}
               className={`flex flex-col items-center justify-center shrink-0 transition-all duration-200 cursor-pointer flex-1 relative ${
-                isActive ? 'text-slate-950 font-extrabold' : 'text-slate-400 hover:text-slate-600'
+                isActive ? 'text-slate-900 font-semibold' : 'text-slate-500 hover:text-slate-700' 
               }`}
             >
               {isActive && (
                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-slate-900 rounded-full" />
               )}
-              <Icon size={20} className={isActive ? 'stroke-[2.5px] text-slate-950 scale-110' : ''} />
+              <Icon size={19} className={isActive ? 'stroke-2 text-slate-900' : 'stroke-[1.75px]'} />
               <span className="text-xs mt-1 leading-tight">{label}</span>
             </Link>
           );

@@ -5,7 +5,7 @@ import {
   X, LayoutDashboard, ArrowLeftRight, Clock, Target, Sliders, 
   Bell, Users, Briefcase, Settings, TrendingUp, CalendarRange, 
   Landmark, Percent, Repeat, BarChart3, Activity, Wallet, ShieldCheck,
-  Fingerprint, Building2, Receipt, Link as LinkIcon
+  Fingerprint, Building2, Receipt, Link as LinkIcon, Send, ArrowDownToLine
 } from 'lucide-react';
 
 interface NavigationDrawerProps {
@@ -54,7 +54,7 @@ export default function NavigationDrawer({
           >
             {/* Header */}
             <div className="flex items-center justify-between p-4 bg-white border-b border-slate-200 shrink-0">
-              <h2 className="font-extrabold text-slate-800 text-lg ">Navigation</h2>
+              <h2 className="font-semibold text-slate-900 text-base tracking-tight">Navigation</h2>
               <button 
                 onClick={onClose}
                 className="p-1.5 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer"
@@ -78,7 +78,7 @@ export default function NavigationDrawer({
                     }}
                     className={`flex items-center gap-3 p-3 rounded-xl text-sm font-bold transition-all cursor-pointer ${
                       currentWorkspace === 'ledger'
-                        ? 'bg-slate-900 text-white shadow-md'
+                        ? 'bg-slate-900 text-white shadow-xs'
                         : 'bg-white border border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-50'
                     }`}
                   >
@@ -94,7 +94,7 @@ export default function NavigationDrawer({
                     }}
                     className={`flex items-center gap-3 p-3 rounded-xl text-sm font-bold transition-all cursor-pointer ${
                       currentWorkspace === 'investmant'
-                        ? 'bg-slate-900 text-white shadow-md'
+                        ? 'bg-slate-900 text-white shadow-xs'
                         : 'bg-white border border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-50'
                     }`}
                   >
@@ -110,7 +110,7 @@ export default function NavigationDrawer({
                     }}
                     className={`flex items-center gap-3 p-3 rounded-xl text-sm font-bold transition-all cursor-pointer ${
                       currentWorkspace === 'research'
-                        ? 'bg-slate-900 text-white shadow-md'
+                        ? 'bg-slate-900 text-white shadow-xs'
                         : 'bg-white border border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-50'
                     }`}
                   >
@@ -126,7 +126,7 @@ export default function NavigationDrawer({
                     }}
                     className={`flex items-center gap-3 p-3 rounded-xl text-sm font-bold transition-all cursor-pointer ${
                       currentWorkspace === 'crypto'
-                        ? 'bg-slate-900 text-white shadow-md'
+                        ? 'bg-slate-900 text-white shadow-xs'
                         : 'bg-white border border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-50'
                     }`}
                   >
@@ -142,7 +142,7 @@ export default function NavigationDrawer({
                     }}
                     className={`flex items-center gap-3 p-3 rounded-xl text-sm font-bold transition-all cursor-pointer ${
                       currentWorkspace === 'quicko'
-                        ? 'bg-slate-900 text-white shadow-md'
+                        ? 'bg-slate-900 text-white shadow-xs'
                         : 'bg-white border border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-50'
                     }`}
                   >
@@ -158,7 +158,7 @@ export default function NavigationDrawer({
                     }}
                     className={`flex items-center gap-3 p-3 rounded-xl text-sm font-bold transition-all cursor-pointer ${
                       currentWorkspace === 'propfirm'
-                        ? 'bg-slate-900 text-white shadow-md'
+                        ? 'bg-slate-900 text-white shadow-xs'
                         : 'bg-white border border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-50'
                     }`}
                   >
@@ -201,9 +201,9 @@ export default function NavigationDrawer({
                   ) : currentWorkspace === 'crypto' ? (
                     <>
                       <NavButton active={activeTab === 'crypto-wallet'} onClick={handleTabClick} to="/crypto-wallet" icon={<Wallet size={16} className="text-purple-500" />} label="Wallet Dashboard" />
-                      <NavButton active={activeTab === 'crypto-send'} onClick={handleTabClick} to="/crypto-send" icon={<Activity size={16} />} label="Send Crypto" />
-                      <NavButton active={activeTab === 'crypto-receive'} onClick={handleTabClick} to="/crypto-receive" icon={<Users size={16} />} label="Receive Crypto" />
-                      <NavButton active={activeTab === 'crypto-security'} onClick={handleTabClick} to="/crypto-security" icon={<Settings size={16} />} label="Security" />
+                      <NavButton active={activeTab === 'crypto-send'} onClick={handleTabClick} to="/crypto-send" icon={<Send size={16} />} label="Send Crypto" />
+                      <NavButton active={activeTab === 'crypto-receive'} onClick={handleTabClick} to="/crypto-receive" icon={<ArrowDownToLine size={16} />} label="Receive Crypto" />
+                      <NavButton active={activeTab === 'crypto-security'} onClick={handleTabClick} to="/crypto-security" icon={<ShieldCheck size={16} />} label="Security" />
                       <NavButton active={activeTab === 'workspace'} onClick={handleTabClick} to="/workspace" icon={<Briefcase size={16} className="text-teal-500" />} label="Workspace Suite" isSuite />
                       <NavButton active={activeTab === 'settings'} onClick={handleTabClick} to="/settings" icon={<Settings size={16} />} label="Settings & Links" />
                     </>
@@ -265,13 +265,13 @@ function NavButton({ active, onClick, icon, label, isSuite = false, to }: { acti
       onClick={handleClick}
       className={`w-full flex items-center gap-3 p-3 rounded-lg text-sm font-semibold transition-all cursor-pointer relative ${
         active 
-          ? (isSuite ? 'bg-teal-600 text-white shadow-md' : 'bg-slate-900 text-white shadow-md') 
+          ? (isSuite ? 'bg-teal-600 text-white shadow-xs' : 'bg-slate-900 text-white shadow-xs') 
           : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80'
       }`}
     >
       {icon}
       {label}
-      {isSuite && <span className="absolute right-3 bg-red-500 text-white rounded-full text-[8px] p-0.5 px-1.5 font-bold animate-pulse">11 Apps</span>}
+      {isSuite && <span className="absolute right-3 bg-slate-200 text-slate-700 rounded-md text-[10px] px-1.5 py-0.5 font-medium border border-slate-300/60 ">11 Apps</span>}
     </button>
   );
 }

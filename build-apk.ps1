@@ -1,4 +1,4 @@
-$env:JAVA_HOME="C:\Program Files\Microsoft\jdk-17.0.20.8-hotspot"
+$env:JAVA_HOME="C:\Program Files\Microsoft\jdk-17.0.21.21-hotspot"
 $env:ANDROID_HOME="C:\Users\1\AppData\Local\Android\Sdk"
 
 Write-Host "Building Web App..."

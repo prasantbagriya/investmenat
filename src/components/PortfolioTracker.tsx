@@ -4,7 +4,9 @@ import {
   Plus, Trash2, TrendingUp, TrendingDown, RefreshCw, BarChart3, PieChart as PieIcon, 
   Eye, EyeOff, ShieldCheck, HelpCircle, Layers, FolderCheck, Wallet, ArrowUpRight
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Holding, WatchlistItem, UserSettings, RealizedTrade } from '../types';
+import { fetchForexFactoryCalendar, ForexFactoryEvent, getImpactDetails, getCountryFlag, formatEventTime } from '../services/forexFactoryService';
 import { fetchStockPrice, fetchMutualFundNav, calculateXIRR, fetchStockSearch } from '../utils/financeHelpers';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip, AreaChart, Area, XAxis, YAxis, CartesianGrid, LineChart, Line } from 'recharts';
 import InfoTooltip from './InfoTooltip';
@@ -83,6 +85,7 @@ export default function PortfolioTracker({
   // Forms states
   const [subTab, setSubTab] = useState<'analytics' | 'holdings' | 'watchlist'>(initialTab || 'analytics');
   const [calcYears, setCalcYears] = useState(5);
+  const [ffEvents, setFfEvents] = useState<ForexFactoryEvent[]>([]);
   const [calcMonthlyContrib, setCalcMonthlyContrib] = useState(10000);
   const [isAdding, setIsAdding] = useState(false);
   const [type, setType] = useState<'stock' | 'mf'>('stock');
@@ -1473,6 +1476,67 @@ export default function PortfolioTracker({
                         </button>
                       </div>
                     </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+
+          {/* Forex Factory Live Market News & Calendar */}
+          <div className="bg-white border border-slate-150 rounded-lg p-2.5 shadow-sm space-y-2 mt-3">
+            <div className="flex justify-between items-center border-b border-slate-100 pb-1.5">
+              <div className="flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse" />
+                <h3 className="font-bold text-xs text-slate-800 font-display">Forex Factory Economic Events</h3>
+              </div>
+              <Link
+                to="/market"
+                className="text-[11px] text-blue-600 hover:text-blue-800 font-semibold flex items-center gap-0.5 transition-colors"
+              >
+                Full Calendar <ArrowUpRight size={12} />
+              </Link>
+            </div>
+
+            {ffEvents.length === 0 ? (
+              <p className="text-xs text-slate-400 text-center py-2">Loading upcoming events...</p>
+            ) : (
+              <div className="space-y-1.5 max-h-64 overflow-y-auto pr-0.5 divide-y divide-slate-100">
+                {ffEvents.slice(0, 5).map((ev, idx) => {
+                  const impact = getImpactDetails(ev.impact);
+                  const { timeLabel, dateLabel, isToday } = formatEventTime(ev.date);
+                  const flag = getCountryFlag(ev.country);
+                  const ffUrl = ev.url || `https://www.forexfactory.com/calendar?day=${encodeURIComponent(ev.date.split('T')[0] || '')}`;
+
+                  return (
+                    <a
+                      key={idx}
+                      href={ffUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block pt-1.5 pb-1 px-1 rounded-md hover:bg-slate-50 transition-colors"
+                    >
+                      <div className="flex items-center justify-between text-[11px] mb-0.5">
+                        <div className="flex items-center gap-1.5">
+                          <span>{flag}</span>
+                          <span className="font-bold text-slate-800 text-[11px]">{ev.country}</span>
+                          <span className={`px-1.5 py-0.2 rounded text-[9px] font-semibold border ${impact.badgeClass}`}>
+                            {ev.impact}
+                          </span>
+                        </div>
+                        <span className={`text-[10px] font-mono tabular-nums ${isToday ? 'text-rose-600 font-bold' : 'text-slate-400'}`}>
+                          {timeLabel || dateLabel}
+                        </span>
+                      </div>
+                      <p className="font-semibold text-slate-800 text-xs leading-snug line-clamp-1">
+                        {ev.title}
+                      </p>
+                      {(ev.forecast || ev.previous) && (
+                        <div className="flex items-center gap-3 mt-0.5 text-[10px] font-mono tabular-nums text-slate-500">
+                          {ev.forecast && <span>Exp: <strong className="text-slate-700">{ev.forecast}</strong></span>}
+                          {ev.previous && <span>Prev: {ev.previous}</span>}
+                        </div>
+                      )}
+                    </a>
                   );
                 })}
               </div>

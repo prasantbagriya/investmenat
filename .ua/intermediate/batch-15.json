@@ -1,0 +1,71 @@
+{
+  "nodes": [
+    {
+      "id": "config:android/build.gradle",
+      "type": "config",
+      "name": "build.gradle",
+      "filePath": "android/build.gradle",
+      "summary": "Configuration file controlling build.gradle settings.",
+      "tags": [
+        "configuration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:android/capacitor.settings.gradle",
+      "type": "config",
+      "name": "capacitor.settings.gradle",
+      "filePath": "android/capacitor.settings.gradle",
+      "summary": "Configuration file controlling capacitor.settings.gradle settings.",
+      "tags": [
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:android/gradle.properties",
+      "type": "config",
+      "name": "gradle.properties",
+      "filePath": "android/gradle.properties",
+      "summary": "Configuration file controlling gradle.properties settings.",
+      "tags": [
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:android/gradlew.bat",
+      "type": "file",
+      "name": "gradlew.bat",
+      "filePath": "android/gradlew.bat",
+      "summary": "gradlew.bat in android/gradlew.bat",
+      "tags": [
+        "script"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:android/settings.gradle",
+      "type": "config",
+      "name": "settings.gradle",
+      "filePath": "android/settings.gradle",
+      "summary": "Configuration file controlling settings.gradle settings.",
+      "tags": [
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:android/variables.gradle",
+      "type": "config",
+      "name": "variables.gradle",
+      "filePath": "android/variables.gradle",
+      "summary": "Configuration file controlling variables.gradle settings.",
+      "tags": [
+        "configuration"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

@@ -1,0 +1,83 @@
+{
+  "nodes": [
+    {
+      "id": "document:.agents/skills/firebase_basics/references/android_setup.md",
+      "type": "document",
+      "name": "android_setup.md",
+      "filePath": ".agents/skills/firebase_basics/references/android_setup.md",
+      "summary": "Documentation describing android_setup.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/firebase_basics/references/firebase-cli-guide.md",
+      "type": "document",
+      "name": "firebase-cli-guide.md",
+      "filePath": ".agents/skills/firebase_basics/references/firebase-cli-guide.md",
+      "summary": "Documentation describing firebase-cli-guide.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/firebase_basics/references/firebase-service-init.md",
+      "type": "document",
+      "name": "firebase-service-init.md",
+      "filePath": ".agents/skills/firebase_basics/references/firebase-service-init.md",
+      "summary": "Documentation describing firebase-service-init.md.",
+      "tags": [
+        "documentation",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/firebase_basics/references/flutter_setup.md",
+      "type": "document",
+      "name": "flutter_setup.md",
+      "filePath": ".agents/skills/firebase_basics/references/flutter_setup.md",
+      "summary": "Documentation describing flutter_setup.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_basics/references/ios_setup.md",
+      "type": "document",
+      "name": "ios_setup.md",
+      "filePath": ".agents/skills/firebase_basics/references/ios_setup.md",
+      "summary": "Documentation describing ios_setup.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_basics/references/local-env-setup.md",
+      "type": "document",
+      "name": "local-env-setup.md",
+      "filePath": ".agents/skills/firebase_basics/references/local-env-setup.md",
+      "summary": "Documentation describing local-env-setup.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_basics/references/web_setup.md",
+      "type": "document",
+      "name": "web_setup.md",
+      "filePath": ".agents/skills/firebase_basics/references/web_setup.md",
+      "summary": "Documentation describing web_setup.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": []
+}

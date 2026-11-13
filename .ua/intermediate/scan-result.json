@@ -1,0 +1,1822 @@
+{
+  "scriptCompleted": true,
+  "contentDigest": "36fd0f886cc28f1083d6f0a6ff98df1a23294d1353734dd5b851f7cf4bf8dc73",
+  "files": [
+    {
+      "path": ".agents/skills/firebase_ai_logic_basics/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 132,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_ai_logic_basics/references/flutter_setup.md",
+      "language": "markdown",
+      "sizeLines": 82,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_ai_logic_basics/references/ios_setup.md",
+      "language": "markdown",
+      "sizeLines": 143,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_ai_logic_basics/references/usage_patterns_android.md",
+      "language": "markdown",
+      "sizeLines": 153,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_ai_logic_basics/references/usage_patterns_web.md",
+      "language": "markdown",
+      "sizeLines": 175,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_app_hosting_basics/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 58,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_app_hosting_basics/references/cli_commands.md",
+      "language": "markdown",
+      "sizeLines": 70,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_app_hosting_basics/references/configuration.md",
+      "language": "markdown",
+      "sizeLines": 51,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_app_hosting_basics/references/emulation.md",
+      "language": "markdown",
+      "sizeLines": 47,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_auth_basics/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 102,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_auth_basics/references/client_sdk_android.md",
+      "language": "markdown",
+      "sizeLines": 157,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_auth_basics/references/client_sdk_web.md",
+      "language": "markdown",
+      "sizeLines": 294,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_auth_basics/references/flutter_setup.md",
+      "language": "markdown",
+      "sizeLines": 107,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_auth_basics/references/ios_setup.md",
+      "language": "markdown",
+      "sizeLines": 70,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_auth_basics/references/security_rules.md",
+      "language": "markdown",
+      "sizeLines": 38,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_basics/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 112,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_basics/references/android_setup.md",
+      "language": "markdown",
+      "sizeLines": 34,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_basics/references/firebase-cli-guide.md",
+      "language": "markdown",
+      "sizeLines": 16,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_basics/references/firebase-service-init.md",
+      "language": "markdown",
+      "sizeLines": 18,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_basics/references/flutter_setup.md",
+      "language": "markdown",
+      "sizeLines": 102,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_basics/references/ios_setup.md",
+      "language": "markdown",
+      "sizeLines": 84,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_basics/references/local-env-setup.md",
+      "language": "markdown",
+      "sizeLines": 56,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_basics/references/refresh/android_studio.md",
+      "language": "markdown",
+      "sizeLines": 27,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_basics/references/refresh/antigravity.md",
+      "language": "markdown",
+      "sizeLines": 46,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_basics/references/refresh/claude.md",
+      "language": "markdown",
+      "sizeLines": 9,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_basics/references/refresh/gemini-cli.md",
+      "language": "markdown",
+      "sizeLines": 11,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_basics/references/refresh/other-agents.md",
+      "language": "markdown",
+      "sizeLines": 48,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_basics/references/setup/android_studio.md",
+      "language": "markdown",
+      "sizeLines": 19,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_basics/references/setup/antigravity.md",
+      "language": "markdown",
+      "sizeLines": 63,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_basics/references/setup/claude_code.md",
+      "language": "markdown",
+      "sizeLines": 30,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_basics/references/setup/cursor.md",
+      "language": "markdown",
+      "sizeLines": 63,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_basics/references/setup/gemini_cli.md",
+      "language": "markdown",
+      "sizeLines": 39,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_basics/references/setup/github_copilot.md",
+      "language": "markdown",
+      "sizeLines": 70,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_basics/references/setup/other_agents.md",
+      "language": "markdown",
+      "sizeLines": 65,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_basics/references/web_setup.md",
+      "language": "markdown",
+      "sizeLines": 69,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_crashlytics/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 34,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_crashlytics/references/android_setup.md",
+      "language": "markdown",
+      "sizeLines": 122,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_crashlytics/references/ios_setup.md",
+      "language": "markdown",
+      "sizeLines": 81,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_data_connect_basics/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 158,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_data_connect_basics/examples.md",
+      "language": "markdown",
+      "sizeLines": 629,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_data_connect_basics/reference/cloud_functions.md",
+      "language": "markdown",
+      "sizeLines": 164,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_data_connect_basics/reference/config.md",
+      "language": "markdown",
+      "sizeLines": 267,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_data_connect_basics/reference/data_seeding.md",
+      "language": "markdown",
+      "sizeLines": 154,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_data_connect_basics/reference/native_sql.md",
+      "language": "markdown",
+      "sizeLines": 122,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_data_connect_basics/reference/operations.md",
+      "language": "markdown",
+      "sizeLines": 376,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_data_connect_basics/reference/realtime.md",
+      "language": "markdown",
+      "sizeLines": 179,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_data_connect_basics/reference/schema.md",
+      "language": "markdown",
+      "sizeLines": 278,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_data_connect_basics/reference/sdk_admin_node.md",
+      "language": "markdown",
+      "sizeLines": 121,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_data_connect_basics/reference/sdk_android.md",
+      "language": "markdown",
+      "sizeLines": 107,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_data_connect_basics/reference/sdk_flutter.md",
+      "language": "markdown",
+      "sizeLines": 116,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_data_connect_basics/reference/sdk_ios.md",
+      "language": "markdown",
+      "sizeLines": 140,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_data_connect_basics/reference/sdk_web.md",
+      "language": "markdown",
+      "sizeLines": 124,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_data_connect_basics/reference/search.md",
+      "language": "markdown",
+      "sizeLines": 225,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_data_connect_basics/reference/security.md",
+      "language": "markdown",
+      "sizeLines": 289,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_data_connect_basics/templates.md",
+      "language": "markdown",
+      "sizeLines": 317,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_firestore/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 66,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_firestore/references/enterprise/android_sdk_usage.md",
+      "language": "markdown",
+      "sizeLines": 142,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_firestore/references/enterprise/data_model.md",
+      "language": "markdown",
+      "sizeLines": 66,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_firestore/references/enterprise/flutter_setup.md",
+      "language": "markdown",
+      "sizeLines": 172,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_firestore/references/enterprise/indexes.md",
+      "language": "markdown",
+      "sizeLines": 135,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_firestore/references/enterprise/ios_setup.md",
+      "language": "markdown",
+      "sizeLines": 162,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_firestore/references/enterprise/provisioning.md",
+      "language": "markdown",
+      "sizeLines": 117,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_firestore/references/enterprise/python_sdk_usage.md",
+      "language": "markdown",
+      "sizeLines": 138,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_firestore/references/enterprise/security_rules.md",
+      "language": "markdown",
+      "sizeLines": 569,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_firestore/references/enterprise/web_sdk_usage.md",
+      "language": "markdown",
+      "sizeLines": 127,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_firestore/references/standard/android_sdk_usage.md",
+      "language": "markdown",
+      "sizeLines": 189,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_firestore/references/standard/flutter_setup.md",
+      "language": "markdown",
+      "sizeLines": 168,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_firestore/references/standard/indexes.md",
+      "language": "markdown",
+      "sizeLines": 113,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_firestore/references/standard/ios_setup.md",
+      "language": "markdown",
+      "sizeLines": 146,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_firestore/references/standard/provisioning.md",
+      "language": "markdown",
+      "sizeLines": 102,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_firestore/references/standard/security_rules.md",
+      "language": "markdown",
+      "sizeLines": 569,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_firestore/references/standard/web_sdk_usage.md",
+      "language": "markdown",
+      "sizeLines": 192,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_hosting_basics/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 46,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_hosting_basics/references/configuration.md",
+      "language": "markdown",
+      "sizeLines": 101,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_hosting_basics/references/deploying.md",
+      "language": "markdown",
+      "sizeLines": 39,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_remote_config_basics/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 77,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_remote_config_basics/references/android_setup.md",
+      "language": "markdown",
+      "sizeLines": 101,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_remote_config_basics/references/ios_setup.md",
+      "language": "markdown",
+      "sizeLines": 71,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/firebase_security_rules_auditor/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 44,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/xcode_project_setup/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 87,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".antigravity/a39c1d0e-5393-41a4-ad08-fef23e53161c.pbtxt",
+      "language": "pbtxt",
+      "sizeLines": 634539,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".dockerignore",
+      "language": "unknown",
+      "sizeLines": 8,
+      "fileCategory": "infra"
+    },
+    {
+      "path": ".env.example",
+      "language": "config",
+      "sizeLines": 15,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".firebaserc",
+      "language": "unknown",
+      "sizeLines": 4,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".htaccess",
+      "language": "unknown",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "Dockerfile",
+      "language": "dockerfile",
+      "sizeLines": 22,
+      "fileCategory": "infra"
+    },
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "sizeLines": 18,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "android/app/build.gradle",
+      "language": "gradle",
+      "sizeLines": 59,
+      "fileCategory": "config"
+    },
+    {
+      "path": "android/app/capacitor.build.gradle",
+      "language": "gradle",
+      "sizeLines": 21,
+      "fileCategory": "config"
+    },
+    {
+      "path": "android/app/google-services.json",
+      "language": "json",
+      "sizeLines": 54,
+      "fileCategory": "config"
+    },
+    {
+      "path": "android/app/proguard-rules.pro",
+      "language": "pro",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java",
+      "language": "java",
+      "sizeLines": 26,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/app/src/main/AndroidManifest.xml",
+      "language": "xml",
+      "sizeLines": 63,
+      "fileCategory": "config"
+    },
+    {
+      "path": "android/app/src/main/java/com/investmant/app/MainActivity.java",
+      "language": "java",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml",
+      "language": "xml",
+      "sizeLines": 34,
+      "fileCategory": "config"
+    },
+    {
+      "path": "android/app/src/main/res/drawable/ic_launcher_background.xml",
+      "language": "xml",
+      "sizeLines": 170,
+      "fileCategory": "config"
+    },
+    {
+      "path": "android/app/src/main/res/layout/activity_main.xml",
+      "language": "xml",
+      "sizeLines": 12,
+      "fileCategory": "config"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+      "language": "xml",
+      "sizeLines": 8,
+      "fileCategory": "config"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml",
+      "language": "xml",
+      "sizeLines": 8,
+      "fileCategory": "config"
+    },
+    {
+      "path": "android/app/src/main/res/values/ic_launcher_background.xml",
+      "language": "xml",
+      "sizeLines": 3,
+      "fileCategory": "config"
+    },
+    {
+      "path": "android/app/src/main/res/values/strings.xml",
+      "language": "xml",
+      "sizeLines": 9,
+      "fileCategory": "config"
+    },
+    {
+      "path": "android/app/src/main/res/values/styles.xml",
+      "language": "xml",
+      "sizeLines": 21,
+      "fileCategory": "config"
+    },
+    {
+      "path": "android/app/src/main/res/xml/file_paths.xml",
+      "language": "xml",
+      "sizeLines": 4,
+      "fileCategory": "config"
+    },
+    {
+      "path": "android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java",
+      "language": "java",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/build.gradle",
+      "language": "gradle",
+      "sizeLines": 53,
+      "fileCategory": "config"
+    },
+    {
+      "path": "android/capacitor.settings.gradle",
+      "language": "gradle",
+      "sizeLines": 12,
+      "fileCategory": "config"
+    },
+    {
+      "path": "android/gradle.properties",
+      "language": "properties",
+      "sizeLines": 25,
+      "fileCategory": "config"
+    },
+    {
+      "path": "android/gradle/wrapper/gradle-wrapper.jar",
+      "language": "jar",
+      "sizeLines": 157,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/gradle/wrapper/gradle-wrapper.properties",
+      "language": "properties",
+      "sizeLines": 7,
+      "fileCategory": "config"
+    },
+    {
+      "path": "android/gradlew",
+      "language": "unknown",
+      "sizeLines": 251,
+      "fileCategory": "code"
+    },
+    {
+      "path": "android/gradlew.bat",
+      "language": "batch",
+      "sizeLines": 94,
+      "fileCategory": "script"
+    },
+    {
+      "path": "android/settings.gradle",
+      "language": "gradle",
+      "sizeLines": 5,
+      "fileCategory": "config"
+    },
+    {
+      "path": "android/variables.gradle",
+      "language": "gradle",
+      "sizeLines": 16,
+      "fileCategory": "config"
+    },
+    {
+      "path": "angelProxy.ts",
+      "language": "typescript",
+      "sizeLines": 213,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/api/upstox.py",
+      "language": "python",
+      "sizeLines": 327,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/api/websocket_market.py",
+      "language": "python",
+      "sizeLines": 80,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/api/websocket_portfolio.py",
+      "language": "python",
+      "sizeLines": 60,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/core/config.py",
+      "language": "python",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/main.py",
+      "language": "python",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/requirements.txt",
+      "language": "txt",
+      "sizeLines": 10,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "binanceProxy.ts",
+      "language": "typescript",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "build-apk.ps1",
+      "language": "powershell",
+      "sizeLines": 31,
+      "fileCategory": "script"
+    },
+    {
+      "path": "capacitor.config.ts",
+      "language": "typescript",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "deploy.js",
+      "language": "javascript",
+      "sizeLines": 154,
+      "fileCategory": "code"
+    },
+    {
+      "path": "dev-dist/registerSW.js",
+      "language": "javascript",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "dev-dist/sw.js",
+      "language": "javascript",
+      "sizeLines": 91,
+      "fileCategory": "code"
+    },
+    {
+      "path": "dev-dist/workbox-7e5eb42b.js",
+      "language": "javascript",
+      "sizeLines": 3395,
+      "fileCategory": "code"
+    },
+    {
+      "path": "dhanProxy.ts",
+      "language": "typescript",
+      "sizeLines": 80,
+      "fileCategory": "code"
+    },
+    {
+      "path": "firebase-applet-config.json",
+      "language": "json",
+      "sizeLines": 8,
+      "fileCategory": "config"
+    },
+    {
+      "path": "firebase-blueprint.json",
+      "language": "json",
+      "sizeLines": 264,
+      "fileCategory": "config"
+    },
+    {
+      "path": "firebase.json",
+      "language": "json",
+      "sizeLines": 19,
+      "fileCategory": "config"
+    },
+    {
+      "path": "firestore.rules",
+      "language": "rules",
+      "sizeLines": 166,
+      "fileCategory": "code"
+    },
+    {
+      "path": "firestore_sync.json",
+      "language": "json",
+      "sizeLines": 389,
+      "fileCategory": "config"
+    },
+    {
+      "path": "functions/index.js",
+      "language": "javascript",
+      "sizeLines": 175,
+      "fileCategory": "code"
+    },
+    {
+      "path": "functions/lib/angelProxy.js",
+      "language": "javascript",
+      "sizeLines": 103,
+      "fileCategory": "code"
+    },
+    {
+      "path": "functions/lib/dhanProxy.js",
+      "language": "javascript",
+      "sizeLines": 74,
+      "fileCategory": "code"
+    },
+    {
+      "path": "functions/lib/index.js",
+      "language": "javascript",
+      "sizeLines": 408,
+      "fileCategory": "code"
+    },
+    {
+      "path": "functions/lib/kiteProxy.js",
+      "language": "javascript",
+      "sizeLines": 140,
+      "fileCategory": "code"
+    },
+    {
+      "path": "functions/lib/src/angelProxy.js",
+      "language": "javascript",
+      "sizeLines": 103,
+      "fileCategory": "code"
+    },
+    {
+      "path": "functions/lib/src/dhanProxy.js",
+      "language": "javascript",
+      "sizeLines": 74,
+      "fileCategory": "code"
+    },
+    {
+      "path": "functions/lib/src/index.js",
+      "language": "javascript",
+      "sizeLines": 408,
+      "fileCategory": "code"
+    },
+    {
+      "path": "functions/lib/src/kiteProxy.js",
+      "language": "javascript",
+      "sizeLines": 140,
+      "fileCategory": "code"
+    },
+    {
+      "path": "functions/lib/src/upstoxProxy.js",
+      "language": "javascript",
+      "sizeLines": 319,
+      "fileCategory": "code"
+    },
+    {
+      "path": "functions/lib/upstoxProxy.js",
+      "language": "javascript",
+      "sizeLines": 319,
+      "fileCategory": "code"
+    },
+    {
+      "path": "functions/package.json",
+      "language": "json",
+      "sizeLines": 33,
+      "fileCategory": "config"
+    },
+    {
+      "path": "functions/src/angelProxy.ts",
+      "language": "typescript",
+      "sizeLines": 110,
+      "fileCategory": "code"
+    },
+    {
+      "path": "functions/src/dhanProxy.ts",
+      "language": "typescript",
+      "sizeLines": 80,
+      "fileCategory": "code"
+    },
+    {
+      "path": "functions/src/index.ts",
+      "language": "typescript",
+      "sizeLines": 413,
+      "fileCategory": "code"
+    },
+    {
+      "path": "functions/src/kiteProxy.ts",
+      "language": "typescript",
+      "sizeLines": 139,
+      "fileCategory": "code"
+    },
+    {
+      "path": "functions/src/upstoxProxy.ts",
+      "language": "typescript",
+      "sizeLines": 321,
+      "fileCategory": "code"
+    },
+    {
+      "path": "functions/tsconfig.json",
+      "language": "json",
+      "sizeLines": 18,
+      "fileCategory": "config"
+    },
+    {
+      "path": "index.html",
+      "language": "html",
+      "sizeLines": 19,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "investmant.sqlite",
+      "language": "sqlite",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "kiteProxy.ts",
+      "language": "typescript",
+      "sizeLines": 139,
+      "fileCategory": "code"
+    },
+    {
+      "path": "market-info.html",
+      "language": "html",
+      "sizeLines": 4,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "metadata.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "migrate.py",
+      "language": "python",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    },
+    {
+      "path": "package.json",
+      "language": "json",
+      "sizeLines": 73,
+      "fileCategory": "config"
+    },
+    {
+      "path": "patchHooks.ts",
+      "language": "typescript",
+      "sizeLines": 23,
+      "fileCategory": "code"
+    },
+    {
+      "path": "public/.htaccess",
+      "language": "unknown",
+      "sizeLines": 8,
+      "fileCategory": "code"
+    },
+    {
+      "path": "public/data/forexfactory_calendar.json",
+      "language": "json",
+      "sizeLines": 849,
+      "fileCategory": "config"
+    },
+    {
+      "path": "public/firebase-messaging-sw.js",
+      "language": "javascript",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "render.yaml",
+      "language": "yaml",
+      "sizeLines": 15,
+      "fileCategory": "config"
+    },
+    {
+      "path": "security_spec.md",
+      "language": "markdown",
+      "sizeLines": 36,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "send-notification.js",
+      "language": "javascript",
+      "sizeLines": 70,
+      "fileCategory": "code"
+    },
+    {
+      "path": "server.cjs",
+      "language": "javascript",
+      "sizeLines": 88,
+      "fileCategory": "code"
+    },
+    {
+      "path": "server.js",
+      "language": "javascript",
+      "sizeLines": 1677,
+      "fileCategory": "code"
+    },
+    {
+      "path": "server.ts",
+      "language": "typescript",
+      "sizeLines": 1172,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/App.tsx",
+      "language": "typescript",
+      "sizeLines": 2441,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/AnalyticsDashboard.tsx",
+      "language": "typescript",
+      "sizeLines": 311,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/BankProfiles.tsx",
+      "language": "typescript",
+      "sizeLines": 715,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/BrokerManager.tsx",
+      "language": "typescript",
+      "sizeLines": 1326,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/BudgetLimits.tsx",
+      "language": "typescript",
+      "sizeLines": 338,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ContactsManager.tsx",
+      "language": "typescript",
+      "sizeLines": 1056,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/CreditCardsEMI.tsx",
+      "language": "typescript",
+      "sizeLines": 835,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/CryptoWalletView.tsx",
+      "language": "typescript",
+      "sizeLines": 1689,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/CsvImportWizard.tsx",
+      "language": "typescript",
+      "sizeLines": 199,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/Dashboard.tsx",
+      "language": "typescript",
+      "sizeLines": 615,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ErrorBoundary.tsx",
+      "language": "typescript",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/FdRdTracker.tsx",
+      "language": "typescript",
+      "sizeLines": 429,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/GoogleDocsManager.tsx",
+      "language": "typescript",
+      "sizeLines": 113,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/GooglePicker.tsx",
+      "language": "typescript",
+      "sizeLines": 82,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/GoogleSheetsSync.tsx",
+      "language": "typescript",
+      "sizeLines": 592,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/GoogleSlidesManager.tsx",
+      "language": "typescript",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/InfoTooltip.tsx",
+      "language": "typescript",
+      "sizeLines": 23,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/Ledger/LedgerList.tsx",
+      "language": "typescript",
+      "sizeLines": 408,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/Ledger/LedgerPage.tsx",
+      "language": "typescript",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/Ledger/LedgerProfileView.tsx",
+      "language": "typescript",
+      "sizeLines": 387,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/LogEntryForm.tsx",
+      "language": "typescript",
+      "sizeLines": 273,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/MarketView.tsx",
+      "language": "typescript",
+      "sizeLines": 487,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/PendingPayments.tsx",
+      "language": "typescript",
+      "sizeLines": 111,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/PhysicalAssetsManager.tsx",
+      "language": "typescript",
+      "sizeLines": 236,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/PortfolioTracker.tsx",
+      "language": "typescript",
+      "sizeLines": 1932,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/QuickoWorkspace/AadhaarVerification.tsx",
+      "language": "typescript",
+      "sizeLines": 105,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/QuickoWorkspace/BankVerification.tsx",
+      "language": "typescript",
+      "sizeLines": 122,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/QuickoWorkspace/BrokerageParser.tsx",
+      "language": "typescript",
+      "sizeLines": 131,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/QuickoWorkspace/GstinSearch.tsx",
+      "language": "typescript",
+      "sizeLines": 124,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/QuickoWorkspace/PanVerification.tsx",
+      "language": "typescript",
+      "sizeLines": 108,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/QuickoWorkspace/QuickoCallback.tsx",
+      "language": "typescript",
+      "sizeLines": 84,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/QuickoWorkspace/QuickoConnect.tsx",
+      "language": "typescript",
+      "sizeLines": 255,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/RecurringBills.tsx",
+      "language": "typescript",
+      "sizeLines": 477,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ResearchTerminal.tsx",
+      "language": "typescript",
+      "sizeLines": 881,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/SavingsGoals.tsx",
+      "language": "typescript",
+      "sizeLines": 456,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/SettingsManager.tsx",
+      "language": "typescript",
+      "sizeLines": 514,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/SipTracker.tsx",
+      "language": "typescript",
+      "sizeLines": 492,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/StockTerminal.tsx",
+      "language": "typescript",
+      "sizeLines": 312,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/TaskCard.tsx",
+      "language": "typescript",
+      "sizeLines": 195,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/TasksSection.tsx",
+      "language": "typescript",
+      "sizeLines": 860,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/TaxCapitalGains.tsx",
+      "language": "typescript",
+      "sizeLines": 716,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/TradeExecutionModal.tsx",
+      "language": "typescript",
+      "sizeLines": 340,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/TransactionTracker.tsx",
+      "language": "typescript",
+      "sizeLines": 811,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/UpstoxOrderTicket.tsx",
+      "language": "typescript",
+      "sizeLines": 234,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/WealthForecaster.tsx",
+      "language": "typescript",
+      "sizeLines": 273,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/WorkspaceSuite.tsx",
+      "language": "typescript",
+      "sizeLines": 1908,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/auth/LoginScreen.tsx",
+      "language": "typescript",
+      "sizeLines": 174,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/auth/MigrationModal.tsx",
+      "language": "typescript",
+      "sizeLines": 121,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/auth/PinLockScreen.tsx",
+      "language": "typescript",
+      "sizeLines": 125,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/charts/AdvancedChartWidget.tsx",
+      "language": "typescript",
+      "sizeLines": 332,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/charts/CandlestickChart.tsx",
+      "language": "typescript",
+      "sizeLines": 156,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/charts/EconomicCalendarWidget.tsx",
+      "language": "typescript",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/charts/FundamentalsWidget.tsx",
+      "language": "typescript",
+      "sizeLines": 185,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/charts/MarketHeatmap.tsx",
+      "language": "typescript",
+      "sizeLines": 99,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/charts/NewsWidget.tsx",
+      "language": "typescript",
+      "sizeLines": 397,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/charts/OptionChainChart.tsx",
+      "language": "typescript",
+      "sizeLines": 330,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/charts/PLChart.tsx",
+      "language": "typescript",
+      "sizeLines": 130,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/charts/PortfolioDonutChart.tsx",
+      "language": "typescript",
+      "sizeLines": 113,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/kline/BottomPanel.tsx",
+      "language": "typescript",
+      "sizeLines": 145,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/kline/CanvasChart.tsx",
+      "language": "typescript",
+      "sizeLines": 921,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/kline/ChartSettingsModal.tsx",
+      "language": "typescript",
+      "sizeLines": 121,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/kline/ChartToolbar.tsx",
+      "language": "typescript",
+      "sizeLines": 266,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/kline/CreateAlertModal.tsx",
+      "language": "typescript",
+      "sizeLines": 137,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/kline/DrawingToolbar.tsx",
+      "language": "typescript",
+      "sizeLines": 163,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/kline/EconomicCalendar.tsx",
+      "language": "typescript",
+      "sizeLines": 290,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/kline/FinnhubNews.tsx",
+      "language": "typescript",
+      "sizeLines": 213,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/kline/IndicatorsModal.tsx",
+      "language": "typescript",
+      "sizeLines": 136,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/kline/KlineWorkspace.tsx",
+      "language": "typescript",
+      "sizeLines": 333,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/kline/SymbolSearchModal.tsx",
+      "language": "typescript",
+      "sizeLines": 162,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/kline/WatchlistSidebar.tsx",
+      "language": "typescript",
+      "sizeLines": 462,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/kline/chartConfig.ts",
+      "language": "typescript",
+      "sizeLines": 44,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/kline/mockData.ts",
+      "language": "typescript",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/layout/BottomNavigation.tsx",
+      "language": "typescript",
+      "sizeLines": 98,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/layout/ChatAssistant.tsx",
+      "language": "typescript",
+      "sizeLines": 167,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/layout/Header.tsx",
+      "language": "typescript",
+      "sizeLines": 245,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/layout/NavigationDrawer.tsx",
+      "language": "typescript",
+      "sizeLines": 277,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/layout/NotificationCenter.tsx",
+      "language": "typescript",
+      "sizeLines": 234,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/propfirm/PropFirmAccounts.tsx",
+      "language": "typescript",
+      "sizeLines": 383,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/propfirm/PropFirmChallenges.tsx",
+      "language": "typescript",
+      "sizeLines": 410,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/propfirm/PropFirmDashboard.tsx",
+      "language": "typescript",
+      "sizeLines": 159,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/propfirm/PropFirmPayouts.tsx",
+      "language": "typescript",
+      "sizeLines": 618,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/contexts/AuthContext.tsx",
+      "language": "typescript",
+      "sizeLines": 53,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/firebase-sync.ts",
+      "language": "typescript",
+      "sizeLines": 102,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/firebase.ts",
+      "language": "typescript",
+      "sizeLines": 414,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/hooks/useAuth.ts",
+      "language": "typescript",
+      "sizeLines": 78,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/hooks/useBankAccounts.ts",
+      "language": "typescript",
+      "sizeLines": 81,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/hooks/useBrokerSync.ts",
+      "language": "typescript",
+      "sizeLines": 347,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/hooks/useCollectionSync.ts",
+      "language": "typescript",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/hooks/useFallbackSync.ts",
+      "language": "typescript",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/hooks/useGoogleContacts.ts",
+      "language": "typescript",
+      "sizeLines": 134,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/hooks/useLivePrices.ts",
+      "language": "typescript",
+      "sizeLines": 112,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/hooks/usePhysicalAssets.ts",
+      "language": "typescript",
+      "sizeLines": 78,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/hooks/usePushNotifications.ts",
+      "language": "typescript",
+      "sizeLines": 129,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/hooks/useRecurringBills.ts",
+      "language": "typescript",
+      "sizeLines": 73,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/hooks/useSmsListener.ts",
+      "language": "typescript",
+      "sizeLines": 53,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/hooks/useSmsTracker.ts",
+      "language": "typescript",
+      "sizeLines": 72,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/hooks/useTransactions.ts",
+      "language": "typescript",
+      "sizeLines": 112,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/hooks/useUserSettings.ts",
+      "language": "typescript",
+      "sizeLines": 73,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/index.css",
+      "language": "css",
+      "sizeLines": 90,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "src/main.tsx",
+      "language": "typescript",
+      "sizeLines": 36,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/services/angelApi.ts",
+      "language": "typescript",
+      "sizeLines": 129,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/services/binanceApi.ts",
+      "language": "typescript",
+      "sizeLines": 425,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/services/fmpApi.ts",
+      "language": "typescript",
+      "sizeLines": 214,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/services/forexFactoryService.ts",
+      "language": "typescript",
+      "sizeLines": 151,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/services/mt5Api.ts",
+      "language": "typescript",
+      "sizeLines": 130,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/services/quickoService.ts",
+      "language": "typescript",
+      "sizeLines": 525,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/services/upstoxApi.ts",
+      "language": "typescript",
+      "sizeLines": 136,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/types.ts",
+      "language": "typescript",
+      "sizeLines": 366,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/utils/cloudSync.ts",
+      "language": "typescript",
+      "sizeLines": 156,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/utils/csvExport.ts",
+      "language": "typescript",
+      "sizeLines": 93,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/utils/dateUtils.ts",
+      "language": "typescript",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/utils/fallbackManager.ts",
+      "language": "typescript",
+      "sizeLines": 115,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/utils/financeHelpers.ts",
+      "language": "typescript",
+      "sizeLines": 352,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/utils/proxyFetch.ts",
+      "language": "typescript",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/utils/technicalAnalysis.ts",
+      "language": "typescript",
+      "sizeLines": 137,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/utils/useTaskReminder.ts",
+      "language": "typescript",
+      "sizeLines": 141,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/vite-env.d.ts",
+      "language": "typescript",
+      "sizeLines": 7,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/website/AboutUs.tsx",
+      "language": "typescript",
+      "sizeLines": 72,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/website/ContactUs.tsx",
+      "language": "typescript",
+      "sizeLines": 135,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/website/CookiesPolicy.tsx",
+      "language": "typescript",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/website/HomePage.tsx",
+      "language": "typescript",
+      "sizeLines": 159,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/website/PrivacyPolicy.tsx",
+      "language": "typescript",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/website/TermsConditions.tsx",
+      "language": "typescript",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/website/WebsiteLayout.tsx",
+      "language": "typescript",
+      "sizeLines": 108,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test_btc.ts",
+      "language": "typescript",
+      "sizeLines": 16,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tsconfig.json",
+      "language": "json",
+      "sizeLines": 28,
+      "fileCategory": "config"
+    },
+    {
+      "path": "upstoxProxy.ts",
+      "language": "typescript",
+      "sizeLines": 446,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vite.config.ts",
+      "language": "typescript",
+      "sizeLines": 109,
+      "fileCategory": "code"
+    }
+  ],
+  "totalFiles": 296,
+  "filteredByIgnore": 0,
+  "estimatedComplexity": "large",
+  "failures": [],
+  "stats": {
+    "filesScanned": 296,
+    "byCategory": {
+      "docs": 83,
+      "code": 175,
+      "infra": 2,
+      "config": 31,
+      "script": 2,
+      "markup": 3
+    },
+    "byLanguage": {
+      "markdown": 82,
+      "pbtxt": 1,
+      "unknown": 5,
+      "config": 1,
+      "dockerfile": 1,
+      "gradle": 6,
+      "json": 11,
+      "pro": 1,
+      "java": 3,
+      "xml": 10,
+      "properties": 2,
+      "jar": 1,
+      "batch": 1,
+      "typescript": 138,
+      "python": 6,
+      "txt": 1,
+      "powershell": 1,
+      "javascript": 19,
+      "rules": 1,
+      "html": 2,
+      "sqlite": 1,
+      "yaml": 1,
+      "css": 1
+    }
+  }
+}

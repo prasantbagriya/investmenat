@@ -1,0 +1,60 @@
+{
+  "nodes": [
+    {
+      "id": "document:.agents/skills/firebase_auth_basics/references/client_sdk_android.md",
+      "type": "document",
+      "name": "client_sdk_android.md",
+      "filePath": ".agents/skills/firebase_auth_basics/references/client_sdk_android.md",
+      "summary": "Documentation describing client_sdk_android.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_auth_basics/references/client_sdk_web.md",
+      "type": "document",
+      "name": "client_sdk_web.md",
+      "filePath": ".agents/skills/firebase_auth_basics/references/client_sdk_web.md",
+      "summary": "Documentation describing client_sdk_web.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:.agents/skills/firebase_auth_basics/references/flutter_setup.md",
+      "type": "document",
+      "name": "flutter_setup.md",
+      "filePath": ".agents/skills/firebase_auth_basics/references/flutter_setup.md",
+      "summary": "Documentation describing flutter_setup.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_auth_basics/references/ios_setup.md",
+      "type": "document",
+      "name": "ios_setup.md",
+      "filePath": ".agents/skills/firebase_auth_basics/references/ios_setup.md",
+      "summary": "Documentation describing ios_setup.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_auth_basics/references/security_rules.md",
+      "type": "document",
+      "name": "security_rules.md",
+      "filePath": ".agents/skills/firebase_auth_basics/references/security_rules.md",
+      "summary": "Documentation describing security_rules.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

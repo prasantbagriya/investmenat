@@ -1,0 +1,862 @@
+{
+  "nodes": [
+    {
+      "id": "file:src/components/auth/PinLockScreen.tsx",
+      "type": "file",
+      "name": "PinLockScreen.tsx",
+      "filePath": "src/components/auth/PinLockScreen.tsx",
+      "summary": "React UI component for PinLockScreen.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/auth/PinLockScreen.tsx:PinLockScreen",
+      "type": "function",
+      "name": "PinLockScreen",
+      "filePath": "src/components/auth/PinLockScreen.tsx",
+      "summary": "Function PinLockScreen in PinLockScreen.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/charts/AdvancedChartWidget.tsx",
+      "type": "file",
+      "name": "AdvancedChartWidget.tsx",
+      "filePath": "src/components/charts/AdvancedChartWidget.tsx",
+      "summary": "React UI component for AdvancedChartWidget.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/charts/AdvancedChartWidget.tsx:AdvancedChartWidget",
+      "type": "function",
+      "name": "AdvancedChartWidget",
+      "filePath": "src/components/charts/AdvancedChartWidget.tsx",
+      "summary": "Function AdvancedChartWidget in AdvancedChartWidget.tsx",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/charts/CandlestickChart.tsx",
+      "type": "file",
+      "name": "CandlestickChart.tsx",
+      "filePath": "src/components/charts/CandlestickChart.tsx",
+      "summary": "React UI component for CandlestickChart.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/charts/CandlestickChart.tsx:CandlestickChart",
+      "type": "function",
+      "name": "CandlestickChart",
+      "filePath": "src/components/charts/CandlestickChart.tsx",
+      "summary": "Function CandlestickChart in CandlestickChart.tsx",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/charts/EconomicCalendarWidget.tsx",
+      "type": "file",
+      "name": "EconomicCalendarWidget.tsx",
+      "filePath": "src/components/charts/EconomicCalendarWidget.tsx",
+      "summary": "React UI component for EconomicCalendarWidget.",
+      "tags": [
+        "component",
+        "financial-data"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/charts/EconomicCalendarWidget.tsx:EconomicCalendarWidget",
+      "type": "function",
+      "name": "EconomicCalendarWidget",
+      "filePath": "src/components/charts/EconomicCalendarWidget.tsx",
+      "summary": "Function EconomicCalendarWidget in EconomicCalendarWidget.tsx",
+      "tags": [
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/charts/FundamentalsWidget.tsx",
+      "type": "file",
+      "name": "FundamentalsWidget.tsx",
+      "filePath": "src/components/charts/FundamentalsWidget.tsx",
+      "summary": "React UI component for FundamentalsWidget.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/charts/FundamentalsWidget.tsx:FundamentalsWidget",
+      "type": "function",
+      "name": "FundamentalsWidget",
+      "filePath": "src/components/charts/FundamentalsWidget.tsx",
+      "summary": "Function FundamentalsWidget in FundamentalsWidget.tsx",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/charts/MarketHeatmap.tsx",
+      "type": "file",
+      "name": "MarketHeatmap.tsx",
+      "filePath": "src/components/charts/MarketHeatmap.tsx",
+      "summary": "React UI component for MarketHeatmap.",
+      "tags": [
+        "component",
+        "financial-data"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/charts/MarketHeatmap.tsx:MarketHeatmap",
+      "type": "function",
+      "name": "MarketHeatmap",
+      "filePath": "src/components/charts/MarketHeatmap.tsx",
+      "summary": "Function MarketHeatmap in MarketHeatmap.tsx",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/charts/NewsWidget.tsx",
+      "type": "file",
+      "name": "NewsWidget.tsx",
+      "filePath": "src/components/charts/NewsWidget.tsx",
+      "summary": "React UI component for NewsWidget.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/charts/NewsWidget.tsx:NewsWidget",
+      "type": "function",
+      "name": "NewsWidget",
+      "filePath": "src/components/charts/NewsWidget.tsx",
+      "summary": "Function NewsWidget in NewsWidget.tsx",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/charts/OptionChainChart.tsx",
+      "type": "file",
+      "name": "OptionChainChart.tsx",
+      "filePath": "src/components/charts/OptionChainChart.tsx",
+      "summary": "React UI component for OptionChainChart.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/charts/OptionChainChart.tsx:OptionChainChart",
+      "type": "function",
+      "name": "OptionChainChart",
+      "filePath": "src/components/charts/OptionChainChart.tsx",
+      "summary": "Function OptionChainChart in OptionChainChart.tsx",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/charts/PLChart.tsx",
+      "type": "file",
+      "name": "PLChart.tsx",
+      "filePath": "src/components/charts/PLChart.tsx",
+      "summary": "React UI component for PLChart.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/charts/PLChart.tsx:PLChart",
+      "type": "function",
+      "name": "PLChart",
+      "filePath": "src/components/charts/PLChart.tsx",
+      "summary": "Function PLChart in PLChart.tsx",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/charts/PortfolioDonutChart.tsx",
+      "type": "file",
+      "name": "PortfolioDonutChart.tsx",
+      "filePath": "src/components/charts/PortfolioDonutChart.tsx",
+      "summary": "React UI component for PortfolioDonutChart.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/charts/PortfolioDonutChart.tsx:PortfolioDonutChart",
+      "type": "function",
+      "name": "PortfolioDonutChart",
+      "filePath": "src/components/charts/PortfolioDonutChart.tsx",
+      "summary": "Function PortfolioDonutChart in PortfolioDonutChart.tsx",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/kline/BottomPanel.tsx",
+      "type": "file",
+      "name": "BottomPanel.tsx",
+      "filePath": "src/components/kline/BottomPanel.tsx",
+      "summary": "React UI component for BottomPanel.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/kline/BottomPanel.tsx:BottomPanel",
+      "type": "function",
+      "name": "BottomPanel",
+      "filePath": "src/components/kline/BottomPanel.tsx",
+      "summary": "Function BottomPanel in BottomPanel.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/kline/CanvasChart.tsx",
+      "type": "file",
+      "name": "CanvasChart.tsx",
+      "filePath": "src/components/kline/CanvasChart.tsx",
+      "summary": "React UI component for CanvasChart.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/kline/CanvasChart.tsx:CanvasChart",
+      "type": "function",
+      "name": "CanvasChart",
+      "filePath": "src/components/kline/CanvasChart.tsx",
+      "summary": "Function CanvasChart in CanvasChart.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/kline/ChartSettingsModal.tsx",
+      "type": "file",
+      "name": "ChartSettingsModal.tsx",
+      "filePath": "src/components/kline/ChartSettingsModal.tsx",
+      "summary": "React UI component for ChartSettingsModal.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/kline/ChartSettingsModal.tsx:ChartSettingsModal",
+      "type": "function",
+      "name": "ChartSettingsModal",
+      "filePath": "src/components/kline/ChartSettingsModal.tsx",
+      "summary": "Function ChartSettingsModal in ChartSettingsModal.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/kline/ChartToolbar.tsx",
+      "type": "file",
+      "name": "ChartToolbar.tsx",
+      "filePath": "src/components/kline/ChartToolbar.tsx",
+      "summary": "React UI component for ChartToolbar.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/kline/ChartToolbar.tsx:ChartToolbar",
+      "type": "function",
+      "name": "ChartToolbar",
+      "filePath": "src/components/kline/ChartToolbar.tsx",
+      "summary": "Function ChartToolbar in ChartToolbar.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/kline/CreateAlertModal.tsx",
+      "type": "file",
+      "name": "CreateAlertModal.tsx",
+      "filePath": "src/components/kline/CreateAlertModal.tsx",
+      "summary": "React UI component for CreateAlertModal.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/kline/CreateAlertModal.tsx:CreateAlertModal",
+      "type": "function",
+      "name": "CreateAlertModal",
+      "filePath": "src/components/kline/CreateAlertModal.tsx",
+      "summary": "Function CreateAlertModal in CreateAlertModal.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/kline/DrawingToolbar.tsx",
+      "type": "file",
+      "name": "DrawingToolbar.tsx",
+      "filePath": "src/components/kline/DrawingToolbar.tsx",
+      "summary": "React UI component for DrawingToolbar.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/kline/DrawingToolbar.tsx:DrawingToolbar",
+      "type": "function",
+      "name": "DrawingToolbar",
+      "filePath": "src/components/kline/DrawingToolbar.tsx",
+      "summary": "Function DrawingToolbar in DrawingToolbar.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/kline/EconomicCalendar.tsx",
+      "type": "file",
+      "name": "EconomicCalendar.tsx",
+      "filePath": "src/components/kline/EconomicCalendar.tsx",
+      "summary": "React UI component for EconomicCalendar.",
+      "tags": [
+        "component",
+        "financial-data"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/kline/EconomicCalendar.tsx:EconomicCalendar",
+      "type": "function",
+      "name": "EconomicCalendar",
+      "filePath": "src/components/kline/EconomicCalendar.tsx",
+      "summary": "Function EconomicCalendar in EconomicCalendar.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/kline/FinnhubNews.tsx",
+      "type": "file",
+      "name": "FinnhubNews.tsx",
+      "filePath": "src/components/kline/FinnhubNews.tsx",
+      "summary": "React UI component for FinnhubNews.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/kline/FinnhubNews.tsx:FinnhubNews",
+      "type": "function",
+      "name": "FinnhubNews",
+      "filePath": "src/components/kline/FinnhubNews.tsx",
+      "summary": "Function FinnhubNews in FinnhubNews.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/kline/IndicatorsModal.tsx",
+      "type": "file",
+      "name": "IndicatorsModal.tsx",
+      "filePath": "src/components/kline/IndicatorsModal.tsx",
+      "summary": "React UI component for IndicatorsModal.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/kline/IndicatorsModal.tsx:IndicatorsModal",
+      "type": "function",
+      "name": "IndicatorsModal",
+      "filePath": "src/components/kline/IndicatorsModal.tsx",
+      "summary": "Function IndicatorsModal in IndicatorsModal.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/kline/KlineWorkspace.tsx",
+      "type": "file",
+      "name": "KlineWorkspace.tsx",
+      "filePath": "src/components/kline/KlineWorkspace.tsx",
+      "summary": "React UI component for KlineWorkspace.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/kline/KlineWorkspace.tsx:getPeriod",
+      "type": "function",
+      "name": "getPeriod",
+      "filePath": "src/components/kline/KlineWorkspace.tsx",
+      "summary": "Function getPeriod in KlineWorkspace.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/kline/KlineWorkspace.tsx:KlineWorkspace",
+      "type": "function",
+      "name": "KlineWorkspace",
+      "filePath": "src/components/kline/KlineWorkspace.tsx",
+      "summary": "Function KlineWorkspace in KlineWorkspace.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/kline/SymbolSearchModal.tsx",
+      "type": "file",
+      "name": "SymbolSearchModal.tsx",
+      "filePath": "src/components/kline/SymbolSearchModal.tsx",
+      "summary": "React UI component for SymbolSearchModal.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/kline/SymbolSearchModal.tsx:SymbolSearchModal",
+      "type": "function",
+      "name": "SymbolSearchModal",
+      "filePath": "src/components/kline/SymbolSearchModal.tsx",
+      "summary": "Function SymbolSearchModal in SymbolSearchModal.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/kline/WatchlistSidebar.tsx",
+      "type": "file",
+      "name": "WatchlistSidebar.tsx",
+      "filePath": "src/components/kline/WatchlistSidebar.tsx",
+      "summary": "React UI component for WatchlistSidebar.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/kline/WatchlistSidebar.tsx:WatchlistSidebar",
+      "type": "function",
+      "name": "WatchlistSidebar",
+      "filePath": "src/components/kline/WatchlistSidebar.tsx",
+      "summary": "Function WatchlistSidebar in WatchlistSidebar.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/kline/chartConfig.ts",
+      "type": "file",
+      "name": "chartConfig.ts",
+      "filePath": "src/components/kline/chartConfig.ts",
+      "summary": "React UI component for chartConfig.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/kline/mockData.ts",
+      "type": "file",
+      "name": "mockData.ts",
+      "filePath": "src/components/kline/mockData.ts",
+      "summary": "React UI component for mockData.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/kline/mockData.ts:generateMockData",
+      "type": "function",
+      "name": "generateMockData",
+      "filePath": "src/components/kline/mockData.ts",
+      "summary": "Function generateMockData in mockData.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/layout/BottomNavigation.tsx",
+      "type": "file",
+      "name": "BottomNavigation.tsx",
+      "filePath": "src/components/layout/BottomNavigation.tsx",
+      "summary": "React UI component for BottomNavigation.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/layout/BottomNavigation.tsx:BottomNavigation",
+      "type": "function",
+      "name": "BottomNavigation",
+      "filePath": "src/components/layout/BottomNavigation.tsx",
+      "summary": "Function BottomNavigation in BottomNavigation.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/components/auth/PinLockScreen.tsx",
+      "target": "function:src/components/auth/PinLockScreen.tsx:PinLockScreen",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/auth/PinLockScreen.tsx",
+      "target": "function:src/components/auth/PinLockScreen.tsx:PinLockScreen",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/charts/AdvancedChartWidget.tsx",
+      "target": "function:src/components/charts/AdvancedChartWidget.tsx:AdvancedChartWidget",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/charts/CandlestickChart.tsx",
+      "target": "function:src/components/charts/CandlestickChart.tsx:CandlestickChart",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/charts/EconomicCalendarWidget.tsx",
+      "target": "function:src/components/charts/EconomicCalendarWidget.tsx:EconomicCalendarWidget",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/charts/FundamentalsWidget.tsx",
+      "target": "function:src/components/charts/FundamentalsWidget.tsx:FundamentalsWidget",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/charts/MarketHeatmap.tsx",
+      "target": "function:src/components/charts/MarketHeatmap.tsx:MarketHeatmap",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/charts/NewsWidget.tsx",
+      "target": "function:src/components/charts/NewsWidget.tsx:NewsWidget",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/charts/OptionChainChart.tsx",
+      "target": "function:src/components/charts/OptionChainChart.tsx:OptionChainChart",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/charts/PLChart.tsx",
+      "target": "function:src/components/charts/PLChart.tsx:PLChart",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/charts/PortfolioDonutChart.tsx",
+      "target": "function:src/components/charts/PortfolioDonutChart.tsx:PortfolioDonutChart",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/kline/BottomPanel.tsx",
+      "target": "function:src/components/kline/BottomPanel.tsx:BottomPanel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/kline/BottomPanel.tsx",
+      "target": "function:src/components/kline/BottomPanel.tsx:BottomPanel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/kline/CanvasChart.tsx",
+      "target": "function:src/components/kline/CanvasChart.tsx:CanvasChart",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/kline/CanvasChart.tsx",
+      "target": "function:src/components/kline/CanvasChart.tsx:CanvasChart",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/kline/ChartSettingsModal.tsx",
+      "target": "function:src/components/kline/ChartSettingsModal.tsx:ChartSettingsModal",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/kline/ChartSettingsModal.tsx",
+      "target": "function:src/components/kline/ChartSettingsModal.tsx:ChartSettingsModal",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/kline/ChartToolbar.tsx",
+      "target": "function:src/components/kline/ChartToolbar.tsx:ChartToolbar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/kline/ChartToolbar.tsx",
+      "target": "function:src/components/kline/ChartToolbar.tsx:ChartToolbar",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/kline/CreateAlertModal.tsx",
+      "target": "function:src/components/kline/CreateAlertModal.tsx:CreateAlertModal",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/kline/CreateAlertModal.tsx",
+      "target": "function:src/components/kline/CreateAlertModal.tsx:CreateAlertModal",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/kline/DrawingToolbar.tsx",
+      "target": "function:src/components/kline/DrawingToolbar.tsx:DrawingToolbar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/kline/DrawingToolbar.tsx",
+      "target": "function:src/components/kline/DrawingToolbar.tsx:DrawingToolbar",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/kline/EconomicCalendar.tsx",
+      "target": "function:src/components/kline/EconomicCalendar.tsx:EconomicCalendar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/kline/EconomicCalendar.tsx",
+      "target": "function:src/components/kline/EconomicCalendar.tsx:EconomicCalendar",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/kline/FinnhubNews.tsx",
+      "target": "function:src/components/kline/FinnhubNews.tsx:FinnhubNews",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/kline/FinnhubNews.tsx",
+      "target": "function:src/components/kline/FinnhubNews.tsx:FinnhubNews",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/kline/IndicatorsModal.tsx",
+      "target": "function:src/components/kline/IndicatorsModal.tsx:IndicatorsModal",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/kline/IndicatorsModal.tsx",
+      "target": "function:src/components/kline/IndicatorsModal.tsx:IndicatorsModal",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/kline/KlineWorkspace.tsx",
+      "target": "function:src/components/kline/KlineWorkspace.tsx:getPeriod",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/kline/KlineWorkspace.tsx",
+      "target": "function:src/components/kline/KlineWorkspace.tsx:getPeriod",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/kline/KlineWorkspace.tsx",
+      "target": "function:src/components/kline/KlineWorkspace.tsx:KlineWorkspace",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/kline/KlineWorkspace.tsx",
+      "target": "function:src/components/kline/KlineWorkspace.tsx:KlineWorkspace",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/kline/SymbolSearchModal.tsx",
+      "target": "function:src/components/kline/SymbolSearchModal.tsx:SymbolSearchModal",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/kline/SymbolSearchModal.tsx",
+      "target": "function:src/components/kline/SymbolSearchModal.tsx:SymbolSearchModal",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/kline/WatchlistSidebar.tsx",
+      "target": "function:src/components/kline/WatchlistSidebar.tsx:WatchlistSidebar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/kline/WatchlistSidebar.tsx",
+      "target": "function:src/components/kline/WatchlistSidebar.tsx:WatchlistSidebar",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/kline/mockData.ts",
+      "target": "function:src/components/kline/mockData.ts:generateMockData",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/kline/mockData.ts",
+      "target": "function:src/components/kline/mockData.ts:generateMockData",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/layout/BottomNavigation.tsx",
+      "target": "function:src/components/layout/BottomNavigation.tsx:BottomNavigation",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/layout/BottomNavigation.tsx",
+      "target": "function:src/components/layout/BottomNavigation.tsx:BottomNavigation",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

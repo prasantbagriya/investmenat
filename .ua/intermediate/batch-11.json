@@ -1,0 +1,89 @@
+{
+  "nodes": [
+    {
+      "id": "document:.agents/skills/firebase_firestore/references/standard/android_sdk_usage.md",
+      "type": "document",
+      "name": "android_sdk_usage.md",
+      "filePath": ".agents/skills/firebase_firestore/references/standard/android_sdk_usage.md",
+      "summary": "Documentation describing android_sdk_usage.md.",
+      "tags": [
+        "documentation",
+        "state-management"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_firestore/references/standard/flutter_setup.md",
+      "type": "document",
+      "name": "flutter_setup.md",
+      "filePath": ".agents/skills/firebase_firestore/references/standard/flutter_setup.md",
+      "summary": "Documentation describing flutter_setup.md.",
+      "tags": [
+        "documentation",
+        "state-management"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_firestore/references/standard/indexes.md",
+      "type": "document",
+      "name": "indexes.md",
+      "filePath": ".agents/skills/firebase_firestore/references/standard/indexes.md",
+      "summary": "Documentation describing indexes.md.",
+      "tags": [
+        "documentation",
+        "state-management"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_firestore/references/standard/ios_setup.md",
+      "type": "document",
+      "name": "ios_setup.md",
+      "filePath": ".agents/skills/firebase_firestore/references/standard/ios_setup.md",
+      "summary": "Documentation describing ios_setup.md.",
+      "tags": [
+        "documentation",
+        "state-management"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_firestore/references/standard/provisioning.md",
+      "type": "document",
+      "name": "provisioning.md",
+      "filePath": ".agents/skills/firebase_firestore/references/standard/provisioning.md",
+      "summary": "Documentation describing provisioning.md.",
+      "tags": [
+        "documentation",
+        "state-management"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_firestore/references/standard/security_rules.md",
+      "type": "document",
+      "name": "security_rules.md",
+      "filePath": ".agents/skills/firebase_firestore/references/standard/security_rules.md",
+      "summary": "Documentation describing security_rules.md.",
+      "tags": [
+        "documentation",
+        "state-management"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:.agents/skills/firebase_firestore/references/standard/web_sdk_usage.md",
+      "type": "document",
+      "name": "web_sdk_usage.md",
+      "filePath": ".agents/skills/firebase_firestore/references/standard/web_sdk_usage.md",
+      "summary": "Documentation describing web_sdk_usage.md.",
+      "tags": [
+        "documentation",
+        "state-management"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": []
+}

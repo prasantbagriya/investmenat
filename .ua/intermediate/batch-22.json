@@ -1,0 +1,1386 @@
+{
+  "nodes": [
+    {
+      "id": "file:src/components/layout/ChatAssistant.tsx",
+      "type": "file",
+      "name": "ChatAssistant.tsx",
+      "filePath": "src/components/layout/ChatAssistant.tsx",
+      "summary": "React UI component for ChatAssistant.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/layout/ChatAssistant.tsx:ChatAssistant",
+      "type": "function",
+      "name": "ChatAssistant",
+      "filePath": "src/components/layout/ChatAssistant.tsx",
+      "summary": "Function ChatAssistant in ChatAssistant.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/layout/Header.tsx",
+      "type": "file",
+      "name": "Header.tsx",
+      "filePath": "src/components/layout/Header.tsx",
+      "summary": "React UI component for Header.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/layout/Header.tsx:Header",
+      "type": "function",
+      "name": "Header",
+      "filePath": "src/components/layout/Header.tsx",
+      "summary": "Function Header in Header.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/layout/NavigationDrawer.tsx",
+      "type": "file",
+      "name": "NavigationDrawer.tsx",
+      "filePath": "src/components/layout/NavigationDrawer.tsx",
+      "summary": "React UI component for NavigationDrawer.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/layout/NavigationDrawer.tsx:NavigationDrawer",
+      "type": "function",
+      "name": "NavigationDrawer",
+      "filePath": "src/components/layout/NavigationDrawer.tsx",
+      "summary": "Function NavigationDrawer in NavigationDrawer.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/layout/NavigationDrawer.tsx:NavButton",
+      "type": "function",
+      "name": "NavButton",
+      "filePath": "src/components/layout/NavigationDrawer.tsx",
+      "summary": "Function NavButton in NavigationDrawer.tsx",
+      "tags": [
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/layout/NotificationCenter.tsx",
+      "type": "file",
+      "name": "NotificationCenter.tsx",
+      "filePath": "src/components/layout/NotificationCenter.tsx",
+      "summary": "React UI component for NotificationCenter.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/layout/NotificationCenter.tsx:NotificationCenter",
+      "type": "function",
+      "name": "NotificationCenter",
+      "filePath": "src/components/layout/NotificationCenter.tsx",
+      "summary": "Function NotificationCenter in NotificationCenter.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/propfirm/PropFirmAccounts.tsx",
+      "type": "file",
+      "name": "PropFirmAccounts.tsx",
+      "filePath": "src/components/propfirm/PropFirmAccounts.tsx",
+      "summary": "React UI component for PropFirmAccounts.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/propfirm/PropFirmAccounts.tsx:PropFirmAccounts",
+      "type": "function",
+      "name": "PropFirmAccounts",
+      "filePath": "src/components/propfirm/PropFirmAccounts.tsx",
+      "summary": "Function PropFirmAccounts in PropFirmAccounts.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/propfirm/PropFirmChallenges.tsx",
+      "type": "file",
+      "name": "PropFirmChallenges.tsx",
+      "filePath": "src/components/propfirm/PropFirmChallenges.tsx",
+      "summary": "React UI component for PropFirmChallenges.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/propfirm/PropFirmChallenges.tsx:PropFirmChallenges",
+      "type": "function",
+      "name": "PropFirmChallenges",
+      "filePath": "src/components/propfirm/PropFirmChallenges.tsx",
+      "summary": "Function PropFirmChallenges in PropFirmChallenges.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/propfirm/PropFirmDashboard.tsx",
+      "type": "file",
+      "name": "PropFirmDashboard.tsx",
+      "filePath": "src/components/propfirm/PropFirmDashboard.tsx",
+      "summary": "React UI component for PropFirmDashboard.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/propfirm/PropFirmDashboard.tsx:PropFirmDashboard",
+      "type": "function",
+      "name": "PropFirmDashboard",
+      "filePath": "src/components/propfirm/PropFirmDashboard.tsx",
+      "summary": "Function PropFirmDashboard in PropFirmDashboard.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/propfirm/PropFirmDashboard.tsx:KPICard",
+      "type": "function",
+      "name": "KPICard",
+      "filePath": "src/components/propfirm/PropFirmDashboard.tsx",
+      "summary": "Function KPICard in PropFirmDashboard.tsx",
+      "tags": [
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/propfirm/PropFirmPayouts.tsx",
+      "type": "file",
+      "name": "PropFirmPayouts.tsx",
+      "filePath": "src/components/propfirm/PropFirmPayouts.tsx",
+      "summary": "React UI component for PropFirmPayouts.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/propfirm/PropFirmPayouts.tsx:PropFirmPayouts",
+      "type": "function",
+      "name": "PropFirmPayouts",
+      "filePath": "src/components/propfirm/PropFirmPayouts.tsx",
+      "summary": "Function PropFirmPayouts in PropFirmPayouts.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/contexts/AuthContext.tsx",
+      "type": "file",
+      "name": "AuthContext.tsx",
+      "filePath": "src/contexts/AuthContext.tsx",
+      "summary": "React UI component for AuthContext.",
+      "tags": [
+        "component",
+        "state-management"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/contexts/AuthContext.tsx:AuthProvider",
+      "type": "function",
+      "name": "AuthProvider",
+      "filePath": "src/contexts/AuthContext.tsx",
+      "summary": "Function AuthProvider in AuthContext.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/contexts/AuthContext.tsx:useAuthContext",
+      "type": "function",
+      "name": "useAuthContext",
+      "filePath": "src/contexts/AuthContext.tsx",
+      "summary": "Function useAuthContext in AuthContext.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/firebase-sync.ts",
+      "type": "file",
+      "name": "firebase-sync.ts",
+      "filePath": "src/firebase-sync.ts",
+      "summary": "firebase-sync.ts in src/firebase-sync.ts",
+      "tags": [
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/firebase-sync.ts:syncToSqlite",
+      "type": "function",
+      "name": "syncToSqlite",
+      "filePath": "src/firebase-sync.ts",
+      "summary": "Function syncToSqlite in firebase-sync.ts",
+      "tags": [
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/firebase-sync.ts:setDoc",
+      "type": "function",
+      "name": "setDoc",
+      "filePath": "src/firebase-sync.ts",
+      "summary": "Function setDoc in firebase-sync.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/firebase-sync.ts:updateDoc",
+      "type": "function",
+      "name": "updateDoc",
+      "filePath": "src/firebase-sync.ts",
+      "summary": "Function updateDoc in firebase-sync.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/firebase-sync.ts:deleteDoc",
+      "type": "function",
+      "name": "deleteDoc",
+      "filePath": "src/firebase-sync.ts",
+      "summary": "Function deleteDoc in firebase-sync.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/firebase.ts",
+      "type": "file",
+      "name": "firebase.ts",
+      "filePath": "src/firebase.ts",
+      "summary": "firebase.ts in src/firebase.ts",
+      "tags": [
+        "code"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/firebase.ts:getAccessToken",
+      "type": "function",
+      "name": "getAccessToken",
+      "filePath": "src/firebase.ts",
+      "summary": "Function getAccessToken in firebase.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/firebase.ts:setAccessToken",
+      "type": "function",
+      "name": "setAccessToken",
+      "filePath": "src/firebase.ts",
+      "summary": "Function setAccessToken in firebase.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/firebase.ts:handleRedirectResult",
+      "type": "function",
+      "name": "handleRedirectResult",
+      "filePath": "src/firebase.ts",
+      "summary": "Function handleRedirectResult in firebase.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/firebase.ts:signInWithGoogle",
+      "type": "function",
+      "name": "signInWithGoogle",
+      "filePath": "src/firebase.ts",
+      "summary": "Function signInWithGoogle in firebase.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/firebase.ts:signInGuestAnonymously",
+      "type": "function",
+      "name": "signInGuestAnonymously",
+      "filePath": "src/firebase.ts",
+      "summary": "Function signInGuestAnonymously in firebase.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/firebase.ts:linkGoogleAccount",
+      "type": "function",
+      "name": "linkGoogleAccount",
+      "filePath": "src/firebase.ts",
+      "summary": "Function linkGoogleAccount in firebase.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/firebase.ts:authorizeGoogleOffline",
+      "type": "function",
+      "name": "authorizeGoogleOffline",
+      "filePath": "src/firebase.ts",
+      "summary": "Function authorizeGoogleOffline in firebase.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/firebase.ts:refreshGoogleTokenIfNeeded",
+      "type": "function",
+      "name": "refreshGoogleTokenIfNeeded",
+      "filePath": "src/firebase.ts",
+      "summary": "Function refreshGoogleTokenIfNeeded in firebase.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/firebase.ts:logout",
+      "type": "function",
+      "name": "logout",
+      "filePath": "src/firebase.ts",
+      "summary": "Function logout in firebase.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/firebase.ts:handleFirestoreError",
+      "type": "function",
+      "name": "handleFirestoreError",
+      "filePath": "src/firebase.ts",
+      "summary": "Function handleFirestoreError in firebase.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/firebase.ts:testConnection",
+      "type": "function",
+      "name": "testConnection",
+      "filePath": "src/firebase.ts",
+      "summary": "Function testConnection in firebase.ts",
+      "tags": [
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/hooks/useAuth.ts",
+      "type": "file",
+      "name": "useAuth.ts",
+      "filePath": "src/hooks/useAuth.ts",
+      "summary": "React custom hook providing state and lifecycle logic.",
+      "tags": [
+        "hook"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/hooks/useAuth.ts:useAuth",
+      "type": "function",
+      "name": "useAuth",
+      "filePath": "src/hooks/useAuth.ts",
+      "summary": "Function useAuth in useAuth.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/hooks/useBankAccounts.ts",
+      "type": "file",
+      "name": "useBankAccounts.ts",
+      "filePath": "src/hooks/useBankAccounts.ts",
+      "summary": "React custom hook providing state and lifecycle logic.",
+      "tags": [
+        "hook"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/hooks/useBankAccounts.ts:useBankAccounts",
+      "type": "function",
+      "name": "useBankAccounts",
+      "filePath": "src/hooks/useBankAccounts.ts",
+      "summary": "Function useBankAccounts in useBankAccounts.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/hooks/useBrokerSync.ts",
+      "type": "file",
+      "name": "useBrokerSync.ts",
+      "filePath": "src/hooks/useBrokerSync.ts",
+      "summary": "React custom hook providing state and lifecycle logic.",
+      "tags": [
+        "hook"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/hooks/useBrokerSync.ts:useBrokerSync",
+      "type": "function",
+      "name": "useBrokerSync",
+      "filePath": "src/hooks/useBrokerSync.ts",
+      "summary": "Function useBrokerSync in useBrokerSync.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/hooks/useCollectionSync.ts",
+      "type": "file",
+      "name": "useCollectionSync.ts",
+      "filePath": "src/hooks/useCollectionSync.ts",
+      "summary": "React custom hook providing state and lifecycle logic.",
+      "tags": [
+        "hook"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/hooks/useCollectionSync.ts:useCollectionSync",
+      "type": "function",
+      "name": "useCollectionSync",
+      "filePath": "src/hooks/useCollectionSync.ts",
+      "summary": "Function useCollectionSync in useCollectionSync.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/hooks/useFallbackSync.ts",
+      "type": "file",
+      "name": "useFallbackSync.ts",
+      "filePath": "src/hooks/useFallbackSync.ts",
+      "summary": "React custom hook providing state and lifecycle logic.",
+      "tags": [
+        "hook"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/hooks/useFallbackSync.ts:useFallbackSync",
+      "type": "function",
+      "name": "useFallbackSync",
+      "filePath": "src/hooks/useFallbackSync.ts",
+      "summary": "Function useFallbackSync in useFallbackSync.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/hooks/useGoogleContacts.ts",
+      "type": "file",
+      "name": "useGoogleContacts.ts",
+      "filePath": "src/hooks/useGoogleContacts.ts",
+      "summary": "React custom hook providing state and lifecycle logic.",
+      "tags": [
+        "hook"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/hooks/useGoogleContacts.ts:useGoogleContacts",
+      "type": "function",
+      "name": "useGoogleContacts",
+      "filePath": "src/hooks/useGoogleContacts.ts",
+      "summary": "Function useGoogleContacts in useGoogleContacts.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/hooks/useLivePrices.ts",
+      "type": "file",
+      "name": "useLivePrices.ts",
+      "filePath": "src/hooks/useLivePrices.ts",
+      "summary": "React custom hook providing state and lifecycle logic.",
+      "tags": [
+        "hook"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/hooks/useLivePrices.ts:useLivePrices",
+      "type": "function",
+      "name": "useLivePrices",
+      "filePath": "src/hooks/useLivePrices.ts",
+      "summary": "Function useLivePrices in useLivePrices.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/hooks/usePhysicalAssets.ts",
+      "type": "file",
+      "name": "usePhysicalAssets.ts",
+      "filePath": "src/hooks/usePhysicalAssets.ts",
+      "summary": "React custom hook providing state and lifecycle logic.",
+      "tags": [
+        "hook"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/hooks/usePhysicalAssets.ts:usePhysicalAssets",
+      "type": "function",
+      "name": "usePhysicalAssets",
+      "filePath": "src/hooks/usePhysicalAssets.ts",
+      "summary": "Function usePhysicalAssets in usePhysicalAssets.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/hooks/usePushNotifications.ts",
+      "type": "file",
+      "name": "usePushNotifications.ts",
+      "filePath": "src/hooks/usePushNotifications.ts",
+      "summary": "React custom hook providing state and lifecycle logic.",
+      "tags": [
+        "hook"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/hooks/usePushNotifications.ts:usePushNotifications",
+      "type": "function",
+      "name": "usePushNotifications",
+      "filePath": "src/hooks/usePushNotifications.ts",
+      "summary": "Function usePushNotifications in usePushNotifications.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/hooks/useRecurringBills.ts",
+      "type": "file",
+      "name": "useRecurringBills.ts",
+      "filePath": "src/hooks/useRecurringBills.ts",
+      "summary": "React custom hook providing state and lifecycle logic.",
+      "tags": [
+        "hook"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/hooks/useRecurringBills.ts:useRecurringBills",
+      "type": "function",
+      "name": "useRecurringBills",
+      "filePath": "src/hooks/useRecurringBills.ts",
+      "summary": "Function useRecurringBills in useRecurringBills.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/hooks/useSmsListener.ts",
+      "type": "file",
+      "name": "useSmsListener.ts",
+      "filePath": "src/hooks/useSmsListener.ts",
+      "summary": "React custom hook providing state and lifecycle logic.",
+      "tags": [
+        "hook"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/hooks/useSmsListener.ts:useSmsListener",
+      "type": "function",
+      "name": "useSmsListener",
+      "filePath": "src/hooks/useSmsListener.ts",
+      "summary": "Function useSmsListener in useSmsListener.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/hooks/useSmsTracker.ts",
+      "type": "file",
+      "name": "useSmsTracker.ts",
+      "filePath": "src/hooks/useSmsTracker.ts",
+      "summary": "React custom hook providing state and lifecycle logic.",
+      "tags": [
+        "hook"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/hooks/useSmsTracker.ts:useSmsTracker",
+      "type": "function",
+      "name": "useSmsTracker",
+      "filePath": "src/hooks/useSmsTracker.ts",
+      "summary": "Function useSmsTracker in useSmsTracker.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/hooks/useTransactions.ts",
+      "type": "file",
+      "name": "useTransactions.ts",
+      "filePath": "src/hooks/useTransactions.ts",
+      "summary": "React custom hook providing state and lifecycle logic.",
+      "tags": [
+        "hook"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/hooks/useTransactions.ts:useTransactions",
+      "type": "function",
+      "name": "useTransactions",
+      "filePath": "src/hooks/useTransactions.ts",
+      "summary": "Function useTransactions in useTransactions.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/hooks/useUserSettings.ts",
+      "type": "file",
+      "name": "useUserSettings.ts",
+      "filePath": "src/hooks/useUserSettings.ts",
+      "summary": "React custom hook providing state and lifecycle logic.",
+      "tags": [
+        "hook"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/hooks/useUserSettings.ts:useUserSettings",
+      "type": "function",
+      "name": "useUserSettings",
+      "filePath": "src/hooks/useUserSettings.ts",
+      "summary": "Function useUserSettings in useUserSettings.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/components/layout/ChatAssistant.tsx",
+      "target": "function:src/components/layout/ChatAssistant.tsx:ChatAssistant",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/layout/ChatAssistant.tsx",
+      "target": "function:src/components/layout/ChatAssistant.tsx:ChatAssistant",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/layout/Header.tsx",
+      "target": "function:src/components/layout/Header.tsx:Header",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/layout/Header.tsx",
+      "target": "function:src/components/layout/Header.tsx:Header",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/layout/NavigationDrawer.tsx",
+      "target": "function:src/components/layout/NavigationDrawer.tsx:NavigationDrawer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/layout/NavigationDrawer.tsx",
+      "target": "function:src/components/layout/NavigationDrawer.tsx:NavigationDrawer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/layout/NavigationDrawer.tsx",
+      "target": "function:src/components/layout/NavigationDrawer.tsx:NavButton",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/layout/NotificationCenter.tsx",
+      "target": "function:src/components/layout/NotificationCenter.tsx:NotificationCenter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/layout/NotificationCenter.tsx",
+      "target": "function:src/components/layout/NotificationCenter.tsx:NotificationCenter",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/propfirm/PropFirmAccounts.tsx",
+      "target": "function:src/components/propfirm/PropFirmAccounts.tsx:PropFirmAccounts",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/propfirm/PropFirmAccounts.tsx",
+      "target": "function:src/components/propfirm/PropFirmAccounts.tsx:PropFirmAccounts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/propfirm/PropFirmChallenges.tsx",
+      "target": "function:src/components/propfirm/PropFirmChallenges.tsx:PropFirmChallenges",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/propfirm/PropFirmChallenges.tsx",
+      "target": "function:src/components/propfirm/PropFirmChallenges.tsx:PropFirmChallenges",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/propfirm/PropFirmDashboard.tsx",
+      "target": "function:src/components/propfirm/PropFirmDashboard.tsx:PropFirmDashboard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/propfirm/PropFirmDashboard.tsx",
+      "target": "function:src/components/propfirm/PropFirmDashboard.tsx:PropFirmDashboard",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/propfirm/PropFirmDashboard.tsx",
+      "target": "function:src/components/propfirm/PropFirmDashboard.tsx:KPICard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/propfirm/PropFirmPayouts.tsx",
+      "target": "function:src/components/propfirm/PropFirmPayouts.tsx:PropFirmPayouts",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/propfirm/PropFirmPayouts.tsx",
+      "target": "function:src/components/propfirm/PropFirmPayouts.tsx:PropFirmPayouts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/contexts/AuthContext.tsx",
+      "target": "function:src/contexts/AuthContext.tsx:AuthProvider",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/contexts/AuthContext.tsx",
+      "target": "function:src/contexts/AuthContext.tsx:AuthProvider",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/contexts/AuthContext.tsx",
+      "target": "function:src/contexts/AuthContext.tsx:useAuthContext",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/contexts/AuthContext.tsx",
+      "target": "function:src/contexts/AuthContext.tsx:useAuthContext",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/firebase-sync.ts",
+      "target": "function:src/firebase-sync.ts:syncToSqlite",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/firebase-sync.ts",
+      "target": "function:src/firebase-sync.ts:setDoc",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/firebase-sync.ts",
+      "target": "function:src/firebase-sync.ts:setDoc",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/firebase-sync.ts",
+      "target": "function:src/firebase-sync.ts:updateDoc",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/firebase-sync.ts",
+      "target": "function:src/firebase-sync.ts:updateDoc",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/firebase-sync.ts",
+      "target": "function:src/firebase-sync.ts:deleteDoc",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/firebase-sync.ts",
+      "target": "function:src/firebase-sync.ts:deleteDoc",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/firebase-sync.ts:setDoc",
+      "target": "function:src/firebase-sync.ts:syncToSqlite",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/firebase-sync.ts:updateDoc",
+      "target": "function:src/firebase-sync.ts:syncToSqlite",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/firebase-sync.ts:deleteDoc",
+      "target": "function:src/firebase-sync.ts:syncToSqlite",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/firebase.ts",
+      "target": "function:src/firebase.ts:getAccessToken",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/firebase.ts",
+      "target": "function:src/firebase.ts:getAccessToken",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/firebase.ts",
+      "target": "function:src/firebase.ts:setAccessToken",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/firebase.ts",
+      "target": "function:src/firebase.ts:setAccessToken",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/firebase.ts",
+      "target": "function:src/firebase.ts:handleRedirectResult",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/firebase.ts",
+      "target": "function:src/firebase.ts:handleRedirectResult",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/firebase.ts",
+      "target": "function:src/firebase.ts:signInWithGoogle",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/firebase.ts",
+      "target": "function:src/firebase.ts:signInWithGoogle",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/firebase.ts",
+      "target": "function:src/firebase.ts:signInGuestAnonymously",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/firebase.ts",
+      "target": "function:src/firebase.ts:signInGuestAnonymously",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/firebase.ts",
+      "target": "function:src/firebase.ts:linkGoogleAccount",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/firebase.ts",
+      "target": "function:src/firebase.ts:linkGoogleAccount",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/firebase.ts",
+      "target": "function:src/firebase.ts:authorizeGoogleOffline",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/firebase.ts",
+      "target": "function:src/firebase.ts:authorizeGoogleOffline",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/firebase.ts",
+      "target": "function:src/firebase.ts:refreshGoogleTokenIfNeeded",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/firebase.ts",
+      "target": "function:src/firebase.ts:refreshGoogleTokenIfNeeded",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/firebase.ts",
+      "target": "function:src/firebase.ts:logout",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/firebase.ts",
+      "target": "function:src/firebase.ts:logout",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/firebase.ts",
+      "target": "function:src/firebase.ts:handleFirestoreError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/firebase.ts",
+      "target": "function:src/firebase.ts:handleFirestoreError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/firebase.ts",
+      "target": "function:src/firebase.ts:testConnection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "function:src/firebase.ts:handleRedirectResult",
+      "target": "function:src/firebase.ts:setAccessToken",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/firebase.ts:signInWithGoogle",
+      "target": "function:src/firebase.ts:setAccessToken",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/firebase.ts:signInWithGoogle",
+      "target": "function:src/firebase.ts:setAccessToken",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/firebase.ts:linkGoogleAccount",
+      "target": "function:src/firebase.ts:setAccessToken",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/firebase.ts:linkGoogleAccount",
+      "target": "function:src/firebase.ts:setAccessToken",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/firebase.ts:authorizeGoogleOffline",
+      "target": "function:src/firebase.ts:setAccessToken",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/firebase.ts:refreshGoogleTokenIfNeeded",
+      "target": "function:src/firebase.ts:setAccessToken",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useAuth.ts",
+      "target": "function:src/hooks/useAuth.ts:useAuth",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/hooks/useAuth.ts",
+      "target": "function:src/hooks/useAuth.ts:useAuth",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useBankAccounts.ts",
+      "target": "function:src/hooks/useBankAccounts.ts:useBankAccounts",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/hooks/useBankAccounts.ts",
+      "target": "function:src/hooks/useBankAccounts.ts:useBankAccounts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useBrokerSync.ts",
+      "target": "function:src/hooks/useBrokerSync.ts:useBrokerSync",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/hooks/useBrokerSync.ts",
+      "target": "function:src/hooks/useBrokerSync.ts:useBrokerSync",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useCollectionSync.ts",
+      "target": "function:src/hooks/useCollectionSync.ts:useCollectionSync",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/hooks/useCollectionSync.ts",
+      "target": "function:src/hooks/useCollectionSync.ts:useCollectionSync",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useFallbackSync.ts",
+      "target": "function:src/hooks/useFallbackSync.ts:useFallbackSync",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/hooks/useFallbackSync.ts",
+      "target": "function:src/hooks/useFallbackSync.ts:useFallbackSync",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useGoogleContacts.ts",
+      "target": "function:src/hooks/useGoogleContacts.ts:useGoogleContacts",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/hooks/useGoogleContacts.ts",
+      "target": "function:src/hooks/useGoogleContacts.ts:useGoogleContacts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useLivePrices.ts",
+      "target": "function:src/hooks/useLivePrices.ts:useLivePrices",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/hooks/useLivePrices.ts",
+      "target": "function:src/hooks/useLivePrices.ts:useLivePrices",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/usePhysicalAssets.ts",
+      "target": "function:src/hooks/usePhysicalAssets.ts:usePhysicalAssets",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/hooks/usePhysicalAssets.ts",
+      "target": "function:src/hooks/usePhysicalAssets.ts:usePhysicalAssets",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/usePushNotifications.ts",
+      "target": "function:src/hooks/usePushNotifications.ts:usePushNotifications",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/hooks/usePushNotifications.ts",
+      "target": "function:src/hooks/usePushNotifications.ts:usePushNotifications",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useRecurringBills.ts",
+      "target": "function:src/hooks/useRecurringBills.ts:useRecurringBills",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/hooks/useRecurringBills.ts",
+      "target": "function:src/hooks/useRecurringBills.ts:useRecurringBills",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useSmsListener.ts",
+      "target": "function:src/hooks/useSmsListener.ts:useSmsListener",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/hooks/useSmsListener.ts",
+      "target": "function:src/hooks/useSmsListener.ts:useSmsListener",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useSmsTracker.ts",
+      "target": "function:src/hooks/useSmsTracker.ts:useSmsTracker",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/hooks/useSmsTracker.ts",
+      "target": "function:src/hooks/useSmsTracker.ts:useSmsTracker",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useTransactions.ts",
+      "target": "function:src/hooks/useTransactions.ts:useTransactions",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/hooks/useTransactions.ts",
+      "target": "function:src/hooks/useTransactions.ts:useTransactions",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/hooks/useUserSettings.ts",
+      "target": "function:src/hooks/useUserSettings.ts:useUserSettings",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/hooks/useUserSettings.ts",
+      "target": "function:src/hooks/useUserSettings.ts:useUserSettings",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

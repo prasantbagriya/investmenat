@@ -1,0 +1,160 @@
+{
+  "nodes": [
+    {
+      "id": "document:.agents/skills/firebase_data_connect_basics/reference/cloud_functions.md",
+      "type": "document",
+      "name": "cloud_functions.md",
+      "filePath": ".agents/skills/firebase_data_connect_basics/reference/cloud_functions.md",
+      "summary": "Documentation describing cloud_functions.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_data_connect_basics/reference/config.md",
+      "type": "document",
+      "name": "config.md",
+      "filePath": ".agents/skills/firebase_data_connect_basics/reference/config.md",
+      "summary": "Documentation describing config.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:.agents/skills/firebase_data_connect_basics/reference/data_seeding.md",
+      "type": "document",
+      "name": "data_seeding.md",
+      "filePath": ".agents/skills/firebase_data_connect_basics/reference/data_seeding.md",
+      "summary": "Documentation describing data_seeding.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_data_connect_basics/reference/native_sql.md",
+      "type": "document",
+      "name": "native_sql.md",
+      "filePath": ".agents/skills/firebase_data_connect_basics/reference/native_sql.md",
+      "summary": "Documentation describing native_sql.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_data_connect_basics/reference/operations.md",
+      "type": "document",
+      "name": "operations.md",
+      "filePath": ".agents/skills/firebase_data_connect_basics/reference/operations.md",
+      "summary": "Documentation describing operations.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:.agents/skills/firebase_data_connect_basics/reference/realtime.md",
+      "type": "document",
+      "name": "realtime.md",
+      "filePath": ".agents/skills/firebase_data_connect_basics/reference/realtime.md",
+      "summary": "Documentation describing realtime.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_data_connect_basics/reference/schema.md",
+      "type": "document",
+      "name": "schema.md",
+      "filePath": ".agents/skills/firebase_data_connect_basics/reference/schema.md",
+      "summary": "Documentation describing schema.md.",
+      "tags": [
+        "documentation",
+        "type-definition"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:.agents/skills/firebase_data_connect_basics/reference/sdk_admin_node.md",
+      "type": "document",
+      "name": "sdk_admin_node.md",
+      "filePath": ".agents/skills/firebase_data_connect_basics/reference/sdk_admin_node.md",
+      "summary": "Documentation describing sdk_admin_node.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_data_connect_basics/reference/sdk_android.md",
+      "type": "document",
+      "name": "sdk_android.md",
+      "filePath": ".agents/skills/firebase_data_connect_basics/reference/sdk_android.md",
+      "summary": "Documentation describing sdk_android.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_data_connect_basics/reference/sdk_flutter.md",
+      "type": "document",
+      "name": "sdk_flutter.md",
+      "filePath": ".agents/skills/firebase_data_connect_basics/reference/sdk_flutter.md",
+      "summary": "Documentation describing sdk_flutter.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_data_connect_basics/reference/sdk_ios.md",
+      "type": "document",
+      "name": "sdk_ios.md",
+      "filePath": ".agents/skills/firebase_data_connect_basics/reference/sdk_ios.md",
+      "summary": "Documentation describing sdk_ios.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_data_connect_basics/reference/sdk_web.md",
+      "type": "document",
+      "name": "sdk_web.md",
+      "filePath": ".agents/skills/firebase_data_connect_basics/reference/sdk_web.md",
+      "summary": "Documentation describing sdk_web.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_data_connect_basics/reference/search.md",
+      "type": "document",
+      "name": "search.md",
+      "filePath": ".agents/skills/firebase_data_connect_basics/reference/search.md",
+      "summary": "Documentation describing search.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:.agents/skills/firebase_data_connect_basics/reference/security.md",
+      "type": "document",
+      "name": "security.md",
+      "filePath": ".agents/skills/firebase_data_connect_basics/reference/security.md",
+      "summary": "Documentation describing security.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "complex"
+    }
+  ],
+  "edges": []
+}

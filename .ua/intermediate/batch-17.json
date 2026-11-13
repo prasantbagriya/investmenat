@@ -1,0 +1,1240 @@
+{
+  "nodes": [
+    {
+      "id": "file:android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java",
+      "type": "file",
+      "name": "ExampleUnitTest.java",
+      "filePath": "android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java",
+      "summary": "ExampleUnitTest.java in android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java",
+      "tags": [
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java:addition_isCorrect",
+      "type": "function",
+      "name": "addition_isCorrect",
+      "filePath": "android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java",
+      "summary": "Function addition_isCorrect in ExampleUnitTest.java",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java:ExampleUnitTest",
+      "type": "class",
+      "name": "ExampleUnitTest",
+      "filePath": "android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java",
+      "summary": "Class ExampleUnitTest with 1 methods in ExampleUnitTest.java",
+      "tags": [
+        "class",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:angelProxy.ts",
+      "type": "file",
+      "name": "angelProxy.ts",
+      "filePath": "angelProxy.ts",
+      "summary": "angelProxy.ts in angelProxy.ts",
+      "tags": [
+        "code"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:angelProxy.ts:setupAngelRoutes",
+      "type": "function",
+      "name": "setupAngelRoutes",
+      "filePath": "angelProxy.ts",
+      "summary": "Function setupAngelRoutes in angelProxy.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:backend/api/upstox.py",
+      "type": "file",
+      "name": "upstox.py",
+      "filePath": "backend/api/upstox.py",
+      "summary": "Service module handling API requests and business logic.",
+      "tags": [
+        "service",
+        "backend"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:backend/api/upstox.py:get_upstox_headers",
+      "type": "function",
+      "name": "get_upstox_headers",
+      "filePath": "backend/api/upstox.py",
+      "summary": "Function get_upstox_headers in upstox.py",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/api/upstox.py:get_profile",
+      "type": "function",
+      "name": "get_profile",
+      "filePath": "backend/api/upstox.py",
+      "summary": "Function get_profile in upstox.py",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/api/upstox.py:get_funds",
+      "type": "function",
+      "name": "get_funds",
+      "filePath": "backend/api/upstox.py",
+      "summary": "Function get_funds in upstox.py",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/api/upstox.py:get_holdings",
+      "type": "function",
+      "name": "get_holdings",
+      "filePath": "backend/api/upstox.py",
+      "summary": "Function get_holdings in upstox.py",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/api/upstox.py:get_positions",
+      "type": "function",
+      "name": "get_positions",
+      "filePath": "backend/api/upstox.py",
+      "summary": "Function get_positions in upstox.py",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/api/upstox.py:get_orders",
+      "type": "function",
+      "name": "get_orders",
+      "filePath": "backend/api/upstox.py",
+      "summary": "Function get_orders in upstox.py",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/api/upstox.py:place_order",
+      "type": "function",
+      "name": "place_order",
+      "filePath": "backend/api/upstox.py",
+      "summary": "Function place_order in upstox.py",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/api/upstox.py:get_market_quote",
+      "type": "function",
+      "name": "get_market_quote",
+      "filePath": "backend/api/upstox.py",
+      "summary": "Function get_market_quote in upstox.py",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/api/upstox.py:get_option_chain",
+      "type": "function",
+      "name": "get_option_chain",
+      "filePath": "backend/api/upstox.py",
+      "summary": "Function get_option_chain in upstox.py",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/api/upstox.py:get_historical_data",
+      "type": "function",
+      "name": "get_historical_data",
+      "filePath": "backend/api/upstox.py",
+      "summary": "Function get_historical_data in upstox.py",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/api/upstox.py:get_fundamentals",
+      "type": "function",
+      "name": "get_fundamentals",
+      "filePath": "backend/api/upstox.py",
+      "summary": "Function get_fundamentals in upstox.py",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/api/upstox.py:get_trade_pnl",
+      "type": "function",
+      "name": "get_trade_pnl",
+      "filePath": "backend/api/upstox.py",
+      "summary": "Function get_trade_pnl in upstox.py",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/api/upstox.py:get_trade_pnl_charges",
+      "type": "function",
+      "name": "get_trade_pnl_charges",
+      "filePath": "backend/api/upstox.py",
+      "summary": "Function get_trade_pnl_charges in upstox.py",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/api/upstox.py:get_market_info",
+      "type": "function",
+      "name": "get_market_info",
+      "filePath": "backend/api/upstox.py",
+      "summary": "Function get_market_info in upstox.py",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/api/upstox.py:get_ltp",
+      "type": "function",
+      "name": "get_ltp",
+      "filePath": "backend/api/upstox.py",
+      "summary": "Function get_ltp in upstox.py",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/api/upstox.py:get_gtt_orders",
+      "type": "function",
+      "name": "get_gtt_orders",
+      "filePath": "backend/api/upstox.py",
+      "summary": "Function get_gtt_orders in upstox.py",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/api/upstox.py:get_brokerage",
+      "type": "function",
+      "name": "get_brokerage",
+      "filePath": "backend/api/upstox.py",
+      "summary": "Function get_brokerage in upstox.py",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/api/upstox.py:get_option_expiry",
+      "type": "function",
+      "name": "get_option_expiry",
+      "filePath": "backend/api/upstox.py",
+      "summary": "Function get_option_expiry in upstox.py",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/api/upstox.py:calculate_margin",
+      "type": "function",
+      "name": "calculate_margin",
+      "filePath": "backend/api/upstox.py",
+      "summary": "Function calculate_margin in upstox.py",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/api/upstox.py:convert_position",
+      "type": "function",
+      "name": "convert_position",
+      "filePath": "backend/api/upstox.py",
+      "summary": "Function convert_position in upstox.py",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:backend/api/upstox.py:OrderRequest",
+      "type": "class",
+      "name": "OrderRequest",
+      "filePath": "backend/api/upstox.py",
+      "summary": "Class OrderRequest with 0 methods in upstox.py",
+      "tags": [
+        "class",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:backend/api/upstox.py:MarginRequest",
+      "type": "class",
+      "name": "MarginRequest",
+      "filePath": "backend/api/upstox.py",
+      "summary": "Class MarginRequest with 0 methods in upstox.py",
+      "tags": [
+        "class",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:backend/api/upstox.py:ConvertPositionRequest",
+      "type": "class",
+      "name": "ConvertPositionRequest",
+      "filePath": "backend/api/upstox.py",
+      "summary": "Class ConvertPositionRequest with 0 methods in upstox.py",
+      "tags": [
+        "class",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/api/websocket_market.py",
+      "type": "file",
+      "name": "websocket_market.py",
+      "filePath": "backend/api/websocket_market.py",
+      "summary": "Service module handling API requests and business logic.",
+      "tags": [
+        "service",
+        "backend",
+        "financial-data"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/api/websocket_market.py:get_market_stream_url",
+      "type": "function",
+      "name": "get_market_stream_url",
+      "filePath": "backend/api/websocket_market.py",
+      "summary": "Function get_market_stream_url in websocket_market.py",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/api/websocket_market.py:market_websocket",
+      "type": "function",
+      "name": "market_websocket",
+      "filePath": "backend/api/websocket_market.py",
+      "summary": "Function market_websocket in websocket_market.py",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/api/websocket_portfolio.py",
+      "type": "file",
+      "name": "websocket_portfolio.py",
+      "filePath": "backend/api/websocket_portfolio.py",
+      "summary": "Service module handling API requests and business logic.",
+      "tags": [
+        "service",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/api/websocket_portfolio.py:get_portfolio_stream_url",
+      "type": "function",
+      "name": "get_portfolio_stream_url",
+      "filePath": "backend/api/websocket_portfolio.py",
+      "summary": "Function get_portfolio_stream_url in websocket_portfolio.py",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/api/websocket_portfolio.py:portfolio_websocket",
+      "type": "function",
+      "name": "portfolio_websocket",
+      "filePath": "backend/api/websocket_portfolio.py",
+      "summary": "Function portfolio_websocket in websocket_portfolio.py",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/core/config.py",
+      "type": "file",
+      "name": "config.py",
+      "filePath": "backend/core/config.py",
+      "summary": "config.py in backend/core/config.py",
+      "tags": [
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:backend/core/config.py:Settings",
+      "type": "class",
+      "name": "Settings",
+      "filePath": "backend/core/config.py",
+      "summary": "Class Settings with 0 methods in config.py",
+      "tags": [
+        "class",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/main.py",
+      "type": "file",
+      "name": "main.py",
+      "filePath": "backend/main.py",
+      "summary": "Application entry point module.",
+      "tags": [
+        "backend",
+        "entry-point"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/main.py:root",
+      "type": "function",
+      "name": "root",
+      "filePath": "backend/main.py",
+      "summary": "Function root in main.py",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:binanceProxy.ts",
+      "type": "file",
+      "name": "binanceProxy.ts",
+      "filePath": "binanceProxy.ts",
+      "summary": "binanceProxy.ts in binanceProxy.ts",
+      "tags": [
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:binanceProxy.ts:setupBinanceRoutes",
+      "type": "function",
+      "name": "setupBinanceRoutes",
+      "filePath": "binanceProxy.ts",
+      "summary": "Function setupBinanceRoutes in binanceProxy.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:capacitor.config.ts",
+      "type": "file",
+      "name": "capacitor.config.ts",
+      "filePath": "capacitor.config.ts",
+      "summary": "capacitor.config.ts in capacitor.config.ts",
+      "tags": [
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:deploy.js",
+      "type": "file",
+      "name": "deploy.js",
+      "filePath": "deploy.js",
+      "summary": "deploy.js in deploy.js",
+      "tags": [
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:deploy.js:createZip",
+      "type": "function",
+      "name": "createZip",
+      "filePath": "deploy.js",
+      "summary": "Function createZip in deploy.js",
+      "tags": [
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:deploy.js:uploadAndExtract",
+      "type": "function",
+      "name": "uploadAndExtract",
+      "filePath": "deploy.js",
+      "summary": "Function uploadAndExtract in deploy.js",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:dev-dist/registerSW.js",
+      "type": "file",
+      "name": "registerSW.js",
+      "filePath": "dev-dist/registerSW.js",
+      "summary": "registerSW.js in dev-dist/registerSW.js",
+      "tags": [
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:dev-dist/sw.js",
+      "type": "file",
+      "name": "sw.js",
+      "filePath": "dev-dist/sw.js",
+      "summary": "sw.js in dev-dist/sw.js",
+      "tags": [
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:dev-dist/workbox-7e5eb42b.js",
+      "type": "file",
+      "name": "workbox-7e5eb42b.js",
+      "filePath": "dev-dist/workbox-7e5eb42b.js",
+      "summary": "workbox-7e5eb42b.js in dev-dist/workbox-7e5eb42b.js",
+      "tags": [
+        "code"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:dhanProxy.ts",
+      "type": "file",
+      "name": "dhanProxy.ts",
+      "filePath": "dhanProxy.ts",
+      "summary": "dhanProxy.ts in dhanProxy.ts",
+      "tags": [
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:dhanProxy.ts:setupDhanRoutes",
+      "type": "function",
+      "name": "setupDhanRoutes",
+      "filePath": "dhanProxy.ts",
+      "summary": "Function setupDhanRoutes in dhanProxy.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:functions/index.js",
+      "type": "file",
+      "name": "index.js",
+      "filePath": "functions/index.js",
+      "summary": "Application entry point module.",
+      "tags": [
+        "entry-point"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:functions/lib/angelProxy.js",
+      "type": "file",
+      "name": "angelProxy.js",
+      "filePath": "functions/lib/angelProxy.js",
+      "summary": "angelProxy.js in functions/lib/angelProxy.js",
+      "tags": [
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:functions/lib/angelProxy.js:setupAngelRoutes",
+      "type": "function",
+      "name": "setupAngelRoutes",
+      "filePath": "functions/lib/angelProxy.js",
+      "summary": "Function setupAngelRoutes in angelProxy.js",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "config:android/app/src/main/res/layout/activity_main.xml",
+      "type": "config",
+      "name": "activity_main.xml",
+      "filePath": "android/app/src/main/res/layout/activity_main.xml",
+      "summary": "Configuration file controlling activity_main.xml settings.",
+      "tags": [
+        "configuration",
+        "entry-point"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+      "type": "config",
+      "name": "ic_launcher.xml",
+      "filePath": "android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+      "summary": "Configuration file controlling ic_launcher.xml settings.",
+      "tags": [
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml",
+      "type": "config",
+      "name": "ic_launcher_round.xml",
+      "filePath": "android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml",
+      "summary": "Configuration file controlling ic_launcher_round.xml settings.",
+      "tags": [
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:android/app/src/main/res/xml/file_paths.xml",
+      "type": "config",
+      "name": "file_paths.xml",
+      "filePath": "android/app/src/main/res/xml/file_paths.xml",
+      "summary": "Configuration file controlling file_paths.xml settings.",
+      "tags": [
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:android/gradle/wrapper/gradle-wrapper.jar",
+      "type": "file",
+      "name": "gradle-wrapper.jar",
+      "filePath": "android/gradle/wrapper/gradle-wrapper.jar",
+      "summary": "gradle-wrapper.jar in android/gradle/wrapper/gradle-wrapper.jar",
+      "tags": [
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:android/gradle/wrapper/gradle-wrapper.properties",
+      "type": "config",
+      "name": "gradle-wrapper.properties",
+      "filePath": "android/gradle/wrapper/gradle-wrapper.properties",
+      "summary": "Configuration file controlling gradle-wrapper.properties settings.",
+      "tags": [
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:android/gradlew",
+      "type": "file",
+      "name": "gradlew",
+      "filePath": "android/gradlew",
+      "summary": "gradlew in android/gradlew",
+      "tags": [
+        "code"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:backend/requirements.txt",
+      "type": "document",
+      "name": "requirements.txt",
+      "filePath": "backend/requirements.txt",
+      "summary": "Documentation describing requirements.txt.",
+      "tags": [
+        "documentation",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:firestore.rules",
+      "type": "file",
+      "name": "firestore.rules",
+      "filePath": "firestore.rules",
+      "summary": "firestore.rules in firestore.rules",
+      "tags": [
+        "state-management"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java",
+      "target": "function:android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java:addition_isCorrect",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java",
+      "target": "function:android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java:addition_isCorrect",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java",
+      "target": "class:android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java:ExampleUnitTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java",
+      "target": "class:android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java:ExampleUnitTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:angelProxy.ts",
+      "target": "function:angelProxy.ts:setupAngelRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:angelProxy.ts",
+      "target": "function:angelProxy.ts:setupAngelRoutes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:get_upstox_headers",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:get_upstox_headers",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:get_profile",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:get_profile",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:get_funds",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:get_funds",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:get_holdings",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:get_holdings",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:get_positions",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:get_positions",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:get_orders",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:get_orders",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:place_order",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:place_order",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:get_market_quote",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:get_market_quote",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:get_option_chain",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:get_option_chain",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:get_historical_data",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:get_historical_data",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:get_fundamentals",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:get_fundamentals",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:get_trade_pnl",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:get_trade_pnl",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:get_trade_pnl_charges",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:get_trade_pnl_charges",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:get_market_info",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:get_market_info",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:get_ltp",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:get_ltp",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:get_gtt_orders",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:get_gtt_orders",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:get_brokerage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:get_brokerage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:get_option_expiry",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:get_option_expiry",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:calculate_margin",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:calculate_margin",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:convert_position",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "function:backend/api/upstox.py:convert_position",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "class:backend/api/upstox.py:OrderRequest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "class:backend/api/upstox.py:OrderRequest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "class:backend/api/upstox.py:MarginRequest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "class:backend/api/upstox.py:MarginRequest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "class:backend/api/upstox.py:ConvertPositionRequest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/api/upstox.py",
+      "target": "class:backend/api/upstox.py:ConvertPositionRequest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:backend/api/websocket_market.py",
+      "target": "function:backend/api/websocket_market.py:get_market_stream_url",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/api/websocket_market.py",
+      "target": "function:backend/api/websocket_market.py:get_market_stream_url",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:backend/api/websocket_market.py",
+      "target": "function:backend/api/websocket_market.py:market_websocket",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/api/websocket_market.py",
+      "target": "function:backend/api/websocket_market.py:market_websocket",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:backend/api/websocket_market.py:market_websocket",
+      "target": "function:backend/api/websocket_market.py:get_market_stream_url",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:backend/api/websocket_portfolio.py",
+      "target": "function:backend/api/websocket_portfolio.py:get_portfolio_stream_url",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/api/websocket_portfolio.py",
+      "target": "function:backend/api/websocket_portfolio.py:get_portfolio_stream_url",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:backend/api/websocket_portfolio.py",
+      "target": "function:backend/api/websocket_portfolio.py:portfolio_websocket",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/api/websocket_portfolio.py",
+      "target": "function:backend/api/websocket_portfolio.py:portfolio_websocket",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:backend/api/websocket_portfolio.py:portfolio_websocket",
+      "target": "function:backend/api/websocket_portfolio.py:get_portfolio_stream_url",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:backend/core/config.py",
+      "target": "class:backend/core/config.py:Settings",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/core/config.py",
+      "target": "class:backend/core/config.py:Settings",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:backend/main.py",
+      "target": "function:backend/main.py:root",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/main.py",
+      "target": "function:backend/main.py:root",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:binanceProxy.ts",
+      "target": "function:binanceProxy.ts:setupBinanceRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:binanceProxy.ts",
+      "target": "function:binanceProxy.ts:setupBinanceRoutes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:deploy.js",
+      "target": "function:deploy.js:createZip",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:deploy.js",
+      "target": "function:deploy.js:uploadAndExtract",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:dhanProxy.ts",
+      "target": "function:dhanProxy.ts:setupDhanRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:dhanProxy.ts",
+      "target": "function:dhanProxy.ts:setupDhanRoutes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:functions/lib/angelProxy.js",
+      "target": "function:functions/lib/angelProxy.js:setupAngelRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    }
+  ]
+}

@@ -88,7 +88,7 @@ export default function LoginScreen({
             </button>
 
             <a
-              href="https://github.com/prasantbagriya/investmenat/raw/main/public/app.apk"
+              href="https://github.com/prasantbagriya/investmenat/releases"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full flex items-center justify-center gap-3 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-semibold py-4 px-6 rounded-lg transition-all border border-indigo-100 hover:border-indigo-200 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer text-decoration-none mt-2"

@@ -1,0 +1,38 @@
+{
+  "nodes": [
+    {
+      "id": "document:.agents/skills/firebase_app_hosting_basics/references/cli_commands.md",
+      "type": "document",
+      "name": "cli_commands.md",
+      "filePath": ".agents/skills/firebase_app_hosting_basics/references/cli_commands.md",
+      "summary": "Documentation describing cli_commands.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_app_hosting_basics/references/configuration.md",
+      "type": "document",
+      "name": "configuration.md",
+      "filePath": ".agents/skills/firebase_app_hosting_basics/references/configuration.md",
+      "summary": "Documentation describing configuration.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_app_hosting_basics/references/emulation.md",
+      "type": "document",
+      "name": "emulation.md",
+      "filePath": ".agents/skills/firebase_app_hosting_basics/references/emulation.md",
+      "summary": "Documentation describing emulation.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

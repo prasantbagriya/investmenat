@@ -1,0 +1,1231 @@
+{
+  "nodes": [
+    {
+      "id": "file:server.js",
+      "type": "file",
+      "name": "server.js",
+      "filePath": "server.js",
+      "summary": "server.js in server.js",
+      "tags": [
+        "backend"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server.js:setupUpstoxRoutes",
+      "type": "function",
+      "name": "setupUpstoxRoutes",
+      "filePath": "server.js",
+      "summary": "Function setupUpstoxRoutes in server.js",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server.js:setupDhanRoutes",
+      "type": "function",
+      "name": "setupDhanRoutes",
+      "filePath": "server.js",
+      "summary": "Function setupDhanRoutes in server.js",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server.js:setupAngelRoutes",
+      "type": "function",
+      "name": "setupAngelRoutes",
+      "filePath": "server.js",
+      "summary": "Function setupAngelRoutes in server.js",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server.js:setupKiteRoutes",
+      "type": "function",
+      "name": "setupKiteRoutes",
+      "filePath": "server.js",
+      "summary": "Function setupKiteRoutes in server.js",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server.js:setupBinanceRoutes",
+      "type": "function",
+      "name": "setupBinanceRoutes",
+      "filePath": "server.js",
+      "summary": "Function setupBinanceRoutes in server.js",
+      "tags": [
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server.js:cleanPrivateKey",
+      "type": "function",
+      "name": "cleanPrivateKey",
+      "filePath": "server.js",
+      "summary": "Function cleanPrivateKey in server.js",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server.js:startServer",
+      "type": "function",
+      "name": "startServer",
+      "filePath": "server.js",
+      "summary": "Function startServer in server.js",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:server.ts",
+      "type": "file",
+      "name": "server.ts",
+      "filePath": "server.ts",
+      "summary": "server.ts in server.ts",
+      "tags": [
+        "backend"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server.ts:cleanPrivateKey",
+      "type": "function",
+      "name": "cleanPrivateKey",
+      "filePath": "server.ts",
+      "summary": "Function cleanPrivateKey in server.ts",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server.ts:startServer",
+      "type": "function",
+      "name": "startServer",
+      "filePath": "server.ts",
+      "summary": "Function startServer in server.ts",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/App.tsx",
+      "type": "file",
+      "name": "App.tsx",
+      "filePath": "src/App.tsx",
+      "summary": "React UI component for App.",
+      "tags": [
+        "component",
+        "entry-point"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/App.tsx:App",
+      "type": "function",
+      "name": "App",
+      "filePath": "src/App.tsx",
+      "summary": "Function App in App.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/AnalyticsDashboard.tsx",
+      "type": "file",
+      "name": "AnalyticsDashboard.tsx",
+      "filePath": "src/components/AnalyticsDashboard.tsx",
+      "summary": "React UI component for AnalyticsDashboard.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/AnalyticsDashboard.tsx:AnalyticsDashboard",
+      "type": "function",
+      "name": "AnalyticsDashboard",
+      "filePath": "src/components/AnalyticsDashboard.tsx",
+      "summary": "Function AnalyticsDashboard in AnalyticsDashboard.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/BankProfiles.tsx",
+      "type": "file",
+      "name": "BankProfiles.tsx",
+      "filePath": "src/components/BankProfiles.tsx",
+      "summary": "React UI component for BankProfiles.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/BankProfiles.tsx:BankProfiles",
+      "type": "function",
+      "name": "BankProfiles",
+      "filePath": "src/components/BankProfiles.tsx",
+      "summary": "Function BankProfiles in BankProfiles.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/BrokerManager.tsx",
+      "type": "file",
+      "name": "BrokerManager.tsx",
+      "filePath": "src/components/BrokerManager.tsx",
+      "summary": "React UI component for BrokerManager.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/BrokerManager.tsx:BrokerManager",
+      "type": "function",
+      "name": "BrokerManager",
+      "filePath": "src/components/BrokerManager.tsx",
+      "summary": "Function BrokerManager in BrokerManager.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/BudgetLimits.tsx",
+      "type": "file",
+      "name": "BudgetLimits.tsx",
+      "filePath": "src/components/BudgetLimits.tsx",
+      "summary": "React UI component for BudgetLimits.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/BudgetLimits.tsx:BudgetLimits",
+      "type": "function",
+      "name": "BudgetLimits",
+      "filePath": "src/components/BudgetLimits.tsx",
+      "summary": "Function BudgetLimits in BudgetLimits.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/ContactsManager.tsx",
+      "type": "file",
+      "name": "ContactsManager.tsx",
+      "filePath": "src/components/ContactsManager.tsx",
+      "summary": "React UI component for ContactsManager.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/ContactsManager.tsx:ContactsManager",
+      "type": "function",
+      "name": "ContactsManager",
+      "filePath": "src/components/ContactsManager.tsx",
+      "summary": "Function ContactsManager in ContactsManager.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/CreditCardsEMI.tsx",
+      "type": "file",
+      "name": "CreditCardsEMI.tsx",
+      "filePath": "src/components/CreditCardsEMI.tsx",
+      "summary": "React UI component for CreditCardsEMI.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/CreditCardsEMI.tsx:CreditCardsEMI",
+      "type": "function",
+      "name": "CreditCardsEMI",
+      "filePath": "src/components/CreditCardsEMI.tsx",
+      "summary": "Function CreditCardsEMI in CreditCardsEMI.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/CryptoWalletView.tsx",
+      "type": "file",
+      "name": "CryptoWalletView.tsx",
+      "filePath": "src/components/CryptoWalletView.tsx",
+      "summary": "React UI component for CryptoWalletView.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/CryptoWalletView.tsx:getBtcAddress",
+      "type": "function",
+      "name": "getBtcAddress",
+      "filePath": "src/components/CryptoWalletView.tsx",
+      "summary": "Function getBtcAddress in CryptoWalletView.tsx",
+      "tags": [
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/CryptoWalletView.tsx:CryptoWalletView",
+      "type": "function",
+      "name": "CryptoWalletView",
+      "filePath": "src/components/CryptoWalletView.tsx",
+      "summary": "Function CryptoWalletView in CryptoWalletView.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/CsvImportWizard.tsx",
+      "type": "file",
+      "name": "CsvImportWizard.tsx",
+      "filePath": "src/components/CsvImportWizard.tsx",
+      "summary": "React UI component for CsvImportWizard.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/CsvImportWizard.tsx:CsvImportWizard",
+      "type": "function",
+      "name": "CsvImportWizard",
+      "filePath": "src/components/CsvImportWizard.tsx",
+      "summary": "Function CsvImportWizard in CsvImportWizard.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/Dashboard.tsx",
+      "type": "file",
+      "name": "Dashboard.tsx",
+      "filePath": "src/components/Dashboard.tsx",
+      "summary": "React UI component for Dashboard.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/Dashboard.tsx:Dashboard",
+      "type": "function",
+      "name": "Dashboard",
+      "filePath": "src/components/Dashboard.tsx",
+      "summary": "Function Dashboard in Dashboard.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/ErrorBoundary.tsx",
+      "type": "file",
+      "name": "ErrorBoundary.tsx",
+      "filePath": "src/components/ErrorBoundary.tsx",
+      "summary": "React UI component for ErrorBoundary.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/components/ErrorBoundary.tsx:ErrorBoundary",
+      "type": "class",
+      "name": "ErrorBoundary",
+      "filePath": "src/components/ErrorBoundary.tsx",
+      "summary": "Class ErrorBoundary with 3 methods in ErrorBoundary.tsx",
+      "tags": [
+        "class",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/FdRdTracker.tsx",
+      "type": "file",
+      "name": "FdRdTracker.tsx",
+      "filePath": "src/components/FdRdTracker.tsx",
+      "summary": "React UI component for FdRdTracker.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/FdRdTracker.tsx:FdRdTracker",
+      "type": "function",
+      "name": "FdRdTracker",
+      "filePath": "src/components/FdRdTracker.tsx",
+      "summary": "Function FdRdTracker in FdRdTracker.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/GoogleDocsManager.tsx",
+      "type": "file",
+      "name": "GoogleDocsManager.tsx",
+      "filePath": "src/components/GoogleDocsManager.tsx",
+      "summary": "React UI component for GoogleDocsManager.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/GoogleDocsManager.tsx:createGoogleDoc",
+      "type": "function",
+      "name": "createGoogleDoc",
+      "filePath": "src/components/GoogleDocsManager.tsx",
+      "summary": "Function createGoogleDoc in GoogleDocsManager.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/GoogleDocsManager.tsx:insertTextToDoc",
+      "type": "function",
+      "name": "insertTextToDoc",
+      "filePath": "src/components/GoogleDocsManager.tsx",
+      "summary": "Function insertTextToDoc in GoogleDocsManager.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/GoogleDocsManager.tsx:generateSampleReportDoc",
+      "type": "function",
+      "name": "generateSampleReportDoc",
+      "filePath": "src/components/GoogleDocsManager.tsx",
+      "summary": "Function generateSampleReportDoc in GoogleDocsManager.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/GooglePicker.tsx",
+      "type": "file",
+      "name": "GooglePicker.tsx",
+      "filePath": "src/components/GooglePicker.tsx",
+      "summary": "React UI component for GooglePicker.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/GooglePicker.tsx:GooglePicker",
+      "type": "function",
+      "name": "GooglePicker",
+      "filePath": "src/components/GooglePicker.tsx",
+      "summary": "Function GooglePicker in GooglePicker.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/GoogleSheetsSync.tsx",
+      "type": "file",
+      "name": "GoogleSheetsSync.tsx",
+      "filePath": "src/components/GoogleSheetsSync.tsx",
+      "summary": "React UI component for GoogleSheetsSync.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/GoogleSheetsSync.tsx:GoogleSheetsSync",
+      "type": "function",
+      "name": "GoogleSheetsSync",
+      "filePath": "src/components/GoogleSheetsSync.tsx",
+      "summary": "Function GoogleSheetsSync in GoogleSheetsSync.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/GoogleSlidesManager.tsx",
+      "type": "file",
+      "name": "GoogleSlidesManager.tsx",
+      "filePath": "src/components/GoogleSlidesManager.tsx",
+      "summary": "React UI component for GoogleSlidesManager.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/GoogleSlidesManager.tsx:createGoogleSlide",
+      "type": "function",
+      "name": "createGoogleSlide",
+      "filePath": "src/components/GoogleSlidesManager.tsx",
+      "summary": "Function createGoogleSlide in GoogleSlidesManager.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/GoogleSlidesManager.tsx:generateSampleSlideDeck",
+      "type": "function",
+      "name": "generateSampleSlideDeck",
+      "filePath": "src/components/GoogleSlidesManager.tsx",
+      "summary": "Function generateSampleSlideDeck in GoogleSlidesManager.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/InfoTooltip.tsx",
+      "type": "file",
+      "name": "InfoTooltip.tsx",
+      "filePath": "src/components/InfoTooltip.tsx",
+      "summary": "React UI component for InfoTooltip.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/InfoTooltip.tsx:InfoTooltip",
+      "type": "function",
+      "name": "InfoTooltip",
+      "filePath": "src/components/InfoTooltip.tsx",
+      "summary": "Function InfoTooltip in InfoTooltip.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/Ledger/LedgerList.tsx",
+      "type": "file",
+      "name": "LedgerList.tsx",
+      "filePath": "src/components/Ledger/LedgerList.tsx",
+      "summary": "React UI component for LedgerList.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/Ledger/LedgerList.tsx:LedgerList",
+      "type": "function",
+      "name": "LedgerList",
+      "filePath": "src/components/Ledger/LedgerList.tsx",
+      "summary": "Function LedgerList in LedgerList.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/Ledger/LedgerPage.tsx",
+      "type": "file",
+      "name": "LedgerPage.tsx",
+      "filePath": "src/components/Ledger/LedgerPage.tsx",
+      "summary": "React UI component for LedgerPage.",
+      "tags": [
+        "component",
+        "routing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/Ledger/LedgerPage.tsx:LedgerPage",
+      "type": "function",
+      "name": "LedgerPage",
+      "filePath": "src/components/Ledger/LedgerPage.tsx",
+      "summary": "Function LedgerPage in LedgerPage.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/Ledger/LedgerProfileView.tsx",
+      "type": "file",
+      "name": "LedgerProfileView.tsx",
+      "filePath": "src/components/Ledger/LedgerProfileView.tsx",
+      "summary": "React UI component for LedgerProfileView.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/Ledger/LedgerProfileView.tsx:LedgerProfileView",
+      "type": "function",
+      "name": "LedgerProfileView",
+      "filePath": "src/components/Ledger/LedgerProfileView.tsx",
+      "summary": "Function LedgerProfileView in LedgerProfileView.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/LogEntryForm.tsx",
+      "type": "file",
+      "name": "LogEntryForm.tsx",
+      "filePath": "src/components/LogEntryForm.tsx",
+      "summary": "React UI component for LogEntryForm.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/LogEntryForm.tsx:LogEntryForm",
+      "type": "function",
+      "name": "LogEntryForm",
+      "filePath": "src/components/LogEntryForm.tsx",
+      "summary": "Function LogEntryForm in LogEntryForm.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/MarketView.tsx",
+      "type": "file",
+      "name": "MarketView.tsx",
+      "filePath": "src/components/MarketView.tsx",
+      "summary": "React UI component for MarketView.",
+      "tags": [
+        "component",
+        "financial-data"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/MarketView.tsx:MarketView",
+      "type": "function",
+      "name": "MarketView",
+      "filePath": "src/components/MarketView.tsx",
+      "summary": "Function MarketView in MarketView.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/PendingPayments.tsx",
+      "type": "file",
+      "name": "PendingPayments.tsx",
+      "filePath": "src/components/PendingPayments.tsx",
+      "summary": "React UI component for PendingPayments.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/PendingPayments.tsx:PendingPayments",
+      "type": "function",
+      "name": "PendingPayments",
+      "filePath": "src/components/PendingPayments.tsx",
+      "summary": "Function PendingPayments in PendingPayments.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:server.js",
+      "target": "function:server.js:setupUpstoxRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:server.js",
+      "target": "function:server.js:setupDhanRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:server.js",
+      "target": "function:server.js:setupAngelRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:server.js",
+      "target": "function:server.js:setupKiteRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:server.js",
+      "target": "function:server.js:setupBinanceRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:server.js",
+      "target": "function:server.js:cleanPrivateKey",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:server.js",
+      "target": "function:server.js:startServer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "function:server.js:startServer",
+      "target": "function:server.js:cleanPrivateKey",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:server.js:startServer",
+      "target": "function:server.js:cleanPrivateKey",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:server.js:startServer",
+      "target": "function:server.js:setupUpstoxRoutes",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:server.js:startServer",
+      "target": "function:server.js:setupDhanRoutes",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:server.js:startServer",
+      "target": "function:server.js:setupAngelRoutes",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:server.js:startServer",
+      "target": "function:server.js:setupKiteRoutes",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:server.js:startServer",
+      "target": "function:server.js:setupBinanceRoutes",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server.ts",
+      "target": "function:server.ts:cleanPrivateKey",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:server.ts",
+      "target": "function:server.ts:startServer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "function:server.ts:startServer",
+      "target": "function:server.ts:cleanPrivateKey",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:server.ts:startServer",
+      "target": "function:server.ts:cleanPrivateKey",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "function:src/App.tsx:App",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "function:src/App.tsx:App",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/AnalyticsDashboard.tsx",
+      "target": "function:src/components/AnalyticsDashboard.tsx:AnalyticsDashboard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/AnalyticsDashboard.tsx",
+      "target": "function:src/components/AnalyticsDashboard.tsx:AnalyticsDashboard",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/BankProfiles.tsx",
+      "target": "function:src/components/BankProfiles.tsx:BankProfiles",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/BankProfiles.tsx",
+      "target": "function:src/components/BankProfiles.tsx:BankProfiles",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/BrokerManager.tsx",
+      "target": "function:src/components/BrokerManager.tsx:BrokerManager",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/BrokerManager.tsx",
+      "target": "function:src/components/BrokerManager.tsx:BrokerManager",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/BudgetLimits.tsx",
+      "target": "function:src/components/BudgetLimits.tsx:BudgetLimits",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/BudgetLimits.tsx",
+      "target": "function:src/components/BudgetLimits.tsx:BudgetLimits",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/ContactsManager.tsx",
+      "target": "function:src/components/ContactsManager.tsx:ContactsManager",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/ContactsManager.tsx",
+      "target": "function:src/components/ContactsManager.tsx:ContactsManager",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/CreditCardsEMI.tsx",
+      "target": "function:src/components/CreditCardsEMI.tsx:CreditCardsEMI",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/CreditCardsEMI.tsx",
+      "target": "function:src/components/CreditCardsEMI.tsx:CreditCardsEMI",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/CryptoWalletView.tsx",
+      "target": "function:src/components/CryptoWalletView.tsx:getBtcAddress",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/CryptoWalletView.tsx",
+      "target": "function:src/components/CryptoWalletView.tsx:CryptoWalletView",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/CryptoWalletView.tsx",
+      "target": "function:src/components/CryptoWalletView.tsx:CryptoWalletView",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/components/CryptoWalletView.tsx:CryptoWalletView",
+      "target": "function:src/components/CryptoWalletView.tsx:getBtcAddress",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/CsvImportWizard.tsx",
+      "target": "function:src/components/CsvImportWizard.tsx:CsvImportWizard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/CsvImportWizard.tsx",
+      "target": "function:src/components/CsvImportWizard.tsx:CsvImportWizard",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/Dashboard.tsx",
+      "target": "function:src/components/Dashboard.tsx:Dashboard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/Dashboard.tsx",
+      "target": "function:src/components/Dashboard.tsx:Dashboard",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/ErrorBoundary.tsx",
+      "target": "class:src/components/ErrorBoundary.tsx:ErrorBoundary",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/ErrorBoundary.tsx",
+      "target": "class:src/components/ErrorBoundary.tsx:ErrorBoundary",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/FdRdTracker.tsx",
+      "target": "function:src/components/FdRdTracker.tsx:FdRdTracker",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/FdRdTracker.tsx",
+      "target": "function:src/components/FdRdTracker.tsx:FdRdTracker",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/GoogleDocsManager.tsx",
+      "target": "function:src/components/GoogleDocsManager.tsx:createGoogleDoc",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/GoogleDocsManager.tsx",
+      "target": "function:src/components/GoogleDocsManager.tsx:createGoogleDoc",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/GoogleDocsManager.tsx",
+      "target": "function:src/components/GoogleDocsManager.tsx:insertTextToDoc",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/GoogleDocsManager.tsx",
+      "target": "function:src/components/GoogleDocsManager.tsx:insertTextToDoc",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/GoogleDocsManager.tsx",
+      "target": "function:src/components/GoogleDocsManager.tsx:generateSampleReportDoc",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/GoogleDocsManager.tsx",
+      "target": "function:src/components/GoogleDocsManager.tsx:generateSampleReportDoc",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/components/GoogleDocsManager.tsx:generateSampleReportDoc",
+      "target": "function:src/components/GoogleDocsManager.tsx:createGoogleDoc",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/components/GoogleDocsManager.tsx:generateSampleReportDoc",
+      "target": "function:src/components/GoogleDocsManager.tsx:insertTextToDoc",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/GooglePicker.tsx",
+      "target": "function:src/components/GooglePicker.tsx:GooglePicker",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/GooglePicker.tsx",
+      "target": "function:src/components/GooglePicker.tsx:GooglePicker",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/GoogleSheetsSync.tsx",
+      "target": "function:src/components/GoogleSheetsSync.tsx:GoogleSheetsSync",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/GoogleSheetsSync.tsx",
+      "target": "function:src/components/GoogleSheetsSync.tsx:GoogleSheetsSync",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/GoogleSlidesManager.tsx",
+      "target": "function:src/components/GoogleSlidesManager.tsx:createGoogleSlide",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/GoogleSlidesManager.tsx",
+      "target": "function:src/components/GoogleSlidesManager.tsx:createGoogleSlide",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/GoogleSlidesManager.tsx",
+      "target": "function:src/components/GoogleSlidesManager.tsx:generateSampleSlideDeck",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/GoogleSlidesManager.tsx",
+      "target": "function:src/components/GoogleSlidesManager.tsx:generateSampleSlideDeck",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/components/GoogleSlidesManager.tsx:generateSampleSlideDeck",
+      "target": "function:src/components/GoogleSlidesManager.tsx:createGoogleSlide",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/InfoTooltip.tsx",
+      "target": "function:src/components/InfoTooltip.tsx:InfoTooltip",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/InfoTooltip.tsx",
+      "target": "function:src/components/InfoTooltip.tsx:InfoTooltip",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/Ledger/LedgerList.tsx",
+      "target": "function:src/components/Ledger/LedgerList.tsx:LedgerList",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/Ledger/LedgerList.tsx",
+      "target": "function:src/components/Ledger/LedgerList.tsx:LedgerList",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/Ledger/LedgerPage.tsx",
+      "target": "function:src/components/Ledger/LedgerPage.tsx:LedgerPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/Ledger/LedgerPage.tsx",
+      "target": "function:src/components/Ledger/LedgerPage.tsx:LedgerPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/Ledger/LedgerProfileView.tsx",
+      "target": "function:src/components/Ledger/LedgerProfileView.tsx:LedgerProfileView",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/Ledger/LedgerProfileView.tsx",
+      "target": "function:src/components/Ledger/LedgerProfileView.tsx:LedgerProfileView",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/LogEntryForm.tsx",
+      "target": "function:src/components/LogEntryForm.tsx:LogEntryForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/LogEntryForm.tsx",
+      "target": "function:src/components/LogEntryForm.tsx:LogEntryForm",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/MarketView.tsx",
+      "target": "function:src/components/MarketView.tsx:MarketView",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/MarketView.tsx",
+      "target": "function:src/components/MarketView.tsx:MarketView",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/PendingPayments.tsx",
+      "target": "function:src/components/PendingPayments.tsx:PendingPayments",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/PendingPayments.tsx",
+      "target": "function:src/components/PendingPayments.tsx:PendingPayments",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

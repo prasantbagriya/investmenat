@@ -1,0 +1,45 @@
+[
+  {
+    "order": 1,
+    "title": "Project Overview & Mission",
+    "description": "InvestMant is a real-time investment and financial market tracking suite featuring live Forex Factory calendar integration, portfolio analytics, and multi-asset market intelligence.",
+    "nodeIds": [
+      "document:README.md"
+    ]
+  },
+  {
+    "order": 2,
+    "title": "Frontend Application Core",
+    "description": "The React single-page frontend boots from main.tsx and App.tsx, orchestrating routing across Portfolio, Market Overview, Forex Calendar, and Research Terminal.",
+    "nodeIds": [
+      "file:src/main.tsx",
+      "file:src/App.tsx"
+    ]
+  },
+  {
+    "order": 3,
+    "title": "Market & Forex Factory Integration",
+    "description": "Forex Factory economic news, market data views, and financial instrument tracking components provide real-time economic calendars and volatility alerts.",
+    "nodeIds": [
+      "file:src/components/MarketView.tsx",
+      "file:src/components/PortfolioTracker.tsx",
+      "file:src/components/ResearchTerminal.tsx"
+    ]
+  },
+  {
+    "order": 4,
+    "title": "Backend Proxy & Server",
+    "description": "Express server (server.ts) handles local proxying, Forex Factory XML calendar feeds, CORS bypassing, and API endpoints for portfolio persistence.",
+    "nodeIds": [
+      "file:server.ts"
+    ]
+  },
+  {
+    "order": 5,
+    "title": "Android Mobile Wrapper",
+    "description": "Capacitor enables Android APK packaging, bridging the web client into an offline-capable mobile Android application.",
+    "nodeIds": [
+      "config:android/app/build.gradle"
+    ]
+  }
+]

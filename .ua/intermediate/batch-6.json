@@ -1,0 +1,60 @@
+{
+  "nodes": [
+    {
+      "id": "document:.agents/skills/firebase_basics/references/refresh/android_studio.md",
+      "type": "document",
+      "name": "android_studio.md",
+      "filePath": ".agents/skills/firebase_basics/references/refresh/android_studio.md",
+      "summary": "Documentation describing android_studio.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/firebase_basics/references/refresh/antigravity.md",
+      "type": "document",
+      "name": "antigravity.md",
+      "filePath": ".agents/skills/firebase_basics/references/refresh/antigravity.md",
+      "summary": "Documentation describing antigravity.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/firebase_basics/references/refresh/claude.md",
+      "type": "document",
+      "name": "claude.md",
+      "filePath": ".agents/skills/firebase_basics/references/refresh/claude.md",
+      "summary": "Documentation describing claude.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/firebase_basics/references/refresh/gemini-cli.md",
+      "type": "document",
+      "name": "gemini-cli.md",
+      "filePath": ".agents/skills/firebase_basics/references/refresh/gemini-cli.md",
+      "summary": "Documentation describing gemini-cli.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/firebase_basics/references/refresh/other-agents.md",
+      "type": "document",
+      "name": "other-agents.md",
+      "filePath": ".agents/skills/firebase_basics/references/refresh/other-agents.md",
+      "summary": "Documentation describing other-agents.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

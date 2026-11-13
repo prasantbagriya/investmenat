@@ -1,0 +1,38 @@
+{
+  "nodes": [
+    {
+      "id": "document:.agents/skills/firebase_data_connect_basics/SKILL.md",
+      "type": "document",
+      "name": "SKILL.md",
+      "filePath": ".agents/skills/firebase_data_connect_basics/SKILL.md",
+      "summary": "Documentation describing SKILL.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_data_connect_basics/examples.md",
+      "type": "document",
+      "name": "examples.md",
+      "filePath": ".agents/skills/firebase_data_connect_basics/examples.md",
+      "summary": "Documentation describing examples.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:.agents/skills/firebase_data_connect_basics/templates.md",
+      "type": "document",
+      "name": "templates.md",
+      "filePath": ".agents/skills/firebase_data_connect_basics/templates.md",
+      "summary": "Documentation describing templates.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "complex"
+    }
+  ],
+  "edges": []
+}

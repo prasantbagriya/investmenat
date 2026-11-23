@@ -361,7 +361,7 @@ export default function SipTracker({ sips, onAddSip, onDeleteSip, onEditSip }: S
                       </select>
                     </div>
                     <div className="col-span-1 md:col-span-3 flex justify-end gap-1 border-t border-slate-100 pt-1">
-                      <button type="button" onClick={() => setIsAdding(false)} className="px-2 py-1 border border-slate-200 text-slate-700 rounded-lg font-bold cursor-pointer">Cancel</button>
+                      <button type="button" onClick={() => setIsAdding(false)} className="px-2 py-1 border border-slate-200 text-slate-700 rounded-xl font-medium cursor-pointer">Cancel</button>
                       <button type="submit" disabled={isSaving} className="px-2 py-1 bg-slate-900 text-white rounded-xl font-medium hover:bg-slate-800 active:bg-slate-950 cursor-pointer disabled:opacity-50">Start New SIP</button>
                     </div>
                   </form>

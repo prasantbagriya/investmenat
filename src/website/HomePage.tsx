@@ -24,7 +24,7 @@ const HomePage = () => {
               transition={{ duration: 0.5 }}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm"
             >
-              <span className="flex h-2.5 w-2.5 rounded-full bg-indigo-500 animate-pulse"></span>
+              <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
               <span className="text-xs font-bold text-slate-600 capitalize ">The Future of Wealth Management</span>
             </motion.div>
             
@@ -34,7 +34,7 @@ const HomePage = () => {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-6xl md:text-8xl font-semibold text-slate-900 tracking-tight leading-[1.05]"
             >
-              Master Your Wealth <br className="hidden md:block" /> with <span className="text-transparent bg-clip-text bg-slate-900 text-white">Intelligence.</span>
+              Master Your Wealth <br className="hidden md:block" /> with <span className="text-emerald-600">Intelligence.</span>
             </motion.h1>
             
             <motion.p 
@@ -75,7 +75,7 @@ const HomePage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
             <div className="bg-white border border-slate-100 p-10 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:-translate-y-2 transition-all duration-300 group">
-              <div className="w-16 h-16 bg-slate-100 text-slate-900 rounded-lg flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300 shadow-inner">
+              <div className="w-16 h-16 bg-slate-100 text-slate-900 rounded-lg flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-slate-900 group-hover:text-white transition-all duration-300 shadow-inner">
                 <Briefcase size={32} strokeWidth={2.5} />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">Portfolio Tracking</h3>
@@ -85,7 +85,7 @@ const HomePage = () => {
             </div>
 
             <div className="bg-white border border-slate-100 p-10 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:-translate-y-2 transition-all duration-300 group">
-              <div className="w-16 h-16 bg-purple-50 text-purple-600 rounded-lg flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300 shadow-inner">
+              <div className="w-16 h-16 bg-slate-100 text-slate-800 rounded-lg flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-slate-900 group-hover:text-white transition-all duration-300 shadow-inner">
                 <TrendingUp size={32} strokeWidth={2.5} />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">Market Intelligence</h3>
@@ -115,7 +115,7 @@ const HomePage = () => {
             </div>
 
             <div className="bg-white border border-slate-100 p-10 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:-translate-y-2 transition-all duration-300 group">
-              <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-inner">
+              <div className="w-16 h-16 bg-slate-100 text-slate-800 rounded-lg flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-slate-900 group-hover:text-white transition-all duration-300 shadow-inner">
                 <Target size={32} strokeWidth={2.5} />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">Wealth Forecaster</h3>
@@ -139,9 +139,9 @@ const HomePage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-32 relative overflow-hidden bg-indigo-600">
+      <section className="py-32 relative overflow-hidden bg-slate-900">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-indigo-600/50 to-purple-800/50 mix-blend-overlay"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-slate-900/60"></div>
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl relative z-10 text-center">
           <h2 className="text-4xl md:text-6xl font-semibold text-white tracking-tight mb-8 leading-tight">Ready to take control <br/>of your finances?</h2>

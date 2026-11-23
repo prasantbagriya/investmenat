@@ -159,7 +159,7 @@ export default function NotificationCenter({
                     
                     return (
                       <div key={p.id} className="bg-white border border-slate-200 rounded-xl p-3 shadow-sm relative overflow-hidden">
-                        <div className={`absolute left-0 top-0 bottom-0 w-1 ${isOwedToMe ? 'bg-indigo-500' : 'bg-rose-500'}`} />
+                        <div className={`absolute left-0 top-0 bottom-0 w-1 ${isOwedToMe ? 'bg-slate-900' : 'bg-rose-500'}`} />
                         <div className="pl-1">
                           <h4 className="font-bold text-sm text-slate-800 flex items-center gap-1">
                             <AlertTriangle size={14} className={isOwedToMe ? 'text-indigo-500' : 'text-rose-500'} />
@@ -201,7 +201,7 @@ export default function NotificationCenter({
                             <div className="mt-3 grid grid-cols-3 gap-1.5">
                               <button
                                 onClick={() => onPayPending(p)}
-                                className={`flex justify-center items-center gap-1 text-xs font-bold capitalize py-1.5 rounded text-white ${isOwedToMe ? 'bg-indigo-600 hover:bg-indigo-700' : 'bg-rose-600 hover:bg-rose-700'} transition-colors cursor-pointer`}
+                                className={`flex justify-center items-center gap-1 text-xs font-bold capitalize py-1.5 rounded text-white ${isOwedToMe ? 'bg-slate-900 hover:bg-slate-800' : 'bg-rose-600 hover:bg-rose-700'} transition-colors cursor-pointer`}
                               >
                                 <CheckCircle size={12} /> {isOwedToMe ? 'Got it' : 'Paid'}
                               </button>

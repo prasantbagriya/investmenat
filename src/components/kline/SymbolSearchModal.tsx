@@ -135,7 +135,7 @@ export default function SymbolSearchModal({ theme, onClose, onSelect }: SymbolSe
               onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
             >
               <div className="flex items-center gap-4">
-                <div className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white bg-blue-500">
+                <div className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white bg-slate-900">
                   {r.symbol.charAt(0)}
                 </div>
                 <div className="flex flex-col">

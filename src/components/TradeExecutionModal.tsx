@@ -175,7 +175,7 @@ export default function TradeExecutionModal({ isOpen, onClose, symbol, ltp }: Tr
             className="relative w-full max-w-2xl bg-white rounded-xl shadow-xl border border-slate-200 overflow-hidden max-h-[95vh] overflow-y-auto"
           >
             {/* Header */}
-            <div className={`p-4 text-white flex justify-between items-center sticky top-0 z-10 ${orderSide === 'BUY' ? 'bg-indigo-600' : 'bg-rose-600'}`}>
+            <div className={`p-4 text-white flex justify-between items-center sticky top-0 z-10 ${orderSide === 'BUY' ? 'bg-slate-900' : 'bg-rose-600'}`}>
               <div>
                 <h2 className="text-xl font-semibold">{symbol}</h2>
                 {ltp && <p className="text-sm opacity-90 text-white/80">LTP: ₹{ltp.toFixed(2)}</p>}

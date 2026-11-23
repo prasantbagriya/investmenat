@@ -74,7 +74,7 @@ const UpstoxOrderTicket: React.FC<UpstoxOrderTicketProps> = ({ initialSymbol = '
 
   return (
     <div className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-xl max-w-lg w-full mx-auto ">
-      <div className={`p-5 flex items-center justify-between border-b ${transactionType === 'BUY' ? 'bg-blue-600 border-blue-700' : 'bg-rose-600 border-rose-700'}`}>
+      <div className={`p-5 flex items-center justify-between border-b ${transactionType === 'BUY' ? 'bg-slate-900 border-slate-800' : 'bg-rose-600 border-rose-700'}`}>
         <h3 className="text-white font-semibold text-xl flex items-center gap-2">
           {transactionType === 'BUY' ? <TrendingUp size={24} /> : <TrendingDown size={24} />}
           {transactionType} ORDER

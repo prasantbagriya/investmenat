@@ -69,7 +69,7 @@ export default function PinLockScreen({
           {[0, 1, 2, 3].map((idx) => (
             <div 
               key={idx} 
-              className={`h-3.5 w-3.5 rounded-full border-2 border-slate-300 transition-all duration-150 ${pinValue.length > idx ? 'bg-indigo-600 border-indigo-600 scale-125 shadow-sm' : 'bg-transparent'}`}
+              className={`h-3.5 w-3.5 rounded-full border-2 border-slate-300 transition-all duration-150 ${pinValue.length > idx ? 'bg-slate-900 border-slate-900 scale-125 shadow-sm' : 'bg-transparent'}`}
             />
           ))}
         </div>

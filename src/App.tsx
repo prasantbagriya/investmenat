@@ -1893,7 +1893,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-100 flex flex-col overflow-x-hidden selection:bg-indigo-500/30">
+    <div className="min-h-screen bg-slate-100 flex flex-col overflow-x-hidden selection:bg-slate-900 selection:text-white">
       <Toaster position="top-right" toastOptions={{ className: 'text-sm font-bold', style: { borderRadius: '12px', background: '#334155', color: '#fff' } }} />
 
       {/* Top Navigation */}
@@ -2315,7 +2315,7 @@ export default function App() {
                     setSnoozeTime(now.toTimeString().substring(0, 5));
                     setActiveToasts((prev) => prev.filter((t) => t.id !== toast.id));
                   }}
-                  className="px-2 py-1 text-xs font-bold bg-indigo-600/20 text-indigo-300 hover:bg-indigo-600/40 rounded transition-colors cursor-pointer"
+                  className="px-2 py-1 text-xs font-bold bg-slate-800 text-slate-200 hover:bg-slate-700 rounded transition-colors cursor-pointer"
                 >
                   Snooze
                 </button>
@@ -2346,7 +2346,7 @@ export default function App() {
                 <input type="time" value={snoozeTime} onChange={e => setSnoozeTime(e.target.value)} className="w-full text-sm p-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-indigo-500" />
               </div>
               <div className="flex justify-end gap-2 pt-2 border-t border-slate-100 mt-2">
-                <button onClick={() => setSnoozingTask(null)} className="px-3 py-1.5 text-xs font-bold text-slate-700 hover:bg-slate-50 rounded-lg cursor-pointer">Cancel</button>
+                <button onClick={() => setSnoozingTask(null)} className="px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-100 rounded-lg cursor-pointer">Cancel</button>
                 <button
                   onClick={async () => {
                     if (!snoozeDate || !snoozeTime) return toast.error("Please select date and time.");
@@ -2360,7 +2360,7 @@ export default function App() {
                       setSnoozingTask(null);
                     } catch (e) { toast.error("Failed to snooze: " + e); }
                   }}
-                  className="px-3 py-1.5 text-xs font-bold bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 cursor-pointer">
+                  className="px-3 py-1.5 text-xs font-bold bg-slate-900 text-white rounded-xl hover:bg-slate-800 font-medium cursor-pointer">
                   Save & Snooze
                 </button>
               </div>

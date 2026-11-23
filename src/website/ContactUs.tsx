@@ -26,7 +26,7 @@ const ContactUs = () => {
             
             <div className="space-y-8 bg-white p-8 rounded-[2rem] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.03)]">
               <div className="flex items-start gap-5 group">
-                <div className="p-4 bg-slate-100 text-slate-900 rounded-lg group-hover:scale-110 group-hover:bg-indigo-600 group-hover:text-white transition-all shadow-sm">
+                <div className="p-4 bg-slate-100 text-slate-900 rounded-lg group-hover:scale-110 group-hover:bg-slate-900 group-hover:text-white transition-all shadow-sm">
                   <Mail size={24} />
                 </div>
                 <div>
@@ -37,7 +37,7 @@ const ContactUs = () => {
               </div>
 
               <div className="flex items-start gap-5 group">
-                <div className="p-4 bg-purple-50 text-purple-600 rounded-lg group-hover:scale-110 group-hover:bg-purple-600 group-hover:text-white transition-all shadow-sm">
+                <div className="p-4 bg-slate-100 text-slate-800 rounded-xl group-hover:scale-105 group-hover:bg-slate-900 group-hover:text-white transition-all shadow-sm">
                   <MapPin size={24} />
                 </div>
                 <div>
@@ -65,7 +65,7 @@ const ContactUs = () => {
 
           {/* Contact Form */}
           <div className="lg:col-span-3 bg-white border border-slate-100 rounded-[2.5rem] p-10 md:p-14 shadow-[0_8px_40px_rgb(0,0,0,0.06)] relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-indigo-500 to-purple-500"></div>
+            <div className="absolute top-0 left-0 w-full h-2 bg-slate-900"></div>
             <div className="flex items-center gap-3 mb-8">
               <MessageSquare className="text-slate-900" size={32} />
               <h2 className="text-3xl font-semibold text-slate-900">Send a message</h2>
@@ -117,7 +117,7 @@ const ContactUs = () => {
 
               <button 
                 type="submit" 
-                className="w-full px-8 py-5 bg-slate-900 hover:bg-indigo-600 text-white font-medium text-lg rounded-xl transition-colors shadow-lg hover:shadow-indigo-500/30"
+                className="w-full px-8 py-5 bg-slate-900 hover:bg-slate-800 text-white font-medium text-base rounded-xl transition-colors shadow-xs"
               >
                 Send Message
               </button>

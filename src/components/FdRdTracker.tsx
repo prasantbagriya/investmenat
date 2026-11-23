@@ -247,7 +247,7 @@ export default function FdRdTracker({ fds, onAddFd, onDeleteFd, onEditFd }: FdRd
                 <h3 className="font-bold text-[13px] sm:text-sm text-slate-800 font-display truncate">Fixed & Recurring Deposits</h3>
               </div>
               <button onClick={() => setIsAdding(!isAdding)}
-                className="shrink-0 bg-slate-900 hover:bg-slate-800 text-white font-bold py-1.5 px-2 rounded-lg text-xs sm:text-xs flex items-center gap-1 transition-all cursor-pointer">
+                className="shrink-0 bg-slate-900 hover:bg-slate-800 text-white font-medium py-1.5 px-3 rounded-xl text-xs flex items-center gap-1 transition-all cursor-pointer">
                 <Plus size={13} /> Log Deposit
               </button>
             </div>
@@ -259,8 +259,8 @@ export default function FdRdTracker({ fds, onAddFd, onDeleteFd, onEditFd }: FdRd
                   className="overflow-hidden border-b border-slate-100 bg-slate-50/20">
                   <form onSubmit={handleSubmit} className="p-2 grid grid-cols-1 md:grid-cols-3 gap-2 text-xs ">
                     <div className="col-span-1 md:col-span-3 flex gap-1 border-b border-slate-100 pb-1">
-                      <button type="button" onClick={() => setIsRd(false)} className={`px-1 py-1.5 rounded-md font-bold ${!isRd ? 'bg-slate-900 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-600'}`}>Fixed Deposit (FD)</button>
-                      <button type="button" onClick={() => setIsRd(true)} className={`px-1 py-1.5 rounded-md font-bold ${isRd ? 'bg-slate-900 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-600'}`}>Recurring Deposit (RD)</button>
+                      <button type="button" onClick={() => setIsRd(false)} className={`px-1 py-1.5 rounded-xl font-medium ${!isRd ? 'bg-slate-900 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-600'}`}>Fixed Deposit (FD)</button>
+                      <button type="button" onClick={() => setIsRd(true)} className={`px-1 py-1.5 rounded-xl font-medium ${isRd ? 'bg-slate-900 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-600'}`}>Recurring Deposit (RD)</button>
                     </div>
                     <div>
                       <label className="block text-slate-700 font-semibold mb-1">Bank / Institution Name</label>
@@ -292,7 +292,7 @@ export default function FdRdTracker({ fds, onAddFd, onDeleteFd, onEditFd }: FdRd
                       <span className="font-mono tabular-nums text-xs font-bold text-slate-700 mt-1">{computeMaturityDate(startDate, parseInt(tenure))}</span>
                     </div>
                     <div className="col-span-1 md:col-span-3 flex justify-end gap-1 border-t border-slate-100 pt-1">
-                      <button type="button" onClick={() => setIsAdding(false)} className="px-2 py-1 border border-slate-200 text-slate-700 rounded-lg font-bold cursor-pointer">Cancel</button>
+                      <button type="button" onClick={() => setIsAdding(false)} className="px-2 py-1 border border-slate-200 text-slate-700 rounded-xl font-medium cursor-pointer">Cancel</button>
                       <button type="submit" disabled={isSaving} className="px-2 py-1 bg-slate-900 text-white rounded-xl font-medium hover:bg-slate-800 active:bg-slate-950 cursor-pointer disabled:opacity-50">Save Deposit</button>
                     </div>
                   </form>
@@ -315,7 +315,7 @@ export default function FdRdTracker({ fds, onAddFd, onDeleteFd, onEditFd }: FdRd
                   <div key={fd.id} className="border border-slate-200 rounded-lg p-2.5 bg-slate-50/20 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-2">
                     <div className="space-y-1 md:max-w-xs">
                       <div className="flex items-center gap-1.5">
-                        <span className="p-1 px-1.5 bg-slate-900 text-white font-bold rounded-lg text-xs capitalize">{fd.isRd ? 'RD' : 'FD'}</span>
+                        <span className="p-1 px-1.5 bg-slate-900 text-white font-medium rounded-md text-xs capitalize">{fd.isRd ? 'RD' : 'FD'}</span>
                         <h4 className="font-semibold text-slate-800 text-xs truncate max-w-[150px]">{fd.bankName}</h4>
                       </div>
                       <p className="text-xs text-slate-500 font-semibold font-mono tabular-nums">ROI: {fd.interestRate}% p.a. • tenure: {fd.tenure} months</p>
@@ -326,7 +326,7 @@ export default function FdRdTracker({ fds, onAddFd, onDeleteFd, onEditFd }: FdRd
                     </div>
 
                     <div className="flex-1 space-y-1.5 max-w-md">
-                      <div className="flex justify-between items-center text-xs font-bold text-slate-500 font-mono tabular-nums">
+                      <div className="flex justify-between items-center text-xs font-medium text-slate-500 font-mono tabular-nums">
                         <span>Progress Tracker</span>
                         <span>{fd.isMatured ? 'MATURED ✔' : `${fd.daysRemaining} days remaining`}</span>
                       </div>
@@ -386,7 +386,7 @@ export default function FdRdTracker({ fds, onAddFd, onDeleteFd, onEditFd }: FdRd
               <div className="space-y-1 text-xs">
                 {processedFds.map(fd => (
                   <div key={fd.id} className="p-1 border border-slate-100 rounded-xl flex gap-1 items-start bg-slate-50/20">
-                    <div className={`p-1.5 rounded-lg text-white ${fd.isMatured ? 'bg-emerald-500' : fd.daysRemaining <= 30 ? 'bg-amber-500' : 'bg-blue-500'}`}>
+                    <div className={`p-1.5 rounded-lg text-white ${fd.isMatured ? 'bg-emerald-500' : fd.daysRemaining <= 30 ? 'bg-amber-500' : 'bg-slate-900'}`}>
                       <CheckCircle2 size={13} />
                     </div>
                     <div>

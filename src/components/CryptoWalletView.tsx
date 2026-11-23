@@ -936,13 +936,13 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
               </div>
             ))}
           </div>
-          <button onClick={() => copyToClipboard(newSeed, "Phrase Copied!")} className="mt-4 w-full flex items-center justify-center gap-2 py-2 text-slate-600 hover:text-slate-900 font-bold text-sm transition-colors">
+          <button onClick={() => copyToClipboard(newSeed, "Phrase Copied!")} className="mt-4 w-full flex items-center justify-center gap-2 py-2 text-slate-600 hover:text-slate-900 font-medium text-sm transition-colors">
             <Copy size={16} /> Copy to Clipboard
           </button>
         </div>
 
         <div className="flex gap-3">
-          <button onClick={() => setViewState('onboarding')} className="px-6 py-3 border border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50">Back</button>
+          <button onClick={() => setViewState('onboarding')} className="px-4 py-2 border border-slate-200 text-slate-700 font-medium rounded-xl hover:bg-slate-50">Back</button>
           <button onClick={confirmCreate} className="flex-1 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium py-2 px-4 rounded-xl transition-colors shadow-md shadow-slate-900/20">
             I've Saved It, Open Wallet
           </button>
@@ -965,7 +965,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
         />
 
         <div className="flex gap-3">
-          <button onClick={() => setViewState('onboarding')} className="px-6 py-3 border border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50">Back</button>
+          <button onClick={() => setViewState('onboarding')} className="px-4 py-2 border border-slate-200 text-slate-700 font-medium rounded-xl hover:bg-slate-50">Back</button>
           <button onClick={handleRestore} className="flex-1 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium py-2 px-4 rounded-xl transition-colors shadow-md shadow-slate-900/20">
             Restore Wallet
           </button>
@@ -1030,7 +1030,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
         </div>
 
         <div className="flex gap-3 mt-6">
-          <button onClick={() => setViewState('onboarding')} className="px-6 py-3 border border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50">Back</button>
+          <button onClick={() => setViewState('onboarding')} className="px-4 py-2 border border-slate-200 text-slate-700 font-medium rounded-xl hover:bg-slate-50">Back</button>
           <button
             onClick={handleImportPack}
             disabled={isImporting}
@@ -1273,7 +1273,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
             
             <div className="bg-slate-50 border border-slate-200 rounded-xl p-3 flex flex-col sm:flex-row items-center justify-between gap-3 mx-auto w-full mb-6">
               <span className="font-mono tabular-nums text-xs sm:text-sm text-slate-700 truncate w-full sm:w-auto text-center sm:text-left">{wallet.address}</span>
-              <button onClick={() => copyToClipboard(wallet.address, "EVM Address Copied!")} className="w-full sm:w-auto shrink-0 bg-white border border-slate-200 text-slate-700 hover:text-slate-900 px-4 py-2 rounded-xl font-bold text-xs sm:text-sm shadow-sm transition-colors flex items-center justify-center gap-2">
+              <button onClick={() => copyToClipboard(wallet.address, "EVM Address Copied!")} className="w-full sm:w-auto shrink-0 bg-white border border-slate-200 text-slate-700 hover:text-slate-900 px-4 py-2 rounded-xl font-medium text-xs sm:text-sm shadow-xs transition-colors flex items-center justify-center gap-2">
                 <Copy size={16} /> Copy
               </button>
             </div>
@@ -1284,7 +1284,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                 <p className="text-xs sm:text-xs text-slate-500 font-medium mb-4 mx-auto">Send ONLY Native Bitcoin (BTC) to this address.</p>
                 <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 flex flex-col sm:flex-row items-center justify-between gap-3 mx-auto w-full">
                   <span className="font-mono tabular-nums text-xs sm:text-sm text-amber-800 truncate w-full sm:w-auto text-center sm:text-left">{wallet.btcAddress}</span>
-                  <button onClick={() => copyToClipboard(wallet.btcAddress as string, "BTC Address Copied!")} className="w-full sm:w-auto shrink-0 bg-white border border-amber-200 text-amber-700 hover:text-amber-900 px-4 py-2 rounded-xl font-bold text-xs sm:text-sm shadow-sm transition-colors flex items-center justify-center gap-2">
+                  <button onClick={() => copyToClipboard(wallet.btcAddress as string, "BTC Address Copied!")} className="w-full sm:w-auto shrink-0 bg-white border border-amber-200 text-amber-700 hover:text-amber-900 px-4 py-2 rounded-xl font-medium text-xs sm:text-sm shadow-sm transition-colors flex items-center justify-center gap-2">
                     <Copy size={16} /> Copy
                   </button>
                 </div>
@@ -1488,7 +1488,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                       }} className="w-full sm:w-auto justify-center text-xs sm:text-sm font-bold text-slate-500 hover:text-slate-800 flex items-center gap-1 bg-white sm:bg-transparent border sm:border-transparent border-slate-200 py-2 sm:py-0 rounded-lg">
                         <EyeOff size={16} /> Hide Phrase Permanently
                       </button>
-                      <button onClick={() => copyToClipboard(wallet.seedPhrase)} className="w-full sm:w-auto justify-center text-xs sm:text-sm font-bold text-slate-700 hover:text-slate-900 flex items-center gap-1 bg-slate-100 sm:bg-transparent py-2 sm:py-0 rounded-lg">
+                      <button onClick={() => copyToClipboard(wallet.seedPhrase)} className="w-full sm:w-auto justify-center text-xs sm:text-sm font-medium text-slate-700 hover:text-slate-900 flex items-center gap-1 bg-slate-100 sm:bg-transparent py-2 sm:py-0 rounded-lg">
                         <Copy size={16} /> Copy Phrase
                       </button>
                     </div>
@@ -1555,7 +1555,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
 
       {/* ── EXPORT WALLET PACK ── */}
       {activeTab === 'security' && (
-        <div className={`border rounded-xl p-4 sm:p-6 w-full mt-2 transition-all ${hasExportedPack ? 'bg-slate-800/60 border-slate-700 opacity-70' : 'bg-gradient-to-br from-purple-900 to-slate-900 border-purple-800'}`}>
+        <div className={`border rounded-xl p-4 sm:p-6 w-full mt-2 transition-all ${hasExportedPack ? 'bg-slate-800/60 border-slate-700 opacity-70' : 'bg-slate-900 border-slate-800'}`}>
           <div className="flex items-center gap-3 mb-3">
             <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${hasExportedPack ? 'bg-slate-700' : 'bg-purple-800/60'}`}>
               <ShieldCheck size={20} className={hasExportedPack ? 'text-slate-400' : 'text-purple-300'} />
@@ -1585,12 +1585,12 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                   placeholder="Create Pack Password (min 12 chars)..."
                   value={packPassword}
                   onChange={e => setPackPassword(e.target.value)}
-                  className="flex-1 bg-purple-900/50 border border-purple-700 text-white placeholder:text-purple-400 rounded-lg px-3 py-2.5 text-sm outline-none focus:border-purple-400"
+                  className="flex-1 bg-slate-900/50 border border-purple-700 text-white placeholder:text-purple-400 rounded-lg px-3 py-2.5 text-sm outline-none focus:border-purple-400"
                 />
                 <button
                   onClick={handleExportPack}
                   disabled={isExporting}
-                  className="bg-purple-500 hover:bg-purple-400 disabled:opacity-50 text-white font-medium py-2.5 px-4 rounded-lg text-sm transition-colors whitespace-nowrap flex items-center justify-center gap-1.5"
+                  className="bg-slate-900 hover:bg-slate-800 disabled:opacity-50 text-white font-medium py-2.5 px-4 rounded-xl text-sm transition-colors whitespace-nowrap flex items-center justify-center gap-1.5"
                 >
                   {isExporting ? <RefreshCw size={14} className="animate-spin" /> : <ShieldCheck size={14} />}
                   {isExporting ? 'Exporting...' : 'Export'}

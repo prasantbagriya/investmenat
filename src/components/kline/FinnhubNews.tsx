@@ -130,7 +130,7 @@ export default function FinnhubNews({ category, theme }: FinnhubNewsProps) {
         </div>
         <button 
           onClick={handleSaveAlert}
-          className="p-1.5 rounded transition-colors bg-indigo-600 hover:bg-indigo-700 text-white flex-shrink-0"
+          className="p-1.5 rounded transition-colors bg-slate-900 hover:bg-slate-800 text-white flex-shrink-0"
           title="Save Alert"
         >
           {alertKeyword === tempKeyword && tempKeyword.length > 0 ? <Check size={14} /> : <Bell size={14} />}

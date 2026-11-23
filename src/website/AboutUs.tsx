@@ -12,7 +12,7 @@ const AboutUs = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl relative z-10">
         
         <div className="text-center mb-20">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-tr from-indigo-100 to-purple-100 text-slate-900 rounded-xl mb-8 shadow-sm">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-slate-100 text-slate-900 rounded-xl mb-8 shadow-sm">
             <Users size={36} strokeWidth={2.5} />
           </div>
           <h1 className="text-5xl md:text-6xl font-semibold text-slate-900 tracking-tight mb-6">About InvestMant</h1>

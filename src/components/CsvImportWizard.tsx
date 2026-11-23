@@ -160,7 +160,7 @@ export default function CsvImportWizard({ onAddTransaction, bankAccounts, onClos
                   onClick={() => toggleSelect(idx)}
                   className={`p-2.5 flex items-center gap-3 cursor-pointer transition-colors ${isSelected ? 'bg-slate-100/40' : 'hover:bg-slate-50'}`}
                 >
-                  <div className={`w-4 h-4 rounded-sm border flex items-center justify-center shrink-0 transition-colors ${isSelected ? 'bg-indigo-600 border-indigo-600 text-white' : 'border-slate-300 bg-white'}`}>
+                  <div className={`w-4 h-4 rounded-sm border flex items-center justify-center shrink-0 transition-colors ${isSelected ? 'bg-slate-900 border-slate-900 text-white' : 'border-slate-300 bg-white'}`}>
                     {isSelected && <Check size={10} strokeWidth={3} />}
                   </div>
                   <div className="flex-1 min-w-0">
@@ -184,7 +184,7 @@ export default function CsvImportWizard({ onAddTransaction, bankAccounts, onClos
           <button
             disabled={importing || selectedIndices.size === 0}
             onClick={handleImport}
-            className="w-full bg-slate-900 text-white font-medium text-xs py-2.5 rounded-xl-lg shadow-sm hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 transition-all cursor-pointer"
+            className="w-full bg-slate-900 text-white font-medium text-xs py-2.5 rounded-xl shadow-xs hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 transition-all cursor-pointer"
           >
             {importing ? (
               <span className="animate-pulse">Importing...</span>

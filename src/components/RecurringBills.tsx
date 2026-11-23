@@ -361,7 +361,7 @@ export default function RecurringBills({
                       type="button" 
                       onClick={handleParseEmail}
                       disabled={isParsingEmail || !emailText.trim()}
-                      className="bg-slate-900 text-white hover:bg-indigo-700 disabled:opacity-50 font-medium px-3 py-1.5 rounded-xl transition-all cursor-pointer flex items-center gap-1.5"
+                      className="bg-slate-900 text-white hover:bg-slate-800 disabled:opacity-50 font-medium px-3 py-1.5 rounded-xl transition-all cursor-pointer flex items-center gap-1.5"
                     >
                       {isParsingEmail ? (
                         <> <Sparkles size={12} className="animate-spin" /> Analyzing... </>

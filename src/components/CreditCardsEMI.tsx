@@ -609,7 +609,7 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [], bankAccounts =
             <div className="bg-white border border-dashed border-slate-200 rounded-md py-16 text-center">
               <CreditCard size={40} className="mx-auto mb-3 text-slate-300" />
               <p className="text-slate-500 font-medium text-sm">No credit card bills added yet.</p>
-              <button onClick={() => setShowAddCard(true)} className="mt-3 text-slate-900 font-bold text-xs hover:underline cursor-pointer">+ Add your first bill</button>
+              <button onClick={() => setShowAddCard(true)} className="mt-3 text-slate-900 font-medium text-xs hover:underline cursor-pointer">+ Add your first bill</button>
             </div>
           ) : (
             bills.map(bill => {
@@ -678,7 +678,7 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [], bankAccounts =
             <div className="bg-white border border-dashed border-slate-200 rounded-md py-16 text-center">
               <TrendingDown size={40} className="mx-auto mb-3 text-slate-300" />
               <p className="text-slate-500 font-medium text-sm">No active EMIs tracked yet.</p>
-              <button onClick={() => setShowAddEmi(true)} className="mt-3 text-slate-900 font-bold text-xs hover:underline cursor-pointer">+ Add your first EMI</button>
+              <button onClick={() => setShowAddEmi(true)} className="mt-3 text-slate-900 font-medium text-xs hover:underline cursor-pointer">+ Add your first EMI</button>
             </div>
           ) : (
             emis.map(emi => {
@@ -761,7 +761,7 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [], bankAccounts =
                           initial={{ width: 0 }}
                           animate={{ width: `${Math.min(progress, 100)}%` }}
                           transition={{ duration: 0.8, delay: 0.2 }}
-                          className={`h-full rounded-full ${isComplete ? 'bg-emerald-500' : 'bg-indigo-500'}`}
+                          className={`h-full rounded-full ${isComplete ? 'bg-emerald-500' : 'bg-slate-900'}`}
                         />
                       </div>
                     </div>

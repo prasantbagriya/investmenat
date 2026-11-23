@@ -153,7 +153,7 @@ const OptionChainChart: React.FC<OptionChainChartProps> = ({ data, theme = 'ligh
         <>
           {/* Header */}
           <div className="flex bg-slate-900 text-white text-xs font-bold capitalize sticky top-0 z-20 shadow-md">
-            <div className="flex-1 flex justify-between items-center px-4 py-2.5 border-r border-slate-700 bg-gradient-to-r from-red-900/40 to-transparent">
+            <div className="flex-1 flex justify-between items-center px-4 py-2.5 border-r border-slate-700 bg-rose-950/20">
               <span className="w-20 text-left text-slate-300">Call OI</span>
               <span className="w-16 text-right text-slate-200">LTP</span>
               <span className="w-24 text-right text-red-400 font-semibold ">CALLS</span>
@@ -161,7 +161,7 @@ const OptionChainChart: React.FC<OptionChainChartProps> = ({ data, theme = 'ligh
             <div className="w-28 flex items-center justify-center py-2.5 bg-slate-950 border-x border-slate-700 shadow-inner">
               <span className="text-slate-200">STRIKE</span>
             </div>
-            <div className="flex-1 flex justify-between items-center px-4 py-2.5 border-l border-slate-700 bg-gradient-to-l from-emerald-900/40 to-transparent">
+            <div className="flex-1 flex justify-between items-center px-4 py-2.5 border-l border-slate-700 bg-emerald-950/20">
               <span className="w-24 text-left text-emerald-400 font-semibold ">PUTS</span>
               <span className="w-16 text-left text-slate-200">LTP</span>
               <span className="w-20 text-right text-slate-300">Put OI</span>
@@ -307,13 +307,13 @@ const OptionChainChart: React.FC<OptionChainChartProps> = ({ data, theme = 'ligh
                     <div key={row.strike_price} className="flex items-center gap-4 text-xs font-mono tabular-nums group hover:bg-slate-50 p-1 rounded transition-colors">
                       <div className="flex-1 flex justify-end items-center gap-2">
                         <span className="opacity-0 group-hover:opacity-100 text-slate-400 transition-opacity">{formatNum(callOI)}</span>
-                        <div className="h-5 bg-gradient-to-l from-red-400 to-red-300 rounded-l transition-all duration-500" style={{ width: `${cPct}%` }} />
+                        <div className="h-5 bg-rose-500 rounded-l transition-all duration-500" style={{ width: `${cPct}%` }} />
                       </div>
                       <div className={`w-20 text-center font-semibold text-sm py-1 border-x border-slate-200 ${isATM ? 'text-yellow-700 bg-yellow-100 rounded-lg shadow-sm border-0' : 'text-slate-600'}`}>
                         {row.strike_price}
                       </div>
                       <div className="flex-1 flex justify-start items-center gap-2">
-                        <div className="h-5 bg-gradient-to-r from-emerald-400 to-emerald-300 rounded-r transition-all duration-500" style={{ width: `${pPct}%` }} />
+                        <div className="h-5 bg-emerald-500 rounded-r transition-all duration-500" style={{ width: `${pPct}%` }} />
                         <span className="opacity-0 group-hover:opacity-100 text-slate-400 transition-opacity">{formatNum(putOI)}</span>
                       </div>
                     </div>

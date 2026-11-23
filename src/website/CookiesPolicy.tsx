@@ -3,7 +3,7 @@ import React from 'react';
 const CookiesPolicy = () => {
   return (
     <div className="flex-1 w-full bg-slate-50 py-24 relative">
-      <div className="absolute top-0 inset-x-0 h-64 bg-gradient-to-b from-indigo-100/50 to-transparent pointer-events-none"></div>
+      <div className="absolute top-0 inset-x-0 h-64 bg-slate-100/50 pointer-events-none"></div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl relative z-10">
         <h1 className="text-4xl md:text-5xl font-semibold text-slate-900 tracking-tight mb-8">Cookies Policy</h1>

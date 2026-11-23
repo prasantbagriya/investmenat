@@ -223,7 +223,7 @@ export default function AnalyticsDashboard({
           initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
           className="bg-slate-900 p-4 rounded-lg text-white shadow-sm relative overflow-hidden"
         >
-          <div className="absolute -right-4 -top-4 w-24 h-24 bg-indigo-500 rounded-full blur-3xl opacity-30"></div>
+          <div className="absolute -right-4 -top-4 w-24 h-24 bg-slate-200 rounded-full blur-3xl opacity-20"></div>
           <p className="text-xs font-bold text-slate-400 capitalize mb-1 flex items-center gap-1.5">
             <IndianRupee size={12} /> Live Net Worth
           </p>

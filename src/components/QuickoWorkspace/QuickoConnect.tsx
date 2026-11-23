@@ -75,7 +75,7 @@ export default function QuickoConnect() {
   if (!token) {
     return (
       <div className="bg-white/80 backdrop-blur-xl border border-white/20 p-6 sm:p-8 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] text-center relative overflow-hidden group">
-        <div className="absolute -top-24 -right-24 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl" />
+        <div className="absolute -top-24 -right-24 w-64 h-64 bg-slate-200/50 rounded-full blur-3xl" />
         <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl" />
         
         <div className="relative z-10 flex flex-col items-center">
@@ -91,7 +91,7 @@ export default function QuickoConnect() {
           <button 
             onClick={handleConnect}
             disabled={isConnecting}
-            className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-500 text-white font-medium py-3.5 px-8 rounded-xl transition-all shadow-lg shadow-indigo-500/20 flex items-center justify-center gap-2"
+            className="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 text-white font-medium py-3 px-6 rounded-xl transition-colors shadow-xs flex items-center justify-center gap-2"
           >
             {isConnecting ? (
               <><Loader2 size={18} className="animate-spin" /> Authenticating...</>

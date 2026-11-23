@@ -848,7 +848,7 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
           <div className="w-[350px] border-l border-slate-200 bg-white shadow-xl z-20 flex flex-col h-full overflow-hidden shrink-0">
             <div className="p-3 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
               <h3 className="text-sm font-bold text-slate-800 flex items-center gap-2"><Newspaper size={16} className="text-blue-600"/> Live News</h3>
-              <button onClick={() => setShowNewsSidebar(false)} className="text-slate-400 hover:text-slate-800 p-1 hover:bg-slate-200 rounded font-bold text-xs">X</button>
+              <button onClick={() => setShowNewsSidebar(false)} className="text-slate-400 hover:text-slate-800 p-1 hover:bg-slate-200 rounded font-medium text-xs">X</button>
             </div>
             <div className="flex-1 overflow-y-auto">
               <NewsWidget theme="light" instrumentKey={instrumentKey} compact={true} />

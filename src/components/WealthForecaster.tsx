@@ -94,7 +94,7 @@ export function WealthForecaster({ sips, fds, holdings, physicalAssets = [], ban
 
   return (
     <div className="space-y-6 pb-24 max-w-lg mx-auto">
-      <div className="bg-linear-to-r from-indigo-900 to-indigo-800 rounded-xl p-6 text-white shadow-xl relative overflow-hidden">
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 text-white shadow-xl relative overflow-hidden">
         <div className="absolute top-0 right-0 p-4 opacity-10">
           <TrendingUp size={120} />
         </div>

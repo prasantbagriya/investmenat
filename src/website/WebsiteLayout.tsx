@@ -4,19 +4,19 @@ import { Target, ShieldCheck } from 'lucide-react';
 
 const WebsiteLayout = () => {
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col selection:bg-indigo-500/30 selection:text-indigo-900">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col selection:bg-slate-900 selection:text-white">
       {/* Header */}
       <header className="border-b border-slate-200/60 bg-white/70 backdrop-blur-xl sticky top-0 z-50 transition-all duration-300">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3 group">
-              <div className="bg-gradient-to-tr from-indigo-600 to-purple-600 p-2.5 rounded-lg shadow-lg shadow-indigo-200 group-hover:scale-105 group-hover:rotate-3 transition-transform duration-300">
+              <div className="bg-slate-900 p-2.5 rounded-xl shadow-xs group-hover:scale-105 group-hover:rotate-3 transition-transform duration-300">
                 <Target size={24} className="text-white" strokeWidth={2.5} />
               </div>
               <div className="flex flex-col">
                 <h1 className="text-2xl font-semibold text-slate-900 tracking-tight leading-none">
-                  Invest<span className="text-transparent bg-clip-text bg-slate-900 text-white">Mant</span>
+                  Invest<span className="text-emerald-600">Mant</span>
                 </h1>
                 <p className="text-xs text-slate-500 font-bold capitalize mt-0.5">
                   Wealth Intelligence
@@ -62,7 +62,7 @@ const WebsiteLayout = () => {
 
             <div className="md:col-span-5 space-y-6">
               <Link to="/" className="flex items-center gap-3">
-                <div className="bg-indigo-600 p-2 rounded-xl">
+                <div className="bg-slate-900 p-2 rounded-xl">
                   <Target size={20} className="text-white" strokeWidth={2.5} />
                 </div>
                 <h2 className="text-2xl font-semibold text-slate-900 tracking-tight">InvestMant</h2>

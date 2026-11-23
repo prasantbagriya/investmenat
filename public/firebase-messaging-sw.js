@@ -22,8 +22,8 @@ messaging.onBackgroundMessage((payload) => {
   const notificationTitle = payload.notification?.title || 'Task Overdue!';
   const notificationOptions = {
     body: payload.notification?.body || 'A task due time has completed.',
-    icon: '/assets/logo.png', // Optional asset
-    badge: '/assets/badge.png', // Optional asset
+    icon: '/pwa-192x192.png', // PWA Icon
+    badge: '/pwa-192x192.png', // PWA Icon
     data: payload.data,
     actions: [
       { action: 'mark_paid', title: '✅ Mark Paid' },

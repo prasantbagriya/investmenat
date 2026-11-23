@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Coins, User as UserIcon, Settings, ChevronRight, Download } from 'lucide-react';
+import { Coins, User as UserIcon, Settings, ChevronRight, Download, ShieldCheck } from 'lucide-react';
 
 interface LoginScreenProps {
   handleGuestSignIn: () => void;
@@ -28,132 +28,114 @@ export default function LoginScreen({
   handleApplyLoginManualToken
 }: LoginScreenProps) {
   return (
-    <div className="min-h-screen bg-linear-to-br from-indigo-50 via-white to-emerald-50 flex items-center justify-center p-4 relative overflow-hidden">
-      {/* Decorative Orbs */}
-      <div className="absolute top-[-20%] left-[-10%] w-[70vw] h-[70vw] bg-indigo-200/40 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-[-20%] right-[-10%] w-[70vw] h-[70vw] bg-emerald-200/40 rounded-full blur-[100px] pointer-events-none" />
-      
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col items-center justify-center p-4 selection:bg-slate-900 selection:text-white">
       <motion.div 
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="relative w-full max-w-md"
+        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+        className="w-full max-w-md"
       >
-        <div className="bg-white/80 backdrop-blur-2xl border border-white/50 rounded-[2.5rem] p-8 shadow-[0_8px_40px_rgb(0,0,0,0.06)] flex flex-col items-center text-center space-y-8 relative overflow-hidden">
+        <div className="bg-white border border-slate-200 rounded-2xl p-7 sm:p-8 shadow-xs flex flex-col items-center text-center">
           
-          {/* Top subtle highlight */}
-          <div className="absolute top-0 inset-x-0 h-px bg-linear-to-r from-transparent via-indigo-200 to-transparent opacity-50" />
-
-          {/* Logo Section */}
-          <motion.div 
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.1, duration: 0.5 }}
-            className="relative"
-          >
-            <div className="absolute inset-0 bg-indigo-600 rounded-lg blur-lg opacity-20" />
-            <div className="relative p-5 bg-linear-to-b from-slate-800 to-slate-950 rounded-lg shadow-xl border border-slate-700/50">
-              <Coins size={44} className="text-white" strokeWidth={1.5} />
-            </div>
-          </motion.div>
-
-          {/* Typography */}
-          <div className="space-y-3">
-            <h1 className="text-3xl font-black tracking-tight text-slate-900 font-display">
-              Invest<span className="text-indigo-600">Mant</span>
-            </h1>
-            <p className="text-[13px] text-slate-700 font-medium px-4 leading-relaxed">
-              India's premium offline-safe PWA investment tracker. Manage stock holdings, live NAV SIP triggers, and financial goals.
-            </p>
+          {/* Logo */}
+          <div className="w-12 h-12 bg-slate-900 rounded-xl flex items-center justify-center text-white mb-5 shadow-xs">
+            <Coins size={22} className="text-emerald-400" strokeWidth={2} />
           </div>
 
+          {/* Heading */}
+          <h1 className="text-2xl font-bold tracking-tight text-slate-900">
+            Invest<span className="text-emerald-600">Mant</span>
+          </h1>
+          <p className="text-sm text-slate-600 mt-2 leading-relaxed">
+            Personal finance ledger, portfolio tracking, and multi-broker reconciliation. Offline-first and private.
+          </p>
+
           {/* Action Buttons */}
-          <div className="w-full space-y-3 pt-2">
+          <div className="w-full space-y-2.5 mt-7">
             <button
               onClick={handleGoogleSignIn}
-              className="group relative w-full flex items-center justify-center gap-3 bg-slate-900 hover:bg-slate-800 text-white font-semibold py-4 px-6 rounded-lg transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 cursor-pointer overflow-hidden"
+              className="w-full flex items-center justify-center gap-2.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium py-3 px-4 rounded-xl text-sm transition-colors cursor-pointer shadow-xs"
             >
-              <svg className="w-5 h-5 fill-current shrink-0" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
                 <path d="M12.24 10.285V13.4h6.887C18.2 15.614 15.645 18 12.24 18c-3.86 0-7-3.14-7-7s3.14-7 7-7c1.7 0 3.3.61 4.5 1.8l2.4-2.4C17.3 1.8 14.9 1 12.24 1c-5.52 0-10 4.48-10 10s4.48 10 10 10c5.37 0 9.6-3.815 9.6-9.715 0-.585-.05-1.17-.15-1.74l-9.45.04z" />
               </svg>
-              <span className="text-[15px]">Sign In with Google</span>
+              <span>Continue with Google</span>
             </button>
 
             <button
               onClick={handleGuestSignIn}
-              className="w-full flex items-center justify-center gap-3 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-semibold py-4 px-6 rounded-lg transition-all border border-emerald-100 hover:border-emerald-200 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+              className="w-full flex items-center justify-center gap-2.5 bg-slate-100 hover:bg-slate-200 active:bg-slate-300 text-slate-800 font-medium py-3 px-4 rounded-xl text-sm transition-colors cursor-pointer"
             >
-              <UserIcon className="w-5 h-5 shrink-0" strokeWidth={2} />
-              <span className="text-[15px]">Direct Access (Guest)</span>
+              <UserIcon className="w-4 h-4 text-slate-600 shrink-0" strokeWidth={2} />
+              <span>Explore as Guest</span>
             </button>
 
             <a
               href="https://github.com/prasantbagriya/investmenat/raw/main/public/app.apk"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-3 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-semibold py-4 px-6 rounded-lg transition-all border border-indigo-100 hover:border-indigo-200 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer text-decoration-none mt-2"
+              className="w-full flex items-center justify-center gap-2.5 border border-slate-200 hover:bg-slate-50 active:bg-slate-100 text-slate-700 font-medium py-3 px-4 rounded-xl text-sm transition-colors cursor-pointer"
             >
-              <Download className="w-5 h-5 shrink-0" strokeWidth={2} />
-              <span className="text-[15px]">Download Android App (APK)</span>
+              <Download className="w-4 h-4 text-slate-500 shrink-0" strokeWidth={2} />
+              <span>Download Android APK</span>
             </a>
           </div>
 
-          {/* Advanced Config Toggle */}
-          <div className="w-full pt-6 border-t border-slate-100">
+          {/* Advanced Developer Settings */}
+          <div className="w-full pt-5 mt-6 border-t border-slate-100">
             <button
               type="button"
               onClick={() => setShowCustomLoginConfig(!showCustomLoginConfig)}
-              className="text-xs font-bold text-slate-500 hover:text-slate-600 transition-colors capitalize flex items-center justify-center gap-1.5 mx-auto cursor-pointer group"
+              className="text-xs font-medium text-slate-500 hover:text-slate-800 transition-colors flex items-center justify-center gap-1.5 mx-auto cursor-pointer"
             >
-              <Settings size={14} className="group-hover:rotate-90 transition-transform duration-300" />
-              Advanced Setup
-              <ChevronRight size={14} className={`transition-transform duration-300 ${showCustomLoginConfig ? 'rotate-90' : ''}`} />
+              <Settings size={13} className="text-slate-400" />
+              <span>Advanced Setup</span>
+              <ChevronRight size={13} className={`text-slate-400 transition-transform duration-200 ${showCustomLoginConfig ? 'rotate-90' : ''}`} />
             </button>
 
-            {/* Advanced Settings Panel */}
             {showCustomLoginConfig && (
               <motion.div 
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
-                className="mt-5 p-5 bg-slate-50 border border-slate-100 rounded-lg text-left space-y-4"
+                className="mt-4 p-4 bg-slate-50 border border-slate-200 rounded-xl text-left space-y-3.5"
               >
-                <p className="text-xs text-slate-700 leading-relaxed font-medium">
-                  Add custom developer credentials or paste a temporary access token from Google OAuth playground.
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Provide custom Google OAuth client credentials or supply a temporary playground access token.
                 </p>
 
-                <div className="space-y-1.5">
-                  <label className="block font-bold text-slate-500 capitalize text-xs">Google Client ID</label>
+                <div className="space-y-1">
+                  <label className="block text-xs font-medium text-slate-600">Google Client ID</label>
                   <input
                     type="text"
                     value={customLoginClientId}
                     onChange={(e) => setCustomLoginClientId(e.target.value)}
-                    placeholder="Custom Client ID"
-                    className="w-full bg-white border border-slate-200 text-slate-700 placeholder-slate-400 rounded-xl p-3 text-xs font-mono focus:outline-none focus:border-indigo-400 focus:ring-1 focus:ring-indigo-100 transition-all"
+                    placeholder="OAuth Client ID"
+                    className="w-full bg-white border border-slate-200 text-slate-800 placeholder-slate-400 rounded-lg p-2.5 text-xs font-mono tabular-nums focus:outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition-all"
                   />
                 </div>
 
                 <button
                   type="button"
                   onClick={handleCustomOauthLogin}
-                  className="w-full bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 font-bold py-3 px-4 rounded-xl cursor-pointer text-xs shadow-sm transition-all"
+                  className="w-full bg-white border border-slate-300 hover:bg-slate-50 text-slate-800 font-medium py-2 px-3 rounded-lg cursor-pointer text-xs transition-colors shadow-2xs"
                 >
-                  🔐 Authorize Custom Client
+                  Authorize Client
                 </button>
 
-                <div className="pt-4 border-t border-slate-200 space-y-1.5">
-                  <label className="block font-bold text-slate-500 capitalize text-xs">Access Token Bypass</label>
+                <div className="pt-3 border-t border-slate-200/80 space-y-1">
+                  <label className="block text-xs font-medium text-slate-600">Access Token Bypass</label>
                   <div className="flex gap-2">
                     <input
                       type="text"
-                      placeholder="Paste token (e.g. ya29...)"
+                      placeholder="Paste token (ya29...)"
                       value={loginManualToken}
                       onChange={(e) => setLoginManualToken(e.target.value)}
-                      className="flex-1 bg-white border border-slate-200 text-slate-700 placeholder-slate-400 rounded-xl p-3 text-xs font-mono focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-100 transition-all"
+                      className="flex-1 bg-white border border-slate-200 text-slate-800 placeholder-slate-400 rounded-lg p-2 text-xs font-mono tabular-nums focus:outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition-all"
                     />
                     <button
                       type="button"
                       onClick={handleApplyLoginManualToken}
-                      className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 rounded-xl text-xs transition-colors shadow-sm"
+                      className="bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium px-3 rounded-xl text-xs transition-colors shadow-2xs"
                     >
                       Apply
                     </button>
@@ -164,11 +146,11 @@ export default function LoginScreen({
           </div>
         </div>
 
-        <p className="text-center mt-6 text-xs text-slate-500 font-medium">
-          Your data remains secure and private.
-        </p>
+        <div className="flex items-center justify-center gap-1.5 mt-5 text-xs text-slate-500">
+          <ShieldCheck size={13} className="text-slate-400" />
+          <span>Local offline storage & encrypted cloud backup</span>
+        </div>
       </motion.div>
     </div>
   );
 }
-

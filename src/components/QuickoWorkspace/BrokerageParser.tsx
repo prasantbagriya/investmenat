@@ -38,7 +38,7 @@ export default function BrokerageParser() {
           <Receipt className="text-blue-600" size={22} />
         </div>
         <div>
-          <h2 className="text-lg font-black text-slate-800 tracking-tight">Contract Note Parser</h2>
+          <h2 className="text-lg font-semibold text-slate-800 tracking-tight">Contract Note Parser</h2>
           <p className="text-xs text-slate-500 font-medium mt-0.5">Quicko Brokerage Parsing API</p>
         </div>
       </div>
@@ -107,15 +107,15 @@ export default function BrokerageParser() {
             <div className="p-4 grid grid-cols-1 sm:grid-cols-3 gap-4 divide-y sm:divide-y-0 sm:divide-x divide-slate-100 text-center">
               <div className="pt-3 sm:pt-0">
                 <span className="text-slate-500 text-xs capitalize font-bold block mb-1">Total Trades Found</span>
-                <p className="font-black text-slate-800 text-xl font-mono">{result.tradeCount}</p>
+                <p className="font-semibold text-slate-800 text-xl font-mono tabular-nums">{result.tradeCount}</p>
               </div>
               <div className="pt-3 sm:pt-0">
                 <span className="text-slate-500 text-xs capitalize font-bold block mb-1">Total Turnover</span>
-                <p className="font-black text-slate-800 text-lg font-mono">₹{result.totalTurnover.toLocaleString('en-IN')}</p>
+                <p className="font-semibold text-slate-800 text-lg font-mono tabular-nums">₹{result.totalTurnover.toLocaleString('en-IN')}</p>
               </div>
               <div className="pt-3 sm:pt-0">
                 <span className="text-slate-500 text-xs capitalize font-bold block mb-1">Net Realized Gain/Loss</span>
-                <p className={`font-black text-lg font-mono ${result.netRealizedGain >= 0 ? 'text-emerald-600' : 'text-red-600'}`}>
+                <p className={`font-semibold text-lg font-mono tabular-nums ${result.netRealizedGain >= 0 ? 'text-emerald-600' : 'text-red-600'}`}>
                   {result.netRealizedGain >= 0 ? '+' : ''}₹{result.netRealizedGain.toLocaleString('en-IN')}
                 </p>
               </div>

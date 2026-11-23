@@ -701,11 +701,11 @@ function setupKiteRoutes(app2) {
       params.append("exchange", exchange);
       params.append("transaction_type", transaction_type);
       params.append("order_type", order_type);
-      params.append("quantity", quantity.toString());
-      params.append("product", product);
+      if (quantity != null) params.append("quantity", quantity.toString());
+      if (product) params.append("product", product);
       params.append("validity", "DAY");
-      if (price) params.append("price", price.toString());
-      if (trigger_price) params.append("trigger_price", trigger_price.toString());
+      if (price != null) params.append("price", price.toString());
+      if (trigger_price != null) params.append("trigger_price", trigger_price.toString());
       const response = await fetch("https://api.kite.trade/orders/regular", {
         method: "POST",
         headers: {
@@ -782,6 +782,8 @@ import CryptoJS from "crypto-js";
 import speakeasy from "speakeasy";
 import qrcode from "qrcode";
 dotenv.config();
+var DEFAULT_SA_EMAIL = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL || "";
+var DEFAULT_SA_PK = process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY || "";
 function cleanPrivateKey(keyInput) {
   let key = keyInput.trim();
   if (key.startsWith('"') && key.endsWith('"')) {
@@ -861,11 +863,7 @@ async function startServer() {
   };
   app.get("/api/get-sa-credentials", (req, res) => {
     const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL || "";
-    const privateKey = process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY || "";
-    if (!email || !privateKey) {
-      return res.status(404).json({ error: "SA credentials not configured on server" });
-    }
-    res.json({ email, privateKey });
+    res.json({ configured: Boolean(email && process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY) });
   });
   app.post("/api/sync-sqlite", (req, res) => {
     try {
@@ -931,7 +929,7 @@ async function startServer() {
         `<b>Your verification code is: <span style="font-size:20px; color: #4F46E5;">${otp}</span></b><br/><br/><p>Valid for 1 minute only. Do not share.</p>`
       ];
       const rawRoute = Buffer.from(msgLines.join("\r\n")).toString("base64").replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
-      const gmailRes = await fetch("https://gmail.googleapis.com/upload/gmail/v1/users/me/messages/send", {
+      const gmailRes = await fetch("https://gmail.googleapis.com/gmail/v1/users/me/messages/send", {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${accessToken}`,
@@ -1210,8 +1208,6 @@ If the input is for Trading (e.g., deposits to a Brokerage/Prop Firm), tag it as
       res.status(500).json({ error: err.message || "Failed to parse SMS via AI" });
     }
   });
-  const DEFAULT_SA_EMAIL = "investment@gen-lang-client-0137730538.iam.gserviceaccount.com";
-  const DEFAULT_SA_PK = "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDJepRZg5aEDDYm\nXRFHcrOHBPxFU/LGj+NmY39G7VSUaKC99tXpTN2SRQUEPWaVD76gJlI8bHZCqSnr\nLhfZlE7SWZrzJTAt+q5r/rskKQfYKbzmjS0/GCUmdaZAgr3K/LzwTKlUKMa0wIrQ\nGuz9un9oXBVL404ZaMzwzcMfRJ+douHCNo1qTdG+bzuyaUwCIsaFW6U15iC8VOi0\nSocNQ7qvZ5tJppRUzU8hPszF/s4kow6JjicoOddKGuwcATSEBivdejA+4us0rAC6\ngCBz8dS9QFwF8HWJPLpcHAplQAN16YFsxnbcN5PZYPEw71VbNz6M3acP5sYzmjTQ\nlIB+vWObAgMBAAECggEADmlkvtRr9KJqUICGvGLG1wkdwcMZUhJidI/4ajU5asDj\nLUNrQLFoBfmcPBXnm7umaePj16ugd/CMGDpR/Wp04D9a7I/ZQZNgB5yPJq0tVk0s\nqccpGI1xwYMCiInG6VlTwH09/Xr0imMIFY5fgQoRPqtGNglFLF8ejbkCKd8+6vJm\nPnQ7b6Cqt6OePeEpBd6DvYSW4mffKKsNeOyp+SikHmHRbU72OKBMdlj/ui42xRqe\n0gz5TxaZlbHNTZNxqiLkcUosj1zAuVfnUt1EnJe7SSay/5GSp5bRC+KQ6xelHo+W\nH59DILkiIZoHKDqUfKgLo9Ny5CiIp+fgJg4ZVly9QKBgQD6SJ7711sLows/E7/M\neJUserAqVh0kal5R3bRioNdsy0Kr5khqBojWtjGqW6g4bISO2TqNlpRtUA41NHj2\ncE0a1th6UfYvjWqUIeaZwJtvPtsDub9IgZ077YCre/RJ/ZgDOcnTSJNaqRZ5/YGg\nIxH1JBivOtzIVHC93RxPPz45DQKBgQDOFJov0lgjMLcnhlRwsOgCwztV8LM2DJ2r\nEoD6Q/8pRjeakEydpSsQJH0pYJyiHcx/al1o8eZ4wDAjT5O3LZ91n/D8BhnO89jy\ne9xsjy98GW7UZrN65N2dI4yXZ72S2ZEF6IgulciXQgYmnRZV5++527IeF+A0W6FO\nrH4LkqOVRwKBgEh58x/2kvThuAYCEA6D9J62wIDiAvpimwGV9ACDlx54Fcx1mQ6q\n6cFTbTpp5GLCefhry1ro+f5VqmeZ1FV427sj7/gr9+B5UR2oW4C2l8w1JXMEvPGg\nJwoNkq8V6/3pI7X7bAh1AcbFJC8bTAg1X6PfWg6UOw7/9M3mU6ZXKAuZAoGADIV3\n8Nvo+wpktoQU8VvuXOyb2FbtrKULl29iYtJq2Ikpq7yEyzdT7IErEa6LFdaVrFA8\nKLo59LBIvHyDTyf4fl8fd1CvlMGANwuLkxUIH5Q0BbfPw/HP/VJBopltDVUm2KMO\nUzZKn9YlJYd56fJTwIk2w1lUCBphLLSSXAWm5tUCgYEApOxpCADglz/dEH8XnBtX\nSe6/totOPnWx0Fah7m6L4dm2GtBGGiD7G4XoiGT7uoFyQxUGZDhXYkofoDgu3wuw\nDxBNQ7/mxche6MVXbrJOkOtUG9ME9rJjUPG0yDbJeJqWC/IzWxWphDYnT1MaE77v\nyvlaT7zW9Xd5RqUUd3EyN05=\n-----END PRIVATE KEY-----\n";
   app.post("/api/get-google-service-token", async (req, res) => {
     try {
       let clientEmail = req.body?.clientEmail || process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL || DEFAULT_SA_EMAIL;
@@ -1556,7 +1552,11 @@ User's Query: ${message}
 Provide a concise, highly analytical, and tailored response. Use clear markdown formatting (bolding, lists) to make it easy to read.`;
       const response = await ai.models.generateContent({
         model: "gemini-2.5-flash",
-        contents: prompt
+        contents: prompt,
+        config: {
+          responseMimeType: "application/json",
+          temperature: 0.1
+        }
       });
       res.json({ reply: response.text });
     } catch (err) {
@@ -1584,7 +1584,11 @@ Output ONLY the raw JSON object, without any markdown blocks or formatting.`;
         contents: [
           { inlineData: { data: base64Image, mimeType: "image/jpeg" } },
           prompt
-        ]
+        ],
+        config: {
+          responseMimeType: "application/json",
+          temperature: 0.1
+        }
       });
       let cleanJson = response.text || "";
       cleanJson = cleanJson.replace(/```json\n/g, "").replace(/```\n/g, "").replace(/```/g, "").trim();

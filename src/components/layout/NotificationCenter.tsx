@@ -72,11 +72,11 @@ export default function NotificationCenter({
                     <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-rose-500 rounded-full border border-white" />
                   )}
                 </div>
-                <h2 className="font-extrabold text-slate-800 text-lg ">Notifications</h2>
+                <h2 className="font-semibold text-slate-800 text-lg ">Notifications</h2>
               </div>
               <button 
                 onClick={onClose}
-                className="p-1.5 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer"
+                className="p-1.5 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-xl transition-colors cursor-pointer"
               >
                 <X size={20} />
               </button>
@@ -101,7 +101,7 @@ export default function NotificationCenter({
                           <h4 className="font-bold text-sm text-slate-800">
                             {isIncome ? 'Salary / Income Due' : 'Bill Due'}: {b.title}
                           </h4>
-                          <p className="text-xs font-mono font-bold text-slate-600 mt-1">
+                          <p className="text-xs font-mono tabular-nums font-bold text-slate-600 mt-1">
                             Amount: <span className={isIncome ? 'text-emerald-600' : 'text-rose-600'}>
                               {isIncome ? '+' : '-'}₹{b.amount.toLocaleString()}
                             </span>
@@ -166,8 +166,8 @@ export default function NotificationCenter({
                             {isOwedToMe ? 'Pending Income Due' : 'Pending Payment Due'}
                           </h4>
                           <p className="text-xs font-semibold text-slate-600 mt-0.5">Person: {p.person}</p>
-                          <p className="text-xs font-mono font-bold text-slate-600 mt-1">
-                            Amount: <span className={isOwedToMe ? 'text-indigo-600' : 'text-rose-600'}>
+                          <p className="text-xs font-mono tabular-nums font-bold text-slate-600 mt-1">
+                            Amount: <span className={isOwedToMe ? 'text-slate-900' : 'text-rose-600'}>
                               {isOwedToMe ? '+' : '-'}₹{p.amount.toLocaleString()}
                             </span>
                           </p>

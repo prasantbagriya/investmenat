@@ -506,10 +506,10 @@ Please write a short, professional, and optimized description (2-3 sentences max
     <div className="space-y-2 text-slate-800 " id="tasks-section-root">
 
       {/* Upper Area Summary / Vitals bar */}
-      <div className="bg-white rounded-lg p-2 md:p-3 border border-slate-200/80 flex items-center justify-between gap-1 sm:gap-2 shadow-xs flex-nowrap overflow-hidden">
-        <div className="space-y-1 shrink-0">
-          <h2 className="text-base sm:text-lg font-bold tracking-tight text-slate-900 flex items-center gap-1 whitespace-nowrap">
-            <Sparkles className="text-yellow-500 w-4 h-4" /> Reminders & Tasks
+      <div className="bg-white rounded-xl p-3 sm:p-4 border border-slate-200 flex items-center justify-between gap-3 shadow-none">
+        <div className="shrink-0">
+          <h2 className="text-base font-semibold text-slate-900 flex items-center gap-2">
+            Reminders & tasks
           </h2>
         </div>
 
@@ -517,27 +517,27 @@ Please write a short, professional, and optimized description (2-3 sentences max
         <div className="flex items-center gap-2 shrink-0">
           <button
             onClick={() => setIsFormOpen(!isFormOpen)}
-            className="flex items-center gap-1 bg-slate-950 hover:bg-slate-900 text-white px-2 py-1 rounded-md font-semibold text-xs sm:text-xs transition-colors cursor-pointer shadow-xs"
+            className="flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-white px-3 py-1.5 rounded-lg font-medium text-xs transition-colors cursor-pointer"
           >
-            <Plus size={12} /> {isFormOpen ? 'Cancel' : 'Add Reminder'}
+            <Plus size={14} /> {isFormOpen ? 'Cancel' : 'Add reminder'}
           </button>
 
           {notificationStatus === 'granted' ? (
-            <div className="inline-flex items-center gap-1 bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs sm:text-xs font-bold px-2 py-1 rounded-lg whitespace-nowrap">
-              <Bell className="w-3 h-3 text-emerald-600" /> Notifications Active
+            <div className="inline-flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-medium px-2.5 py-1 rounded-lg">
+              <Bell className="w-3.5 h-3.5 text-emerald-600" /> Alerts active
             </div>
           ) : notificationStatus === 'denied' ? (
-            <div className="inline-flex items-center gap-1 bg-amber-50 border border-amber-200 text-amber-700 text-xs sm:text-xs font-bold px-2 py-1 rounded-lg whitespace-nowrap">
-              <BellOff className="w-3 h-3 text-amber-500" /> Notifications Blocked
+            <div className="inline-flex items-center gap-1.5 bg-rose-50 border border-rose-200 text-rose-700 text-xs font-medium px-2.5 py-1 rounded-lg">
+              <BellOff className="w-3.5 h-3.5 text-rose-500" /> Alerts blocked
             </div>
           ) : (
             <button
               onClick={handleEnableNotifications}
               disabled={isRegisteringToken}
-              className="flex items-center gap-1 bg-slate-900 hover:bg-slate-800 disabled:bg-slate-300 text-white font-bold text-xs sm:text-xs py-1 px-2 rounded-lg transition-all shadow-xs cursor-pointer whitespace-nowrap"
+              className="flex items-center gap-1.5 bg-slate-100 hover:bg-slate-200 disabled:opacity-50 text-slate-700 font-medium text-xs py-1.5 px-2.5 rounded-xl transition-colors cursor-pointer"
               id="fcm-activate-button"
             >
-              <Bell className="w-3 h-3" /> Enable Alerts
+              <Bell className="w-3.5 h-3.5" /> Enable alerts
             </button>
           )}
         </div>
@@ -594,10 +594,10 @@ Please write a short, professional, and optimized description (2-3 sentences max
                         type="button"
                         onClick={handleOptimizeDescription}
                         disabled={isOptimizing || !title.trim()}
-                        className="flex items-center gap-1 text-xs font-bold text-indigo-600 hover:text-indigo-800 bg-indigo-50 hover:bg-indigo-100 px-2 py-0.5 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="flex items-center gap-1 text-xs font-medium text-slate-900 hover:text-slate-900 bg-slate-100 hover:bg-slate-100 px-2 py-0.5 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         {isOptimizing ? (
-                          <><div className="w-3 h-3 border-2 border-indigo-200 border-t-indigo-600 rounded-full animate-spin" /> Optimizing...</>
+                          <><div className="w-3 h-3 border-2 border-slate-200 border-t-indigo-600 rounded-full animate-spin" /> Optimizing...</>
                         ) : (
                           <><Sparkles size={10} /> AI optimize</>
                         )}
@@ -640,7 +640,7 @@ Please write a short, professional, and optimized description (2-3 sentences max
                         type="date"
                         value={dueDateStr}
                         onChange={(e) => setDueDateStr(e.target.value)}
-                        className="w-full text-xs px-2 py-1.5 rounded-md border border-slate-200 outline-none focus:border-slate-300 font-mono font-medium"
+                        className="w-full text-xs px-2 py-1.5 rounded-md border border-slate-200 outline-none focus:border-slate-300 font-mono tabular-nums font-medium"
                         required
                       />
                     </div>
@@ -651,7 +651,7 @@ Please write a short, professional, and optimized description (2-3 sentences max
                         type="time"
                         value={dueTimeStr}
                         onChange={(e) => setDueTimeStr(e.target.value)}
-                        className="w-full text-xs px-2 py-1.5 rounded-md border border-slate-200 outline-none focus:border-slate-300 font-mono font-medium"
+                        className="w-full text-xs px-2 py-1.5 rounded-md border border-slate-200 outline-none focus:border-slate-300 font-mono tabular-nums font-medium"
                         required
                       />
                     </div>
@@ -660,7 +660,7 @@ Please write a short, professional, and optimized description (2-3 sentences max
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-slate-950 hover:bg-slate-850 disabled:bg-slate-300 text-white font-bold py-1 px-3 rounded-xl transition-all cursor-pointer shadow-md text-xs flex items-center justify-center gap-1"
+                    className="w-full bg-slate-950 hover:bg-slate-800 disabled:bg-slate-300 text-white font-medium py-1 px-3 rounded-xl transition-all cursor-pointer shadow-md text-xs flex items-center justify-center gap-1"
                     id="submit-new-task-button"
                   >
                     {isSubmitting ? (
@@ -764,33 +764,31 @@ Please write a short, professional, and optimized description (2-3 sentences max
         {/* Live Google Calendar Timeline Panel */}
         {isCalendarLinked && (
           <div className="lg:col-span-1 space-y-2 animate-fadeIn">
-            <div className="bg-white rounded-lg border border-rose-100/80 p-2 shadow-xs sticky top-24">
-              <div className="flex justify-between items-center border-b border-rose-50 pb-1 mb-2">
-                <div className="flex items-center gap-1">
-                  <div className="p-1 px-1.5 bg-rose-50 text-rose-700 rounded-lg text-[10.5px] font-black capitalize flex items-center gap-1 border border-rose-100/30">
-                    <span className="h-1.5 w-1.5 bg-rose-600 rounded-full animate-ping"></span>
-                    Live Google Calendar
-                  </div>
+            <div className="bg-white rounded-xl border border-slate-200 p-3 sticky top-24">
+              <div className="flex justify-between items-center border-b border-slate-100 pb-2 mb-2">
+                <div className="flex items-center gap-1.5">
+                  <span className="h-2 w-2 bg-emerald-500 rounded-full"></span>
+                  <span className="text-xs font-semibold text-slate-800">Google Calendar</span>
                 </div>
                 <button
                   type="button"
                   onClick={fetchCalendarEvents}
                   disabled={isLoadingEvents}
-                  className="p-1.5 hover:bg-rose-50 text-rose-600 rounded-lg transition-colors cursor-pointer border border-rose-100/20"
-                  title="Force Refresh Live Feed"
+                  className="p-1 hover:bg-slate-100 text-slate-500 hover:text-slate-700 rounded transition-colors cursor-pointer"
+                  title="Refresh calendar feed"
                 >
                   <RefreshCw size={12} className={isLoadingEvents ? 'animate-spin' : ''} />
                 </button>
               </div>
 
               {isLoadingEvents ? (
-                <div className="py-20 text-center flex flex-col items-center justify-center space-y-1">
-                  <RefreshCw size={24} className="animate-spin text-rose-500" />
-                  <p className="text-xs font-bold text-slate-700 ">Querying Calendar API...</p>
+                <div className="py-12 text-center flex flex-col items-center justify-center space-y-2">
+                  <RefreshCw size={20} className="animate-spin text-slate-400" />
+                  <p className="text-xs font-medium text-slate-500">Querying calendar...</p>
                 </div>
               ) : eventsError ? (
-                <div className="p-2 bg-amber-50 text-amber-700 rounded-lg text-xs font-semibold border border-amber-200 leading-relaxed ">
-                  ⚠️ Connection Alert: {eventsError}
+                <div className="p-2.5 bg-rose-50 text-rose-700 rounded-lg text-xs font-medium border border-rose-200 leading-relaxed">
+                  Connection issue: {eventsError}
                 </div>
               ) : calendarEvents.length > 0 ? (
                 <div className="space-y-1 max-h-[460px] overflow-y-auto pr-1">
@@ -800,7 +798,7 @@ Please write a short, professional, and optimized description (2-3 sentences max
                     return (
                       <div key={event.id} className="p-1.5 bg-slate-50/40 border border-slate-100/80 rounded-lg space-y-1.5 hover:border-rose-200 transition-all ">
                         <div className="flex justify-between items-start gap-1">
-                          <h4 className="text-xs font-extrabold text-slate-900 line-clamp-1 leading-tight">{event.summary || 'None Title Event'}</h4>
+                          <h4 className="text-xs font-semibold text-slate-900 line-clamp-1 leading-tight">{event.summary || 'None Title Event'}</h4>
                           {event.htmlLink && (
                             <a
                               href={event.htmlLink}
@@ -815,7 +813,7 @@ Please write a short, professional, and optimized description (2-3 sentences max
                         {event.description && (
                           <p className="text-xs text-slate-700 line-clamp-2 leading-relaxed">{event.description}</p>
                         )}
-                        <div className="flex items-center justify-between text-xs text-slate-500 font-mono pt-1 border-t border-slate-100/50">
+                        <div className="flex items-center justify-between text-xs text-slate-500 font-mono tabular-nums pt-1 border-t border-slate-100/50">
                           <div className="flex items-center gap-1">
                             <Clock size={11} className="text-rose-400" />
                             <span>{startDate ? startDate.toLocaleString() : 'No Scheduled Time'}</span>
@@ -830,7 +828,7 @@ Please write a short, professional, and optimized description (2-3 sentences max
                                 });
                                 toast.success('Task imported to Scheduler successfully.');
                               }}
-                              className="text-indigo-600 font-bold hover:underline"
+                              className="text-slate-900 font-bold hover:underline"
                             >
                               + Import to Scheduler
                             </button>

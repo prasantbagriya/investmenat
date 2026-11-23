@@ -40,7 +40,7 @@ export default function GstinSearch() {
           <Building className="text-rose-600" size={22} />
         </div>
         <div>
-          <h2 className="text-lg font-black text-slate-800 tracking-tight">Business GSTIN Search</h2>
+          <h2 className="text-lg font-semibold text-slate-800 tracking-tight">Business GSTIN Search</h2>
           <p className="text-xs text-slate-500 font-medium mt-0.5">Quicko B2B Verification API</p>
         </div>
       </div>
@@ -57,14 +57,14 @@ export default function GstinSearch() {
                   placeholder="27ABCDE1234F1Z5"
                   value={gstin}
                   onChange={e => setGstin(e.target.value.toUpperCase())}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 pl-10 text-slate-700 font-mono text-sm focus:ring-1 focus:ring-rose-500/20 focus:border-rose-500 outline-none transition-all capitalize"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 pl-10 text-slate-700 font-mono tabular-nums text-sm focus:ring-1 focus:ring-rose-500/20 focus:border-rose-500 outline-none transition-all capitalize"
                 />
                 <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
               </div>
               <button 
                 type="submit"
                 disabled={loading}
-                className="bg-rose-600 hover:bg-rose-500 text-white font-bold px-6 rounded-xl transition-all shadow-md shadow-rose-500/20 flex justify-center items-center disabled:opacity-60 whitespace-nowrap"
+                className="bg-rose-600 hover:bg-rose-500 text-white font-medium px-6 rounded-xl transition-all shadow-md shadow-rose-500/20 flex justify-center items-center disabled:opacity-60 whitespace-nowrap"
               >
                 {loading ? <Loader2 size={18} className="animate-spin" /> : 'Search'}
               </button>
@@ -84,7 +84,7 @@ export default function GstinSearch() {
             <div className="bg-slate-50 p-3 border-b border-slate-200 flex justify-between items-center">
               <div>
                 <p className="text-xs font-bold text-slate-500 capitalize ">GSTIN / UIN</p>
-                <p className="font-black text-slate-800 font-mono">{gstin}</p>
+                <p className="font-semibold text-slate-800 font-mono tabular-nums">{gstin}</p>
               </div>
               <div className="flex items-center gap-1.5 bg-emerald-100 text-emerald-800 px-2 py-1 rounded-md text-xs font-bold">
                 <CheckCircle size={12} /> {result.status}
@@ -106,7 +106,7 @@ export default function GstinSearch() {
               </div>
               <div>
                 <span className="text-slate-500 text-xs capitalize font-bold block mb-1">Date of Registration</span>
-                <p className="font-mono text-slate-700">{result.registrationDate}</p>
+                <p className="font-mono tabular-nums text-slate-700">{result.registrationDate}</p>
               </div>
               <div className="sm:col-span-2 mt-1">
                 <span className="text-slate-500 text-xs capitalize font-bold block mb-1">Principal Place of Business</span>

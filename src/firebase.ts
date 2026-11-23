@@ -104,10 +104,25 @@ export async function signInWithGoogle() {
     
     if (Capacitor.isNativePlatform()) {
       // Native App Login Flow
-      // We must pass the Web Client ID from Firebase Console to use Google Sign-In natively
-      const result = await FirebaseAuthentication.signInWithGoogle({
-        scopes: ALL_GOOGLE_SCOPES,
-      });
+      // We pass basic scopes only. Requesting 17 sensitive/restricted scopes at sign-in time
+      // causes Google Play Services to reject the request with ApiException 10 (DEVELOPER_ERROR) or 12500.
+      let result;
+      try {
+        // 1. Try modern Credential Manager first
+        result = await FirebaseAuthentication.signInWithGoogle({
+          useCredentialManager: true,
+        });
+      } catch (credErr: any) {
+        console.warn("[GoogleAuth] Credential Manager sign-in failed, falling back to legacy GoogleSignIn:", credErr);
+        const errMsg = credErr?.message?.toLowerCase() || '';
+        if (errMsg.includes('cancel') || errMsg.includes('16:')) {
+          throw new Error('Google Sign-In was cancelled.');
+        }
+        // 2. Fallback to GoogleSignInClient (Google Play Services bottom sheet)
+        result = await FirebaseAuthentication.signInWithGoogle({
+          useCredentialManager: false,
+        });
+      }
       
       if (!result.credential?.idToken) {
         throw new Error("No ID Token returned from Google Sign-In");
@@ -148,9 +163,16 @@ export async function signInWithGoogle() {
         }
       }
     }
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error signing in with Google:", error);
-    alert("Google Sign-In failed. Please try Direct Access (Guest). Error: " + (error as any).message);
+    const msg = error?.message || String(error);
+    if (msg.includes('10') || msg.toLowerCase().includes('developer_error')) {
+      alert("Google Sign-In Failed (Code 10: Developer Error).\n\nApne debug.keystore ka SHA-1 Firebase Console me add karein:\n76:4A:97:3D:B7:41:09:13:68:0D:F5:EF:09:B1:3F:FC:84:5D:07:30\n\nDirect Access (Guest) se login kar sakte hain.");
+    } else if (msg.includes('cancelled') || msg.includes('canceled')) {
+      // User cancelled
+    } else {
+      alert("Google Sign-In failed. Please try Direct Access (Guest). Error: " + msg);
+    }
     throw error;
   }
 }
@@ -174,9 +196,20 @@ export async function linkGoogleAccount() {
     if (!auth.currentUser) throw new Error("You must be logged in to link your Google Account");
 
     if (Capacitor.isNativePlatform()) {
-      const result = await FirebaseAuthentication.signInWithGoogle({
-        scopes: ALL_GOOGLE_SCOPES,
-      });
+      let result;
+      try {
+        result = await FirebaseAuthentication.signInWithGoogle({
+          useCredentialManager: true,
+        });
+      } catch (credErr: any) {
+        const errMsg = credErr?.message?.toLowerCase() || '';
+        if (errMsg.includes('cancel') || errMsg.includes('16:')) {
+          throw new Error('Google Account linking was cancelled.');
+        }
+        result = await FirebaseAuthentication.signInWithGoogle({
+          useCredentialManager: false,
+        });
+      }
       
       if (!result.credential?.idToken) throw new Error("No ID Token returned from Google Sign-In");
       

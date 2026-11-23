@@ -543,7 +543,7 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
             </button>
           </div>
           <div className="text-center mb-8 mt-12 sm:mt-0">
-            <h2 className="text-3xl font-black text-slate-900 mb-2">Research Dashboard</h2>
+            <h2 className="text-3xl font-semibold text-slate-900 mb-2">Research Dashboard</h2>
             <p className="text-slate-500 font-medium">Select a tool below to analyze the market and your portfolio.</p>
           </div>
           
@@ -563,7 +563,7 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
                 <div className={`p-3 rounded-lg bg-slate-50 mb-4 group-hover:bg-slate-100 transition-colors ${tab.color}`}>
                   <tab.icon size={28} />
                 </div>
-                <h3 className="text-lg font-black text-slate-800 mb-1">{tab.label}</h3>
+                <h3 className="text-lg font-semibold text-slate-800 mb-1">{tab.label}</h3>
                 <p className="text-xs text-slate-500 font-medium leading-relaxed">{tab.desc}</p>
               </button>
             ))}
@@ -576,7 +576,7 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
           <div className="mx-4 mt-4 bg-white px-4 py-3 rounded-lg border border-slate-200 shadow-sm flex flex-wrap gap-6 items-center">
             <div>
               <p className="text-xs font-bold text-slate-400 ">LTP</p>
-              <p className="text-xl font-black text-slate-800">₹{marketQuote.last_price}</p>
+              <p className="text-xl font-semibold text-slate-800">₹{marketQuote.last_price}</p>
             </div>
             <div className={marketQuote.net_change > 0 ? 'text-emerald-600' : 'text-rose-600'}>
               <p className="text-xs font-bold ">CHANGE</p>
@@ -642,10 +642,10 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
                 <activeTabDef.icon size={16} />
               </div>
               <div className="flex items-center gap-3">
-                <h3 className="font-black text-slate-900 text-sm leading-tight flex items-center gap-2">
+                <h3 className="font-semibold text-slate-900 text-sm leading-tight flex items-center gap-2">
                   {activeTabDef.label}
                   {(activeTab === 'options' || activeTab === 'fundamentals') && (
-                    <span className="text-xs text-slate-500 font-mono font-medium">{stockLabel}</span>
+                    <span className="text-xs text-slate-500 font-mono tabular-nums font-medium">{stockLabel}</span>
                   )}
                 </h3>
                 {isConnected && (
@@ -703,7 +703,7 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
                               }}
                             >
                               <span className="text-xs font-bold text-slate-800">{s.label}</span>
-                              <span className="text-xs text-slate-400 font-mono px-1.5 py-0.5 bg-slate-100 rounded">{s.key.split('|')[0]}</span>
+                              <span className="text-xs text-slate-400 font-mono tabular-nums px-1.5 py-0.5 bg-slate-100 rounded">{s.key.split('|')[0]}</span>
                             </div>
                           ))
                         ) : (
@@ -719,20 +719,20 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
                         type="date"
                         value={expiryDate}
                         onChange={e => setExpiryDate(e.target.value)}
-                        className="px-1 py-1 bg-transparent text-xs focus:outline-none text-slate-600 font-semibold font-mono w-[110px] cursor-pointer"
+                        className="px-1 py-1 bg-transparent text-xs focus:outline-none text-slate-600 font-semibold font-mono tabular-nums w-[110px] cursor-pointer"
                         title="Expiry Date"
                       />
                     </div>
                   )}
 
                   <div className="flex items-center gap-1 pl-2 border-l border-slate-200 ml-1 pr-1 py-1">
-                    <button type="submit" className="px-4 py-1.5 bg-slate-900 text-white rounded-md hover:bg-black transition-all text-xs font-medium shadow-sm">
+                    <button type="submit" className="px-4 py-1.5 bg-slate-900 text-white rounded-xl hover:bg-black transition-all text-xs font-medium shadow-sm">
                       Search
                     </button>
                     <button type="button" onClick={() => setShowNewsSidebar(!showNewsSidebar)} className={`p-1.5 rounded-md transition-all ${showNewsSidebar ? 'bg-blue-100 text-blue-600' : 'text-slate-500 hover:text-slate-900 hover:bg-slate-100'}`} title="Toggle News Sidebar">
                       <Newspaper size={14} />
                     </button>
-                    <button type="button" onClick={fetchData} className="p-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-100 rounded-md transition-all" title="Refresh">
+                    <button type="button" onClick={fetchData} className="p-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-100 rounded-xl transition-all" title="Refresh">
                       <RefreshCw size={14} className={isLoading ? 'animate-spin' : ''} />
                     </button>
                   </div>
@@ -866,7 +866,7 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
               { label: 'Unchanged', value: heatmapData.filter(s => s.change === 0).length, color: 'text-slate-500', bg: 'bg-slate-50' },
             ].map(stat => (
               <div key={stat.label} className={`${stat.bg} rounded-lg p-4 text-center border border-slate-100`}>
-                <div className={`text-2xl font-black ${stat.color}`}>{stat.value}</div>
+                <div className={`text-2xl font-semibold ${stat.color}`}>{stat.value}</div>
                 <div className="text-xs font-bold text-slate-500 mt-1">{stat.label}</div>
               </div>
             ))}

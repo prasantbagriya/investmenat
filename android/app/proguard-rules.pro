@@ -28,5 +28,12 @@
 -dontwarn io.capawesome.capacitorjs.plugins.firebase.authentication.handlers.FacebookAuthProviderHandler
 -keep class io.capawesome.capacitorjs.plugins.firebase.authentication.** { *; }
 
+# --- Google Play Services & Credentials for Google Sign-In ---
+-dontwarn com.google.android.libraries.identity.googleid.**
+-keep class com.google.android.libraries.identity.googleid.** { *; }
+-keep class androidx.credentials.** { *; }
+-keep class com.google.android.gms.auth.api.signin.** { *; }
+-keep class com.google.android.gms.auth.api.identity.** { *; }
+
 # --- General missing class suppression for R8 ---
 -ignorewarnings

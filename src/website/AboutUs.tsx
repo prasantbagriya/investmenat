@@ -6,24 +6,24 @@ const AboutUs = () => {
     <div className="flex-1 w-full bg-slate-50 py-24 relative overflow-hidden">
       
       {/* Decorative BG elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-50 rounded-bl-[100%] pointer-events-none opacity-60"></div>
+      <div className="absolute top-0 right-0 w-96 h-96 bg-slate-100 rounded-bl-[100%] pointer-events-none opacity-60"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-50 rounded-tr-[100%] pointer-events-none opacity-60"></div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl relative z-10">
         
         <div className="text-center mb-20">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-tr from-indigo-100 to-purple-100 text-indigo-600 rounded-xl mb-8 shadow-sm">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-tr from-indigo-100 to-purple-100 text-slate-900 rounded-xl mb-8 shadow-sm">
             <Users size={36} strokeWidth={2.5} />
           </div>
-          <h1 className="text-5xl md:text-6xl font-black text-slate-900 tracking-tight mb-6">About InvestMant</h1>
+          <h1 className="text-5xl md:text-6xl font-semibold text-slate-900 tracking-tight mb-6">About InvestMant</h1>
           <p className="text-slate-500 text-xl max-w-2xl mx-auto font-medium leading-relaxed">Building the future of personal wealth intelligence for retail investors.</p>
         </div>
 
         <div className="space-y-10 text-slate-600 leading-relaxed font-medium">
           
           <section className="bg-white p-10 md:p-14 rounded-[2.5rem] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_15px_40px_rgb(0,0,0,0.06)] transition-all duration-300">
-            <h2 className="text-3xl font-black text-slate-900 mb-6 flex items-center gap-4">
-              <span className="p-3 bg-indigo-50 text-indigo-600 rounded-xl"><Target size={28} /></span> 
+            <h2 className="text-3xl font-semibold text-slate-900 mb-6 flex items-center gap-4">
+              <span className="p-3 bg-slate-100 text-slate-900 rounded-xl"><Target size={28} /></span> 
               Our Mission
             </h2>
             <p className="mb-5 text-lg">
@@ -36,7 +36,7 @@ const AboutUs = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             <section className="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_15px_40px_rgb(0,0,0,0.06)] transition-all duration-300">
-              <h2 className="text-2xl font-black text-slate-900 mb-5 flex items-center gap-3">
+              <h2 className="text-2xl font-semibold text-slate-900 mb-5 flex items-center gap-3">
                 <span className="p-2.5 bg-emerald-50 text-emerald-600 rounded-xl"><ShieldCheck size={24} /></span> 
                 Privacy First
               </h2>
@@ -46,7 +46,7 @@ const AboutUs = () => {
             </section>
 
             <section className="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_15px_40px_rgb(0,0,0,0.06)] transition-all duration-300">
-              <h2 className="text-2xl font-black text-slate-900 mb-5 flex items-center gap-3">
+              <h2 className="text-2xl font-semibold text-slate-900 mb-5 flex items-center gap-3">
                 <span className="p-2.5 bg-amber-50 text-amber-600 rounded-xl"><Zap size={24} /></span> 
                 The Platform
               </h2>

@@ -1929,8 +1929,8 @@ export default function App() {
           >
             <div className="max-w-xs mx-auto flex flex-col gap-3 text-xs ">
               <div className="text-center">
-                <h4 className="font-extrabold text-slate-800 flex items-center justify-center gap-1 text-sm">
-                  <Lock size={14} className="text-indigo-600" />
+                <h4 className="font-semibold text-slate-800 flex items-center justify-center gap-1 text-sm">
+                  <Lock size={14} className="text-slate-900" />
                   {userSettings?.pin ? 'Modify Security Lock PIN' : 'Initialize App Protection PIN'}
                 </h4>
                 <p className="text-xs text-slate-500 mt-0.5">Protect your investment sheets. Input exactly 4 digits.</p>
@@ -1973,7 +1973,7 @@ export default function App() {
                 <button
                   type="button"
                   onClick={handleSavePin}
-                  className="px-2.5 py-1.5 bg-slate-900 text-white rounded-lg text-xs font-bold cursor-pointer hover:bg-slate-800 transition-colors"
+                  className="px-2.5 py-1.5 bg-slate-900 text-white rounded-xl text-xs font-medium cursor-pointer hover:bg-slate-800 active:bg-slate-950 transition-colors"
                 >
                   Save PIN
                 </button>
@@ -2000,6 +2000,11 @@ export default function App() {
             <React.Suspense key={location.pathname} fallback={<div className="flex h-64 items-center justify-center"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-500"></div></div>}>
               <Routes>
                 <Route path="/kline-test" element={<KlineWorkspace />} />
+                <Route path="/about" element={<AboutUs />} />
+                <Route path="/privacy" element={<PrivacyPolicy />} />
+                <Route path="/terms" element={<TermsConditions />} />
+                <Route path="/cookies" element={<CookiesPolicy />} />
+                <Route path="/contact" element={<ContactUs />} />
 
                 {/* Quicko OAuth Callback Route */}
                 <Route path="/quicko-callback" element={
@@ -2013,6 +2018,7 @@ export default function App() {
                 <Route path="/crypto-send" element={<CryptoWalletView activeTab="send" />} />
                 <Route path="/crypto-receive" element={<CryptoWalletView activeTab="receive" />} />
                 <Route path="/crypto-security" element={<CryptoWalletView activeTab="security" />} />
+                <Route path="/quicko" element={<Navigate to="/quicko-kyc" replace />} />
                 <Route path="/quicko-kyc" element={<div className="p-2 sm:p-3 pb-24"><PanVerification /></div>} />
                 <Route path="/quicko-bank" element={<div className="p-2 sm:p-3 pb-24"><BankVerification /></div>} />
                 <Route path="/quicko-aadhaar" element={<div className="p-2 sm:p-3 pb-24"><AadhaarVerification /></div>} />

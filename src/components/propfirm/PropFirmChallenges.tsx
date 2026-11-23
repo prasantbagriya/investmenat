@@ -197,29 +197,29 @@ export default function PropFirmChallenges({ challenges, user, setChallenges, ac
     <div className="space-y-3">
       <div className="flex flex-row justify-between items-center gap-3 px-1 mb-2">
         <div>
-          <p className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center">
+          <p className="text-xl sm:text-2xl font-semibold text-slate-900 tracking-tight flex items-center">
             Challenges
           </p>
           <p className="text-xs text-slate-500 font-bold mt-0.5">Log and manage your prop firm evaluations</p>
         </div>
         <button
           onClick={openAddModal}
-          className="flex items-center gap-2 px-3 py-1.5 bg-slate-900 text-white rounded-lg font-bold hover:bg-slate-800 transition-colors shadow-sm text-xs cursor-pointer whitespace-nowrap"
+          className="flex items-center gap-2 px-3 py-1.5 bg-slate-900 text-white rounded-xl font-medium hover:bg-slate-800 active:bg-slate-950 transition-colors shadow-sm text-xs cursor-pointer whitespace-nowrap"
         >
           <Plus size={14} />
           <span>Add Challenge</span>
         </button>
       </div>
 
-      <div className="bg-white rounded-lg border border-slate-150 shadow-sm overflow-hidden">
-        <div className="px-3 py-2 border-b border-slate-150 flex justify-between items-center bg-slate-50/45">
+      <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
+        <div className="px-3 py-2 border-b border-slate-200 flex justify-between items-center bg-slate-50/45">
           <span className="text-xs font-bold text-slate-700 capitalize">
             Active Challenges ({challenges.length})
           </span>
         </div>
 
         {challenges.length === 0 ? (
-          <div className="p-8 text-center text-slate-450 bg-white text-xs">
+          <div className="p-8 text-center text-slate-400 bg-white text-xs">
             <Activity size={32} className="mx-auto mb-2 opacity-20" />
             <p>No challenges found. Click "Add Challenge" to begin.</p>
           </div>
@@ -232,11 +232,11 @@ export default function PropFirmChallenges({ challenges, user, setChallenges, ac
                   <th className="p-2 whitespace-nowrap">Phase</th>
                   <th className="p-2 whitespace-nowrap">Account Size</th>
                   <th className="p-2 whitespace-nowrap">Cost / Fee</th>
-                  <th className="p-2 font-mono whitespace-nowrap">Date</th>
+                  <th className="p-2 font-mono tabular-nums whitespace-nowrap">Date</th>
                   <th className="p-2 text-right whitespace-nowrap">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 text-slate-750 ">
+              <tbody className="divide-y divide-slate-100 text-slate-700 ">
                 {challenges.map(c => {
                   let isLocked = false;
                   if (c.phase === 'Failed' && c.statusUpdatedAt) {
@@ -248,7 +248,7 @@ export default function PropFirmChallenges({ challenges, user, setChallenges, ac
                   return (
                   <tr key={c.id} className="">
                     <td className="p-2 px-3 whitespace-nowrap">
-                      <div className="font-extrabold text-slate-800">{c.firmName}</div>
+                      <div className="font-semibold text-slate-800">{c.firmName}</div>
                       <div className="text-xs text-slate-500 font-bold mt-0.5">{c.platform}</div>
                     </td>
                     <td className="p-2 whitespace-nowrap">
@@ -259,7 +259,7 @@ export default function PropFirmChallenges({ challenges, user, setChallenges, ac
                         c.phase === 'Phase 2' ? 'bg-violet-100 text-violet-800' :
                         c.phase === 'Phase 3' ? 'bg-pink-100 text-pink-800' :
                         c.phase === 'Failed' ? 'bg-rose-100 text-rose-800' :
-                        'bg-indigo-100 text-indigo-800'
+                        'bg-slate-100 text-slate-900'
                       }`}>
                         {c.phase}
                       </span>
@@ -269,14 +269,14 @@ export default function PropFirmChallenges({ challenges, user, setChallenges, ac
                         </span>
                       )}
                     </td>
-                    <td className="p-2 font-bold font-mono text-xs text-slate-800 whitespace-nowrap">
+                    <td className="p-2 font-bold font-mono tabular-nums text-xs text-slate-800 whitespace-nowrap">
                       ${c.accountSize.toLocaleString()}
                     </td>
-                    <td className="p-2 font-bold font-mono text-xs text-rose-600 whitespace-nowrap">
+                    <td className="p-2 font-bold font-mono tabular-nums text-xs text-rose-600 whitespace-nowrap">
                       -${c.cost.toLocaleString()}
                       {c.activationFee ? <span className="block text-xs text-amber-600 mt-0.5">Activation: -${c.activationFee.toLocaleString()}</span> : null}
                     </td>
-                    <td className="p-2 text-slate-500 font-mono text-xs whitespace-nowrap">
+                    <td className="p-2 text-slate-500 font-mono tabular-nums text-xs whitespace-nowrap">
                       {c.purchaseDate}
                     </td>
                     <td className="p-2 text-right whitespace-nowrap">
@@ -320,7 +320,7 @@ export default function PropFirmChallenges({ challenges, user, setChallenges, ac
                   <input required type="number" value={accountSize} onChange={e => setAccountSize(e.target.value ? Number(e.target.value) : '')} className="w-full p-2 border border-slate-200 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-slate-900 font-medium" placeholder="100000" />
                 </div>
                 <div className="flex items-center gap-2">
-                  <input type="checkbox" id="isGiveawayCheckbox" checked={isGiveaway} onChange={e => setIsGiveaway(e.target.checked)} className="rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 w-4 h-4 cursor-pointer" />
+                  <input type="checkbox" id="isGiveawayCheckbox" checked={isGiveaway} onChange={e => setIsGiveaway(e.target.checked)} className="rounded border-slate-300 text-slate-900 focus:ring-indigo-500 w-4 h-4 cursor-pointer" />
                   <label htmlFor="isGiveawayCheckbox" className="text-xs font-bold text-slate-700 cursor-pointer">Won in a Giveaway (Free Account)</label>
                 </div>
                 {!isGiveaway && (
@@ -393,7 +393,7 @@ export default function PropFirmChallenges({ challenges, user, setChallenges, ac
 
                 <div className="pt-4 border-t border-slate-100 flex gap-2 justify-end shrink-0 sticky bottom-0 bg-white">
                   <button type="button" onClick={() => setIsModalOpen(false)} className="px-4 py-2 font-bold text-slate-600 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer">Cancel</button>
-                  <button type="submit" disabled={isSaving} className="px-4 py-2 font-bold bg-slate-900 text-white hover:bg-slate-800 disabled:opacity-60 disabled:cursor-not-allowed rounded-lg transition-colors shadow-sm flex items-center gap-2 cursor-pointer">
+                  <button type="submit" disabled={isSaving} className="px-4 py-2 font-medium bg-slate-900 text-white hover:bg-slate-800 active:bg-slate-950 disabled:opacity-60 disabled:cursor-not-allowed rounded-xl transition-colors shadow-sm flex items-center gap-2 cursor-pointer">
                     {isSaving ? <span className="text-xs">Saving...</span> : <><CheckCircle size={16} />Save</>}
                   </button>
                 </div>

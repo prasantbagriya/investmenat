@@ -148,7 +148,7 @@ export default function BudgetLimits({
       {/* Navigator headers */}
       <div className="flex flex-row justify-between items-center gap-2 bg-white p-2 rounded-xl border border-slate-200/80 animate-fade-in">
         <div>
-          <h2 className="text-xl font-extrabold text-slate-900 tracking-tight ">Monthly Budgets</h2>
+          <h2 className="text-xl font-semibold text-slate-900 tracking-tight ">Monthly Budgets</h2>
           <p className="text-xs font-bold text-slate-500 capitalize mt-0.5">Category Allocations</p>
           <p className="text-xs text-slate-500 mt-1 ">Current parameter: <span className="font-semibold text-slate-950">{monthName}</span></p>
         </div>
@@ -156,14 +156,14 @@ export default function BudgetLimits({
         <div className="flex items-center gap-1 ml-auto">
           <button 
             onClick={() => adjustMonth('prev')}
-            className="px-1 py-1.5 text-xs font-semibold text-slate-650 hover:text-slate-900 bg-white hover:bg-slate-50 rounded-md transition-colors border border-slate-200 cursor-pointer whitespace-nowrap"
+            className="px-1 py-1.5 text-xs font-semibold text-slate-600 hover:text-slate-900 bg-white hover:bg-slate-50 rounded-md transition-colors border border-slate-200 cursor-pointer whitespace-nowrap"
           >
             ← Prev
           </button>
           
           <button
             onClick={() => setIsFormOpen(true)}
-            className="flex items-center gap-1.5 bg-slate-950 hover:bg-slate-900 text-white px-1.5 py-1.5 rounded-md font-semibold text-xs transition-colors cursor-pointer whitespace-nowrap"
+            className="flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-white px-1.5 py-1.5 rounded-md font-semibold text-xs transition-colors cursor-pointer whitespace-nowrap"
             id="new-limit-button"
           >
             <Plus size={14} /> Limit
@@ -171,7 +171,7 @@ export default function BudgetLimits({
 
           <button 
             onClick={() => adjustMonth('next')}
-            className="px-1 py-1.5 text-xs font-semibold text-slate-650 hover:text-slate-900 bg-white hover:bg-slate-50 rounded-md transition-colors border border-slate-200 cursor-pointer whitespace-nowrap"
+            className="px-1 py-1.5 text-xs font-semibold text-slate-600 hover:text-slate-900 bg-white hover:bg-slate-50 rounded-md transition-colors border border-slate-200 cursor-pointer whitespace-nowrap"
           >
             Next →
           </button>
@@ -210,7 +210,7 @@ export default function BudgetLimits({
                   <select
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
-                    className="w-full px-1 py-1.5 text-xs font-medium border border-slate-250 bg-white rounded-md focus:outline-hidden focus:ring-1 focus:ring-slate-950/20 transition-all "
+                    className="w-full px-1 py-1.5 text-xs font-medium border border-slate-300 bg-white rounded-md focus:outline-hidden focus:ring-1 focus:ring-slate-950/20 transition-all "
                     id="form-limit-category"
                   >
                     {EXPENSE_CATEGORIES.map(cat => (
@@ -223,7 +223,7 @@ export default function BudgetLimits({
                 <div className="space-y-1.5">
                   <label className="text-xs font-bold text-slate-500 capitalize block ">Spending Limit (₹)</label>
                   <div className="relative">
-                    <span className="absolute left-3 top-2 text-slate-450 text-xs font-medium ">₹</span>
+                    <span className="absolute left-3 top-2 text-slate-400 text-xs font-medium ">₹</span>
                     <input
                       type="number"
                       step="1"
@@ -231,7 +231,7 @@ export default function BudgetLimits({
                       placeholder="e.g. 500"
                       value={limitAmount}
                       onChange={(e) => setLimitAmount(e.target.value)}
-                      className="w-full pl-7 pr-1 py-1.5 text-xs border border-slate-250 rounded-md focus:outline-hidden bg-white transition-all "
+                      className="w-full pl-7 pr-1 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-hidden bg-white transition-all "
                       id="form-limit-amount"
                     />
                   </div>
@@ -251,7 +251,7 @@ export default function BudgetLimits({
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="px-2 py-1.5 bg-slate-900 hover:bg-slate-950 text-white font-semibold rounded text-xs transition-colors disabled:opacity-40 cursor-pointer"
+                  className="px-2 py-1.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-semibold rounded text-xs transition-colors disabled:opacity-40 cursor-pointer"
                   id="form-limit-submit"
                 >
                   {isSubmitting ? 'Syncing...' : 'Establish Limit'}
@@ -288,18 +288,18 @@ export default function BudgetLimits({
                       <span className={`text-xs px-1.5 py-0.5 rounded-full font-bold capitalize ${pillStyle}`}>
                         {b.status === 'red' ? 'Exceeded' : b.status === 'orange' ? 'Warning 80%+' : 'Within Limit'}
                       </span>
-                      <span className="text-xs text-slate-500 font-mono">Limit: {b.id.substring(0,6)}</span>
+                      <span className="text-xs text-slate-500 font-mono tabular-nums">Limit: {b.id.substring(0,6)}</span>
                     </div>
                   </div>
 
                   {/* Utilization Progress Bar */}
                   <div className="md:w-1/2 w-full space-y-1">
                     <div className="flex justify-between items-baseline">
-                      <div className="flex items-baseline gap-1 font-mono text-xs">
+                      <div className="flex items-baseline gap-1 font-mono tabular-nums text-xs">
                         <span className="text-xs font-bold text-slate-900">₹{b.spent.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
                         <span className="text-slate-500"> of ₹{b.limitAmount.toLocaleString('en-IN')} Spend Cap</span>
                       </div>
-                      <span className="text-xs font-bold font-mono text-slate-700">{b.pct.toFixed(0)}% Used</span>
+                      <span className="text-xs font-bold font-mono tabular-nums text-slate-700">{b.pct.toFixed(0)}% Used</span>
                     </div>
 
                     <div className="relative w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">

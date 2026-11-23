@@ -79,11 +79,11 @@ export default function QuickoConnect() {
         <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl" />
         
         <div className="relative z-10 flex flex-col items-center">
-          <div className="w-20 h-20 bg-indigo-50 border border-indigo-100 rounded-lg flex items-center justify-center mb-6 shadow-inner">
-            <LinkIcon size={32} className="text-indigo-600" />
+          <div className="w-20 h-20 bg-slate-100 border border-indigo-100 rounded-lg flex items-center justify-center mb-6 shadow-inner">
+            <LinkIcon size={32} className="text-slate-900" />
           </div>
           
-          <h2 className="text-2xl font-black text-slate-800 tracking-tight mb-2">Connect your ITD Account</h2>
+          <h2 className="text-2xl font-semibold text-slate-800 tracking-tight mb-2">Connect your ITD Account</h2>
           <p className="text-slate-500 text-sm max-w-sm mb-8 leading-relaxed">
             Securely connect your Income Tax Department account via Quicko Open APIs to automatically fetch your ITR details and tax computation.
           </p>
@@ -91,7 +91,7 @@ export default function QuickoConnect() {
           <button 
             onClick={handleConnect}
             disabled={isConnecting}
-            className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3.5 px-8 rounded-xl transition-all shadow-lg shadow-indigo-500/20 flex items-center justify-center gap-2"
+            className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-500 text-white font-medium py-3.5 px-8 rounded-xl transition-all shadow-lg shadow-indigo-500/20 flex items-center justify-center gap-2"
           >
             {isConnecting ? (
               <><Loader2 size={18} className="animate-spin" /> Authenticating...</>
@@ -121,7 +121,7 @@ export default function QuickoConnect() {
             <p className="text-xs text-slate-500">OAuth Bearer Token Active</p>
           </div>
         </div>
-        <button onClick={handleDisconnect} className="text-xs text-red-500 font-bold hover:bg-red-50 px-3 py-1.5 rounded-lg transition-colors">
+        <button onClick={handleDisconnect} className="text-xs text-red-500 font-medium hover:bg-red-50 px-3 py-1.5 rounded-lg transition-colors">
           Disconnect
         </button>
       </div>
@@ -135,7 +135,7 @@ export default function QuickoConnect() {
 
       {loadingData ? (
         <div className="flex flex-col items-center justify-center py-20 gap-4">
-          <div className="w-10 h-10 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin" />
+          <div className="w-10 h-10 border-4 border-slate-200 border-t-indigo-600 rounded-full animate-spin" />
           <p className="text-sm font-bold text-slate-600">Fetching highly secure Tax Data...</p>
         </div>
       ) : (
@@ -155,7 +155,7 @@ export default function QuickoConnect() {
                 </div>
                 <div className="flex justify-between border-t border-slate-50 pt-2">
                   <span className="text-slate-500">PAN</span>
-                  <span className="font-mono font-bold text-slate-700">{taxPayer.pan}</span>
+                  <span className="font-mono tabular-nums font-bold text-slate-700">{taxPayer.pan}</span>
                 </div>
                 <div className="flex justify-between border-t border-slate-50 pt-2">
                   <span className="text-slate-500">Contact</span>
@@ -195,7 +195,7 @@ export default function QuickoConnect() {
                 </div>
                 <div className="flex justify-between border-t border-slate-50 pt-2">
                   <span className="text-slate-500">Ack Number</span>
-                  <span className="font-mono font-medium text-slate-500">{itr.ackNumber}</span>
+                  <span className="font-mono tabular-nums font-medium text-slate-500">{itr.ackNumber}</span>
                 </div>
               </div>
             )}
@@ -215,33 +215,33 @@ export default function QuickoConnect() {
                 <div className="space-y-3">
                   <div className="flex justify-between">
                     <span className="text-slate-400">Income from Salary</span>
-                    <span className="font-mono text-slate-200">₹{taxComp.salaryIncome.toLocaleString('en-IN')}</span>
+                    <span className="font-mono tabular-nums text-slate-200">₹{taxComp.salaryIncome.toLocaleString('en-IN')}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-slate-400">House Property</span>
-                    <span className="font-mono text-slate-200">₹{taxComp.housePropertyIncome.toLocaleString('en-IN')}</span>
+                    <span className="font-mono tabular-nums text-slate-200">₹{taxComp.housePropertyIncome.toLocaleString('en-IN')}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-slate-400">Capital Gains (STCG + LTCG)</span>
-                    <span className="font-mono text-slate-200">₹{(taxComp.stcg + taxComp.ltcg).toLocaleString('en-IN')}</span>
+                    <span className="font-mono tabular-nums text-slate-200">₹{(taxComp.stcg + taxComp.ltcg).toLocaleString('en-IN')}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-slate-400">Other Sources</span>
-                    <span className="font-mono text-slate-200">₹{taxComp.otherSources.toLocaleString('en-IN')}</span>
+                    <span className="font-mono tabular-nums text-slate-200">₹{taxComp.otherSources.toLocaleString('en-IN')}</span>
                   </div>
                 </div>
                 <div className="space-y-3 border-t md:border-t-0 md:border-l border-slate-800 pt-3 md:pt-0 md:pl-8">
                   <div className="flex justify-between text-emerald-400">
                     <span>Chapter VI-A Deductions</span>
-                    <span className="font-mono font-bold">- ₹{taxComp.deductions.toLocaleString('en-IN')}</span>
+                    <span className="font-mono tabular-nums font-bold">- ₹{taxComp.deductions.toLocaleString('en-IN')}</span>
                   </div>
                   <div className="flex justify-between pt-2 border-t border-slate-800">
                     <span className="text-white font-bold">Total Taxable Income</span>
-                    <span className="font-mono text-white font-bold">₹{taxComp.totalTaxable.toLocaleString('en-IN')}</span>
+                    <span className="font-mono tabular-nums text-white font-bold">₹{taxComp.totalTaxable.toLocaleString('en-IN')}</span>
                   </div>
                   <div className="flex justify-between pt-2">
                     <span className="text-rose-400 font-bold">Total Tax Payable</span>
-                    <span className="font-mono text-rose-400 font-bold text-base">₹{taxComp.taxPayable.toLocaleString('en-IN')}</span>
+                    <span className="font-mono tabular-nums text-rose-400 font-bold text-base">₹{taxComp.taxPayable.toLocaleString('en-IN')}</span>
                   </div>
                 </div>
               </div>

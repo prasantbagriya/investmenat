@@ -99,7 +99,7 @@ export default function BottomPanel({ theme, activeSymbol }: BottomPanelProps) {
       </div>
 
       {/* Content Area */}
-      <div className="flex-1 overflow-auto p-4 text-sm font-mono opacity-80">
+      <div className="flex-1 overflow-auto p-4 text-sm font-mono tabular-nums opacity-80">
         {activeTab === 'screener' && <div>Screener data will load here...</div>}
         {activeTab === 'pine' && <div>// Pine Script Editor v5<br/>indicator("My Script")<br/>plot(close)</div>}
         {activeTab === 'tester' && <div>Strategy tester results...</div>}

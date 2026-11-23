@@ -29,7 +29,7 @@ export function WealthForecaster({ sips, fds, holdings, physicalAssets = [], ban
   const forecastData = useMemo(() => {
     // Current lumpsum (Holdings + FDs + Physical + Bank)
     const currentEquity = holdings.reduce((sum, h) => {
-      const live = livePrices?.[h.type === 'stock' ? `stock_${h.symbol}` : `mf_${h.schemeCode}`];
+      const live = livePrices?.[h.type === 'stock' ? `stock_${h.symbol}` : h.type === 'crypto' ? `crypto_${h.name || h.symbol}` : `mf_${h.schemeCode}`];
       const price = live ? live.currentPrice : h.buyPrice;
       return sum + (price * h.quantity);
     }, 0);
@@ -102,7 +102,7 @@ export function WealthForecaster({ sips, fds, holdings, physicalAssets = [], ban
         <div className="relative z-10">
           <h2 className="text-indigo-200 font-medium text-sm mb-1">PROJECTED WEALTH IN {projectionYears} YEARS</h2>
           <div className="flex items-baseline gap-1">
-            <span className="text-4xl font-extrabold tracking-tight">{formatCurrency(finalWealth)}</span>
+            <span className="text-4xl font-semibold tracking-tight">{formatCurrency(finalWealth)}</span>
           </div>
           <div className="mt-4 flex gap-6 text-sm">
             <div>
@@ -201,7 +201,7 @@ export function WealthForecaster({ sips, fds, holdings, physicalAssets = [], ban
         <div>
           <div className="flex justify-between mb-1">
             <label className="text-xs font-semibold text-slate-700">Projection Period</label>
-            <span className="text-xs font-bold text-indigo-600">{projectionYears} Years</span>
+            <span className="text-xs font-bold text-slate-900">{projectionYears} Years</span>
           </div>
           <input 
             type="range" min="5" max="40" step="5"
@@ -214,7 +214,7 @@ export function WealthForecaster({ sips, fds, holdings, physicalAssets = [], ban
         <div>
           <div className="flex justify-between mb-1">
             <label className="text-xs font-semibold text-slate-700">Expected Equity Return (SIPs & Stocks)</label>
-            <span className="text-xs font-bold text-indigo-600">{expectedEquityReturn}% p.a.</span>
+            <span className="text-xs font-bold text-slate-900">{expectedEquityReturn}% p.a.</span>
           </div>
           <input 
             type="range" min="5" max="25" step="1"
@@ -227,7 +227,7 @@ export function WealthForecaster({ sips, fds, holdings, physicalAssets = [], ban
         <div>
           <div className="flex justify-between mb-1">
             <label className="text-xs font-semibold text-slate-700">Expected Debt Return (FDs)</label>
-            <span className="text-xs font-bold text-indigo-600">{expectedDebtReturn}% p.a.</span>
+            <span className="text-xs font-bold text-slate-900">{expectedDebtReturn}% p.a.</span>
           </div>
           <input 
             type="range" min="4" max="12" step="0.5"
@@ -240,7 +240,7 @@ export function WealthForecaster({ sips, fds, holdings, physicalAssets = [], ban
         <div>
           <div className="flex justify-between mb-1">
             <label className="text-xs font-semibold text-slate-700">Expected Physical Asset Return (Real Estate/Gold)</label>
-            <span className="text-xs font-bold text-indigo-600">{expectedPhysicalReturn}% p.a.</span>
+            <span className="text-xs font-bold text-slate-900">{expectedPhysicalReturn}% p.a.</span>
           </div>
           <input 
             type="range" min="0" max="15" step="0.5"
@@ -253,7 +253,7 @@ export function WealthForecaster({ sips, fds, holdings, physicalAssets = [], ban
         <div>
           <div className="flex justify-between mb-1">
             <label className="text-xs font-semibold text-slate-700">Expected Bank Savings Return</label>
-            <span className="text-xs font-bold text-indigo-600">{expectedBankReturn}% p.a.</span>
+            <span className="text-xs font-bold text-slate-900">{expectedBankReturn}% p.a.</span>
           </div>
           <input 
             type="range" min="0" max="8" step="0.5"

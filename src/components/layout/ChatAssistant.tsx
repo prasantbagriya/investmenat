@@ -78,7 +78,7 @@ export default function ChatAssistant({ bankAccounts, transactions, physicalAsse
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-6 right-6 z-50 p-4 bg-slate-900 text-white rounded-full shadow-md hover:bg-slate-950 transition-colors flex items-center justify-center group"
+            className="fixed bottom-6 right-6 z-50 p-4 bg-slate-900 text-white rounded-full shadow-md hover:bg-slate-800 transition-colors flex items-center justify-center group"
           >
             <MessageSquare className="w-6 h-6" />
           </motion.button>
@@ -102,7 +102,7 @@ export default function ChatAssistant({ bankAccounts, transactions, physicalAsse
               </div>
               <button 
                 onClick={() => setIsOpen(false)}
-                className="p-1 hover:bg-slate-950 rounded transition-colors"
+                className="p-1 hover:bg-slate-800 rounded transition-colors"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -153,7 +153,7 @@ export default function ChatAssistant({ bankAccounts, transactions, physicalAsse
                 <button
                   type="submit"
                   disabled={!input.trim() || isLoading}
-                  className="p-2 bg-slate-900 text-white rounded hover:bg-slate-950 disabled:opacity-50 transition-colors"
+                  className="p-2 bg-slate-900 text-white rounded hover:bg-slate-800 active:bg-slate-950 disabled:opacity-50 transition-colors"
                 >
                   <Send className="w-4 h-4" />
                 </button>

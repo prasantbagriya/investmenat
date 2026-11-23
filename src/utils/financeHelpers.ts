@@ -88,6 +88,28 @@ export function calculateXIRR(cashflows: number[], datesStr: string[]): number {
  * Calculates maturity amount for FD based on quarterly compounding (standard for Indian banks)
  * A = P(1 + r/400)^(4 * months / 12)
  */
+
+export function calculateRdMaturity(monthlyDeposit: number, interestRate: number, tenureMonths: number): {
+  maturityAmount: number;
+  interestEarned: number;
+  totalDeposit: number;
+} {
+  const p = monthlyDeposit;
+  const r = interestRate / 100;
+  let maturityAmount = 0;
+  for (let i = 1; i <= tenureMonths; i++) {
+    const monthsRemaining = tenureMonths - i + 1;
+    maturityAmount += p * Math.pow(1 + r / 4, (4 * monthsRemaining) / 12);
+  }
+  const totalDeposit = p * tenureMonths;
+  const interestEarned = maturityAmount - totalDeposit;
+  return {
+    maturityAmount: parseFloat(maturityAmount.toFixed(2)),
+    interestEarned: parseFloat(interestEarned.toFixed(2)),
+    totalDeposit: parseFloat(totalDeposit.toFixed(2))
+  };
+}
+
 export function calculateFdMaturity(principal: number, interestRate: number, tenureMonths: number): {
   maturityAmount: number;
   interestEarned: number;

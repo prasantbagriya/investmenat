@@ -75,7 +75,7 @@ const UpstoxOrderTicket: React.FC<UpstoxOrderTicketProps> = ({ initialSymbol = '
   return (
     <div className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-xl max-w-lg w-full mx-auto ">
       <div className={`p-5 flex items-center justify-between border-b ${transactionType === 'BUY' ? 'bg-blue-600 border-blue-700' : 'bg-rose-600 border-rose-700'}`}>
-        <h3 className="text-white font-black text-xl flex items-center gap-2">
+        <h3 className="text-white font-semibold text-xl flex items-center gap-2">
           {transactionType === 'BUY' ? <TrendingUp size={24} /> : <TrendingDown size={24} />}
           {transactionType} ORDER
         </h3>
@@ -131,7 +131,7 @@ const UpstoxOrderTicket: React.FC<UpstoxOrderTicketProps> = ({ initialSymbol = '
                   setSymbol(val);
                 }
               }}
-              className="w-full pl-11 pr-4 py-3 bg-slate-50 border-2 border-slate-200 rounded-lg text-sm font-bold text-slate-800 focus:border-indigo-500 focus:ring-0 transition-colors"
+              className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-bold text-slate-800 focus:border-indigo-500 focus:ring-0 transition-colors"
               placeholder="Search NIFTY, Reliance... or enter key"
             />
             <datalist id="order-popular-stocks">
@@ -151,7 +151,7 @@ const UpstoxOrderTicket: React.FC<UpstoxOrderTicketProps> = ({ initialSymbol = '
               min="1"
               value={quantity}
               onChange={(e) => setQuantity(Number(e.target.value))}
-              className="w-full px-4 py-3 bg-slate-50 border-2 border-slate-200 rounded-lg text-sm font-bold text-slate-800 focus:border-indigo-500 focus:ring-0 transition-colors"
+              className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-bold text-slate-800 focus:border-indigo-500 focus:ring-0 transition-colors"
             />
           </div>
           <div className="flex-1">
@@ -163,7 +163,7 @@ const UpstoxOrderTicket: React.FC<UpstoxOrderTicketProps> = ({ initialSymbol = '
               value={orderType === 'MARKET' ? '' : price}
               onChange={(e) => setPrice(e.target.value)}
               placeholder={orderType === 'MARKET' ? 'MARKET' : '0.00'}
-              className="w-full px-4 py-3 bg-slate-50 border-2 border-slate-200 rounded-lg text-sm font-bold text-slate-800 focus:border-indigo-500 focus:ring-0 transition-colors disabled:opacity-50"
+              className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-bold text-slate-800 focus:border-indigo-500 focus:ring-0 transition-colors disabled:opacity-50"
             />
           </div>
         </div>
@@ -177,7 +177,7 @@ const UpstoxOrderTicket: React.FC<UpstoxOrderTicketProps> = ({ initialSymbol = '
                 onClick={() => setProduct(p)}
                 className={`flex-1 py-2 text-xs font-bold rounded-xl border-2 transition-all ${
                   product === p 
-                    ? 'border-indigo-600 bg-indigo-50 text-indigo-700' 
+                    ? 'border-indigo-600 bg-slate-100 text-slate-900' 
                     : 'border-slate-200 bg-white text-slate-500 hover:bg-slate-50'
                 }`}
               >
@@ -193,7 +193,7 @@ const UpstoxOrderTicket: React.FC<UpstoxOrderTicketProps> = ({ initialSymbol = '
                 onClick={() => setOrderType(ot)}
                 className={`flex-1 py-2 text-xs font-bold rounded-xl border-2 transition-all ${
                   orderType === ot 
-                    ? 'border-indigo-600 bg-indigo-50 text-indigo-700' 
+                    ? 'border-indigo-600 bg-slate-100 text-slate-900' 
                     : 'border-slate-200 bg-white text-slate-500 hover:bg-slate-50'
                 }`}
               >
@@ -207,15 +207,15 @@ const UpstoxOrderTicket: React.FC<UpstoxOrderTicketProps> = ({ initialSymbol = '
         <button
           onClick={handlePlaceOrder}
           disabled={isLoading}
-          className={`w-full py-4 rounded-lg font-black text-white capitalize shadow-lg transition-all flex justify-center items-center gap-2 ${
+          className={`w-full py-2.5 rounded-lg font-medium text-xs sm:text-sm text-white transition-colors flex justify-center items-center gap-1.5 ${
             isLoading ? 'opacity-75 cursor-not-allowed bg-slate-800' :
-            transactionType === 'BUY' ? 'bg-blue-600 hover:bg-blue-700 hover:shadow-blue-600/30' : 'bg-rose-600 hover:bg-rose-700 hover:shadow-rose-600/30'
+            transactionType === 'BUY' ? 'bg-slate-900 hover:bg-slate-800 active:bg-slate-950' : 'bg-rose-600 hover:bg-rose-700'
           }`}
         >
           {isLoading ? (
-            <><RefreshCw size={20} className="animate-spin" /> Processing...</>
+            <><RefreshCw size={14} className="animate-spin" /> Processing...</>
           ) : (
-            <><Send size={20} /> Place {transactionType} Order</>
+            <><Send size={14} /> Place {transactionType.toLowerCase()} order</>
           )}
         </button>
 

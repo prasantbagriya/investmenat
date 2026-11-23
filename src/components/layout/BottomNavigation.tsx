@@ -70,29 +70,28 @@ export default function BottomNavigation({
   const tabs = currentWorkspace === 'ledger' ? ledgerTabs : currentWorkspace === 'investmant' ? investmantTabs : currentWorkspace === 'research' ? researchTabs : currentWorkspace === 'crypto' ? cryptoTabs : currentWorkspace === 'propfirm' ? propfirmTabs : quickoTabs;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 bg-white/97 backdrop-blur-md border-t border-slate-200/80 lg:hidden shadow-[0_-4px_20px_rgba(0,0,0,0.08)] ">
-
+    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-t border-slate-200 lg:hidden" aria-label="Bottom navigation">
       {/* Tab Row */}
-      <div className="flex justify-around py-3 px-2 pb-safe">
+      <div className="flex justify-around py-2 px-1 pb-safe">
         {tabs.map(({ id, label, icon: Icon }) => {
           const isActive = activeTab === id;
           return (
             <Link
               key={id}
               to={`/${id}`}
-              className={`flex flex-col items-center justify-center shrink-0 transition-all duration-200 cursor-pointer flex-1 relative ${
-                isActive ? 'text-slate-950 font-extrabold' : 'text-slate-400 hover:text-slate-600'
+              className={`flex flex-col items-center justify-center shrink-0 transition-colors duration-150 cursor-pointer flex-1 py-1 relative ${
+                isActive ? 'text-slate-900 font-medium' : 'text-slate-400 hover:text-slate-600 font-normal'
               }`}
             >
               {isActive && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-slate-900 rounded-full" />
+                <span className="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-0.5 bg-slate-900 rounded-full" />
               )}
-              <Icon size={20} className={isActive ? 'stroke-[2.5px] text-slate-950 scale-110' : ''} />
-              <span className="text-xs mt-1 leading-tight">{label}</span>
+              <Icon size={18} strokeWidth={isActive ? 2 : 1.5} className="mt-0.5" />
+              <span className="text-[11px] mt-1 leading-none">{label}</span>
             </Link>
           );
         })}
       </div>
-    </div>
+    </nav>
   );
 }

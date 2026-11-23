@@ -106,7 +106,7 @@ export default function TaskCard({
 
           {/* Overdue Badge */}
           {isPending && isOverdue && (
-            <span className="text-xs font-bold font-mono text-rose-600 bg-rose-100 px-1 py-0.5 rounded-md">
+            <span className="text-xs font-bold font-mono tabular-nums text-rose-600 bg-rose-100 px-1 py-0.5 rounded-md">
               Ka time is completed!
             </span>
           )}
@@ -137,7 +137,7 @@ export default function TaskCard({
         {isPending && (
           <div className="text-right flex flex-col justify-center">
             <span className="text-xs capitalize font-bold text-slate-500 ">Time Remaining</span>
-            <span className={`text-xs font-mono font-bold tracking-tight px-1.5 py-1 rounded-md mt-0.5 ${
+            <span className={`text-xs font-mono tabular-nums font-bold tracking-tight px-1.5 py-1 rounded-md mt-0.5 ${
               isOverdue 
                 ? 'bg-rose-100 text-rose-700 ring-1 ring-rose-300' 
                 : 'bg-slate-100 text-slate-700'

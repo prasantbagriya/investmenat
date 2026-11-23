@@ -558,16 +558,16 @@ export default function ContactsManager({
   if (!isContactsLinked) {
     return (
       <div className="bg-white border border-slate-200/90 rounded-xl p-4 shadow-xs max-w-4xl mx-auto text-center space-y-2" id="contacts-manager-container">
-        <div className="mx-auto p-2 bg-indigo-50 text-indigo-700 rounded-xl border border-indigo-100 w-16 h-16 flex items-center justify-center">
+        <div className="mx-auto p-2 bg-slate-100 text-slate-900 rounded-xl border border-indigo-100 w-16 h-16 flex items-center justify-center">
           <Users size={30} />
         </div>
         <div className="space-y-1">
-          <h2 className="text-lg font-extrabold text-slate-900 tracking-tight">Google Contacts Integration Disconnected</h2>
+          <h2 className="text-lg font-semibold text-slate-900 tracking-tight">Google Contacts Integration Disconnected</h2>
         </div>
         {onNavigateToTab && (
           <button
             onClick={() => onNavigateToTab('settings')}
-            className="bg-slate-900 hover:bg-slate-800 text-white font-extrabold py-1.5 px-3 rounded-xl text-xs cursor-pointer shadow-xs active:scale-95 transition-all"
+            className="bg-slate-900 hover:bg-slate-800 text-white font-semibold py-1.5 px-3 rounded-xl text-xs cursor-pointer shadow-xs active:scale-95 transition-all"
           >
             ⚙️ Open Settings & Links
           </button>
@@ -581,7 +581,7 @@ export default function ContactsManager({
       {/* Simplified Header */}
       <div className="flex items-center justify-between bg-white rounded-lg p-3 border border-slate-100 shadow-sm mb-2">
         <div className="flex items-center gap-2">
-          <div className="bg-indigo-50 text-indigo-600 p-2 rounded-xl">
+          <div className="bg-slate-100 text-slate-900 p-2 rounded-xl">
             <Users size={18} />
           </div>
           <h2 className="text-lg font-bold text-slate-800">Contacts</h2>
@@ -600,7 +600,7 @@ export default function ContactsManager({
         <div className="bg-white rounded-lg border border-slate-100 p-2 shadow-xs" id="contacts-kpi-total">
           <p className="text-xs capitalize font-bold text-slate-500">Rolodex Capacity</p>
           <div className="flex items-baseline gap-1 mt-1">
-            <span className="text-2xl font-black text-slate-900">{contacts.length}</span>
+            <span className="text-2xl font-semibold text-slate-900">{contacts.length}</span>
             <span className="text-xs text-slate-700">active associates</span>
           </div>
         </div>
@@ -608,7 +608,7 @@ export default function ContactsManager({
         <div className="bg-white rounded-lg border border-slate-100 p-2 shadow-xs" id="contacts-kpi-owed-to">
           <p className="text-xs capitalize font-bold text-emerald-600">Total Money Receivable</p>
           <div className="flex items-baseline gap-1 mt-1">
-            <span className="text-2xl font-black text-emerald-650">₹{financialInsights.totalOwedToGuest.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
+            <span className="text-2xl font-semibold text-emerald-650">₹{financialInsights.totalOwedToGuest.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
             <span className="text-xs text-emerald-600 font-semibold">from contacts</span>
           </div>
         </div>
@@ -616,7 +616,7 @@ export default function ContactsManager({
         <div className="bg-white rounded-lg border border-slate-100 p-2 shadow-xs" id="contacts-kpi-owed-by">
           <p className="text-xs capitalize font-bold text-rose-500">Total Money Payable</p>
           <div className="flex items-baseline gap-1 mt-1">
-            <span className="text-2xl font-black text-rose-600">₹{financialInsights.totalOwedByGuest.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
+            <span className="text-2xl font-semibold text-rose-600">₹{financialInsights.totalOwedByGuest.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
             <span className="text-xs text-rose-500 font-semibold">to contacts</span>
           </div>
         </div>
@@ -655,7 +655,7 @@ export default function ContactsManager({
         {loading ? (
           <div className="flex flex-col items-center justify-center py-8 gap-1" id="contacts-skeleton-loader">
             <RefreshCw className="h-8 w-8 text-slate-500 animate-spin" />
-            <span className="text-xs text-slate-700 font-mono">Synchronizing directories...</span>
+            <span className="text-xs text-slate-700 font-mono tabular-nums">Synchronizing directories...</span>
           </div>
         ) : filteredContacts.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-8 text-center gap-1" id="contacts-empty-state">
@@ -707,11 +707,11 @@ export default function ContactsManager({
                             </div>
                           )}
                           <div>
-                            <h4 className="text-xs font-black text-slate-900 leading-tight flex items-center gap-1.5">
+                            <h4 className="text-xs font-semibold text-slate-900 leading-tight flex items-center gap-1.5">
                               {contact.name}
                               {contact.category && (
                                 <span className={`text-[8px] font-bold px-1.5 py-0.5 rounded-full ${
-                                  contact.category === 'Family' ? 'bg-indigo-50 text-indigo-650' :
+                                  contact.category === 'Family' ? 'bg-slate-100 text-indigo-650' :
                                   contact.category === 'Business' ? 'bg-slate-100 text-slate-700' :
                                   contact.category === 'Friend' ? 'bg-sky-50 text-sky-650' :
                                   contact.category === 'Lender' ? 'bg-amber-50 text-amber-700' : 'bg-slate-50 text-slate-700'
@@ -757,7 +757,7 @@ export default function ContactsManager({
                         {contact.phone && (
                           <div className="flex items-center gap-1 text-xs text-slate-700">
                             <Phone className="h-3.5 w-3.5 text-slate-500 shrink-0" />
-                            <span className="font-mono">{contact.phone}</span>
+                            <span className="font-mono tabular-nums">{contact.phone}</span>
                           </div>
                         )}
                         {contact.email && (
@@ -770,7 +770,7 @@ export default function ContactsManager({
                     </div>
 
                     {/* Integrated Money Flow Widget */}
-                    <div className="mt-2 pt-1 border-t border-slate-50 flex items-center justify-between text-xs font-mono">
+                    <div className="mt-2 pt-1 border-t border-slate-50 flex items-center justify-between text-xs font-mono tabular-nums">
                       {OweAmount === 0 && OwedAmount === 0 ? (
                         <span className="text-slate-500">No active dues link</span>
                       ) : (
@@ -811,7 +811,7 @@ export default function ContactsManager({
                                 {h.completed ? <CheckCircle2 size={10} className="text-emerald-500" /> : <Clock size={10} className="text-amber-500" />}
                                 <span className={h.completed ? 'text-slate-700 line-through' : 'text-slate-800'}>{h.dueDate}</span>
                               </div>
-                              <span className={`font-mono font-bold ${h.type === 'owe' ? 'text-rose-500' : 'text-emerald-500'}`}>
+                              <span className={`font-mono tabular-nums font-bold ${h.type === 'owe' ? 'text-rose-500' : 'text-emerald-500'}`}>
                                 {h.type === 'owe' ? '-' : '+'}₹{h.amount}
                               </span>
                             </div>
@@ -844,7 +844,7 @@ export default function ContactsManager({
               <X size={18} />
             </button>
 
-            <h3 className="text-lg font-black text-slate-900 tracking-tight">
+            <h3 className="text-lg font-semibold text-slate-900 tracking-tight">
               {editingContact ? 'Edit Contact Record' : 'Add New Contact Record'}
             </h3>
             <p className="text-xs text-slate-500 mt-1">
@@ -933,7 +933,7 @@ export default function ContactsManager({
                 <button
                   type="submit"
                   disabled={loading}
-                  className="flex-1 py-1 text-xs bg-slate-900 hover:bg-slate-800 disabled:bg-slate-700 text-white font-bold rounded-xl transition-all shadow-md cursor-pointer flex items-center justify-center gap-1"
+                  className="flex-1 py-1 text-xs bg-slate-900 hover:bg-slate-800 active:bg-slate-950 disabled:bg-slate-700 text-white font-medium rounded-xl transition-all shadow-md cursor-pointer flex items-center justify-center gap-1"
                 >
                   {loading && <RefreshCw size={13} className="animate-spin" />}
                   Save Contact
@@ -959,7 +959,7 @@ export default function ContactsManager({
               <X size={18} />
             </button>
 
-            <h3 className="text-lg font-black text-slate-900 tracking-tight">
+            <h3 className="text-lg font-semibold text-slate-900 tracking-tight">
               Config Pending Due for {selectedContactForDue.name}
             </h3>
             <p className="text-xs text-slate-500 mt-1">
@@ -1040,7 +1040,7 @@ export default function ContactsManager({
                 <button
                   type="submit"
                   disabled={isDueSubmitting}
-                  className="flex items-center gap-1 bg-slate-900 hover:bg-slate-950 text-white font-semibold text-xs px-4 py-1.5 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex items-center gap-1 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-semibold text-xs px-4 py-1.5 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Save size={14} />
                   {isDueSubmitting ? 'Linking...' : 'Save & Link'}

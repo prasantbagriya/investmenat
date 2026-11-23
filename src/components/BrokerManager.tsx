@@ -435,7 +435,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
             <Building2 size={24} />
           </div>
           <div>
-            <h1 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Broker API center</h1>
+            <h1 className="text-xl sm:text-2xl font-semibold text-slate-900 tracking-tight">Broker API center</h1>
             <p className="text-xs text-slate-700 font-medium">Link your Upstox, Dhan, or Angel One accounts for live portfolio sync.</p>
           </div>
         </div>
@@ -447,10 +447,10 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
           <button
             onClick={() => setActiveTab('upstox')}
             className={`flex items-center gap-2 p-3 rounded-lg text-sm font-bold transition-all whitespace-nowrap ${
-              activeTab === 'upstox' ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50'
+              activeTab === 'upstox' ? 'bg-slate-100 text-slate-900' : 'text-slate-600 hover:bg-slate-50'
             }`}
           >
-            <div className="w-6 h-6 rounded bg-indigo-600 text-white flex items-center justify-center font-black text-xs">U</div>
+            <div className="w-6 h-6 rounded bg-slate-900 text-white flex items-center justify-center font-semibold text-xs">U</div>
             Upstox API
           </button>
           
@@ -460,7 +460,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
               activeTab === 'dhan' ? 'bg-emerald-50 text-emerald-700' : 'text-slate-600 hover:bg-slate-50'
             }`}
           >
-            <div className="w-6 h-6 rounded bg-emerald-600 text-white flex items-center justify-center font-black text-xs">D</div>
+            <div className="w-6 h-6 rounded bg-emerald-600 text-white flex items-center justify-center font-semibold text-xs">D</div>
             Dhan HQ API
           </button>
           
@@ -470,7 +470,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
               activeTab === 'angel' ? 'bg-orange-50 text-orange-700' : 'text-slate-600 hover:bg-slate-50'
             }`}
           >
-            <div className="w-6 h-6 rounded bg-orange-600 text-white flex items-center justify-center font-black text-xs">A</div>
+            <div className="w-6 h-6 rounded bg-orange-600 text-white flex items-center justify-center font-semibold text-xs">A</div>
             Angel SmartAPI
           </button>
           
@@ -480,7 +480,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
               activeTab === 'binance' ? 'bg-yellow-50 text-yellow-700' : 'text-slate-600 hover:bg-slate-50'
             }`}
           >
-            <div className="w-6 h-6 rounded bg-yellow-500 text-slate-900 flex items-center justify-center font-black text-xs">B</div>
+            <div className="w-6 h-6 rounded bg-yellow-500 text-slate-900 flex items-center justify-center font-semibold text-xs">B</div>
             Binance API
           </button>
         </div>
@@ -493,23 +493,23 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
             <div className="space-y-4 animate-fadeIn">
               <div className="flex justify-between items-start">
                 <div>
-                  <h3 className="text-lg font-black text-indigo-900 flex items-center gap-2">
+                  <h3 className="text-lg font-semibold text-indigo-900 flex items-center gap-2">
                     Upstox Developer API
                   </h3>
                   <p className="text-xs text-slate-700">Requires OAuth 2.0. Note: Token expires daily for security. Reconnect if data stops syncing.</p>
                 </div>
                 {upstoxToken ? (
-                  <span className="bg-emerald-50 text-emerald-700 text-xs font-black capitalize px-2 py-1 rounded-lg flex items-center gap-1 border border-emerald-200">
+                  <span className="bg-emerald-50 text-emerald-700 text-xs font-semibold capitalize px-2 py-1 rounded-lg flex items-center gap-1 border border-emerald-200">
                     <CheckCircle2 size={12} /> Connected
                   </span>
                 ) : (
-                  <span className="bg-amber-50 text-amber-700 text-xs font-black capitalize px-2 py-1 rounded-lg flex items-center gap-1 border border-amber-200">
+                  <span className="bg-amber-50 text-amber-700 text-xs font-semibold capitalize px-2 py-1 rounded-lg flex items-center gap-1 border border-amber-200">
                     <AlertCircle size={12} /> Disconnected
                   </span>
                 )}
               </div>
 
-              <div className="bg-slate-50 rounded-lg p-4 border border-slate-150 space-y-3">
+              <div className="bg-slate-50 rounded-lg p-4 border border-slate-200 space-y-3">
                 <div>
                   <label className="text-xs font-bold text-slate-500 block mb-1">API Key (Client ID)</label>
                   <input
@@ -517,7 +517,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                     value={upstoxApiKey}
                     onChange={(e) => setUpstoxApiKey(e.target.value)}
                     placeholder="Enter Upstox API Key"
-                    className="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-sm outline-none focus:border-indigo-400 font-mono"
+                    className="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-sm outline-none focus:border-indigo-400 font-mono tabular-nums"
                   />
                 </div>
                 <div>
@@ -527,12 +527,12 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                     value={upstoxApiSecret}
                     onChange={(e) => setUpstoxApiSecret(e.target.value)}
                     placeholder="Enter Upstox API Secret"
-                    className="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-sm outline-none focus:border-indigo-400 font-mono"
+                    className="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-sm outline-none focus:border-indigo-400 font-mono tabular-nums"
                   />
                 </div>
                 <div>
                   <label className="text-xs font-bold text-slate-500 block mb-1">Redirect URI (Configure in Upstox Portal)</label>
-                  <code className="block w-full px-3 py-2 bg-slate-100 border border-slate-200 rounded-xl text-xs text-slate-600 font-mono select-all">
+                  <code className="block w-full px-3 py-2 bg-slate-100 border border-slate-200 rounded-xl text-xs text-slate-600 font-mono tabular-nums select-all">
                     {redirectUri}
                   </code>
                 </div>
@@ -540,7 +540,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                 <div className="pt-2 flex flex-col sm:flex-row gap-3 border-b border-slate-200 pb-4">
                   <button
                     onClick={initiateUpstoxLogin}
-                    className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-sm py-3 rounded-xl transition-colors shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+                    className="flex-1 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-semibold text-sm py-3 rounded-xl transition-colors shadow-sm flex items-center justify-center gap-2 cursor-pointer"
                   >
                     {upstoxToken ? <RefreshCw size={18} /> : <LinkIcon size={18} />}
                     {upstoxToken ? 'Reconnect via OAuth' : 'Login via OAuth'}
@@ -556,11 +556,11 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                       value={upstoxToken}
                       onChange={(e) => setUpstoxToken(e.target.value)}
                       placeholder="eyJ0eXAiOiJKV1Qi..."
-                      className="flex-1 px-3 py-2 bg-white border border-slate-200 rounded-xl text-sm outline-none focus:border-indigo-400 font-mono w-full"
+                      className="flex-1 px-3 py-2 bg-white border border-slate-200 rounded-xl text-sm outline-none focus:border-indigo-400 font-mono tabular-nums w-full"
                     />
                     <button
                       onClick={handleSaveDirectUpstoxToken}
-                      className="px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm rounded-xl transition-colors shadow-sm flex items-center gap-2 whitespace-nowrap cursor-pointer"
+                      className="px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm rounded-xl transition-colors shadow-sm flex items-center gap-2 whitespace-nowrap cursor-pointer"
                     >
                       <CheckCircle2 size={16} /> Save Token
                     </button>
@@ -569,7 +569,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
               </div>
 
               {upstoxToken && (
-                <div className="bg-slate-50 rounded-lg p-4 border border-slate-150 space-y-3 mt-4">
+                <div className="bg-slate-50 rounded-lg p-4 border border-slate-200 space-y-3 mt-4">
                   <h4 className="text-sm font-bold text-slate-800 border-b border-slate-200 pb-2 flex items-center gap-2">
                     <CheckCircle2 size={16} className="text-emerald-500" /> API Status & Funds
                   </h4>
@@ -580,12 +580,12 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
                         <label className="text-xs font-bold text-slate-500 capitalize block mb-1">User Name</label>
-                        <div className="text-sm font-black text-slate-900">{upstoxProfile?.user_name || 'N/A'}</div>
+                        <div className="text-sm font-semibold text-slate-900">{upstoxProfile?.user_name || 'N/A'}</div>
                         <div className="text-xs text-slate-700">{upstoxProfile?.email || ''}</div>
                       </div>
                       <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
                         <label className="text-xs font-bold text-slate-500 capitalize block mb-1">Available Margin</label>
-                        <div className="text-lg font-black text-indigo-700">₹{upstoxFunds?.available_margin ? Number(upstoxFunds.available_margin).toLocaleString() : '0.00'}</div>
+                        <div className="text-lg font-semibold text-slate-900">₹{upstoxFunds?.available_margin ? Number(upstoxFunds.available_margin).toLocaleString() : '0.00'}</div>
                         <div className="text-xs text-slate-700 font-medium">Used: ₹{upstoxFunds?.used_margin ? Number(upstoxFunds.used_margin).toLocaleString() : '0.00'}</div>
                       </div>
                     </div>
@@ -597,7 +597,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                         <label className="text-xs font-bold text-slate-500 capitalize ">Active Orders & Positions</label>
                         <button 
                           onClick={handleExitAllUpstox}
-                          className="w-full sm:w-auto bg-rose-100 hover:bg-rose-200 text-rose-700 text-xs font-black capitalize px-3 py-2 sm:py-1 rounded-lg transition-colors border border-rose-200"
+                          className="w-full sm:w-auto bg-rose-100 hover:bg-rose-200 text-rose-700 text-xs font-medium capitalize px-3 py-2 sm:py-1 rounded-lg transition-colors border border-rose-200"
                         >
                           KILL SWITCH (Exit All)
                         </button>
@@ -606,13 +606,13 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
                           <label className="text-xs font-bold text-slate-500 capitalize block mb-1">Today's Orders</label>
-                          <div className="text-lg font-black text-slate-800">{upstoxOrders.length} Orders</div>
+                          <div className="text-lg font-semibold text-slate-800">{upstoxOrders.length} Orders</div>
                           {upstoxOrders.length > 0 && (
                             <div className="mt-2 space-y-1 max-h-32 overflow-y-auto">
                               {upstoxOrders.map((o, i) => (
                                 <div key={i} className="flex justify-between items-center text-xs p-1.5 bg-slate-50 rounded-lg">
                                   <div>
-                                    <span className={`font-bold ${o.transaction_type === 'BUY' ? 'text-indigo-600' : 'text-rose-600'}`}>{o.transaction_type}</span> {o.tradingsymbol}
+                                    <span className={`font-bold ${o.transaction_type === 'BUY' ? 'text-slate-900' : 'text-rose-600'}`}>{o.transaction_type}</span> {o.tradingsymbol}
                                     <span className="block text-slate-500">{o.status}</span>
                                   </div>
                                   {(o.status === 'open' || o.status === 'pending') && (
@@ -628,7 +628,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                         </div>
                         <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
                           <label className="text-xs font-bold text-slate-500 capitalize block mb-1">Active Positions</label>
-                          <div className="text-lg font-black text-slate-800">{upstoxPositions.length} Positions</div>
+                          <div className="text-lg font-semibold text-slate-800">{upstoxPositions.length} Positions</div>
                         </div>
                       </div>
                     </div>
@@ -659,7 +659,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                                   <td className="p-2 text-right text-slate-600 font-medium">₹{h.average_price.toFixed(2)}</td>
                                   <td className="p-2 text-right">
                                     <div className="font-bold text-slate-800">₹{h.last_price.toFixed(2)}</div>
-                                    <div className={`text-xs font-black ${pnl >= 0 ? 'text-emerald-500' : 'text-rose-500'}`}>
+                                    <div className={`text-xs font-semibold ${pnl >= 0 ? 'text-emerald-500' : 'text-rose-500'}`}>
                                       {pnl >= 0 ? '+' : ''}{pnl.toFixed(2)}
                                     </div>
                                   </td>
@@ -681,14 +681,14 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
             <div className="space-y-4 animate-fadeIn">
               <div className="flex justify-between items-start">
                 <div>
-                  <h3 className="text-lg font-black text-emerald-900 flex items-center gap-2">
+                  <h3 className="text-lg font-semibold text-emerald-900 flex items-center gap-2">
                     Dhan HQ API
                   </h3>
                   <p className="text-xs text-slate-700">Requires direct API Access Token generation from Dhan HQ.</p>
                 </div>
               </div>
 
-              <div className="bg-slate-50 rounded-lg p-4 border border-slate-150 space-y-3">
+              <div className="bg-slate-50 rounded-lg p-4 border border-slate-200 space-y-3">
                 <div>
                   <label className="text-xs font-bold text-slate-500 capitalize block mb-1">Client ID</label>
                   <input
@@ -696,7 +696,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                     value={dhanClientId}
                     onChange={(e) => setDhanClientId(e.target.value)}
                     placeholder="e.g. 1000000001"
-                    className="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-sm outline-none focus:border-emerald-400 font-mono"
+                    className="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-sm outline-none focus:border-emerald-400 font-mono tabular-nums"
                   />
                 </div>
                 <div>
@@ -706,14 +706,14 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                     onChange={(e) => setDhanAccessToken(e.target.value)}
                     rows={4}
                     placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
-                    className="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs outline-none focus:border-emerald-400 font-mono resize-none"
+                    className="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs outline-none focus:border-emerald-400 font-mono tabular-nums resize-none"
                   />
                 </div>
 
                 <div className="pt-2">
                   <button
                     onClick={saveDhanConfig}
-                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm py-3 rounded-xl transition-colors shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm py-3 rounded-xl transition-colors shadow-sm flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <ShieldCheck size={18} /> Save & Connect Dhan
                   </button>
@@ -721,7 +721,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
               </div>
 
               {(dhanFunds || dhanHoldings.length > 0) && (
-                <div className="bg-slate-50 rounded-lg p-4 border border-slate-150 space-y-3 mt-4">
+                <div className="bg-slate-50 rounded-lg p-4 border border-slate-200 space-y-3 mt-4">
                   <h4 className="text-sm font-bold text-slate-800 border-b border-slate-200 pb-2 flex items-center gap-2">
                     <CheckCircle2 size={16} className="text-emerald-500" /> Dhan API Status
                   </h4>
@@ -732,7 +732,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                     <div className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
                         <label className="text-xs font-bold text-slate-500 capitalize block mb-1">Available Margin</label>
-                        <div className="text-lg font-black text-emerald-700">₹{dhanFunds?.availabelBalance ? Number(dhanFunds.availabelBalance).toLocaleString() : '0.00'}</div>
+                        <div className="text-lg font-semibold text-emerald-700">₹{dhanFunds?.availabelBalance ? Number(dhanFunds.availabelBalance).toLocaleString() : '0.00'}</div>
                         <div className="text-xs text-slate-700 font-medium">Used: ₹{dhanFunds?.utilizedAmount ? Number(dhanFunds.utilizedAmount).toLocaleString() : '0.00'}</div>
                       </div>
                     </div>
@@ -775,14 +775,14 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
             <div className="space-y-4 animate-fadeIn">
               <div className="flex justify-between items-start">
                 <div>
-                  <h3 className="text-lg font-black text-orange-900 flex items-center gap-2">
+                  <h3 className="text-lg font-semibold text-orange-900 flex items-center gap-2">
                     Angel SmartAPI
                   </h3>
                   <p className="text-xs text-slate-700">Requires API Key, Client Code, and TOTP. Note: Token expires daily for security. Reconnect if data stops.</p>
                 </div>
               </div>
 
-              <div className="bg-slate-50 rounded-lg p-4 border border-slate-150 space-y-3">
+              <div className="bg-slate-50 rounded-lg p-4 border border-slate-200 space-y-3">
                 <div>
                   <label className="text-xs font-bold text-slate-500 capitalize block mb-1">SmartAPI Key</label>
                   <input
@@ -790,7 +790,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                     value={angelApiKey}
                     onChange={(e) => setAngelApiKey(e.target.value)}
                     placeholder="Enter SmartAPI Key"
-                    className="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-sm outline-none focus:border-orange-400 font-mono"
+                    className="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-sm outline-none focus:border-orange-400 font-mono tabular-nums"
                   />
                 </div>
                 <div>
@@ -800,7 +800,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                     value={angelClientCode}
                     onChange={(e) => setAngelClientCode(e.target.value)}
                     placeholder="e.g. S123456"
-                    className="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-sm outline-none focus:border-orange-400 font-mono capitalize"
+                    className="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-sm outline-none focus:border-orange-400 font-mono tabular-nums capitalize"
                   />
                 </div>
                 <div>
@@ -810,7 +810,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                     value={angelPin}
                     onChange={(e) => setAngelPin(e.target.value)}
                     placeholder="Enter 4-digit PIN"
-                    className="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-sm outline-none focus:border-orange-400 font-mono"
+                    className="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-sm outline-none focus:border-orange-400 font-mono tabular-nums"
                   />
                 </div>
 
@@ -822,7 +822,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                     value={angelTotp}
                     onChange={(e) => setAngelTotp(e.target.value.replace(/\D/g, ''))}
                     placeholder="Enter 6-digit TOTP"
-                    className="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-sm outline-none focus:border-orange-400 font-mono "
+                    className="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-sm outline-none focus:border-orange-400 font-mono tabular-nums "
                   />
                 </div>
 
@@ -830,7 +830,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                   <button
                     onClick={handleAngelLogin}
                     disabled={angelLoading}
-                    className="w-full bg-orange-600 hover:bg-orange-700 text-white font-extrabold text-sm py-3 rounded-xl transition-colors shadow-sm flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                    className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold text-sm py-3 rounded-xl transition-colors shadow-sm flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                   >
                     {angelLoading ? <RefreshCw size={18} className="animate-spin" /> : <ShieldCheck size={18} />} 
                     {angelToken ? 'Reconnect Angel One' : 'Login to Angel One'}
@@ -839,7 +839,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
               </div>
 
               {angelToken && (
-                <div className="bg-slate-50 rounded-lg p-4 border border-slate-150 space-y-3 mt-4">
+                <div className="bg-slate-50 rounded-lg p-4 border border-slate-200 space-y-3 mt-4">
                   <h4 className="text-sm font-bold text-slate-800 border-b border-slate-200 pb-2 flex items-center gap-2">
                     <CheckCircle2 size={16} className="text-emerald-500" /> Angel One Status
                   </h4>
@@ -850,7 +850,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                     <div className="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
                         <label className="text-xs font-bold text-slate-500 capitalize block mb-1">Available Margin</label>
-                        <div className="text-lg font-black text-orange-700">₹{angelFunds?.availablecash ? Number(angelFunds.availablecash).toLocaleString() : '0.00'}</div>
+                        <div className="text-lg font-semibold text-orange-700">₹{angelFunds?.availablecash ? Number(angelFunds.availablecash).toLocaleString() : '0.00'}</div>
                         <div className="text-xs text-slate-700 font-medium">Net: ₹{angelFunds?.net || '0.00'}</div>
                       </div>
                     </div>
@@ -881,7 +881,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                                   <td className="p-2 text-right text-slate-600 font-medium">₹{Number(h.averageprice).toFixed(2)}</td>
                                   <td className="p-2 text-right">
                                     <div className="font-bold text-slate-800">₹{Number(h.ltp).toFixed(2)}</div>
-                                    <div className={`text-xs font-black ${pnl >= 0 ? 'text-emerald-500' : 'text-rose-500'}`}>
+                                    <div className={`text-xs font-semibold ${pnl >= 0 ? 'text-emerald-500' : 'text-rose-500'}`}>
                                       {pnl >= 0 ? '+' : ''}{Number(pnl).toFixed(2)}
                                     </div>
                                   </td>
@@ -897,14 +897,14 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
               )}
 
               {/* Angel One SmartAPI Real-time Connection Panel Moved from PortfolioTracker */}
-              <div className="bg-white rounded-lg border border-slate-150 p-2 shadow-sm space-y-2 mt-4">
+              <div className="bg-white rounded-lg border border-slate-200 p-2 shadow-sm space-y-2 mt-4">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-100 pb-1 gap-1">
                   <div>
                     <div className="flex items-center gap-1">
                       <span className={`w-2.5 h-2.5 rounded-full ${smartIsActive ? 'bg-emerald-500 animate-pulse' : 'bg-slate-350'}`} />
                       <h3 className="font-bold text-sm text-slate-800 font-display">My Smart API & Apps (Angel One)</h3>
                     </div>
-                    <p className="text-xs text-slate-450 mt-0.5">Algo trading feeds & real-time tick integration. Static IP can be updated once a week.</p>
+                    <p className="text-xs text-slate-400 mt-0.5">Algo trading feeds & real-time tick integration. Static IP can be updated once a week.</p>
                   </div>
                   <div className="flex items-center gap-1">
                     <button
@@ -968,7 +968,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                             <button
                               onClick={handleSaveSmartApi}
                               disabled={isSavingApi}
-                              className="w-full py-1 bg-slate-900 hover:bg-slate-800 disabled:opacity-50 text-white font-bold rounded-lg cursor-pointer"
+                              className="w-full py-1 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 disabled:opacity-50 text-white font-medium rounded-xl cursor-pointer"
                             >
                               {isSavingApi ? 'Saving Connection...' : 'Save Config & Apply'}
                             </button>
@@ -983,7 +983,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                   <div className="lg:col-span-2 border border-slate-200 rounded-xl overflow-hidden bg-white text-xs shadow-xs">
                     <div className="bg-slate-50 border-b border-slate-200 p-2 flex flex-col justify-between gap-1.5">
                       <div className="flex justify-between items-start">
-                        <h4 className="text-sm font-extrabold text-slate-800 tracking-tight flex items-center">
+                        <h4 className="text-sm font-semibold text-slate-800 tracking-tight flex items-center">
                           My Smart API & Apps
                           <InfoTooltip text="Algo trading orders placed from these apps will be executed (max 5 apps)." />
                         </h4>
@@ -999,7 +999,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                     <div className="p-1 border-b border-slate-100 bg-slate-50/20 flex flex-wrap gap-2 items-center justify-between text-xs">
                       <div className="flex items-center gap-1">
                         <span className="text-slate-500 font-bold capitalize text-xs">API Key:</span>
-                        <span className="font-mono bg-slate-100 px-1 py-1 rounded select-all font-semibold text-slate-705">
+                        <span className="font-mono tabular-nums bg-slate-100 px-1 py-1 rounded select-all font-semibold text-slate-705">
                           {angelApiKey || 'fy2JiRJ2'}
                         </span>
                         <button 
@@ -1007,7 +1007,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                             navigator.clipboard.writeText(angelApiKey || 'fy2JiRJ2');
                             toast.success('🔑 Key copied to clipboard!');
                           }}
-                          className="text-indigo-600 hover:underline hover:text-indigo-700 font-bold text-xs cursor-pointer"
+                          className="text-slate-900 hover:underline hover:text-slate-900 font-bold text-xs cursor-pointer"
                         >
                           Copy Key
                         </button>
@@ -1024,7 +1024,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                     <div className="overflow-x-auto no-scrollbar">
                       <table className="w-full text-left border-collapse text-xs">
                         <thead>
-                          <tr className="bg-slate-50/60 border-b border-slate-250 text-slate-700 text-xs capitalize font-bold ">
+                          <tr className="bg-slate-50/60 border-b border-slate-300 text-slate-700 text-xs capitalize font-bold ">
                             <th className="p-1">App Name</th>
                             <th className="p-1">Redirect URL</th>
                             <th className="p-1">Postback URL</th>
@@ -1034,16 +1034,16 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-slate-100 ">
-                          <tr className="hover:bg-slate-50/30 text-slate-750">
+                          <tr className="hover:bg-slate-50/30 text-slate-700">
                             <td className="p-1 font-bold text-slate-800">{smartAppName || 'prasant bagriya'}</td>
                             <td className="p-1 max-w-[120px] truncate" title={smartRedirectUrl || 'https://prasantbagriya.online/'}>
-                              <a href={smartRedirectUrl || 'https://prasantbagriya.online/'} target="_blank" rel="noreferrer" className="text-blue-500 hover:underline font-mono truncate block">
+                              <a href={smartRedirectUrl || 'https://prasantbagriya.online/'} target="_blank" rel="noreferrer" className="text-blue-500 hover:underline font-mono tabular-nums truncate block">
                                 {smartRedirectUrl || 'https://prasantbagriya.online/'}
                               </a>
                             </td>
-                            <td className="p-1 font-mono text-slate-500">{smartPostbackUrl || '-'}</td>
-                            <td className="p-1 font-mono text-slate-650">{smartPrimaryIp || '47.15.92.237'}</td>
-                            <td className="p-1 font-mono text-slate-500">{smartSecondaryIp || '-'}</td>
+                            <td className="p-1 font-mono tabular-nums text-slate-500">{smartPostbackUrl || '-'}</td>
+                            <td className="p-1 font-mono tabular-nums text-slate-600">{smartPrimaryIp || '47.15.92.237'}</td>
+                            <td className="p-1 font-mono tabular-nums text-slate-500">{smartSecondaryIp || '-'}</td>
                             <td className="p-1 text-right font-bold">
                               <div className="flex justify-end gap-1 text-indigo-650">
                                 <button 
@@ -1071,13 +1071,13 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                     </div>
                   </div>
 
-                  <div className="bg-slate-950 text-zinc-300 font-mono rounded-xl p-1 text-xs flex flex-col justify-between max-h-[140px] overflow-hidden h-[180px] lg:h-auto min-h-[140px]">
+                  <div className="bg-slate-950 text-zinc-300 font-mono tabular-nums rounded-xl p-1 text-xs flex flex-col justify-between max-h-[140px] overflow-hidden h-[180px] lg:h-auto min-h-[140px]">
                     <div className="flex justify-between items-center border-b border-zinc-800 pb-1.5 text-zinc-500 ">
                       <span className="flex items-center gap-1.5">
                         <span className={`w-1.5 h-1.5 rounded-full ${smartIsActive ? 'bg-emerald-500 animate-pulse' : 'bg-zinc-700'}`} />
                         SMARTAPI TICK CONSOLE
                       </span>
-                      <span className="text-xs font-mono">{smartIsActive ? 'CONNECTED' : 'STANDBY'}</span>
+                      <span className="text-xs font-mono tabular-nums">{smartIsActive ? 'CONNECTED' : 'STANDBY'}</span>
                     </div>
                     
                     <div className="flex-1 overflow-y-auto space-y-1 py-1 scrollbar-thin select-none">
@@ -1100,23 +1100,23 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
             <div className="space-y-4 animate-fadeIn">
               <div className="flex justify-between items-start">
                 <div>
-                  <h3 className="text-lg font-black text-rose-900 flex items-center gap-2">
+                  <h3 className="text-lg font-semibold text-rose-900 flex items-center gap-2">
                     Zerodha Kite Connect
                   </h3>
                   <p className="text-xs text-slate-700">Connect using Kite API Key and Secret.</p>
                 </div>
                 {kiteToken ? (
-                  <span className="bg-emerald-50 text-emerald-700 text-xs font-black capitalize px-2 py-1 rounded-lg flex items-center gap-1 border border-emerald-200">
+                  <span className="bg-emerald-50 text-emerald-700 text-xs font-semibold capitalize px-2 py-1 rounded-lg flex items-center gap-1 border border-emerald-200">
                     <CheckCircle2 size={12} /> Connected
                   </span>
                 ) : (
-                  <span className="bg-amber-50 text-amber-700 text-xs font-black capitalize px-2 py-1 rounded-lg flex items-center gap-1 border border-amber-200">
+                  <span className="bg-amber-50 text-amber-700 text-xs font-semibold capitalize px-2 py-1 rounded-lg flex items-center gap-1 border border-amber-200">
                     <AlertCircle size={12} /> Disconnected
                   </span>
                 )}
               </div>
 
-              <div className="bg-slate-50 rounded-lg p-4 border border-slate-150 space-y-3">
+              <div className="bg-slate-50 rounded-lg p-4 border border-slate-200 space-y-3">
                 <div>
                   <label className="text-xs font-bold text-slate-500 capitalize block mb-1">Kite API Key</label>
                   <input
@@ -1124,7 +1124,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                     value={kiteApiKey}
                     onChange={(e) => setKiteApiKey(e.target.value)}
                     placeholder="Enter Kite API Key"
-                    className="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-sm outline-none focus:border-rose-400 font-mono"
+                    className="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-sm outline-none focus:border-rose-400 font-mono tabular-nums"
                   />
                 </div>
                 <div>
@@ -1134,12 +1134,12 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                     value={kiteApiSecret}
                     onChange={(e) => setKiteApiSecret(e.target.value)}
                     placeholder="Enter Kite API Secret"
-                    className="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-sm outline-none focus:border-rose-400 font-mono"
+                    className="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-sm outline-none focus:border-rose-400 font-mono tabular-nums"
                   />
                 </div>
                 <div>
                   <label className="text-xs font-bold text-slate-500 capitalize block mb-1">Redirect URI (Configure in Kite Developer)</label>
-                  <code className="block w-full px-3 py-2 bg-slate-100 border border-slate-200 rounded-xl text-xs text-slate-600 font-mono select-all">
+                  <code className="block w-full px-3 py-2 bg-slate-100 border border-slate-200 rounded-xl text-xs text-slate-600 font-mono tabular-nums select-all">
                     {redirectUri}
                   </code>
                 </div>
@@ -1147,7 +1147,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                 <div className="pt-2">
                   <button
                     onClick={initiateKiteLogin}
-                    className="w-full bg-rose-600 hover:bg-rose-700 text-white font-extrabold text-sm py-3 rounded-xl transition-colors shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full bg-rose-600 hover:bg-rose-700 text-white font-semibold text-sm py-3 rounded-xl transition-colors shadow-sm flex items-center justify-center gap-2 cursor-pointer"
                   >
                     {kiteToken ? <RefreshCw size={18} /> : <LinkIcon size={18} />}
                     {kiteToken ? 'Reconnect Zerodha Account' : 'Connect to Kite API'}
@@ -1172,7 +1172,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                         <div className="space-y-1">
                           <div className="flex justify-between text-xs">
                             <span className="text-slate-700 font-bold">Available Margin</span>
-                            <span className="font-black text-slate-800">₹{kiteFunds.available?.margin?.toLocaleString('en-IN') || 0}</span>
+                            <span className="font-semibold text-slate-800">₹{kiteFunds.available?.margin?.toLocaleString('en-IN') || 0}</span>
                           </div>
                           <div className="flex justify-between text-xs">
                             <span className="text-slate-700 font-bold">Used Margin</span>
@@ -1180,7 +1180,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                           </div>
                           <div className="flex justify-between text-xs pt-1 border-t border-slate-100 mt-1">
                             <span className="text-slate-700 font-bold">Net Balance</span>
-                            <span className="font-black text-rose-600">₹{kiteFunds.net?.toLocaleString('en-IN') || 0}</span>
+                            <span className="font-semibold text-rose-600">₹{kiteFunds.net?.toLocaleString('en-IN') || 0}</span>
                           </div>
                         </div>
                       ) : (
@@ -1221,7 +1221,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                                   <td className="p-2 text-right text-slate-600 font-medium">₹{Number(h.average_price).toFixed(2)}</td>
                                   <td className="p-2 text-right">
                                     <div className="font-bold text-slate-800">₹{Number(h.last_price).toFixed(2)}</div>
-                                    <div className={`text-xs font-black ${pnl >= 0 ? 'text-emerald-500' : 'text-rose-500'}`}>
+                                    <div className={`text-xs font-semibold ${pnl >= 0 ? 'text-emerald-500' : 'text-rose-500'}`}>
                                       {pnl >= 0 ? '+' : ''}{Number(pnl).toFixed(2)}
                                     </div>
                                   </td>
@@ -1243,14 +1243,14 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
             <div className="space-y-4 animate-fadeIn">
               <div className="flex justify-between items-start">
                 <div>
-                  <h3 className="text-lg font-black text-yellow-900 flex items-center gap-2">
+                  <h3 className="text-lg font-semibold text-yellow-900 flex items-center gap-2">
                     Binance Spot API
                   </h3>
                   <p className="text-xs text-slate-700">Requires Binance API Key and Secret (with Reading permissions).</p>
                 </div>
               </div>
 
-              <div className="bg-slate-50 rounded-lg p-4 border border-slate-150 space-y-3">
+              <div className="bg-slate-50 rounded-lg p-4 border border-slate-200 space-y-3">
                 <div>
                   <label className="text-xs font-bold text-slate-500 block mb-1">API Key</label>
                   <input
@@ -1258,7 +1258,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                     value={binanceApiKey}
                     onChange={(e) => setBinanceApiKey(e.target.value)}
                     placeholder="Enter Binance API Key"
-                    className="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-sm outline-none focus:border-yellow-400 font-mono"
+                    className="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-sm outline-none focus:border-yellow-400 font-mono tabular-nums"
                   />
                 </div>
                 <div>
@@ -1268,14 +1268,14 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                     value={binanceApiSecret}
                     onChange={(e) => setBinanceApiSecret(e.target.value)}
                     placeholder="Enter Binance API Secret"
-                    className="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-sm outline-none focus:border-yellow-400 font-mono"
+                    className="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-sm outline-none focus:border-yellow-400 font-mono tabular-nums"
                   />
                 </div>
 
                 <div className="pt-2">
                   <button
                     onClick={handleSaveBinanceKeys}
-                    className="w-full bg-yellow-500 hover:bg-yellow-600 text-slate-900 font-extrabold text-sm py-3 rounded-xl transition-colors shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full bg-yellow-500 hover:bg-yellow-600 text-slate-900 font-semibold text-sm py-3 rounded-xl transition-colors shadow-sm flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <ShieldCheck size={18} /> Save & Connect Binance
                   </button>
@@ -1283,7 +1283,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
               </div>
 
               {(binanceFunds.length > 0) && (
-                <div className="bg-slate-50 rounded-lg p-4 border border-slate-150 space-y-3 mt-4">
+                <div className="bg-slate-50 rounded-lg p-4 border border-slate-200 space-y-3 mt-4">
                   <h4 className="text-sm font-bold text-slate-800 border-b border-slate-200 pb-2 flex items-center gap-2">
                     <CheckCircle2 size={16} className="text-emerald-500" /> Binance Spot Balances
                   </h4>

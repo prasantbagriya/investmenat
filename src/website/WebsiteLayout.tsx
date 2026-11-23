@@ -15,8 +15,8 @@ const WebsiteLayout = () => {
                 <Target size={24} className="text-white" strokeWidth={2.5} />
               </div>
               <div className="flex flex-col">
-                <h1 className="text-2xl font-black text-slate-900 tracking-tight leading-none">
-                  Invest<span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Mant</span>
+                <h1 className="text-2xl font-semibold text-slate-900 tracking-tight leading-none">
+                  Invest<span className="text-transparent bg-clip-text bg-slate-900 text-white">Mant</span>
                 </h1>
                 <p className="text-xs text-slate-500 font-bold capitalize mt-0.5">
                   Wealth Intelligence
@@ -26,12 +26,12 @@ const WebsiteLayout = () => {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-10">
-              <Link to="/about" className="text-sm font-bold text-slate-500 hover:text-indigo-600 transition-colors">About Us</Link>
-              <Link to="/contact" className="text-sm font-bold text-slate-500 hover:text-indigo-600 transition-colors">Contact</Link>
-              <Link to="/crypto-wallet" className="text-sm font-bold text-slate-500 hover:text-indigo-600 transition-colors">Crypto Wallet</Link>
+              <Link to="/about" className="text-sm font-bold text-slate-500 hover:text-slate-900 transition-colors">About Us</Link>
+              <Link to="/contact" className="text-sm font-bold text-slate-500 hover:text-slate-900 transition-colors">Contact</Link>
+              <Link to="/crypto-wallet" className="text-sm font-bold text-slate-500 hover:text-slate-900 transition-colors">Crypto Wallet</Link>
 
               <div className="flex items-center gap-4 border-l border-slate-200 pl-8">
-                <Link to="/login" className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">
+                <Link to="/login" className="text-sm font-bold text-slate-600 hover:text-slate-900 transition-colors">
                   Sign In
                 </Link>
                 <Link to="/login" className="px-6 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-sm font-bold transition-all shadow-xl shadow-slate-900/20 hover:scale-105">
@@ -65,7 +65,7 @@ const WebsiteLayout = () => {
                 <div className="bg-indigo-600 p-2 rounded-xl">
                   <Target size={20} className="text-white" strokeWidth={2.5} />
                 </div>
-                <h2 className="text-2xl font-black text-slate-900 tracking-tight">InvestMant</h2>
+                <h2 className="text-2xl font-semibold text-slate-900 tracking-tight">InvestMant</h2>
               </Link>
               <p className="text-slate-500 text-base leading-relaxed max-w-sm">
                 The ultimate wealth intelligence platform. Track your portfolio, manage budgets, execute SIPs, and monitor real-time market data securely.
@@ -73,19 +73,19 @@ const WebsiteLayout = () => {
             </div>
 
             <div className="md:col-span-3 md:col-start-7">
-              <h3 className="text-slate-900 font-black mb-6 capitalize text-xs">Legal</h3>
+              <h3 className="text-slate-900 font-semibold mb-6 capitalize text-xs">Legal</h3>
               <ul className="space-y-4">
-                <li><Link to="/privacy" className="text-slate-500 hover:text-indigo-600 text-sm font-medium transition-colors">Privacy Policy</Link></li>
-                <li><Link to="/terms" className="text-slate-500 hover:text-indigo-600 text-sm font-medium transition-colors">Terms & Conditions</Link></li>
-                <li><Link to="/cookies" className="text-slate-500 hover:text-indigo-600 text-sm font-medium transition-colors">Cookies Policy</Link></li>
+                <li><Link to="/privacy" className="text-slate-500 hover:text-slate-900 text-sm font-medium transition-colors">Privacy Policy</Link></li>
+                <li><Link to="/terms" className="text-slate-500 hover:text-slate-900 text-sm font-medium transition-colors">Terms & Conditions</Link></li>
+                <li><Link to="/cookies" className="text-slate-500 hover:text-slate-900 text-sm font-medium transition-colors">Cookies Policy</Link></li>
               </ul>
             </div>
 
             <div className="md:col-span-2">
-              <h3 className="text-slate-900 font-black mb-6 capitalize text-xs">Company</h3>
+              <h3 className="text-slate-900 font-semibold mb-6 capitalize text-xs">Company</h3>
               <ul className="space-y-4">
-                <li><Link to="/about" className="text-slate-500 hover:text-indigo-600 text-sm font-medium transition-colors">About Us</Link></li>
-                <li><Link to="/contact" className="text-slate-500 hover:text-indigo-600 text-sm font-medium transition-colors">Contact Us</Link></li>
+                <li><Link to="/about" className="text-slate-500 hover:text-slate-900 text-sm font-medium transition-colors">About Us</Link></li>
+                <li><Link to="/contact" className="text-slate-500 hover:text-slate-900 text-sm font-medium transition-colors">Contact Us</Link></li>
               </ul>
             </div>
           </div>

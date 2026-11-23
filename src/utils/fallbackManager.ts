@@ -63,7 +63,9 @@ export async function flushFallbacksToCloud(user: User | null) {
     { key: 'pay', collection: 'pendingPayments' },
     { key: 'tasks', collection: 'tasks' },
     { key: 'settings', collection: 'userSettings' },
-    { key: 'physicalAssets', collection: 'physicalAssets' }
+    { key: 'physicalAssets', collection: 'physicalAssets' },
+    { key: 'ledger_profiles', collection: 'ledger_profiles' },
+    { key: 'ledger_transactions', collection: 'ledger_transactions' }
   ];
 
   let totalFlushed = 0;

@@ -57,10 +57,10 @@ export default function PinLockScreen({
         className="max-w-sm w-full text-center space-y-3"
       >
         <div className="flex flex-col items-center space-y-1">
-          <div className="p-1.5 bg-white rounded-full text-indigo-600 border border-slate-200 shadow-sm">
+          <div className="p-1.5 bg-white rounded-full text-slate-900 border border-slate-200 shadow-sm">
             <Lock size={28} className="animate-bounce" />
           </div>
-          <h2 className="font-extrabold text-base font-display mt-1">Investmant</h2>
+          <h2 className="font-semibold text-base font-display mt-1">Investmant</h2>
           <p className="text-xs text-slate-500 font-bold ">PIN Authorization Required</p>
         </div>
 
@@ -100,7 +100,7 @@ export default function PinLockScreen({
           {isBiometryAvailable ? (
             <button 
               onClick={manualTriggerBiometric}
-              className="col-span-1 h-16 w-16 sm:h-20 sm:w-20 text-indigo-600 hover:text-indigo-700 rounded-full flex items-center justify-center mx-auto cursor-pointer bg-white hover:bg-slate-100 border border-slate-200/80 transition-colors shadow-sm"
+              className="col-span-1 h-16 w-16 sm:h-20 sm:w-20 text-slate-900 hover:text-slate-900 rounded-full flex items-center justify-center mx-auto cursor-pointer bg-white hover:bg-slate-100 border border-slate-200/80 transition-colors shadow-sm"
             >
               <Fingerprint size={28} />
             </button>

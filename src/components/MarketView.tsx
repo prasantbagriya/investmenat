@@ -165,8 +165,8 @@ export default function MarketView() {
       <div className="bg-white rounded-xl p-5 sm:p-6 border border-slate-200 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <BarChart3 className="text-indigo-600" size={28} />
-            <h1 className="text-2xl font-black text-slate-900 tracking-tight font-display">Live Market Data</h1>
+            <BarChart3 className="text-slate-900" size={28} />
+            <h1 className="text-2xl font-semibold text-slate-900 tracking-tight font-display">Live Market Data</h1>
           </div>
           <p className="text-xs text-slate-700 font-medium mt-1 ml-9">
             Powered by Upstox API. Real-time quotes and Option Chain.
@@ -197,7 +197,7 @@ export default function MarketView() {
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="bg-transparent flex-1 p-2 text-xs outline-none"
                 />
-                <button type="submit" className="bg-slate-900 text-white p-2 hover:bg-slate-800 transition-colors cursor-pointer">
+                <button type="submit" className="bg-slate-900 text-white p-2 hover:bg-slate-800 active:bg-slate-950 transition-colors cursor-pointer">
                   <Search size={14} />
                 </button>
               </div>
@@ -212,12 +212,12 @@ export default function MarketView() {
                   <div className="flex justify-between items-start">
                     <div>
                       <h2 className="font-bold text-slate-800 text-sm">{quoteData.symbol}</h2>
-                      <p className="text-xs text-slate-500 font-mono break-all">{quoteData.instrument_token}</p>
+                      <p className="text-xs text-slate-500 font-mono tabular-nums break-all">{quoteData.instrument_token}</p>
                     </div>
                   </div>
                   
                   <div>
-                    <div className="text-3xl font-black font-mono text-slate-800">
+                    <div className="text-3xl font-semibold font-mono tabular-nums text-slate-800">
                       ₹{quoteData.last_price?.toLocaleString('en-IN', { minimumFractionDigits: 2 })}
                     </div>
                     <div className={`text-xs font-bold flex items-center gap-1 ${quoteData.net_change >= 0 ? 'text-emerald-500' : 'text-rose-500'}`}>
@@ -256,26 +256,26 @@ export default function MarketView() {
                   <div className="grid grid-cols-2 gap-2 text-xs pt-2 border-t border-slate-50">
                     <div className="bg-slate-50 p-1.5 rounded border border-slate-100">
                       <div className="text-slate-500 font-bold capitalize ">Open</div>
-                      <div className="font-mono text-slate-700 font-semibold">{quoteData.open?.toFixed(2)}</div>
+                      <div className="font-mono tabular-nums text-slate-700 font-semibold">{quoteData.open?.toFixed(2)}</div>
                     </div>
                     <div className="bg-slate-50 p-1.5 rounded border border-slate-100">
                       <div className="text-slate-500 font-bold capitalize ">High</div>
-                      <div className="font-mono text-slate-700 font-semibold">{quoteData.high?.toFixed(2)}</div>
+                      <div className="font-mono tabular-nums text-slate-700 font-semibold">{quoteData.high?.toFixed(2)}</div>
                     </div>
                     <div className="bg-slate-50 p-1.5 rounded border border-slate-100">
                       <div className="text-slate-500 font-bold capitalize ">Low</div>
-                      <div className="font-mono text-slate-700 font-semibold">{quoteData.low?.toFixed(2)}</div>
+                      <div className="font-mono tabular-nums text-slate-700 font-semibold">{quoteData.low?.toFixed(2)}</div>
                     </div>
                     <div className="bg-slate-50 p-1.5 rounded border border-slate-100">
                       <div className="text-slate-500 font-bold capitalize ">Prev Close</div>
-                      <div className="font-mono text-slate-700 font-semibold">{quoteData.close?.toFixed(2)}</div>
+                      <div className="font-mono tabular-nums text-slate-700 font-semibold">{quoteData.close?.toFixed(2)}</div>
                     </div>
                   </div>
 
                   <div className="pt-2">
                     <button
                       onClick={() => setTradeModalOpen(true)}
-                      className="w-full bg-slate-900 hover:bg-indigo-600 text-white font-extrabold text-sm py-2.5 rounded-xl transition-colors shadow-sm cursor-pointer"
+                      className="w-full bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm py-2.5 rounded-xl transition-colors shadow-sm cursor-pointer"
                     >
                       EXECUTE TRADE
                     </button>
@@ -283,7 +283,7 @@ export default function MarketView() {
 
                   {/* Fundamentals */}
                   {fundamentals && (
-                    <div className="mt-4 p-3 bg-indigo-50/50 rounded-xl border border-indigo-100">
+                    <div className="mt-4 p-3 bg-slate-100/50 rounded-xl border border-indigo-100">
                       <h3 className="text-xs font-bold text-indigo-900 mb-2">Fundamentals</h3>
                       <div className="grid grid-cols-2 gap-2 text-xs">
                         <div>
@@ -333,7 +333,7 @@ export default function MarketView() {
           <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4 overflow-hidden flex flex-col h-[500px]">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-3">
               <h3 className="font-bold text-sm text-slate-800 flex items-center gap-1.5">
-                <ArrowLeftRight size={16} className="text-indigo-600" />
+                <ArrowLeftRight size={16} className="text-slate-900" />
                 Option Chain
               </h3>
               <div className="flex gap-2 w-full sm:w-auto">
@@ -346,7 +346,7 @@ export default function MarketView() {
                 <button
                   onClick={fetchOptionChain}
                   disabled={loadingChain || !expiryDate || !instrumentKey}
-                  className="bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white font-bold text-xs px-3 py-1.5 rounded-lg cursor-pointer transition-colors"
+                  className="bg-slate-900 hover:bg-slate-800 active:bg-slate-950 disabled:opacity-50 text-white font-medium text-xs px-3 py-1.5 rounded-xl cursor-pointer transition-colors"
                 >
                   {loadingChain ? 'Loading...' : 'Fetch Chain'}
                 </button>
@@ -357,9 +357,9 @@ export default function MarketView() {
               <table className="w-full text-xs text-center border-collapse">
                 <thead className="sticky top-0 bg-slate-100 z-10 shadow-xs">
                   <tr>
-                    <th colSpan={4} className="p-1 border-b border-r border-slate-200 text-emerald-700 font-black">CALLS (CE)</th>
+                    <th colSpan={4} className="p-1 border-b border-r border-slate-200 text-emerald-700 font-semibold">CALLS (CE)</th>
                     <th className="p-1 border-b border-r border-slate-200 bg-slate-200/50">STRIKE</th>
-                    <th colSpan={4} className="p-1 border-b border-slate-200 text-rose-700 font-black">PUTS (PE)</th>
+                    <th colSpan={4} className="p-1 border-b border-slate-200 text-rose-700 font-semibold">PUTS (PE)</th>
                   </tr>
                   <tr className="bg-slate-50 text-slate-700 font-bold ">
                     <th className="p-1.5 border-r border-b border-slate-200">OI</th>
@@ -367,7 +367,7 @@ export default function MarketView() {
                     <th className="p-1.5 border-r border-b border-slate-200">LTP</th>
                     <th className="p-1.5 border-r border-b border-slate-200">Chng</th>
                     
-                    <th className="p-1.5 border-r border-b border-slate-200 font-black text-slate-800 bg-slate-200/50">PRICE</th>
+                    <th className="p-1.5 border-r border-b border-slate-200 font-semibold text-slate-800 bg-slate-200/50">PRICE</th>
                     
                     <th className="p-1.5 border-r border-b border-slate-200">Chng</th>
                     <th className="p-1.5 border-r border-b border-slate-200">LTP</th>
@@ -408,7 +408,7 @@ export default function MarketView() {
                       const peChg = getVal(pe, 'net_change', 'change') ?? 0;
 
                       return (
-                        <tr key={idx} className="hover:bg-indigo-50/30 border-b border-slate-100 font-mono">
+                        <tr key={idx} className="hover:bg-slate-100/30 border-b border-slate-100 font-mono tabular-nums">
                           <td className="p-1 border-r border-slate-100">{ceOI}</td>
                           <td className="p-1 border-r border-slate-100">{ceVol}</td>
                           <td className="p-1 border-r border-slate-100 font-bold text-emerald-600 bg-emerald-50/10">{ceLtp}</td>
@@ -416,7 +416,7 @@ export default function MarketView() {
                             {Number(ceChg).toFixed(2)}
                           </td>
                           
-                          <td className="p-1 border-r border-slate-200 font-black text-slate-800 bg-slate-50">{strike}</td>
+                          <td className="p-1 border-r border-slate-200 font-semibold text-slate-800 bg-slate-50">{strike}</td>
                           
                           <td className={`p-1 border-r border-slate-100 ${Number(peChg) >= 0 ? 'text-emerald-500' : 'text-rose-500'}`}>
                             {Number(peChg).toFixed(2)}

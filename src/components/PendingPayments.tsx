@@ -36,13 +36,13 @@ export default function PendingPayments({
       
       {/* Header and Trigger button (Only show when NO profile is selected) */}
       {!selectedProfile && (
-        <div className="flex md:flex-row flex-col justify-between items-start md:items-center gap-2 px-1 mb-2">
+        <div className="flex md:flex-row flex-col justify-between items-start md:items-center gap-3 px-1 mb-2">
           <div>
-            <p className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight ">
+            <p className="text-lg font-semibold text-slate-900 tracking-tight">
               Outstanding Balances (Khata)
             </p>
-            <p className="text-xs text-slate-500 mt-1 font-medium">
-              Clear track of payments due or receivable, with date and alerts.
+            <p className="text-xs text-slate-500 mt-0.5">
+              Track pending payables and receivables with dates and alerts.
             </p>
           </div>
           
@@ -51,7 +51,7 @@ export default function PendingPayments({
               <button
                 type="button"
                 onClick={() => onNavigateToTab?.('recurring-bills')}
-                className="flex items-center gap-1.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 px-3 py-1.5 rounded-lg font-bold text-xs transition-colors cursor-pointer shadow-sm whitespace-nowrap"
+                className="flex items-center gap-1.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 px-3 py-1.5 rounded-lg font-medium text-xs transition-colors cursor-pointer whitespace-nowrap"
               >
                 <DollarSign size={14} /> Auto-Bills
               </button>
@@ -59,7 +59,7 @@ export default function PendingPayments({
                 <button
                   type="button"
                   onClick={() => setIsLogFormOpen(!isLogFormOpen)}
-                  className="flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-white px-3 py-1.5 rounded-lg font-bold text-xs transition-colors shadow-sm cursor-pointer whitespace-nowrap"
+                  className="flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-white px-3 py-1.5 rounded-lg font-medium text-xs transition-colors cursor-pointer whitespace-nowrap"
                 >
                   <Plus size={14} /> Log Entry
                 </button>
@@ -67,7 +67,7 @@ export default function PendingPayments({
               <button 
                 type="button"
                 onClick={() => setShowAddForm(!showAddForm)}
-                className="flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-white px-3 py-1.5 rounded-lg font-bold text-xs transition-colors shadow-sm cursor-pointer whitespace-nowrap"
+                className="flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-white px-3 py-1.5 rounded-lg font-medium text-xs transition-colors cursor-pointer whitespace-nowrap"
               >
                 <Plus size={14} /> New Record
               </button>

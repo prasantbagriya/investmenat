@@ -373,7 +373,7 @@ export default function GoogleSheetsSync({
           <FileSpreadsheet size={30} />
         </div>
         <div className="space-y-1">
-          <h2 className="text-lg font-extrabold text-slate-900 tracking-tight">Google Sheets Integration Disconnected</h2>
+          <h2 className="text-lg font-semibold text-slate-900 tracking-tight">Google Sheets Integration Disconnected</h2>
           <p className="text-xs text-slate-700 font-medium capitalize ">Sync Disabled</p>
         </div>
         <div className="p-2 bg-slate-50 border border-slate-200 rounded-lg max-w-lg mx-auto text-xs text-slate-600 leading-relaxed ">
@@ -382,7 +382,7 @@ export default function GoogleSheetsSync({
         {onNavigateToTab && (
           <button
             onClick={() => onNavigateToTab('settings')}
-            className="bg-slate-900 hover:bg-slate-800 text-white font-extrabold py-1.5 px-3 rounded-xl text-xs cursor-pointer shadow-xs active:scale-95 transition-all"
+            className="bg-slate-900 hover:bg-slate-800 text-white font-semibold py-1.5 px-3 rounded-xl text-xs cursor-pointer shadow-xs active:scale-95 transition-all"
           >
             ⚙️ Open Settings & Links
           </button>
@@ -400,20 +400,20 @@ export default function GoogleSheetsSync({
             <FileSpreadsheet size={26} />
           </div>
           <div>
-            <h2 className="text-base font-extrabold text-slate-900 tracking-tight">Google Sheets Integration</h2>
+            <h2 className="text-base font-semibold text-slate-900 tracking-tight">Google Sheets Integration</h2>
             <p className="text-xs font-bold text-slate-500 capitalize mt-0.5">Real-Two Way Cloud Sync</p>
           </div>
         </div>
 
         {/* Status indicators */}
         <div className="flex items-center gap-1 text-xs">
-          <span className="bg-emerald-50 text-emerald-700 border border-emerald-250/50 p-1.5 px-1 rounded-lg font-black flex items-center gap-1.5 shrink-0" title="Managed under Settings tab">
+          <span className="bg-emerald-50 text-emerald-700 border border-emerald-250/50 p-1.5 px-1 rounded-lg font-semibold flex items-center gap-1.5 shrink-0" title="Managed under Settings tab">
             <ShieldCheck size={14} className="animate-pulse" /> Google Sync Active
           </span>
           {onNavigateToTab && (
             <button
               onClick={() => onNavigateToTab('settings')}
-              className="text-[9.5px] text-slate-500 hover:text-slate-650 capitalize font-black cursor-pointer"
+              className="text-[9.5px] text-slate-500 hover:text-slate-600 capitalize font-semibold cursor-pointer"
             >
               Configure Settings ⚙️
             </button>
@@ -425,8 +425,8 @@ export default function GoogleSheetsSync({
         
         {/* Workspace details and Sheet ID management */}
         <div className="md:col-span-3 space-y-2">
-          <div className="p-2 bg-slate-50 border border-slate-150 rounded-lg space-y-1.5">
-            <h3 className="text-xs font-extrabold text-slate-800 capitalize flex items-center gap-1.5">
+          <div className="p-2 bg-slate-50 border border-slate-200 rounded-lg space-y-1.5">
+            <h3 className="text-xs font-semibold text-slate-800 capitalize flex items-center gap-1.5">
               <Settings size={13} className="text-slate-700" /> Sheets Configuration
             </h3>
 
@@ -438,11 +438,11 @@ export default function GoogleSheetsSync({
                   placeholder="e.g. 1aBCdEfGhIjKlMnOpQrStUvWxYz..."
                   value={spreadsheetId}
                   onChange={(e) => setSpreadsheetId(e.target.value)}
-                  className="w-full bg-white border border-slate-200 rounded-xl p-1 px-1 text-xs font-mono text-slate-800 font-medium tracking-tight"
+                  className="w-full bg-white border border-slate-200 rounded-xl p-1 px-1 text-xs font-mono tabular-nums text-slate-800 font-medium tracking-tight"
                 />
                 <button
                   onClick={() => saveSpreadsheetId(spreadsheetId)}
-                  className="bg-slate-100 hover:bg-slate-200 hover:text-slate-900 text-slate-700 font-extrabold px-1 rounded-xl border border-slate-200 transition-colors cursor-pointer text-xs shrink-0"
+                  className="bg-slate-100 hover:bg-slate-200 hover:text-slate-900 text-slate-700 font-semibold px-1 rounded-xl border border-slate-200 transition-colors cursor-pointer text-xs shrink-0"
                 >
                   Save ID
                 </button>
@@ -457,7 +457,7 @@ export default function GoogleSheetsSync({
                 <button
                   onClick={handleCreateNewSpreadsheet}
                   disabled={isCreatingSheet}
-                  className="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold p-1 px-1.5 rounded-xl text-xs transition-colors cursor-pointer disabled:opacity-50 flex items-center gap-1.5"
+                  className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold p-1 px-1.5 rounded-xl text-xs transition-colors cursor-pointer disabled:opacity-50 flex items-center gap-1.5"
                 >
                   {isCreatingSheet ? (
                     <>
@@ -489,9 +489,9 @@ export default function GoogleSheetsSync({
             <div className="grid grid-cols-2 gap-2">
               
               {/* Push Action */}
-              <div className="border border-slate-150 p-2 rounded-lg flex flex-col justify-between space-y-1 bg-white">
+              <div className="border border-slate-200 p-2 rounded-lg flex flex-col justify-between space-y-1 bg-white">
                 <div>
-                  <h4 className="font-extrabold text-xs text-slate-800 flex items-center gap-1">
+                  <h4 className="font-semibold text-xs text-slate-800 flex items-center gap-1">
                     <ArrowUpRight size={14} className="text-emerald-600" /> Export to Sheets
                   </h4>
                   <p className="text-xs text-slate-500 leading-normal mt-1">
@@ -501,7 +501,7 @@ export default function GoogleSheetsSync({
                 <button
                   onClick={() => pushAllToSheets()}
                   disabled={isPushing}
-                  className="w-full text-center py-1 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200/45 rounded-xl text-xs font-black transition-colors cursor-pointer disabled:opacity-50 flex items-center justify-center gap-1.5"
+                  className="w-full text-center py-1 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200/45 rounded-xl text-xs font-semibold transition-colors cursor-pointer disabled:opacity-50 flex items-center justify-center gap-1.5"
                 >
                   {isPushing ? (
                     <>
@@ -514,10 +514,10 @@ export default function GoogleSheetsSync({
               </div>
 
               {/* Pull Action */}
-              <div className="border border-slate-150 p-2 rounded-lg flex flex-col justify-between space-y-1 bg-white">
+              <div className="border border-slate-200 p-2 rounded-lg flex flex-col justify-between space-y-1 bg-white">
                 <div>
-                  <h4 className="font-extrabold text-xs text-slate-800 flex items-center gap-1">
-                    <ArrowDownLeft size={14} className="text-indigo-600" /> Import from Sheets
+                  <h4 className="font-semibold text-xs text-slate-800 flex items-center gap-1">
+                    <ArrowDownLeft size={14} className="text-slate-900" /> Import from Sheets
                   </h4>
                   <p className="text-xs text-slate-500 leading-normal mt-1">
                     Download ledger entries from Google Sheet rows back into your private dashboard.
@@ -526,7 +526,7 @@ export default function GoogleSheetsSync({
                 <button
                   onClick={handlePullFromSheets}
                   disabled={isPulling}
-                  className="w-full text-center py-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-800 border border-indigo-200/45 rounded-xl text-xs font-black transition-colors cursor-pointer disabled:opacity-50 flex items-center justify-center gap-1.5"
+                  className="w-full text-center py-1 bg-slate-100 hover:bg-slate-100 text-slate-900 border border-slate-200/45 rounded-xl text-xs font-medium transition-colors cursor-pointer disabled:opacity-50 flex items-center justify-center gap-1.5"
                 >
                   {isPulling ? (
                     <>
@@ -543,7 +543,7 @@ export default function GoogleSheetsSync({
             <div className="bg-amber-50/50 border border-amber-200/50 p-2 rounded-lg flex gap-1 text-xs text-amber-900 leading-relaxed">
               <AlertTriangle className="text-amber-600 shrink-0 select-none mt-0.5" size={16} />
               <div>
-                <span className="font-black text-slate-800">Prerequisites Required:</span> Standard Google API Sheets sync requires you to:
+                <span className="font-semibold text-slate-800">Prerequisites Required:</span> Standard Google API Sheets sync requires you to:
                 <ol className="list-decimal pl-2.5 mt-1.5 space-y-1 text-slate-600 text-xs">
                   <li>Authorize Google Connection by clicking the button above.</li>
                   <li>Provide your Spreadsheet ID OR click "Bootstrap New Sheets" to generate one.</li>
@@ -557,7 +557,7 @@ export default function GoogleSheetsSync({
         <div className="md:col-span-2 flex flex-col justify-between border border-slate-200 rounded-lg p-2 bg-slate-900 text-white min-h-[300px] shadow-sm">
           <div className="space-y-1">
             <div className="flex justify-between items-center pb-1 border-b border-slate-800">
-              <span className="text-xs font-extrabold capitalize text-slate-500 flex items-center gap-1.5">
+              <span className="text-xs font-semibold capitalize text-slate-500 flex items-center gap-1.5">
                 <RefreshCw size={11} className="animate-spin" /> Live Transmit Logs
               </span>
               <button
@@ -568,7 +568,7 @@ export default function GoogleSheetsSync({
               </button>
             </div>
 
-            <div className="max-h-64 overflow-y-auto font-mono text-xs text-slate-350 space-y-1.5 scrollbar-thin">
+            <div className="max-h-64 overflow-y-auto font-mono tabular-nums text-xs text-slate-400 space-y-1.5 scrollbar-thin">
               {activeLogs.length === 0 ? (
                 <p className="text-slate-700 italic py-1 truncate">Database ready for secure transmission handshake...</p>
               ) : (

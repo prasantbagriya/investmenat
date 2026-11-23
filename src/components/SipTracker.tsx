@@ -62,7 +62,7 @@ export default function SipTracker({ sips, onAddSip, onDeleteSip, onEditSip }: S
     if (today.getDate() >= sip.sipDate) {
       months += 1;
     }
-    months = Math.max(1, months);
+    months = Math.max(0, months);
 
     const totalInvested = sip.amount * months;
 
@@ -79,7 +79,7 @@ export default function SipTracker({ sips, onAddSip, onDeleteSip, onEditSip }: S
 
     currentValue = parseFloat(currentValue.toFixed(2));
     const absReturn = currentValue - totalInvested;
-    const absReturnPercent = totalInvested > 0 ? (absReturn / totalInvested) * 105 : 0;
+    const absReturnPercent = totalInvested > 0 ? (absReturn / totalInvested) * 100 : 0;
 
     const cashflows: number[] = [];
     const datesStr: string[] = [];
@@ -206,34 +206,34 @@ export default function SipTracker({ sips, onAddSip, onDeleteSip, onEditSip }: S
             <motion.div initial={{ scale: 0.95, y: 20 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.95 }}
               className="bg-white rounded-xl p-5 w-full max-w-lg shadow-2xl border border-slate-200">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="font-black text-slate-900 flex items-center gap-2">
-                  <Edit2 size={16} className="text-indigo-600" /> Edit SIP
+                <h3 className="font-semibold text-slate-900 flex items-center gap-2">
+                  <Edit2 size={16} className="text-slate-900" /> Edit SIP
                 </h3>
-                <button onClick={closeEditForm} className="p-1.5 text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-lg cursor-pointer"><X size={16} /></button>
+                <button onClick={closeEditForm} className="p-1.5 text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-xl cursor-pointer"><X size={16} /></button>
               </div>
               <form onSubmit={handleEditSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
                 <div className="md:col-span-2">
-                  <label className="block text-xs font-black text-slate-700 capitalize mb-1">SIP Scheme Name</label>
+                  <label className="block text-xs font-semibold text-slate-700 capitalize mb-1">SIP Scheme Name</label>
                   <input required value={editName} onChange={e => setEditName(e.target.value)} placeholder="e.g., Parag Parikh Flexi Cap Fund"
                     className="w-full border border-slate-200 rounded-xl p-2 bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-indigo-400" />
                 </div>
                 <div>
-                  <label className="block text-xs font-black text-slate-700 capitalize mb-1">Monthly Amount (₹)</label>
+                  <label className="block text-xs font-semibold text-slate-700 capitalize mb-1">Monthly Amount (₹)</label>
                   <input required type="number" value={editAmount} onChange={e => setEditAmount(e.target.value)} placeholder="5000"
-                    className="w-full border border-slate-200 rounded-xl p-2 bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-indigo-400 font-mono" />
+                    className="w-full border border-slate-200 rounded-xl p-2 bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-indigo-400 font-mono tabular-nums" />
                 </div>
                 <div>
-                  <label className="block text-xs font-black text-slate-700 capitalize mb-1">SIP Day of Month (1-28)</label>
+                  <label className="block text-xs font-semibold text-slate-700 capitalize mb-1">SIP Day of Month (1-28)</label>
                   <input required type="number" min="1" max="28" value={editSipDate} onChange={e => setEditSipDate(parseInt(e.target.value))}
-                    className="w-full border border-slate-200 rounded-xl p-2 bg-slate-50 focus:bg-white focus:outline-none font-mono" />
+                    className="w-full border border-slate-200 rounded-xl p-2 bg-slate-50 focus:bg-white focus:outline-none font-mono tabular-nums" />
                 </div>
                 <div>
-                  <label className="block text-xs font-black text-slate-700 capitalize mb-1">Start Date</label>
+                  <label className="block text-xs font-semibold text-slate-700 capitalize mb-1">Start Date</label>
                   <input required type="date" value={editStartDate} onChange={e => setEditStartDate(e.target.value)}
                     className="w-full border border-slate-200 rounded-xl p-2 bg-slate-50 focus:bg-white focus:outline-none" />
                 </div>
                 <div>
-                  <label className="block text-xs font-black text-slate-700 capitalize mb-1">Asset Class</label>
+                  <label className="block text-xs font-semibold text-slate-700 capitalize mb-1">Asset Class</label>
                   <select value={editAssetClass} onChange={e => setEditAssetClass(e.target.value as any)}
                     className="w-full border border-slate-200 rounded-xl p-2 bg-slate-50 focus:bg-white focus:outline-none">
                     <option value="Equity">Equity</option>
@@ -244,7 +244,7 @@ export default function SipTracker({ sips, onAddSip, onDeleteSip, onEditSip }: S
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs font-black text-slate-700 capitalize mb-1">Broker Platform</label>
+                  <label className="block text-xs font-semibold text-slate-700 capitalize mb-1">Broker Platform</label>
                   <select value={editBroker} onChange={e => setEditBroker(e.target.value)}
                     className="w-full border border-slate-200 rounded-xl p-2 bg-slate-50 focus:bg-white focus:outline-none">
                     <option value="Zerodha">Zerodha (Coin)</option>
@@ -256,11 +256,11 @@ export default function SipTracker({ sips, onAddSip, onDeleteSip, onEditSip }: S
                 </div>
                 <div className="md:col-span-2 flex gap-2 pt-2 border-t border-slate-100">
                   <button type="button" onClick={closeEditForm}
-                    className="flex-1 py-2 border border-slate-200 text-slate-600 rounded-xl font-bold text-sm cursor-pointer hover:bg-slate-50">
+                    className="flex-1 py-2 border border-slate-200 text-slate-600 rounded-xl font-medium text-sm cursor-pointer hover:bg-slate-50">
                     Cancel
                   </button>
                   <button type="submit" disabled={isSaving}
-                    className="flex-1 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold text-sm flex items-center justify-center gap-1.5 cursor-pointer transition-colors disabled:opacity-50">
+                    className="flex-1 py-2 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white rounded-xl font-medium text-sm flex items-center justify-center gap-1.5 cursor-pointer transition-colors disabled:opacity-50">
                     <Save size={14} /> Save Changes
                   </button>
                 </div>
@@ -274,25 +274,25 @@ export default function SipTracker({ sips, onAddSip, onDeleteSip, onEditSip }: S
       <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
         <div className="bg-slate-900 text-white rounded-lg p-2 shadow-sm">
           <p className="text-xs capitalize text-slate-500 font-bold">Total Monthly SIP Outflow</p>
-          <p className="text-2xl font-black mt-1 font-display">₹{totals.totalSipPerMonth.toLocaleString('en-IN')}</p>
+          <p className="text-2xl font-semibold mt-1 font-display">₹{totals.totalSipPerMonth.toLocaleString('en-IN')}</p>
           <p className="text-xs text-slate-500 mt-1.5">Sum of all systematic commitments.</p>
         </div>
-        <div className="bg-white border border-slate-150 rounded-lg p-2 shadow-sm">
+        <div className="bg-white border border-slate-200 rounded-lg p-2 shadow-sm">
           <p className="text-xs capitalize text-slate-500 font-bold">SIP Invested Capital</p>
-          <p className="text-2xl font-black mt-1 font-display text-slate-900">₹{totals.totalInvested.toLocaleString('en-IN', { maximumFractionDigits: 2 })}</p>
+          <p className="text-2xl font-semibold mt-1 font-display text-slate-900">₹{totals.totalInvested.toLocaleString('en-IN', { maximumFractionDigits: 2 })}</p>
           <p className="text-xs text-slate-500 mt-1.5">Total auto-accrued principal base.</p>
         </div>
-        <div className="bg-white border border-slate-150 rounded-lg p-2 shadow-sm">
+        <div className="bg-white border border-slate-200 rounded-lg p-2 shadow-sm">
           <p className="text-xs capitalize text-slate-500 font-bold">Current SIP Valuation</p>
-          <p className="text-2xl font-black mt-1 font-display text-slate-900">₹{totals.totalCurrent.toLocaleString('en-IN', { maximumFractionDigits: 2 })}</p>
+          <p className="text-2xl font-semibold mt-1 font-display text-slate-900">₹{totals.totalCurrent.toLocaleString('en-IN', { maximumFractionDigits: 2 })}</p>
           <div className="flex items-center gap-1 mt-1">
             <TrendingUp size={12} className="text-emerald-500" />
             <span className="text-xs text-emerald-600 font-bold">₹{totalSipPnL.toLocaleString('en-IN', { maximumFractionDigits: 1 })} gain</span>
           </div>
         </div>
-        <div className="bg-white border border-slate-150 rounded-lg p-2 shadow-sm">
+        <div className="bg-white border border-slate-200 rounded-lg p-2 shadow-sm">
           <p className="text-xs capitalize text-slate-500 font-bold">Estimated SIP XIRR</p>
-          <p className="text-2xl font-black mt-1 font-display text-emerald-600">{overallSipXirr > 0 ? '+' : ''}{overallSipXirr.toFixed(2)}%</p>
+          <p className="text-2xl font-semibold mt-1 font-display text-emerald-600">{overallSipXirr > 0 ? '+' : ''}{overallSipXirr.toFixed(2)}%</p>
           <p className="text-xs text-slate-500 mt-1.5">Weighted average annualized CAGR.</p>
         </div>
       </div>
@@ -300,8 +300,8 @@ export default function SipTracker({ sips, onAddSip, onDeleteSip, onEditSip }: S
       {/* Main Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
         <div className="lg:col-span-2 space-y-3">
-          <div className="bg-white border border-slate-150 rounded-lg shadow-sm overflow-hidden">
-            <div className="px-2 py-2 border-b border-slate-150 flex justify-between items-center bg-slate-50/50">
+          <div className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
+            <div className="px-2 py-2 border-b border-slate-200 flex justify-between items-center bg-slate-50/50">
               <div className="flex items-center gap-1">
                 <CalIcon className="text-slate-800" size={18} />
                 <h3 className="font-bold text-sm text-slate-800 font-display">Systematic Investment Portfolios</h3>
@@ -362,7 +362,7 @@ export default function SipTracker({ sips, onAddSip, onDeleteSip, onEditSip }: S
                     </div>
                     <div className="col-span-1 md:col-span-3 flex justify-end gap-1 border-t border-slate-100 pt-1">
                       <button type="button" onClick={() => setIsAdding(false)} className="px-2 py-1 border border-slate-200 text-slate-700 rounded-lg font-bold cursor-pointer">Cancel</button>
-                      <button type="submit" disabled={isSaving} className="px-2 py-1 bg-slate-900 text-white rounded-lg font-bold hover:bg-slate-800 cursor-pointer disabled:opacity-50">Start New SIP</button>
+                      <button type="submit" disabled={isSaving} className="px-2 py-1 bg-slate-900 text-white rounded-xl font-medium hover:bg-slate-800 active:bg-slate-950 cursor-pointer disabled:opacity-50">Start New SIP</button>
                     </div>
                   </form>
                 </motion.div>
@@ -380,7 +380,7 @@ export default function SipTracker({ sips, onAddSip, onDeleteSip, onEditSip }: S
               <div className="overflow-x-auto text-xs">
                 <table className="w-full text-left border-collapse">
                   <thead>
-                    <tr className="border-b border-slate-150 bg-slate-50/40 text-slate-500 capitalize text-xs font-bold">
+                    <tr className="border-b border-slate-200 bg-slate-50/40 text-slate-500 capitalize text-xs font-bold">
                       <th className="p-2">SIP Information</th>
                       <th className="p-2">Execution Rules</th>
                       <th className="p-2 text-right">Amortized Cost</th>
@@ -402,15 +402,15 @@ export default function SipTracker({ sips, onAddSip, onDeleteSip, onEditSip }: S
                           <p className="font-bold text-slate-700">Day {sip.sipDate} monthly</p>
                           <p className="text-xs text-slate-500">Elapsed: {sip.months} installments</p>
                         </td>
-                        <td className="p-2 text-right font-semibold font-mono text-xs">
+                        <td className="p-2 text-right font-semibold font-mono tabular-nums text-xs">
                           <div>₹{sip.totalInvested.toLocaleString('en-IN')}</div>
                           <div className="text-xs text-slate-500">₹{sip.amount.toLocaleString('en-IN')}/mo</div>
                         </td>
                         <td className="p-2 text-right">
-                          <p className="font-bold font-mono text-xs text-slate-800">₹{sip.currentValue.toLocaleString('en-IN')}</p>
+                          <p className="font-bold font-mono tabular-nums text-xs text-slate-800">₹{sip.currentValue.toLocaleString('en-IN')}</p>
                           <p className="text-xs font-bold text-emerald-600">+{sip.absReturnPercent.toFixed(1)}% absolute</p>
                         </td>
-                        <td className="p-2 text-center font-bold font-mono text-xs text-blue-700">
+                        <td className="p-2 text-center font-bold font-mono tabular-nums text-xs text-blue-700">
                           <span className="px-1.5 py-0.5 bg-blue-50 rounded-md">{sip.xirr > 0 ? '+' : ''}{sip.xirr.toFixed(1)}% XIRR</span>
                         </td>
                         <td className="p-2 text-center">
@@ -426,11 +426,11 @@ export default function SipTracker({ sips, onAddSip, onDeleteSip, onEditSip }: S
                             ) : (
                               <>
                                 <button onClick={() => openEditForm(sip)}
-                                  className="p-1 border border-slate-200 hover:bg-indigo-50 hover:border-indigo-200 text-slate-500 hover:text-indigo-600 rounded-md transition-colors cursor-pointer" title="Edit SIP">
+                                  className="p-1 border border-slate-200 hover:bg-slate-100 hover:border-slate-200 text-slate-500 hover:text-slate-900 rounded-md transition-colors cursor-pointer" title="Edit SIP">
                                   <Edit2 size={11} />
                                 </button>
                                 <button onClick={() => onDeleteSip(sip.id)}
-                                  className="text-slate-350 hover:text-red-500 p-1 rounded-md cursor-pointer transition-colors" title="Delete SIP">
+                                  className="text-slate-400 hover:text-red-500 p-1 rounded-md cursor-pointer transition-colors" title="Delete SIP">
                                   <Trash2 size={13} />
                                 </button>
                               </>
@@ -448,13 +448,13 @@ export default function SipTracker({ sips, onAddSip, onDeleteSip, onEditSip }: S
 
         {/* Calendar Side Panel */}
         <div className="space-y-3">
-          <div className="bg-white border border-slate-150 rounded-lg p-2 shadow-sm space-y-2">
+          <div className="bg-white border border-slate-200 rounded-lg p-2 shadow-sm space-y-2">
             <div className="flex items-center gap-1.5 border-b border-slate-100 pb-1.5">
               <CalIcon size={16} className="text-slate-700" />
               <h3 className="font-bold text-xs text-slate-700 font-display">SIP Calendar Highlight</h3>
             </div>
             <p className="text-xs text-slate-500 leading-relaxed">Days on which a systematic plan executes are highlighted so you can budget your bank balance accordingly.</p>
-            <div className="grid grid-cols-7 gap-1.5 text-center mt-1 font-mono">
+            <div className="grid grid-cols-7 gap-1.5 text-center mt-1 font-mono tabular-nums">
               {Array.from({ length: 28 }, (_, i) => i + 1).map((day) => {
                 const hasSip = activeSipDays.includes(day);
                 const matchedSipsCount = sips.filter(s => s.sipDate === day).length;
@@ -479,7 +479,7 @@ export default function SipTracker({ sips, onAddSip, onDeleteSip, onEditSip }: S
                 sips.map((s) => (
                   <div key={s.id} className="flex justify-between items-center text-xs p-1 bg-slate-50 rounded-lg">
                     <span className="font-bold text-slate-700 truncate max-w-[120px]">{s.name}</span>
-                    <span className="font-bold text-right font-mono">₹{s.amount.toLocaleString()} <span className="text-xs font-normal text-slate-500">on Day {s.sipDate}</span></span>
+                    <span className="font-bold text-right font-mono tabular-nums">₹{s.amount.toLocaleString()} <span className="text-xs font-normal text-slate-500">on Day {s.sipDate}</span></span>
                   </div>
                 ))
               )}

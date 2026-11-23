@@ -55,11 +55,11 @@ export default function SavingsGoals({
       return;
     }
     if (isNaN(savingsVal) || savingsVal < 0) {
-      toast.success('Current savings must be a valid non-negative number.');
+      toast.error('Current savings must be a valid non-negative number.');
       return;
     }
     if (savingsVal > targetVal) {
-      toast.success('Savings cannot exceed your goal target amount.');
+      toast.error('Savings cannot exceed your goal target amount.');
       return;
     }
     if (!title.trim()) {
@@ -108,7 +108,7 @@ export default function SavingsGoals({
 
     const calculatedSavings = goal.currentSavings + contribution;
     if (calculatedSavings > goal.targetAmount) {
-      toast.success('This amount would overflow your target maximum!');
+      toast.error('This amount would overflow your target maximum!');
       return;
     }
 
@@ -159,7 +159,10 @@ export default function SavingsGoals({
   return (
     <div className="space-y-2 text-slate-800 ">
       <div className="flex justify-between items-center mb-2 px-1">
-        <h2 className="text-xl font-bold text-slate-900">Savings Goals</h2>
+        <div>
+          <h2 className="text-base font-semibold text-slate-900">Savings targets</h2>
+          <p className="text-xs text-slate-500 mt-0.5">Track reserves and long-term milestones</p>
+        </div>
         <button
           onClick={() => {
             setEditingId(null);
@@ -169,34 +172,34 @@ export default function SavingsGoals({
             setDeadline(new Date().getFullYear() + '-12-31');
             setIsFormOpen(true);
           }}
-          className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 text-white rounded hover:bg-slate-950 transition-colors cursor-pointer text-xs font-semibold shadow-xs"
+          className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors cursor-pointer text-xs font-medium"
         >
           <Plus size={14} />
-          Add Goal
+          Add target
         </button>
       </div>
 
       {/* Aggregate Overview progress board */}
       {savingsGoals.length > 0 && (
-        <div className="bg-slate-50/50 p-2 rounded-xl border border-slate-200/80 flex flex-col md:flex-row justify-between items-start md:items-center gap-3" id="goals-total-overview">
+        <div className="bg-white p-4 rounded-xl border border-slate-200 flex flex-col md:flex-row justify-between items-start md:items-center gap-4" id="goals-total-overview">
           <div className="space-y-1">
-            <h3 className="text-xs font-bold capitalize text-slate-500 ">Active Savings Portfolio</h3>
-            <p className="text-2xl font-bold tracking-tight text-slate-950 ">
+            <h3 className="text-xs font-medium text-slate-500">Total savings portfolio</h3>
+            <p className="text-2xl font-semibold tracking-tight text-slate-900 font-mono tabular-nums">
               ₹{aggregations.totalSaved.toLocaleString('en-IN', { maximumFractionDigits: 0 })}
-              <span className="text-slate-500 text-sm font-normal"> saved of </span>
+              <span className="text-slate-500 text-sm font-sans font-normal"> saved of </span>
               ₹{aggregations.totalTarget.toLocaleString('en-IN', { maximumFractionDigits: 0 })}
             </p>
-            <p className="text-xs text-slate-500 font-medium mt-1">Reconciled {aggregations.completedGoals} of {savingsGoals.length} targets currently</p>
+            <p className="text-xs text-slate-500 font-mono tabular-nums">{aggregations.completedGoals} of {savingsGoals.length} targets completed</p>
           </div>
 
-          <div className="md:w-64 w-full space-y-1.5 ">
-            <div className="flex justify-between text-xs font-bold text-slate-450 capitalize ">
-              <span>Overall Progress</span>
-              <span className="font-mono">{aggregations.netPercentage.toFixed(0)}%</span>
+          <div className="md:w-64 w-full space-y-1.5">
+            <div className="flex justify-between text-xs font-medium text-slate-600">
+              <span>Overall progress</span>
+              <span className="font-mono tabular-nums">{aggregations.netPercentage.toFixed(0)}%</span>
             </div>
-            <div className="relative w-full h-1.5 bg-slate-200 rounded-full overflow-hidden">
+            <div className="relative w-full h-2 bg-slate-100 rounded-full overflow-hidden">
               <div 
-                className="h-full rounded-full bg-slate-950 transition-all duration-700"
+                className="h-full rounded-full bg-slate-900 transition-all duration-500"
                 style={{ width: `${aggregations.netPercentage}%` }}
               />
             </div>
@@ -239,7 +242,7 @@ export default function SavingsGoals({
                     placeholder="e.g. Dream Tokyo Vacation, Emergency Fund..."
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    className="w-full px-1 py-1.5 text-xs border border-slate-250 rounded-md focus:outline-hidden bg-white transition-all"
+                    className="w-full px-1 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-hidden bg-white transition-all"
                     id="form-goal-title"
                   />
                 </div>
@@ -248,7 +251,7 @@ export default function SavingsGoals({
                 <div className="space-y-1.5">
                   <label className="text-xs font-bold text-slate-500 capitalize block ">Total Target (₹)</label>
                   <div className="relative">
-                    <span className="absolute left-3 top-2 text-slate-450 text-xs font-semibold">₹</span>
+                    <span className="absolute left-3 top-2 text-slate-400 text-xs font-semibold">₹</span>
                     <input
                       type="number"
                       step="1"
@@ -256,7 +259,7 @@ export default function SavingsGoals({
                       placeholder="5000"
                       value={targetAmount}
                       onChange={(e) => setTargetAmount(e.target.value)}
-                      className="w-full pl-7 pr-1 py-1.5 text-xs border border-slate-250 rounded-md focus:outline-hidden bg-white font-mono transition-all"
+                      className="w-full pl-7 pr-1 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-hidden bg-white font-mono tabular-nums transition-all"
                       id="form-goal-target"
                     />
                   </div>
@@ -266,14 +269,14 @@ export default function SavingsGoals({
                 <div className="space-y-1.5">
                   <label className="text-xs font-bold text-slate-500 capitalize block ">Initial Savings (₹)</label>
                   <div className="relative">
-                    <span className="absolute left-3 top-2 text-slate-450 text-xs font-semibold">₹</span>
+                    <span className="absolute left-3 top-2 text-slate-400 text-xs font-semibold">₹</span>
                     <input
                       type="number"
                       step="1"
                       placeholder="0"
                       value={currentSavings}
                       onChange={(e) => setCurrentSavings(e.target.value)}
-                      className="w-full pl-7 pr-1 py-1.5 text-xs border border-slate-250 rounded-md focus:outline-hidden bg-white font-mono transition-all"
+                      className="w-full pl-7 pr-1 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-hidden bg-white font-mono tabular-nums transition-all"
                       id="form-goal-current"
                     />
                   </div>
@@ -287,7 +290,7 @@ export default function SavingsGoals({
                     required
                     value={deadline}
                     onChange={(e) => setDeadline(e.target.value)}
-                    className="w-full px-1 py-1.5 text-xs border border-slate-255 rounded-md focus:outline-hidden bg-white font-mono transition-all"
+                    className="w-full px-1 py-1.5 text-xs border border-slate-255 rounded-md focus:outline-hidden bg-white font-mono tabular-nums transition-all"
                     id="form-goal-deadline"
                   />
                 </div>
@@ -306,7 +309,7 @@ export default function SavingsGoals({
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="px-2 py-1.5 bg-slate-900 hover:bg-slate-950 text-white font-semibold rounded text-xs transition-colors disabled:opacity-40 cursor-pointer"
+                  className="px-2 py-1.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-semibold rounded text-xs transition-colors disabled:opacity-40 cursor-pointer"
                   id="form-goal-submit"
                 >
                   {isSubmitting ? 'Syncing...' : editingId ? 'Update Target' : 'Create Campaign'}
@@ -349,19 +352,19 @@ export default function SavingsGoals({
                     </h3>
                   </div>
 
-                  <div className="flex items-baseline gap-1 mt-1 font-mono text-xs">
+                  <div className="flex items-baseline gap-1 mt-1 font-mono tabular-nums text-xs">
                     <span className="text-sm font-bold text-slate-955">₹{g.currentSavings.toLocaleString('en-IN')}</span>
                     <span className="text-slate-500"> of ₹{g.targetAmount.toLocaleString('en-IN')} Target</span>
                   </div>
 
                   {/* Deadline countdown */}
-                  <div className="flex items-center gap-1.5 text-xs text-slate-500 mt-1 font-mono">
+                  <div className="flex items-center gap-1.5 text-xs text-slate-500 mt-1 font-mono tabular-nums">
                     <Calendar size={11} /> Deadline: {g.deadline}
                   </div>
 
                   {/* Animated Progress Bar */}
                   <div className="space-y-1.5 mt-2 ">
-                    <div className="flex justify-between text-xs font-bold text-slate-700 font-mono">
+                    <div className="flex justify-between text-xs font-bold text-slate-700 font-mono tabular-nums">
                       <span>Utilization</span>
                       <span>{pct.toFixed(0)}%</span>
                     </div>
@@ -393,7 +396,7 @@ export default function SavingsGoals({
                       </div>
                       <button
                         onClick={() => handleQuickContribution(g)}
-                        className="bg-slate-900 hover:bg-slate-950 text-white font-semibold text-xs px-1 py-1 rounded cursor-pointer"
+                        className="bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs px-1 py-1 rounded cursor-pointer"
                       >
                         Deposit
                       </button>
@@ -418,7 +421,7 @@ export default function SavingsGoals({
                     )
                   )}
 
-                  <div className="flex justify-between items-center text-xs mt-1 text-slate-500 font-mono">
+                  <div className="flex justify-between items-center text-xs mt-1 text-slate-500 font-mono tabular-nums">
                     <span>ID: {g.id.substring(0,6)}</span>
                     
                     <div className="flex gap-1.5">

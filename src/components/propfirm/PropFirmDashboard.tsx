@@ -44,7 +44,7 @@ export default function PropFirmDashboard({ accounts, payouts, challenges }: Pro
       {/* Header */}
       <div className="flex md:flex-row flex-col justify-between items-start md:items-center gap-3 px-1 mb-2">
         <div>
-          <p className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center">
+          <p className="text-xl sm:text-2xl font-semibold text-slate-900 tracking-tight flex items-center">
             Prop Firm Overview
           </p>
           <p className="text-xs text-slate-500 font-bold mt-0.5">Track your challenge performance and payouts</p>
@@ -61,7 +61,7 @@ export default function PropFirmDashboard({ accounts, payouts, challenges }: Pro
       </div>
 
       {/* Challenge Stats */}
-      <div className="bg-white p-3 rounded-lg border border-slate-150 shadow-sm">
+      <div className="bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
         <h3 className="font-bold text-slate-800 mb-3 text-xs flex items-center gap-2">
           <Activity size={14} className="text-indigo-500" />
           Challenge Win Rate
@@ -69,26 +69,26 @@ export default function PropFirmDashboard({ accounts, payouts, challenges }: Pro
         <div className="grid grid-cols-3 gap-2 text-center">
           <div className="bg-slate-50 p-2 rounded-lg border border-slate-100">
             <p className="text-xs text-slate-500 font-bold capitalize mb-0.5">Total</p>
-            <p className="text-lg font-black text-slate-800">{challenges.length}</p>
+            <p className="text-lg font-semibold text-slate-800">{challenges.length}</p>
           </div>
           <div className="bg-emerald-50 p-2 rounded-lg border border-emerald-100">
             <p className="text-xs text-emerald-600 font-bold capitalize mb-0.5">Passed</p>
-            <p className="text-lg font-black text-emerald-700">{passedChallenges}</p>
+            <p className="text-lg font-semibold text-emerald-700">{passedChallenges}</p>
           </div>
           <div className="bg-rose-50 p-2 rounded-lg border border-rose-100">
             <p className="text-xs text-rose-600 font-bold capitalize mb-0.5">Failed</p>
-            <p className="text-lg font-black text-rose-700">{failedChallenges}</p>
+            <p className="text-lg font-semibold text-rose-700">{failedChallenges}</p>
           </div>
         </div>
         <div className="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between">
           <span className="text-xs font-bold text-slate-600">Overall Win Rate</span>
-          <span className="text-base font-black text-slate-900">{winRate}%</span>
+          <span className="text-base font-semibold text-slate-900">{winRate}%</span>
         </div>
       </div>
       
       {/* Recent Payouts */}
-      <div className="bg-white rounded-lg border border-slate-150 shadow-sm overflow-hidden">
-        <div className="px-3 py-2 border-b border-slate-150 flex justify-between items-center bg-slate-50/45">
+      <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
+        <div className="px-3 py-2 border-b border-slate-200 flex justify-between items-center bg-slate-50/45">
             <h3 className="text-xs font-bold text-slate-700 capitalize flex items-center gap-2">
                 <Landmark size={14} className="text-emerald-500" />
                 Recent Payouts
@@ -96,7 +96,7 @@ export default function PropFirmDashboard({ accounts, payouts, challenges }: Pro
         </div>
 
         {payouts.length === 0 ? (
-            <div className="p-6 text-center text-slate-450 bg-white text-xs">
+            <div className="p-6 text-center text-slate-400 bg-white text-xs">
                 <Landmark size={24} className="mx-auto mb-2 opacity-30" />
                 <p>No payouts recorded yet</p>
             </div>
@@ -108,14 +108,14 @@ export default function PropFirmDashboard({ accounts, payouts, challenges }: Pro
                             <th className="p-2 px-3">Firm</th>
                             <th className="p-2">Status</th>
                             <th className="p-2">Amount</th>
-                            <th className="p-2 font-mono">Date</th>
+                            <th className="p-2 font-mono tabular-nums">Date</th>
                         </tr>
                     </thead>
-                    <tbody className="divide-y divide-slate-100 text-slate-750 ">
+                    <tbody className="divide-y divide-slate-100 text-slate-700 ">
                         {[...payouts].sort((a, b) => new Date(b.payoutDate).getTime() - new Date(a.payoutDate).getTime()).slice(0, 5).map((payout) => (
                             <tr key={payout.id} className="">
                                 <td className="p-2 px-3">
-                                    <div className="font-extrabold text-slate-800">{payout.firmName}</div>
+                                    <div className="font-semibold text-slate-800">{payout.firmName}</div>
                                 </td>
                                 <td className="p-2">
                                     <span className={`inline-block px-1.5 py-0.5 rounded text-xs font-bold ${
@@ -126,10 +126,10 @@ export default function PropFirmDashboard({ accounts, payouts, challenges }: Pro
                                         {payout.status}
                                     </span>
                                 </td>
-                                <td className="p-2 font-bold font-mono text-xs text-emerald-600">
+                                <td className="p-2 font-bold font-mono tabular-nums text-xs text-emerald-600">
                                     +${payout.amount.toLocaleString()}
                                 </td>
-                                <td className="p-2 text-slate-500 font-mono text-xs">
+                                <td className="p-2 text-slate-500 font-mono tabular-nums text-xs">
                                     {payout.payoutDate}
                                 </td>
                             </tr>
@@ -145,12 +145,12 @@ export default function PropFirmDashboard({ accounts, payouts, challenges }: Pro
 
 function KPICard({ title, value, icon, color = 'text-slate-800' }: { title: string, value: string, icon: React.ReactNode, color?: string }) {
   return (
-    <div className="bg-white p-3 rounded-lg border border-slate-150 shadow-sm flex flex-col gap-2">
+    <div className="bg-white p-3 rounded-lg border border-slate-200 shadow-sm flex flex-col gap-2">
       <div className="flex items-center justify-between">
         <span className="text-xs font-bold text-slate-500 capitalize">{title}</span>
         {React.cloneElement(icon as React.ReactElement<{ size?: number }>, { size: 14 })}
       </div>
-      <p className={`text-lg md:text-xl font-black ${color}`}>{value}</p>
+      <p className={`text-lg md:text-xl font-semibold ${color}`}>{value}</p>
     </div>
   );
 }

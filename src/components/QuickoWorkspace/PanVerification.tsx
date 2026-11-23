@@ -39,7 +39,7 @@ export default function PanVerification() {
           <ShieldCheck size={24} className="stroke-[2.5px]" />
         </div>
         <div>
-          <h2 className="text-xl font-black text-slate-900 tracking-tight">Identity KYC</h2>
+          <h2 className="text-xl font-semibold text-slate-900 tracking-tight">Identity KYC</h2>
           <p className="text-xs font-semibold text-slate-500 mt-0.5">Quicko PAN Verification</p>
         </div>
       </div>
@@ -63,7 +63,7 @@ export default function PanVerification() {
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3.5 rounded-xl transition-all active:scale-[0.98] disabled:opacity-70 flex items-center justify-center gap-2 shadow-lg shadow-slate-900/20"
+          className="w-full bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium py-3.5 rounded-xl transition-all active:scale-[0.98] disabled:opacity-70 flex items-center justify-center gap-2 shadow-lg shadow-slate-900/20"
         >
           {isLoading ? (
             <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -80,7 +80,7 @@ export default function PanVerification() {
               <CheckCircle size={20} className="stroke-[2.5px]" />
             </div>
             <div>
-              <p className="text-sm font-black text-emerald-900">Verification Successful</p>
+              <p className="text-sm font-semibold text-emerald-900">Verification Successful</p>
               <p className="text-xs font-medium text-emerald-700">PAN is active and valid</p>
             </div>
           </div>
@@ -88,15 +88,15 @@ export default function PanVerification() {
           <div className="space-y-3">
             <div className="flex justify-between items-center">
               <span className="text-xs font-bold text-slate-500 capitalize ">PAN Holder Name</span>
-              <span className="text-sm font-black text-slate-900">{result.name}</span>
+              <span className="text-sm font-semibold text-slate-900">{result.name}</span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-xs font-bold text-slate-500 capitalize ">PAN Number</span>
-              <span className="text-sm font-black text-slate-900">{result.pan}</span>
+              <span className="text-sm font-semibold text-slate-900">{result.pan}</span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-xs font-bold text-slate-500 capitalize ">Status</span>
-              <span className="text-xs font-black bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-md capitalize ">
+              <span className="text-xs font-semibold bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-md capitalize ">
                 {result.status}
               </span>
             </div>

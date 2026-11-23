@@ -90,11 +90,11 @@ export function setupKiteRoutes(app: express.Application) {
       params.append('exchange', exchange);
       params.append('transaction_type', transaction_type); // BUY or SELL
       params.append('order_type', order_type); // MARKET, LIMIT, SL, SL-M
-      params.append('quantity', quantity.toString());
-      params.append('product', product); // CNC, MIS, NRML
+      if (quantity != null) params.append('quantity', quantity.toString());
+      if (product) params.append('product', product); // CNC, MIS, NRML
       params.append('validity', 'DAY');
-      if (price) params.append('price', price.toString());
-      if (trigger_price) params.append('trigger_price', trigger_price.toString());
+      if (price != null) params.append('price', price.toString());
+      if (trigger_price != null) params.append('trigger_price', trigger_price.toString());
 
       const response = await fetch('https://api.kite.trade/orders/regular', {
         method: 'POST',

@@ -14,19 +14,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "1004464827659-d1vl1lj1ojrhglhaoiuqm1boau0hgnig.apps.googleusercontent.com",
+          "client_id": "1004464827659-pp5c7iggv2onr1g9iaef1gnia3a5m69a.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.investmant.app",
-            "certificate_hash": "fa2b4a5170cdde5c0905cb315956155ae89e7666"
-          }
-        },
-        {
-          "client_id": "1004464827659-jgehat52fojuf25t2orebncmkhr0n2oo.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.investmant.app",
-            "certificate_hash": "585ef976d06870d4e6a0af8af389eeef86325fb3"
+            "certificate_hash": "764a973db7410913680df5ef09b13ffc845d0730"
           }
         },
         {

@@ -236,7 +236,7 @@ export const LedgerList: React.FC<LedgerListProps> = ({ onSelectProfile, userId,
                     setShowSuggestions(true);
                   }}
                   onFocus={() => setShowSuggestions(true)}
-                  className="w-full px-2 py-1.5 text-xs border border-slate-250 rounded-md focus:outline-hidden bg-white transition-all "
+                  className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-hidden bg-white transition-all "
                 />
                 
                 {/* Google Contacts Autocomplete Dropdown */}
@@ -277,20 +277,20 @@ export const LedgerList: React.FC<LedgerListProps> = ({ onSelectProfile, userId,
                   placeholder="e.g. +91 9876543210"
                   value={newProfilePhone}
                   onChange={(e) => setNewProfilePhone(e.target.value)}
-                  className="w-full px-2 py-1.5 text-xs border border-slate-250 rounded-md focus:outline-hidden bg-white transition-all "
+                  className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-hidden bg-white transition-all "
                 />
               </div>
               <div className="space-y-1.5">
                 <label className="text-xs font-bold text-slate-500 block ">Opening Amount (Optional)</label>
                 <div className="relative">
-                  <span className="absolute left-3 top-2 text-slate-450 text-xs font-semibold">₹</span>
+                  <span className="absolute left-3 top-2 text-slate-400 text-xs font-semibold">₹</span>
                   <input 
                     type="number"
                     step="0.01"
                     placeholder="0.00"
                     value={newProfileAmount}
                     onChange={(e) => setNewProfileAmount(e.target.value)}
-                    className="w-full pl-7 pr-2 py-1.5 text-xs border border-slate-250 rounded-md focus:outline-hidden bg-white transition-all font-mono"
+                    className="w-full pl-7 pr-2 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-hidden bg-white transition-all font-mono tabular-nums"
                   />
                 </div>
               </div>
@@ -324,7 +324,7 @@ export const LedgerList: React.FC<LedgerListProps> = ({ onSelectProfile, userId,
               </button>
               <button 
                 type="submit"
-                className="px-4 py-1.5 bg-slate-900 hover:bg-slate-950 text-white font-semibold rounded text-xs transition-colors cursor-pointer"
+                className="px-4 py-1.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-semibold rounded text-xs transition-colors cursor-pointer"
               >
                 Save
               </button>
@@ -370,13 +370,13 @@ export const LedgerList: React.FC<LedgerListProps> = ({ onSelectProfile, userId,
                   </div>
                   <div>
                     <h3 className="font-bold text-slate-900">{profile.name}</h3>
-                    {profile.phone && <p className="text-xs text-slate-500 font-mono mt-0.5">{profile.phone}</p>}
+                    {profile.phone && <p className="text-xs text-slate-500 font-mono tabular-nums mt-0.5">{profile.phone}</p>}
                   </div>
                 </div>
                 
                 <div className="flex items-center gap-3">
                   <div className="text-right">
-                    <p className={`text-sm font-bold font-mono ${profile.netBalance === 0 ? 'text-slate-900' : profile.netBalance > 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
+                    <p className={`text-sm font-bold font-mono tabular-nums ${profile.netBalance === 0 ? 'text-slate-900' : profile.netBalance > 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
                       {profile.netBalance < 0 ? '-' : ''}₹{Math.abs(profile.netBalance).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                     </p>
                     <p className={`text-xs font-bold mt-0.5 ${profile.netBalance === 0 ? 'text-slate-900' : 'text-slate-600'}`}>

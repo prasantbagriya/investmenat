@@ -360,39 +360,39 @@ export default function WatchlistSidebar({ theme, activeSymbol, onSymbolSelect, 
 
                     <div className="flex justify-between border-b pb-2" style={{ borderColor: border }}>
                       <span className="opacity-70">Market Cap</span>
-                      <span className="font-mono font-semibold">{companyProfile.mktCap ? `$${(companyProfile.mktCap / 1000000000).toFixed(2)}B` : '-'}</span>
+                      <span className="font-mono tabular-nums font-semibold">{companyProfile.mktCap ? `$${(companyProfile.mktCap / 1000000000).toFixed(2)}B` : '-'}</span>
                     </div>
                     <div className="flex justify-between border-b pb-2" style={{ borderColor: border }}>
                       <span className="opacity-70">Volume Avg</span>
-                      <span className="font-mono font-semibold">{companyProfile.volAvg ? (companyProfile.volAvg / 1000000).toFixed(2) + 'M' : '-'}</span>
+                      <span className="font-mono tabular-nums font-semibold">{companyProfile.volAvg ? (companyProfile.volAvg / 1000000).toFixed(2) + 'M' : '-'}</span>
                     </div>
                     <div className="flex justify-between border-b pb-2" style={{ borderColor: border }}>
                       <span className="opacity-70">Beta</span>
-                      <span className="font-mono font-semibold">{companyProfile.beta ? companyProfile.beta.toFixed(2) : '-'}</span>
+                      <span className="font-mono tabular-nums font-semibold">{companyProfile.beta ? companyProfile.beta.toFixed(2) : '-'}</span>
                     </div>
                     <div className="flex justify-between border-b pb-2" style={{ borderColor: border }}>
                       <span className="opacity-70">52W Range</span>
-                      <span className="font-mono font-semibold">{companyProfile.range || '-'}</span>
+                      <span className="font-mono tabular-nums font-semibold">{companyProfile.range || '-'}</span>
                     </div>
                     <div className="flex justify-between border-b pb-2" style={{ borderColor: border }}>
                       <span className="opacity-70">Dividend</span>
-                      <span className="font-mono font-semibold">{companyProfile.lastDiv ? `$${companyProfile.lastDiv.toFixed(2)}` : '-'}</span>
+                      <span className="font-mono tabular-nums font-semibold">{companyProfile.lastDiv ? `$${companyProfile.lastDiv.toFixed(2)}` : '-'}</span>
                     </div>
                     <div className="flex justify-between border-b pb-2" style={{ borderColor: border }}>
                       <span className="opacity-70">Sector</span>
-                      <span className="font-mono font-semibold text-right">{companyProfile.sector || '-'}</span>
+                      <span className="font-mono tabular-nums font-semibold text-right">{companyProfile.sector || '-'}</span>
                     </div>
                     <div className="flex justify-between border-b pb-2" style={{ borderColor: border }}>
                       <span className="opacity-70">Industry</span>
-                      <span className="font-mono font-semibold text-right">{companyProfile.industry || '-'}</span>
+                      <span className="font-mono tabular-nums font-semibold text-right">{companyProfile.industry || '-'}</span>
                     </div>
                     <div className="flex justify-between border-b pb-2" style={{ borderColor: border }}>
                       <span className="opacity-70">CEO</span>
-                      <span className="font-mono font-semibold text-right">{companyProfile.ceo || '-'}</span>
+                      <span className="font-mono tabular-nums font-semibold text-right">{companyProfile.ceo || '-'}</span>
                     </div>
                     <div className="flex justify-between border-b pb-2" style={{ borderColor: border }}>
                       <span className="opacity-70">Employees</span>
-                      <span className="font-mono font-semibold text-right">{companyProfile.fullTimeEmployees || '-'}</span>
+                      <span className="font-mono tabular-nums font-semibold text-right">{companyProfile.fullTimeEmployees || '-'}</span>
                     </div>
 
                     <div className="flex flex-col mt-2">

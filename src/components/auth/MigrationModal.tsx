@@ -34,7 +34,7 @@ export default function MigrationModal({
                   <ShieldCheck size={26} className="animate-pulse" />
                 </div>
                 <div>
-                  <h3 className="font-extrabold text-slate-900 text-sm">
+                  <h3 className="font-semibold text-slate-900 text-sm">
                     📥 Local Offline Workspace Data Found!
                   </h3>
                   <p className="text-xs text-slate-700 font-semibold capitalize mt-0.5 ">
@@ -56,35 +56,35 @@ export default function MigrationModal({
               </div>
 
               {/* Audit Grid of Local Data */}
-              <div className="grid grid-cols-2 gap-1 bg-slate-50 border border-slate-200/50 p-2 rounded-lg font-mono text-xs">
+              <div className="grid grid-cols-2 gap-1 bg-slate-50 border border-slate-200/50 p-2 rounded-lg font-mono tabular-nums text-xs">
                 <div className="flex justify-between items-center bg-white p-1 rounded-xl border border-slate-100">
-                  <span className="text-slate-450 font-bold">🗒️ Transactions:</span>
-                  <span className="font-extrabold text-slate-905">{pendingMigrationData.data.transactions.length} entries</span>
+                  <span className="text-slate-400 font-bold">🗒️ Transactions:</span>
+                  <span className="font-semibold text-slate-905">{pendingMigrationData.data.transactions.length} entries</span>
                 </div>
                 <div className="flex justify-between items-center bg-white p-1 rounded-xl border border-slate-100">
-                  <span className="text-slate-450 font-bold">📈 Stock/MF:</span>
-                  <span className="font-extrabold text-slate-905">{pendingMigrationData.data.holdings.length} holdings</span>
+                  <span className="text-slate-400 font-bold">📈 Stock/MF:</span>
+                  <span className="font-semibold text-slate-905">{pendingMigrationData.data.holdings.length} holdings</span>
                 </div>
                 <div className="flex justify-between items-center bg-white p-1 rounded-xl border border-slate-100">
-                  <span className="text-slate-450 font-bold">⏰ SIP Triggers:</span>
-                  <span className="font-extrabold text-slate-905">{pendingMigrationData.data.sips.length} plans</span>
+                  <span className="text-slate-400 font-bold">⏰ SIP Triggers:</span>
+                  <span className="font-semibold text-slate-905">{pendingMigrationData.data.sips.length} plans</span>
                 </div>
                 <div className="flex justify-between items-center bg-white p-1 rounded-xl border border-slate-100">
-                  <span className="text-slate-450 font-bold">🏦 FD/RD Lock:</span>
-                  <span className="font-extrabold text-slate-905">{pendingMigrationData.data.fds.length} lockers</span>
+                  <span className="text-slate-400 font-bold">🏦 FD/RD Lock:</span>
+                  <span className="font-semibold text-slate-905">{pendingMigrationData.data.fds.length} lockers</span>
                 </div>
                 <div className="flex justify-between items-center bg-white p-1 rounded-xl border border-slate-100">
-                  <span className="text-slate-450 font-bold">🎯 Savings Goals:</span>
-                  <span className="font-extrabold text-slate-905">{pendingMigrationData.data.savingsGoals.length} targets</span>
+                  <span className="text-slate-400 font-bold">🎯 Savings Goals:</span>
+                  <span className="font-semibold text-slate-905">{pendingMigrationData.data.savingsGoals.length} targets</span>
                 </div>
                 <div className="flex justify-between items-center bg-white p-1 rounded-xl border border-slate-100">
-                  <span className="text-slate-450 font-bold">📊 Watchlist:</span>
-                  <span className="font-extrabold text-slate-905">{pendingMigrationData.data.watchlist.length} items</span>
+                  <span className="text-slate-400 font-bold">📊 Watchlist:</span>
+                  <span className="font-semibold text-slate-905">{pendingMigrationData.data.watchlist.length} items</span>
                 </div>
               </div>
 
               {migrationProgress && (
-                <div className="flex items-center gap-1 text-indigo-700 font-extrabold text-xs capitalize animate-pulse bg-indigo-50 border border-indigo-150 p-1 rounded-xl justify-center">
+                <div className="flex items-center gap-1 text-slate-900 font-semibold text-xs capitalize animate-pulse bg-slate-100 border border-indigo-150 p-1 rounded-xl justify-center">
                   <RefreshCw size={12} className="animate-spin" />
                   <span>{migrationProgress}</span>
                 </div>
@@ -98,7 +98,7 @@ export default function MigrationModal({
                 <button
                   type="button"
                   onClick={handleCancelMigration}
-                  className="flex-1 py-1 border border-slate-205 hover:bg-slate-50 text-slate-700 rounded-xl text-xs font-bold cursor-pointer text-center"
+                  className="flex-1 py-1 border border-slate-205 hover:bg-slate-50 text-slate-700 rounded-xl text-xs font-medium cursor-pointer text-center"
                 >
                   No, Skip (नया अकाउंट शुरू करें)
                 </button>
@@ -106,7 +106,7 @@ export default function MigrationModal({
                   type="button"
                   onClick={handleMigrateGuestData}
                   disabled={!!migrationProgress}
-                  className="flex-1 py-1 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-black cursor-pointer transition-colors shadow-md text-center flex items-center justify-center gap-1.5"
+                  className="flex-1 py-1 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white rounded-xl text-xs font-medium cursor-pointer transition-colors shadow-md text-center flex items-center justify-center gap-1.5"
                 >
                   <RefreshCw size={13} className={migrationProgress ? 'animate-spin' : ''} />
                   <span>Yes, Migrate (हाँ, डेटा सिंक करें)</span>

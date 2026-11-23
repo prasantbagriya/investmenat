@@ -81,13 +81,13 @@ export default function PhysicalAssetsManager({ assets, onAdd, onEdit, onDelete 
     <div className="space-y-4">
       {/* Header */}
       <div className="flex items-center justify-between gap-3 px-1 mb-2">
-        <p className="text-lg sm:text-xl font-black text-slate-900 tracking-tight flex items-center gap-2 capitalize">
-          <Car size={20} className="text-indigo-600 shrink-0" /> Physical Assets
+        <p className="text-lg sm:text-xl font-semibold text-slate-900 tracking-tight flex items-center gap-2 capitalize">
+          <Car size={20} className="text-slate-900 shrink-0" /> Physical Assets
         </p>
         <button
           type="button"
           onClick={openAddForm}
-          className="flex shrink-0 items-center justify-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-white px-3 py-1.5 rounded-lg font-bold text-xs transition-colors cursor-pointer shadow-sm whitespace-nowrap"
+          className="flex shrink-0 items-center justify-center gap-1.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white px-3 py-1.5 rounded-xl font-medium text-xs transition-colors cursor-pointer shadow-sm whitespace-nowrap"
         >
           <Plus size={14} /> Log Asset
         </button>
@@ -100,7 +100,7 @@ export default function PhysicalAssetsManager({ assets, onAdd, onEdit, onDelete 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            className="bg-white p-4 rounded-lg border border-slate-150 shadow-sm relative"
+            className="bg-white p-4 rounded-lg border border-slate-200 shadow-sm relative"
           >
             <button
               type="button"
@@ -110,7 +110,7 @@ export default function PhysicalAssetsManager({ assets, onAdd, onEdit, onDelete 
               <X size={16} />
             </button>
             <h3 className="font-bold text-slate-800 mb-3 text-sm flex items-center gap-1.5 border-b border-slate-100 pb-2">
-              {editingId ? <><Edit2 size={14} className="text-indigo-600" /> Update Asset Valuation</> : <><Plus size={14} className="text-indigo-600" /> Add New Physical Asset</>}
+              {editingId ? <><Edit2 size={14} className="text-slate-900" /> Update Asset Valuation</> : <><Plus size={14} className="text-slate-900" /> Add New Physical Asset</>}
             </h3>
             <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-3">
               <div>
@@ -136,25 +136,25 @@ export default function PhysicalAssetsManager({ assets, onAdd, onEdit, onDelete 
               </div>
               <div>
                 <label className="block text-xs font-bold text-slate-700 capitalize mb-1">Purchase Price (₹)</label>
-                <input required type="number" step="0.01" value={purchasePrice} onChange={e => setPurchasePrice(e.target.value)} className="w-full font-mono border border-slate-200 rounded-lg p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none" />
+                <input required type="number" step="0.01" value={purchasePrice} onChange={e => setPurchasePrice(e.target.value)} className="w-full font-mono tabular-nums border border-slate-200 rounded-lg p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none" />
               </div>
               <div>
                 <label className="text-xs font-bold text-slate-700 capitalize mb-1 flex justify-between">
                   <span>Current Valuation (₹)</span>
                   <span className="text-xs text-indigo-500 font-normal flex items-center gap-0.5"><Calculator size={10}/> Estimate</span>
                 </label>
-                <input required type="number" step="0.01" value={currentValue} onChange={e => setcurrentValue(e.target.value)} className="w-full font-mono border border-indigo-200 rounded-lg p-2 text-sm bg-indigo-50/30 focus:bg-white focus:outline-none" />
+                <input required type="number" step="0.01" value={currentValue} onChange={e => setcurrentValue(e.target.value)} className="w-full font-mono tabular-nums border border-slate-200 rounded-lg p-2 text-sm bg-slate-100/30 focus:bg-white focus:outline-none" />
               </div>
               <div>
                 <label className="block text-xs font-bold text-slate-700 capitalize mb-1">Purchase Date</label>
-                <input required type="date" value={purchaseDate} onChange={e => setPurchaseDate(e.target.value)} className="w-full font-mono border border-slate-200 rounded-lg p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none" />
+                <input required type="date" value={purchaseDate} onChange={e => setPurchaseDate(e.target.value)} className="w-full font-mono tabular-nums border border-slate-200 rounded-lg p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none" />
               </div>
               <div>
                 <label className="block text-xs font-bold text-slate-700 capitalize mb-1">Details / Notes</label>
                 <input placeholder="Registration No, Location, etc." value={notes} onChange={e => setNotes(e.target.value)} className="w-full border border-slate-200 rounded-lg p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none" />
               </div>
               <div className="md:col-span-2 pt-2">
-                <button type="submit" className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2 rounded-xl text-sm flex items-center justify-center gap-1.5 cursor-pointer transition-colors shadow-sm">
+                <button type="submit" className="w-full bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium py-2 rounded-xl text-sm flex items-center justify-center gap-1.5 cursor-pointer transition-colors shadow-sm">
                   <Save size={14} /> {editingId ? 'Save Valuation' : 'Log Asset'}
                 </button>
               </div>
@@ -170,7 +170,7 @@ export default function PhysicalAssetsManager({ assets, onAdd, onEdit, onDelete 
             <Car size={32} className="mx-auto mb-2 opacity-50" />
             <p className="text-sm font-semibold">No physical assets logged yet.</p>
             <p className="text-xs mt-1 max-w-sm mx-auto">Track your bikes, cars, property, and gold here to include them in your net worth.</p>
-            <button type="button" onClick={openAddForm} className="mt-3 text-indigo-600 font-bold text-xs hover:underline cursor-pointer">+ Add your first asset</button>
+            <button type="button" onClick={openAddForm} className="mt-3 text-slate-900 font-medium text-xs hover:underline cursor-pointer">+ Add your first asset</button>
           </div>
         ) : (
           assets.map(a => {
@@ -199,7 +199,7 @@ export default function PhysicalAssetsManager({ assets, onAdd, onEdit, onDelete 
                       </div>
                     ) : (
                       <>
-                        <button type="button" onClick={() => openEditForm(a)} className="p-1.5 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors cursor-pointer">
+                        <button type="button" onClick={() => openEditForm(a)} className="p-1.5 text-slate-400 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer">
                           <Edit2 size={13} />
                         </button>
                         <button type="button" onClick={() => { if(window.confirm('Delete this asset?')) onDelete(a.id); }} className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors cursor-pointer">
@@ -213,11 +213,11 @@ export default function PhysicalAssetsManager({ assets, onAdd, onEdit, onDelete 
                 <div className="mt-4 pt-3 border-t border-slate-100 grid grid-cols-2 gap-2">
                   <div>
                     <p className="text-xs font-bold text-slate-400 capitalize ">Purchase</p>
-                    <p className="font-mono font-semibold text-slate-700 text-sm">₹{a.purchasePrice.toLocaleString('en-IN')}</p>
+                    <p className="font-mono tabular-nums font-semibold text-slate-700 text-sm">₹{a.purchasePrice.toLocaleString('en-IN')}</p>
                   </div>
                   <div className="text-right">
                     <p className="text-xs font-bold text-slate-400 capitalize ">Valuation</p>
-                    <p className="font-mono font-black text-slate-900 text-sm">₹{a.currentValue.toLocaleString('en-IN')}</p>
+                    <p className="font-mono tabular-nums font-semibold text-slate-900 text-sm">₹{a.currentValue.toLocaleString('en-IN')}</p>
                   </div>
                 </div>
                 

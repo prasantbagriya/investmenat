@@ -40,7 +40,7 @@ export default function BankVerification() {
           <Landmark size={24} className="stroke-[2.5px]" />
         </div>
         <div>
-          <h2 className="text-xl font-black text-slate-900 tracking-tight">Bank Verification</h2>
+          <h2 className="text-xl font-semibold text-slate-900 tracking-tight">Bank Verification</h2>
           <p className="text-xs sm:text-xs font-semibold text-slate-500 mt-0.5">Quicko Penny Drop API</p>
         </div>
       </div>
@@ -77,7 +77,7 @@ export default function BankVerification() {
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3.5 rounded-xl transition-all active:scale-[0.98] disabled:opacity-70 flex items-center justify-center gap-2 shadow-lg shadow-slate-900/20"
+          className="w-full bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium py-3.5 rounded-xl transition-all active:scale-[0.98] disabled:opacity-70 flex items-center justify-center gap-2 shadow-lg shadow-slate-900/20"
         >
           {isLoading ? (
             <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -94,7 +94,7 @@ export default function BankVerification() {
               <CheckCircle size={20} className="stroke-[2.5px]" />
             </div>
             <div>
-              <p className="text-sm font-black text-emerald-900">Penny Dropped!</p>
+              <p className="text-sm font-semibold text-emerald-900">Penny Dropped!</p>
               <p className="text-xs font-medium text-emerald-700">Account successfully matched.</p>
             </div>
           </div>
@@ -102,15 +102,15 @@ export default function BankVerification() {
           <div className="space-y-3">
             <div className="flex justify-between items-center">
               <span className="text-xs font-bold text-slate-500 capitalize ">Beneficiary Name</span>
-              <span className="text-sm font-black text-slate-900">{result.beneficiaryName}</span>
+              <span className="text-sm font-semibold text-slate-900">{result.beneficiaryName}</span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-xs font-bold text-slate-500 capitalize ">Bank Name</span>
-              <span className="text-sm font-black text-slate-900">{result.bankName}</span>
+              <span className="text-sm font-semibold text-slate-900">{result.bankName}</span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-xs font-bold text-slate-500 capitalize ">Status</span>
-              <span className="text-xs font-black bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-md capitalize ">
+              <span className="text-xs font-semibold bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-md capitalize ">
                 {result.status}
               </span>
             </div>

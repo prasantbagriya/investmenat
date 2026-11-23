@@ -177,7 +177,7 @@ export default function TradeExecutionModal({ isOpen, onClose, symbol, ltp }: Tr
             {/* Header */}
             <div className={`p-4 text-white flex justify-between items-center sticky top-0 z-10 ${orderSide === 'BUY' ? 'bg-indigo-600' : 'bg-rose-600'}`}>
               <div>
-                <h2 className="text-xl font-black">{symbol}</h2>
+                <h2 className="text-xl font-semibold">{symbol}</h2>
                 {ltp && <p className="text-sm opacity-90 text-white/80">LTP: ₹{ltp.toFixed(2)}</p>}
               </div>
               <button onClick={onClose} className="p-2 hover:bg-white/20 rounded-full transition-colors">
@@ -200,7 +200,7 @@ export default function TradeExecutionModal({ isOpen, onClose, symbol, ltp }: Tr
               <div className="flex bg-slate-100 p-1 rounded-xl">
                 <button
                   onClick={() => setOrderSide('BUY')}
-                  className={`flex-1 py-2 font-bold text-sm rounded-lg transition-all ${orderSide === 'BUY' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-700'}`}
+                  className={`flex-1 py-2 font-bold text-sm rounded-lg transition-all ${orderSide === 'BUY' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-700'}`}
                 >
                   <TrendingUp size={16} className="inline mr-1" /> BUY
                 </button>
@@ -245,7 +245,7 @@ export default function TradeExecutionModal({ isOpen, onClose, symbol, ltp }: Tr
                   id="gtt-toggle" 
                   checked={isGtt} 
                   onChange={(e) => setIsGtt(e.target.checked)} 
-                  className="w-4 h-4 rounded text-indigo-600 focus:ring-indigo-500"
+                  className="w-4 h-4 rounded text-slate-900 focus:ring-indigo-500"
                 />
                 <label htmlFor="gtt-toggle" className="text-xs font-bold text-slate-700">
                   Create GTT (Good-Till-Triggered) Order
@@ -324,11 +324,11 @@ export default function TradeExecutionModal({ isOpen, onClose, symbol, ltp }: Tr
               <button
                 onClick={handleExecute}
                 disabled={isExecuting || !selectedBroker}
-                className={`w-full py-3.5 rounded-xl font-black text-white shadow-sm transition-all disabled:opacity-50 flex items-center justify-center gap-2 ${
-                  orderSide === 'BUY' ? 'bg-indigo-600 hover:bg-indigo-700 shadow-indigo-600/20' : 'bg-rose-600 hover:bg-rose-700 shadow-rose-600/20'
+                className={`w-full py-2.5 rounded-lg font-medium text-xs sm:text-sm text-white transition-colors disabled:opacity-50 flex items-center justify-center gap-2 ${
+                  orderSide === 'BUY' ? 'bg-slate-900 hover:bg-slate-800 active:bg-slate-950' : 'bg-rose-600 hover:bg-rose-700'
                 }`}
               >
-                {isExecuting ? 'PLACING ORDER...' : `CONFIRM ${orderSide}`}
+                {isExecuting ? 'Placing order...' : `Confirm ${orderSide.toLowerCase()}`}
               </button>
 
             </div>

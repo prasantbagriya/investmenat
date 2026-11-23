@@ -340,15 +340,15 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [], bankAccounts =
                 Pay {payingBill ? payingBill.cardName : payingEmi?.itemName}
               </h3>
               <p className="text-sm text-slate-600 mb-4">
-                Amount: <span className="font-bold font-mono">₹{payingBill ? (payingBill.amount + (payingBill.dueEmi || 0) + (payingBill.penalty || 0) + (payingBill.annualCharges || 0)).toLocaleString('en-IN') : payingEmi?.emiAmount.toLocaleString('en-IN')}</span>
+                Amount: <span className="font-bold font-mono tabular-nums">₹{payingBill ? (payingBill.amount + (payingBill.dueEmi || 0) + (payingBill.penalty || 0) + (payingBill.annualCharges || 0)).toLocaleString('en-IN') : payingEmi?.emiAmount.toLocaleString('en-IN')}</span>
               </p>
               
               <div className="space-y-2 mb-5">
-                <label className="block text-xs font-black text-slate-700 capitalize ">Select Bank Account to Deduct From</label>
+                <label className="block text-xs font-semibold text-slate-700 capitalize ">Select Bank Account to Deduct From</label>
                 <select
                   value={selectedBank}
                   onChange={(e) => setSelectedBank(e.target.value)}
-                  className="w-full border border-slate-200 rounded-md p-2.5 text-sm bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-indigo-400 font-mono"
+                  className="w-full border border-slate-200 rounded-md p-2.5 text-sm bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-indigo-400 font-mono tabular-nums"
                 >
                   <option value="">-- No Bank (Cash/Other) --</option>
                   {bankAccounts?.map(b => (
@@ -371,7 +371,7 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [], bankAccounts =
                     if (payingBill) handleConfirmPayBill(payingBill, selectedBank);
                     else if (payingEmi) handleConfirmPayEmi(payingEmi, selectedBank);
                   }}
-                  className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 rounded-md text-sm transition-colors"
+                  className="flex-1 bg-slate-900 hover:bg-slate-800 text-white font-medium py-2 rounded-lg text-sm transition-colors"
                 >
                   Confirm Pay
                 </button>
@@ -386,51 +386,51 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [], bankAccounts =
 
       {/* Header */}
       <div className="flex flex-row items-center justify-between gap-3 px-1 mb-2">
-        <p className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2 capitalize">
-          <CreditCard size={20} className="text-indigo-600 shrink-0" />
-          Credit Cards & EMIs
-        </p>
+        <h2 className="text-base font-semibold text-slate-900 flex items-center gap-2">
+          <CreditCard size={18} className="text-slate-700 shrink-0" />
+          Credit cards & EMIs
+        </h2>
         <button
           type="button"
           onClick={() => activeTab === 'cards' ? setShowAddCard(true) : setShowAddEmi(true)}
-          className="flex shrink-0 items-center justify-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-white px-3 py-1.5 rounded font-bold text-xs transition-colors cursor-pointer shadow-sm whitespace-nowrap w-auto"
+          className="flex shrink-0 items-center justify-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-white px-3 py-1.5 rounded-lg font-medium text-xs transition-colors cursor-pointer whitespace-nowrap w-auto"
         >
           <PlusCircle size={14} />
-          Add {activeTab === 'cards' ? 'Card Bill' : 'Loan/EMI'}
+          Add {activeTab === 'cards' ? 'card bill' : 'loan / EMI'}
         </button>
       </div>
 
       {/* Summary Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-        <div className="bg-red-50 border border-red-100 rounded p-3 text-center">
-          <p className="text-xs font-bold text-red-400 capitalize ">Overdue Bills</p>
-          <p className="text-2xl font-black text-red-600">{overdueBills.length}</p>
+        <div className="bg-white border border-slate-200 rounded-lg p-3 text-center">
+          <p className="text-xs font-medium text-slate-500">Overdue bills</p>
+          <p className="text-xl font-semibold text-rose-600 font-mono tabular-nums">{overdueBills.length}</p>
         </div>
-        <div className="bg-amber-50 border border-amber-100 rounded p-3 text-center">
-          <p className="text-xs font-bold text-amber-500 capitalize ">Due This Week</p>
-          <p className="text-2xl font-black text-amber-600">{dueSoonBills.length}</p>
+        <div className="bg-white border border-slate-200 rounded-lg p-3 text-center">
+          <p className="text-xs font-medium text-slate-500">Due this week</p>
+          <p className="text-xl font-semibold text-amber-600 font-mono tabular-nums">{dueSoonBills.length}</p>
         </div>
-        <div className="bg-slate-50 border border-slate-200 rounded p-3 text-center">
-          <p className="text-xs font-bold text-slate-500 capitalize ">Outstanding</p>
-          <p className="text-xl font-black text-slate-800 font-mono">₹{totalOutstanding.toLocaleString('en-IN')}</p>
+        <div className="bg-white border border-slate-200 rounded-lg p-3 text-center">
+          <p className="text-xs font-medium text-slate-500">Outstanding</p>
+          <p className="text-xl font-semibold text-slate-900 font-mono tabular-nums">₹{totalOutstanding.toLocaleString('en-IN')}</p>
         </div>
-        <div className="bg-indigo-50 border border-indigo-100 rounded p-3 text-center">
-          <p className="text-xs font-bold text-indigo-400 capitalize ">Ongoing EMIs</p>
-          <p className="text-xl font-black text-indigo-700 font-mono">₹{totalEmiMonthly.toLocaleString('en-IN')}</p>
+        <div className="bg-white border border-slate-200 rounded-lg p-3 text-center">
+          <p className="text-xs font-medium text-slate-500">Ongoing EMIs</p>
+          <p className="text-xl font-semibold text-slate-900 font-mono tabular-nums">₹{totalEmiMonthly.toLocaleString('en-IN')}</p>
         </div>
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-2 bg-slate-100 p-1 rounded w-full max-w-xs">
+      <div className="flex gap-1 bg-slate-100 p-1 rounded-lg w-full max-w-xs border border-slate-200/50">
         <button
           onClick={() => setActiveTab('cards')}
-          className={`flex-1 py-1.5 text-xs font-bold rounded-md transition-all ${activeTab === 'cards' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-700 hover:text-slate-700'}`}
+          className={`flex-1 py-1.5 text-xs font-medium rounded-md transition-colors ${activeTab === 'cards' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-500 hover:text-slate-700'}`}
         >
-          Credit Card Bills
+          Card bills
         </button>
         <button
           onClick={() => setActiveTab('emis')}
-          className={`flex-1 py-1.5 text-xs font-bold rounded-md transition-all ${activeTab === 'emis' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-700 hover:text-slate-700'}`}
+          className={`flex-1 py-1.5 text-xs font-medium rounded-md transition-colors ${activeTab === 'emis' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-500 hover:text-slate-700'}`}
         >
           Loans & EMIs
         </button>
@@ -443,59 +443,59 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [], bankAccounts =
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="bg-white border border-indigo-200 rounded-md p-4 shadow-md"
+            className="bg-white border border-slate-200 rounded-md p-4 shadow-md"
           >
             <div className="flex justify-between items-center mb-3">
               <h3 className="font-bold text-slate-900 text-sm flex items-center gap-1.5">
-                <CreditCard size={16} className="text-indigo-600" />
+                <CreditCard size={16} className="text-slate-900" />
                 {editingCard ? 'Edit Card Bill' : 'Add New Card Bill'}
               </h3>
               <button onClick={resetCardForm} className="text-slate-500 hover:text-slate-600 p-1 rounded cursor-pointer"><X size={16} /></button>
             </div>
             <form onSubmit={handleSaveCard} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
               <div>
-                <label className="block text-xs font-black text-slate-700 capitalize mb-1">Card Name</label>
+                <label className="block text-xs font-semibold text-slate-700 capitalize mb-1">Card Name</label>
                 <input required value={cardName} onChange={e => setCardName(e.target.value)} placeholder="e.g. HDFC Millennia" className="w-full border border-slate-200 rounded-md p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-indigo-400" />
               </div>
               <div>
-                <label className="block text-xs font-black text-slate-700 capitalize mb-1">Bank</label>
+                <label className="block text-xs font-semibold text-slate-700 capitalize mb-1">Bank</label>
                 <select value={cardBank} onChange={e => setCardBank(e.target.value)} className="w-full border border-slate-200 rounded-md p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none">
                   {BANKS.map(b => <option key={b}>{b}</option>)}
                 </select>
               </div>
               <div>
-                <label className="block text-xs font-black text-slate-700 capitalize mb-1">Base Spends (₹)</label>
-                <input required type="number" step="0.01" value={cardAmount} onChange={e => setCardAmount(e.target.value)} placeholder="0.00" className="w-full border border-slate-200 rounded-md p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-indigo-400 font-mono" />
+                <label className="block text-xs font-semibold text-slate-700 capitalize mb-1">Base Spends (₹)</label>
+                <input required type="number" step="0.01" value={cardAmount} onChange={e => setCardAmount(e.target.value)} placeholder="0.00" className="w-full border border-slate-200 rounded-md p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-indigo-400 font-mono tabular-nums" />
               </div>
               <div>
-                <label className="block text-xs font-black text-slate-700 capitalize mb-1">Due EMIs (₹) (Optional)</label>
-                <input type="number" step="0.01" value={cardDueEmi} onChange={e => setCardDueEmi(e.target.value)} placeholder="0.00" className="w-full border border-slate-200 rounded-md p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-indigo-400 font-mono" />
+                <label className="block text-xs font-semibold text-slate-700 capitalize mb-1">Due EMIs (₹) (Optional)</label>
+                <input type="number" step="0.01" value={cardDueEmi} onChange={e => setCardDueEmi(e.target.value)} placeholder="0.00" className="w-full border border-slate-200 rounded-md p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-indigo-400 font-mono tabular-nums" />
               </div>
               <div>
-                <label className="block text-xs font-black text-slate-700 capitalize mb-1">Penalties/Late Fee (₹) (Optional)</label>
-                <input type="number" step="0.01" value={cardPenalty} onChange={e => setCardPenalty(e.target.value)} placeholder="0.00" className="w-full border border-slate-200 rounded-md p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-indigo-400 font-mono" />
+                <label className="block text-xs font-semibold text-slate-700 capitalize mb-1">Penalties/Late Fee (₹) (Optional)</label>
+                <input type="number" step="0.01" value={cardPenalty} onChange={e => setCardPenalty(e.target.value)} placeholder="0.00" className="w-full border border-slate-200 rounded-md p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-indigo-400 font-mono tabular-nums" />
               </div>
               <div>
-                <label className="block text-xs font-black text-slate-700 capitalize mb-1">Annual Charges (₹) (Optional)</label>
-                <input type="number" step="0.01" value={cardAnnualCharges} onChange={e => setCardAnnualCharges(e.target.value)} placeholder="0.00" className="w-full border border-slate-200 rounded-md p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-indigo-400 font-mono" />
+                <label className="block text-xs font-semibold text-slate-700 capitalize mb-1">Annual Charges (₹) (Optional)</label>
+                <input type="number" step="0.01" value={cardAnnualCharges} onChange={e => setCardAnnualCharges(e.target.value)} placeholder="0.00" className="w-full border border-slate-200 rounded-md p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-indigo-400 font-mono tabular-nums" />
               </div>
               <div>
-                <label className="block text-xs font-black text-slate-700 capitalize mb-1">Due Date</label>
+                <label className="block text-xs font-semibold text-slate-700 capitalize mb-1">Due Date</label>
                 <input required type="date" value={cardDueDate} onChange={e => setCardDueDate(e.target.value)} className="w-full border border-slate-200 rounded-md p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-indigo-400" />
               </div>
               <div>
-                <label className="block text-xs font-black text-slate-700 capitalize mb-1">Notes (Optional)</label>
+                <label className="block text-xs font-semibold text-slate-700 capitalize mb-1">Notes (Optional)</label>
                 <input value={cardNotes} onChange={e => setCardNotes(e.target.value)} placeholder="Minimum payment, etc." className="w-full border border-slate-200 rounded-md p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none" />
               </div>
               <div>
-                <label className="block text-xs font-black text-slate-700 capitalize mb-1">Linked Bank Account</label>
+                <label className="block text-xs font-semibold text-slate-700 capitalize mb-1">Linked Bank Account</label>
                 <select value={cardBankAccountId} onChange={e => setCardBankAccountId(e.target.value)} className="w-full border border-slate-200 rounded-md p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none">
                   <option value="">-- No Linked Bank --</option>
                   {bankAccounts?.map(b => <option key={b.id} value={b.id}>{b.bankName} - {b.accountName}</option>)}
                 </select>
               </div>
               <div className="flex items-end">
-                <button type="submit" className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 rounded-md text-sm flex items-center justify-center gap-1.5 cursor-pointer transition-colors">
+                <button type="submit" className="w-full bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium py-2 rounded-xl text-sm flex items-center justify-center gap-1.5 cursor-pointer transition-colors">
                   <Save size={14} /> {editingCard ? 'Update Bill' : 'Save Bill'}
                 </button>
               </div>
@@ -511,26 +511,26 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [], bankAccounts =
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="bg-white border border-indigo-200 rounded-md p-4 shadow-md"
+            className="bg-white border border-slate-200 rounded-md p-4 shadow-md"
           >
             <div className="flex justify-between items-center mb-3">
               <h3 className="font-bold text-slate-900 text-sm flex items-center gap-1.5">
-                <BarChart2 size={16} className="text-indigo-600" />
+                <BarChart2 size={16} className="text-slate-900" />
                 {editingEmi ? 'Edit EMI' : 'Add New EMI'}
               </h3>
               <button onClick={resetEmiForm} className="text-slate-500 hover:text-slate-600 p-1 rounded cursor-pointer"><X size={16} /></button>
             </div>
             <form onSubmit={handleSaveEmi} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
               <div>
-                <label className="block text-xs font-black text-slate-700 capitalize mb-1">Item / Loan Name</label>
+                <label className="block text-xs font-semibold text-slate-700 capitalize mb-1">Item / Loan Name</label>
                 <input required value={emiItemName} onChange={e => setEmiItemName(e.target.value)} placeholder="e.g. iPhone 15, HDFC Personal Loan" className="w-full border border-slate-200 rounded-md p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-indigo-400" />
               </div>
               <div>
-                <label className="block text-xs font-black text-slate-700 capitalize mb-1">Loan / Account No. (Optional)</label>
-                <input value={emiLoanNumber} onChange={e => setEmiLoanNumber(e.target.value)} placeholder="e.g. LON12345678" className="w-full border border-slate-200 rounded-md p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-indigo-400 font-mono" />
+                <label className="block text-xs font-semibold text-slate-700 capitalize mb-1">Loan / Account No. (Optional)</label>
+                <input value={emiLoanNumber} onChange={e => setEmiLoanNumber(e.target.value)} placeholder="e.g. LON12345678" className="w-full border border-slate-200 rounded-md p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-indigo-400 font-mono tabular-nums" />
               </div>
               <div>
-                <label className="block text-xs font-black text-slate-700 capitalize mb-1">Loan Type</label>
+                <label className="block text-xs font-semibold text-slate-700 capitalize mb-1">Loan Type</label>
                 <select value={emiLoanType} onChange={e => setEmiLoanType(e.target.value)} className="w-full border border-slate-200 rounded-md p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none">
                   <option value="Consumer Goods">Consumer Goods (Phone, Laptop, etc.)</option>
                   <option value="Personal Loan">Personal Loan</option>
@@ -541,19 +541,19 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [], bankAccounts =
                 </select>
               </div>
               <div>
-                <label className="block text-xs font-black text-slate-700 capitalize mb-1">Total Loan Amount (₹)</label>
-                <input required type="number" step="0.01" value={emiTotal} onChange={e => setEmiTotal(e.target.value)} placeholder="75000" className="w-full border border-slate-200 rounded-md p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none font-mono" />
+                <label className="block text-xs font-semibold text-slate-700 capitalize mb-1">Total Loan Amount (₹)</label>
+                <input required type="number" step="0.01" value={emiTotal} onChange={e => setEmiTotal(e.target.value)} placeholder="75000" className="w-full border border-slate-200 rounded-md p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none font-mono tabular-nums" />
               </div>
               <div>
-                <label className="block text-xs font-black text-slate-700 capitalize mb-1">Penalty / Late Fee (₹) (Optional)</label>
-                <input type="number" step="0.01" value={emiPenalty} onChange={e => setEmiPenalty(e.target.value)} placeholder="0" className="w-full border border-slate-200 rounded-md p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none font-mono" />
+                <label className="block text-xs font-semibold text-slate-700 capitalize mb-1">Penalty / Late Fee (₹) (Optional)</label>
+                <input type="number" step="0.01" value={emiPenalty} onChange={e => setEmiPenalty(e.target.value)} placeholder="0" className="w-full border border-slate-200 rounded-md p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none font-mono tabular-nums" />
               </div>
               <div>
-                <label className="block text-xs font-black text-slate-700 capitalize mb-1">Other Charges (₹) (Optional)</label>
-                <input type="number" step="0.01" value={emiOtherCharges} onChange={e => setEmiOtherCharges(e.target.value)} placeholder="0" className="w-full border border-slate-200 rounded-md p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none font-mono" />
+                <label className="block text-xs font-semibold text-slate-700 capitalize mb-1">Other Charges (₹) (Optional)</label>
+                <input type="number" step="0.01" value={emiOtherCharges} onChange={e => setEmiOtherCharges(e.target.value)} placeholder="0" className="w-full border border-slate-200 rounded-md p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none font-mono tabular-nums" />
               </div>
               <div>
-                <label className="block text-xs font-black text-slate-700 capitalize mb-1">Payment Frequency</label>
+                <label className="block text-xs font-semibold text-slate-700 capitalize mb-1">Payment Frequency</label>
                 <select value={emiFrequency} onChange={e => setEmiFrequency(e.target.value)} className="w-full border border-slate-200 rounded-md p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none">
                   <option value="daily">Daily</option>
                   <option value="weekly">Weekly</option>
@@ -562,38 +562,38 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [], bankAccounts =
                 </select>
               </div>
               <div>
-                <label className="block text-xs font-black text-slate-700 capitalize mb-1">Installment Amount (₹)</label>
-                <input required type="number" step="0.01" value={emiMonthly} onChange={e => setEmiMonthly(e.target.value)} placeholder="6250" className="w-full border border-slate-200 rounded-md p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none font-mono" />
+                <label className="block text-xs font-semibold text-slate-700 capitalize mb-1">Installment Amount (₹)</label>
+                <input required type="number" step="0.01" value={emiMonthly} onChange={e => setEmiMonthly(e.target.value)} placeholder="6250" className="w-full border border-slate-200 rounded-md p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none font-mono tabular-nums" />
               </div>
               <div>
-                <label className="block text-xs font-black text-slate-700 capitalize mb-1">Total Installments (Kishtein)</label>
-                <input required type="number" min="1" value={emiTotalMonths} onChange={e => setEmiTotalMonths(e.target.value)} placeholder="12" className="w-full border border-slate-200 rounded-md p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none font-mono" />
+                <label className="block text-xs font-semibold text-slate-700 capitalize mb-1">Total Installments (Kishtein)</label>
+                <input required type="number" min="1" value={emiTotalMonths} onChange={e => setEmiTotalMonths(e.target.value)} placeholder="12" className="w-full border border-slate-200 rounded-md p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none font-mono tabular-nums" />
               </div>
               <div>
-                <label className="block text-xs font-black text-slate-700 capitalize mb-1">Paid Installments (so far)</label>
-                <input type="number" min="0" value={emiPaidMonths} onChange={e => setEmiPaidMonths(e.target.value)} placeholder="0" className="w-full border border-slate-200 rounded-md p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none font-mono" />
+                <label className="block text-xs font-semibold text-slate-700 capitalize mb-1">Paid Installments (so far)</label>
+                <input type="number" min="0" value={emiPaidMonths} onChange={e => setEmiPaidMonths(e.target.value)} placeholder="0" className="w-full border border-slate-200 rounded-md p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none font-mono tabular-nums" />
               </div>
               <div>
-                <label className="block text-xs font-black text-slate-700 capitalize mb-1">Start Date</label>
+                <label className="block text-xs font-semibold text-slate-700 capitalize mb-1">Start Date</label>
                 <input required type="date" value={emiStartDate} onChange={e => setEmiStartDate(e.target.value)} className="w-full border border-slate-200 rounded-md p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none" />
               </div>
               <div>
-                <label className="block text-xs font-black text-slate-700 capitalize mb-1">Bank / Lender (Optional)</label>
+                <label className="block text-xs font-semibold text-slate-700 capitalize mb-1">Bank / Lender (Optional)</label>
                 <input value={emiBank} onChange={e => setEmiBank(e.target.value)} placeholder="e.g. HDFC, Bajaj Finance" className="w-full border border-slate-200 rounded-md p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none" />
               </div>
               <div>
-                <label className="block text-xs font-black text-slate-700 capitalize mb-1">Notes (Optional)</label>
+                <label className="block text-xs font-semibold text-slate-700 capitalize mb-1">Notes (Optional)</label>
                 <input value={emiNotes} onChange={e => setEmiNotes(e.target.value)} placeholder="0% interest, etc." className="w-full border border-slate-200 rounded-md p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none" />
               </div>
               <div>
-                <label className="block text-xs font-black text-slate-700 capitalize mb-1">Linked Bank Account</label>
+                <label className="block text-xs font-semibold text-slate-700 capitalize mb-1">Linked Bank Account</label>
                 <select value={emiBankAccountId} onChange={e => setEmiBankAccountId(e.target.value)} className="w-full border border-slate-200 rounded-md p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none">
                   <option value="">-- No Linked Bank --</option>
                   {bankAccounts?.map(b => <option key={b.id} value={b.id}>{b.bankName} - {b.accountName}</option>)}
                 </select>
               </div>
               <div className="flex items-end">
-                <button type="submit" className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 rounded-md text-sm flex items-center justify-center gap-1.5 cursor-pointer transition-colors">
+                <button type="submit" className="w-full bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium py-2 rounded-xl text-sm flex items-center justify-center gap-1.5 cursor-pointer transition-colors">
                   <Save size={14} /> {editingEmi ? 'Update EMI' : 'Save EMI'}
                 </button>
               </div>
@@ -609,7 +609,7 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [], bankAccounts =
             <div className="bg-white border border-dashed border-slate-200 rounded-md py-16 text-center">
               <CreditCard size={40} className="mx-auto mb-3 text-slate-300" />
               <p className="text-slate-500 font-medium text-sm">No credit card bills added yet.</p>
-              <button onClick={() => setShowAddCard(true)} className="mt-3 text-indigo-600 font-bold text-xs hover:underline cursor-pointer">+ Add your first bill</button>
+              <button onClick={() => setShowAddCard(true)} className="mt-3 text-slate-900 font-bold text-xs hover:underline cursor-pointer">+ Add your first bill</button>
             </div>
           ) : (
             bills.map(bill => {
@@ -624,7 +624,7 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [], bankAccounts =
                   className={`bg-white border rounded p-3 shadow-xs flex items-center justify-between gap-3 ${isOverdue ? 'border-red-200 bg-red-50/40' : isDueSoon ? 'border-amber-200 bg-amber-50/30' : 'border-slate-200'}`}
                 >
                   <div className="flex items-center gap-3 flex-1 min-w-0">
-                    <div className={`w-10 h-10 rounded flex items-center justify-center shrink-0 ${bill.isPaid ? 'bg-emerald-100 text-emerald-600' : isOverdue ? 'bg-red-100 text-red-600' : 'bg-indigo-100 text-indigo-600'}`}>
+                    <div className={`w-10 h-10 rounded flex items-center justify-center shrink-0 ${bill.isPaid ? 'bg-emerald-100 text-emerald-600' : isOverdue ? 'bg-red-100 text-red-600' : 'bg-slate-100 text-slate-900'}`}>
                       {bill.isPaid ? <CheckCircle size={18} /> : isOverdue ? <AlertCircle size={18} /> : <CreditCard size={18} />}
                     </div>
                     <div className="min-w-0">
@@ -640,7 +640,7 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [], bankAccounts =
                   </div>
                   <div className="flex items-center gap-2 shrink-0">
                     <div className="text-right flex flex-col justify-end">
-                      <p className={`font-mono font-black text-base ${bill.isPaid ? 'text-slate-500 line-through' : 'text-slate-900'}`}>₹{(bill.amount + (bill.dueEmi || 0) + (bill.penalty || 0) + (bill.annualCharges || 0)).toLocaleString('en-IN')}</p>
+                      <p className={`font-mono tabular-nums font-semibold text-base ${bill.isPaid ? 'text-slate-500 line-through' : 'text-slate-900'}`}>₹{(bill.amount + (bill.dueEmi || 0) + (bill.penalty || 0) + (bill.annualCharges || 0)).toLocaleString('en-IN')}</p>
                       {(bill.dueEmi || bill.penalty || bill.annualCharges) ? (
                         <p className="text-[8px] text-slate-500 font-bold max-w-[120px] leading-tight">
                           (Spends: {bill.amount.toLocaleString('en-IN')}{bill.dueEmi ? ` + EMI: ${bill.dueEmi}` : ''}{bill.penalty ? ` + Penalty: ${bill.penalty}` : ''}{bill.annualCharges ? ` + AMC: ${bill.annualCharges}` : ''})
@@ -649,7 +649,7 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [], bankAccounts =
                       {bill.isPaid && bill.paidDate && <p className="text-xs text-emerald-600 font-bold mt-0.5">Paid {bill.paidDate}</p>}
                     </div>
                     {!locked && (
-                      <button onClick={() => handleMarkPaidClick(bill)} className={`px-2.5 py-1 rounded-md text-xs font-bold cursor-pointer transition-all ${bill.isPaid ? 'bg-emerald-100 text-emerald-700 hover:bg-red-100 hover:text-red-700' : 'bg-indigo-600 text-white hover:bg-indigo-700'}`}>
+                      <button onClick={() => handleMarkPaidClick(bill)} className={`px-2.5 py-1 rounded-md text-xs font-medium cursor-pointer transition-colors ${bill.isPaid ? 'bg-slate-100 text-slate-700 hover:bg-rose-50 hover:text-rose-700' : 'bg-slate-900 text-white hover:bg-slate-800'}`}>
                         {bill.isPaid ? 'Unpay' : 'Mark Paid'}
                       </button>
                     )}
@@ -659,7 +659,7 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [], bankAccounts =
                       </div>
                     ) : (
                       <>
-                        <button onClick={() => fillCardForm(bill)} className="p-1.5 text-slate-500 hover:text-indigo-600 hover:bg-slate-100 rounded cursor-pointer"><Edit2 size={14} /></button>
+                        <button onClick={() => fillCardForm(bill)} className="p-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-100 rounded cursor-pointer"><Edit2 size={14} /></button>
                         <button onClick={() => handleDeleteCard(bill.id)} className="p-1.5 text-slate-500 hover:text-red-600 hover:bg-red-50 rounded cursor-pointer"><Trash2 size={14} /></button>
                       </>
                     )}
@@ -678,7 +678,7 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [], bankAccounts =
             <div className="bg-white border border-dashed border-slate-200 rounded-md py-16 text-center">
               <TrendingDown size={40} className="mx-auto mb-3 text-slate-300" />
               <p className="text-slate-500 font-medium text-sm">No active EMIs tracked yet.</p>
-              <button onClick={() => setShowAddEmi(true)} className="mt-3 text-indigo-600 font-bold text-xs hover:underline cursor-pointer">+ Add your first EMI</button>
+              <button onClick={() => setShowAddEmi(true)} className="mt-3 text-slate-900 font-bold text-xs hover:underline cursor-pointer">+ Add your first EMI</button>
             </div>
           ) : (
             emis.map(emi => {
@@ -711,14 +711,14 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [], bankAccounts =
                               {emi.loanType}
                             </span>
                           )}
-                          {isComplete && <span className="text-xs font-black bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full shrink-0">COMPLETE ✓</span>}
+                          {isComplete && <span className="text-xs font-semibold bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full shrink-0">COMPLETE ✓</span>}
                         </div>
                         
                         {(emi.bank || emi.loanNumber) && (
                           <p className="text-xs text-slate-700 mb-2 font-medium flex flex-wrap gap-1">
                             {emi.bank && <span>{emi.bank}</span>}
                             {emi.bank && emi.loanNumber && <span>•</span>}
-                            {emi.loanNumber && <span className="font-mono text-slate-500">A/C: {emi.loanNumber}</span>}
+                            {emi.loanNumber && <span className="font-mono tabular-nums text-slate-500">A/C: {emi.loanNumber}</span>}
                           </p>
                         )}
                         
@@ -737,15 +737,15 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [], bankAccounts =
                     <div className="grid grid-cols-3 gap-2 text-center">
                       <div className="bg-slate-50 rounded-md p-2.5">
                         <p className="text-xs font-bold text-slate-500 capitalize">{emi.frequency || 'Monthly'}</p>
-                        <p className="font-black text-slate-800 text-sm font-mono">₹{emi.emiAmount.toLocaleString()}</p>
+                        <p className="font-semibold text-slate-800 text-sm font-mono tabular-nums">₹{emi.emiAmount.toLocaleString()}</p>
                       </div>
                       <div className="bg-slate-50 rounded-md p-2.5">
                         <p className="text-xs font-bold text-slate-500 capitalize">Paid</p>
-                        <p className="font-black text-emerald-600 text-sm font-mono">₹{amountPaid.toLocaleString()}</p>
+                        <p className="font-semibold text-emerald-600 text-sm font-mono tabular-nums">₹{amountPaid.toLocaleString()}</p>
                       </div>
                       <div className="bg-slate-50 rounded-md p-2.5">
                         <p className="text-xs font-bold text-slate-500 capitalize">Remaining</p>
-                        <p className="font-black text-red-500 text-sm font-mono">₹{amountLeft.toLocaleString()}</p>
+                        <p className="font-semibold text-red-500 text-sm font-mono tabular-nums">₹{amountLeft.toLocaleString()}</p>
                       </div>
                     </div>
 
@@ -771,7 +771,7 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [], bankAccounts =
                       <div className="flex justify-between items-center">
                         <button 
                           onClick={() => setExpandedHistoryEmiId(expandedHistoryEmiId === emi.id ? null : emi.id)} 
-                          className="text-indigo-600 hover:text-indigo-700 font-bold text-xs cursor-pointer flex items-center gap-1"
+                          className="text-slate-900 hover:text-slate-900 font-bold text-xs cursor-pointer flex items-center gap-1"
                         >
                           {expandedHistoryEmiId === emi.id ? 'Hide History' : 'View History'}
                         </button>
@@ -783,13 +783,13 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [], bankAccounts =
                             </div>
                           ) : (
                             <>
-                              <button onClick={() => fillEmiForm(emi)} className="p-1.5 text-slate-500 hover:text-indigo-600 hover:bg-slate-100 rounded cursor-pointer"><Edit2 size={14} /></button>
+                              <button onClick={() => fillEmiForm(emi)} className="p-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-100 rounded cursor-pointer"><Edit2 size={14} /></button>
                               <button onClick={() => handleDeleteEmi(emi.id)} className="p-1.5 text-slate-500 hover:text-red-600 hover:bg-red-50 rounded cursor-pointer"><Trash2 size={14} /></button>
                             </>
                           )}
                           
                           {!locked && !isComplete && (
-                            <button onClick={() => handlePayEmiClick(emi)} className="px-3 py-1 bg-indigo-600 hover:bg-indigo-700 text-white rounded text-xs font-bold cursor-pointer transition-colors whitespace-nowrap">
+                            <button onClick={() => handlePayEmiClick(emi)} className="px-3 py-1 bg-slate-900 hover:bg-slate-800 text-white rounded-md text-xs font-medium cursor-pointer transition-colors whitespace-nowrap">
                               Pay Installment
                             </button>
                           )}
@@ -814,7 +814,7 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [], bankAccounts =
                                     <div>
                                       <p className="text-xs font-bold text-slate-700">{new Date(log.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</p>
                                     </div>
-                                    <p className="font-mono font-bold text-xs text-emerald-600">₹{log.amount.toLocaleString('en-IN')}</p>
+                                    <p className="font-mono tabular-nums font-bold text-xs text-emerald-600">₹{log.amount.toLocaleString('en-IN')}</p>
                                   </div>
                                 ))
                               )}

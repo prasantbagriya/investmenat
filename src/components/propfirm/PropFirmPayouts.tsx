@@ -266,22 +266,22 @@ export default function PropFirmPayouts({ payouts, accounts, bankAccounts = [], 
     <div className="space-y-3">
       <div className="flex flex-row justify-between items-center gap-3 px-1 mb-2">
         <div>
-          <p className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center">
+          <p className="text-xl sm:text-2xl font-semibold text-slate-900 tracking-tight flex items-center">
             Payouts & Certs
           </p>
           <p className="text-xs text-slate-500 font-bold mt-0.5">Record your prop firm payouts and certificates</p>
         </div>
         <button
           onClick={openAddModal}
-          className="flex items-center gap-2 px-3 py-1.5 bg-slate-900 text-white rounded-lg font-bold hover:bg-slate-800 transition-colors shadow-sm text-xs cursor-pointer whitespace-nowrap"
+          className="flex items-center gap-2 px-3 py-1.5 bg-slate-900 text-white rounded-xl font-medium hover:bg-slate-800 active:bg-slate-950 transition-colors shadow-sm text-xs cursor-pointer whitespace-nowrap"
         >
           <Plus size={14} />
           <span>Add Payout</span>
         </button>
       </div>
 
-      <div className="bg-white rounded-lg border border-slate-150 shadow-sm overflow-hidden">
-        <div className="px-3 py-2 border-b border-slate-150 flex justify-between items-center bg-slate-50/45 gap-4">
+      <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
+        <div className="px-3 py-2 border-b border-slate-200 flex justify-between items-center bg-slate-50/45 gap-4">
           <span className="text-xs font-bold text-slate-700 capitalize shrink-0">
             Payout History ({payouts.length})
           </span>
@@ -295,16 +295,16 @@ export default function PropFirmPayouts({ payouts, accounts, bankAccounts = [], 
             />
             <button 
               onClick={() => setIsFiltersOpen(!isFiltersOpen)}
-              className={`flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg font-bold text-xs cursor-pointer transition-all border whitespace-nowrap shrink-0 ${isFiltersOpen ? 'bg-indigo-50 text-indigo-700 border-indigo-200' : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border-slate-200'}`}
+              className={`flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg font-bold text-xs cursor-pointer transition-all border whitespace-nowrap shrink-0 ${isFiltersOpen ? 'bg-slate-100 text-slate-900 border-slate-200' : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border-slate-200'}`}
             >
-              <Filter size={14} className={isFiltersOpen ? "text-indigo-600" : "text-slate-500"} /> 
+              <Filter size={14} className={isFiltersOpen ? "text-slate-900" : "text-slate-500"} /> 
               Filters
             </button>
           </div>
         </div>
 
         {isFiltersOpen && (
-          <div className="bg-slate-50 border-b border-slate-150 p-4">
+          <div className="bg-slate-50 border-b border-slate-200 p-4">
             <div className="flex flex-col gap-3">
               <span className="font-bold text-slate-800 text-xs ">Active Filters</span>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
@@ -358,7 +358,7 @@ export default function PropFirmPayouts({ payouts, accounts, bankAccounts = [], 
         )}
 
         {payouts.length === 0 ? (
-          <div className="p-8 text-center text-slate-450 bg-white text-xs">
+          <div className="p-8 text-center text-slate-400 bg-white text-xs">
             <Landmark size={32} className="mx-auto mb-2 opacity-20" />
             <p>No payouts recorded yet.</p>
           </div>
@@ -370,12 +370,12 @@ export default function PropFirmPayouts({ payouts, accounts, bankAccounts = [], 
                   <th className="p-2 px-3 whitespace-nowrap">Firm / Acc</th>
                   <th className="p-2 whitespace-nowrap">Status</th>
                   <th className="p-2 whitespace-nowrap">Amount</th>
-                  <th className="p-2 font-mono whitespace-nowrap">Date</th>
+                  <th className="p-2 font-mono tabular-nums whitespace-nowrap">Date</th>
                   <th className="p-2 whitespace-nowrap">Proofs / Notes</th>
                   <th className="p-2 text-right whitespace-nowrap">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 text-slate-750 ">
+              <tbody className="divide-y divide-slate-100 text-slate-700 ">
                 {[...payouts].sort((a, b) => new Date(b.payoutDate).getTime() - new Date(a.payoutDate).getTime()).filter(p => {
                   if (filterFirm !== 'all' && p.firmName !== filterFirm) return false;
                   if (filterStatus !== 'all' && p.status !== filterStatus) return false;
@@ -390,7 +390,7 @@ export default function PropFirmPayouts({ payouts, accounts, bankAccounts = [], 
                 }).slice(0, (showAll || searchQuery || filterFirm !== 'all' || filterStatus !== 'all' || filterStartDate || filterEndDate) ? undefined : 10).map(p => (
                   <tr key={p.id} className="">
                     <td className="p-2 px-3 whitespace-nowrap">
-                      <div className="font-extrabold text-slate-800">{p.firmName}</div>
+                      <div className="font-semibold text-slate-800">{p.firmName}</div>
                       {p.accountId && (
                         <div className="text-xs text-slate-500 font-bold mt-0.5">
                           Acc: {accounts.find(a => a.id === p.accountId)?.accountName || p.accountId.substring(0,6)}
@@ -406,10 +406,10 @@ export default function PropFirmPayouts({ payouts, accounts, bankAccounts = [], 
                         {p.status}
                       </span>
                     </td>
-                    <td className="p-2 font-bold font-mono text-xs text-emerald-600 whitespace-nowrap">
+                    <td className="p-2 font-bold font-mono tabular-nums text-xs text-emerald-600 whitespace-nowrap">
                       ${p.amount.toLocaleString()}
                     </td>
-                    <td className="p-2 text-slate-500 font-mono text-xs whitespace-nowrap">
+                    <td className="p-2 text-slate-500 font-mono tabular-nums text-xs whitespace-nowrap">
                       {p.payoutDate}
                     </td>
                     <td className="p-2 text-slate-500 whitespace-nowrap">
@@ -479,7 +479,7 @@ export default function PropFirmPayouts({ payouts, accounts, bankAccounts = [], 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-bold text-slate-500 capitalize mb-1">Amount ($)</label>
-                    <input required type="number" step="0.01" value={amount} onChange={e => setAmount(e.target.value ? Number(e.target.value) : '')} className="w-full p-2 border border-slate-200 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-slate-900 font-medium font-black text-emerald-600" placeholder="5000" />
+                    <input required type="number" step="0.01" value={amount} onChange={e => setAmount(e.target.value ? Number(e.target.value) : '')} className="w-full p-2 border border-slate-200 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-slate-900 font-medium font-semibold text-emerald-600" placeholder="5000" />
                   </div>
                   <div>
                     <label className="block text-xs font-bold text-slate-500 capitalize mb-1">Payout Date</label>
@@ -497,8 +497,8 @@ export default function PropFirmPayouts({ payouts, accounts, bankAccounts = [], 
                 </div>
 
                 {status === 'Paid' && (
-                  <div className="p-3 bg-slate-50 border border-slate-150 rounded-xl space-y-3 mt-2">
-                    <h4 className="text-xs font-black text-slate-700 capitalize ">Payment Processing</h4>
+                  <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-3 mt-2">
+                    <h4 className="text-xs font-semibold text-slate-700 capitalize ">Payment Processing</h4>
                     
                     <div>
                       <label className="block text-xs font-bold text-slate-500 capitalize mb-1">Received Via</label>
@@ -560,7 +560,7 @@ export default function PropFirmPayouts({ payouts, accounts, bankAccounts = [], 
                           </div>
                           <div>
                             <label className="block text-xs font-bold text-slate-500 capitalize mb-1">Final Amount (INR)</label>
-                            <div className="w-full p-1.5 bg-slate-100 border border-slate-200 rounded-lg font-black text-slate-700 text-sm">
+                            <div className="w-full p-1.5 bg-slate-100 border border-slate-200 rounded-lg font-semibold text-slate-700 text-sm">
                                ₹ {((Number(amount) || 0) * (Number(exchangeRate) || 0)).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                             </div>
                           </div>
@@ -569,14 +569,14 @@ export default function PropFirmPayouts({ payouts, accounts, bankAccounts = [], 
                         payoutMethod === 'Direct Bank' ? (
                           <div>
                             <label className="block text-xs font-bold text-slate-500 capitalize mb-1">Final Amount Logged</label>
-                            <div className="w-full p-1.5 bg-slate-100 border border-slate-200 rounded-lg font-black text-slate-700 text-sm">
+                            <div className="w-full p-1.5 bg-slate-100 border border-slate-200 rounded-lg font-semibold text-slate-700 text-sm">
                                {Number(amount).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} (Exact amount entered)
                             </div>
                           </div>
                         ) : isUsdWallet ? (
                           <div>
                             <label className="block text-xs font-bold text-slate-500 capitalize mb-1">Amount Deposited to Wallet</label>
-                            <div className="w-full p-1.5 bg-slate-100 border border-slate-200 rounded-lg font-black text-emerald-700 text-sm">
+                            <div className="w-full p-1.5 bg-slate-100 border border-slate-200 rounded-lg font-semibold text-emerald-700 text-sm">
                                {Number(amount).toLocaleString()} {selectedBank.currency}
                             </div>
                           </div>
@@ -601,7 +601,7 @@ export default function PropFirmPayouts({ payouts, accounts, bankAccounts = [], 
                 
                 <div className="pt-4 border-t border-slate-100 flex gap-2 justify-end shrink-0 sticky bottom-0 bg-white">
                   <button type="button" onClick={() => setIsModalOpen(false)} className="px-4 py-2 font-bold text-slate-600 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer">Cancel</button>
-                  <button type="submit" disabled={isSaving} className="px-4 py-2 font-bold bg-slate-900 text-white hover:bg-slate-800 disabled:opacity-60 disabled:cursor-not-allowed rounded-lg transition-colors shadow-sm flex items-center gap-2 cursor-pointer">
+                  <button type="submit" disabled={isSaving} className="px-4 py-2 font-medium bg-slate-900 text-white hover:bg-slate-800 active:bg-slate-950 disabled:opacity-60 disabled:cursor-not-allowed rounded-xl transition-colors shadow-sm flex items-center gap-2 cursor-pointer">
                     {isSaving ? <span className="text-xs">Saving...</span> : <><CheckCircle size={16} />Save</>}
                   </button>
                 </div>

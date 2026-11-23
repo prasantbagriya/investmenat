@@ -421,71 +421,73 @@ export default function SettingsManager({
   ];
 
   return (
-    <div className="bg-white border border-slate-200/90 rounded-xl p-3 sm:p-4 shadow-xs w-full space-y-4" id="settings-manager-panel">
+    <div className="bg-white border border-slate-200 rounded-xl p-4 sm:p-5 w-full space-y-5" id="settings-manager-panel">
       
       {/* Settings Header */}
-      <div className="flex justify-between items-center pb-2 border-b border-slate-100">
-        <div className="flex items-center gap-1">
-          <div className="p-1 bg-slate-900 text-white rounded-lg">
-            <Settings size={26} />
+      <div className="flex justify-between items-center pb-3 border-b border-slate-100">
+        <div className="flex items-center gap-2">
+          <div className="p-2 bg-slate-900 text-white rounded-lg">
+            <Settings size={20} />
           </div>
           <div>
-            <h2 className="text-base font-extrabold text-slate-900 tracking-tight">App settings & core links</h2>
-            <p className="text-xs text-slate-600 mt-0.5">Central integrations & Google authorization console</p>
+            <h2 className="text-base font-semibold text-slate-900">App settings & integrations</h2>
+            <p className="text-xs text-slate-500 mt-0.5">Connected services and Google authorization</p>
           </div>
         </div>
-        <div className="text-right hidden md:block bg-slate-50 border border-slate-100 px-3 py-1.5 rounded-xl">
-          <div className="text-xs font-extrabold text-slate-800 flex items-center gap-1.5 justify-end">
-            <Users size={12} className="text-teal-600" />
+        <div className="text-right hidden md:block bg-slate-50 border border-slate-200/60 px-3 py-1.5 rounded-lg">
+          <div className="text-xs font-semibold text-slate-800 flex items-center gap-1.5 justify-end">
+            <Users size={12} className="text-slate-500" />
             {user?.displayName || 'Authorized User'}
           </div>
-          <div className="text-xs font-mono text-slate-700 mt-0.5">{user?.email || 'No email linked'}</div>
+          <div className="text-xs font-mono tabular-nums text-slate-500 mt-0.5">{user?.email || 'No email linked'}</div>
         </div>
       </div>
 
       {/* GOOGLE INTEGRATIONS LIST */}
-      <div className="mt-4 border-t border-slate-200 pt-4">
-        <div className="flex items-center gap-2 mb-3">
-          <h3 className="text-sm font-extrabold text-slate-900">Google Workspace integrations</h3>
-          <span className="bg-slate-100 text-slate-700 text-xs font-semibold px-2.5 py-0.5 rounded-full">
-            {serviceConfigs.length} modules
-          </span>
+      <div>
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center gap-2">
+            <h3 className="text-sm font-semibold text-slate-900">Google Workspace integrations</h3>
+            <span className="bg-slate-100 text-slate-600 text-xs font-medium px-2 py-0.5 rounded-full font-mono tabular-nums">
+              {serviceConfigs.length} modules
+            </span>
+          </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {serviceConfigs.map((config) => (
-            <div key={config.id} className="bg-slate-50 border border-slate-100 rounded-lg p-3 flex flex-col justify-between hover:border-slate-200 hover:bg-white transition-all hover:shadow-xs">
+            <div key={config.id} className="bg-white border border-slate-200 rounded-lg p-3.5 flex flex-col justify-between hover:border-slate-300 transition-colors">
               <div>
                 <div className="flex justify-between items-start mb-2">
-                  <div className={`p-2 rounded-xl bg-${config.themeColor}-100 text-${config.themeColor}-600`}>
-                    <config.icon size={18} />
+                  <div className="p-1.5 rounded-md bg-slate-100 text-slate-700">
+                    <config.icon size={16} />
                   </div>
                   {isLinked(config.id) ? (
-                    <span className="flex items-center gap-1 text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-lg">
+                    <span className="flex items-center gap-1 text-xs font-medium text-emerald-700 bg-emerald-50 border border-emerald-200/50 px-2 py-0.5 rounded-md">
                       <Check size={12} /> Connected
                     </span>
                   ) : (
-                    <span className="text-xs font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-lg">
+                    <span className="text-xs font-medium text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md">
                       Disconnected
                     </span>
                   )}
                 </div>
-                <h4 className="text-sm font-bold text-slate-900">{config.name}</h4>
-                <p className="text-xs font-medium text-slate-600 mt-0.5 mb-2">{config.category}</p>
-                <p className="text-xs text-slate-600 leading-relaxed mb-3">{config.description}</p>
+                <h4 className="text-sm font-semibold text-slate-900">{config.name}</h4>
+                <p className="text-xs text-slate-500 mt-0.5 mb-2">{config.category}</p>
+                {config.description && <p className="text-xs text-slate-600 leading-relaxed mb-3">{config.description}</p>}
               </div>
               
-              <div className="pt-2 border-t border-slate-200 flex items-center justify-between mt-auto">
+              <div className="pt-2.5 border-t border-slate-100 flex items-center justify-between mt-auto">
                 {isLinked(config.id) ? (
                   <>
                     <button
                       onClick={() => onNavigateToTab(config.tabName)}
-                      className="text-xs font-bold text-indigo-600 hover:text-indigo-700 flex items-center gap-1"
+                      className="text-xs font-medium text-slate-900 hover:text-slate-700 flex items-center gap-1"
                     >
-                      <ExternalLink size={12} /> Open Tool
+                      <ExternalLink size={12} /> Open tool
                     </button>
                     <button
                       onClick={() => handleUnlink(config.id)}
-                      className="text-xs font-bold text-red-500 hover:text-red-600 flex items-center gap-1"
+                      className="text-xs font-medium text-rose-600 hover:text-rose-700 flex items-center gap-1"
                     >
                       <Trash2 size={12} /> Disconnect
                     </button>
@@ -493,9 +495,9 @@ export default function SettingsManager({
                 ) : (
                   <button
                     onClick={() => handleOAuthLogin(config.id)}
-                    className="w-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold py-2 rounded-xl transition-colors flex items-center justify-center gap-1.5"
+                    className="w-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-medium py-1.5 rounded-lg transition-colors flex items-center justify-center gap-1.5"
                   >
-                    <AlertCircle size={14} /> Connect via Google auth
+                    <AlertCircle size={14} /> Connect via Google
                   </button>
                 )}
               </div>

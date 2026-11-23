@@ -74,7 +74,7 @@ export default function GooglePicker({ onSelect, apiKey, label = "Pick File from
     <button
       type="button"
       onClick={handleOpenPicker}
-      className="flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white font-bold py-1.5 px-3 rounded-lg text-xs cursor-pointer transition-colors shadow-sm"
+      className="flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium py-1.5 px-3 rounded-xl text-xs cursor-pointer transition-colors shadow-sm"
     >
       <FolderOpen size={14} /> {label}
     </button>

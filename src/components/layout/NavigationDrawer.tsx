@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { 
   X, LayoutDashboard, ArrowLeftRight, Clock, Target, Sliders, 
   Bell, Users, Briefcase, Settings, TrendingUp, CalendarRange, 
-  Landmark, Percent, Repeat, BarChart3, Activity, Wallet, ShieldCheck,
+  Landmark, Percent, BarChart3, Activity, Wallet, ShieldCheck,
   Fingerprint, Building2, Receipt, Link as LinkIcon
 } from 'lucide-react';
 
@@ -22,8 +22,7 @@ export default function NavigationDrawer({
   onClose,
   currentWorkspace,
   setCurrentWorkspace,
-  activeTab,
-  setActiveTab
+  activeTab
 }: NavigationDrawerProps) {
   const navigate = useNavigate();
 
@@ -41,7 +40,7 @@ export default function NavigationDrawer({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[200] lg:hidden"
+            className="fixed inset-0 bg-slate-900/40 backdrop-blur-xs z-[200] lg:hidden"
           />
 
           {/* Slide Over Panel (Left) */}
@@ -49,17 +48,18 @@ export default function NavigationDrawer({
             initial={{ x: '-100%' }}
             animate={{ x: 0 }}
             exit={{ x: '-100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed top-0 left-0 h-full w-64 bg-slate-50 shadow-2xl z-[200] flex flex-col border-r border-slate-200"
+            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed top-0 left-0 h-full w-64 bg-white shadow-xl z-[200] flex flex-col border-r border-slate-200"
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-4 bg-white border-b border-slate-200 shrink-0">
-              <h2 className="font-extrabold text-slate-800 text-lg ">Navigation</h2>
+            <div className="flex items-center justify-between p-4 border-b border-slate-200 shrink-0">
+              <span className="font-semibold text-slate-900 text-sm">Navigation</span>
               <button 
                 onClick={onClose}
-                className="p-1.5 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer"
+                className="p-1.5 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-xl transition-colors cursor-pointer"
+                aria-label="Close Navigation"
               >
-                <X size={20} />
+                <X size={16} />
               </button>
             </div>
 
@@ -68,22 +68,22 @@ export default function NavigationDrawer({
               
               {/* Workspace Switcher */}
               <div className="space-y-2">
-                <p className="text-xs font-bold text-slate-500 capitalize ">Workspace</p>
-                <div className="flex flex-col gap-2">
+                <p className="text-xs font-medium text-slate-500">Workspaces</p>
+                <div className="flex flex-col gap-1">
                   <button
                     onClick={() => {
                       navigate('/dashboard');
                       setCurrentWorkspace('ledger');
                       handleTabClick();
                     }}
-                    className={`flex items-center gap-3 p-3 rounded-xl text-sm font-bold transition-all cursor-pointer ${
+                    className={`flex items-center gap-2.5 p-2 rounded-lg text-xs font-medium transition-colors cursor-pointer text-left ${
                       currentWorkspace === 'ledger'
-                        ? 'bg-slate-900 text-white shadow-md'
-                        : 'bg-white border border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-50'
+                        ? 'bg-slate-900 text-white'
+                        : 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200'
                     }`}
                   >
-                    <ArrowLeftRight size={18} className={currentWorkspace === 'ledger' ? 'text-emerald-400' : 'text-slate-500'} />
-                    Ledger Space
+                    <ArrowLeftRight size={14} className={currentWorkspace === 'ledger' ? 'text-emerald-400' : 'text-slate-400'} />
+                    <span>Ledger Space</span>
                   </button>
                   
                   <button
@@ -92,14 +92,14 @@ export default function NavigationDrawer({
                       setCurrentWorkspace('investmant');
                       handleTabClick();
                     }}
-                    className={`flex items-center gap-3 p-3 rounded-xl text-sm font-bold transition-all cursor-pointer ${
+                    className={`flex items-center gap-2.5 p-2 rounded-lg text-xs font-medium transition-colors cursor-pointer text-left ${
                       currentWorkspace === 'investmant'
-                        ? 'bg-slate-900 text-white shadow-md'
-                        : 'bg-white border border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-50'
+                        ? 'bg-slate-900 text-white'
+                        : 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200'
                     }`}
                   >
-                    <TrendingUp size={18} className={currentWorkspace === 'investmant' ? 'text-emerald-400' : 'text-slate-500'} />
-                    InvestMant Space
+                    <TrendingUp size={14} className={currentWorkspace === 'investmant' ? 'text-emerald-400' : 'text-slate-400'} />
+                    <span>InvestMant Portfolio</span>
                   </button>
 
                   <button
@@ -108,14 +108,14 @@ export default function NavigationDrawer({
                       setCurrentWorkspace('research');
                       handleTabClick();
                     }}
-                    className={`flex items-center gap-3 p-3 rounded-xl text-sm font-bold transition-all cursor-pointer ${
+                    className={`flex items-center gap-2.5 p-2 rounded-lg text-xs font-medium transition-colors cursor-pointer text-left ${
                       currentWorkspace === 'research'
-                        ? 'bg-slate-900 text-white shadow-md'
-                        : 'bg-white border border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-50'
+                        ? 'bg-slate-900 text-white'
+                        : 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200'
                     }`}
                   >
-                    <Activity size={18} className={currentWorkspace === 'research' ? 'text-indigo-400' : 'text-slate-500'} />
-                    Research Terminal
+                    <Activity size={14} className={currentWorkspace === 'research' ? 'text-emerald-400' : 'text-slate-400'} />
+                    <span>Research Terminal</span>
                   </button>
 
                   <button
@@ -124,30 +124,30 @@ export default function NavigationDrawer({
                       setCurrentWorkspace('crypto');
                       handleTabClick();
                     }}
-                    className={`flex items-center gap-3 p-3 rounded-xl text-sm font-bold transition-all cursor-pointer ${
+                    className={`flex items-center gap-2.5 p-2 rounded-lg text-xs font-medium transition-colors cursor-pointer text-left ${
                       currentWorkspace === 'crypto'
-                        ? 'bg-slate-900 text-white shadow-md'
-                        : 'bg-white border border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-50'
+                        ? 'bg-slate-900 text-white'
+                        : 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200'
                     }`}
                   >
-                    <Wallet size={18} className={currentWorkspace === 'crypto' ? 'text-purple-400' : 'text-slate-500'} />
-                    Crypto Space
+                    <Wallet size={14} className={currentWorkspace === 'crypto' ? 'text-emerald-400' : 'text-slate-400'} />
+                    <span>Crypto Space</span>
                   </button>
 
                   <button
                     onClick={() => {
-                      navigate('/quicko');
+                      navigate('/quicko-kyc');
                       setCurrentWorkspace('quicko');
                       handleTabClick();
                     }}
-                    className={`flex items-center gap-3 p-3 rounded-xl text-sm font-bold transition-all cursor-pointer ${
+                    className={`flex items-center gap-2.5 p-2 rounded-lg text-xs font-medium transition-colors cursor-pointer text-left ${
                       currentWorkspace === 'quicko'
-                        ? 'bg-slate-900 text-white shadow-md'
-                        : 'bg-white border border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-50'
+                        ? 'bg-slate-900 text-white'
+                        : 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200'
                     }`}
                   >
-                    <ShieldCheck size={18} className={currentWorkspace === 'quicko' ? 'text-blue-400' : 'text-slate-500'} />
-                    Quicko Hub
+                    <ShieldCheck size={14} className={currentWorkspace === 'quicko' ? 'text-emerald-400' : 'text-slate-400'} />
+                    <span>Quicko Hub</span>
                   </button>
 
                   <button
@@ -156,86 +156,86 @@ export default function NavigationDrawer({
                       setCurrentWorkspace('propfirm');
                       handleTabClick();
                     }}
-                    className={`flex items-center gap-3 p-3 rounded-xl text-sm font-bold transition-all cursor-pointer ${
+                    className={`flex items-center gap-2.5 p-2 rounded-lg text-xs font-medium transition-colors cursor-pointer text-left ${
                       currentWorkspace === 'propfirm'
-                        ? 'bg-slate-900 text-white shadow-md'
-                        : 'bg-white border border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-50'
+                        ? 'bg-slate-900 text-white'
+                        : 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200'
                     }`}
                   >
-                    <Target size={18} className={currentWorkspace === 'propfirm' ? 'text-amber-400' : 'text-slate-500'} />
-                    Prop Firm Space
+                    <Target size={14} className={currentWorkspace === 'propfirm' ? 'text-emerald-400' : 'text-slate-400'} />
+                    <span>Prop Firm Space</span>
                   </button>
                 </div>
               </div>
 
               {/* Page Links */}
               <div className="space-y-2">
-                <p className="text-xs font-bold text-slate-500 capitalize ">Pages</p>
-                <div className="flex flex-col gap-1">
+                <p className="text-xs font-medium text-slate-500">Pages</p>
+                <div className="flex flex-col gap-0.5">
                   {currentWorkspace === 'ledger' ? (
                     <>
-                      <NavButton active={activeTab === 'dashboard'} onClick={handleTabClick} to="/dashboard" icon={<LayoutDashboard size={16} />} label="Dashboard" />
-                      <NavButton active={activeTab === 'analytics'} onClick={handleTabClick} to="/analytics" icon={<Activity size={16} className="text-indigo-500" />} label="AI Analytics" />
-                      <NavButton active={activeTab === 'bank-profiles'} onClick={handleTabClick} to="/bank-profiles" icon={<Landmark size={16} className="text-indigo-500" />} label="Bank Profiles" />
-                      <NavButton active={activeTab === 'assets'} onClick={handleTabClick} to="/assets" icon={<Landmark size={16} className="text-yellow-500" />} label="Physical Assets" />
-                      <NavButton active={activeTab === 'pending'} onClick={handleTabClick} to="/pending" icon={<Clock size={16} />} label="Len Den (Khata)" />
-                      <NavButton active={activeTab === 'credit-cards'} onClick={handleTabClick} to="/credit-cards" icon={<Briefcase size={16} />} label="Credit Cards & EMIs" />
-                      <NavButton active={activeTab === 'savings'} onClick={handleTabClick} to="/savings" icon={<Target size={16} />} label="Goals" />
-                      <NavButton active={activeTab === 'forecaster'} onClick={handleTabClick} to="/forecaster" icon={<TrendingUp size={16} className="text-emerald-500" />} label="Wealth Forecaster" />
-                      <NavButton active={activeTab === 'budgets'} onClick={handleTabClick} to="/budgets" icon={<Sliders size={16} />} label="Budgets" />
-                      <NavButton active={activeTab === 'tasks'} onClick={handleTabClick} to="/tasks" icon={<Bell size={16} />} label="Reminders" />
-                      <NavButton active={activeTab === 'contacts'} onClick={handleTabClick} to="/contacts" icon={<Users size={16} />} label="Contacts Sync" />
-                      <NavButton active={activeTab === 'workspace'} onClick={handleTabClick} to="/workspace" icon={<Briefcase size={16} className="text-teal-500" />} label="Workspace Suite" isSuite />
-                      <NavButton active={activeTab === 'settings'} onClick={handleTabClick} to="/settings" icon={<Settings size={16} />} label="Settings & Links" />
+                      <NavButton active={activeTab === 'dashboard'} onClick={handleTabClick} to="/dashboard" icon={<LayoutDashboard size={15} />} label="Dashboard" />
+                      <NavButton active={activeTab === 'analytics'} onClick={handleTabClick} to="/analytics" icon={<Activity size={15} />} label="AI Analytics" />
+                      <NavButton active={activeTab === 'bank-profiles'} onClick={handleTabClick} to="/bank-profiles" icon={<Landmark size={15} />} label="Bank Profiles" />
+                      <NavButton active={activeTab === 'assets'} onClick={handleTabClick} to="/assets" icon={<Landmark size={15} />} label="Physical Assets" />
+                      <NavButton active={activeTab === 'pending'} onClick={handleTabClick} to="/pending" icon={<Clock size={15} />} label="Len Den (Khata)" />
+                      <NavButton active={activeTab === 'credit-cards'} onClick={handleTabClick} to="/credit-cards" icon={<Briefcase size={15} />} label="Credit Cards & EMIs" />
+                      <NavButton active={activeTab === 'savings'} onClick={handleTabClick} to="/savings" icon={<Target size={15} />} label="Goals" />
+                      <NavButton active={activeTab === 'forecaster'} onClick={handleTabClick} to="/forecaster" icon={<TrendingUp size={15} />} label="Wealth Forecaster" />
+                      <NavButton active={activeTab === 'budgets'} onClick={handleTabClick} to="/budgets" icon={<Sliders size={15} />} label="Budgets" />
+                      <NavButton active={activeTab === 'tasks'} onClick={handleTabClick} to="/tasks" icon={<Bell size={15} />} label="Reminders" />
+                      <NavButton active={activeTab === 'contacts'} onClick={handleTabClick} to="/contacts" icon={<Users size={15} />} label="Contacts Sync" />
+                      <NavButton active={activeTab === 'workspace'} onClick={handleTabClick} to="/workspace" icon={<Briefcase size={15} />} label="Workspace Suite" isSuite />
+                      <NavButton active={activeTab === 'settings'} onClick={handleTabClick} to="/settings" icon={<Settings size={15} />} label="Settings & Links" />
                     </>
                   ) : currentWorkspace === 'investmant' ? (
                     <>
-                      <NavButton active={activeTab === 'portfolio'} onClick={handleTabClick} to="/portfolio" icon={<TrendingUp size={16} />} label="Stock & MFs" />
-                      <NavButton active={activeTab === 'sips'} onClick={handleTabClick} to="/sips" icon={<CalendarRange size={16} />} label="Active SIPs" />
-                      <NavButton active={activeTab === 'fds'} onClick={handleTabClick} to="/fds" icon={<Landmark size={16} />} label="FD/RD Lockers" />
-                      <NavButton active={activeTab === 'tax'} onClick={handleTabClick} to="/tax" icon={<Percent size={16} />} label="Tax Capital Gains" />
-                      <NavButton active={activeTab === 'brokers'} onClick={handleTabClick} to="/brokers" icon={<ArrowLeftRight size={16} className="text-indigo-500" />} label="Broker Connect" />
-                      <NavButton active={activeTab === 'workspace'} onClick={handleTabClick} to="/workspace" icon={<Briefcase size={16} className="text-teal-500" />} label="Workspace Suite" isSuite />
-                      <NavButton active={activeTab === 'settings'} onClick={handleTabClick} to="/settings" icon={<Settings size={16} />} label="Settings & Links" />
+                      <NavButton active={activeTab === 'portfolio'} onClick={handleTabClick} to="/portfolio" icon={<TrendingUp size={15} />} label="Stock & MFs" />
+                      <NavButton active={activeTab === 'sips'} onClick={handleTabClick} to="/sips" icon={<CalendarRange size={15} />} label="Active SIPs" />
+                      <NavButton active={activeTab === 'fds'} onClick={handleTabClick} to="/fds" icon={<Landmark size={15} />} label="FD/RD Lockers" />
+                      <NavButton active={activeTab === 'tax'} onClick={handleTabClick} to="/tax" icon={<Percent size={15} />} label="Tax Capital Gains" />
+                      <NavButton active={activeTab === 'brokers'} onClick={handleTabClick} to="/brokers" icon={<ArrowLeftRight size={15} />} label="Broker Connect" />
+                      <NavButton active={activeTab === 'workspace'} onClick={handleTabClick} to="/workspace" icon={<Briefcase size={15} />} label="Workspace Suite" isSuite />
+                      <NavButton active={activeTab === 'settings'} onClick={handleTabClick} to="/settings" icon={<Settings size={15} />} label="Settings & Links" />
                     </>
                   ) : currentWorkspace === 'crypto' ? (
                     <>
-                      <NavButton active={activeTab === 'crypto-wallet'} onClick={handleTabClick} to="/crypto-wallet" icon={<Wallet size={16} className="text-purple-500" />} label="Wallet Dashboard" />
-                      <NavButton active={activeTab === 'crypto-send'} onClick={handleTabClick} to="/crypto-send" icon={<Activity size={16} />} label="Send Crypto" />
-                      <NavButton active={activeTab === 'crypto-receive'} onClick={handleTabClick} to="/crypto-receive" icon={<Users size={16} />} label="Receive Crypto" />
-                      <NavButton active={activeTab === 'crypto-security'} onClick={handleTabClick} to="/crypto-security" icon={<Settings size={16} />} label="Security" />
-                      <NavButton active={activeTab === 'workspace'} onClick={handleTabClick} to="/workspace" icon={<Briefcase size={16} className="text-teal-500" />} label="Workspace Suite" isSuite />
-                      <NavButton active={activeTab === 'settings'} onClick={handleTabClick} to="/settings" icon={<Settings size={16} />} label="Settings & Links" />
+                      <NavButton active={activeTab === 'crypto-wallet'} onClick={handleTabClick} to="/crypto-wallet" icon={<Wallet size={15} />} label="Wallet Dashboard" />
+                      <NavButton active={activeTab === 'crypto-send'} onClick={handleTabClick} to="/crypto-send" icon={<Activity size={15} />} label="Send Crypto" />
+                      <NavButton active={activeTab === 'crypto-receive'} onClick={handleTabClick} to="/crypto-receive" icon={<Users size={15} />} label="Receive Crypto" />
+                      <NavButton active={activeTab === 'crypto-security'} onClick={handleTabClick} to="/crypto-security" icon={<Settings size={15} />} label="Security" />
+                      <NavButton active={activeTab === 'workspace'} onClick={handleTabClick} to="/workspace" icon={<Briefcase size={15} />} label="Workspace Suite" isSuite />
+                      <NavButton active={activeTab === 'settings'} onClick={handleTabClick} to="/settings" icon={<Settings size={15} />} label="Settings & Links" />
                     </>
                   ) : currentWorkspace === 'quicko' ? (
                     <>
-                      <NavButton active={activeTab === 'quicko-kyc'} onClick={handleTabClick} to="/quicko-kyc" icon={<ShieldCheck size={16} className="text-blue-500" />} label="PAN Identity & KYC" />
-                      <NavButton active={activeTab === 'quicko-aadhaar'} onClick={handleTabClick} to="/quicko-aadhaar" icon={<Fingerprint size={16} className="text-orange-500" />} label="Aadhaar KYC" />
-                      <NavButton active={activeTab === 'tax'} onClick={handleTabClick} to="/tax" icon={<Percent size={16} className="text-purple-500" />} label="Tax & Planner" />
-                      <NavButton active={activeTab === 'quicko-bank'} onClick={handleTabClick} to="/quicko-bank" icon={<Landmark size={16} className="text-emerald-500" />} label="Bank Penny Drop" />
-                      <NavButton active={activeTab === 'quicko-gstin'} onClick={handleTabClick} to="/quicko-gstin" icon={<Building2 size={16} className="text-rose-500" />} label="GSTIN Search" />
-                      <NavButton active={activeTab === 'quicko-brokerage'} onClick={handleTabClick} to="/quicko-brokerage" icon={<Receipt size={16} className="text-blue-600" />} label="Contract Parser" />
-                      <NavButton active={activeTab === 'quicko-connect'} onClick={handleTabClick} to="/quicko-connect" icon={<LinkIcon size={16} className="text-teal-500" />} label="Quicko Connect" />
-                      <NavButton active={activeTab === 'workspace'} onClick={handleTabClick} to="/workspace" icon={<Briefcase size={16} className="text-teal-500" />} label="Workspace Suite" isSuite />
-                      <NavButton active={activeTab === 'settings'} onClick={handleTabClick} to="/settings" icon={<Settings size={16} />} label="Settings & Links" />
+                      <NavButton active={activeTab === 'quicko-kyc'} onClick={handleTabClick} to="/quicko-kyc" icon={<ShieldCheck size={15} />} label="PAN Identity & KYC" />
+                      <NavButton active={activeTab === 'quicko-aadhaar'} onClick={handleTabClick} to="/quicko-aadhaar" icon={<Fingerprint size={15} />} label="Aadhaar KYC" />
+                      <NavButton active={activeTab === 'tax'} onClick={handleTabClick} to="/tax" icon={<Percent size={15} />} label="Tax & Planner" />
+                      <NavButton active={activeTab === 'quicko-bank'} onClick={handleTabClick} to="/quicko-bank" icon={<Landmark size={15} />} label="Bank Penny Drop" />
+                      <NavButton active={activeTab === 'quicko-gstin'} onClick={handleTabClick} to="/quicko-gstin" icon={<Building2 size={15} />} label="GSTIN Search" />
+                      <NavButton active={activeTab === 'quicko-brokerage'} onClick={handleTabClick} to="/quicko-brokerage" icon={<Receipt size={15} />} label="Contract Parser" />
+                      <NavButton active={activeTab === 'quicko-connect'} onClick={handleTabClick} to="/quicko-connect" icon={<LinkIcon size={15} />} label="Quicko Connect" />
+                      <NavButton active={activeTab === 'workspace'} onClick={handleTabClick} to="/workspace" icon={<Briefcase size={15} />} label="Workspace Suite" isSuite />
+                      <NavButton active={activeTab === 'settings'} onClick={handleTabClick} to="/settings" icon={<Settings size={15} />} label="Settings & Links" />
                     </>
                   ) : currentWorkspace === 'propfirm' ? (
                     <>
-                      <NavButton active={activeTab === 'propfirm-dashboard'} onClick={handleTabClick} to="/propfirm-dashboard" icon={<LayoutDashboard size={16} className="text-amber-500" />} label="Overview" />
-                      <NavButton active={activeTab === 'propfirm-challenges'} onClick={handleTabClick} to="/propfirm-challenges" icon={<Activity size={16} className="text-indigo-500" />} label="Challenges" />
-                      <NavButton active={activeTab === 'propfirm-accounts'} onClick={handleTabClick} to="/propfirm-accounts" icon={<Wallet size={16} className="text-emerald-500" />} label="Funded Accounts" />
-                      <NavButton active={activeTab === 'propfirm-payouts'} onClick={handleTabClick} to="/propfirm-payouts" icon={<Landmark size={16} className="text-rose-500" />} label="Payouts & Certs" />
-                      <NavButton active={activeTab === 'workspace'} onClick={handleTabClick} to="/workspace" icon={<Briefcase size={16} className="text-teal-500" />} label="Workspace Suite" isSuite />
-                      <NavButton active={activeTab === 'settings'} onClick={handleTabClick} to="/settings" icon={<Settings size={16} />} label="Settings & Links" />
+                      <NavButton active={activeTab === 'propfirm-dashboard'} onClick={handleTabClick} to="/propfirm-dashboard" icon={<LayoutDashboard size={15} />} label="Overview" />
+                      <NavButton active={activeTab === 'propfirm-challenges'} onClick={handleTabClick} to="/propfirm-challenges" icon={<Activity size={15} />} label="Challenges" />
+                      <NavButton active={activeTab === 'propfirm-accounts'} onClick={handleTabClick} to="/propfirm-accounts" icon={<Wallet size={15} />} label="Funded Accounts" />
+                      <NavButton active={activeTab === 'propfirm-payouts'} onClick={handleTabClick} to="/propfirm-payouts" icon={<Landmark size={15} />} label="Payouts & Certs" />
+                      <NavButton active={activeTab === 'workspace'} onClick={handleTabClick} to="/workspace" icon={<Briefcase size={15} />} label="Workspace Suite" isSuite />
+                      <NavButton active={activeTab === 'settings'} onClick={handleTabClick} to="/settings" icon={<Settings size={15} />} label="Settings & Links" />
                     </>
                   ) : (
                     <>
-                      <NavButton active={activeTab === 'market'} onClick={handleTabClick} to="/market" icon={<Activity size={16} className="text-blue-500" />} label="Research Terminal" />
-                      <NavButton active={activeTab === 'market-data'} onClick={handleTabClick} to="/market-data" icon={<BarChart3 size={16} />} label="Live Market Data" />
-                      <NavButton active={activeTab === 'terminal'} onClick={handleTabClick} to="/terminal" icon={<Activity size={16} className="text-indigo-500" />} label="Stock Terminal" />
-                      <NavButton active={activeTab === 'forecaster'} onClick={handleTabClick} to="/forecaster" icon={<TrendingUp size={16} className="text-emerald-500" />} label="Wealth Forecaster" />
-                      <NavButton active={activeTab === 'workspace'} onClick={handleTabClick} to="/workspace" icon={<Briefcase size={16} className="text-teal-500" />} label="Workspace Suite" isSuite />
-                      <NavButton active={activeTab === 'settings'} onClick={handleTabClick} to="/settings" icon={<Settings size={16} />} label="Settings & Links" />
+                      <NavButton active={activeTab === 'market'} onClick={handleTabClick} to="/market" icon={<Activity size={15} />} label="Research Terminal" />
+                      <NavButton active={activeTab === 'market-data'} onClick={handleTabClick} to="/market-data" icon={<BarChart3 size={15} />} label="Live Market Data" />
+                      <NavButton active={activeTab === 'terminal'} onClick={handleTabClick} to="/terminal" icon={<Activity size={15} />} label="Stock Terminal" />
+                      <NavButton active={activeTab === 'forecaster'} onClick={handleTabClick} to="/forecaster" icon={<TrendingUp size={15} />} label="Wealth Forecaster" />
+                      <NavButton active={activeTab === 'workspace'} onClick={handleTabClick} to="/workspace" icon={<Briefcase size={15} />} label="Workspace Suite" isSuite />
+                      <NavButton active={activeTab === 'settings'} onClick={handleTabClick} to="/settings" icon={<Settings size={15} />} label="Settings & Links" />
                     </>
                   )}
                 </div>
@@ -263,15 +263,19 @@ function NavButton({ active, onClick, icon, label, isSuite = false, to }: { acti
   return (
     <button
       onClick={handleClick}
-      className={`w-full flex items-center gap-3 p-3 rounded-lg text-sm font-semibold transition-all cursor-pointer relative ${
+      className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-md text-xs font-medium transition-colors cursor-pointer relative text-left ${
         active 
-          ? (isSuite ? 'bg-teal-600 text-white shadow-md' : 'bg-slate-900 text-white shadow-md') 
-          : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80'
+          ? 'bg-slate-900 text-white shadow-2xs' 
+          : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
       }`}
     >
-      {icon}
-      {label}
-      {isSuite && <span className="absolute right-3 bg-red-500 text-white rounded-full text-[8px] p-0.5 px-1.5 font-bold animate-pulse">11 Apps</span>}
+      <span className="shrink-0">{icon}</span>
+      <span className="truncate">{label}</span>
+      {isSuite && (
+        <span className="ml-auto bg-slate-200 text-slate-700 text-[10px] font-medium px-1.5 py-0.2 rounded-full">
+          11 Apps
+        </span>
+      )}
     </button>
   );
 }

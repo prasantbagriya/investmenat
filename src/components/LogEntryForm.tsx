@@ -155,7 +155,7 @@ export default function LogEntryForm({ onAddTransaction, bankAccounts = [], isFo
                       placeholder="0.00"
                       value={amount}
                       onChange={(e) => setAmount(e.target.value)}
-                      className="w-full pl-7 pr-2 py-1.5 text-xs border border-slate-250 rounded-md focus:outline-hidden bg-white transition-all font-mono"
+                      className="w-full pl-7 pr-2 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-hidden bg-white transition-all font-mono tabular-nums"
                     />
                   </div>
                 </div>
@@ -169,7 +169,7 @@ export default function LogEntryForm({ onAddTransaction, bankAccounts = [], isFo
                     onChange={(e) => setCategory(e.target.value)}
                     disabled={type === 'transfer' || type === 'cash_withdrawal'}
                     placeholder="Select or type new category"
-                    className="w-full px-2 py-1.5 text-xs border border-slate-250 rounded-md focus:outline-hidden bg-white transition-all "
+                    className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-hidden bg-white transition-all "
                   />
                   <datalist id="log-categories">
                     {type === 'expense' 
@@ -189,7 +189,7 @@ export default function LogEntryForm({ onAddTransaction, bankAccounts = [], isFo
                     <select
                       value={bankAccountId}
                       onChange={(e) => setBankAccountId(e.target.value)}
-                      className="w-full px-2 py-1.5 text-xs border border-slate-250 rounded-md focus:outline-hidden bg-white transition-all font-mono"
+                      className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-hidden bg-white transition-all font-mono tabular-nums"
                     >
                       <option value="">-- No Bank (Cash/Other) --</option>
                       {bankAccounts.map(b => (
@@ -210,7 +210,7 @@ export default function LogEntryForm({ onAddTransaction, bankAccounts = [], isFo
                     <select
                       value={toBankAccountId}
                       onChange={(e) => setToBankAccountId(e.target.value)}
-                      className="w-full px-2 py-1.5 text-xs border border-slate-250 rounded-md focus:outline-hidden bg-white transition-all font-mono"
+                      className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-hidden bg-white transition-all font-mono tabular-nums"
                     >
                       <option value="">-- Select Bank Account --</option>
                       {bankAccounts.map(b => (
@@ -230,7 +230,7 @@ export default function LogEntryForm({ onAddTransaction, bankAccounts = [], isFo
                     required
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
-                    className="w-full px-2 py-1.5 text-xs border border-slate-250 rounded-md focus:outline-hidden bg-white transition-all font-mono"
+                    className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-hidden bg-white transition-all font-mono tabular-nums"
                   />
                 </div>
               </div>
@@ -243,7 +243,7 @@ export default function LogEntryForm({ onAddTransaction, bankAccounts = [], isFo
                   placeholder="e.g., specific notes"
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
-                  className="w-full px-2 py-1.5 text-xs border border-slate-250 rounded-md focus:outline-hidden bg-white transition-all "
+                  className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-hidden bg-white transition-all "
                 />
               </div>
 
@@ -259,7 +259,7 @@ export default function LogEntryForm({ onAddTransaction, bankAccounts = [], isFo
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="px-4 py-1.5 bg-slate-900 hover:bg-slate-950 text-white font-semibold rounded text-xs transition-colors disabled:opacity-40 cursor-pointer shadow-sm"
+                  className="px-4 py-1.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-semibold rounded text-xs transition-colors disabled:opacity-40 cursor-pointer shadow-sm"
                 >
                   {isSubmitting ? 'Syncing...' : 'Save Log'}
                 </button>

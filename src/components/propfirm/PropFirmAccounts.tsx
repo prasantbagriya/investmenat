@@ -155,15 +155,15 @@ export default function PropFirmAccounts({ accounts, user, setAccounts, firmName
     <div className="space-y-3">
       <div className="flex flex-row justify-between items-center gap-3 px-1 mb-2">
         <div>
-          <p className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center">
+          <p className="text-xl sm:text-2xl font-semibold text-slate-900 tracking-tight flex items-center">
             Funded Accounts
           </p>
           <p className="text-xs text-slate-500 font-bold mt-0.5">Track your live funded accounts</p>
         </div>
       </div>
 
-      <div className="bg-white rounded-lg border border-slate-150 shadow-sm overflow-hidden">
-        <div className="px-3 py-2 border-b border-slate-150 flex justify-between items-center bg-slate-50/45 gap-4">
+      <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
+        <div className="px-3 py-2 border-b border-slate-200 flex justify-between items-center bg-slate-50/45 gap-4">
           <span className="text-xs font-bold text-slate-700 capitalize shrink-0">
             Active Accounts ({accounts.length})
           </span>
@@ -177,7 +177,7 @@ export default function PropFirmAccounts({ accounts, user, setAccounts, firmName
         </div>
 
         {accounts.length === 0 ? (
-          <div className="p-8 text-center text-slate-450 bg-white text-xs">
+          <div className="p-8 text-center text-slate-400 bg-white text-xs">
             <Wallet size={32} className="mx-auto mb-2 opacity-20" />
             <p>No funded accounts added yet.</p>
           </div>
@@ -194,7 +194,7 @@ export default function PropFirmAccounts({ accounts, user, setAccounts, firmName
                   <th className="p-2 text-right whitespace-nowrap">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 text-slate-750 ">
+              <tbody className="divide-y divide-slate-100 text-slate-700 ">
                 {accounts
                   .filter(a => !searchQuery || 
                     a.firmName.toLowerCase().includes(searchQuery.toLowerCase()) || 
@@ -213,7 +213,7 @@ export default function PropFirmAccounts({ accounts, user, setAccounts, firmName
                   return (
                     <tr key={a.id} className={`${isDrawdownWarning && a.status === 'Active' ? 'bg-rose-50/30' : ''}`}>
                       <td className="p-2 px-3 whitespace-nowrap">
-                        <div className="font-extrabold text-slate-800">{a.firmName}</div>
+                        <div className="font-semibold text-slate-800">{a.firmName}</div>
                         <div className="text-xs text-slate-500 font-bold mt-0.5">{a.accountName} {a.accountNumber ? `(#${a.accountNumber})` : ''}</div>
                       </td>
                       <td className="p-2 whitespace-nowrap">
@@ -234,7 +234,7 @@ export default function PropFirmAccounts({ accounts, user, setAccounts, firmName
                       </td>
                       <td className="p-2 w-48 whitespace-nowrap">
                         <div className="flex justify-between items-end mb-1">
-                          <span className={`text-xs font-bold font-mono ${a.currentBalance >= a.accountSize ? 'text-emerald-600' : 'text-slate-800'}`}>
+                          <span className={`text-xs font-bold font-mono tabular-nums ${a.currentBalance >= a.accountSize ? 'text-emerald-600' : 'text-slate-800'}`}>
                             ${a.currentBalance.toLocaleString()}
                           </span>
                         </div>
@@ -251,14 +251,14 @@ export default function PropFirmAccounts({ accounts, user, setAccounts, firmName
                       </td>
                       <td className="p-2 whitespace-nowrap">
                         <div className="text-xs">
-                          <p className="text-slate-500 font-bold flex items-center gap-1"><TrendingDown size={10} className="text-amber-500" /> Daily Loss: <span className="font-mono text-slate-800">${a.dailyLossLimit.toLocaleString()}</span></p>
+                          <p className="text-slate-500 font-bold flex items-center gap-1"><TrendingDown size={10} className="text-amber-500" /> Daily Loss: <span className="font-mono tabular-nums text-slate-800">${a.dailyLossLimit.toLocaleString()}</span></p>
                           {a.profitTarget && (
-                            <p className="text-slate-500 font-bold flex items-center gap-1 mt-0.5"><CheckCircle size={10} className="text-emerald-500" /> Target: <span className="font-mono text-slate-800">${a.profitTarget.toLocaleString()}</span></p>
+                            <p className="text-slate-500 font-bold flex items-center gap-1 mt-0.5"><CheckCircle size={10} className="text-emerald-500" /> Target: <span className="font-mono tabular-nums text-slate-800">${a.profitTarget.toLocaleString()}</span></p>
                           )}
                         </div>
                       </td>
                       <td className="p-2 whitespace-nowrap">
-                        <div className="text-xs font-bold font-mono text-emerald-600">
+                        <div className="text-xs font-bold font-mono tabular-nums text-emerald-600">
                           ${accountPayouts.toLocaleString()}
                         </div>
                       </td>
@@ -317,7 +317,7 @@ export default function PropFirmAccounts({ accounts, user, setAccounts, firmName
                   </div>
                   <div>
                     <label className="block text-xs font-bold text-slate-500 capitalize mb-1">Current Balance ($)</label>
-                    <input required type="number" step="0.01" value={currentBalance} onChange={e => setCurrentBalance(e.target.value ? Number(e.target.value) : '')} className="w-full p-2 border border-slate-200 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-emerald-500 font-medium font-black text-emerald-600" placeholder="100000" />
+                    <input required type="number" step="0.01" value={currentBalance} onChange={e => setCurrentBalance(e.target.value ? Number(e.target.value) : '')} className="w-full p-2 border border-slate-200 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-emerald-500 font-medium font-semibold text-emerald-600" placeholder="100000" />
                   </div>
                 </div>
 
@@ -366,7 +366,7 @@ export default function PropFirmAccounts({ accounts, user, setAccounts, firmName
                 
                 <div className="pt-4 border-t border-slate-100 flex gap-2 justify-end shrink-0 sticky bottom-0 bg-white">
                   <button type="button" onClick={() => setIsModalOpen(false)} className="px-4 py-2 font-bold text-slate-600 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer">Cancel</button>
-                  <button type="submit" disabled={isSaving} className="px-4 py-2 font-bold bg-slate-900 text-white hover:bg-slate-800 disabled:opacity-60 disabled:cursor-not-allowed rounded-lg transition-colors shadow-sm flex items-center gap-2 cursor-pointer">
+                  <button type="submit" disabled={isSaving} className="px-4 py-2 font-medium bg-slate-900 text-white hover:bg-slate-800 active:bg-slate-950 disabled:opacity-60 disabled:cursor-not-allowed rounded-xl transition-colors shadow-sm flex items-center gap-2 cursor-pointer">
                     {isSaving ? <span className="text-xs">Saving...</span> : <><CheckCircle size={16} />Save</>}
                   </button>
                 </div>

@@ -1,4 +1,4 @@
-import { Transaction } from '../types';
+import { Transaction, Holding, Sip, Fd } from '../types';
 
 /**
  * Utility to convert transactions lists into a valid downloadable CSV string
@@ -15,11 +15,11 @@ export function exportTransactionsToCSV(transactions: Transaction[]) {
   // Format rows
   const rows = transactions.map(t => [
     t.id,
-    t.type.toUpperCase(),
+    (t.type || '').toUpperCase(),
     // Escape quotes/commas for CSV compliance
-    `"${t.category.replace(/"/g, '""')}"`,
-    t.amount.toFixed(2),
-    t.date,
+    `"${(t.category || '').replace(/"/g, '""')}"`,
+    (typeof t.amount === 'number' ? t.amount.toFixed(2) : String(t.amount || 0)),
+    t.date || '',
     t.notes ? `"${t.notes.replace(/"/g, '""')}"` : ''
   ]);
 
@@ -46,9 +46,9 @@ export function exportTransactionsToCSV(transactions: Transaction[]) {
 
 export function exportFullLedgerToCSV(
   transactions: Transaction[],
-  holdings: any[],
-  sips: any[],
-  fds: any[]
+  holdings: Holding[],
+  sips: Sip[],
+  fds: Fd[]
 ) {
   let csvContent = "INVESTMANT FULL LEDGER EXPORT\n\n";
 
@@ -56,28 +56,31 @@ export function exportFullLedgerToCSV(
   csvContent += "=== TRANSACTIONS ===\n";
   csvContent += "ID,Type,Category,Amount,Date,Notes\n";
   transactions.forEach(t => {
-    csvContent += `${t.id},${t.type},"${t.category.replace(/"/g, '""')}",${t.amount},${t.date},"${t.notes?.replace(/"/g, '""') || ''}"\n`;
+    csvContent += `${t.id || ''},${t.type || ''},"${(t.category || '').replace(/"/g, '""')}",${t.amount || 0},${t.date || ''},"${(t.notes || '').replace(/"/g, '""')}"\n`;
   });
 
   // 2. Holdings
-  csvContent += "\n=== CURRENT STOCK & MF HOLDINGS ===\n";
-  csvContent += "Symbol/Code,Type,Quantity,Buy Price,Buy Date\n";
+  csvContent += "\n=== CURRENT STOCK, MF & CRYPTO HOLDINGS ===\n";
+  csvContent += "Symbol/Code/Asset,Type,Quantity,Buy Price,Buy Date\n";
   holdings.forEach(h => {
-    csvContent += `"${h.symbol || h.schemeCode}",${h.type},${h.quantity},${h.buyPrice},${h.buyDate}\n`;
+    const identifier = (h.symbol || h.schemeCode || h.name || '').replace(/"/g, '""');
+    csvContent += `"${identifier}",${h.type || ''},${h.quantity || 0},${h.buyPrice || 0},${h.buyDate || ''}\n`;
   });
 
   // 3. SIPs
   csvContent += "\n=== ACTIVE SIPs ===\n";
-  csvContent += "Name,Amount,Day of Month\n";
+  csvContent += "Name,Amount,SIP Recurring Day\n";
   sips.forEach(s => {
-    csvContent += `"${s.name.replace(/"/g, '""')}",${s.amount},${s.dayOfMonth}\n`;
+    const name = (s.name || '').replace(/"/g, '""');
+    csvContent += `"${name}",${s.amount || 0},${s.sipDate ?? ''}\n`;
   });
 
   // 4. FDs
   csvContent += "\n=== ACTIVE FIXED DEPOSITS ===\n";
   csvContent += "Bank,Principal,Interest Rate,Maturity Date\n";
   fds.forEach(f => {
-    csvContent += `"${f.bankName}",${f.principalAmount},${f.interestRate}%,${f.maturityDate}\n`;
+    const bank = (f.bankName || '').replace(/"/g, '""');
+    csvContent += `"${bank}",${f.principal || 0},${f.interestRate || 0}%,${f.maturityDate || ''}\n`;
   });
 
   const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });

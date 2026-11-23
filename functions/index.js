@@ -27,7 +27,7 @@ exports.scheduledTaskReminder = functions.pubsub.schedule('every 1 minutes').onR
     tasksSnapshot.forEach(doc => {
       const data = doc.data();
       const id = doc.id;
-      const dueDate = data.dueDate ? data.dueDate.toDate() : null;
+      const dueDate = data.dueDate?.toDate ? data.dueDate.toDate() : (data.dueDate ? new Date(data.dueDate) : null);
 
       if (!dueDate) return;
 

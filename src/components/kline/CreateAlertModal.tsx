@@ -59,7 +59,7 @@ export default function CreateAlertModal({ theme, onClose, symbol }: CreateAlert
               </select>
               <input 
                 type="text" 
-                className="w-2/3 p-2 rounded text-sm border outline-none font-mono" 
+                className="w-2/3 p-2 rounded text-sm border outline-none font-mono tabular-nums" 
                 style={{ background: inputBg, borderColor: border, color: text }}
                 value={value}
                 onChange={e => setValue(e.target.value)}

@@ -5,7 +5,7 @@ import {
   Landmark, Clock, CheckCircle2, Edit2, Save, X, Lock
 } from 'lucide-react';
 import { Fd } from '../types';
-import { calculateFdMaturity } from '../utils/financeHelpers';
+import { calculateFdMaturity, calculateRdMaturity } from '../utils/financeHelpers';
 import { isEntryLocked } from '../utils/dateUtils';
 
 interface FdRdTrackerProps {
@@ -56,7 +56,19 @@ export default function FdRdTracker({ fds, onAddFd, onDeleteFd, onEditFd }: FdRd
   const closeEditForm = () => setEditingFd(null);
 
   const processedFds = fds.map(f => {
-    const { maturityAmount, interestEarned } = calculateFdMaturity(f.principal, f.interestRate, f.tenure);
+    let maturityAmount = 0;
+    let interestEarned = 0;
+    let effectivePrincipal = f.principal;
+    if (f.isRd) {
+      const rdCalc = calculateRdMaturity(f.principal, f.interestRate, f.tenure);
+      maturityAmount = rdCalc.maturityAmount;
+      interestEarned = rdCalc.interestEarned;
+      effectivePrincipal = rdCalc.totalDeposit;
+    } else {
+      const fdCalc = calculateFdMaturity(f.principal, f.interestRate, f.tenure);
+      maturityAmount = fdCalc.maturityAmount;
+      interestEarned = fdCalc.interestEarned;
+    }
     const startObj = new Date(f.startDate);
     const maturityObj = new Date(f.maturityDate);
     const todayObj = new Date();
@@ -64,11 +76,11 @@ export default function FdRdTracker({ fds, onAddFd, onDeleteFd, onEditFd }: FdRd
     const daysRemaining = Math.max(0, Math.ceil((maturityObj.getTime() - todayObj.getTime()) / (1000 * 60 * 60 * 24)));
     const daysElapsed = Math.max(0, totalDays - daysRemaining);
     const progressPercent = Math.min(100, (daysElapsed / totalDays) * 100);
-    return { ...f, maturityAmount, interestEarned, daysRemaining, daysTotal: totalDays, progress: progressPercent, isMatured: daysRemaining === 0 };
+    return { ...f, effectivePrincipal, maturityAmount, interestEarned, daysRemaining, daysTotal: totalDays, progress: progressPercent, isMatured: daysRemaining === 0 };
   });
 
   const totals = processedFds.reduce((acc, f) => {
-    acc.totalPrincipal += f.principal;
+    acc.totalPrincipal += (f.effectivePrincipal || f.principal);
     acc.totalMaturity += f.maturityAmount;
     acc.interestGain += f.interestEarned;
     return acc;
@@ -124,12 +136,12 @@ export default function FdRdTracker({ fds, onAddFd, onDeleteFd, onEditFd }: FdRd
               className="bg-white rounded-xl p-5 w-full max-w-lg shadow-2xl border border-slate-200">
               <div className="flex justify-between items-center mb-4">
                 <div>
-                  <h3 className="font-black text-slate-900 flex items-center gap-2">
-                    <Edit2 size={16} className="text-indigo-600" /> Edit Deposit
+                  <h3 className="font-semibold text-slate-900 flex items-center gap-2">
+                    <Edit2 size={16} className="text-slate-900" /> Edit Deposit
                   </h3>
                   <p className="text-xs text-slate-500 mt-0.5">Update your Fixed / Recurring Deposit details.</p>
                 </div>
-                <button onClick={closeEditForm} className="p-1.5 text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-lg cursor-pointer"><X size={16} /></button>
+                <button onClick={closeEditForm} className="p-1.5 text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-xl cursor-pointer"><X size={16} /></button>
               </div>
 
               {/* FD/RD Type Toggle */}
@@ -146,43 +158,43 @@ export default function FdRdTracker({ fds, onAddFd, onDeleteFd, onEditFd }: FdRd
 
               <form onSubmit={handleEditSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
                 <div className="md:col-span-2">
-                  <label className="block text-xs font-black text-slate-700 mb-1">Bank / Institution Name</label>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">Bank / Institution Name</label>
                   <input required value={editBankName} onChange={e => setEditBankName(e.target.value)} placeholder="e.g., HDFC Bank, SBI"
                     className="w-full border border-slate-200 rounded-xl p-2 bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-indigo-400" />
                 </div>
                 <div>
-                  <label className="block text-xs font-black text-slate-700 mb-1">Principal Amount (₹)</label>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">Principal Amount (₹)</label>
                   <input required type="number" value={editPrincipal} onChange={e => setEditPrincipal(e.target.value)} placeholder="100000"
-                    className="w-full border border-slate-200 rounded-xl p-2 bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-indigo-400 font-mono" />
+                    className="w-full border border-slate-200 rounded-xl p-2 bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-indigo-400 font-mono tabular-nums" />
                 </div>
                 <div>
-                  <label className="block text-xs font-black text-slate-700 mb-1">Interest Rate (% p.a.)</label>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">Interest Rate (% p.a.)</label>
                   <input required type="number" step="0.01" value={editInterestRate} onChange={e => setEditInterestRate(e.target.value)} placeholder="7.25"
-                    className="w-full border border-slate-200 rounded-xl p-2 bg-slate-50 focus:bg-white focus:outline-none font-mono" />
+                    className="w-full border border-slate-200 rounded-xl p-2 bg-slate-50 focus:bg-white focus:outline-none font-mono tabular-nums" />
                 </div>
                 <div>
-                  <label className="block text-xs font-black text-slate-700 mb-1">Tenure (Months)</label>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">Tenure (Months)</label>
                   <input required type="number" value={editTenure} onChange={e => setEditTenure(e.target.value)} placeholder="12"
-                    className="w-full border border-slate-200 rounded-xl p-2 bg-slate-50 focus:bg-white focus:outline-none font-mono" />
+                    className="w-full border border-slate-200 rounded-xl p-2 bg-slate-50 focus:bg-white focus:outline-none font-mono tabular-nums" />
                 </div>
                 <div>
-                  <label className="block text-xs font-black text-slate-700 mb-1">Start Date</label>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">Start Date</label>
                   <input required type="date" value={editStartDate} onChange={e => setEditStartDate(e.target.value)}
                     className="w-full border border-slate-200 rounded-xl p-2 bg-slate-50 focus:bg-white focus:outline-none" />
                 </div>
                 <div className="flex flex-col justify-end bg-slate-50 p-2 rounded-xl border border-slate-100">
                   <span className="text-xs text-slate-500 font-semibold">AUTO COMPUTED MATURITY</span>
-                  <span className="font-mono text-sm font-bold text-slate-700 mt-1">
+                  <span className="font-mono tabular-nums text-sm font-bold text-slate-700 mt-1">
                     {editTenure ? computeMaturityDate(editStartDate, parseInt(editTenure)) : '—'}
                   </span>
                 </div>
                 <div className="md:col-span-2 flex gap-2 pt-2 border-t border-slate-100">
                   <button type="button" onClick={closeEditForm}
-                    className="flex-1 py-2 border border-slate-200 text-slate-600 rounded-xl font-bold text-sm cursor-pointer hover:bg-slate-50">
+                    className="flex-1 py-2 border border-slate-200 text-slate-600 rounded-xl font-medium text-sm cursor-pointer hover:bg-slate-50">
                     Cancel
                   </button>
                   <button type="submit" disabled={isSaving}
-                    className="flex-1 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold text-sm flex items-center justify-center gap-1.5 cursor-pointer transition-colors disabled:opacity-50">
+                    className="flex-1 py-2 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white rounded-xl font-medium text-sm flex items-center justify-center gap-1.5 cursor-pointer transition-colors disabled:opacity-50">
                     <Save size={14} /> Save Changes
                   </button>
                 </div>
@@ -196,27 +208,27 @@ export default function FdRdTracker({ fds, onAddFd, onDeleteFd, onEditFd }: FdRd
       <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
         <div className="bg-slate-900 text-white rounded-lg p-2 shadow-sm">
           <p className="text-xs text-slate-500 font-bold">Total Bank Deposits</p>
-          <p className="text-2xl font-black mt-1 font-display">₹{totals.totalPrincipal.toLocaleString('en-IN')}</p>
+          <p className="text-2xl font-semibold mt-1 font-display">₹{totals.totalPrincipal.toLocaleString('en-IN')}</p>
           <p className="text-xs text-slate-500 mt-1.5">Sum of all active bank deposits.</p>
         </div>
-        <div className="bg-white border border-slate-150 rounded-lg p-2 shadow-sm">
+        <div className="bg-white border border-slate-200 rounded-lg p-2 shadow-sm">
           <p className="text-xs text-slate-500 font-bold ">Accumulated Interest</p>
-          <p className="text-2xl font-black mt-1 font-display text-emerald-600">₹{totals.interestGain.toLocaleString('en-IN', { maximumFractionDigits: 1 })}</p>
+          <p className="text-2xl font-semibold mt-1 font-display text-emerald-600">₹{totals.interestGain.toLocaleString('en-IN', { maximumFractionDigits: 1 })}</p>
           <p className="text-xs text-slate-500 mt-1.5">Assured non-market interest earned.</p>
         </div>
-        <div className="bg-white border border-slate-150 rounded-lg p-2 shadow-sm">
+        <div className="bg-white border border-slate-200 rounded-lg p-2 shadow-sm">
           <p className="text-xs text-slate-500 font-bold">Projected Maturity Balance</p>
-          <p className="text-2xl font-black mt-1 font-display text-slate-900">₹{totals.totalMaturity.toLocaleString('en-IN', { maximumFractionDigits: 1 })}</p>
+          <p className="text-2xl font-semibold mt-1 font-display text-slate-900">₹{totals.totalMaturity.toLocaleString('en-IN', { maximumFractionDigits: 1 })}</p>
           <p className="text-xs text-slate-500 mt-1.5">Total due payout at term end.</p>
         </div>
-        <div className="bg-white border border-slate-150 rounded-lg p-2 shadow-sm flex flex-col justify-between">
+        <div className="bg-white border border-slate-200 rounded-lg p-2 shadow-sm flex flex-col justify-between">
           <div>
             <p className="text-xs text-slate-500 font-bold">Upcoming FD Maturity</p>
             {processedFds.filter(f => !f.isMatured).length === 0 ? (
               <p className="text-xs font-bold text-slate-700 mt-1">No upcoming maturities</p>
             ) : (
               <div className="mt-1">
-                <span className="text-xs font-black text-rose-500">{Math.min(...processedFds.filter(f => !f.isMatured).map(f => f.daysRemaining))} days</span>
+                <span className="text-xs font-semibold text-rose-500">{Math.min(...processedFds.filter(f => !f.isMatured).map(f => f.daysRemaining))} days</span>
                 <span className="text-xs text-slate-500"> left for first locked release</span>
               </div>
             )}
@@ -228,8 +240,8 @@ export default function FdRdTracker({ fds, onAddFd, onDeleteFd, onEditFd }: FdRd
       {/* Main content */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
         <div className="lg:col-span-2 space-y-3">
-          <div className="bg-white border border-slate-150 rounded-lg shadow-sm overflow-hidden">
-            <div className="px-2 py-2 border-b border-slate-150 flex flex-nowrap justify-between items-center gap-2 bg-slate-50/50">
+          <div className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
+            <div className="px-2 py-2 border-b border-slate-200 flex flex-nowrap justify-between items-center gap-2 bg-slate-50/50">
               <div className="flex items-center gap-1.5 min-w-0">
                 <Building2 className="text-slate-800 shrink-0" size={16} />
                 <h3 className="font-bold text-[13px] sm:text-sm text-slate-800 font-display truncate">Fixed & Recurring Deposits</h3>
@@ -277,11 +289,11 @@ export default function FdRdTracker({ fds, onAddFd, onDeleteFd, onEditFd }: FdRd
                     </div>
                     <div className="flex flex-col justify-end bg-slate-50 p-1 rounded-lg border border-slate-100">
                       <span className="text-xs text-slate-500 font-semibold">AUTO COMPUTED MATURITY</span>
-                      <span className="font-mono text-xs font-bold text-slate-700 mt-1">{computeMaturityDate(startDate, parseInt(tenure))}</span>
+                      <span className="font-mono tabular-nums text-xs font-bold text-slate-700 mt-1">{computeMaturityDate(startDate, parseInt(tenure))}</span>
                     </div>
                     <div className="col-span-1 md:col-span-3 flex justify-end gap-1 border-t border-slate-100 pt-1">
                       <button type="button" onClick={() => setIsAdding(false)} className="px-2 py-1 border border-slate-200 text-slate-700 rounded-lg font-bold cursor-pointer">Cancel</button>
-                      <button type="submit" disabled={isSaving} className="px-2 py-1 bg-slate-900 text-white rounded-lg font-bold hover:bg-slate-800 cursor-pointer disabled:opacity-50">Save Deposit</button>
+                      <button type="submit" disabled={isSaving} className="px-2 py-1 bg-slate-900 text-white rounded-xl font-medium hover:bg-slate-800 active:bg-slate-950 cursor-pointer disabled:opacity-50">Save Deposit</button>
                     </div>
                   </form>
                 </motion.div>
@@ -300,13 +312,13 @@ export default function FdRdTracker({ fds, onAddFd, onDeleteFd, onEditFd }: FdRd
                 {processedFds.map((fd) => {
                   const locked = isEntryLocked(fd.startDate);
                   return (
-                  <div key={fd.id} className="border border-slate-150 rounded-lg p-2.5 bg-slate-50/20 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-2">
+                  <div key={fd.id} className="border border-slate-200 rounded-lg p-2.5 bg-slate-50/20 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-2">
                     <div className="space-y-1 md:max-w-xs">
                       <div className="flex items-center gap-1.5">
                         <span className="p-1 px-1.5 bg-slate-900 text-white font-bold rounded-lg text-xs capitalize">{fd.isRd ? 'RD' : 'FD'}</span>
-                        <h4 className="font-extrabold text-slate-800 text-xs truncate max-w-[150px]">{fd.bankName}</h4>
+                        <h4 className="font-semibold text-slate-800 text-xs truncate max-w-[150px]">{fd.bankName}</h4>
                       </div>
-                      <p className="text-xs text-slate-500 font-semibold font-mono">ROI: {fd.interestRate}% p.a. • tenure: {fd.tenure} months</p>
+                      <p className="text-xs text-slate-500 font-semibold font-mono tabular-nums">ROI: {fd.interestRate}% p.a. • tenure: {fd.tenure} months</p>
                       <div className="flex gap-1 text-xs text-slate-500 pt-1 border-t border-slate-100">
                         <span>Start: {fd.startDate}</span><span>•</span>
                         <span className="font-bold text-slate-600">Mat: {fd.maturityDate}</span>
@@ -314,7 +326,7 @@ export default function FdRdTracker({ fds, onAddFd, onDeleteFd, onEditFd }: FdRd
                     </div>
 
                     <div className="flex-1 space-y-1.5 max-w-md">
-                      <div className="flex justify-between items-center text-xs font-bold text-slate-500 font-mono">
+                      <div className="flex justify-between items-center text-xs font-bold text-slate-500 font-mono tabular-nums">
                         <span>Progress Tracker</span>
                         <span>{fd.isMatured ? 'MATURED ✔' : `${fd.daysRemaining} days remaining`}</span>
                       </div>
@@ -329,7 +341,7 @@ export default function FdRdTracker({ fds, onAddFd, onDeleteFd, onEditFd }: FdRd
                     <div className="text-right flex md:flex-col justify-between items-center md:items-end gap-1 border-t md:border-t-0 border-slate-100 pt-1 md:pt-0">
                       <div>
                         <p className="text-xs text-slate-500 font-bold ">Maturity Expectation</p>
-                        <p className="font-black font-mono text-sm text-slate-800">₹{fd.maturityAmount.toLocaleString('en-IN')}</p>
+                        <p className="font-semibold font-mono tabular-nums text-sm text-slate-800">₹{fd.maturityAmount.toLocaleString('en-IN')}</p>
                         <p className="text-xs text-emerald-600 font-bold">₹{fd.interestEarned.toLocaleString('en-IN')} interest profit</p>
                       </div>
                       <div className="flex items-center gap-1">
@@ -340,11 +352,11 @@ export default function FdRdTracker({ fds, onAddFd, onDeleteFd, onEditFd }: FdRd
                         ) : (
                           <>
                             <button onClick={() => openEditForm(fd)}
-                              className="text-slate-350 hover:text-indigo-600 p-1.5 rounded-lg border border-slate-100 md:border-0 hover:bg-indigo-50 transition-all cursor-pointer" title="Edit Deposit">
+                              className="text-slate-400 hover:text-slate-900 p-1.5 rounded-lg border border-slate-100 md:border-0 hover:bg-slate-100 transition-all cursor-pointer" title="Edit Deposit">
                               <Edit2 size={13} />
                             </button>
                             <button onClick={() => onDeleteFd(fd.id)}
-                              className="text-slate-350 hover:text-red-500 p-1.5 rounded-lg border border-slate-100 md:border-0 hover:bg-slate-50 transition-all cursor-pointer" title="Delete Deposit">
+                              className="text-slate-400 hover:text-red-500 p-1.5 rounded-lg border border-slate-100 md:border-0 hover:bg-slate-50 transition-all cursor-pointer" title="Delete Deposit">
                               <Trash2 size={13} />
                             </button>
                           </>
@@ -360,7 +372,7 @@ export default function FdRdTracker({ fds, onAddFd, onDeleteFd, onEditFd }: FdRd
 
         {/* Info/Notification digest card */}
         <div className="space-y-3">
-          <div className="bg-white border border-slate-150 rounded-lg p-2 shadow-sm space-y-2">
+          <div className="bg-white border border-slate-200 rounded-lg p-2 shadow-sm space-y-2">
             <div className="flex items-center gap-1.5 border-b border-slate-100 pb-1.5">
               <Clock size={16} className="text-slate-700" />
               <h3 className="font-bold text-xs text-slate-700 font-display">Deposit Maturity Digest</h3>
@@ -396,28 +408,28 @@ export default function FdRdTracker({ fds, onAddFd, onDeleteFd, onEditFd }: FdRd
 
           {/* Quick Stats */}
           <div className="bg-linear-to-br from-slate-900 to-indigo-950 text-white rounded-lg p-3 shadow-sm space-y-2">
-            <p className="text-xs text-indigo-300 font-black">Quick Stats</p>
+            <p className="text-xs text-indigo-300 font-semibold">Quick Stats</p>
             <div className="grid grid-cols-2 gap-2">
               <div>
                 <p className="text-xs text-slate-500">Active Deposits</p>
-                <p className="text-xl font-black text-white font-mono">{fds.length}</p>
+                <p className="text-xl font-semibold text-white font-mono tabular-nums">{fds.length}</p>
               </div>
               <div>
                 <p className="text-xs text-slate-500">Matured</p>
-                <p className="text-xl font-black text-emerald-400 font-mono">{processedFds.filter(f => f.isMatured).length}</p>
+                <p className="text-xl font-semibold text-emerald-400 font-mono tabular-nums">{processedFds.filter(f => f.isMatured).length}</p>
               </div>
               <div>
                 <p className="text-xs text-slate-500">FDs</p>
-                <p className="text-lg font-black text-blue-300 font-mono">{fds.filter(f => !f.isRd).length}</p>
+                <p className="text-lg font-semibold text-blue-300 font-mono tabular-nums">{fds.filter(f => !f.isRd).length}</p>
               </div>
               <div>
                 <p className="text-xs text-slate-500">RDs</p>
-                <p className="text-lg font-black text-purple-300 font-mono">{fds.filter(f => f.isRd).length}</p>
+                <p className="text-lg font-semibold text-purple-300 font-mono tabular-nums">{fds.filter(f => f.isRd).length}</p>
               </div>
             </div>
             <div className="pt-2 border-t border-white/10">
               <p className="text-xs text-slate-500">Avg. Interest Rate</p>
-              <p className="text-sm font-black text-amber-300 font-mono">
+              <p className="text-sm font-semibold text-amber-300 font-mono tabular-nums">
                 {fds.length > 0 ? (fds.reduce((a, f) => a + f.interestRate, 0) / fds.length).toFixed(2) : '0.00'}% p.a.
               </p>
             </div>

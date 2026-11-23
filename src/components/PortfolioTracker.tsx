@@ -279,7 +279,7 @@ export default function PortfolioTracker({
 
   // Calculations
   const processedHoldings = holdings.map(h => {
-    const key = h.type === 'stock' ? `stock_${h.symbol}` : `mf_${h.schemeCode}`;
+    const key = h.type === 'stock' ? `stock_${h.symbol}` : h.type === 'crypto' ? `crypto_${h.name || h.symbol}` : `mf_${h.schemeCode}`;
     const live = livePrices[key];
     const currentPrice = live ? live.currentPrice : h.buyPrice;
     const currentVal = currentPrice * h.quantity;
@@ -565,110 +565,109 @@ export default function PortfolioTracker({
   };
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-4">
       {/* Portfolio Header Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
-        <div className="bg-slate-900 text-white rounded-lg p-2 shadow-sm border border-slate-800">
-          <p className="text-xs text-slate-500 font-bold">Total Portfolio Value</p>
-          <p className="text-2xl font-black mt-1 font-display">₹{aggregate.totalCurrent.toLocaleString('en-IN', { maximumFractionDigits: 2 })}</p>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+        <div className="bg-slate-900 text-white rounded-xl p-4 border border-slate-800">
+          <p className="text-xs text-slate-400 font-medium">Total Portfolio Value</p>
+          <p className="text-2xl font-semibold mt-1 font-mono tabular-nums text-white">₹{aggregate.totalCurrent.toLocaleString('en-IN', { maximumFractionDigits: 2 })}</p>
           <div className="flex items-center gap-1.5 mt-1.5">
-            <span className="text-xs text-slate-500 font-medium">Invested: ₹{aggregate.totalInvested.toLocaleString('en-IN', { maximumFractionDigits: 2 })}</span>
+            <span className="text-xs text-slate-400">Invested: ₹{aggregate.totalInvested.toLocaleString('en-IN', { maximumFractionDigits: 2 })}</span>
           </div>
         </div>
 
-        <div className="bg-white rounded-lg p-2 shadow-sm border border-slate-150">
-          <p className="text-xs text-slate-500 font-bold">Absolute Profit & Loss</p>
-          <p className={`text-2xl font-black mt-1 font-display flex items-center gap-1 ${totalPnL >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
-            ₹{totalPnL.toLocaleString('en-IN', { maximumFractionDigits: 2 })}
+        <div className="bg-white rounded-xl p-4 border border-slate-200">
+          <p className="text-xs text-slate-500 font-medium">Absolute Profit & Loss</p>
+          <p className={`text-2xl font-semibold mt-1 font-mono tabular-nums flex items-center gap-1 ${totalPnL >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
+            {totalPnL >= 0 ? '+' : ''}₹{totalPnL.toLocaleString('en-IN', { maximumFractionDigits: 2 })}
           </p>
           <div className="flex items-center gap-1 mt-1.5">
-            {totalPnL >= 0 ? <TrendingUp size={14} className="text-emerald-500" /> : <TrendingDown size={14} className="text-rose-500" />}
-            <span className={`text-xs font-bold ${totalPnL >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
+            {totalPnL >= 0 ? <TrendingUp size={14} className="text-emerald-600" /> : <TrendingDown size={14} className="text-rose-600" />}
+            <span className={`text-xs font-medium font-mono tabular-nums ${totalPnL >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
               {totalPnL >= 0 ? '+' : ''}{totalPnLPercent.toFixed(2)}%
             </span>
-            <span className="text-xs text-slate-500 font-medium">All Time</span>
+            <span className="text-xs text-slate-400 ml-1">All Time</span>
           </div>
         </div>
 
-        <div className="bg-white rounded-lg p-2 shadow-sm border border-slate-150">
-          <p className="text-xs text-slate-500 font-bold">Portfolio XIRR</p>
-          <p className="text-2xl font-black mt-1 font-display text-slate-900">
+        <div className="bg-white rounded-xl p-4 border border-slate-200">
+          <p className="text-xs text-slate-500 font-medium">Portfolio XIRR</p>
+          <p className="text-2xl font-semibold mt-1 font-mono tabular-nums text-slate-900">
             {portfolioXirr > 0 ? '+' : ''}{portfolioXirr.toFixed(2)}%
           </p>
           <div className="flex items-center gap-1.5 mt-1.5">
-            <ShieldCheck size={14} className="text-blue-500" />
-            <span className="text-xs text-slate-500 font-medium ">Compounded Annualized Return</span>
+            <ShieldCheck size={14} className="text-slate-400" />
+            <span className="text-xs text-slate-400">Compounded Annualized Return</span>
           </div>
         </div>
-
       </div>
 
       {/* Cash Wallet & Realized P&L Bento Segment */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         {/* Cash Wallet Card */}
-        <div className="bg-linear-to-br from-rose-500 to-rose-600 rounded-lg p-4 shadow-lg border border-rose-400 relative overflow-hidden text-white flex-1 min-w-[200px]">
+        <div className="bg-white rounded-xl p-4 border border-slate-200 flex flex-col justify-between space-y-3">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-1.5">
-              <Wallet className="text-white/80" size={16} />
-              <h4 className="font-bold text-xs text-white">Investment Cash Balance</h4>
+              <Wallet className="text-slate-500" size={15} />
+              <h4 className="font-medium text-xs text-slate-700">Investment Cash Balance</h4>
             </div>
-            <span className="text-xs bg-white/20 text-white font-bold px-1 py-0.5 rounded-full">Liquid cash</span>
+            <span className="text-[11px] bg-slate-100 text-slate-600 font-medium px-2 py-0.5 rounded-md">Liquid cash</span>
           </div>
           <div>
-            <div className="text-2xl font-black text-white font-mono flex items-center gap-2">
+            <div className="text-2xl font-semibold text-slate-900 font-mono tabular-nums flex items-center gap-2">
               ₹{((userSettings?.investmentCashBalance || 0) + (brokerFunds?.totalAvailable || 0)).toLocaleString('en-IN', { minimumFractionDigits: 2 })}
-              {isSyncingBrokerData && <RefreshCw size={12} className="animate-spin text-white" />}
+              {isSyncingBrokerData && <RefreshCw size={12} className="animate-spin text-slate-400" />}
             </div>
-            <p className="text-xs text-white/70 mt-1">
+            <p className="text-xs text-slate-500 mt-1">
               Manual: ₹{(userSettings?.investmentCashBalance || 0).toLocaleString('en-IN')} | Broker: ₹{(brokerFunds?.totalAvailable || 0).toLocaleString('en-IN')}
             </p>
           </div>
-          <div className="flex gap-1 pt-1">
+          <div className="flex gap-2 pt-1">
             <button
               onClick={() => { setCashActionType('deposit'); setCashAmountInput(''); }}
-              className="flex-1 text-center py-1.5 bg-white text-rose-600 hover:bg-rose-50 rounded-lg text-xs font-bold cursor-pointer transition-colors"
+              className="flex-1 text-center py-1.5 bg-slate-900 text-white hover:bg-slate-800 rounded-lg text-xs font-medium cursor-pointer transition-colors"
             >
-              + Deposit Cash
+              Deposit
             </button>
             <button
               onClick={() => { setCashActionType('withdraw'); setCashAmountInput(''); }}
-              className="flex-1 text-center py-1.5 bg-rose-700 hover:bg-rose-800 text-white rounded-lg text-xs font-bold cursor-pointer transition-colors"
+              className="flex-1 text-center py-1.5 bg-white text-slate-700 hover:bg-slate-50 border border-slate-200 rounded-lg text-xs font-medium cursor-pointer transition-colors"
             >
-              - Withdraw Cash
+              Withdraw
             </button>
           </div>
         </div>
 
         {/* Realized P&L Summary Card */}
-        <div className="bg-linear-to-br from-emerald-500 to-emerald-600 rounded-lg p-4 shadow-lg border border-emerald-400 relative overflow-hidden text-white flex-1 min-w-[200px]">
+        <div className="bg-white rounded-xl p-4 border border-slate-200 flex flex-col justify-between space-y-3">
           <div className="space-y-1">
-            <div className="flex items-center gap-1.5 text-emerald-100">
-              <FolderCheck size={16} />
-              <h4 className="font-bold text-xs text-white">Booked (Realized) Profit/Loss</h4>
+            <div className="flex items-center gap-1.5 text-slate-700">
+              <FolderCheck size={15} className="text-slate-500" />
+              <h4 className="font-medium text-xs text-slate-700">Realized Profit/Loss</h4>
             </div>
-            <p className="text-xs text-emerald-50">Cumulative lock-in profit/loss booked from closed trades.</p>
+            <p className="text-xs text-slate-500">Cumulative lock-in profit/loss booked from closed trades.</p>
           </div>
           <div className="mt-1">
-            <div className="text-2xl font-black font-mono text-white">
-              ₹{(userSettings?.realizedPnL || 0).toLocaleString('en-IN', { minimumFractionDigits: 2 })}
+            <div className={`text-2xl font-semibold font-mono tabular-nums ${(userSettings?.realizedPnL || 0) >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
+              {(userSettings?.realizedPnL || 0) >= 0 ? '+' : ''}₹{(userSettings?.realizedPnL || 0).toLocaleString('en-IN', { minimumFractionDigits: 2 })}
             </div>
-            <p className="text-xs text-emerald-100 mt-1.5">
+            <p className="text-xs text-slate-400 mt-1">
               Ledger database tracks {realizedTrades?.length || 0} exited positions.
             </p>
           </div>
         </div>
 
         {/* Total Net Worth Card */}
-        <div className="bg-linear-to-br from-indigo-950 to-slate-900 rounded-lg p-4 shadow-xl border border-indigo-900/30 text-white relative overflow-hidden">
+        <div className="bg-slate-900 rounded-xl p-4 border border-slate-800 text-white flex flex-col justify-between space-y-3">
           <div className="space-y-1">
-            <p className="text-xs text-indigo-200 font-bold">Total Portfolio Net Worth</p>
-            <p className="text-xs text-slate-350">Combined sum of active securities and liquid cash.</p>
+            <p className="text-xs text-slate-400 font-medium">Total Portfolio Net Worth</p>
+            <p className="text-xs text-slate-400">Combined sum of active securities and liquid cash.</p>
           </div>
           <div className="mt-1">
-            <div className="text-2xl font-black font-mono text-indigo-200">
+            <div className="text-2xl font-semibold font-mono tabular-nums text-white">
               ₹{(aggregate.totalCurrent + (userSettings?.investmentCashBalance || 0) + (brokerFunds?.totalAvailable || 0)).toLocaleString('en-IN', { minimumFractionDigits: 2 })}
             </div>
-            <div className="text-xs text-indigo-200/80 font-medium mt-1.5">
+            <div className="text-xs text-slate-400 font-mono tabular-nums mt-1">
               Holdings: {((aggregate.totalCurrent / (aggregate.totalCurrent + (userSettings?.investmentCashBalance || 0) + (brokerFunds?.totalAvailable || 0) || 1)) * 100).toFixed(1)}% | Cash: {((((userSettings?.investmentCashBalance || 0) + (brokerFunds?.totalAvailable || 0)) / (aggregate.totalCurrent + (userSettings?.investmentCashBalance || 0) + (brokerFunds?.totalAvailable || 0) || 1)) * 100).toFixed(1)}%
             </div>
           </div>
@@ -680,8 +679,8 @@ export default function PortfolioTracker({
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
         {/* Holdings List */}
         <div className="lg:col-span-2 space-y-3">
-          <div className="bg-white border border-slate-150 rounded-lg shadow-sm overflow-hidden">
-            <div className="p-2 flex flex-nowrap justify-between items-center bg-slate-50/50 border-b border-slate-150 gap-2 overflow-x-auto scrollbar-none">
+          <div className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
+            <div className="p-2 flex flex-nowrap justify-between items-center bg-slate-50/50 border-b border-slate-200 gap-2 overflow-x-auto scrollbar-none">
               <div className="flex flex-row items-center gap-2 shrink-0">
                 <div className="flex items-center gap-1 shrink-0">
                   <FolderCheck className="text-slate-800" size={16} />
@@ -728,7 +727,7 @@ export default function PortfolioTracker({
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: 'auto', opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
-                  className="overflow-hidden border-b border-slate-150 bg-slate-50/20"
+                  className="overflow-hidden border-b border-slate-200 bg-slate-50/20"
                 >
                   <form onSubmit={handleAddSubmit} className="p-2 grid grid-cols-1 md:grid-cols-3 gap-2 text-xs ">
                     <div className="col-span-1 md:col-span-3 flex gap-1 border-b border-slate-100 pb-1">
@@ -793,7 +792,7 @@ export default function PortfolioTracker({
                         </AnimatePresence>
 
                         {symbol && (
-                          <div className="text-xs bg-slate-900 text-white p-1 rounded-md mt-1 font-mono flex justify-between items-center shadow-inner">
+                          <div className="text-xs bg-slate-900 text-white p-1 rounded-md mt-1 font-mono tabular-nums flex justify-between items-center shadow-inner">
                             <span>Selected Symbol: {symbol}</span>
                             <button
                               type="button"
@@ -876,7 +875,7 @@ export default function PortfolioTracker({
                         </AnimatePresence>
 
                         {mfSchemeCode && (
-                          <div className="text-xs bg-slate-900 text-white p-1 rounded-md mt-1 font-mono flex justify-between items-center shadow-inner">
+                          <div className="text-xs bg-slate-900 text-white p-1 rounded-md mt-1 font-mono tabular-nums flex justify-between items-center shadow-inner">
                             <span>Selected Code: {mfSchemeCode}</span>
                             <button
                               type="button"
@@ -896,24 +895,24 @@ export default function PortfolioTracker({
 
                     {/* Live Ticker Lookup & Price Verification Feedback Board */}
                     {(isLookingUpTicker || tickerLookupResult) && (
-                      <div className="col-span-1 md:col-span-3 bg-slate-900 text-white p-1.5 rounded-xl border border-slate-800 text-xs font-mono space-y-1 shadow-md">
+                      <div className="col-span-1 md:col-span-3 bg-slate-900 text-white p-1.5 rounded-xl border border-slate-800 text-xs font-mono tabular-nums space-y-1 shadow-md">
                         {isLookingUpTicker ? (
                           <div className="flex items-center gap-1.5 text-slate-300">
-                            <span className="inline-block animate-spin font-extrabold font-mono">↻</span> 
+                            <span className="inline-block animate-spin font-semibold font-mono tabular-nums">↻</span> 
                             <span>Fetching live price & validating asset with market gates...</span>
                           </div>
                         ) : (
                           tickerLookupResult && (
                             <div className="flex justify-between items-center flex-wrap gap-1">
                               <div>
-                                <span className="text-xs text-slate-500 block capitalize font-extrabold ">Matched Security Resolved</span>
+                                <span className="text-xs text-slate-500 block capitalize font-semibold ">Matched Security Resolved</span>
                                 <span className="font-bold text-slate-100 tracking-tight">{tickerLookupResult.name}</span>
                               </div>
                               <div className="text-right">
-                                <span className="text-xs text-slate-500 block capitalize font-extrabold ">Current Live Quote</span>
-                                <span className="text-emerald-400 font-extrabold text-sm">₹{tickerLookupResult.price.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
+                                <span className="text-xs text-slate-500 block capitalize font-semibold ">Current Live Quote</span>
+                                <span className="text-emerald-400 font-semibold text-sm">₹{tickerLookupResult.price.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
                                 {tickerLookupResult.change !== 0 && (
-                                  <span className={`text-xs font-extrabold ml-1.5 ${tickerLookupResult.change >= 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
+                                  <span className={`text-xs font-semibold ml-1.5 ${tickerLookupResult.change >= 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
                                     ({tickerLookupResult.change >= 0 ? '+' : ''}{tickerLookupResult.change.toFixed(2)}%)
                                   </span>
                                 )}
@@ -1003,7 +1002,7 @@ export default function PortfolioTracker({
                           Deduct total purchase cost from Investment Cash Wallet
                         </label>
                       </div>
-                      <span className="font-mono font-bold text-slate-700">
+                      <span className="font-mono tabular-nums font-bold text-slate-700">
                         Available Balance: ₹{(userSettings?.investmentCashBalance || 0).toLocaleString('en-IN', { minimumFractionDigits: 2 })}
                       </span>
                     </div>
@@ -1018,7 +1017,7 @@ export default function PortfolioTracker({
                       </button>
                       <button
                         type="submit"
-                        className="px-2 py-1 bg-slate-900 text-white rounded-lg font-bold hover:bg-slate-800 cursor-pointer"
+                        className="px-2 py-1 bg-slate-900 text-white rounded-xl font-medium hover:bg-slate-800 active:bg-slate-950 cursor-pointer"
                       >
                         Add to portfolio
                       </button>
@@ -1044,7 +1043,7 @@ export default function PortfolioTracker({
                 <div className="overflow-x-auto">
                   <table className="w-full text-left border-collapse text-xs">
                     <thead>
-                      <tr className="border-b border-slate-150 bg-slate-50/40 text-slate-500 capitalize text-xs font-bold">
+                      <tr className="border-b border-slate-200 bg-slate-50/40 text-slate-500 capitalize text-xs font-bold">
                         <th className="p-2">Symbol</th>
                         <th className="p-2 text-center">Type</th>
                         <th className="p-2 text-center">Side</th>
@@ -1057,14 +1056,14 @@ export default function PortfolioTracker({
                       {brokerOrders.map((o, idx) => (
                         <tr key={`ord-${idx}`} className="border-b border-slate-100 hover:bg-slate-50/50">
                           <td className="p-2 font-bold text-slate-800">{o.trading_symbol || o.instrument_token}</td>
-                          <td className="p-2 text-center font-mono text-xs">{o.transaction_type}</td>
+                          <td className="p-2 text-center font-mono tabular-nums text-xs">{o.transaction_type}</td>
                           <td className="p-2 text-center">
                             <span className={`inline-block px-1.5 py-0.5 rounded-md font-bold text-xs ${o.transaction_type === 'BUY' ? 'bg-emerald-50 text-emerald-700' : 'bg-rose-50 text-rose-700'}`}>
                               {o.transaction_type}
                             </span>
                           </td>
-                          <td className="p-2 text-right font-mono text-xs">{o.quantity}</td>
-                          <td className="p-2 text-right font-mono text-xs">₹{parseFloat(o.price || o.average_price || 0).toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
+                          <td className="p-2 text-right font-mono tabular-nums text-xs">{o.quantity}</td>
+                          <td className="p-2 text-right font-mono tabular-nums text-xs">₹{parseFloat(o.price || o.average_price || 0).toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
                           <td className="p-2 text-center text-xs font-bold text-slate-600">{o.status}</td>
                         </tr>
                       ))}
@@ -1087,7 +1086,7 @@ export default function PortfolioTracker({
                 <div className="overflow-x-auto">
                   <table className="w-full text-left border-collapse text-xs">
                     <thead>
-                      <tr className="border-b border-slate-150 bg-slate-50/40 text-slate-500 capitalize text-xs font-bold">
+                      <tr className="border-b border-slate-200 bg-slate-50/40 text-slate-500 capitalize text-xs font-bold">
                         <th className="p-2">Investment Name</th>
                         <th className="p-2 text-center">Closing Qty</th>
                         <th className="p-2 text-right">Purchase Avg</th>
@@ -1112,7 +1111,7 @@ export default function PortfolioTracker({
                                   currentPrice: rt.exitPrice,
                                   holdings: []
                                 })}
-                                className="font-bold text-slate-800 hover:text-indigo-600 hover:underline text-left block border-0 bg-transparent p-0 cursor-pointer"
+                                className="font-bold text-slate-800 hover:text-slate-900 hover:underline text-left block border-0 bg-transparent p-0 cursor-pointer"
                               >
                                 {rt.name || rt.symbol}
                               </button>
@@ -1120,17 +1119,17 @@ export default function PortfolioTracker({
                                 {rt.type === 'stock' ? `Stock (${rt.symbol})` : 'Mutual Fund Record'}
                               </div>
                             </td>
-                            <td className="p-2 text-center font-mono font-medium text-xs">{rt.quantity}</td>
-                            <td className="p-2 text-right font-mono text-xs">₹{rt.buyPrice.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
-                            <td className="p-2 text-right font-mono text-xs">₹{rt.exitPrice.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
-                            <td className="p-2 text-right font-bold text-xs font-mono">
+                            <td className="p-2 text-center font-mono tabular-nums font-medium text-xs">{rt.quantity}</td>
+                            <td className="p-2 text-right font-mono tabular-nums text-xs">₹{rt.buyPrice.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
+                            <td className="p-2 text-right font-mono tabular-nums text-xs">₹{rt.exitPrice.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
+                            <td className="p-2 text-right font-bold text-xs font-mono tabular-nums">
                               <span className={isWin ? 'text-emerald-600' : 'text-rose-600'}>
                                 ₹{rt.pnl.toLocaleString('en-IN', { minimumFractionDigits: 2 })}
                               </span>
                             </td>
-                            <td className="p-2 text-center text-slate-700 font-mono text-xs">{rt.exitDate || '-'}</td>
+                            <td className="p-2 text-center text-slate-700 font-mono tabular-nums text-xs">{rt.exitDate || '-'}</td>
                             <td className="p-2 text-center">
-                              <span className={`inline-block px-1.5 py-0.5 rounded-md font-bold text-xs font-mono ${isWin ? 'bg-emerald-50 text-emerald-700' : 'bg-rose-50 text-rose-700'}`}>
+                              <span className={`inline-block px-1.5 py-0.5 rounded-md font-bold text-xs font-mono tabular-nums ${isWin ? 'bg-emerald-50 text-emerald-700' : 'bg-rose-50 text-rose-700'}`}>
                                 {isWin ? '+' : ''}{roi.toFixed(1)}%
                               </span>
                             </td>
@@ -1154,7 +1153,7 @@ export default function PortfolioTracker({
                 <div className="overflow-x-auto">
                   <table className="w-full text-left border-collapse text-xs">
                     <thead>
-                      <tr className="border-b border-slate-150 bg-slate-50/40 text-slate-500 capitalize text-xs font-bold">
+                      <tr className="border-b border-slate-200 bg-slate-50/40 text-slate-500 capitalize text-xs font-bold">
                         <th className="p-2">Holdings Descriptor</th>
                         <th className="p-2">Broker / Class</th>
                         <th className="p-2 text-right">Cost vs Live</th>
@@ -1173,7 +1172,7 @@ export default function PortfolioTracker({
                               <button
                                 type="button"
                                 onClick={() => setViewingAssetDetails(h)}
-                                className="font-bold text-slate-800 hover:text-indigo-600 hover:underline truncate text-left flex items-center gap-1 border-0 bg-transparent p-0 cursor-pointer"
+                                className="font-bold text-slate-800 hover:text-slate-900 hover:underline truncate text-left flex items-center gap-1 border-0 bg-transparent p-0 cursor-pointer"
                                 title="Click to view charts & analysis"
                               >
                                 <span className="truncate">{h.displayName}</span>
@@ -1187,16 +1186,16 @@ export default function PortfolioTracker({
                               <span className="inline-block px-1.5 py-0.5 rounded-md text-xs font-bold bg-slate-100 text-slate-700 mr-1.5">{h.broker}</span>
                               <span className="inline-block px-1.5 py-0.5 rounded-md text-xs font-semibold text-white" style={{ backgroundColor: COLORS[h.assetClass as keyof typeof COLORS] }}>{h.assetClass}</span>
                             </td>
-                            <td className="p-2 text-right font-mono text-xs">
+                            <td className="p-2 text-right font-mono tabular-nums text-xs">
                               <div>₹{h.buyPrice.toLocaleString('en-IN', { minimumFractionDigits: 1 })}</div>
                               <div className="text-xs text-slate-500 font-medium">₹{h.currentPrice.toLocaleString('en-IN', { minimumFractionDigits: 1 })}</div>
                             </td>
-                            <td className="p-2 text-right font-bold text-xs font-mono">
+                            <td className="p-2 text-right font-bold text-xs font-mono tabular-nums">
                               <div>₹{h.currentValue.toLocaleString('en-IN', { minimumFractionDigits: 1 })}</div>
-                              <div className="text-xs text-slate-450 font-normal">Invested: ₹{h.investedValue.toLocaleString('en-IN', { minimumFractionDigits: 1 })}</div>
+                              <div className="text-xs text-slate-400 font-normal">Invested: ₹{h.investedValue.toLocaleString('en-IN', { minimumFractionDigits: 1 })}</div>
                             </td>
                             <td className="p-2 text-right">
-                              <div className={`font-bold font-mono text-xs ${isProfit ? 'text-emerald-600' : 'text-rose-600'}`}>
+                              <div className={`font-bold font-mono tabular-nums text-xs ${isProfit ? 'text-emerald-600' : 'text-rose-600'}`}>
                                 ₹{h.pnl.toLocaleString('en-IN', { maximumFractionDigits: 1 })}
                               </div>
                               <div className={`text-xs font-bold ${isProfit ? 'text-emerald-500' : 'text-rose-500'}`}>
@@ -1204,14 +1203,14 @@ export default function PortfolioTracker({
                               </div>
                             </td>
                             <td className="p-2 text-center">
-                              <span className="px-1 py-0.5 bg-blue-50 text-blue-700 rounded-md font-bold text-xs font-mono">
+                              <span className="px-1 py-0.5 bg-blue-50 text-blue-700 rounded-md font-bold text-xs font-mono tabular-nums">
                                 {h.xirr > 0 ? '+' : ''}{h.xirr.toFixed(1)}%
                               </span>
                             </td>
                             <td className="p-2 text-center">
                               {h.isAutoSynced ? (
                                 <div className="flex items-center justify-center gap-1.5">
-                                  <span className="text-xs font-bold text-indigo-500 bg-indigo-50 px-1.5 py-0.5 rounded-full whitespace-nowrap">
+                                  <span className="text-xs font-bold text-indigo-500 bg-slate-100 px-1.5 py-0.5 rounded-full whitespace-nowrap">
                                     Auto-Synced
                                   </span>
                                   <button
@@ -1221,7 +1220,7 @@ export default function PortfolioTracker({
                                       setTradeLtp(h.currentPrice);
                                       setTradeModalOpen(true);
                                     }}
-                                    className="text-slate-500 hover:text-indigo-600 p-1 rounded-md transition-colors cursor-pointer border-0 bg-transparent"
+                                    className="text-slate-500 hover:text-slate-900 p-1 rounded-md transition-colors cursor-pointer border-0 bg-transparent"
                                     title="View TradingView Chart & Trade"
                                   >
                                     <TrendingUp size={13} />
@@ -1232,7 +1231,7 @@ export default function PortfolioTracker({
                                   <button
                                     type="button"
                                     onClick={() => setViewingAssetDetails(h)}
-                                    className="text-slate-500 hover:text-indigo-600 p-1 rounded-md transition-colors cursor-pointer border-0 bg-transparent"
+                                    className="text-slate-500 hover:text-slate-900 p-1 rounded-md transition-colors cursor-pointer border-0 bg-transparent"
                                     title="View Interactive Stock Chart"
                                   >
                                     <BarChart3 size={13} />
@@ -1244,7 +1243,7 @@ export default function PortfolioTracker({
                                       setExitQuantity(h.quantity.toString());
                                       setExitPrice((h.currentPrice || h.buyPrice).toString());
                                     }}
-                                    className="text-slate-450 hover:text-emerald-600 p-1 rounded-md transition-colors cursor-pointer border-0 bg-transparent"
+                                    className="text-slate-400 hover:text-emerald-600 p-1 rounded-md transition-colors cursor-pointer border-0 bg-transparent"
                                     title="Exit/Sell Position"
                                   >
                                     <ArrowUpRight size={13} />
@@ -1256,7 +1255,7 @@ export default function PortfolioTracker({
                                       setTradeLtp(h.currentPrice);
                                       setTradeModalOpen(true);
                                     }}
-                                    className="text-slate-500 hover:text-indigo-600 p-1 rounded-md transition-colors cursor-pointer border-0 bg-transparent"
+                                    className="text-slate-500 hover:text-slate-900 p-1 rounded-md transition-colors cursor-pointer border-0 bg-transparent"
                                     title="Trade / Route Order"
                                   >
                                     <TrendingUp size={13} />
@@ -1296,7 +1295,7 @@ export default function PortfolioTracker({
         {/* Dynamic Side Allocation & Watchlist */}
         <div className="space-y-3">
           {/* Asset Allocation Pie Chart */}
-          <div className="bg-white border border-slate-150 rounded-lg p-2 shadow-sm space-y-2">
+          <div className="bg-white border border-slate-200 rounded-lg p-2 shadow-sm space-y-2">
             <div className="flex items-center gap-1.5 border-b border-slate-100 pb-1.5">
               <PieIcon size={16} className="text-slate-700" />
               <h3 className="font-bold text-xs text-slate-700 font-display">Asset Class Allocation</h3>
@@ -1350,7 +1349,7 @@ export default function PortfolioTracker({
           </div>
 
           {/* Watchlist Section */}
-          <div className="bg-white border border-slate-150 rounded-lg p-2 shadow-sm space-y-2">
+          <div className="bg-white border border-slate-200 rounded-lg p-2 shadow-sm space-y-2">
             <div className="flex justify-between items-center border-b border-slate-100 pb-1.5">
               <div className="flex items-center gap-1.5">
                 <Eye size={16} className="text-slate-700" />
@@ -1425,7 +1424,7 @@ export default function PortfolioTracker({
                       </button>
                       <button
                         type="submit"
-                        className="px-1.5 py-1 bg-slate-900 text-white rounded text-xs font-bold cursor-pointer"
+                        className="px-1.5 py-1 bg-slate-900 text-white rounded text-xs font-medium cursor-pointer"
                       >
                         Watch
                       </button>
@@ -1441,7 +1440,7 @@ export default function PortfolioTracker({
             ) : (
               <div className="space-y-1">
                 {watchlist.map((item) => {
-                  const key = item.type === 'stock' ? `stock_${item.symbol}` : `mf_${item.schemeCode}`;
+                  const key = item.type === 'stock' ? `stock_${item.symbol}` : item.type === 'crypto' ? `crypto_${item.name || item.symbol}` : `mf_${item.schemeCode}`;
                   const live = livePrices[key];
                   const price = live ? live.currentPrice : null;
                   const change = live ? live.dayChange : 0;
@@ -1455,7 +1454,7 @@ export default function PortfolioTracker({
                       </div>
 
                       <div className="flex items-center gap-1">
-                        <div className="text-right font-mono">
+                        <div className="text-right font-mono tabular-nums">
                           <p className="font-bold text-slate-900 text-xs">{price ? `₹${price}` : '---'}</p>
                           {item.type === 'stock' && (
                             <p className={`text-xs font-bold ${change >= 0 ? 'text-emerald-500' : 'text-rose-500'}`}>
@@ -1495,7 +1494,7 @@ export default function PortfolioTracker({
                 <div className="flex justify-between items-center">
                   <div className="flex items-center gap-1">
                     <Wallet size={18} className="text-slate-700" />
-                    <h3 className="font-extrabold text-sm text-slate-800 capitalize">
+                    <h3 className="font-semibold text-sm text-slate-800 capitalize">
                       {cashActionType} Investment Cash
                     </h3>
                   </div>
@@ -1524,7 +1523,7 @@ export default function PortfolioTracker({
                     placeholder="e.g. 50000"
                     value={cashAmountInput}
                     onChange={(e) => setCashAmountInput(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-lg p-1.5 text-xs font-mono font-bold focus:ring-1 focus:ring-slate-900 focus:bg-white"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg p-1.5 text-xs font-mono tabular-nums font-bold focus:ring-1 focus:ring-slate-900 focus:bg-white"
                   />
                   {cashActionType === 'withdraw' && (
                     <span className="text-xs text-amber-600 font-medium block mt-1">
@@ -1556,7 +1555,7 @@ export default function PortfolioTracker({
                   </button>
                   <button
                     type="submit"
-                    className="flex-1 py-1 bg-slate-900 hover:bg-slate-800 text-white rounded-lg text-xs font-bold cursor-pointer transition-colors"
+                    className="flex-1 py-1 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white rounded-xl text-xs font-medium cursor-pointer transition-colors"
                   >
                     Confirm {cashActionType}
                   </button>
@@ -1582,10 +1581,10 @@ export default function PortfolioTracker({
                   <div className="flex items-center gap-1">
                     <ArrowUpRight size={18} className="text-emerald-600 animate-bounce" />
                     <div>
-                      <h3 className="font-extrabold text-sm text-slate-800">
+                      <h3 className="font-semibold text-sm text-slate-800">
                         Exit Position / Sell Asset
                       </h3>
-                      <p className="text-xs text-slate-450 font-mono text-slate-700 mt-0.5">
+                      <p className="text-xs text-slate-400 font-mono tabular-nums text-slate-700 mt-0.5">
                         {exitingHolding.displayName || exitingHolding.name}
                       </p>
                     </div>
@@ -1601,18 +1600,18 @@ export default function PortfolioTracker({
 
               <form onSubmit={handleExitPositionSubmit} className="p-2 space-y-2 text-xs">
                 {/* Holdings Snapshot */}
-                <div className="grid grid-cols-3 gap-1 bg-slate-50 border border-slate-150 p-1 rounded-xl text-center">
+                <div className="grid grid-cols-3 gap-1 bg-slate-50 border border-slate-200 p-1 rounded-xl text-center">
                   <div>
                     <span className="block text-xs capitalize font-bold text-slate-500 mb-0.5">My Shares</span>
-                    <span className="font-mono font-bold text-slate-750 text-xs">{exitingHolding.quantity}</span>
+                    <span className="font-mono tabular-nums font-bold text-slate-700 text-xs">{exitingHolding.quantity}</span>
                   </div>
                   <div>
                     <span className="block text-xs capitalize font-bold text-slate-500 mb-0.5">Buy Average</span>
-                    <span className="font-mono font-bold text-slate-750 text-xs">₹{exitingHolding.buyPrice.toLocaleString('en-IN', { minimumFractionDigits: 1 })}</span>
+                    <span className="font-mono tabular-nums font-bold text-slate-700 text-xs">₹{exitingHolding.buyPrice.toLocaleString('en-IN', { minimumFractionDigits: 1 })}</span>
                   </div>
                   <div>
                     <span className="block text-xs capitalize font-bold text-slate-500 mb-0.5">Live Valuation</span>
-                    <span className="font-mono font-extrabold text-slate-850 text-xs text-emerald-600">₹{exitingHolding.currentPrice.toLocaleString('en-IN', { minimumFractionDigits: 1 })}</span>
+                    <span className="font-mono tabular-nums font-semibold text-slate-850 text-xs text-emerald-600">₹{exitingHolding.currentPrice.toLocaleString('en-IN', { minimumFractionDigits: 1 })}</span>
                   </div>
                 </div>
 
@@ -1629,7 +1628,7 @@ export default function PortfolioTracker({
                       required
                       value={exitQuantity}
                       onChange={(e) => setExitQuantity(e.target.value)}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-lg p-1.5 font-mono font-bold text-xs focus:ring-1 focus:ring-slate-900"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-lg p-1.5 font-mono tabular-nums font-bold text-xs focus:ring-1 focus:ring-slate-900"
                     />
                     <span className="text-xs text-slate-500 mt-1 block">
                       Partial exits supported.
@@ -1647,7 +1646,7 @@ export default function PortfolioTracker({
                       required
                       value={exitPrice}
                       onChange={(e) => setExitPrice(e.target.value)}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-lg p-1.5 font-mono font-bold text-xs focus:ring-1 focus:ring-slate-900"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-lg p-1.5 font-mono tabular-nums font-bold text-xs focus:ring-1 focus:ring-slate-900"
                     />
                     <span className="text-xs text-slate-500 mt-1 block">
                       LTP or custom limit sell value.
@@ -1656,7 +1655,7 @@ export default function PortfolioTracker({
                 </div>
 
                 {/* Sell Proceeds Estimator Board */}
-                <div className="bg-slate-900 text-zinc-300 p-1 rounded-xl font-mono text-xs space-y-1">
+                <div className="bg-slate-900 text-zinc-300 p-1 rounded-xl font-mono tabular-nums text-xs space-y-1">
                   <div className="flex justify-between">
                     <span>Gross Proceeds:</span>
                     <span className="text-slate-105 font-bold">
@@ -1686,7 +1685,7 @@ export default function PortfolioTracker({
                     onChange={(e) => setAddProceedsToCash(e.target.checked)}
                     className="rounded border-slate-300 text-slate-900 focus:ring-slate-800"
                   />
-                  <label htmlFor="addProceedsToCash" className="text-xs font-bold text-slate-650 cursor-pointer">
+                  <label htmlFor="addProceedsToCash" className="text-xs font-bold text-slate-600 cursor-pointer">
                     Credit gross trade proceeds directly back to Investment Cash Wallet
                   </label>
                 </div>
@@ -1701,7 +1700,7 @@ export default function PortfolioTracker({
                   </button>
                   <button
                     type="submit"
-                    className="flex-1 py-1 bg-slate-900 hover:bg-slate-800 text-white rounded-lg text-xs font-bold cursor-pointer transition-colors"
+                    className="flex-1 py-1 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white rounded-xl text-xs font-medium cursor-pointer transition-colors"
                   >
                     Execute Selling Position
                   </button>
@@ -1727,17 +1726,17 @@ export default function PortfolioTracker({
                 <div className="flex items-center gap-1">
                   <BarChart3 size={18} className="text-slate-805" />
                   <div>
-                    <h3 className="font-extrabold text-sm text-slate-800">
+                    <h3 className="font-semibold text-sm text-slate-800">
                       {viewingAssetDetails.displayName || viewingAssetDetails.name} Real-time Performance
                     </h3>
-                    <p className="text-xs text-slate-500 font-mono mt-0.5">
+                    <p className="text-xs text-slate-500 font-mono tabular-nums mt-0.5">
                       Type: {viewingAssetDetails.type === 'stock' ? `Stock (${viewingAssetDetails.symbol})` : 'Mutual Fund Basket'} • Class: {viewingAssetDetails.assetClass || 'Equity'}
                     </p>
                   </div>
                 </div>
 
                 {/* Sub-Header Timer filters */}
-                <div className="flex bg-slate-100 p-0.5 rounded-lg border border-slate-200 text-xs font-extrabold font-mono shrink-0">
+                <div className="flex bg-slate-100 p-0.5 rounded-lg border border-slate-200 text-xs font-semibold font-mono tabular-nums shrink-0">
                   {(['1M', '3M', '6M', '1Y'] as const).map((time) => (
                     <button
                       key={time}
@@ -1754,7 +1753,7 @@ export default function PortfolioTracker({
               {/* Body chart container */}
               <div className="p-3 space-y-3">
                 <div>
-                  <div className="text-xs capitalize font-bold text-slate-500 mb-1 font-mono">
+                  <div className="text-xs capitalize font-bold text-slate-500 mb-1 font-mono tabular-nums">
                     Historical Trend Chart ({chartTimeframe} simulated quote points)
                   </div>
                   
@@ -1798,28 +1797,28 @@ export default function PortfolioTracker({
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-1">
                   <div className="bg-slate-50 border border-slate-100 p-1.5 rounded-xl">
                     <span className="block text-xs capitalize font-bold text-slate-500 mb-0.5">Quote Price</span>
-                    <span className="font-mono font-extrabold text-slate-800 text-xs">
+                    <span className="font-mono tabular-nums font-semibold text-slate-800 text-xs">
                       ₹{(viewingAssetDetails.currentPrice || viewingAssetDetails.exitPrice || 0).toLocaleString('en-IN', { minimumFractionDigits: 2 })}
                     </span>
                   </div>
 
                   <div className="bg-slate-50 border border-slate-100 p-1.5 rounded-xl">
                     <span className="block text-xs capitalize font-bold text-slate-500 mb-0.5">52-Week High</span>
-                    <span className="font-mono font-bold text-slate-700 text-xs">
+                    <span className="font-mono tabular-nums font-bold text-slate-700 text-xs">
                       ₹{((viewingAssetDetails.currentPrice || viewingAssetDetails.exitPrice || 0) * 1.15).toLocaleString('en-IN', { maximumFractionDigits: 1 })}
                     </span>
                   </div>
 
                   <div className="bg-slate-50 border border-slate-100 p-1.5 rounded-xl">
                     <span className="block text-xs capitalize font-bold text-slate-500 mb-0.5">52-Week Low</span>
-                    <span className="font-mono font-bold text-slate-700 text-xs">
+                    <span className="font-mono tabular-nums font-bold text-slate-700 text-xs">
                       ₹{((viewingAssetDetails.currentPrice || viewingAssetDetails.exitPrice || 0) * 0.82).toLocaleString('en-IN', { maximumFractionDigits: 1 })}
                     </span>
                   </div>
 
                   <div className="bg-slate-50 border border-slate-100 p-1.5 rounded-xl">
                     <span className="block text-xs capitalize font-bold text-slate-500 mb-0.5">1-Month Return</span>
-                    <span className={`font-mono font-bold text-xs ${((viewingAssetDetails.currentPrice || viewingAssetDetails.exitPrice) >= (viewingAssetDetails.buyPrice || viewingAssetDetails.currentPrice)) ? 'text-emerald-505 text-emerald-600' : 'text-rose-505 text-rose-600'}`}>
+                    <span className={`font-mono tabular-nums font-bold text-xs ${((viewingAssetDetails.currentPrice || viewingAssetDetails.exitPrice) >= (viewingAssetDetails.buyPrice || viewingAssetDetails.currentPrice)) ? 'text-emerald-505 text-emerald-600' : 'text-rose-505 text-rose-600'}`}>
                       {((viewingAssetDetails.currentPrice || viewingAssetDetails.exitPrice) >= (viewingAssetDetails.buyPrice || viewingAssetDetails.currentPrice)) ? '+' : ''}
                       {((((viewingAssetDetails.currentPrice || viewingAssetDetails.exitPrice) - (viewingAssetDetails.buyPrice || viewingAssetDetails.currentPrice)) / (viewingAssetDetails.buyPrice || 1)) * 100).toFixed(1)}%
                     </span>
@@ -1827,15 +1826,15 @@ export default function PortfolioTracker({
                 </div>
 
                 {viewingAssetDetails.quantity && (
-                  <div className="bg-indigo-50 border border-indigo-100 p-1 rounded-xl flex items-center justify-between text-indigo-950 text-xs">
+                  <div className="bg-slate-100 border border-indigo-100 p-1 rounded-xl flex items-center justify-between text-indigo-950 text-xs">
                     <div>
-                      <span className="text-xs capitalize font-extrabold text-indigo-400 block ">My Investment Holding Valuation</span>
+                      <span className="text-xs capitalize font-semibold text-indigo-400 block ">My Investment Holding Valuation</span>
                       <span className="font-bold">₹{(viewingAssetDetails.quantity * (viewingAssetDetails.currentPrice || viewingAssetDetails.buyPrice)).toLocaleString('en-IN')}</span>
-                      <span className="text-xs text-indigo-600/90 font-medium ml-1.5">({viewingAssetDetails.quantity} unit shares)</span>
+                      <span className="text-xs text-slate-900/90 font-medium ml-1.5">({viewingAssetDetails.quantity} unit shares)</span>
                     </div>
                     <div className="text-right">
-                      <span className="text-xs capitalize font-extrabold text-indigo-400 block ">Current Return</span>
-                      <span className={`font-mono font-extrabold ${((viewingAssetDetails.currentPrice || viewingAssetDetails.buyPrice) >= viewingAssetDetails.buyPrice) ? 'text-emerald-600' : 'text-rose-600'}`}>
+                      <span className="text-xs capitalize font-semibold text-indigo-400 block ">Current Return</span>
+                      <span className={`font-mono tabular-nums font-semibold ${((viewingAssetDetails.currentPrice || viewingAssetDetails.buyPrice) >= viewingAssetDetails.buyPrice) ? 'text-emerald-600' : 'text-rose-600'}`}>
                         ₹{Math.abs(viewingAssetDetails.quantity * ((viewingAssetDetails.currentPrice || viewingAssetDetails.buyPrice) - viewingAssetDetails.buyPrice)).toLocaleString('en-IN')}
                       </span>
                     </div>

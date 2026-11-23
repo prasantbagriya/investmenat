@@ -197,7 +197,7 @@ export const LedgerProfileView: React.FC<LedgerProfileViewProps> = ({
             <button
               type="button"
               onClick={onBack}
-              className="p-1.5 bg-white rounded-md text-slate-500 hover:text-slate-900 shadow-xs border border-slate-200"
+              className="p-1.5 bg-white rounded-xl text-slate-500 hover:text-slate-900 shadow-xs border border-slate-200"
             >
               <ArrowLeft size={16} />
             </button>
@@ -211,7 +211,7 @@ export const LedgerProfileView: React.FC<LedgerProfileViewProps> = ({
           <span className="text-xs font-bold opacity-80 block leading-none mb-0.5 text-slate-900">
              {profileBalance === 0 ? 'Settled Up' : profileBalance > 0 ? 'You will get' : 'You owe'}
           </span>
-          <span className={`text-lg font-black tracking-tight block leading-none ${profileBalance === 0 ? 'text-slate-900' : profileBalance > 0 ? 'text-emerald-800' : 'text-rose-800'}`}>
+          <span className={`text-lg font-semibold tracking-tight block leading-none ${profileBalance === 0 ? 'text-slate-900' : profileBalance > 0 ? 'text-emerald-800' : 'text-rose-800'}`}>
             ₹{Math.abs(profileBalance).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
           </span>
         </div>
@@ -237,7 +237,7 @@ export const LedgerProfileView: React.FC<LedgerProfileViewProps> = ({
                   <div className={`p-3 rounded shadow-xs border group relative min-w-[140px] ${isGave ? 'bg-rose-50 border-rose-100 rounded-tr-sm' : 'bg-emerald-50 border-emerald-100 rounded-tl-sm'}`}>
                     
                     <div className="flex items-center justify-between gap-4">
-                      <span className={`text-lg font-bold font-mono ${isGave ? 'text-rose-700' : 'text-emerald-700'}`}>
+                      <span className={`text-lg font-bold font-mono tabular-nums ${isGave ? 'text-rose-700' : 'text-emerald-700'}`}>
                         ₹{tx.amount.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                       </span>
                       {locked ? (
@@ -262,7 +262,7 @@ export const LedgerProfileView: React.FC<LedgerProfileViewProps> = ({
                       </p>
                     )}
                     
-                    <div className={`flex items-center gap-1 mt-1.5 text-xs font-mono ${isGave ? 'text-rose-400 justify-end' : 'text-emerald-500 justify-start'}`}>
+                    <div className={`flex items-center gap-1 mt-1.5 text-xs font-mono tabular-nums ${isGave ? 'text-rose-400 justify-end' : 'text-emerald-500 justify-start'}`}>
                       {new Date(tx.date).toLocaleDateString()}
                       {isGave ? <span className="ml-1 text-rose-500/80">SENT</span> : <span className="ml-1 text-emerald-400/80">RECEIVED</span>}
                     </div>
@@ -308,7 +308,7 @@ export const LedgerProfileView: React.FC<LedgerProfileViewProps> = ({
                 <div className="space-y-1.5">
                   <label className="text-xs font-bold text-slate-500 block ">Amount (₹)</label>
                   <div className="relative">
-                    <span className="absolute left-3 top-2 text-slate-450 text-xs font-semibold">₹</span>
+                    <span className="absolute left-3 top-2 text-slate-400 text-xs font-semibold">₹</span>
                     <input 
                       type="number"
                       step="0.01"
@@ -317,7 +317,7 @@ export const LedgerProfileView: React.FC<LedgerProfileViewProps> = ({
                       placeholder="0.00"
                       value={amount}
                       onChange={(e) => setAmount(e.target.value)}
-                      className="w-full pl-7 pr-2 py-1.5 text-xs border border-slate-250 rounded-md focus:outline-hidden bg-white transition-all font-mono"
+                      className="w-full pl-7 pr-2 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-hidden bg-white transition-all font-mono tabular-nums"
                     />
                   </div>
                 </div>
@@ -328,7 +328,7 @@ export const LedgerProfileView: React.FC<LedgerProfileViewProps> = ({
                     required
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
-                    className="w-full px-2 py-1.5 text-xs border border-slate-250 rounded-md focus:outline-hidden bg-white transition-all font-mono"
+                    className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-hidden bg-white transition-all font-mono tabular-nums"
                   />
                 </div>
               </div>
@@ -340,7 +340,7 @@ export const LedgerProfileView: React.FC<LedgerProfileViewProps> = ({
                     value={memo}
                     onChange={(e) => setMemo(e.target.value)}
                     rows={1}
-                    className="w-full px-2 py-1.5 text-xs border border-slate-250 rounded-md focus:outline-hidden bg-white transition-all resize-y min-h-[30px]"
+                    className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-hidden bg-white transition-all resize-y min-h-[30px]"
                   />
                 </div>
 
@@ -349,7 +349,7 @@ export const LedgerProfileView: React.FC<LedgerProfileViewProps> = ({
                   <select 
                     value={paymentMethod}
                     onChange={(e) => setPaymentMethod(e.target.value)}
-                    className="w-full px-2 py-1.5 text-xs border border-slate-250 rounded-md focus:outline-hidden bg-white transition-all "
+                    className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-hidden bg-white transition-all "
                   >
                     <option value="cash">Cash (Default)</option>
                     {bankAccounts.map((bank: any) => (

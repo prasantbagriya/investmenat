@@ -35,14 +35,14 @@ export function usePushNotifications() {
         const registration = await navigator.serviceWorker?.getRegistration();
         if (registration && registration.showNotification) {
           await registration.showNotification(title, {
-            icon: '/vite.svg',
-            badge: '/vite.svg',
+            icon: '/pwa-192x192.png',
+            badge: '/pwa-192x192.png',
             ...options
           });
         } else {
           const notification = new Notification(title, {
-            icon: '/vite.svg',
-            badge: '/vite.svg',
+            icon: '/pwa-192x192.png',
+            badge: '/pwa-192x192.png',
             ...options
           });
           notification.onclick = function() {
@@ -84,7 +84,7 @@ export function usePushNotifications() {
         const notificationTitle = payload.notification?.title || 'New Notification';
         const notificationOptions = {
           body: payload.notification?.body,
-          icon: payload.notification?.image || '/vite.svg',
+          icon: payload.notification?.image || '/pwa-192x192.png',
         };
         
         // Show native browser notification even if app is in foreground

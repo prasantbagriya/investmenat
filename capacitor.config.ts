@@ -7,7 +7,7 @@ const config: CapacitorConfig = {
   backgroundColor: '#ffffff',
   plugins: {
     CapacitorHttp: {
-      enabled: false,
+      enabled: true,
     },
     FirebaseAuthentication: {
       skipNativeAuth: false,

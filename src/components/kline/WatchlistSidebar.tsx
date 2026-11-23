@@ -184,7 +184,7 @@ export default function WatchlistSidebar({ theme, activeSymbol, onSymbolSelect, 
             <div className="flex-1 flex flex-col h-full">
               {/* Header */}
               <div className="px-4 py-3 flex items-center justify-between" style={{ borderBottom: `1px solid ${border}` }}>
-                <div className="flex items-center gap-2 cursor-pointer font-bold text-sm">
+                <div className="flex items-center gap-2 cursor-pointer font-medium text-sm">
                   <span style={{ color: text }}>Watchlist</span>
                   <ChevronDown size={14} style={{ color: subtext }} />
                 </div>
@@ -235,7 +235,7 @@ export default function WatchlistSidebar({ theme, activeSymbol, onSymbolSelect, 
               {/* Details Section (Bottom Half) */}
               <div className="flex flex-col h-[280px] bg-white" style={{ borderTop: `1px solid ${border}` }}>
                 <div className="px-4 py-2 flex items-center justify-between" style={{ borderBottom: `1px solid ${border}` }}>
-                  <div className="flex items-center gap-2 font-bold text-sm cursor-pointer">
+                  <div className="flex items-center gap-2 font-medium text-sm cursor-pointer">
                     <div className="w-5 h-5 rounded-full text-xs text-white flex items-center justify-center bg-black dark:bg-white dark:text-black">
                       {companyProfile?.image ? (
                          <img src={companyProfile.image} alt={activeSymbol} className="w-full h-full rounded-full object-cover" />

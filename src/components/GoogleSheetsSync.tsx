@@ -382,7 +382,7 @@ export default function GoogleSheetsSync({
         {onNavigateToTab && (
           <button
             onClick={() => onNavigateToTab('settings')}
-            className="bg-slate-900 hover:bg-slate-800 text-white font-semibold py-1.5 px-3 rounded-xl text-xs cursor-pointer shadow-xs active:scale-95 transition-all"
+            className="bg-slate-900 hover:bg-slate-800 text-white font-medium py-1.5 px-3 rounded-xl text-xs cursor-pointer shadow-xs active:scale-95 transition-all"
           >
             ⚙️ Open Settings & Links
           </button>
@@ -413,7 +413,7 @@ export default function GoogleSheetsSync({
           {onNavigateToTab && (
             <button
               onClick={() => onNavigateToTab('settings')}
-              className="text-[9.5px] text-slate-500 hover:text-slate-600 capitalize font-semibold cursor-pointer"
+              className="text-[9.5px] text-slate-500 hover:text-slate-600 capitalize font-medium cursor-pointer"
             >
               Configure Settings ⚙️
             </button>
@@ -442,7 +442,7 @@ export default function GoogleSheetsSync({
                 />
                 <button
                   onClick={() => saveSpreadsheetId(spreadsheetId)}
-                  className="bg-slate-100 hover:bg-slate-200 hover:text-slate-900 text-slate-700 font-semibold px-1 rounded-xl border border-slate-200 transition-colors cursor-pointer text-xs shrink-0"
+                  className="bg-slate-100 hover:bg-slate-200 hover:text-slate-900 text-slate-700 font-medium px-1 rounded-xl border border-slate-200 transition-colors cursor-pointer text-xs shrink-0"
                 >
                   Save ID
                 </button>
@@ -457,7 +457,7 @@ export default function GoogleSheetsSync({
                 <button
                   onClick={handleCreateNewSpreadsheet}
                   disabled={isCreatingSheet}
-                  className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold p-1 px-1.5 rounded-xl text-xs transition-colors cursor-pointer disabled:opacity-50 flex items-center gap-1.5"
+                  className="bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium font-medium p-1 px-1.5 rounded-xl text-xs transition-colors cursor-pointer disabled:opacity-50 flex items-center gap-1.5"
                 >
                   {isCreatingSheet ? (
                     <>
@@ -475,7 +475,7 @@ export default function GoogleSheetsSync({
                     href={`https://docs.google.com/spreadsheets/d/${spreadsheetId}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="bg-white hover:bg-slate-50 text-slate-700 font-bold p-1 px-1.5 rounded-xl text-xs border border-slate-200 transition-all cursor-pointer flex items-center gap-1.5"
+                    className="bg-white hover:bg-slate-50 text-slate-700 font-medium p-1 px-1.5 rounded-xl text-xs border border-slate-200 transition-all cursor-pointer flex items-center gap-1.5"
                   >
                     View Sheets File <ExternalLink size={12} />
                   </a>
@@ -501,7 +501,7 @@ export default function GoogleSheetsSync({
                 <button
                   onClick={() => pushAllToSheets()}
                   disabled={isPushing}
-                  className="w-full text-center py-1 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200/45 rounded-xl text-xs font-semibold transition-colors cursor-pointer disabled:opacity-50 flex items-center justify-center gap-1.5"
+                  className="w-full text-center py-1 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200/45 rounded-xl text-xs font-medium transition-colors cursor-pointer disabled:opacity-50 flex items-center justify-center gap-1.5"
                 >
                   {isPushing ? (
                     <>
@@ -562,7 +562,7 @@ export default function GoogleSheetsSync({
               </span>
               <button
                 onClick={() => setActiveLogs([])}
-                className="text-xs hover:text-slate-200 text-slate-700 font-bold cursor-pointer"
+                className="text-xs hover:text-slate-200 text-slate-700 font-medium cursor-pointer"
               >
                 Clear
               </button>

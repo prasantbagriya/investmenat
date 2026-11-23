@@ -106,7 +106,7 @@ export default function TaskCard({
 
           {/* Overdue Badge */}
           {isPending && isOverdue && (
-            <span className="text-xs font-bold font-mono tabular-nums text-rose-600 bg-rose-100 px-1 py-0.5 rounded-md">
+            <span className="text-xs font-bold font-mono tabular-nums text-rose-600 bg-rose-100 px-1 py-0.5 rounded-xl">
               Ka time is completed!
             </span>
           )}
@@ -137,7 +137,7 @@ export default function TaskCard({
         {isPending && (
           <div className="text-right flex flex-col justify-center">
             <span className="text-xs capitalize font-bold text-slate-500 ">Time Remaining</span>
-            <span className={`text-xs font-mono tabular-nums font-bold tracking-tight px-1.5 py-1 rounded-md mt-0.5 ${
+            <span className={`text-xs font-mono tabular-nums font-bold tracking-tight px-1.5 py-1 rounded-xl mt-0.5 ${
               isOverdue 
                 ? 'bg-rose-100 text-rose-700 ring-1 ring-rose-300' 
                 : 'bg-slate-100 text-slate-700'
@@ -161,7 +161,7 @@ export default function TaskCard({
                     await onSyncToCalendar(task);
                   }
                 }}
-                className="flex items-center gap-1 bg-rose-50 hover:bg-rose-100 text-rose-700 hover:text-rose-800 font-bold text-xs py-1 px-1 rounded-xl transition-colors cursor-pointer border border-rose-200"
+                className="flex items-center gap-1 bg-rose-50 hover:bg-rose-100 text-rose-700 hover:text-rose-800 font-medium text-xs py-1 px-1 rounded-xl transition-colors cursor-pointer border border-rose-200"
                 title="Sync this task into Google Calendar"
               >
                 <Calendar className="w-3.5 h-3.5 text-rose-600" /> Sync Cal
@@ -172,7 +172,7 @@ export default function TaskCard({
           {isPending && (
             <button
               onClick={() => onComplete(task.id)}
-              className="flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-1 px-1.5 rounded-xl transition-all cursor-pointer shadow-xs"
+              className="flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium font-medium text-xs py-1 px-1.5 rounded-xl transition-all cursor-pointer shadow-xs"
               title="Mark as completed in Real Time"
               id={`complete-task-${task.id}`}
             >
@@ -182,7 +182,7 @@ export default function TaskCard({
 
           <button
             onClick={() => onDelete(task.id)}
-            className="p-1 bg-slate-50 hover:bg-rose-50 text-slate-500 hover:text-rose-600 rounded-lg border border-slate-200 transition-colors cursor-pointer"
+            className="p-1 bg-slate-50 hover:bg-rose-50 text-slate-500 hover:text-rose-600 rounded-xl border border-slate-200 transition-colors cursor-pointer"
             title="Delete task permanently"
             id={`delete-task-${task.id}`}
           >

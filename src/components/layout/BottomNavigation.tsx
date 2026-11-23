@@ -70,7 +70,7 @@ export default function BottomNavigation({
   const tabs = currentWorkspace === 'ledger' ? ledgerTabs : currentWorkspace === 'investmant' ? investmantTabs : currentWorkspace === 'research' ? researchTabs : currentWorkspace === 'crypto' ? cryptoTabs : currentWorkspace === 'propfirm' ? propfirmTabs : quickoTabs;
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-t border-slate-200 lg:hidden" aria-label="Bottom navigation">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-slate-200 shadow-xs lg:hidden" aria-label="Bottom navigation">
       {/* Tab Row */}
       <div className="flex justify-around py-2 px-1 pb-safe">
         {tabs.map(({ id, label, icon: Icon }) => {

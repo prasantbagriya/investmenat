@@ -499,11 +499,11 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                   <p className="text-xs text-slate-700">Requires OAuth 2.0. Note: Token expires daily for security. Reconnect if data stops syncing.</p>
                 </div>
                 {upstoxToken ? (
-                  <span className="bg-emerald-50 text-emerald-700 text-xs font-semibold capitalize px-2 py-1 rounded-lg flex items-center gap-1 border border-emerald-200">
+                  <span className="bg-emerald-50 text-emerald-700 text-xs font-semibold capitalize px-2 py-1 rounded-xl flex items-center gap-1 border border-emerald-200">
                     <CheckCircle2 size={12} /> Connected
                   </span>
                 ) : (
-                  <span className="bg-amber-50 text-amber-700 text-xs font-semibold capitalize px-2 py-1 rounded-lg flex items-center gap-1 border border-amber-200">
+                  <span className="bg-amber-50 text-amber-700 text-xs font-semibold capitalize px-2 py-1 rounded-xl flex items-center gap-1 border border-amber-200">
                     <AlertCircle size={12} /> Disconnected
                   </span>
                 )}
@@ -540,7 +540,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                 <div className="pt-2 flex flex-col sm:flex-row gap-3 border-b border-slate-200 pb-4">
                   <button
                     onClick={initiateUpstoxLogin}
-                    className="flex-1 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-semibold text-sm py-3 rounded-xl transition-colors shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+                    className="flex-1 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium text-sm py-3 rounded-xl transition-colors shadow-sm flex items-center justify-center gap-2 cursor-pointer"
                   >
                     {upstoxToken ? <RefreshCw size={18} /> : <LinkIcon size={18} />}
                     {upstoxToken ? 'Reconnect via OAuth' : 'Login via OAuth'}
@@ -560,7 +560,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                     />
                     <button
                       onClick={handleSaveDirectUpstoxToken}
-                      className="px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm rounded-xl transition-colors shadow-sm flex items-center gap-2 whitespace-nowrap cursor-pointer"
+                      className="px-4 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium font-medium text-sm rounded-xl transition-colors shadow-sm flex items-center gap-2 whitespace-nowrap cursor-pointer"
                     >
                       <CheckCircle2 size={16} /> Save Token
                     </button>
@@ -597,7 +597,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                         <label className="text-xs font-bold text-slate-500 capitalize ">Active Orders & Positions</label>
                         <button 
                           onClick={handleExitAllUpstox}
-                          className="w-full sm:w-auto bg-rose-100 hover:bg-rose-200 text-rose-700 text-xs font-medium capitalize px-3 py-2 sm:py-1 rounded-lg transition-colors border border-rose-200"
+                          className="w-full sm:w-auto bg-rose-100 hover:bg-rose-200 text-rose-700 text-xs font-medium capitalize px-3 py-2 sm:py-1 rounded-xl transition-colors border border-rose-200"
                         >
                           KILL SWITCH (Exit All)
                         </button>
@@ -713,7 +713,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                 <div className="pt-2">
                   <button
                     onClick={saveDhanConfig}
-                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm py-3 rounded-xl transition-colors shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium font-medium text-sm py-3 rounded-xl transition-colors shadow-sm flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <ShieldCheck size={18} /> Save & Connect Dhan
                   </button>
@@ -830,7 +830,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                   <button
                     onClick={handleAngelLogin}
                     disabled={angelLoading}
-                    className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold text-sm py-3 rounded-xl transition-colors shadow-sm flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                    className="w-full bg-orange-600 hover:bg-orange-700 text-white font-medium text-sm py-3 rounded-xl transition-colors shadow-sm flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                   >
                     {angelLoading ? <RefreshCw size={18} className="animate-spin" /> : <ShieldCheck size={18} />} 
                     {angelToken ? 'Reconnect Angel One' : 'Login to Angel One'}
@@ -909,16 +909,16 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                   <div className="flex items-center gap-1">
                     <button
                       onClick={() => setIsFormExpanded(!isFormExpanded)}
-                      className="px-1 py-1.5 text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg transition-colors cursor-pointer"
+                      className="px-1 py-1.5 text-xs font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl transition-colors cursor-pointer"
                     >
                       {isFormExpanded ? 'Close Form' : 'Configure Credentials'}
                     </button>
                     <button
                       onClick={() => setSmartIsActive(!smartIsActive)}
-                      className={`px-1.5 py-1.5 text-xs font-bold rounded-lg transition-all cursor-pointer ${
+                      className={`px-1.5 py-1.5 text-xs font-medium rounded-xl transition-all cursor-pointer ${
                         smartIsActive 
                           ? 'bg-rose-500 hover:bg-rose-600 text-white' 
-                          : 'bg-emerald-600 hover:bg-emerald-700 text-white'
+                          : 'bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium'
                       }`}
                     >
                       {smartIsActive ? 'Stop Stream' : 'Live WebSocket Stream'}
@@ -1007,7 +1007,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                             navigator.clipboard.writeText(angelApiKey || 'fy2JiRJ2');
                             toast.success('🔑 Key copied to clipboard!');
                           }}
-                          className="text-slate-900 hover:underline hover:text-slate-900 font-bold text-xs cursor-pointer"
+                          className="text-slate-900 hover:underline hover:text-slate-900 font-medium text-xs cursor-pointer"
                         >
                           Copy Key
                         </button>
@@ -1015,7 +1015,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                       
                       <button
                         onClick={() => setIsFormExpanded(true)}
-                        className="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs px-1 py-1 rounded shrink-0 transition-colors cursor-pointer"
+                        className="bg-slate-900 hover:bg-slate-800 text-white font-medium text-xs px-1 py-1 rounded shrink-0 transition-colors cursor-pointer"
                       >
                         + ADD APP
                       </button>
@@ -1048,7 +1048,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                               <div className="flex justify-end gap-1 text-indigo-650">
                                 <button 
                                   onClick={() => setIsFormExpanded(true)}
-                                  className="hover:underline text-xs font-bold cursor-pointer"
+                                  className="hover:underline text-xs font-medium cursor-pointer"
                                 >
                                   EDIT
                                 </button>
@@ -1059,7 +1059,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                                     setSmartPrimaryIp('');
                                     toast.success('Row cleared. Fill form & save to reset App registry.');
                                   }}
-                                  className="text-slate-500 hover:text-red-500 text-xs font-bold cursor-pointer"
+                                  className="text-slate-500 hover:text-red-500 text-xs font-medium cursor-pointer"
                                 >
                                   DELETE
                                 </button>
@@ -1106,11 +1106,11 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                   <p className="text-xs text-slate-700">Connect using Kite API Key and Secret.</p>
                 </div>
                 {kiteToken ? (
-                  <span className="bg-emerald-50 text-emerald-700 text-xs font-semibold capitalize px-2 py-1 rounded-lg flex items-center gap-1 border border-emerald-200">
+                  <span className="bg-emerald-50 text-emerald-700 text-xs font-semibold capitalize px-2 py-1 rounded-xl flex items-center gap-1 border border-emerald-200">
                     <CheckCircle2 size={12} /> Connected
                   </span>
                 ) : (
-                  <span className="bg-amber-50 text-amber-700 text-xs font-semibold capitalize px-2 py-1 rounded-lg flex items-center gap-1 border border-amber-200">
+                  <span className="bg-amber-50 text-amber-700 text-xs font-semibold capitalize px-2 py-1 rounded-xl flex items-center gap-1 border border-amber-200">
                     <AlertCircle size={12} /> Disconnected
                   </span>
                 )}
@@ -1147,7 +1147,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                 <div className="pt-2">
                   <button
                     onClick={initiateKiteLogin}
-                    className="w-full bg-rose-600 hover:bg-rose-700 text-white font-semibold text-sm py-3 rounded-xl transition-colors shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium text-sm py-3 px-4 rounded-xl transition-colors shadow-xs flex items-center justify-center gap-2 cursor-pointer"
                   >
                     {kiteToken ? <RefreshCw size={18} /> : <LinkIcon size={18} />}
                     {kiteToken ? 'Reconnect Zerodha Account' : 'Connect to Kite API'}
@@ -1275,7 +1275,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                 <div className="pt-2">
                   <button
                     onClick={handleSaveBinanceKeys}
-                    className="w-full bg-yellow-500 hover:bg-yellow-600 text-slate-900 font-semibold text-sm py-3 rounded-xl transition-colors shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full bg-yellow-500 hover:bg-yellow-600 text-slate-900 font-medium text-sm py-3 rounded-xl transition-colors shadow-sm flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <ShieldCheck size={18} /> Save & Connect Binance
                   </button>

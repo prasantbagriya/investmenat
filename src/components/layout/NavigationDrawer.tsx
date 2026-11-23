@@ -76,7 +76,7 @@ export default function NavigationDrawer({
                       setCurrentWorkspace('ledger');
                       handleTabClick();
                     }}
-                    className={`flex items-center gap-2.5 p-2 rounded-lg text-xs font-medium transition-colors cursor-pointer text-left ${
+                    className={`flex items-center gap-2.5 p-2 rounded-xl text-xs font-medium transition-colors cursor-pointer text-left ${
                       currentWorkspace === 'ledger'
                         ? 'bg-slate-900 text-white'
                         : 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200'
@@ -92,7 +92,7 @@ export default function NavigationDrawer({
                       setCurrentWorkspace('investmant');
                       handleTabClick();
                     }}
-                    className={`flex items-center gap-2.5 p-2 rounded-lg text-xs font-medium transition-colors cursor-pointer text-left ${
+                    className={`flex items-center gap-2.5 p-2 rounded-xl text-xs font-medium transition-colors cursor-pointer text-left ${
                       currentWorkspace === 'investmant'
                         ? 'bg-slate-900 text-white'
                         : 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200'
@@ -108,7 +108,7 @@ export default function NavigationDrawer({
                       setCurrentWorkspace('research');
                       handleTabClick();
                     }}
-                    className={`flex items-center gap-2.5 p-2 rounded-lg text-xs font-medium transition-colors cursor-pointer text-left ${
+                    className={`flex items-center gap-2.5 p-2 rounded-xl text-xs font-medium transition-colors cursor-pointer text-left ${
                       currentWorkspace === 'research'
                         ? 'bg-slate-900 text-white'
                         : 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200'
@@ -124,7 +124,7 @@ export default function NavigationDrawer({
                       setCurrentWorkspace('crypto');
                       handleTabClick();
                     }}
-                    className={`flex items-center gap-2.5 p-2 rounded-lg text-xs font-medium transition-colors cursor-pointer text-left ${
+                    className={`flex items-center gap-2.5 p-2 rounded-xl text-xs font-medium transition-colors cursor-pointer text-left ${
                       currentWorkspace === 'crypto'
                         ? 'bg-slate-900 text-white'
                         : 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200'
@@ -140,7 +140,7 @@ export default function NavigationDrawer({
                       setCurrentWorkspace('quicko');
                       handleTabClick();
                     }}
-                    className={`flex items-center gap-2.5 p-2 rounded-lg text-xs font-medium transition-colors cursor-pointer text-left ${
+                    className={`flex items-center gap-2.5 p-2 rounded-xl text-xs font-medium transition-colors cursor-pointer text-left ${
                       currentWorkspace === 'quicko'
                         ? 'bg-slate-900 text-white'
                         : 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200'
@@ -156,7 +156,7 @@ export default function NavigationDrawer({
                       setCurrentWorkspace('propfirm');
                       handleTabClick();
                     }}
-                    className={`flex items-center gap-2.5 p-2 rounded-lg text-xs font-medium transition-colors cursor-pointer text-left ${
+                    className={`flex items-center gap-2.5 p-2 rounded-xl text-xs font-medium transition-colors cursor-pointer text-left ${
                       currentWorkspace === 'propfirm'
                         ? 'bg-slate-900 text-white'
                         : 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200'
@@ -263,7 +263,7 @@ function NavButton({ active, onClick, icon, label, isSuite = false, to }: { acti
   return (
     <button
       onClick={handleClick}
-      className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-md text-xs font-medium transition-colors cursor-pointer relative text-left ${
+      className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium transition-colors cursor-pointer relative text-left ${
         active 
           ? 'bg-slate-900 text-white shadow-2xs' 
           : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'

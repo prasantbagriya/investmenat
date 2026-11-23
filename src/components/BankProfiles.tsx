@@ -265,7 +265,7 @@ export default function BankProfiles({
             <button
               type="button"
               onClick={() => onNavigateToTab('transactions')}
-              className="flex items-center justify-center gap-1 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg font-bold text-xs sm:text-xs transition-colors shadow-sm cursor-pointer whitespace-nowrap"
+              className="flex items-center justify-center gap-1 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 px-2 sm:px-3 py-1 sm:py-1.5 rounded-xl font-medium text-xs sm:text-xs transition-colors shadow-sm cursor-pointer whitespace-nowrap"
             >
               <ArrowLeftRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" /> <span>Journal Ledger</span>
             </button>
@@ -305,7 +305,7 @@ export default function BankProfiles({
                     key={type}
                     type="button"
                     onClick={() => setAccountType(type as any)}
-                    className={`px-3 py-1.5 text-xs font-bold rounded-lg border transition-all cursor-pointer ${accountType === type ? 'bg-slate-900 text-white border-slate-900 shadow-xs' : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'}`}
+                    className={`px-3 py-1.5 text-xs font-medium rounded-xl border transition-all cursor-pointer ${accountType === type ? 'bg-slate-900 text-white border-slate-900 shadow-xs' : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'}`}
                   >
                     {type}
                   </button>
@@ -315,11 +315,11 @@ export default function BankProfiles({
             <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-3">
               <div>
                 <label className="text-xs font-bold text-slate-500 block mb-1">{accountType === 'Bank' ? 'Bank Name' : 'Platform / Name'}</label>
-                <input required placeholder={accountType === 'Bank' ? 'e.g. HDFC, SBI' : accountType === 'Crypto Wallet' ? 'e.g. Binance, Trust Wallet' : accountType === 'Platform Wallet' ? 'e.g. Rise, Deel' : 'e.g. Petty Cash'} value={bankName} onChange={e => setBankName(e.target.value)} className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-hidden bg-white transition-all " />
+                <input required placeholder={accountType === 'Bank' ? 'e.g. HDFC, SBI' : accountType === 'Crypto Wallet' ? 'e.g. Binance, Trust Wallet' : accountType === 'Platform Wallet' ? 'e.g. Rise, Deel' : 'e.g. Petty Cash'} value={bankName} onChange={e => setBankName(e.target.value)} className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-xl focus:outline-hidden bg-white transition-all " />
               </div>
               <div>
                 <label className="text-xs font-bold text-slate-500 block mb-1">Account Label</label>
-                <input required placeholder="e.g. Primary Savings" value={accountName} onChange={e => setAccountName(e.target.value)} className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-hidden bg-white transition-all " />
+                <input required placeholder="e.g. Primary Savings" value={accountName} onChange={e => setAccountName(e.target.value)} className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-xl focus:outline-hidden bg-white transition-all " />
               </div>
               {accountType !== 'Cash' && (
                 <div>
@@ -327,24 +327,24 @@ export default function BankProfiles({
                     {accountType === 'Bank' ? 'A/C Number (Last 4 digits)' : 
                      accountType === 'Crypto Wallet' ? 'Crypto Address' : 'Platform ID / Rise ID'}
                   </label>
-                  <input placeholder={accountType === 'Bank' ? 'e.g. 1234 (Optional)' : accountType === 'Crypto Wallet' ? 'e.g. 0x... (Optional)' : 'e.g. Rise-123 (Optional)'} value={accountNumber} onChange={e => setAccountNumber(e.target.value)} className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-hidden bg-white transition-all " />
+                  <input placeholder={accountType === 'Bank' ? 'e.g. 1234 (Optional)' : accountType === 'Crypto Wallet' ? 'e.g. 0x... (Optional)' : 'e.g. Rise-123 (Optional)'} value={accountNumber} onChange={e => setAccountNumber(e.target.value)} className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-xl focus:outline-hidden bg-white transition-all " />
                 </div>
               )}
               {accountType === 'Bank' && (
                 <>
                   <div>
                     <label className="text-xs font-bold text-slate-500 block mb-1">IFSC Code</label>
-                    <input placeholder="e.g. HDFC0001234 (Optional)" value={ifscCode} onChange={e => setIfscCode(e.target.value)} className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-hidden bg-white transition-all " />
+                    <input placeholder="e.g. HDFC0001234 (Optional)" value={ifscCode} onChange={e => setIfscCode(e.target.value)} className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-xl focus:outline-hidden bg-white transition-all " />
                   </div>
                   <div className="md:col-span-2">
                     <label className="text-xs font-bold text-slate-500 block mb-1">UPI IDs (Comma separated)</label>
-                    <input placeholder="e.g. user@upi, 9876543210@paytm" value={upiIdsText} onChange={e => setUpiIdsText(e.target.value)} className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-hidden bg-white transition-all " />
+                    <input placeholder="e.g. user@upi, 9876543210@paytm" value={upiIdsText} onChange={e => setUpiIdsText(e.target.value)} className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-xl focus:outline-hidden bg-white transition-all " />
                   </div>
                 </>
               )}
               <div>
                 <label className="text-xs font-bold text-slate-500 block mb-1">{editingBank ? 'Adjust Current Balance' : 'Initial Balance'} ({currency === 'INR' ? '₹' : currency === 'USD' ? '$' : 'USDT'})</label>
-                <input required type="number" step="0.01" placeholder="0.00" value={initialBalance} onChange={e => setInitialBalance(e.target.value)} className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-hidden bg-white transition-all font-mono tabular-nums" />
+                <input required type="number" step="0.01" placeholder="0.00" value={initialBalance} onChange={e => setInitialBalance(e.target.value)} className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-xl focus:outline-hidden bg-white transition-all font-mono tabular-nums" />
               </div>
               {editingBank && (
                 <div className="flex items-end md:col-span-2">
@@ -352,7 +352,7 @@ export default function BankProfiles({
                 </div>
               )}
               <div className="md:col-span-2 pt-2">
-                <button type="submit" className="w-full px-4 py-1.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-semibold rounded text-xs transition-colors cursor-pointer flex items-center justify-center gap-1.5">
+                <button type="submit" className="w-full px-4 py-1.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium rounded text-xs transition-colors cursor-pointer flex items-center justify-center gap-1.5">
                   <Save size={14} /> {editingBank ? 'Save Changes' : 'Save Account'}
                 </button>
               </div>
@@ -383,7 +383,7 @@ export default function BankProfiles({
                         whileHover={{ y: -2, scale: 1.01 }}
                         key={b.id} 
                         onClick={() => setSelectedBankId(b.id)}
-                        className="bg-white p-5 rounded-lg border border-slate-200/60 shadow-sm hover:shadow-md transition-all cursor-pointer flex flex-col justify-between group relative overflow-hidden"
+                        className="bg-white p-5 rounded-xl border border-slate-200/60 shadow-sm hover:shadow-xs transition-all cursor-pointer flex flex-col justify-between group relative overflow-hidden"
                       >
                         
                         <div className="flex justify-between items-start relative z-10">
@@ -445,7 +445,7 @@ export default function BankProfiles({
           className="mb-2 sm:mb-0"
         >
           {/* App-like Card Header */}
-          <div className="bg-slate-900 px-3 py-3 sm:px-3 sm:py-4 text-white flex flex-col justify-between gap-3 sm:gap-4 rounded-xl mx-0.5 my-1 sm:mx-0.5 sm:my-1.5 shadow-lg relative overflow-hidden">
+          <div className="bg-slate-900 px-3 py-3 sm:px-3 sm:py-4 text-white flex flex-col justify-between gap-3 sm:gap-4 rounded-xl mx-0.5 my-1 sm:mx-0.5 sm:my-1.5 shadow-xs relative overflow-hidden">
             {/* Background design */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl -mr-10 -mt-10 pointer-events-none"></div>
             <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full blur-xl -ml-5 -mb-5 pointer-events-none"></div>
@@ -455,7 +455,7 @@ export default function BankProfiles({
                 <p className="text-xs text-slate-400 capitalize mb-1">{selectedBank.bankName}</p>
                 <h3 className="text-lg font-bold text-white mb-4 leading-tight">{selectedBank.accountName}</h3>
               </div>
-              <div className="p-2.5 bg-white/10 rounded-xl backdrop-blur-sm shrink-0 border border-white/5 shadow-xs">
+              <div className="p-2.5 bg-slate-100 rounded-xl shrink-0 border border-white/5 shadow-xs">
                 {selectedBank.accountType === 'Crypto Wallet' ? <TrendingUp size={20} className="text-white" /> : selectedBank.accountType === 'Cash' ? <Wallet size={20} className="text-white" /> : <Landmark size={20} className="text-white" />}
               </div>
             </div>
@@ -491,7 +491,7 @@ export default function BankProfiles({
                 >
                   <div className="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
                     <span className="font-bold text-slate-800 text-xs ">Filter Transactions</span>
-                    <span className="text-xs text-slate-500 font-bold bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200/50">
+                    <span className="text-xs text-slate-500 font-bold bg-slate-100 px-2 py-0.5 rounded-xl border border-slate-200/50">
                       {filteredTransactions.length} results
                     </span>
                   </div>
@@ -558,7 +558,7 @@ export default function BankProfiles({
 
                   <button 
                     onClick={(e) => { e.stopPropagation(); setShowFilters(!showFilters); }}
-                    className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg font-bold text-xs cursor-pointer transition-all border ${
+                    className={`flex items-center gap-1 px-2.5 py-1.5 rounded-xl font-medium text-xs cursor-pointer transition-all border ${
                       showFilters
                         ? 'bg-slate-900 text-white border-slate-900'
                         : 'bg-white border-slate-200 text-slate-500 hover:border-slate-400 hover:text-slate-700'
@@ -569,7 +569,7 @@ export default function BankProfiles({
                   {((selectedBank.currency === 'USD' || selectedBank.currency === 'USDT') || selectedBank.accountType === 'Crypto Wallet') && onAddTransaction && (
                     <button
                       onClick={(e) => { e.stopPropagation(); setIsWithdrawModalOpen(true); }}
-                      className="flex items-center gap-1 px-2.5 py-1.5 bg-slate-100 hover:bg-slate-100 text-slate-900 rounded-lg transition-colors cursor-pointer font-bold text-xs border border-indigo-100"
+                      className="flex items-center gap-1 px-2.5 py-1.5 bg-slate-100 hover:bg-slate-100 text-slate-900 rounded-xl transition-colors cursor-pointer font-medium text-xs border border-indigo-100"
                       title="Withdraw / Exchange"
                     >
                       <ArrowDownRight size={12} /> <span className="hidden sm:inline">Withdraw</span>
@@ -588,7 +588,7 @@ export default function BankProfiles({
                       openEditForm(selectedBank, e as any);
                       setSelectedBankId(null);
                     }}
-                    className="flex items-center gap-1 px-2.5 py-1.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-600 rounded-lg transition-colors cursor-pointer font-bold text-xs"
+                    className="flex items-center gap-1 px-2.5 py-1.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-600 rounded-xl transition-colors cursor-pointer font-medium text-xs"
                     title="Edit Profile"
                   >
                     <Edit2 size={12} /> <span className="hidden sm:inline">Edit</span>
@@ -600,7 +600,7 @@ export default function BankProfiles({
                         setSelectedBankId(null);
                       }
                     }}
-                    className="flex items-center justify-center p-1.5 bg-white border border-rose-200 hover:bg-rose-50 text-rose-500 rounded-lg transition-colors cursor-pointer"
+                    className="flex items-center justify-center p-1.5 bg-white border border-rose-200 hover:bg-rose-50 text-rose-500 rounded-xl transition-colors cursor-pointer"
                     title="Remove Profile"
                   >
                     <Trash2 size={14} />
@@ -631,7 +631,7 @@ export default function BankProfiles({
                         <div>
                           <p className="text-sm font-bold text-slate-800 flex items-center gap-2">
                             {t.category} 
-                            {t.type === 'transfer' && <span className="text-xs bg-slate-100 text-slate-900 px-1.5 py-0.5 rounded-md font-bold capitalize border border-indigo-100">Transfer</span>}
+                            {t.type === 'transfer' && <span className="text-xs bg-slate-100 text-slate-900 px-1.5 py-0.5 rounded-xl font-bold capitalize border border-indigo-100">Transfer</span>}
                           </p>
                           <p className="text-xs text-slate-500 truncate max-w-[140px] xs:max-w-[180px] sm:max-w-[220px] md:max-w-sm mt-0.5">{t.notes || 'No description'}</p>
                         </div>
@@ -674,7 +674,7 @@ export default function BankProfiles({
                 {selectedBank.accountType === 'Crypto Wallet' && selectedBank.cryptoBalances && (
                   <div>
                     <label className="block text-xs font-bold text-slate-500 capitalize mb-1">Select Coin</label>
-                    <select required value={withdrawCoin} onChange={e => setWithdrawCoin(e.target.value)} className="w-full p-2 border border-slate-200 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-indigo-500">
+                    <select required value={withdrawCoin} onChange={e => setWithdrawCoin(e.target.value)} className="w-full p-2 border border-slate-200 rounded-xl focus:outline-hidden focus:border-slate-400">
                       <option value="">-- Choose Coin --</option>
                       {Object.keys(selectedBank.cryptoBalances).map(coin => (
                         <option key={coin} value={coin}>{coin} (Available: {selectedBank.cryptoBalances![coin]})</option>
@@ -684,15 +684,15 @@ export default function BankProfiles({
                 )}
                 <div>
                   <label className="block text-xs font-bold text-slate-500 capitalize mb-1">Amount ({selectedBank.accountType === 'Crypto Wallet' && withdrawCoin ? withdrawCoin : selectedBank.currency})</label>
-                  <input required type="number" step="0.01" value={withdrawAmount} onChange={e => setWithdrawAmount(e.target.value)} className="w-full p-2 border border-slate-200 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-indigo-500" placeholder={`Max ${selectedBank.accountType === 'Crypto Wallet' ? (selectedBank.cryptoBalances?.[withdrawCoin] ?? 0) : selectedBank.currentBalance}`} />
+                  <input required type="number" step="0.01" value={withdrawAmount} onChange={e => setWithdrawAmount(e.target.value)} className="w-full p-2 border border-slate-200 rounded-xl focus:outline-hidden focus:border-slate-400" placeholder={`Max ${selectedBank.accountType === 'Crypto Wallet' ? (selectedBank.cryptoBalances?.[withdrawCoin] ?? 0) : selectedBank.currentBalance}`} />
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-slate-500 capitalize mb-1">Exchange Rate (1 {selectedBank.accountType === 'Crypto Wallet' && withdrawCoin ? withdrawCoin : selectedBank.currency} = ? INR)</label>
-                  <input required type="number" step="0.01" value={withdrawRate} onChange={e => setWithdrawRate(e.target.value)} className="w-full p-2 border border-slate-200 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-indigo-500" />
+                  <input required type="number" step="0.01" value={withdrawRate} onChange={e => setWithdrawRate(e.target.value)} className="w-full p-2 border border-slate-200 rounded-xl focus:outline-hidden focus:border-slate-400" />
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-slate-500 capitalize mb-1">Transfer to Bank Account</label>
-                  <select required value={withdrawToBankId} onChange={e => setWithdrawToBankId(e.target.value)} className="w-full p-2 border border-slate-200 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-indigo-500">
+                  <select required value={withdrawToBankId} onChange={e => setWithdrawToBankId(e.target.value)} className="w-full p-2 border border-slate-200 rounded-xl focus:outline-hidden focus:border-slate-400">
                     <option value="">-- Choose Indian Bank --</option>
                     {bankAccounts.filter(b => b.currency === 'INR' || !b.currency).map(b => (
                       <option key={b.id} value={b.id}>{b.bankName} - {b.accountName}</option>

@@ -567,7 +567,7 @@ export default function ContactsManager({
         {onNavigateToTab && (
           <button
             onClick={() => onNavigateToTab('settings')}
-            className="bg-slate-900 hover:bg-slate-800 text-white font-semibold py-1.5 px-3 rounded-xl text-xs cursor-pointer shadow-xs active:scale-95 transition-all"
+            className="bg-slate-900 hover:bg-slate-800 text-white font-medium py-1.5 px-3 rounded-xl text-xs cursor-pointer shadow-xs active:scale-95 transition-all"
           >
             ⚙️ Open Settings & Links
           </button>
@@ -589,7 +589,7 @@ export default function ContactsManager({
         <button
           id="google-contacts-create-btn"
           onClick={() => handleOpenForm()}
-          className="flex items-center gap-1 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold px-3 py-2 rounded-xl transition-all shadow-md cursor-pointer"
+          className="flex items-center gap-1 bg-slate-900 hover:bg-slate-800 text-white text-xs font-medium px-3 py-2 rounded-xl transition-all shadow-xs cursor-pointer"
         >
           <UserPlus size={14} /> Add Contact
         </button>
@@ -631,7 +631,7 @@ export default function ContactsManager({
               <button
                 key={tag}
                 onClick={() => setSelectedTag(tag)}
-                className={`px-1 py-1.5 rounded-lg transition-colors cursor-pointer shrink-0 ${selectedTag === tag ? 'bg-slate-900 text-white shadow-xs' : 'text-slate-700 hover:bg-slate-50'}`}
+                className={`px-1 py-1.5 rounded-xl transition-colors cursor-pointer shrink-0 ${selectedTag === tag ? 'bg-slate-900 text-white shadow-xs' : 'text-slate-700 hover:bg-slate-50'}`}
               >
                 {tag}
               </button>
@@ -646,7 +646,7 @@ export default function ContactsManager({
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by name, organization, phone..."
-              className="w-full text-xs pl-9 pr-2 py-1 borders border-slate-205 rounded-xl bg-slate-50 focus:bg-white focus:ring-1 focus:ring-slate-900/10 focus:border-slate-900 focus:outline-none transition-all outline-none"
+              className="w-full text-xs pl-9 pr-2 py-1 borders border-slate-200 rounded-xl bg-slate-50 focus:bg-white focus:ring-1 focus:ring-slate-900/10 focus:border-slate-900 focus:outline-none transition-all outline-none"
             />
           </div>
         </div>
@@ -666,7 +666,7 @@ export default function ContactsManager({
             </p>
             <button
               onClick={() => handleOpenForm()}
-              className="mt-1 text-xs font-bold text-slate-900 hover:underline cursor-pointer"
+              className="mt-1 text-xs font-medium text-slate-900 hover:underline cursor-pointer"
             >
               Configure new contact
             </button>
@@ -731,21 +731,21 @@ export default function ContactsManager({
                           <button
                             title="Edit Contact profile"
                             onClick={() => handleOpenForm(contact)}
-                            className="p-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-50 rounded-lg transition-colors cursor-pointer"
+                            className="p-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-50 rounded-xl transition-colors cursor-pointer"
                           >
                             <Edit3 size={12} />
                           </button>
                           <button
                             title="Add Pending payment/due record"
                             onClick={() => handleOpenDueForm(contact)}
-                            className="p-1.5 text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50 rounded-lg transition-colors cursor-pointer"
+                            className="p-1.5 text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50 rounded-xl transition-colors cursor-pointer"
                           >
                             <Clock size={12} />
                           </button>
                           <button
                             title="Delete Contact"
                             onClick={() => handleDeleteContact(contact)}
-                            className="p-1.5 text-slate-300 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors cursor-pointer"
+                            className="p-1.5 text-slate-300 hover:text-rose-600 hover:bg-rose-50 rounded-xl transition-colors cursor-pointer"
                           >
                             <Trash2 size={12} />
                           </button>
@@ -926,14 +926,14 @@ export default function ContactsManager({
                 <button
                   type="button"
                   onClick={() => setIsFormOpen(false)}
-                  className="flex-1 py-1 text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition-all cursor-pointer"
+                  className="flex-1 py-1 text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium rounded-xl transition-all cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={loading}
-                  className="flex-1 py-1 text-xs bg-slate-900 hover:bg-slate-800 active:bg-slate-950 disabled:bg-slate-700 text-white font-medium rounded-xl transition-all shadow-md cursor-pointer flex items-center justify-center gap-1"
+                  className="flex-1 py-1 text-xs bg-slate-900 hover:bg-slate-800 active:bg-slate-950 disabled:bg-slate-700 text-white font-medium rounded-xl transition-all shadow-xs cursor-pointer flex items-center justify-center gap-1"
                 >
                   {loading && <RefreshCw size={13} className="animate-spin" />}
                   Save Contact
@@ -973,7 +973,7 @@ export default function ContactsManager({
                   <button
                     type="button"
                     onClick={() => setDueType('owe')}
-                    className={`p-1.5 text-xs font-bold rounded-xl border text-center transition-all cursor-pointer ${
+                    className={`p-1.5 text-xs font-medium rounded-xl border text-center transition-all cursor-pointer ${
                       dueType === 'owe' 
                         ? 'bg-rose-50 border-rose-200 text-rose-700 shadow-xs' 
                         : 'bg-white text-slate-700 hover:bg-slate-50'
@@ -984,7 +984,7 @@ export default function ContactsManager({
                   <button
                     type="button"
                     onClick={() => setDueType('owed')}
-                    className={`p-1.5 text-xs font-bold rounded-xl border text-center transition-all cursor-pointer ${
+                    className={`p-1.5 text-xs font-medium rounded-xl border text-center transition-all cursor-pointer ${
                       dueType === 'owed' 
                         ? 'bg-emerald-50 border-emerald-205 text-emerald-750 shadow-xs' 
                         : 'bg-white text-slate-700 hover:bg-slate-50'

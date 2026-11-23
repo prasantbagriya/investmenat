@@ -105,7 +105,7 @@ export default function BankVerification() {
             </div>
             <div className="flex justify-between items-center py-1">
               <span className="text-slate-500 font-medium">Status</span>
-              <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded-lg font-medium text-[11px]">
+              <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded-xl font-medium text-[11px]">
                 {result.status}
               </span>
             </div>

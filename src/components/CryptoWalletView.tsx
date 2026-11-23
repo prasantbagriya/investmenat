@@ -910,10 +910,10 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
           <button onClick={startCreate} className="w-full bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium py-2 px-4 rounded-xl text-xs sm:text-sm transition-colors shadow-xs">
             Create new wallet
           </button>
-          <button onClick={() => setViewState('restore')} className="w-full bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 font-medium py-2 px-4 rounded-lg text-xs sm:text-sm transition-colors">
+          <button onClick={() => setViewState('restore')} className="w-full bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 font-medium py-2 px-4 rounded-xl text-xs sm:text-sm transition-colors">
             Restore wallet
           </button>
-          <button onClick={() => setViewState('import-pack')} className="w-full bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 font-medium py-2 px-4 rounded-lg text-xs sm:text-sm transition-colors flex items-center justify-center gap-1.5">
+          <button onClick={() => setViewState('import-pack')} className="w-full bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 font-medium py-2 px-4 rounded-xl text-xs sm:text-sm transition-colors flex items-center justify-center gap-1.5">
             <ShieldCheck size={14} className="text-slate-500" /> Import from secure pack
           </button>
         </div>
@@ -943,7 +943,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
 
         <div className="flex gap-3">
           <button onClick={() => setViewState('onboarding')} className="px-4 py-2 border border-slate-200 text-slate-700 font-medium rounded-xl hover:bg-slate-50">Back</button>
-          <button onClick={confirmCreate} className="flex-1 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium py-2 px-4 rounded-xl transition-colors shadow-md shadow-slate-900/20">
+          <button onClick={confirmCreate} className="flex-1 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium py-2 px-4 rounded-xl transition-colors shadow-xs shadow-slate-900/20">
             I've Saved It, Open Wallet
           </button>
         </div>
@@ -966,7 +966,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
 
         <div className="flex gap-3">
           <button onClick={() => setViewState('onboarding')} className="px-4 py-2 border border-slate-200 text-slate-700 font-medium rounded-xl hover:bg-slate-50">Back</button>
-          <button onClick={handleRestore} className="flex-1 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium py-2 px-4 rounded-xl transition-colors shadow-md shadow-slate-900/20">
+          <button onClick={handleRestore} className="flex-1 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium py-2 px-4 rounded-xl transition-colors shadow-xs shadow-slate-900/20">
             Restore Wallet
           </button>
         </div>
@@ -997,7 +997,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
               className="w-full bg-slate-50 border border-slate-200 text-slate-900 rounded-xl p-4 font-mono tabular-nums text-xs focus:ring-0 focus:border-purple-400 outline-none transition-colors min-h-[120px] resize-none"
             />
             <label className="block mt-2">
-              <span className="text-xs text-purple-600 font-semibold cursor-pointer hover:underline">Or click to upload .tvpack file</span>
+              <span className="text-xs text-purple-600 font-medium cursor-pointer hover:underline">Or click to upload .tvpack file</span>
               <input
                 type="file"
                 accept=".tvpack,.txt"
@@ -1034,7 +1034,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
           <button
             onClick={handleImportPack}
             disabled={isImporting}
-            className="flex-1 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 disabled:opacity-50 text-white font-medium py-2 px-4 rounded-xl transition-colors shadow-md shadow-xs flex items-center justify-center gap-2"
+            className="flex-1 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 disabled:opacity-50 text-white font-medium py-2 px-4 rounded-xl transition-colors shadow-xs shadow-xs flex items-center justify-center gap-2"
           >
             {isImporting ? <RefreshCw size={16} className="animate-spin" /> : <ShieldCheck size={16} />}
             {isImporting ? 'Importing...' : 'Import & Restore Wallet'}
@@ -1073,10 +1073,10 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                 <div>
                   <p className="text-slate-400 font-medium text-xs sm:text-sm mb-1 capitalize ">Wallet Address</p>
                   <div className="flex items-center gap-2 mb-4 sm:mb-6">
-                    <span className="font-mono tabular-nums text-base sm:text-lg bg-white/10 px-3 py-1 rounded-lg backdrop-blur-sm truncate max-w-[200px] sm:max-w-none">
+                    <span className="font-mono tabular-nums text-base sm:text-lg bg-slate-800 border border-slate-700/80 px-3 py-1 rounded-xl truncate max-w-[200px] sm:max-w-none text-white">
                       {wallet.address.slice(0, 6)}...{wallet.address.slice(-4)}
                     </span>
-                    <button onClick={() => copyToClipboard(wallet.address)} className="p-2 hover:bg-white/10 rounded-lg transition-colors shrink-0">
+                    <button onClick={() => copyToClipboard(wallet.address)} className="p-2 hover:bg-white/10 rounded-xl transition-colors shrink-0">
                       <Copy size={16} />
                     </button>
                   </div>
@@ -1321,7 +1321,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                     placeholder="Enter strong password..."
                     value={setupPwInput}
                     onChange={(e) => setSetupPwInput(e.target.value)}
-                    className="flex-1 bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm outline-none focus:border-slate-400"
+                    className="flex-1 bg-white border border-slate-200 rounded-xl px-3 py-2 text-sm outline-none focus:border-slate-400"
                   />
                   <button onClick={handleSetCustomPassword} className="bg-slate-900 text-white font-medium py-2 px-4 rounded-xl text-sm hover:bg-slate-800 active:bg-slate-950">
                     Encrypt
@@ -1345,7 +1345,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                     placeholder="Enter Public Alias..."
                     value={setupBoundAlias}
                     onChange={(e) => setSetupBoundAlias(e.target.value)}
-                    className="flex-1 bg-white border border-blue-200 rounded-lg px-3 py-2 text-sm outline-none focus:border-blue-400"
+                    className="flex-1 bg-white border border-blue-200 rounded-xl px-3 py-2 text-sm outline-none focus:border-blue-400"
                     disabled={isBindingEmail}
                   />
                   <input
@@ -1353,7 +1353,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                     placeholder="Enter Destination Address..."
                     value={setupBoundRoute}
                     onChange={(e) => setSetupBoundRoute(e.target.value)}
-                    className="flex-1 bg-white border border-blue-200 rounded-lg px-3 py-2 text-sm outline-none focus:border-blue-400"
+                    className="flex-1 bg-white border border-blue-200 rounded-xl px-3 py-2 text-sm outline-none focus:border-blue-400"
                     disabled={isBindingEmail}
                   />
                   <button onClick={handleSendBindEmailOtp} disabled={isBindingEmail} className="bg-slate-900 text-white font-medium py-2 px-4 rounded-xl text-sm hover:bg-slate-800 active:bg-slate-950 disabled:opacity-50">
@@ -1367,7 +1367,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                       placeholder="Enter 6-digit Auth Token..."
                       value={setupBoundRouteOtp}
                       onChange={(e) => setSetupBoundRouteOtp(e.target.value)}
-                      className="w-full bg-white border border-blue-200 rounded-lg px-3 py-2 text-sm outline-none focus:border-blue-400 font-mono tabular-nums text-center"
+                      className="w-full bg-white border border-blue-200 rounded-xl px-3 py-2 text-sm outline-none focus:border-blue-400 font-mono tabular-nums text-center"
                     />
                     <div className="flex flex-col sm:flex-row gap-2">
                       <input
@@ -1375,7 +1375,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                         placeholder="Create Routing Password (min 6 chars)..."
                         value={setupRoutingPw}
                         onChange={(e) => setSetupRoutingPw(e.target.value)}
-                        className="flex-1 bg-white border border-purple-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-purple-500"
+                        className="flex-1 bg-white border border-purple-300 rounded-xl px-3 py-2 text-sm outline-none focus:border-purple-500"
                       />
                       <button onClick={handleVerifyBindRouteOtp} className="bg-slate-900 text-white font-medium py-2 px-4 rounded-xl text-sm hover:bg-slate-800 active:bg-slate-950 whitespace-nowrap">
                         Verify &amp; Lock
@@ -1402,7 +1402,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                         placeholder="Create Routing Password (min 6 chars)..."
                         value={setupRoutingPw}
                         onChange={(e) => setSetupRoutingPw(e.target.value)}
-                        className="flex-1 bg-white border border-purple-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-purple-500"
+                        className="flex-1 bg-white border border-purple-300 rounded-xl px-3 py-2 text-sm outline-none focus:border-purple-500"
                       />
                       <button
                         onClick={async () => {
@@ -1429,7 +1429,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                             toast.success("Routing Password set! Destination is now fully isolated.");
                           } catch (e: any) { toast.error(e.message); }
                         }}
-                        className="bg-slate-900 text-white font-medium py-2 px-4 rounded-lg text-sm hover:bg-slate-800 whitespace-nowrap"
+                        className="bg-slate-900 text-white font-medium py-2 px-4 rounded-xl text-sm hover:bg-slate-800 whitespace-nowrap"
                       >
                         Set Password
                       </button>
@@ -1488,7 +1488,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                       }} className="w-full sm:w-auto justify-center text-xs sm:text-sm font-bold text-slate-500 hover:text-slate-800 flex items-center gap-1 bg-white sm:bg-transparent border sm:border-transparent border-slate-200 py-2 sm:py-0 rounded-lg">
                         <EyeOff size={16} /> Hide Phrase Permanently
                       </button>
-                      <button onClick={() => copyToClipboard(wallet.seedPhrase)} className="w-full sm:w-auto justify-center text-xs sm:text-sm font-medium text-slate-700 hover:text-slate-900 flex items-center gap-1 bg-slate-100 sm:bg-transparent py-2 sm:py-0 rounded-lg">
+                      <button onClick={() => copyToClipboard(wallet.seedPhrase)} className="w-full sm:w-auto justify-center text-xs sm:text-sm font-medium text-slate-700 hover:text-slate-900 flex items-center gap-1 bg-slate-100 sm:bg-transparent py-2 sm:py-0 rounded-xl">
                         <Copy size={16} /> Copy Phrase
                       </button>
                     </div>
@@ -1513,7 +1513,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                       value={setupTotpRoute}
                       onChange={e => setSetupTotpEmail(e.target.value)}
                       placeholder="Enter Routing Destination"
-                      className="flex-1 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm focus:ring-0 outline-none"
+                      className="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm focus:ring-0 outline-none"
                     />
                   )}
                   <button 
@@ -1535,7 +1535,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                       value={totpSetupCode}
                       onChange={e => setTotpSetupCode(e.target.value)}
                       placeholder="Enter 6-digit code"
-                      className="flex-1 bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm focus:ring-0 outline-none text-center font-mono tabular-nums "
+                      className="flex-1 bg-white border border-slate-200 rounded-xl px-3 py-2 text-sm focus:ring-0 outline-none text-center font-mono tabular-nums "
                     />
                     <button 
                       onClick={confirmTotpSetup}
@@ -1585,7 +1585,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                   placeholder="Create Pack Password (min 12 chars)..."
                   value={packPassword}
                   onChange={e => setPackPassword(e.target.value)}
-                  className="flex-1 bg-slate-900/50 border border-purple-700 text-white placeholder:text-purple-400 rounded-lg px-3 py-2.5 text-sm outline-none focus:border-purple-400"
+                  className="flex-1 bg-slate-900/50 border border-purple-700 text-white placeholder:text-purple-400 rounded-xl px-3 py-2.5 text-sm outline-none focus:border-purple-400"
                 />
                 <button
                   onClick={handleExportPack}
@@ -1608,7 +1608,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
           <div className="bg-white rounded-lg shadow-xl w-full max-w-sm overflow-hidden flex flex-col p-6 text-center my-8 relative">
             
             {/* Countdown Timer Badge */}
-            <div className="absolute top-4 right-4 bg-red-100 text-red-600 font-bold px-2.5 py-1 rounded-md text-xs font-mono tabular-nums flex items-center gap-1 border border-red-200">
+            <div className="absolute top-4 right-4 bg-red-100 text-red-600 font-bold px-2.5 py-1 rounded-xl text-xs font-mono tabular-nums flex items-center gap-1 border border-red-200">
               <RefreshCw size={10} className={otpTimeLeft > 0 ? "animate-spin" : ""} />
               00:{otpTimeLeft.toString().padStart(2, '0')}
             </div>

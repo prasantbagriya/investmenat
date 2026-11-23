@@ -147,11 +147,11 @@ export default function FdRdTracker({ fds, onAddFd, onDeleteFd, onEditFd }: FdRd
               {/* FD/RD Type Toggle */}
               <div className="flex gap-1 mb-3 border-b border-slate-100 pb-3">
                 <button type="button" onClick={() => setEditIsRd(false)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${!editIsRd ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}>
+                  className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${!editIsRd ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}>
                   Fixed Deposit (FD)
                 </button>
                 <button type="button" onClick={() => setEditIsRd(true)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${editIsRd ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}>
+                  className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${editIsRd ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}>
                   Recurring Deposit (RD)
                 </button>
               </div>
@@ -352,11 +352,11 @@ export default function FdRdTracker({ fds, onAddFd, onDeleteFd, onEditFd }: FdRd
                         ) : (
                           <>
                             <button onClick={() => openEditForm(fd)}
-                              className="text-slate-400 hover:text-slate-900 p-1.5 rounded-lg border border-slate-100 md:border-0 hover:bg-slate-100 transition-all cursor-pointer" title="Edit Deposit">
+                              className="text-slate-400 hover:text-slate-900 p-1.5 rounded-xl border border-slate-100 md:border-0 hover:bg-slate-100 transition-all cursor-pointer" title="Edit Deposit">
                               <Edit2 size={13} />
                             </button>
                             <button onClick={() => onDeleteFd(fd.id)}
-                              className="text-slate-400 hover:text-red-500 p-1.5 rounded-lg border border-slate-100 md:border-0 hover:bg-slate-50 transition-all cursor-pointer" title="Delete Deposit">
+                              className="text-slate-400 hover:text-red-500 p-1.5 rounded-xl border border-slate-100 md:border-0 hover:bg-slate-50 transition-all cursor-pointer" title="Delete Deposit">
                               <Trash2 size={13} />
                             </button>
                           </>
@@ -393,11 +393,11 @@ export default function FdRdTracker({ fds, onAddFd, onDeleteFd, onEditFd }: FdRd
                       <h5 className="font-bold text-slate-700">{fd.bankName} maturity</h5>
                       <p className="text-xs text-slate-500 font-semibold">Release Date: {fd.maturityDate}</p>
                       {fd.isMatured ? (
-                        <span className="inline-block mt-1 font-bold text-xs bg-emerald-50 text-emerald-700 px-1.5 py-0.5 rounded-md">Matured & Disbursable</span>
+                        <span className="inline-block mt-1 font-bold text-xs bg-emerald-50 text-emerald-700 px-1.5 py-0.5 rounded-xl">Matured & Disbursable</span>
                       ) : fd.daysRemaining <= 30 ? (
-                        <span className="inline-block mt-1 font-bold text-xs bg-amber-50 text-amber-700 px-1.5 py-0.5 rounded-md">⚠ {fd.daysRemaining} Days — Expiring Soon!</span>
+                        <span className="inline-block mt-1 font-bold text-xs bg-amber-50 text-amber-700 px-1.5 py-0.5 rounded-xl">⚠ {fd.daysRemaining} Days — Expiring Soon!</span>
                       ) : (
-                        <span className="inline-block mt-1 font-bold text-xs bg-blue-50 text-blue-750 px-1.5 py-0.5 rounded-md">{fd.daysRemaining} Days To Go</span>
+                        <span className="inline-block mt-1 font-bold text-xs bg-blue-50 text-blue-750 px-1.5 py-0.5 rounded-xl">{fd.daysRemaining} Days To Go</span>
                       )}
                     </div>
                   </div>

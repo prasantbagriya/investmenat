@@ -434,7 +434,7 @@ export default function SettingsManager({
             <p className="text-xs text-slate-500 mt-0.5">Connected services and Google authorization</p>
           </div>
         </div>
-        <div className="text-right hidden md:block bg-slate-50 border border-slate-200/60 px-3 py-1.5 rounded-lg">
+        <div className="text-right hidden md:block bg-slate-50 border border-slate-200/60 px-3 py-1.5 rounded-xl">
           <div className="text-xs font-semibold text-slate-800 flex items-center gap-1.5 justify-end">
             <Users size={12} className="text-slate-500" />
             {user?.displayName || 'Authorized User'}
@@ -462,11 +462,11 @@ export default function SettingsManager({
                     <config.icon size={16} />
                   </div>
                   {isLinked(config.id) ? (
-                    <span className="flex items-center gap-1 text-xs font-medium text-emerald-700 bg-emerald-50 border border-emerald-200/50 px-2 py-0.5 rounded-md">
+                    <span className="flex items-center gap-1 text-xs font-medium text-emerald-700 bg-emerald-50 border border-emerald-200/50 px-2 py-0.5 rounded-xl">
                       <Check size={12} /> Connected
                     </span>
                   ) : (
-                    <span className="text-xs font-medium text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md">
+                    <span className="text-xs font-medium text-slate-500 bg-slate-100 px-2 py-0.5 rounded-xl">
                       Disconnected
                     </span>
                   )}

@@ -65,7 +65,7 @@ export default function CreateAlertModal({ theme, onClose, symbol }: CreateAlert
                 onChange={e => setValue(e.target.value)}
               />
             </div>
-            <div className="text-sm font-semibold mt-1 cursor-pointer hover:underline" style={{ color: text }}>
+            <div className="text-sm font-medium mt-1 cursor-pointer hover:underline" style={{ color: text }}>
               + Add condition
             </div>
           </div>
@@ -129,7 +129,7 @@ export default function CreateAlertModal({ theme, onClose, symbol }: CreateAlert
         {/* Footer */}
         <div className="p-4 border-t flex justify-end gap-2" style={{ borderColor: border }}>
           <button onClick={onClose} className="px-4 py-2 rounded text-sm hover:opacity-80 transition-opacity">Cancel</button>
-          <button onClick={onClose} className="px-6 py-2 rounded text-sm text-white dark:text-black font-semibold transition-opacity bg-black dark:bg-white hover:opacity-80">Create</button>
+          <button onClick={onClose} className="px-6 py-2 rounded text-sm text-white dark:text-black font-medium transition-opacity bg-black dark:bg-white hover:opacity-80">Create</button>
         </div>
       </div>
     </div>

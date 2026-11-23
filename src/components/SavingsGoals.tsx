@@ -172,7 +172,7 @@ export default function SavingsGoals({
             setDeadline(new Date().getFullYear() + '-12-31');
             setIsFormOpen(true);
           }}
-          className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors cursor-pointer text-xs font-medium"
+          className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 text-white rounded-xl hover:bg-slate-800 transition-colors cursor-pointer text-xs font-medium"
         >
           <Plus size={14} />
           Add target
@@ -225,7 +225,7 @@ export default function SavingsGoals({
                 <button
                   type="button"
                   onClick={() => setIsFormOpen(false)}
-                  className="p-1 text-slate-500 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors cursor-pointer"
+                  className="p-1 text-slate-500 hover:text-slate-900 rounded-xl hover:bg-slate-50 transition-colors cursor-pointer"
                 >
                   <X size={16} />
                 </button>
@@ -242,7 +242,7 @@ export default function SavingsGoals({
                     placeholder="e.g. Dream Tokyo Vacation, Emergency Fund..."
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    className="w-full px-1 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-hidden bg-white transition-all"
+                    className="w-full px-1 py-1.5 text-xs border border-slate-300 rounded-xl focus:outline-hidden bg-white transition-all"
                     id="form-goal-title"
                   />
                 </div>
@@ -290,7 +290,7 @@ export default function SavingsGoals({
                     required
                     value={deadline}
                     onChange={(e) => setDeadline(e.target.value)}
-                    className="w-full px-1 py-1.5 text-xs border border-slate-255 rounded-md focus:outline-hidden bg-white font-mono tabular-nums transition-all"
+                    className="w-full px-1 py-1.5 text-xs border border-slate-255 rounded-xl focus:outline-hidden bg-white font-mono tabular-nums transition-all"
                     id="form-goal-deadline"
                   />
                 </div>
@@ -309,7 +309,7 @@ export default function SavingsGoals({
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="px-2 py-1.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-semibold rounded text-xs transition-colors disabled:opacity-40 cursor-pointer"
+                  className="px-2 py-1.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium rounded text-xs transition-colors disabled:opacity-40 cursor-pointer"
                   id="form-goal-submit"
                 >
                   {isSubmitting ? 'Syncing...' : editingId ? 'Update Target' : 'Create Campaign'}
@@ -322,7 +322,7 @@ export default function SavingsGoals({
 
       {/* Grid listing goals */}
       {savingsGoals.length === 0 ? (
-        <div className="bg-white p-6 text-center text-slate-500 rounded-xl border border-slate-205 border-slate-200/80" id="no-goals-container">
+        <div className="bg-white p-6 text-center text-slate-500 rounded-xl border border-slate-200 border-slate-200/80" id="no-goals-container">
           <p className="text-xs">You have not established savings metrics yet. Create your first goal metric above.</p>
         </div>
       ) : (
@@ -396,7 +396,7 @@ export default function SavingsGoals({
                       </div>
                       <button
                         onClick={() => handleQuickContribution(g)}
-                        className="bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs px-1 py-1 rounded cursor-pointer"
+                        className="bg-slate-900 hover:bg-slate-800 text-white font-medium text-xs px-1 py-1 rounded cursor-pointer"
                       >
                         Deposit
                       </button>
@@ -414,7 +414,7 @@ export default function SavingsGoals({
                           setContributingId(g.id);
                           setQuickAmount('');
                         }}
-                        className="text-xs text-slate-700 hover:text-slate-950 font-semibold text-left flex items-center gap-1 cursor-pointer "
+                        className="text-xs text-slate-700 hover:text-slate-950 font-medium text-left flex items-center gap-1 cursor-pointer "
                       >
                         <Plus size={12} /> Live capital deposit
                       </button>

@@ -82,7 +82,7 @@ export default function GstinSearch() {
                 <p className="text-[11px] font-medium text-slate-500">GSTIN / UIN</p>
                 <p className="font-semibold text-slate-900 font-mono tabular-nums text-sm">{gstin}</p>
               </div>
-              <div className="bg-emerald-50 text-emerald-700 border border-emerald-200 px-2.5 py-0.5 rounded-lg text-xs font-medium flex items-center gap-1">
+              <div className="bg-emerald-50 text-emerald-700 border border-emerald-200 px-2.5 py-0.5 rounded-xl text-xs font-medium flex items-center gap-1">
                 <CheckCircle size={12} /> {result.status}
               </div>
             </div>
@@ -98,7 +98,7 @@ export default function GstinSearch() {
               </div>
               <div>
                 <span className="text-slate-500 text-[11px] font-medium block mb-0.5">Taxpayer Type</span>
-                <p className="font-medium text-slate-700 bg-white border border-slate-200 inline-block px-2 py-0.5 rounded-md text-[11px]">{result.taxpayerType}</p>
+                <p className="font-medium text-slate-700 bg-white border border-slate-200 inline-block px-2 py-0.5 rounded-xl text-[11px]">{result.taxpayerType}</p>
               </div>
               <div>
                 <span className="text-slate-500 text-[11px] font-medium block mb-0.5">Date of Registration</span>

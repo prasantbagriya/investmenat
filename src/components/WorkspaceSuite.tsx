@@ -717,7 +717,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
           <button
             type="button"
             onClick={handleLinkNewScopes}
-            className="inline-flex items-center gap-1 bg-linear-to-r from-amber-600 to-orange-600 text-white font-semibold text-xs capitalize p-1.5 px-2 rounded-xl cursor-pointer shadow-xs hover:from-amber-700 transition-colors"
+            className="inline-flex items-center gap-1 bg-linear-to-r from-amber-600 to-orange-600 text-white font-medium text-xs capitalize p-1.5 px-2 rounded-xl cursor-pointer shadow-xs hover:from-amber-700 transition-colors"
           >
             🔌 Connect Google Services in Settings
           </button>
@@ -962,7 +962,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                           value={driveSearch}
                           onChange={(e) => setDriveSearch(e.target.value)}
                           onKeyDown={(e) => e.key === 'Enter' && handleFetchDriveFiles()}
-                          className="w-full px-2 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-md outline-hidden focus:bg-white focus:ring-1 focus:ring-blue-500"
+                          className="w-full px-2 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-xl outline-hidden focus:bg-white focus:ring-1 focus:ring-blue-500"
                         />
                       </div>
                     </div>
@@ -1017,7 +1017,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                                 <button 
                                   type="button"
                                   onClick={() => setPreviewFile(`https://drive.google.com/file/d/${file.id}/preview`)}
-                                  className="text-xs font-semibold text-slate-800 hover:text-blue-800 hover:underline shrink-0 flex items-center gap-0.5 cursor-pointer"
+                                  className="text-xs font-medium text-slate-800 hover:text-blue-800 hover:underline shrink-0 flex items-center gap-0.5 cursor-pointer"
                                 >
                                   Preview In-App <ExternalLink size={10} />
                                 </button>
@@ -1104,7 +1104,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                                     setGmailSubject(email.subject?.startsWith('Re:') ? email.subject : `Re: ${email.subject}`);
                                     setGmailBody(`\n\n--- On ${email.date}, ${email.from} wrote:\n ${email.snippet}`);
                                   }}
-                                  className="text-xs font-bold text-red-600 hover:text-red-800 flex items-center gap-0.5 px-1 py-0.5 rounded hover:bg-red-50 cursor-pointer"
+                                  className="text-xs font-medium text-red-600 hover:text-red-800 flex items-center gap-0.5 px-1 py-0.5 rounded hover:bg-red-50 cursor-pointer"
                                 >
                                   <Send size={8} /> Reply
                                 </button>
@@ -1143,7 +1143,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                       </div>
                       <button
                         type="submit"
-                        className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs py-1.5 rounded-xl transition-all shadow-xs flex items-center justify-center gap-1 cursor-pointer"
+                        className="w-full bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium font-medium text-xs py-1.5 rounded-xl transition-all shadow-xs flex items-center justify-center gap-1 cursor-pointer"
                       >
                         ⚡ Generate Google Meet join Room
                       </button>
@@ -1158,7 +1158,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                           href={createdMeetLink}
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex items-center gap-1 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold capitalize py-1.5 px-1 rounded-lg mt-1"
+                          className="inline-flex items-center gap-1 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold capitalize py-1.5 px-1 rounded-xl mt-1"
                         >
                           Join Meeting <ExternalLink size={10} />
                         </a>
@@ -1181,7 +1181,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                                 href={ev.hangoutLink}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="bg-emerald-100 text-emerald-800 px-2 py-1 rounded-lg text-xs font-bold capitalize hover:bg-emerald-200 transition-colors shrink-0 flex items-center gap-1"
+                                className="bg-emerald-100 text-emerald-800 px-2 py-1 rounded-xl text-xs font-bold capitalize hover:bg-emerald-200 transition-colors shrink-0 flex items-center gap-1"
                               >
                                 <Video size={10} /> Join
                               </a>
@@ -1273,7 +1273,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                                   <button
                                     type="button"
                                     onClick={() => handleCompleteGoogleTask(task.id, task.title)}
-                                    className="p-1 px-1.5 bg-slate-50 hover:bg-cyan-50 text-xs font-bold text-slate-800 rounded-lg hover:text-cyan-700 cursor-pointer border border-slate-200/50 flex items-center gap-0.5 shrink-0"
+                                    className="p-1 px-1.5 bg-slate-50 hover:bg-cyan-50 text-xs font-medium text-slate-800 rounded-xl hover:text-cyan-700 cursor-pointer border border-slate-200/50 flex items-center gap-0.5 shrink-0"
                                   >
                                     <Check size={10} /> Done
                                   </button>
@@ -1281,7 +1281,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                                 <button
                                   type="button"
                                   onClick={() => handleDeleteGoogleTask(task.id, task.title)}
-                                  className="p-1 px-1.5 bg-red-50 hover:bg-red-100 text-xs font-bold text-red-600 rounded-lg hover:text-red-700 cursor-pointer border border-red-200/50 flex items-center gap-0.5 shrink-0"
+                                  className="p-1 px-1.5 bg-red-50 hover:bg-red-100 text-xs font-medium text-red-600 rounded-xl hover:text-red-700 cursor-pointer border border-red-200/50 flex items-center gap-0.5 shrink-0"
                                 >
                                   <Trash2 size={10} /> Delete
                                 </button>
@@ -1478,7 +1478,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                             <div 
                               key={course.id} 
                               onClick={() => handleFetchCourseDetails(course)}
-                              className="p-2 bg-slate-50/40 border border-slate-200 rounded-lg flex flex-col justify-between hover:border-amber-400 cursor-pointer transition-all text-left space-y-1 "
+                              className="p-2 bg-slate-50/40 border border-slate-200 rounded-xl flex flex-col justify-between hover:border-amber-400 cursor-pointer transition-all text-left space-y-1 "
                             >
                               <div className="space-y-1">
                                 <span className="text-xs font-semibold bg-amber-50 text-amber-700 px-1 py-0.5 rounded capitalize ">Course ACTIVE</span>
@@ -1623,7 +1623,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                           <button
                             type="submit"
                             disabled={isLoading}
-                            className="w-full bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-semibold text-xs capitalize py-1 rounded transition-colors shrink-0 flex items-center justify-center gap-1 cursor-pointer"
+                            className="w-full bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium text-xs capitalize py-1 rounded transition-colors shrink-0 flex items-center justify-center gap-1 cursor-pointer"
                           >
                             <Plus size={11} /> Create Blank Doc
                           </button>
@@ -1702,7 +1702,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                           <button
                             type="submit"
                             disabled={isLoading}
-                            className="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-semibold text-xs capitalize py-1 rounded transition-colors shrink-0 flex items-center justify-center gap-1 cursor-pointer"
+                            className="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-medium text-xs capitalize py-1 rounded transition-colors shrink-0 flex items-center justify-center gap-1 cursor-pointer"
                           >
                             <Plus size={11} /> Create Blank Deck
                           </button>
@@ -1846,7 +1846,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                                     href={ev.hangoutLink}
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="inline-flex items-center gap-1 bg-emerald-100 text-emerald-800 text-xs font-bold py-1 px-2 rounded-lg mt-1 hover:bg-emerald-200 transition-colors"
+                                    className="inline-flex items-center gap-1 bg-emerald-100 text-emerald-800 text-xs font-bold py-1 px-2 rounded-xl mt-1 hover:bg-emerald-200 transition-colors"
                                   >
                                     <Video size={10} /> Join Meet
                                   </a>
@@ -1879,13 +1879,13 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                    href={previewFile.replace('/preview', '/view')} 
                    target="_blank" 
                    rel="noreferrer"
-                   className="text-xs font-bold text-slate-800 hover:text-blue-800 flex items-center gap-1 bg-blue-50 px-3 py-1.5 rounded-lg transition-colors"
+                   className="text-xs font-bold text-slate-800 hover:text-blue-800 flex items-center gap-1 bg-blue-50 px-3 py-1.5 rounded-xl transition-colors"
                  >
                    Open in New Tab <ExternalLink size={12} />
                  </a>
                  <button 
                    onClick={() => setPreviewFile(null)} 
-                   className="text-xs font-bold text-slate-700 hover:text-red-600 flex items-center gap-1 bg-white hover:bg-red-50 border border-slate-200 hover:border-red-200 px-3 py-1.5 rounded-lg transition-colors cursor-pointer"
+                   className="text-xs font-medium text-slate-700 hover:text-red-600 flex items-center gap-1 bg-white hover:bg-red-50 border border-slate-200 hover:border-red-200 px-3 py-1.5 rounded-xl transition-colors cursor-pointer"
                  >
                    Close Viewer
                  </button>

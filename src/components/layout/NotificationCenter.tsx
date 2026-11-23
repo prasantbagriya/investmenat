@@ -135,13 +135,13 @@ export default function NotificationCenter({
                             <div className="mt-3 flex gap-2">
                               <button
                                 onClick={() => onPayBill(b)}
-                                className={`flex-1 flex justify-center items-center gap-1 text-xs font-bold capitalize py-1.5 rounded text-white ${isIncome ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-orange-500 hover:bg-orange-600'} transition-colors cursor-pointer`}
+                                className="flex-1 flex justify-center items-center gap-1 text-xs font-medium capitalize py-2 rounded-xl text-white bg-slate-900 hover:bg-slate-800 active:bg-slate-950 transition-colors cursor-pointer shadow-xs"
                               >
                                 <CheckCircle size={14} /> {isIncome ? 'Received' : 'Paid'}
                               </button>
                               <button
                                 onClick={() => setSkipData({ id: b.id, date: todayStr })}
-                                className="flex-1 flex justify-center items-center gap-1 text-xs font-bold capitalize py-1.5 rounded bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors cursor-pointer"
+                                className="flex-1 flex justify-center items-center gap-1 text-xs font-medium capitalize py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 active:bg-slate-300 transition-colors cursor-pointer"
                               >
                                 <Calendar size={14} /> Shift / Skip
                               </button>
@@ -192,7 +192,7 @@ export default function NotificationCenter({
                               </button>
                               <button 
                                 onClick={() => setRescheduleData(null)}
-                                className="bg-slate-200 text-slate-600 p-1.5 rounded hover:bg-slate-300 transition-colors cursor-pointer"
+                                className="bg-slate-200 text-slate-700 p-2 rounded-xl hover:bg-slate-300 transition-colors cursor-pointer"
                               >
                                 <X size={14} />
                               </button>
@@ -201,19 +201,19 @@ export default function NotificationCenter({
                             <div className="mt-3 grid grid-cols-3 gap-1.5">
                               <button
                                 onClick={() => onPayPending(p)}
-                                className={`flex justify-center items-center gap-1 text-xs font-bold capitalize py-1.5 rounded text-white ${isOwedToMe ? 'bg-slate-900 hover:bg-slate-800' : 'bg-rose-600 hover:bg-rose-700'} transition-colors cursor-pointer`}
+                                className="flex justify-center items-center gap-1 text-xs font-medium capitalize py-2 rounded-xl text-white bg-slate-900 hover:bg-slate-800 active:bg-slate-950 transition-colors cursor-pointer shadow-xs"
                               >
                                 <CheckCircle size={12} /> {isOwedToMe ? 'Got it' : 'Paid'}
                               </button>
                               <button
                                 onClick={() => setRescheduleData({ id: p.id, date: todayStr })}
-                                className="flex justify-center items-center gap-1 text-xs font-bold capitalize py-1.5 rounded bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors cursor-pointer"
+                                className="flex justify-center items-center gap-1 text-xs font-medium capitalize py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 active:bg-slate-300 transition-colors cursor-pointer"
                               >
                                 <Calendar size={12} /> Shift
                               </button>
                               <button
                                 onClick={() => onRejectPending(p)}
-                                className="flex justify-center items-center gap-1 text-xs font-bold capitalize py-1.5 rounded border border-rose-200 text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer"
+                                className="flex justify-center items-center gap-1 text-xs font-medium capitalize py-2 rounded-xl border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 active:bg-slate-100 transition-colors cursor-pointer"
                               >
                                 <X size={12} /> Reject
                               </button>

@@ -156,14 +156,14 @@ export default function BudgetLimits({
         <div className="flex items-center gap-1 ml-auto">
           <button 
             onClick={() => adjustMonth('prev')}
-            className="px-1 py-1.5 text-xs font-semibold text-slate-600 hover:text-slate-900 bg-white hover:bg-slate-50 rounded-md transition-colors border border-slate-200 cursor-pointer whitespace-nowrap"
+            className="px-1 py-1.5 text-xs font-medium text-slate-600 hover:text-slate-900 bg-white hover:bg-slate-50 rounded-xl transition-colors border border-slate-200 cursor-pointer whitespace-nowrap"
           >
             ← Prev
           </button>
           
           <button
             onClick={() => setIsFormOpen(true)}
-            className="flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-white px-1.5 py-1.5 rounded-md font-semibold text-xs transition-colors cursor-pointer whitespace-nowrap"
+            className="flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-white px-1.5 py-1.5 rounded-xl font-medium text-xs transition-colors cursor-pointer whitespace-nowrap"
             id="new-limit-button"
           >
             <Plus size={14} /> Limit
@@ -171,7 +171,7 @@ export default function BudgetLimits({
 
           <button 
             onClick={() => adjustMonth('next')}
-            className="px-1 py-1.5 text-xs font-semibold text-slate-600 hover:text-slate-900 bg-white hover:bg-slate-50 rounded-md transition-colors border border-slate-200 cursor-pointer whitespace-nowrap"
+            className="px-1 py-1.5 text-xs font-medium text-slate-600 hover:text-slate-900 bg-white hover:bg-slate-50 rounded-xl transition-colors border border-slate-200 cursor-pointer whitespace-nowrap"
           >
             Next →
           </button>
@@ -196,7 +196,7 @@ export default function BudgetLimits({
                 <button
                   type="button"
                   onClick={() => setIsFormOpen(false)}
-                  className="p-1 text-slate-500 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors cursor-pointer"
+                  className="p-1 text-slate-500 hover:text-slate-900 rounded-xl hover:bg-slate-50 transition-colors cursor-pointer"
                 >
                   <X size={16} />
                 </button>
@@ -210,7 +210,7 @@ export default function BudgetLimits({
                   <select
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
-                    className="w-full px-1 py-1.5 text-xs font-medium border border-slate-300 bg-white rounded-md focus:outline-hidden focus:ring-1 focus:ring-slate-950/20 transition-all "
+                    className="w-full px-1 py-1.5 text-xs font-medium border border-slate-300 bg-white rounded-xl focus:outline-hidden focus:ring-1 focus:ring-slate-950/20 transition-all "
                     id="form-limit-category"
                   >
                     {EXPENSE_CATEGORIES.map(cat => (
@@ -251,7 +251,7 @@ export default function BudgetLimits({
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="px-2 py-1.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-semibold rounded text-xs transition-colors disabled:opacity-40 cursor-pointer"
+                  className="px-2 py-1.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium rounded text-xs transition-colors disabled:opacity-40 cursor-pointer"
                   id="form-limit-submit"
                 >
                   {isSubmitting ? 'Syncing...' : 'Establish Limit'}

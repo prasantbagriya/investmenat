@@ -394,7 +394,7 @@ export default function TaxCapitalGains({ holdings, livePrices = {}, userSetting
                   <div className="border border-slate-200 p-4 rounded-xl space-y-2 bg-slate-50/50">
                     <div className="flex justify-between items-center text-xs text-slate-500 font-medium">
                       <span>Short-term gains (STCG)</span>
-                      <span className="bg-white border border-slate-200 text-slate-700 px-2 py-0.5 rounded-md text-[11px] font-mono tabular-nums">Held &lt; 365 days</span>
+                      <span className="bg-white border border-slate-200 text-slate-700 px-2 py-0.5 rounded-xl text-[11px] font-mono tabular-nums">Held &lt; 365 days</span>
                     </div>
                     <p className="text-xl font-bold font-mono tabular-nums text-slate-900">
                       ₹{aggregateGains.stcgGains.toLocaleString('en-IN', { maximumFractionDigits: 1 })}
@@ -413,7 +413,7 @@ export default function TaxCapitalGains({ holdings, livePrices = {}, userSetting
                   <div className="border border-slate-200 p-4 rounded-xl space-y-2 bg-slate-50/50">
                     <div className="flex justify-between items-center text-xs text-slate-500 font-medium">
                       <span>Long-term gains (LTCG)</span>
-                      <span className="bg-white border border-slate-200 text-slate-700 px-2 py-0.5 rounded-md text-[11px] font-mono tabular-nums">Held &gt; 365 days</span>
+                      <span className="bg-white border border-slate-200 text-slate-700 px-2 py-0.5 rounded-xl text-[11px] font-mono tabular-nums">Held &gt; 365 days</span>
                     </div>
                     <p className="text-xl font-bold font-mono tabular-nums text-slate-900">
                       ₹{aggregateGains.ltcgGains.toLocaleString('en-IN', { maximumFractionDigits: 1 })}
@@ -494,7 +494,7 @@ export default function TaxCapitalGains({ holdings, livePrices = {}, userSetting
               {declarations.map(d => (
                 <div key={d.id} className="flex justify-between items-center bg-slate-50 p-2 border border-slate-200 rounded-xl text-xs">
                   <div>
-                    <span className="font-medium text-slate-900 bg-white border border-slate-200 px-1.5 py-0.5 rounded-md text-[11px]">{d.category}</span>
+                    <span className="font-medium text-slate-900 bg-white border border-slate-200 px-1.5 py-0.5 rounded-xl text-[11px]">{d.category}</span>
                     <span className="text-xs text-slate-600 ml-1.5">{d.note}</span>
                   </div>
                   <div className="flex items-center gap-1.5 font-mono tabular-nums">
@@ -643,7 +643,7 @@ export default function TaxCapitalGains({ holdings, livePrices = {}, userSetting
               <div className="mt-auto bg-white border border-slate-200 rounded-xl p-3 text-xs text-slate-800 space-y-1.5">
                 <div className="flex justify-between items-center border-b border-slate-100 pb-1.5 mb-1">
                   <span className="font-semibold text-emerald-700 flex items-center gap-1"><CheckCircle size={12} className="text-emerald-600"/> Status: {itrStatus.status}</span>
-                  <span className="bg-slate-100 text-slate-600 px-2 py-0.5 rounded-md font-mono tabular-nums text-[11px] font-medium">AY {itrStatus.assessmentYear}</span>
+                  <span className="bg-slate-100 text-slate-600 px-2 py-0.5 rounded-xl font-mono tabular-nums text-[11px] font-medium">AY {itrStatus.assessmentYear}</span>
                 </div>
                 <div className="flex justify-between text-slate-600">
                   <span>Filing date:</span>

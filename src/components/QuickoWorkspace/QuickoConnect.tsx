@@ -160,7 +160,7 @@ export default function QuickoConnect() {
                 </div>
                 <div className="flex justify-between border-t border-slate-100 pt-2.5">
                   <span className="text-slate-500">Residential Status</span>
-                  <span className="font-medium bg-slate-100 text-slate-700 px-2 py-0.5 rounded-lg text-[11px]">{taxPayer.residentialStatus}</span>
+                  <span className="font-medium bg-slate-100 text-slate-700 px-2 py-0.5 rounded-xl text-[11px]">{taxPayer.residentialStatus}</span>
                 </div>
               </div>
             )}
@@ -176,7 +176,7 @@ export default function QuickoConnect() {
               <div className="space-y-3 text-xs">
                 <div className="flex justify-between">
                   <span className="text-slate-500">Assessment Year</span>
-                  <span className="font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-lg text-[11px]">AY {itr.assessmentYear}</span>
+                  <span className="font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-xl text-[11px]">AY {itr.assessmentYear}</span>
                 </div>
                 <div className="flex justify-between border-t border-slate-100 pt-2.5">
                   <span className="text-slate-500">Form Type</span>

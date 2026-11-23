@@ -99,7 +99,7 @@ body {
    Unified Button System (Synchronized with LoginScreen Design Tokens)
    ========================================================================= */
 
-/* Primary Button: Slate-900 / Slate-800 / Slate-950, rounded-xl, medium weight, crisp shadow */
+/* Primary Button: Slate-900 / Slate-800 / Slate-950, rounded-xl, medium weight, crisp shadow-xs */
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -111,7 +111,7 @@ body {
   font-size: 0.875rem;
   font-weight: 500;
   line-height: 1.25rem;
-  padding: 0.75rem 1rem;
+  padding: 0.625rem 1rem;
   border-radius: 0.75rem;
   border: 1px solid transparent;
   cursor: pointer;
@@ -146,7 +146,7 @@ body {
   font-size: 0.875rem;
   font-weight: 500;
   line-height: 1.25rem;
-  padding: 0.75rem 1rem;
+  padding: 0.625rem 1rem;
   border-radius: 0.75rem;
   border: 1px solid transparent;
   cursor: pointer;
@@ -179,7 +179,7 @@ body {
   font-size: 0.875rem;
   font-weight: 500;
   line-height: 1.25rem;
-  padding: 0.75rem 1rem;
+  padding: 0.625rem 1rem;
   border-radius: 0.75rem;
   border: 1px solid #e2e8f0;
   cursor: pointer;
@@ -206,5 +206,40 @@ body {
 .btn-sm {
   padding: 0.375rem 0.75rem;
   font-size: 0.75rem;
+  border-radius: 0.75rem;
+  font-weight: 500;
+}
+
+/* Extra Small Button */
+.btn-xs {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.6875rem;
   border-radius: 0.5rem;
+  font-weight: 500;
+}
+
+/* Universal Card Base */
+.card-base {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* Universal Input Base */
+.input-base {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #0f172a;
+  border-radius: 0.75rem;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.input-base:focus {
+  border-color: #94a3b8;
+  box-shadow: 0 0 0 1px #cbd5e1;
 }

@@ -51,7 +51,7 @@ export default function PendingPayments({
               <button
                 type="button"
                 onClick={() => onNavigateToTab?.('recurring-bills')}
-                className="flex items-center gap-1.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 px-3 py-1.5 rounded-lg font-medium text-xs transition-colors cursor-pointer whitespace-nowrap"
+                className="flex items-center gap-1.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 px-3 py-1.5 rounded-xl font-medium text-xs transition-colors cursor-pointer whitespace-nowrap"
               >
                 <DollarSign size={14} /> Auto-Bills
               </button>
@@ -59,7 +59,7 @@ export default function PendingPayments({
                 <button
                   type="button"
                   onClick={() => setIsLogFormOpen(!isLogFormOpen)}
-                  className="flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-white px-3 py-1.5 rounded-lg font-medium text-xs transition-colors cursor-pointer whitespace-nowrap"
+                  className="flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-white px-3 py-1.5 rounded-xl font-medium text-xs transition-colors cursor-pointer whitespace-nowrap"
                 >
                   <Plus size={14} /> Log Entry
                 </button>
@@ -67,7 +67,7 @@ export default function PendingPayments({
               <button 
                 type="button"
                 onClick={() => setShowAddForm(!showAddForm)}
-                className="flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-white px-3 py-1.5 rounded-lg font-medium text-xs transition-colors cursor-pointer whitespace-nowrap"
+                className="flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-white px-3 py-1.5 rounded-xl font-medium text-xs transition-colors cursor-pointer whitespace-nowrap"
               >
                 <Plus size={14} /> New Record
               </button>

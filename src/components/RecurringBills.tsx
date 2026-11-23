@@ -163,7 +163,7 @@ export default function RecurringBills({
         <div className="flex w-full md:w-auto gap-2 mt-1 md:mt-0 overflow-x-auto pb-1 flex-nowrap">
           <button
             onClick={() => setIsScannerOpen(!isScannerOpen)}
-            className="shrink-0 flex-1 md:flex-none flex justify-center items-center gap-1.5 bg-slate-100 hover:bg-indigo-200 text-slate-900 px-3 py-1.5 rounded-md font-bold text-xs transition-colors cursor-pointer whitespace-nowrap"
+            className="shrink-0 flex-1 md:flex-none flex justify-center items-center gap-1.5 bg-slate-100 hover:bg-indigo-200 text-slate-900 px-3 py-1.5 rounded-xl font-medium text-xs transition-colors cursor-pointer whitespace-nowrap"
           >
             <Sparkles size={14} className={isScannerOpen ? '' : 'animate-pulse'} />
             {isScannerOpen ? 'Close Scanner' : 'Open Scanner'}
@@ -177,7 +177,7 @@ export default function RecurringBills({
               setBankAccountId('');
               setIsFormOpen(true);
             }}
-            className="shrink-0 flex-1 md:flex-none flex justify-center items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-white px-3 py-1.5 rounded-md font-semibold text-xs transition-colors cursor-pointer whitespace-nowrap"
+            className="shrink-0 flex-1 md:flex-none flex justify-center items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-white px-3 py-1.5 rounded-xl font-medium text-xs transition-colors cursor-pointer whitespace-nowrap"
           >
             <Plus size={14} /> Add Bill
           </button>
@@ -201,7 +201,7 @@ export default function RecurringBills({
                 <button
                   type="button"
                   onClick={() => setIsFormOpen(false)}
-                  className="p-1 text-slate-500 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors cursor-pointer"
+                  className="p-1 text-slate-500 hover:text-slate-900 rounded-xl hover:bg-slate-50 transition-colors cursor-pointer"
                 >
                   <X size={16} />
                 </button>
@@ -214,14 +214,14 @@ export default function RecurringBills({
                     <button
                       type="button"
                       onClick={() => handleTypeChange('expense')}
-                      className={`py-1 text-xs font-semibold rounded cursor-pointer transition-all ${type === 'expense' ? 'bg-slate-950 text-white' : 'text-slate-600 hover:bg-slate-100'}`}
+                      className={`py-1.5 text-xs font-medium rounded-xl cursor-pointer transition-all ${type === 'expense' ? 'bg-slate-900 text-white shadow-xs' : 'text-slate-600 hover:bg-slate-100'}`}
                     >
                       Expense (Bill)
                     </button>
                     <button
                       type="button"
                       onClick={() => handleTypeChange('income')}
-                      className={`py-1 text-xs font-semibold rounded cursor-pointer transition-all ${type === 'income' ? 'bg-emerald-600 text-white' : 'text-slate-600 hover:bg-slate-100'}`}
+                      className={`py-1.5 text-xs font-medium rounded-xl cursor-pointer transition-all ${type === 'income' ? 'bg-slate-900 text-white shadow-xs' : 'text-slate-600 hover:bg-slate-100'}`}
                     >
                       Income (Salary)
                     </button>
@@ -236,7 +236,7 @@ export default function RecurringBills({
                     placeholder={type === 'income' ? "e.g. Salary, Rent Received..." : "e.g. Netflix, Electricity..."}
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    className="w-full px-1 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-none bg-white "
+                    className="w-full px-1 py-1.5 text-xs border border-slate-300 rounded-xl focus:outline-none bg-white "
                   />
                 </div>
 
@@ -261,7 +261,7 @@ export default function RecurringBills({
                   <select
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
-                    className="w-full px-1 py-1.5 text-xs border border-slate-300 bg-white rounded-md focus:outline-none"
+                    className="w-full px-1 py-1.5 text-xs border border-slate-300 bg-white rounded-xl focus:outline-none"
                   >
                     {(type === 'income' ? INCOME_CATEGORIES : EXPENSE_CATEGORIES).map(cat => <option key={cat} value={cat}>{cat}</option>)}
                   </select>
@@ -272,7 +272,7 @@ export default function RecurringBills({
                   <select
                     value={frequency}
                     onChange={(e) => setFrequency(e.target.value as 'monthly' | 'yearly')}
-                    className="w-full px-1 py-1.5 text-xs border border-slate-300 bg-white rounded-md focus:outline-none"
+                    className="w-full px-1 py-1.5 text-xs border border-slate-300 bg-white rounded-xl focus:outline-none"
                   >
                     <option value="monthly">Monthly</option>
                     <option value="yearly">Yearly</option>
@@ -286,7 +286,7 @@ export default function RecurringBills({
                     required
                     value={nextDueDate}
                     onChange={(e) => setNextDueDate(e.target.value)}
-                    className="w-full px-1 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-none bg-white font-mono tabular-nums"
+                    className="w-full px-1 py-1.5 text-xs border border-slate-300 rounded-xl focus:outline-none bg-white font-mono tabular-nums"
                   />
                 </div>
 
@@ -295,7 +295,7 @@ export default function RecurringBills({
                   <select
                     value={bankAccountId}
                     onChange={(e) => setBankAccountId(e.target.value)}
-                    className="w-full px-1 py-1.5 text-xs border border-slate-300 bg-white rounded-md focus:outline-none"
+                    className="w-full px-1 py-1.5 text-xs border border-slate-300 bg-white rounded-xl focus:outline-none"
                   >
                     <option value="">None (Manual)</option>
                     {bankAccounts.map((b) => (
@@ -318,7 +318,7 @@ export default function RecurringBills({
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="px-2 py-1.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-semibold rounded text-xs transition-colors disabled:opacity-40 cursor-pointer"
+                  className="px-2 py-1.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium rounded text-xs transition-colors disabled:opacity-40 cursor-pointer"
                 >
                   {isSubmitting ? 'Saving...' : editingId ? 'Update Record' : 'Save Record'}
                 </button>

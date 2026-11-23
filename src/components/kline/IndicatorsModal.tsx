@@ -84,7 +84,7 @@ export default function IndicatorsModal({ theme, onClose, onAddIndicator }: Indi
               {subTabs.map(t => (
                 <div 
                   key={t}
-                  className="py-3 cursor-pointer text-sm font-semibold transition-colors"
+                  className="py-3 cursor-pointer text-sm font-medium transition-colors"
                   style={{
                     borderBottom: t === 'Indicators' ? (theme === 'dark' ? '2px solid #ffffff' : '2px solid #000000') : '2px solid transparent',
                     color: t === 'Indicators' ? text : subtext

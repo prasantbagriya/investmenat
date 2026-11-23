@@ -236,7 +236,7 @@ export const LedgerList: React.FC<LedgerListProps> = ({ onSelectProfile, userId,
                     setShowSuggestions(true);
                   }}
                   onFocus={() => setShowSuggestions(true)}
-                  className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-hidden bg-white transition-all "
+                  className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-xl focus:outline-hidden bg-white transition-all "
                 />
                 
                 {/* Google Contacts Autocomplete Dropdown */}
@@ -277,7 +277,7 @@ export const LedgerList: React.FC<LedgerListProps> = ({ onSelectProfile, userId,
                   placeholder="e.g. +91 9876543210"
                   value={newProfilePhone}
                   onChange={(e) => setNewProfilePhone(e.target.value)}
-                  className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-hidden bg-white transition-all "
+                  className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-xl focus:outline-hidden bg-white transition-all "
                 />
               </div>
               <div className="space-y-1.5">
@@ -324,7 +324,7 @@ export const LedgerList: React.FC<LedgerListProps> = ({ onSelectProfile, userId,
               </button>
               <button 
                 type="submit"
-                className="px-4 py-1.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-semibold rounded text-xs transition-colors cursor-pointer"
+                className="px-4 py-1.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium rounded text-xs transition-colors cursor-pointer"
               >
                 Save
               </button>

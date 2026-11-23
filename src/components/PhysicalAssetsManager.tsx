@@ -115,7 +115,7 @@ export default function PhysicalAssetsManager({ assets, onAdd, onEdit, onDelete 
             <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-3">
               <div>
                 <label className="block text-xs font-bold text-slate-700 capitalize mb-1">Asset Name</label>
-                <input required placeholder="e.g. Royal Enfield, Apartment" value={name} onChange={e => setName(e.target.value)} className="w-full border border-slate-200 rounded-lg p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none" />
+                <input required placeholder="e.g. Royal Enfield, Apartment" value={name} onChange={e => setName(e.target.value)} className="w-full border border-slate-200 rounded-xl p-2.5 text-sm bg-slate-50 focus:bg-white focus:outline-none" />
               </div>
               <div>
                 <label className="block text-xs font-bold text-slate-700 capitalize mb-1">Asset Category</label>
@@ -124,7 +124,7 @@ export default function PhysicalAssetsManager({ assets, onAdd, onEdit, onDelete 
                   value={type} 
                   onChange={e => setType(e.target.value as any)} 
                   placeholder="Select or type new category"
-                  className="w-full border border-slate-200 rounded-lg p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none" 
+                  className="w-full border border-slate-200 rounded-xl p-2.5 text-sm bg-slate-50 focus:bg-white focus:outline-none" 
                 />
                 <datalist id="asset-categories">
                   <option value="Vehicle">Vehicle / Auto</option>
@@ -136,22 +136,22 @@ export default function PhysicalAssetsManager({ assets, onAdd, onEdit, onDelete 
               </div>
               <div>
                 <label className="block text-xs font-bold text-slate-700 capitalize mb-1">Purchase Price (₹)</label>
-                <input required type="number" step="0.01" value={purchasePrice} onChange={e => setPurchasePrice(e.target.value)} className="w-full font-mono tabular-nums border border-slate-200 rounded-lg p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none" />
+                <input required type="number" step="0.01" value={purchasePrice} onChange={e => setPurchasePrice(e.target.value)} className="w-full font-mono tabular-nums border border-slate-200 rounded-xl p-2.5 text-sm bg-slate-50 focus:bg-white focus:outline-none" />
               </div>
               <div>
                 <label className="text-xs font-bold text-slate-700 capitalize mb-1 flex justify-between">
                   <span>Current Valuation (₹)</span>
                   <span className="text-xs text-indigo-500 font-normal flex items-center gap-0.5"><Calculator size={10}/> Estimate</span>
                 </label>
-                <input required type="number" step="0.01" value={currentValue} onChange={e => setcurrentValue(e.target.value)} className="w-full font-mono tabular-nums border border-slate-200 rounded-lg p-2 text-sm bg-slate-100/30 focus:bg-white focus:outline-none" />
+                <input required type="number" step="0.01" value={currentValue} onChange={e => setcurrentValue(e.target.value)} className="w-full font-mono tabular-nums border border-slate-200 rounded-xl p-2.5 text-sm bg-slate-50 focus:bg-white focus:outline-none" />
               </div>
               <div>
                 <label className="block text-xs font-bold text-slate-700 capitalize mb-1">Purchase Date</label>
-                <input required type="date" value={purchaseDate} onChange={e => setPurchaseDate(e.target.value)} className="w-full font-mono tabular-nums border border-slate-200 rounded-lg p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none" />
+                <input required type="date" value={purchaseDate} onChange={e => setPurchaseDate(e.target.value)} className="w-full font-mono tabular-nums border border-slate-200 rounded-xl p-2.5 text-sm bg-slate-50 focus:bg-white focus:outline-none" />
               </div>
               <div>
                 <label className="block text-xs font-bold text-slate-700 capitalize mb-1">Details / Notes</label>
-                <input placeholder="Registration No, Location, etc." value={notes} onChange={e => setNotes(e.target.value)} className="w-full border border-slate-200 rounded-lg p-2 text-sm bg-slate-50 focus:bg-white focus:outline-none" />
+                <input placeholder="Registration No, Location, etc." value={notes} onChange={e => setNotes(e.target.value)} className="w-full border border-slate-200 rounded-xl p-2.5 text-sm bg-slate-50 focus:bg-white focus:outline-none" />
               </div>
               <div className="md:col-span-2 pt-2">
                 <button type="submit" className="w-full bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium py-2 rounded-xl text-sm flex items-center justify-center gap-1.5 cursor-pointer transition-colors shadow-sm">
@@ -199,10 +199,10 @@ export default function PhysicalAssetsManager({ assets, onAdd, onEdit, onDelete 
                       </div>
                     ) : (
                       <>
-                        <button type="button" onClick={() => openEditForm(a)} className="p-1.5 text-slate-400 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer">
+                        <button type="button" onClick={() => openEditForm(a)} className="p-1.5 text-slate-400 hover:text-slate-900 hover:bg-slate-100 rounded-xl transition-colors cursor-pointer">
                           <Edit2 size={13} />
                         </button>
-                        <button type="button" onClick={() => { if(window.confirm('Delete this asset?')) onDelete(a.id); }} className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors cursor-pointer">
+                        <button type="button" onClick={() => { if(window.confirm('Delete this asset?')) onDelete(a.id); }} className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-xl transition-colors cursor-pointer">
                           <Trash2 size={13} />
                         </button>
                       </>
@@ -222,7 +222,7 @@ export default function PhysicalAssetsManager({ assets, onAdd, onEdit, onDelete 
                 </div>
                 
                 {appreciation !== 0 && (
-                  <div className={`mt-2 text-xs font-bold px-2 py-1 rounded-md inline-block text-center w-full ${appreciation > 0 ? 'bg-emerald-50 text-emerald-700' : 'bg-red-50 text-red-700'}`}>
+                  <div className={`mt-2 text-xs font-bold px-2 py-1 rounded-xl inline-block text-center w-full ${appreciation > 0 ? 'bg-emerald-50 text-emerald-700' : 'bg-red-50 text-red-700'}`}>
                     {appreciation > 0 ? '+' : ''}₹{appreciation.toLocaleString('en-IN')} ({pct > 0 ? '+' : ''}{pct.toFixed(1)}%)
                   </div>
                 )}

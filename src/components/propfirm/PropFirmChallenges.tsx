@@ -251,7 +251,7 @@ export default function PropFirmChallenges({ challenges, user, setChallenges, ac
                         <div className="text-[11px] text-slate-500 font-medium mt-0.5">{c.platform}</div>
                       </td>
                       <td className="p-2.5 whitespace-nowrap">
-                        <span className={`inline-block px-2 py-0.5 rounded-lg text-[11px] font-medium border ${
+                        <span className={`inline-block px-2 py-0.5 rounded-xl text-[11px] font-medium border ${
                           c.phase === 'Funded' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' :
                           c.phase === 'Instant Funded' ? 'bg-teal-50 text-teal-700 border-teal-200' :
                           c.phase === 'Phase 1' ? 'bg-sky-50 text-sky-700 border-sky-200' :
@@ -263,7 +263,7 @@ export default function PropFirmChallenges({ challenges, user, setChallenges, ac
                           {c.phase}
                         </span>
                         {c.isGiveaway && (
-                          <span className="inline-block ml-1 px-1.5 py-0.5 rounded-lg text-[11px] font-medium bg-amber-50 text-amber-700 border border-amber-200">
+                          <span className="inline-block ml-1 px-1.5 py-0.5 rounded-xl text-[11px] font-medium bg-amber-50 text-amber-700 border border-amber-200">
                             Giveaway
                           </span>
                         )}
@@ -285,8 +285,8 @@ export default function PropFirmChallenges({ challenges, user, setChallenges, ac
                           </div>
                         ) : (
                           <div className="flex justify-end gap-1.5 text-slate-500">
-                            <button onClick={() => openEditModal(c)} className="p-1 hover:text-slate-900 rounded-md cursor-pointer transition-colors"><Edit2 size={13} /></button>
-                            <button onClick={() => handleDelete(c.id)} className="p-1 hover:text-rose-600 rounded-md cursor-pointer transition-colors"><Trash2 size={13} /></button>
+                            <button onClick={() => openEditModal(c)} className="p-1 hover:text-slate-900 rounded-xl cursor-pointer transition-colors"><Edit2 size={13} /></button>
+                            <button onClick={() => handleDelete(c.id)} className="p-1 hover:text-rose-600 rounded-xl cursor-pointer transition-colors"><Trash2 size={13} /></button>
                           </div>
                         )}
                       </td>

@@ -1966,7 +1966,7 @@ export default function App() {
                 <button
                   type="button"
                   onClick={() => setPinSetupActive(false)}
-                  className="px-2.5 py-1.5 border border-slate-205 text-slate-700 rounded-lg text-xs font-bold cursor-pointer hover:bg-slate-50 transition-colors"
+                  className="px-2.5 py-1.5 border border-slate-200 text-slate-700 rounded-xl text-xs font-medium cursor-pointer hover:bg-slate-50 transition-colors"
                 >
                   Cancel
                 </button>
@@ -2315,13 +2315,13 @@ export default function App() {
                     setSnoozeTime(now.toTimeString().substring(0, 5));
                     setActiveToasts((prev) => prev.filter((t) => t.id !== toast.id));
                   }}
-                  className="px-2 py-1 text-xs font-bold bg-slate-800 text-slate-200 hover:bg-slate-700 rounded transition-colors cursor-pointer"
+                  className="px-2 py-1 text-xs font-medium bg-slate-800 text-slate-200 hover:bg-slate-700 rounded transition-colors cursor-pointer"
                 >
                   Snooze
                 </button>
                 <button
                   onClick={() => setActiveToasts((prev) => prev.filter((t) => t.id !== toast.id))}
-                  className="text-slate-500 hover:text-white p-1 hover:bg-slate-800 rounded-lg transition-all cursor-pointer flex justify-center items-center"
+                  className="text-slate-500 hover:text-white p-1 hover:bg-slate-800 rounded-xl transition-all cursor-pointer flex justify-center items-center"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -2338,15 +2338,15 @@ export default function App() {
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             className="fixed inset-0 z-100 flex items-center justify-center bg-black/60 p-4"
           >
-            <motion.div initial={{ scale: 0.95 }} animate={{ scale: 1 }} exit={{ scale: 0.95 }} className="bg-white rounded-lg p-4 w-full max-w-xs shadow-2xl space-y-3">
+            <motion.div initial={{ scale: 0.95 }} animate={{ scale: 1 }} exit={{ scale: 0.95 }} className="bg-white rounded-2xl p-4 w-full max-w-xs shadow-xl space-y-3">
               <h3 className="font-bold text-slate-900">Snooze Task</h3>
               <p className="text-xs text-slate-700">Select a new date and time for: <br /><b className="text-slate-800">{snoozingTask.title}</b></p>
               <div className="space-y-2 pt-1">
-                <input type="date" value={snoozeDate} onChange={e => setSnoozeDate(e.target.value)} className="w-full text-sm p-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-indigo-500" />
-                <input type="time" value={snoozeTime} onChange={e => setSnoozeTime(e.target.value)} className="w-full text-sm p-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-indigo-500" />
+                <input type="date" value={snoozeDate} onChange={e => setSnoozeDate(e.target.value)} className="w-full text-sm p-2 border border-slate-200 rounded-xl focus:outline-none focus:border-slate-400" />
+                <input type="time" value={snoozeTime} onChange={e => setSnoozeTime(e.target.value)} className="w-full text-sm p-2 border border-slate-200 rounded-xl focus:outline-none focus:border-slate-400" />
               </div>
               <div className="flex justify-end gap-2 pt-2 border-t border-slate-100 mt-2">
-                <button onClick={() => setSnoozingTask(null)} className="px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-100 rounded-lg cursor-pointer">Cancel</button>
+                <button onClick={() => setSnoozingTask(null)} className="px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-100 rounded-xl cursor-pointer">Cancel</button>
                 <button
                   onClick={async () => {
                     if (!snoozeDate || !snoozeTime) return toast.error("Please select date and time.");
@@ -2360,7 +2360,7 @@ export default function App() {
                       setSnoozingTask(null);
                     } catch (e) { toast.error("Failed to snooze: " + e); }
                   }}
-                  className="px-3 py-1.5 text-xs font-bold bg-slate-900 text-white rounded-xl hover:bg-slate-800 font-medium cursor-pointer">
+                  className="px-3 py-1.5 text-xs font-medium bg-slate-900 text-white rounded-xl hover:bg-slate-800 font-medium cursor-pointer">
                   Save & Snooze
                 </button>
               </div>

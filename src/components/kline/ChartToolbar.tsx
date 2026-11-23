@@ -256,7 +256,7 @@ export default function ChartToolbar({
         <ToolButton icon={Camera} label="Take a snapshot" />
         
         <button 
-          className="ml-2 px-4 py-1.5 rounded-md font-medium text-sm bg-black dark:bg-white text-white dark:text-black hover:opacity-80 transition-opacity"
+          className="ml-2 px-4 py-1.5 rounded-xl font-medium text-sm bg-black dark:bg-white text-white dark:text-black hover:opacity-80 transition-opacity"
         >
           Publish
         </button>

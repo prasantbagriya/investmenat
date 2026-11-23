@@ -101,7 +101,7 @@ export default function LogEntryForm({ onAddTransaction, bankAccounts = [], isFo
                 <button
                   type="button"
                   onClick={() => setIsFormOpen(false)}
-                  className="p-1 text-slate-500 hover:text-slate-900 rounded-lg cursor-pointer"
+                  className="p-1 text-slate-500 hover:text-slate-900 rounded-xl cursor-pointer"
                 >
                   <X size={16} />
                 </button>
@@ -115,28 +115,28 @@ export default function LogEntryForm({ onAddTransaction, bankAccounts = [], isFo
                     <button
                       type="button"
                       onClick={() => handleTypeChange('expense')}
-                      className={`py-1 text-xs font-bold rounded-md transition-all cursor-pointer ${type === 'expense' ? 'bg-slate-900 text-white shadow-xs' : 'text-slate-700 hover:text-slate-900'}`}
+                      className={`py-1 text-xs font-medium rounded-xl transition-all cursor-pointer ${type === 'expense' ? 'bg-slate-900 text-white shadow-xs' : 'text-slate-700 hover:text-slate-900'}`}
                     >
                       Expense
                     </button>
                     <button
                       type="button"
                       onClick={() => handleTypeChange('income')}
-                      className={`py-1 text-xs font-bold rounded-md transition-all cursor-pointer ${type === 'income' ? 'bg-slate-900 text-white shadow-xs' : 'text-slate-700 hover:text-slate-900'}`}
+                      className={`py-1 text-xs font-medium rounded-xl transition-all cursor-pointer ${type === 'income' ? 'bg-slate-900 text-white shadow-xs' : 'text-slate-700 hover:text-slate-900'}`}
                     >
                       Income
                     </button>
                     <button
                       type="button"
                       onClick={() => handleTypeChange('transfer')}
-                      className={`py-1 text-xs font-bold rounded-md transition-all cursor-pointer ${type === 'transfer' ? 'bg-slate-900 text-white shadow-xs' : 'text-slate-700 hover:text-slate-900'}`}
+                      className={`py-1 text-xs font-medium rounded-xl transition-all cursor-pointer ${type === 'transfer' ? 'bg-slate-900 text-white shadow-xs' : 'text-slate-700 hover:text-slate-900'}`}
                     >
                       Transfer
                     </button>
                     <button
                       type="button"
                       onClick={() => handleTypeChange('cash_withdrawal')}
-                      className={`py-1 text-xs font-bold rounded-md transition-all cursor-pointer ${type === 'cash_withdrawal' ? 'bg-slate-900 text-white shadow-xs' : 'text-slate-700 hover:text-slate-900'}`}
+                      className={`py-1 text-xs font-medium rounded-xl transition-all cursor-pointer ${type === 'cash_withdrawal' ? 'bg-slate-900 text-white shadow-xs' : 'text-slate-700 hover:text-slate-900'}`}
                     >
                       Cash W/D
                     </button>
@@ -169,7 +169,7 @@ export default function LogEntryForm({ onAddTransaction, bankAccounts = [], isFo
                     onChange={(e) => setCategory(e.target.value)}
                     disabled={type === 'transfer' || type === 'cash_withdrawal'}
                     placeholder="Select or type new category"
-                    className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-hidden bg-white transition-all "
+                    className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-xl focus:outline-hidden bg-white transition-all "
                   />
                   <datalist id="log-categories">
                     {type === 'expense' 
@@ -189,7 +189,7 @@ export default function LogEntryForm({ onAddTransaction, bankAccounts = [], isFo
                     <select
                       value={bankAccountId}
                       onChange={(e) => setBankAccountId(e.target.value)}
-                      className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-hidden bg-white transition-all font-mono tabular-nums"
+                      className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-xl focus:outline-hidden bg-white transition-all font-mono tabular-nums"
                     >
                       <option value="">-- No Bank (Cash/Other) --</option>
                       {bankAccounts.map(b => (
@@ -210,7 +210,7 @@ export default function LogEntryForm({ onAddTransaction, bankAccounts = [], isFo
                     <select
                       value={toBankAccountId}
                       onChange={(e) => setToBankAccountId(e.target.value)}
-                      className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-hidden bg-white transition-all font-mono tabular-nums"
+                      className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-xl focus:outline-hidden bg-white transition-all font-mono tabular-nums"
                     >
                       <option value="">-- Select Bank Account --</option>
                       {bankAccounts.map(b => (
@@ -230,7 +230,7 @@ export default function LogEntryForm({ onAddTransaction, bankAccounts = [], isFo
                     required
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
-                    className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-hidden bg-white transition-all font-mono tabular-nums"
+                    className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-xl focus:outline-hidden bg-white transition-all font-mono tabular-nums"
                   />
                 </div>
               </div>
@@ -243,7 +243,7 @@ export default function LogEntryForm({ onAddTransaction, bankAccounts = [], isFo
                   placeholder="e.g., specific notes"
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
-                  className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-hidden bg-white transition-all "
+                  className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-xl focus:outline-hidden bg-white transition-all "
                 />
               </div>
 
@@ -252,14 +252,14 @@ export default function LogEntryForm({ onAddTransaction, bankAccounts = [], isFo
                 <button
                   type="button"
                   onClick={() => setIsFormOpen(false)}
-                  className="px-3 py-1.5 text-slate-700 hover:text-slate-900 hover:bg-slate-50 font-semibold text-xs rounded transition-colors cursor-pointer"
+                  className="px-3 py-1.5 text-slate-700 hover:text-slate-900 hover:bg-slate-50 font-medium text-xs rounded transition-colors cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="px-4 py-1.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-semibold rounded text-xs transition-colors disabled:opacity-40 cursor-pointer shadow-sm"
+                  className="px-4 py-1.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium rounded text-xs transition-colors disabled:opacity-40 cursor-pointer shadow-sm"
                 >
                   {isSubmitting ? 'Syncing...' : 'Save Log'}
                 </button>

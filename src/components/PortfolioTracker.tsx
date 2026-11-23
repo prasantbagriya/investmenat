@@ -611,7 +611,7 @@ export default function PortfolioTracker({
               <Wallet className="text-slate-500" size={15} />
               <h4 className="font-medium text-xs text-slate-700">Investment Cash Balance</h4>
             </div>
-            <span className="text-[11px] bg-slate-100 text-slate-600 font-medium px-2 py-0.5 rounded-md">Liquid cash</span>
+            <span className="text-[11px] bg-slate-100 text-slate-600 font-medium px-2 py-0.5 rounded-xl">Liquid cash</span>
           </div>
           <div>
             <div className="text-2xl font-semibold text-slate-900 font-mono tabular-nums flex items-center gap-2">
@@ -625,13 +625,13 @@ export default function PortfolioTracker({
           <div className="flex gap-2 pt-1">
             <button
               onClick={() => { setCashActionType('deposit'); setCashAmountInput(''); }}
-              className="flex-1 text-center py-1.5 bg-slate-900 text-white hover:bg-slate-800 rounded-lg text-xs font-medium cursor-pointer transition-colors"
+              className="flex-1 text-center py-1.5 bg-slate-900 text-white hover:bg-slate-800 rounded-xl text-xs font-medium cursor-pointer transition-colors"
             >
               Deposit
             </button>
             <button
               onClick={() => { setCashActionType('withdraw'); setCashAmountInput(''); }}
-              className="flex-1 text-center py-1.5 bg-white text-slate-700 hover:bg-slate-50 border border-slate-200 rounded-lg text-xs font-medium cursor-pointer transition-colors"
+              className="flex-1 text-center py-1.5 bg-white text-slate-700 hover:bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium cursor-pointer transition-colors"
             >
               Withdraw
             </button>
@@ -692,21 +692,21 @@ export default function PortfolioTracker({
                   <button
                     type="button"
                     onClick={() => setPortfolioViewMode('holdings')}
-                    className={`px-1.5 py-1 rounded-md transition-all cursor-pointer whitespace-nowrap ${portfolioViewMode === 'holdings' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-700 hover:text-slate-800'}`}
+                    className={`px-1.5 py-1 rounded-xl transition-all cursor-pointer whitespace-nowrap ${portfolioViewMode === 'holdings' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-700 hover:text-slate-800'}`}
                   >
                     Active ({processedHoldings.length})
                   </button>
                   <button
                     type="button"
                     onClick={() => setPortfolioViewMode('ledger')}
-                    className={`px-1.5 py-1 rounded-md transition-all cursor-pointer whitespace-nowrap ${portfolioViewMode === 'ledger' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-700 hover:text-slate-800'}`}
+                    className={`px-1.5 py-1 rounded-xl transition-all cursor-pointer whitespace-nowrap ${portfolioViewMode === 'ledger' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-700 hover:text-slate-800'}`}
                   >
                     Exited ({realizedTrades?.length || 0})
                   </button>
                   <button
                     type="button"
                     onClick={() => setPortfolioViewMode('orders')}
-                    className={`px-1.5 py-1 rounded-md transition-all cursor-pointer whitespace-nowrap ${portfolioViewMode === 'orders' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-700 hover:text-slate-800'}`}
+                    className={`px-1.5 py-1 rounded-xl transition-all cursor-pointer whitespace-nowrap ${portfolioViewMode === 'orders' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-700 hover:text-slate-800'}`}
                   >
                     Live ({brokerOrders?.length || 0})
                   </button>
@@ -714,7 +714,7 @@ export default function PortfolioTracker({
               </div>
               <button
                 onClick={() => setIsAdding(!isAdding)}
-                className="shrink-0 flex items-center gap-1 bg-slate-900 hover:bg-slate-800 text-white font-bold py-1.5 px-2 rounded-lg text-xs sm:text-xs cursor-pointer transition-all"
+                className="shrink-0 flex items-center gap-1 bg-slate-900 hover:bg-slate-800 text-white font-medium py-1.5 px-2 rounded-xl text-xs sm:text-xs cursor-pointer transition-all"
               >
                 <Plus size={13} /> Add Asset
               </button>
@@ -734,14 +734,14 @@ export default function PortfolioTracker({
                       <button
                         type="button"
                         onClick={() => { setType('stock'); setAssetClass('Equity'); }}
-                        className={`px-1 py-1.5 rounded-md font-bold ${type === 'stock' ? 'bg-slate-900 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-600'}`}
+                        className={`px-1 py-1.5 rounded-xl font-bold ${type === 'stock' ? 'bg-slate-900 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-600'}`}
                       >
                         Indian Stock (Equity)
                       </button>
                       <button
                         type="button"
                         onClick={() => { setType('mf'); setAssetClass('Equity'); }}
-                        className={`px-1 py-1.5 rounded-md font-bold ${type === 'mf' ? 'bg-slate-900 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-600'}`}
+                        className={`px-1 py-1.5 rounded-xl font-bold ${type === 'mf' ? 'bg-slate-900 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-600'}`}
                       >
                         Mutual Fund
                       </button>
@@ -801,7 +801,7 @@ export default function PortfolioTracker({
                                 setStockSearchQuery('');
                                 setTickerLookupResult(null);
                               }}
-                              className="text-amber-400 hover:underline hover:text-amber-300 text-xs font-bold cursor-pointer"
+                              className="text-amber-400 hover:underline hover:text-amber-300 text-xs font-medium cursor-pointer"
                             >
                               Clear Selection
                             </button>
@@ -823,7 +823,7 @@ export default function PortfolioTracker({
                                 });
                                 setAssetClass(p.class as any);
                               }}
-                              className="text-xs bg-white hover:bg-slate-100 border border-slate-200 transition-colors px-1.5 py-0.5 rounded text-slate-600 font-bold cursor-pointer"
+                              className="text-xs bg-white hover:bg-slate-100 border border-slate-200 transition-colors px-1.5 py-0.5 rounded text-slate-600 font-medium cursor-pointer"
                             >
                               +{p.symbol}
                             </button>
@@ -884,7 +884,7 @@ export default function PortfolioTracker({
                                 setMfSearchQuery('');
                                 setTickerLookupResult(null);
                               }}
-                              className="text-amber-400 hover:underline hover:text-amber-300 text-xs font-bold cursor-pointer"
+                              className="text-amber-400 hover:underline hover:text-amber-300 text-xs font-medium cursor-pointer"
                             >
                               Clear Selection
                             </button>
@@ -998,7 +998,7 @@ export default function PortfolioTracker({
                           onChange={(e) => setDeductCashFromWallet(e.target.checked)}
                           className="rounded border-slate-300 text-slate-900 focus:ring-slate-800"
                         />
-                        <label htmlFor="deductCashFromWallet" className="font-bold text-slate-705 cursor-pointer">
+                        <label htmlFor="deductCashFromWallet" className="font-medium text-slate-705 cursor-pointer">
                           Deduct total purchase cost from Investment Cash Wallet
                         </label>
                       </div>
@@ -1011,7 +1011,7 @@ export default function PortfolioTracker({
                       <button
                         type="button"
                         onClick={() => setIsAdding(false)}
-                        className="px-2 py-1 border border-slate-200 rounded-lg font-bold text-slate-700 hover:bg-slate-50 cursor-pointer"
+                        className="px-2 py-1 border border-slate-200 rounded-xl font-medium text-slate-700 hover:bg-slate-50 cursor-pointer"
                       >
                         Cancel
                       </button>
@@ -1058,7 +1058,7 @@ export default function PortfolioTracker({
                           <td className="p-2 font-bold text-slate-800">{o.trading_symbol || o.instrument_token}</td>
                           <td className="p-2 text-center font-mono tabular-nums text-xs">{o.transaction_type}</td>
                           <td className="p-2 text-center">
-                            <span className={`inline-block px-1.5 py-0.5 rounded-md font-bold text-xs ${o.transaction_type === 'BUY' ? 'bg-emerald-50 text-emerald-700' : 'bg-rose-50 text-rose-700'}`}>
+                            <span className={`inline-block px-1.5 py-0.5 rounded-xl font-bold text-xs ${o.transaction_type === 'BUY' ? 'bg-emerald-50 text-emerald-700' : 'bg-rose-50 text-rose-700'}`}>
                               {o.transaction_type}
                             </span>
                           </td>
@@ -1111,7 +1111,7 @@ export default function PortfolioTracker({
                                   currentPrice: rt.exitPrice,
                                   holdings: []
                                 })}
-                                className="font-bold text-slate-800 hover:text-slate-900 hover:underline text-left block border-0 bg-transparent p-0 cursor-pointer"
+                                className="font-medium text-slate-800 hover:text-slate-900 hover:underline text-left block border-0 bg-transparent p-0 cursor-pointer"
                               >
                                 {rt.name || rt.symbol}
                               </button>
@@ -1129,7 +1129,7 @@ export default function PortfolioTracker({
                             </td>
                             <td className="p-2 text-center text-slate-700 font-mono tabular-nums text-xs">{rt.exitDate || '-'}</td>
                             <td className="p-2 text-center">
-                              <span className={`inline-block px-1.5 py-0.5 rounded-md font-bold text-xs font-mono tabular-nums ${isWin ? 'bg-emerald-50 text-emerald-700' : 'bg-rose-50 text-rose-700'}`}>
+                              <span className={`inline-block px-1.5 py-0.5 rounded-xl font-bold text-xs font-mono tabular-nums ${isWin ? 'bg-emerald-50 text-emerald-700' : 'bg-rose-50 text-rose-700'}`}>
                                 {isWin ? '+' : ''}{roi.toFixed(1)}%
                               </span>
                             </td>
@@ -1172,7 +1172,7 @@ export default function PortfolioTracker({
                               <button
                                 type="button"
                                 onClick={() => setViewingAssetDetails(h)}
-                                className="font-bold text-slate-800 hover:text-slate-900 hover:underline truncate text-left flex items-center gap-1 border-0 bg-transparent p-0 cursor-pointer"
+                                className="font-medium text-slate-800 hover:text-slate-900 hover:underline truncate text-left flex items-center gap-1 border-0 bg-transparent p-0 cursor-pointer"
                                 title="Click to view charts & analysis"
                               >
                                 <span className="truncate">{h.displayName}</span>
@@ -1183,8 +1183,8 @@ export default function PortfolioTracker({
                               </div>
                             </td>
                             <td className="p-2">
-                              <span className="inline-block px-1.5 py-0.5 rounded-md text-xs font-bold bg-slate-100 text-slate-700 mr-1.5">{h.broker}</span>
-                              <span className="inline-block px-1.5 py-0.5 rounded-md text-xs font-semibold text-white" style={{ backgroundColor: COLORS[h.assetClass as keyof typeof COLORS] }}>{h.assetClass}</span>
+                              <span className="inline-block px-1.5 py-0.5 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 mr-1.5">{h.broker}</span>
+                              <span className="inline-block px-1.5 py-0.5 rounded-xl text-xs font-semibold text-white" style={{ backgroundColor: COLORS[h.assetClass as keyof typeof COLORS] }}>{h.assetClass}</span>
                             </td>
                             <td className="p-2 text-right font-mono tabular-nums text-xs">
                               <div>₹{h.buyPrice.toLocaleString('en-IN', { minimumFractionDigits: 1 })}</div>
@@ -1203,7 +1203,7 @@ export default function PortfolioTracker({
                               </div>
                             </td>
                             <td className="p-2 text-center">
-                              <span className="px-1 py-0.5 bg-blue-50 text-blue-700 rounded-md font-bold text-xs font-mono tabular-nums">
+                              <span className="px-1 py-0.5 bg-blue-50 text-blue-700 rounded-xl font-bold text-xs font-mono tabular-nums">
                                 {h.xirr > 0 ? '+' : ''}{h.xirr.toFixed(1)}%
                               </span>
                             </td>
@@ -1220,7 +1220,7 @@ export default function PortfolioTracker({
                                       setTradeLtp(h.currentPrice);
                                       setTradeModalOpen(true);
                                     }}
-                                    className="text-slate-500 hover:text-slate-900 p-1 rounded-md transition-colors cursor-pointer border-0 bg-transparent"
+                                    className="text-slate-500 hover:text-slate-900 p-1 rounded-xl transition-colors cursor-pointer border-0 bg-transparent"
                                     title="View TradingView Chart & Trade"
                                   >
                                     <TrendingUp size={13} />
@@ -1231,7 +1231,7 @@ export default function PortfolioTracker({
                                   <button
                                     type="button"
                                     onClick={() => setViewingAssetDetails(h)}
-                                    className="text-slate-500 hover:text-slate-900 p-1 rounded-md transition-colors cursor-pointer border-0 bg-transparent"
+                                    className="text-slate-500 hover:text-slate-900 p-1 rounded-xl transition-colors cursor-pointer border-0 bg-transparent"
                                     title="View Interactive Stock Chart"
                                   >
                                     <BarChart3 size={13} />
@@ -1243,7 +1243,7 @@ export default function PortfolioTracker({
                                       setExitQuantity(h.quantity.toString());
                                       setExitPrice((h.currentPrice || h.buyPrice).toString());
                                     }}
-                                    className="text-slate-400 hover:text-emerald-600 p-1 rounded-md transition-colors cursor-pointer border-0 bg-transparent"
+                                    className="text-slate-400 hover:text-emerald-600 p-1 rounded-xl transition-colors cursor-pointer border-0 bg-transparent"
                                     title="Exit/Sell Position"
                                   >
                                     <ArrowUpRight size={13} />
@@ -1255,7 +1255,7 @@ export default function PortfolioTracker({
                                       setTradeLtp(h.currentPrice);
                                       setTradeModalOpen(true);
                                     }}
-                                    className="text-slate-500 hover:text-slate-900 p-1 rounded-md transition-colors cursor-pointer border-0 bg-transparent"
+                                    className="text-slate-500 hover:text-slate-900 p-1 rounded-xl transition-colors cursor-pointer border-0 bg-transparent"
                                     title="Trade / Route Order"
                                   >
                                     <TrendingUp size={13} />
@@ -1273,7 +1273,7 @@ export default function PortfolioTracker({
                                         });
                                       }
                                     }}
-                                    className="text-slate-500 hover:text-red-500 p-1 rounded-md transition-colors cursor-pointer border-0 bg-transparent"
+                                    className="text-slate-500 hover:text-red-500 p-1 rounded-xl transition-colors cursor-pointer border-0 bg-transparent"
                                     title="Delete Holding record & Refund Capital"
                                   >
                                     <Trash2 size={13} />
@@ -1357,7 +1357,7 @@ export default function PortfolioTracker({
               </div>
               <button
                 onClick={() => setIsAddingWatch(!isAddingWatch)}
-                className="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-1 py-1 rounded-md flex items-center gap-0.5 cursor-pointer transition-all"
+                className="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium px-1 py-1 rounded-xl flex items-center gap-0.5 cursor-pointer transition-all"
               >
                 <Plus size={11} /> Add
               </button>
@@ -1418,7 +1418,7 @@ export default function PortfolioTracker({
                       <button
                         type="button"
                         onClick={() => setIsAddingWatch(false)}
-                        className="px-1 py-1 border border-slate-200 text-slate-700 rounded text-xs font-bold cursor-pointer"
+                        className="px-1 py-1 border border-slate-200 text-slate-700 rounded text-xs font-medium cursor-pointer"
                       >
                         Cancel
                       </button>
@@ -1500,7 +1500,7 @@ export default function PortfolioTracker({
                   </div>
                   <button
                     onClick={() => setCashActionType(null)}
-                    className="text-slate-500 hover:text-slate-600 text-sm font-bold border-0 bg-transparent cursor-pointer"
+                    className="text-slate-500 hover:text-slate-600 text-sm font-medium border-0 bg-transparent cursor-pointer"
                   >
                     ✕
                   </button>
@@ -1549,7 +1549,7 @@ export default function PortfolioTracker({
                   <button
                     type="button"
                     onClick={() => setCashActionType(null)}
-                    className="flex-1 py-1 border border-slate-200 hover:bg-slate-50 rounded-lg text-xs font-bold text-slate-700 cursor-pointer"
+                    className="flex-1 py-1 border border-slate-200 hover:bg-slate-50 rounded-xl text-xs font-medium text-slate-700 cursor-pointer"
                   >
                     Cancel
                   </button>
@@ -1591,7 +1591,7 @@ export default function PortfolioTracker({
                   </div>
                   <button
                     onClick={() => setExitingHolding(null)}
-                    className="text-slate-500 hover:text-slate-600 text-sm font-bold border-0 bg-transparent cursor-pointer"
+                    className="text-slate-500 hover:text-slate-600 text-sm font-medium border-0 bg-transparent cursor-pointer"
                   >
                     ✕
                   </button>
@@ -1685,7 +1685,7 @@ export default function PortfolioTracker({
                     onChange={(e) => setAddProceedsToCash(e.target.checked)}
                     className="rounded border-slate-300 text-slate-900 focus:ring-slate-800"
                   />
-                  <label htmlFor="addProceedsToCash" className="text-xs font-bold text-slate-600 cursor-pointer">
+                  <label htmlFor="addProceedsToCash" className="text-xs font-medium text-slate-600 cursor-pointer">
                     Credit gross trade proceeds directly back to Investment Cash Wallet
                   </label>
                 </div>
@@ -1694,7 +1694,7 @@ export default function PortfolioTracker({
                   <button
                     type="button"
                     onClick={() => setExitingHolding(null)}
-                    className="flex-1 py-1 border border-slate-200 hover:bg-slate-50 text-slate-700 rounded-lg text-xs font-bold cursor-pointer"
+                    className="flex-1 py-1 border border-slate-200 hover:bg-slate-50 text-slate-700 rounded-xl text-xs font-medium cursor-pointer"
                   >
                     Cancel
                   </button>
@@ -1742,7 +1742,7 @@ export default function PortfolioTracker({
                       key={time}
                       type="button"
                       onClick={() => setChartTimeframe(time)}
-                      className={`px-1 py-1 rounded-md transition-all cursor-pointer ${chartTimeframe === time ? 'bg-white text-slate-900 shadow-xs font-bold' : 'text-slate-500 hover:text-slate-800'}`}
+                      className={`px-1 py-1 rounded-xl transition-all cursor-pointer ${chartTimeframe === time ? 'bg-white text-slate-900 shadow-xs font-medium' : 'text-slate-500 hover:text-slate-800'}`}
                     >
                       {time}
                     </button>
@@ -1845,7 +1845,7 @@ export default function PortfolioTracker({
                   <button
                     type="button"
                     onClick={() => setViewingAssetDetails(null)}
-                    className="w-full sm:w-auto px-3 py-1 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-lg text-xs cursor-pointer text-center"
+                    className="w-full sm:w-auto px-3 py-1 bg-slate-900 hover:bg-slate-800 text-white font-medium rounded-xl text-xs cursor-pointer text-center"
                   >
                     Close Analytics Screen
                   </button>

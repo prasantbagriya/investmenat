@@ -102,7 +102,7 @@ export default function SymbolSearchModal({ theme, onClose, onSelect }: SymbolSe
             <div 
               key={t}
               onClick={() => { setActiveTab(t); setQuery(''); setResults([]); }}
-              className="py-3 cursor-pointer text-sm font-semibold whitespace-nowrap transition-colors"
+              className="py-3 cursor-pointer text-sm font-medium whitespace-nowrap transition-colors"
               style={{
                 borderBottom: activeTab === t ? (theme === 'dark' ? '2px solid #ffffff' : '2px solid #000000') : '2px solid transparent',
                 color: activeTab === t ? (theme === 'dark' ? '#ffffff' : '#000000') : subtext

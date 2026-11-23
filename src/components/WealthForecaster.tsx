@@ -207,7 +207,7 @@ export function WealthForecaster({ sips, fds, holdings, physicalAssets = [], ban
             type="range" min="5" max="40" step="5"
             value={projectionYears} 
             onChange={(e) => setProjectionYears(parseInt(e.target.value))}
-            className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600"
+            className="w-full h-2 bg-slate-200 rounded-xl appearance-none cursor-pointer accent-indigo-600"
           />
         </div>
 
@@ -220,7 +220,7 @@ export function WealthForecaster({ sips, fds, holdings, physicalAssets = [], ban
             type="range" min="5" max="25" step="1"
             value={expectedEquityReturn} 
             onChange={(e) => setExpectedEquityReturn(parseInt(e.target.value))}
-            className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600"
+            className="w-full h-2 bg-slate-200 rounded-xl appearance-none cursor-pointer accent-indigo-600"
           />
         </div>
 
@@ -233,7 +233,7 @@ export function WealthForecaster({ sips, fds, holdings, physicalAssets = [], ban
             type="range" min="4" max="12" step="0.5"
             value={expectedDebtReturn} 
             onChange={(e) => setExpectedDebtReturn(parseFloat(e.target.value))}
-            className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600"
+            className="w-full h-2 bg-slate-200 rounded-xl appearance-none cursor-pointer accent-indigo-600"
           />
         </div>
 
@@ -246,7 +246,7 @@ export function WealthForecaster({ sips, fds, holdings, physicalAssets = [], ban
             type="range" min="0" max="15" step="0.5"
             value={expectedPhysicalReturn} 
             onChange={(e) => setExpectedPhysicalReturn(parseFloat(e.target.value))}
-            className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600"
+            className="w-full h-2 bg-slate-200 rounded-xl appearance-none cursor-pointer accent-indigo-600"
           />
         </div>
 
@@ -259,7 +259,7 @@ export function WealthForecaster({ sips, fds, holdings, physicalAssets = [], ban
             type="range" min="0" max="8" step="0.5"
             value={expectedBankReturn} 
             onChange={(e) => setExpectedBankReturn(parseFloat(e.target.value))}
-            className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600"
+            className="w-full h-2 bg-slate-200 rounded-xl appearance-none cursor-pointer accent-indigo-600"
           />
         </div>
 

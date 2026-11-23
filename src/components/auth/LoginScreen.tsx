@@ -117,7 +117,7 @@ export default function LoginScreen({
                 <button
                   type="button"
                   onClick={handleCustomOauthLogin}
-                  className="w-full bg-white border border-slate-300 hover:bg-slate-50 text-slate-800 font-medium py-2 px-3 rounded-lg cursor-pointer text-xs transition-colors shadow-2xs"
+                  className="w-full bg-white border border-slate-300 hover:bg-slate-50 text-slate-800 font-medium py-2 px-3 rounded-xl cursor-pointer text-xs transition-colors shadow-2xs"
                 >
                   Authorize Client
                 </button>

@@ -98,7 +98,7 @@ export default function MigrationModal({
                 <button
                   type="button"
                   onClick={handleCancelMigration}
-                  className="flex-1 py-1 border border-slate-205 hover:bg-slate-50 text-slate-700 rounded-xl text-xs font-medium cursor-pointer text-center"
+                  className="flex-1 py-1 border border-slate-200 hover:bg-slate-50 text-slate-700 rounded-xl text-xs font-medium cursor-pointer text-center"
                 >
                   No, Skip (नया अकाउंट शुरू करें)
                 </button>
@@ -106,7 +106,7 @@ export default function MigrationModal({
                   type="button"
                   onClick={handleMigrateGuestData}
                   disabled={!!migrationProgress}
-                  className="flex-1 py-1 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white rounded-xl text-xs font-medium cursor-pointer transition-colors shadow-md text-center flex items-center justify-center gap-1.5"
+                  className="flex-1 py-1 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white rounded-xl text-xs font-medium cursor-pointer transition-colors shadow-xs text-center flex items-center justify-center gap-1.5"
                 >
                   <RefreshCw size={13} className={migrationProgress ? 'animate-spin' : ''} />
                   <span>Yes, Migrate (हाँ, डेटा सिंक करें)</span>

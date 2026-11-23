@@ -47,7 +47,7 @@ export default function BottomPanel({ theme, activeSymbol }: BottomPanelProps) {
     return (
       <div 
         style={{ borderTop: `1px solid ${border}`, background: bg, color: text }}
-        className="hidden md:flex items-center gap-4 px-4 h-6 text-xs font-semibold cursor-pointer"
+        className="hidden md:flex items-center gap-4 px-4 h-6 text-xs font-medium cursor-pointer"
       >
         {tabs.map(t => (
           <div 

@@ -328,7 +328,7 @@ export const LedgerProfileView: React.FC<LedgerProfileViewProps> = ({
                     required
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
-                    className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-hidden bg-white transition-all font-mono tabular-nums"
+                    className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-xl focus:outline-hidden bg-white transition-all font-mono tabular-nums"
                   />
                 </div>
               </div>
@@ -340,7 +340,7 @@ export const LedgerProfileView: React.FC<LedgerProfileViewProps> = ({
                     value={memo}
                     onChange={(e) => setMemo(e.target.value)}
                     rows={1}
-                    className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-hidden bg-white transition-all resize-y min-h-[30px]"
+                    className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-xl focus:outline-hidden bg-white transition-all resize-y min-h-[30px]"
                   />
                 </div>
 
@@ -349,7 +349,7 @@ export const LedgerProfileView: React.FC<LedgerProfileViewProps> = ({
                   <select 
                     value={paymentMethod}
                     onChange={(e) => setPaymentMethod(e.target.value)}
-                    className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-md focus:outline-hidden bg-white transition-all "
+                    className="w-full px-2 py-1.5 text-xs border border-slate-300 rounded-xl focus:outline-hidden bg-white transition-all "
                   >
                     <option value="cash">Cash (Default)</option>
                     {bankAccounts.map((bank: any) => (
@@ -365,14 +365,14 @@ export const LedgerProfileView: React.FC<LedgerProfileViewProps> = ({
                 <button 
                   type="button" 
                   onClick={() => setShowTxForm(null)}
-                  className="px-3 py-1.5 text-slate-700 hover:text-slate-900 hover:bg-slate-50 font-semibold text-xs rounded transition-colors"
+                  className="px-3 py-1.5 text-slate-700 hover:text-slate-900 hover:bg-slate-100 font-medium text-xs rounded-xl transition-colors cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button 
                   type="button"
                   onClick={handleAddTransaction as any}
-                  className={`px-4 py-1.5 font-semibold text-white rounded text-xs transition-colors cursor-pointer ${showTxForm === 'gave' ? 'bg-rose-600 hover:bg-rose-700' : 'bg-emerald-600 hover:bg-emerald-700'}`}
+                  className="px-4 py-1.5 font-medium text-white rounded-xl text-xs transition-colors cursor-pointer bg-slate-900 hover:bg-slate-800 active:bg-slate-950 shadow-xs"
                 >
                   Save Record
                 </button>

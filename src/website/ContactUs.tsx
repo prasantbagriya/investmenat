@@ -80,7 +80,7 @@ const ContactUs = () => {
                     type="text" 
                     required
                     placeholder="John Doe" 
-                    className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all shadow-sm font-medium"
+                    className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all shadow-sm font-medium"
                   />
                 </div>
 
@@ -90,7 +90,7 @@ const ContactUs = () => {
                     type="email" 
                     required
                     placeholder="john@example.com" 
-                    className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all shadow-sm font-medium"
+                    className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all shadow-sm font-medium"
                   />
                 </div>
               </div>
@@ -101,7 +101,7 @@ const ContactUs = () => {
                   type="text" 
                   required
                   placeholder="How can we help?" 
-                  className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all shadow-sm font-medium"
+                  className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all shadow-sm font-medium"
                 />
               </div>
 
@@ -111,7 +111,7 @@ const ContactUs = () => {
                   required
                   rows={5} 
                   placeholder="Write your message here..." 
-                  className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all shadow-sm font-medium resize-none"
+                  className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all shadow-sm font-medium resize-none"
                 ></textarea>
               </div>
 

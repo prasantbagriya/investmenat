@@ -136,13 +136,13 @@ const OptionChainChart: React.FC<OptionChainChartProps> = ({ data, theme = 'ligh
         <div className="flex bg-slate-200/50 p-1 rounded-lg">
           <button
             onClick={() => setView('table')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-bold transition-colors ${view === 'table' ? 'bg-white text-blue-600 shadow-sm' : 'text-slate-600 hover:text-slate-900'}`}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-colors ${view === 'table' ? 'bg-white text-blue-600 shadow-sm' : 'text-slate-600 hover:text-slate-900'}`}
           >
             <TableIcon size={14} /> Chain Table
           </button>
           <button
             onClick={() => setView('analytics')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-bold transition-colors ${view === 'analytics' ? 'bg-white text-purple-600 shadow-sm' : 'text-slate-600 hover:text-slate-900'}`}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-colors ${view === 'analytics' ? 'bg-white text-purple-600 shadow-sm' : 'text-slate-600 hover:text-slate-900'}`}
           >
             <BarChart2 size={14} /> Analytics
           </button>

@@ -52,10 +52,10 @@ const HomePage = () => {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="flex flex-col sm:flex-row items-center justify-center gap-5 pt-8"
             >
-              <Link to="/login" className="w-full sm:w-auto px-10 py-5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-bold text-lg transition-all shadow-2xl shadow-slate-900/20 hover:shadow-slate-900/30 hover:-translate-y-1 flex items-center justify-center gap-3">
+              <Link to="/login" className="w-full sm:w-auto px-10 py-5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-lg transition-all shadow-xs shadow-slate-900/20 hover:shadow-slate-900/30 hover:-translate-y-1 flex items-center justify-center gap-3">
                 Launch Application <Zap size={22} className="text-amber-400" />
               </Link>
-              <Link to="/about" className="w-full sm:w-auto px-10 py-5 rounded-lg bg-white hover:bg-slate-50 text-slate-700 font-bold text-lg transition-all border border-slate-200 shadow-sm hover:shadow-md flex items-center justify-center gap-2 group">
+              <Link to="/about" className="w-full sm:w-auto px-10 py-5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 font-bold text-lg transition-all border border-slate-200 shadow-sm hover:shadow-xs flex items-center justify-center gap-2 group">
                 Learn More <ArrowRight size={20} className="text-slate-400 group-hover:translate-x-1 transition-transform" />
               </Link>
             </motion.div>
@@ -146,7 +146,7 @@ const HomePage = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl relative z-10 text-center">
           <h2 className="text-4xl md:text-6xl font-semibold text-white tracking-tight mb-8 leading-tight">Ready to take control <br/>of your finances?</h2>
           <p className="text-xl md:text-2xl text-indigo-100 mb-12 font-medium max-w-2xl mx-auto">Join the smart way of tracking, forecasting, and managing your entire financial life.</p>
-          <Link to="/login" className="inline-flex items-center gap-3 px-12 py-6 rounded-lg bg-white text-slate-900 hover:bg-slate-50 font-semibold text-xl transition-all shadow-2xl hover:shadow-3xl hover:scale-105 transform duration-300">
+          <Link to="/login" className="inline-flex items-center gap-3 px-12 py-6 rounded-xl bg-white text-slate-900 hover:bg-slate-50 font-semibold text-xl transition-all shadow-xs hover:shadow-3xl hover:scale-105 transform duration-300">
             Start using InvestMant <ArrowRight size={24} className="text-slate-900" />
           </Link>
         </div>

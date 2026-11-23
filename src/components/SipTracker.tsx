@@ -307,7 +307,7 @@ export default function SipTracker({ sips, onAddSip, onDeleteSip, onEditSip }: S
                 <h3 className="font-bold text-sm text-slate-800 font-display">Systematic Investment Portfolios</h3>
               </div>
               <button onClick={() => setIsAdding(!isAdding)}
-                className="bg-slate-900 hover:bg-slate-800 text-white font-bold py-1.5 px-1 rounded-lg text-xs flex items-center gap-1 transition-all cursor-pointer">
+                className="bg-slate-900 hover:bg-slate-800 text-white font-medium py-1.5 px-1 rounded-xl text-xs flex items-center gap-1 transition-all cursor-pointer">
                 <Plus size={13} /> Add SIP
               </button>
             </div>
@@ -411,12 +411,12 @@ export default function SipTracker({ sips, onAddSip, onDeleteSip, onEditSip }: S
                           <p className="text-xs font-bold text-emerald-600">+{sip.absReturnPercent.toFixed(1)}% absolute</p>
                         </td>
                         <td className="p-2 text-center font-bold font-mono tabular-nums text-xs text-blue-700">
-                          <span className="px-1.5 py-0.5 bg-blue-50 rounded-md">{sip.xirr > 0 ? '+' : ''}{sip.xirr.toFixed(1)}% XIRR</span>
+                          <span className="px-1.5 py-0.5 bg-blue-50 rounded-xl">{sip.xirr > 0 ? '+' : ''}{sip.xirr.toFixed(1)}% XIRR</span>
                         </td>
                         <td className="p-2 text-center">
                           <div className="flex items-center justify-center gap-1">
                             <button onClick={() => triggerNotificationAlert(sip.name, sip.sipDate)}
-                              className="p-1 border border-slate-200 hover:bg-slate-50 text-slate-700 rounded-md text-xs font-bold flex items-center gap-1 transition-colors cursor-pointer" title="Schedule SIP Reminder">
+                              className="p-1 border border-slate-200 hover:bg-slate-50 text-slate-700 rounded-xl text-xs font-medium flex items-center gap-1 transition-colors cursor-pointer" title="Schedule SIP Reminder">
                               <Bell size={10} className="text-slate-500" />
                             </button>
                             {locked ? (
@@ -426,11 +426,11 @@ export default function SipTracker({ sips, onAddSip, onDeleteSip, onEditSip }: S
                             ) : (
                               <>
                                 <button onClick={() => openEditForm(sip)}
-                                  className="p-1 border border-slate-200 hover:bg-slate-100 hover:border-slate-200 text-slate-500 hover:text-slate-900 rounded-md transition-colors cursor-pointer" title="Edit SIP">
+                                  className="p-1 border border-slate-200 hover:bg-slate-100 hover:border-slate-200 text-slate-500 hover:text-slate-900 rounded-xl transition-colors cursor-pointer" title="Edit SIP">
                                   <Edit2 size={11} />
                                 </button>
                                 <button onClick={() => onDeleteSip(sip.id)}
-                                  className="text-slate-400 hover:text-red-500 p-1 rounded-md cursor-pointer transition-colors" title="Delete SIP">
+                                  className="text-slate-400 hover:text-red-500 p-1 rounded-xl cursor-pointer transition-colors" title="Delete SIP">
                                   <Trash2 size={13} />
                                 </button>
                               </>

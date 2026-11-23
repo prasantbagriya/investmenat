@@ -275,7 +275,7 @@ export default function MarketView() {
                   <div className="pt-2">
                     <button
                       onClick={() => setTradeModalOpen(true)}
-                      className="w-full bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm py-2.5 rounded-xl transition-colors shadow-sm cursor-pointer"
+                      className="w-full bg-slate-900 hover:bg-slate-800 text-white font-medium text-sm py-2.5 rounded-xl transition-colors shadow-sm cursor-pointer"
                     >
                       EXECUTE TRADE
                     </button>

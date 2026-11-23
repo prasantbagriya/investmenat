@@ -394,7 +394,7 @@ export default function PropFirmPayouts({ payouts, accounts, bankAccounts = [], 
                       )}
                     </td>
                     <td className="p-2.5 whitespace-nowrap">
-                      <span className={`inline-block px-2 py-0.5 rounded-lg text-[11px] font-medium border ${
+                      <span className={`inline-block px-2 py-0.5 rounded-xl text-[11px] font-medium border ${
                         p.status === 'Paid' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' :
                         p.status === 'Processing' ? 'bg-amber-50 text-amber-700 border-amber-200' :
                         'bg-slate-100 text-slate-700 border-slate-200'
@@ -420,8 +420,8 @@ export default function PropFirmPayouts({ payouts, accounts, bankAccounts = [], 
                     </td>
                     <td className="p-2.5 text-right whitespace-nowrap">
                       <div className="flex justify-end gap-1.5 text-slate-500">
-                        <button onClick={() => openEditModal(p)} className="p-1 hover:text-slate-900 rounded-md cursor-pointer transition-colors"><Edit2 size={13} /></button>
-                        <button onClick={() => handleDelete(p.id)} className="p-1 hover:text-rose-600 rounded-md cursor-pointer transition-colors"><Trash2 size={13} /></button>
+                        <button onClick={() => openEditModal(p)} className="p-1 hover:text-slate-900 rounded-xl cursor-pointer transition-colors"><Edit2 size={13} /></button>
+                        <button onClick={() => handleDelete(p.id)} className="p-1 hover:text-rose-600 rounded-xl cursor-pointer transition-colors"><Trash2 size={13} /></button>
                       </div>
                     </td>
                   </tr>

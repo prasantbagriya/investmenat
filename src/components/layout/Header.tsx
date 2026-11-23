@@ -118,7 +118,7 @@ export default function Header({
                 id="workspace-ledger-btn"
                 onClick={() => setCurrentWorkspace('ledger')}
                 to="/dashboard"
-                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium transition-colors cursor-pointer ${
+                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-xl text-xs font-medium transition-colors cursor-pointer ${
                   currentWorkspace === 'ledger'
                     ? 'bg-slate-900 text-white shadow-2xs'
                     : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
@@ -132,7 +132,7 @@ export default function Header({
                 id="workspace-investmant-btn"
                 onClick={() => setCurrentWorkspace('investmant')}
                 to="/portfolio"
-                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium transition-colors cursor-pointer ${
+                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-xl text-xs font-medium transition-colors cursor-pointer ${
                   currentWorkspace === 'investmant'
                     ? 'bg-slate-900 text-white shadow-2xs'
                     : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
@@ -146,7 +146,7 @@ export default function Header({
                 id="workspace-crypto-btn"
                 onClick={() => setCurrentWorkspace('crypto')}
                 to="/crypto-wallet"
-                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium transition-colors cursor-pointer ${
+                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-xl text-xs font-medium transition-colors cursor-pointer ${
                   currentWorkspace === 'crypto'
                     ? 'bg-slate-900 text-white shadow-2xs'
                     : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
@@ -160,7 +160,7 @@ export default function Header({
                 id="workspace-quicko-btn"
                 onClick={() => setCurrentWorkspace('quicko')}
                 to="/quicko-kyc"
-                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium transition-colors cursor-pointer ${
+                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-xl text-xs font-medium transition-colors cursor-pointer ${
                   currentWorkspace === 'quicko'
                     ? 'bg-slate-900 text-white shadow-2xs'
                     : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
@@ -199,7 +199,7 @@ export default function Header({
 
             <button
               onClick={() => exportFullLedgerToCSV()}
-              className="hidden md:flex items-center gap-1.5 bg-white hover:bg-slate-50 text-slate-700 px-2.5 py-1 rounded-md border border-slate-200 font-medium text-xs transition-colors cursor-pointer shadow-2xs"
+              className="hidden md:flex items-center gap-1.5 bg-white hover:bg-slate-50 text-slate-700 px-2.5 py-1 rounded-xl border border-slate-200 font-medium text-xs transition-colors cursor-pointer shadow-2xs"
               id="export-csv-button"
               title="Export complete ledger as CSV"
             >
@@ -210,7 +210,7 @@ export default function Header({
             {/* Pin Lock Button */}
             <button
               onClick={() => setPinSetupActive(!pinSetupActive)}
-              className="p-1.5 hover:bg-slate-100 rounded-md border border-slate-200 cursor-pointer text-slate-700 transition-colors"
+              className="p-1.5 hover:bg-slate-100 rounded-xl border border-slate-200 cursor-pointer text-slate-700 transition-colors"
               title="Configure Security PIN Lock"
               aria-label="Security PIN Lock"
             >

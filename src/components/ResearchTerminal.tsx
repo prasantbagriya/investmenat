@@ -506,7 +506,7 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
           </div>
           <a
             href="/brokers"
-            className="shrink-0 flex items-center gap-1 bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold px-2.5 py-1.5 rounded-lg transition-colors"
+            className="shrink-0 flex items-center gap-1 bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold px-2.5 py-1.5 rounded-xl transition-colors"
           >
             <ExternalLink size={11} /> Connect Upstox
           </a>
@@ -558,7 +558,7 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
                     setActiveTab(tab.id);
                   }
                 }}
-                className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-slate-300 hover:-translate-y-1 transition-all flex flex-col items-start text-left group cursor-pointer"
+                className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-xs hover:border-slate-300 hover:-translate-y-1 transition-all flex flex-col items-start text-left group cursor-pointer"
               >
                 <div className={`p-3 rounded-lg bg-slate-50 mb-4 group-hover:bg-slate-100 transition-colors ${tab.color}`}>
                   <tab.icon size={28} />
@@ -573,7 +573,7 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
         <>
         {/* ✨ LIVE MARKET QUOTE STRIP ✨ */}
         {marketQuote && (
-          <div className="mx-4 mt-4 bg-white px-4 py-3 rounded-lg border border-slate-200 shadow-sm flex flex-wrap gap-6 items-center">
+          <div className="mx-4 mt-4 bg-white px-4 py-3 rounded-xl border border-slate-200 shadow-sm flex flex-wrap gap-6 items-center">
             <div>
               <p className="text-xs font-bold text-slate-400 ">LTP</p>
               <p className="text-xl font-semibold text-slate-800">₹{marketQuote.last_price}</p>
@@ -651,7 +651,7 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
                 {isConnected && (
                   <button 
                     onClick={() => { localStorage.removeItem('upstox_access_token'); window.location.reload(); }} 
-                    className="ml-2 text-xs font-bold bg-red-50 text-red-600 px-2 py-1 rounded-md border border-red-200 hover:bg-red-100 transition-colors shadow-sm"
+                    className="ml-2 text-xs font-bold bg-red-50 text-red-600 px-2 py-1 rounded-xl border border-red-200 hover:bg-red-100 transition-colors shadow-sm"
                   >
                     Disconnect Upstox
                   </button>
@@ -719,7 +719,7 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
                         type="date"
                         value={expiryDate}
                         onChange={e => setExpiryDate(e.target.value)}
-                        className="px-1 py-1 bg-transparent text-xs focus:outline-none text-slate-600 font-semibold font-mono tabular-nums w-[110px] cursor-pointer"
+                        className="px-1 py-1 bg-transparent text-xs focus:outline-none text-slate-600 font-medium font-mono tabular-nums w-[110px] cursor-pointer"
                         title="Expiry Date"
                       />
                     </div>
@@ -729,7 +729,7 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
                     <button type="submit" className="px-4 py-1.5 bg-slate-900 text-white rounded-xl hover:bg-black transition-all text-xs font-medium shadow-sm">
                       Search
                     </button>
-                    <button type="button" onClick={() => setShowNewsSidebar(!showNewsSidebar)} className={`p-1.5 rounded-md transition-all ${showNewsSidebar ? 'bg-blue-100 text-blue-600' : 'text-slate-500 hover:text-slate-900 hover:bg-slate-100'}`} title="Toggle News Sidebar">
+                    <button type="button" onClick={() => setShowNewsSidebar(!showNewsSidebar)} className={`p-1.5 rounded-xl transition-all ${showNewsSidebar ? 'bg-blue-100 text-blue-600' : 'text-slate-500 hover:text-slate-900 hover:bg-slate-100'}`} title="Toggle News Sidebar">
                       <Newspaper size={14} />
                     </button>
                     <button type="button" onClick={fetchData} className="p-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-100 rounded-xl transition-all" title="Refresh">
@@ -749,7 +749,7 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
             <div className="flex-1 flex w-full h-full relative">
                 <button 
                   onClick={() => setActiveTab('dashboard')} 
-                  className="absolute bottom-4 left-2 z-[110] p-2 bg-white/80 hover:bg-white backdrop-blur-md rounded-lg shadow-md border border-slate-200 text-slate-700 transition-all flex items-center justify-center cursor-pointer"
+                  className="absolute bottom-4 left-2 z-[110] p-2 bg-white hover:bg-slate-50 rounded-xl shadow-xs border border-slate-200 text-slate-700 transition-all flex items-center justify-center cursor-pointer"
                   title="Back to Dashboard"
                 >
                   <ArrowLeft size={18} />

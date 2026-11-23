@@ -517,17 +517,17 @@ Please write a short, professional, and optimized description (2-3 sentences max
         <div className="flex items-center gap-2 shrink-0">
           <button
             onClick={() => setIsFormOpen(!isFormOpen)}
-            className="flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-white px-3 py-1.5 rounded-lg font-medium text-xs transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-white px-3 py-1.5 rounded-xl font-medium text-xs transition-colors cursor-pointer"
           >
             <Plus size={14} /> {isFormOpen ? 'Cancel' : 'Add reminder'}
           </button>
 
           {notificationStatus === 'granted' ? (
-            <div className="inline-flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-medium px-2.5 py-1 rounded-lg">
+            <div className="inline-flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-medium px-2.5 py-1 rounded-xl">
               <Bell className="w-3.5 h-3.5 text-emerald-600" /> Alerts active
             </div>
           ) : notificationStatus === 'denied' ? (
-            <div className="inline-flex items-center gap-1.5 bg-rose-50 border border-rose-200 text-rose-700 text-xs font-medium px-2.5 py-1 rounded-lg">
+            <div className="inline-flex items-center gap-1.5 bg-rose-50 border border-rose-200 text-rose-700 text-xs font-medium px-2.5 py-1 rounded-xl">
               <BellOff className="w-3.5 h-3.5 text-rose-500" /> Alerts blocked
             </div>
           ) : (
@@ -581,7 +581,7 @@ Please write a short, professional, and optimized description (2-3 sentences max
                         setTitle(val ? val.charAt(0).toUpperCase() + val.slice(1) : '');
                       }}
                       autoCapitalize="sentences"
-                      className="w-full text-xs px-1.5 py-1.5 rounded-md border border-slate-200 outline-none focus:border-slate-300 font-medium"
+                      className="w-full text-xs px-1.5 py-1.5 rounded-xl border border-slate-200 outline-none focus:border-slate-300 font-medium"
                       required
                     />
                   </div>
@@ -640,7 +640,7 @@ Please write a short, professional, and optimized description (2-3 sentences max
                         type="date"
                         value={dueDateStr}
                         onChange={(e) => setDueDateStr(e.target.value)}
-                        className="w-full text-xs px-2 py-1.5 rounded-md border border-slate-200 outline-none focus:border-slate-300 font-mono tabular-nums font-medium"
+                        className="w-full text-xs px-2 py-1.5 rounded-xl border border-slate-200 outline-none focus:border-slate-300 font-mono tabular-nums font-medium"
                         required
                       />
                     </div>
@@ -651,7 +651,7 @@ Please write a short, professional, and optimized description (2-3 sentences max
                         type="time"
                         value={dueTimeStr}
                         onChange={(e) => setDueTimeStr(e.target.value)}
-                        className="w-full text-xs px-2 py-1.5 rounded-md border border-slate-200 outline-none focus:border-slate-300 font-mono tabular-nums font-medium"
+                        className="w-full text-xs px-2 py-1.5 rounded-xl border border-slate-200 outline-none focus:border-slate-300 font-mono tabular-nums font-medium"
                         required
                       />
                     </div>
@@ -660,7 +660,7 @@ Please write a short, professional, and optimized description (2-3 sentences max
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-slate-950 hover:bg-slate-800 disabled:bg-slate-300 text-white font-medium py-1 px-3 rounded-xl transition-all cursor-pointer shadow-md text-xs flex items-center justify-center gap-1"
+                    className="w-full bg-slate-950 hover:bg-slate-800 disabled:bg-slate-300 text-white font-medium py-1 px-3 rounded-xl transition-all cursor-pointer shadow-xs text-xs flex items-center justify-center gap-1"
                     id="submit-new-task-button"
                   >
                     {isSubmitting ? (
@@ -708,7 +708,7 @@ Please write a short, professional, and optimized description (2-3 sentences max
                   key={tab}
                   type="button"
                   onClick={() => setFilter(tab)}
-                  className={`px-1 py-1 rounded-md text-xs font-bold capitalize transition-all cursor-pointer shrink-0 truncate ${
+                  className={`px-1 py-1 rounded-xl text-xs font-medium capitalize transition-all cursor-pointer shrink-0 truncate ${
                     filter === tab
                       ? 'bg-white text-slate-900 shadow-xs'
                       : 'text-slate-500 hover:text-slate-800'

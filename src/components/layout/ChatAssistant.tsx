@@ -115,7 +115,7 @@ export default function ChatAssistant({ bankAccounts, transactions, physicalAsse
                   <div className={`shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs ${msg.role === 'user' ? 'bg-slate-200 text-slate-900' : 'bg-gray-200 text-gray-600'}`}>
                     {msg.role === 'user' ? <User className="w-3 h-3" /> : <Bot className="w-3 h-3" />}
                   </div>
-                  <div className={`max-w-[80%] px-3 py-2 text-sm rounded-lg ${msg.role === 'user' ? 'bg-slate-900 text-white' : 'bg-white border border-gray-200 text-gray-800'}`}>
+                  <div className={`max-w-[80%] px-3 py-2 text-sm rounded-xl ${msg.role === 'user' ? 'bg-slate-900 text-white' : 'bg-white border border-gray-200 text-gray-800'}`}>
                     {msg.role === 'user' ? (
                       msg.content
                     ) : (
@@ -131,7 +131,7 @@ export default function ChatAssistant({ bankAccounts, transactions, physicalAsse
                   <div className="shrink-0 w-6 h-6 rounded-full flex items-center justify-center bg-gray-200 text-gray-600">
                     <Bot className="w-3 h-3" />
                   </div>
-                  <div className="bg-white border border-gray-200 px-3 py-2 rounded-lg">
+                  <div className="bg-white border border-gray-200 px-3 py-2 rounded-xl">
                     <Loader2 className="w-4 h-4 text-slate-500 animate-spin" />
                   </div>
                 </div>

@@ -218,7 +218,7 @@ export default function PropFirmAccounts({ accounts, user, setAccounts, firmName
                       </td>
                       <td className="p-2.5 whitespace-nowrap">
                         <div className="flex flex-col items-start gap-1">
-                          <span className={`inline-block px-2 py-0.5 rounded-lg text-[11px] font-medium border ${
+                          <span className={`inline-block px-2 py-0.5 rounded-xl text-[11px] font-medium border ${
                             a.status === 'Active' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' :
                             a.status === 'Breached' ? 'bg-rose-50 text-rose-700 border-rose-200' :
                             'bg-slate-100 text-slate-700 border-slate-200'
@@ -226,7 +226,7 @@ export default function PropFirmAccounts({ accounts, user, setAccounts, firmName
                             {a.status}
                           </span>
                           {isDrawdownWarning && a.status === 'Active' && (
-                            <span className="text-[10px] font-medium px-1.5 py-0.5 rounded-md bg-rose-50 text-rose-700 border border-rose-200 flex items-center gap-1">
+                            <span className="text-[10px] font-medium px-1.5 py-0.5 rounded-xl bg-rose-50 text-rose-700 border border-rose-200 flex items-center gap-1">
                               <AlertTriangle size={8} /> Warning
                             </span>
                           )}
@@ -269,8 +269,8 @@ export default function PropFirmAccounts({ accounts, user, setAccounts, firmName
                           </div>
                         ) : (
                           <div className="flex justify-end gap-1.5 text-slate-500">
-                            <button onClick={() => openEditModal(a)} className="p-1 hover:text-slate-900 rounded-md cursor-pointer transition-colors"><Edit2 size={13} /></button>
-                            <button onClick={() => handleDelete(a.id)} className="p-1 hover:text-rose-600 rounded-md cursor-pointer transition-colors"><Trash2 size={13} /></button>
+                            <button onClick={() => openEditModal(a)} className="p-1 hover:text-slate-900 rounded-xl cursor-pointer transition-colors"><Edit2 size={13} /></button>
+                            <button onClick={() => handleDelete(a.id)} className="p-1 hover:text-rose-600 rounded-xl cursor-pointer transition-colors"><Trash2 size={13} /></button>
                           </div>
                         )}
                       </td>

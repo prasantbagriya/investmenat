@@ -353,7 +353,7 @@ export default function TransactionTracker({
               type="button"
               onClick={() => fileInputRef.current?.click()}
               disabled={isScanning}
-              className="flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-md text-slate-700 font-medium text-xs hover:bg-white cursor-pointer transition-colors disabled:opacity-50 whitespace-nowrap"
+              className="flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-xl text-slate-700 font-medium text-xs hover:bg-white cursor-pointer transition-colors disabled:opacity-50 whitespace-nowrap"
             >
               <Camera size={14} /> Scan Receipt
             </button>
@@ -361,7 +361,7 @@ export default function TransactionTracker({
             <button
               type="button"
               onClick={() => setIsSmsParserOpen(!isSmsParserOpen)}
-              className={`flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-md font-medium text-xs cursor-pointer transition-colors whitespace-nowrap ${isSmsParserOpen ? 'bg-white text-slate-900 shadow-2xs' : 'text-slate-600 hover:text-slate-900'}`}
+              className={`flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-xl font-medium text-xs cursor-pointer transition-colors whitespace-nowrap ${isSmsParserOpen ? 'bg-white text-slate-900 shadow-2xs' : 'text-slate-600 hover:text-slate-900'}`}
             >
               <MessageSquare size={14} /> Paste SMS
             </button>
@@ -369,7 +369,7 @@ export default function TransactionTracker({
           <button
             type="button"
             onClick={() => setIsFormOpen(true)}
-            className="flex items-center justify-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-white px-3 py-1.5 rounded-lg font-medium text-xs cursor-pointer transition-colors whitespace-nowrap shrink-0"
+            className="flex items-center justify-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-white px-3 py-1.5 rounded-xl font-medium text-xs cursor-pointer transition-colors whitespace-nowrap shrink-0"
           >
             <Plus size={14} /> Add Log
           </button>
@@ -377,14 +377,14 @@ export default function TransactionTracker({
             type="button"
             id="import-csv-button"
             onClick={() => setIsCsvWizardOpen(true)}
-            className="flex items-center justify-center gap-1.5 bg-white hover:bg-slate-50 text-slate-700 px-3 py-1.5 rounded-lg font-medium text-xs cursor-pointer transition-colors border border-slate-200 whitespace-nowrap shrink-0"
+            className="flex items-center justify-center gap-1.5 bg-white hover:bg-slate-50 text-slate-700 px-3 py-1.5 rounded-xl font-medium text-xs cursor-pointer transition-colors border border-slate-200 whitespace-nowrap shrink-0"
           >
             <UploadCloud size={14} /> Bulk
           </button>
           <button
             type="button"
             onClick={() => setIsFiltersOpen(!isFiltersOpen)}
-            className={`flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg font-medium text-xs cursor-pointer transition-colors border whitespace-nowrap shrink-0 ${isFiltersOpen ? 'bg-slate-100 text-slate-900 border-slate-300' : 'bg-white hover:bg-slate-50 text-slate-700 border-slate-200'}`}
+            className={`flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-xl font-medium text-xs cursor-pointer transition-colors border whitespace-nowrap shrink-0 ${isFiltersOpen ? 'bg-slate-100 text-slate-900 border-slate-300' : 'bg-white hover:bg-slate-50 text-slate-700 border-slate-200'}`}
           >
             <Filter size={14} className="text-slate-500" /> 
             Filters
@@ -428,7 +428,7 @@ export default function TransactionTracker({
                 />
                 <button 
                   onClick={() => handleSmsParse()}
-                  className="bg-slate-900 hover:bg-slate-800 text-white px-3 py-1.5 rounded-lg font-bold transition-all shadow-sm cursor-pointer flex items-center gap-1"
+                  className="bg-slate-900 hover:bg-slate-800 text-white px-3 py-1.5 rounded-xl font-medium transition-all shadow-sm cursor-pointer flex items-center gap-1"
                 >
                   <Sparkles size={12} /> Parse
                 </button>
@@ -468,7 +468,7 @@ export default function TransactionTracker({
                 <button
                   type="button"
                   onClick={() => setIsFormOpen(false)}
-                  className="p-1 text-slate-500 hover:text-slate-900 rounded-lg cursor-pointer"
+                  className="p-1 text-slate-500 hover:text-slate-900 rounded-xl cursor-pointer"
                 >
                   <X size={16} />
                 </button>
@@ -483,28 +483,28 @@ export default function TransactionTracker({
                     <button
                       type="button"
                       onClick={() => handleTypeChange('expense')}
-                      className={`py-1 text-xs font-bold rounded-md transition-all cursor-pointer ${type === 'expense' ? 'bg-slate-900 text-white shadow-xs' : 'text-slate-700 hover:text-slate-900'}`}
+                      className={`py-1 text-xs font-medium rounded-xl transition-all cursor-pointer ${type === 'expense' ? 'bg-slate-900 text-white shadow-xs' : 'text-slate-700 hover:text-slate-900'}`}
                     >
                       Expense
                     </button>
                     <button
                       type="button"
                       onClick={() => handleTypeChange('income')}
-                      className={`py-1 text-xs font-bold rounded-md transition-all cursor-pointer ${type === 'income' ? 'bg-slate-900 text-white shadow-xs' : 'text-slate-700 hover:text-slate-900'}`}
+                      className={`py-1 text-xs font-medium rounded-xl transition-all cursor-pointer ${type === 'income' ? 'bg-slate-900 text-white shadow-xs' : 'text-slate-700 hover:text-slate-900'}`}
                     >
                       Income
                     </button>
                     <button
                       type="button"
                       onClick={() => handleTypeChange('transfer')}
-                      className={`py-1 text-xs font-bold rounded-md transition-all cursor-pointer ${type === 'transfer' ? 'bg-slate-900 text-white shadow-xs' : 'text-slate-700 hover:text-slate-900'}`}
+                      className={`py-1 text-xs font-medium rounded-xl transition-all cursor-pointer ${type === 'transfer' ? 'bg-slate-900 text-white shadow-xs' : 'text-slate-700 hover:text-slate-900'}`}
                     >
                       Transfer
                     </button>
                     <button
                       type="button"
                       onClick={() => handleTypeChange('cash_withdrawal')}
-                      className={`py-1 text-xs font-bold rounded-md transition-all cursor-pointer ${type === 'cash_withdrawal' ? 'bg-slate-900 text-white shadow-xs' : 'text-slate-700 hover:text-slate-900'}`}
+                      className={`py-1 text-xs font-medium rounded-xl transition-all cursor-pointer ${type === 'cash_withdrawal' ? 'bg-slate-900 text-white shadow-xs' : 'text-slate-700 hover:text-slate-900'}`}
                     >
                       Cash W/D
                     </button>
@@ -535,7 +535,7 @@ export default function TransactionTracker({
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
                     disabled={type === 'transfer' || type === 'cash_withdrawal'}
-                    className="w-full px-1 py-1.5 text-xs border border-slate-200 bg-white rounded-lg focus:outline-hidden"
+                    className="w-full px-1 py-1.5 text-xs border border-slate-200 bg-white rounded-xl focus:outline-hidden"
                   >
                     {type === 'expense' 
                       ? EXPENSE_CATEGORIES.map(cat => <option key={cat} value={cat}>{cat}</option>)
@@ -554,7 +554,7 @@ export default function TransactionTracker({
                     <select
                       value={bankAccountId}
                       onChange={(e) => setBankAccountId(e.target.value)}
-                      className="w-full px-1 py-1.5 text-xs border border-slate-200 bg-white rounded-lg focus:outline-hidden font-mono tabular-nums"
+                      className="w-full px-1 py-1.5 text-xs border border-slate-200 bg-white rounded-xl focus:outline-hidden font-mono tabular-nums"
                     >
                       <option value="">-- No Bank (Cash/Other) --</option>
                       {bankAccounts.map(b => (
@@ -575,7 +575,7 @@ export default function TransactionTracker({
                     <select
                       value={toBankAccountId}
                       onChange={(e) => setToBankAccountId(e.target.value)}
-                      className="w-full px-1 py-1.5 text-xs border border-slate-200 bg-white rounded-lg focus:outline-hidden font-mono tabular-nums"
+                      className="w-full px-1 py-1.5 text-xs border border-slate-200 bg-white rounded-xl focus:outline-hidden font-mono tabular-nums"
                     >
                       <option value="">-- Select Bank Account --</option>
                       {bankAccounts.map(b => (
@@ -595,7 +595,7 @@ export default function TransactionTracker({
                     required
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
-                    className="w-full px-2 py-1.5 text-xs border border-slate-200 rounded-lg bg-white font-mono tabular-nums focus:outline-hidden transition-all"
+                    className="w-full px-2 py-1.5 text-xs border border-slate-200 rounded-xl bg-white font-mono tabular-nums focus:outline-hidden transition-all"
                   />
                 </div>
 
@@ -609,7 +609,7 @@ export default function TransactionTracker({
                   placeholder="e.g., Zerodha brokerage charges, grocery, etc."
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
-                  className="w-full px-2 py-1.5 text-xs border border-slate-200 rounded-lg bg-white focus:outline-hidden transition-all"
+                  className="w-full px-2 py-1.5 text-xs border border-slate-200 rounded-xl bg-white focus:outline-hidden transition-all"
                 />
               </div>
 
@@ -669,7 +669,7 @@ export default function TransactionTracker({
           >
             <div className="flex items-center justify-between pb-2 border-b border-slate-100 mb-2">
               <span className="font-bold text-slate-800 text-xs ">Active Filters</span>
-              <span className="text-xs text-slate-500 font-bold bg-slate-100 px-2 py-0.5 rounded-md">
+              <span className="text-xs text-slate-500 font-bold bg-slate-100 px-2 py-0.5 rounded-xl">
                 {filteredTransactions.length} results found
               </span>
             </div>
@@ -690,7 +690,7 @@ export default function TransactionTracker({
                     <select
                       value={filterType}
                       onChange={(e) => setFilterType(e.target.value as any)}
-                      className="w-full px-1 py-1.5 text-xs border border-slate-200 bg-white rounded-lg focus:outline-hidden focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+                      className="w-full px-1 py-1.5 text-xs border border-slate-200 bg-white rounded-xl focus:outline-hidden focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
                     >
                       <option value="all">All Directions</option>
                       <option value="income">Credits (Income)</option>
@@ -702,7 +702,7 @@ export default function TransactionTracker({
                     <select
                       value={filterCategory}
                       onChange={(e) => setFilterCategory(e.target.value)}
-                      className="w-full px-1 py-1.5 text-xs border border-slate-200 bg-white rounded-lg focus:outline-hidden focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+                      className="w-full px-1 py-1.5 text-xs border border-slate-200 bg-white rounded-xl focus:outline-hidden focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
                     >
                       <option value="all">All Categories</option>
                       {ALL_CATEGORIES.map(cat => (
@@ -715,7 +715,7 @@ export default function TransactionTracker({
                     <select
                       value={filterBankAccountId}
                       onChange={(e) => setFilterBankAccountId(e.target.value)}
-                      className="w-full px-1 py-1.5 text-xs border border-slate-200 bg-white rounded-lg focus:outline-hidden font-mono tabular-nums truncate focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+                      className="w-full px-1 py-1.5 text-xs border border-slate-200 bg-white rounded-xl focus:outline-hidden font-mono tabular-nums truncate focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
                     >
                       <option value="all">All Bank Accounts</option>
                       {bankAccounts.map(b => (
@@ -730,7 +730,7 @@ export default function TransactionTracker({
                       type="date"
                       value={filterStartDate}
                       onChange={(e) => setFilterStartDate(e.target.value)}
-                      className="w-full px-1 py-1 text-xs border border-slate-200 bg-white rounded-lg font-mono tabular-nums focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+                      className="w-full px-1 py-1 text-xs border border-slate-200 bg-white rounded-xl font-mono tabular-nums focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
                     />
                   </div>
 
@@ -740,7 +740,7 @@ export default function TransactionTracker({
                       type="date"
                       value={filterEndDate}
                       onChange={(e) => setFilterEndDate(e.target.value)}
-                      className="w-full px-1 py-1 text-xs border border-slate-200 bg-white rounded-lg font-mono tabular-nums focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+                      className="w-full px-1 py-1 text-xs border border-slate-200 bg-white rounded-xl font-mono tabular-nums focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
                     />
                   </div>
             </div>

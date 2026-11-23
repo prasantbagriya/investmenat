@@ -234,7 +234,7 @@ export default function Dashboard({
         <div className="flex items-center gap-1">
           <button 
             onClick={() => navigateMonth('prev')}
-            className="p-1.5 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-md transition-colors cursor-pointer"
+            className="p-1.5 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-xl transition-colors cursor-pointer"
             aria-label="Previous Month"
             title="Previous Month"
           >
@@ -243,7 +243,7 @@ export default function Dashboard({
           <span className="text-xs font-semibold font-mono tabular-nums text-slate-700 px-1">{selectedMonth}</span>
           <button 
             onClick={() => navigateMonth('next')}
-            className="p-1.5 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-md transition-colors cursor-pointer"
+            className="p-1.5 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-xl transition-colors cursor-pointer"
             aria-label="Next Month"
             title="Next Month"
           >
@@ -263,7 +263,7 @@ export default function Dashboard({
           </div>
           <button 
             onClick={() => onNavigateToTab(overdueCcBillsCount > 0 ? 'credit-cards' : 'pending')}
-            className="text-xs font-medium bg-rose-900 hover:bg-rose-800 text-white px-3 py-1.5 rounded-lg transition-colors cursor-pointer shrink-0"
+            className="text-xs font-medium bg-rose-900 hover:bg-rose-800 text-white px-3 py-1.5 rounded-xl transition-colors cursor-pointer shrink-0"
           >
             Settle Now
           </button>
@@ -337,7 +337,7 @@ export default function Dashboard({
 
           <button
             onClick={() => onNavigateToTab('portfolio')}
-            className="w-full flex items-center justify-center gap-1.5 py-2 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 rounded-lg text-xs font-medium transition-colors cursor-pointer"
+            className="w-full flex items-center justify-center gap-1.5 py-2 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 rounded-xl text-xs font-medium transition-colors cursor-pointer"
           >
             <span>View Holdings</span>
             <ArrowUpRight size={13} />
@@ -479,7 +479,7 @@ export default function Dashboard({
           </div>
         </div>
 
-        <div className="flex items-center gap-2.5 p-1.5 cursor-pointer hover:bg-slate-50 rounded-lg transition-colors" onClick={() => onNavigateToTab('credit-cards')}>
+        <div className="flex items-center gap-2.5 p-1.5 cursor-pointer hover:bg-slate-50 rounded-xl transition-colors" onClick={() => onNavigateToTab('credit-cards')}>
           <div className="p-2 bg-slate-50 border border-slate-100 rounded-lg text-slate-700">
             <Wallet size={15} />
           </div>
@@ -489,7 +489,7 @@ export default function Dashboard({
           </div>
         </div>
 
-        <div className="flex items-center gap-2.5 p-1.5 cursor-pointer hover:bg-slate-50 rounded-lg transition-colors" onClick={() => onNavigateToTab('credit-cards')}>
+        <div className="flex items-center gap-2.5 p-1.5 cursor-pointer hover:bg-slate-50 rounded-xl transition-colors" onClick={() => onNavigateToTab('credit-cards')}>
           <div className="p-2 bg-slate-50 border border-slate-100 rounded-lg text-slate-700">
             <TrendingDown size={15} className="text-rose-600" />
           </div>
@@ -499,7 +499,7 @@ export default function Dashboard({
           </div>
         </div>
 
-        <div className="flex items-center gap-2.5 p-1.5 cursor-pointer hover:bg-slate-50 rounded-lg transition-colors" onClick={() => onNavigateToTab('assets')}>
+        <div className="flex items-center gap-2.5 p-1.5 cursor-pointer hover:bg-slate-50 rounded-xl transition-colors" onClick={() => onNavigateToTab('assets')}>
           <div className="p-2 bg-slate-50 border border-slate-100 rounded-lg text-slate-700">
             <Coins size={15} />
           </div>
@@ -557,7 +557,7 @@ export default function Dashboard({
               <h3 className="font-semibold text-sm text-slate-900">Recent Transactions</h3>
               <button 
                 onClick={() => onNavigateToTab('transactions')}
-                className="text-xs font-medium text-slate-600 hover:text-slate-900 border border-slate-200 hover:border-slate-300 rounded-md py-1 px-2.5 transition-colors cursor-pointer"
+                className="text-xs font-medium text-slate-600 hover:text-slate-900 border border-slate-200 hover:border-slate-300 rounded-xl py-1 px-2.5 transition-colors cursor-pointer"
               >
                 View Ledger
               </button>

@@ -142,7 +142,6 @@ export default function PropFirmChallenges({ challenges, user, setChallenges, ac
       }
 
       if (isNewlyFunded) {
-        // Auto-create a funded account
         const accDocRef = doc(collection(db, 'propFirmAccounts'));
         const newAccount: PropFirmAccount = {
           id: accDocRef.id,
@@ -194,26 +193,26 @@ export default function PropFirmChallenges({ challenges, user, setChallenges, ac
   };
 
   return (
-    <div className="space-y-3">
-      <div className="flex flex-row justify-between items-center gap-3 px-1 mb-2">
+    <div className="space-y-4">
+      <div className="flex flex-row justify-between items-center gap-3 px-0.5">
         <div>
-          <p className="text-xl sm:text-2xl font-semibold text-slate-900 tracking-tight flex items-center">
+          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900">
             Challenges
-          </p>
-          <p className="text-xs text-slate-500 font-bold mt-0.5">Log and manage your prop firm evaluations</p>
+          </h2>
+          <p className="text-xs text-slate-500 mt-0.5">Log and manage your prop firm evaluations</p>
         </div>
         <button
           onClick={openAddModal}
-          className="flex items-center gap-2 px-3 py-1.5 bg-slate-900 text-white rounded-xl font-medium hover:bg-slate-800 active:bg-slate-950 transition-colors shadow-sm text-xs cursor-pointer whitespace-nowrap"
+          className="flex items-center gap-2 px-3.5 py-2 bg-slate-900 text-white rounded-xl font-medium hover:bg-slate-800 active:bg-slate-950 transition-colors shadow-xs text-xs sm:text-sm cursor-pointer whitespace-nowrap"
         >
           <Plus size={14} />
           <span>Add Challenge</span>
         </button>
       </div>
 
-      <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
-        <div className="px-3 py-2 border-b border-slate-200 flex justify-between items-center bg-slate-50/45">
-          <span className="text-xs font-bold text-slate-700 capitalize">
+      <div className="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
+        <div className="px-4 py-3 border-b border-slate-100 flex justify-between items-center bg-slate-50/60">
+          <span className="text-xs font-semibold text-slate-700">
             Active Challenges ({challenges.length})
           </span>
         </div>
@@ -227,16 +226,16 @@ export default function PropFirmChallenges({ challenges, user, setChallenges, ac
           <div className="overflow-x-auto text-xs">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="bg-slate-50/20 text-xs font-bold text-slate-500 border-b border-slate-100">
-                  <th className="p-2 px-3 whitespace-nowrap">Firm / Platform</th>
-                  <th className="p-2 whitespace-nowrap">Phase</th>
-                  <th className="p-2 whitespace-nowrap">Account Size</th>
-                  <th className="p-2 whitespace-nowrap">Cost / Fee</th>
-                  <th className="p-2 font-mono tabular-nums whitespace-nowrap">Date</th>
-                  <th className="p-2 text-right whitespace-nowrap">Actions</th>
+                <tr className="bg-slate-50/80 text-[11px] font-semibold text-slate-600 border-b border-slate-200">
+                  <th className="p-2.5 px-4 whitespace-nowrap">Firm / Platform</th>
+                  <th className="p-2.5 whitespace-nowrap">Phase</th>
+                  <th className="p-2.5 whitespace-nowrap">Account Size</th>
+                  <th className="p-2.5 whitespace-nowrap">Cost / Fee</th>
+                  <th className="p-2.5 font-mono tabular-nums whitespace-nowrap">Date</th>
+                  <th className="p-2.5 text-right whitespace-nowrap">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 text-slate-700 ">
+              <tbody className="divide-y divide-slate-100 text-slate-700">
                 {challenges.map(c => {
                   let isLocked = false;
                   if (c.phase === 'Failed' && c.statusUpdatedAt) {
@@ -246,165 +245,161 @@ export default function PropFirmChallenges({ challenges, user, setChallenges, ac
                   }
 
                   return (
-                  <tr key={c.id} className="">
-                    <td className="p-2 px-3 whitespace-nowrap">
-                      <div className="font-semibold text-slate-800">{c.firmName}</div>
-                      <div className="text-xs text-slate-500 font-bold mt-0.5">{c.platform}</div>
-                    </td>
-                    <td className="p-2 whitespace-nowrap">
-                      <span className={`inline-block px-1.5 py-0.5 rounded text-xs font-bold ${
-                        c.phase === 'Funded' ? 'bg-emerald-100 text-emerald-800' :
-                        c.phase === 'Instant Funded' ? 'bg-teal-100 text-teal-800' :
-                        c.phase === 'Phase 1' ? 'bg-sky-100 text-sky-800' :
-                        c.phase === 'Phase 2' ? 'bg-violet-100 text-violet-800' :
-                        c.phase === 'Phase 3' ? 'bg-pink-100 text-pink-800' :
-                        c.phase === 'Failed' ? 'bg-rose-100 text-rose-800' :
-                        'bg-slate-100 text-slate-900'
-                      }`}>
-                        {c.phase}
-                      </span>
-                      {c.isGiveaway && (
-                        <span className="inline-block ml-1 px-1.5 py-0.5 rounded text-xs font-bold bg-amber-100 text-amber-800">
-                          Giveaway
+                    <tr key={c.id} className="hover:bg-slate-50/50 transition-colors">
+                      <td className="p-2.5 px-4 whitespace-nowrap">
+                        <div className="font-semibold text-slate-900">{c.firmName}</div>
+                        <div className="text-[11px] text-slate-500 font-medium mt-0.5">{c.platform}</div>
+                      </td>
+                      <td className="p-2.5 whitespace-nowrap">
+                        <span className={`inline-block px-2 py-0.5 rounded-lg text-[11px] font-medium border ${
+                          c.phase === 'Funded' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' :
+                          c.phase === 'Instant Funded' ? 'bg-teal-50 text-teal-700 border-teal-200' :
+                          c.phase === 'Phase 1' ? 'bg-sky-50 text-sky-700 border-sky-200' :
+                          c.phase === 'Phase 2' ? 'bg-violet-50 text-violet-700 border-violet-200' :
+                          c.phase === 'Phase 3' ? 'bg-pink-50 text-pink-700 border-pink-200' :
+                          c.phase === 'Failed' ? 'bg-rose-50 text-rose-700 border-rose-200' :
+                          'bg-slate-100 text-slate-700 border-slate-200'
+                        }`}>
+                          {c.phase}
                         </span>
-                      )}
-                    </td>
-                    <td className="p-2 font-bold font-mono tabular-nums text-xs text-slate-800 whitespace-nowrap">
-                      ${c.accountSize.toLocaleString()}
-                    </td>
-                    <td className="p-2 font-bold font-mono tabular-nums text-xs text-rose-600 whitespace-nowrap">
-                      -${c.cost.toLocaleString()}
-                      {c.activationFee ? <span className="block text-xs text-amber-600 mt-0.5">Activation: -${c.activationFee.toLocaleString()}</span> : null}
-                    </td>
-                    <td className="p-2 text-slate-500 font-mono tabular-nums text-xs whitespace-nowrap">
-                      {c.purchaseDate}
-                    </td>
-                    <td className="p-2 text-right whitespace-nowrap">
-                      {isLocked ? (
-                        <div className="flex justify-end gap-1.5 text-slate-300" title="Locked (Failed over 5 days ago)">
-                          <Lock size={12} className="m-1" />
-                        </div>
-                      ) : (
-                        <div className="flex justify-end gap-1.5 text-slate-500">
-                          <button onClick={() => openEditModal(c)} className="p-1 hover:text-slate-900 rounded cursor-pointer transition-colors"><Edit2 size={12} /></button>
-                          <button onClick={() => handleDelete(c.id)} className="p-1 hover:text-red-650 rounded cursor-pointer transition-colors"><Trash2 size={12} /></button>
-                        </div>
-                      )}
-                    </td>
-                  </tr>
-                )})}
+                        {c.isGiveaway && (
+                          <span className="inline-block ml-1 px-1.5 py-0.5 rounded-lg text-[11px] font-medium bg-amber-50 text-amber-700 border border-amber-200">
+                            Giveaway
+                          </span>
+                        )}
+                      </td>
+                      <td className="p-2.5 font-semibold font-mono tabular-nums text-xs text-slate-900 whitespace-nowrap">
+                        ${c.accountSize.toLocaleString()}
+                      </td>
+                      <td className="p-2.5 font-semibold font-mono tabular-nums text-xs text-rose-700 whitespace-nowrap">
+                        -${c.cost.toLocaleString()}
+                        {c.activationFee ? <span className="block text-[11px] text-amber-600 mt-0.5">Fee: -${c.activationFee.toLocaleString()}</span> : null}
+                      </td>
+                      <td className="p-2.5 text-slate-500 font-mono tabular-nums text-xs whitespace-nowrap">
+                        {c.purchaseDate}
+                      </td>
+                      <td className="p-2.5 text-right whitespace-nowrap">
+                        {isLocked ? (
+                          <div className="flex justify-end gap-1.5 text-slate-300" title="Locked (Failed over 5 days ago)">
+                            <Lock size={12} className="m-1" />
+                          </div>
+                        ) : (
+                          <div className="flex justify-end gap-1.5 text-slate-500">
+                            <button onClick={() => openEditModal(c)} className="p-1 hover:text-slate-900 rounded-md cursor-pointer transition-colors"><Edit2 size={13} /></button>
+                            <button onClick={() => handleDelete(c.id)} className="p-1 hover:text-rose-600 rounded-md cursor-pointer transition-colors"><Trash2 size={13} /></button>
+                          </div>
+                        )}
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
         )}
       </div>
 
-      
-        {isModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm">
-            <div className="bg-white rounded-lg shadow-sm w-full max-w-lg flex flex-col max-h-[95vh]">
-              <div className="flex justify-between items-center p-4 border-b border-slate-100 shrink-0">
-                <h3 className="font-bold text-slate-800">{editingId ? 'Edit Challenge' : 'New Challenge'}</h3>
-                <button onClick={() => setIsModalOpen(false)} className="text-slate-400 hover:text-slate-600"><X size={20} /></button>
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs">
+          <div className="bg-white rounded-2xl shadow-xl border border-slate-200 w-full max-w-lg flex flex-col max-h-[92vh]">
+            <div className="flex justify-between items-center p-5 border-b border-slate-100 shrink-0">
+              <h3 className="font-bold text-slate-900 text-base">{editingId ? 'Edit Challenge' : 'New Challenge'}</h3>
+              <button onClick={() => setIsModalOpen(false)} className="text-slate-400 hover:text-slate-600 cursor-pointer"><X size={18} /></button>
+            </div>
+            <form onSubmit={handleSubmit} className="p-5 space-y-4 overflow-y-auto">
+              <div>
+                <label className="block text-xs font-medium text-slate-600 mb-1.5">Firm Name</label>
+                <input required type="text" list="challenge-firm-names" value={firmName} onChange={e => setFirmName(e.target.value)} className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition-all font-medium placeholder:text-slate-400" placeholder="e.g. FTMO, MyFundedFX" />
+                <datalist id="challenge-firm-names">
+                  {firmNames.map((firm, i) => <option key={i} value={firm} />)}
+                </datalist>
               </div>
-              <form onSubmit={handleSubmit} className="p-4 space-y-4 overflow-y-auto scrollbar-thin">
-                <div>
-                  <label className="block text-xs font-bold text-slate-500 capitalize mb-1">Firm Name</label>
-                  <input required type="text" list="challenge-firm-names" value={firmName} onChange={e => setFirmName(e.target.value)} className="w-full p-2 border border-slate-200 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-slate-900 font-medium" placeholder="e.g. FTMO, MyFundedFX" />
-                  <datalist id="challenge-firm-names">
-                    {firmNames.map((firm, i) => <option key={i} value={firm} />)}
-                  </datalist>
-                </div>
-                <div>
-                  <label className="block text-xs font-bold text-slate-500 capitalize mb-1">Account Size ($)</label>
-                  <input required type="number" value={accountSize} onChange={e => setAccountSize(e.target.value ? Number(e.target.value) : '')} className="w-full p-2 border border-slate-200 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-slate-900 font-medium" placeholder="100000" />
-                </div>
-                <div className="flex items-center gap-2">
-                  <input type="checkbox" id="isGiveawayCheckbox" checked={isGiveaway} onChange={e => setIsGiveaway(e.target.checked)} className="rounded border-slate-300 text-slate-900 focus:ring-indigo-500 w-4 h-4 cursor-pointer" />
-                  <label htmlFor="isGiveawayCheckbox" className="text-xs font-bold text-slate-700 cursor-pointer">Won in a Giveaway (Free Account)</label>
-                </div>
-                {!isGiveaway && (
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-bold text-slate-500 capitalize mb-1">Cost ($)</label>
-                      <input required type="number" value={cost} onChange={e => setCost(e.target.value ? Number(e.target.value) : '')} className="w-full p-2 border border-slate-200 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-slate-900 font-medium" placeholder="499" />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-bold text-slate-500 capitalize mb-1">Activation Fee ($)</label>
-                      <input type="number" value={activationFee} onChange={e => setActivationFee(e.target.value ? Number(e.target.value) : '')} className="w-full p-2 border border-slate-200 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-slate-900 font-medium" placeholder="Optional" />
-                    </div>
-                  </div>
-                )}
-                <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-xs font-medium text-slate-600 mb-1.5">Account Size ($)</label>
+                <input required type="number" value={accountSize} onChange={e => setAccountSize(e.target.value ? Number(e.target.value) : '')} className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 font-mono tabular-nums focus:outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition-all font-medium placeholder:text-slate-400" placeholder="100000" />
+              </div>
+              <div className="flex items-center gap-2">
+                <input type="checkbox" id="isGiveawayCheckbox" checked={isGiveaway} onChange={e => setIsGiveaway(e.target.checked)} className="rounded border-slate-300 text-slate-900 focus:ring-slate-400 w-4 h-4 cursor-pointer" />
+                <label htmlFor="isGiveawayCheckbox" className="text-xs font-medium text-slate-700 cursor-pointer">Won in a Giveaway (Free Account)</label>
+              </div>
+              {!isGiveaway && (
+                <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-bold text-slate-500 capitalize mb-1">Phase</label>
-                    <select value={phase} onChange={e => setPhase(e.target.value as any)} className="w-full p-2 border border-slate-200 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-slate-900 font-medium">
-                      <option value="Phase 1">Phase 1</option>
-                      <option value="Phase 2">Phase 2</option>
-                      <option value="Phase 3">Phase 3</option>
-                      <option value="Instant Funded">Instant Funded</option>
-                      <option value="Funded">Funded</option>
-                      <option value="Failed">Failed</option>
+                    <label className="block text-xs font-medium text-slate-600 mb-1.5">Cost ($)</label>
+                    <input required type="number" value={cost} onChange={e => setCost(e.target.value ? Number(e.target.value) : '')} className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 font-mono tabular-nums focus:outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition-all font-medium placeholder:text-slate-400" placeholder="499" />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-medium text-slate-600 mb-1.5">Activation Fee ($)</label>
+                    <input type="number" value={activationFee} onChange={e => setActivationFee(e.target.value ? Number(e.target.value) : '')} className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 font-mono tabular-nums focus:outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition-all font-medium placeholder:text-slate-400" placeholder="Optional" />
+                  </div>
+                </div>
+              )}
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-medium text-slate-600 mb-1.5">Phase</label>
+                  <select value={phase} onChange={e => setPhase(e.target.value as any)} className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition-all font-medium">
+                    <option value="Phase 1">Phase 1</option>
+                    <option value="Phase 2">Phase 2</option>
+                    <option value="Phase 3">Phase 3</option>
+                    <option value="Instant Funded">Instant Funded</option>
+                    <option value="Funded">Funded</option>
+                    <option value="Failed">Failed</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-slate-600 mb-1.5">Platform</label>
+                  <input type="text" value={platform} onChange={e => setPlatform(e.target.value)} className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition-all font-medium placeholder:text-slate-400" placeholder="MT5, cTrader..." />
+                </div>
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-slate-600 mb-1.5">Purchase Date</label>
+                <input required type="date" value={purchaseDate} onChange={e => setPurchaseDate(e.target.value)} className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition-all font-medium" />
+              </div>
+              
+              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
+                <h4 className="text-xs font-semibold text-slate-800">Pre-fill Account Limits (Optional)</h4>
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-[11px] font-medium text-slate-500 mb-1">Max Drawdown Limit ($)</label>
+                    <input type="number" value={maxDrawdownLimit} onChange={e => setMaxDrawdownLimit(e.target.value ? Number(e.target.value) : '')} className="w-full bg-white border border-slate-200 rounded-xl p-2 text-xs text-slate-900 font-mono tabular-nums focus:outline-none focus:border-slate-400 font-medium" placeholder="Auto 10%" />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] font-medium text-slate-500 mb-1">Daily Loss Limit ($)</label>
+                    <input type="number" value={dailyLossLimit} onChange={e => setDailyLossLimit(e.target.value ? Number(e.target.value) : '')} className="w-full bg-white border border-slate-200 rounded-xl p-2 text-xs text-slate-900 font-mono tabular-nums focus:outline-none focus:border-slate-400 font-medium" placeholder="Auto 5%" />
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-[11px] font-medium text-slate-500 mb-1">Profit Target ($)</label>
+                    <input type="number" value={profitTarget} onChange={e => setProfitTarget(e.target.value ? Number(e.target.value) : '')} className="w-full bg-white border border-slate-200 rounded-xl p-2 text-xs text-slate-900 font-mono tabular-nums focus:outline-none focus:border-slate-400 font-medium" placeholder="Optional" />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] font-medium text-slate-500 mb-1">Payout Format</label>
+                    <select value={payoutFrequency} onChange={e => setPayoutFrequency(e.target.value as any)} className="w-full bg-white border border-slate-200 rounded-xl p-2 text-xs text-slate-900 focus:outline-none focus:border-slate-400 font-medium">
+                      <option value="Bi-Weekly">Bi-Weekly</option>
+                      <option value="Weekly">Weekly</option>
+                      <option value="Monthly">Monthly</option>
+                      <option value="Daily">Daily</option>
+                      <option value="On-Demand">On-Demand</option>
                     </select>
                   </div>
-                  <div>
-                    <label className="block text-xs font-bold text-slate-500 capitalize mb-1">Platform</label>
-                    <input type="text" value={platform} onChange={e => setPlatform(e.target.value)} className="w-full p-2 border border-slate-200 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-slate-900 font-medium" placeholder="MT5, cTrader..." />
-                  </div>
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-slate-500 capitalize mb-1">Purchase Date</label>
-                  <input required type="date" value={purchaseDate} onChange={e => setPurchaseDate(e.target.value)} className="w-full p-2 border border-slate-200 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-slate-900 font-medium" />
+                  <label className="block text-[11px] font-medium text-slate-500 mb-1">Expected Payout Date</label>
+                  <input type="date" value={nextPayoutDate} onChange={e => setNextPayoutDate(e.target.value)} className="w-full bg-white border border-slate-200 rounded-xl p-2 text-xs text-slate-900 focus:outline-none focus:border-slate-400 font-medium" />
                 </div>
-                
-                <div className="bg-slate-50 p-3 rounded-lg border border-slate-100 space-y-3">
-                  <h4 className="text-xs font-bold text-slate-600">Pre-fill Account Data (Optional)</h4>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-bold text-slate-500 capitalize mb-1">Max Drawdown Limit ($)</label>
-                      <input type="number" value={maxDrawdownLimit} onChange={e => setMaxDrawdownLimit(e.target.value ? Number(e.target.value) : '')} className="w-full p-2 text-sm border border-slate-200 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-slate-900 font-medium" placeholder="Auto 10%" />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-bold text-slate-500 capitalize mb-1">Daily Loss Limit ($)</label>
-                      <input type="number" value={dailyLossLimit} onChange={e => setDailyLossLimit(e.target.value ? Number(e.target.value) : '')} className="w-full p-2 text-sm border border-slate-200 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-slate-900 font-medium" placeholder="Auto 5%" />
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-bold text-slate-500 capitalize mb-1">Profit Target ($)</label>
-                      <input type="number" value={profitTarget} onChange={e => setProfitTarget(e.target.value ? Number(e.target.value) : '')} className="w-full p-2 text-sm border border-slate-200 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-slate-900 font-medium" placeholder="Optional" />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-bold text-slate-500 capitalize mb-1">Payout Format</label>
-                      <select value={payoutFrequency} onChange={e => setPayoutFrequency(e.target.value as any)} className="w-full p-2 text-sm border border-slate-200 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-slate-900 font-medium">
-                        <option value="Bi-Weekly">Bi-Weekly</option>
-                        <option value="Weekly">Weekly</option>
-                        <option value="Monthly">Monthly</option>
-                        <option value="Daily">Daily</option>
-                        <option value="On-Demand">On-Demand</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-xs font-bold text-slate-500 capitalize mb-1">Expected Payout Date</label>
-                    <input type="date" value={nextPayoutDate} onChange={e => setNextPayoutDate(e.target.value)} className="w-full p-2 text-sm border border-slate-200 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-slate-900 font-medium" />
-                  </div>
-                </div>
+              </div>
 
-                <div className="pt-4 border-t border-slate-100 flex gap-2 justify-end shrink-0 sticky bottom-0 bg-white">
-                  <button type="button" onClick={() => setIsModalOpen(false)} className="px-4 py-2 font-medium text-slate-700 hover:bg-slate-100 rounded-xl transition-colors cursor-pointer">Cancel</button>
-                  <button type="submit" disabled={isSaving} className="px-4 py-2 font-medium bg-slate-900 text-white hover:bg-slate-800 active:bg-slate-950 disabled:opacity-60 disabled:cursor-not-allowed rounded-xl transition-colors shadow-sm flex items-center gap-2 cursor-pointer">
-                    {isSaving ? <span className="text-xs">Saving...</span> : <><CheckCircle size={16} />Save</>}
-                  </button>
-                </div>
-              </form>
-            </div>
+              <div className="pt-3 border-t border-slate-100 flex gap-2 justify-end shrink-0 sticky bottom-0 bg-white">
+                <button type="button" onClick={() => setIsModalOpen(false)} className="px-4 py-2 font-medium text-slate-700 hover:bg-slate-100 rounded-xl text-xs sm:text-sm transition-colors cursor-pointer">Cancel</button>
+                <button type="submit" disabled={isSaving} className="px-4 py-2 font-medium bg-slate-900 text-white hover:bg-slate-800 active:bg-slate-950 disabled:opacity-60 disabled:cursor-not-allowed rounded-xl text-xs sm:text-sm transition-colors shadow-xs flex items-center gap-1.5 cursor-pointer">
+                  {isSaving ? <span className="text-xs">Saving...</span> : <><CheckCircle size={14} />Save</>}
+                </button>
+              </div>
+            </form>
           </div>
-        )}
-      
+        </div>
+      )}
     </div>
   );
 }
-
-
-

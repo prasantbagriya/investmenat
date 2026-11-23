@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { exchangeQuickoToken } from '../../services/quickoService';
-import { Loader2, CheckCircle2, XCircle } from 'lucide-react';
+import { Loader2, CheckCircle2, XCircle, ShieldCheck } from 'lucide-react';
 
 export default function QuickoCallback() {
   const navigate = useNavigate();
@@ -19,15 +19,10 @@ export default function QuickoCallback() {
           throw new Error('No authorization code found in URL');
         }
 
-        // Exchange code for access token
         const accessToken = await exchangeQuickoToken(code);
-        
-        // Save to localStorage so QuickoConnect.tsx can use it
         localStorage.setItem('quicko_access_token', accessToken);
-        
         setStatus('success');
         
-        // Redirect back to the dashboard after a short delay
         setTimeout(() => {
           navigate('/?workspace=quicko');
         }, 1500);
@@ -42,37 +37,41 @@ export default function QuickoCallback() {
   }, [location, navigate]);
 
   return (
-    <div className="min-h-screen bg-gray-950 flex flex-col items-center justify-center p-4">
-      <div className="bg-gray-900 border border-gray-800 rounded-xl p-8 max-w-md w-full text-center shadow-2xl">
-        <h2 className="text-2xl font-semibold text-white mb-6">Quicko Connection</h2>
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col items-center justify-center p-4">
+      <div className="bg-white border border-slate-200 rounded-2xl p-7 sm:p-8 max-w-md w-full text-center shadow-xs">
+        <div className="w-12 h-12 bg-slate-900 rounded-xl flex items-center justify-center text-white mb-5 shadow-xs mx-auto">
+          <ShieldCheck size={22} className="text-emerald-400" strokeWidth={2} />
+        </div>
+
+        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 mb-2">Quicko Connection</h2>
         
         {status === 'loading' && (
-          <div className="flex flex-col items-center space-y-4">
-            <Loader2 className="w-12 h-12 text-emerald-500 animate-spin" />
-            <p className="text-gray-400">Authenticating with Quicko securely...</p>
+          <div className="flex flex-col items-center space-y-3 py-4">
+            <Loader2 className="w-8 h-8 text-slate-900 animate-spin" />
+            <p className="text-sm text-slate-600 font-medium">Authenticating with Quicko securely...</p>
           </div>
         )}
 
         {status === 'success' && (
-          <div className="flex flex-col items-center space-y-4 animate-in fade-in zoom-in duration-500">
-            <div className="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center">
-              <CheckCircle2 className="w-10 h-10 text-emerald-500" />
+          <div className="flex flex-col items-center space-y-3 py-4">
+            <div className="w-12 h-12 bg-emerald-50 text-emerald-600 border border-emerald-200 rounded-full flex items-center justify-center">
+              <CheckCircle2 className="w-7 h-7" strokeWidth={2.5} />
             </div>
-            <p className="text-emerald-400 font-medium">Authentication Successful!</p>
-            <p className="text-sm text-gray-400">Redirecting to your dashboard...</p>
+            <p className="text-slate-900 font-semibold text-sm">Authentication Successful!</p>
+            <p className="text-xs text-slate-500">Redirecting to your dashboard...</p>
           </div>
         )}
 
         {status === 'error' && (
-          <div className="flex flex-col items-center space-y-4 animate-in fade-in zoom-in duration-500">
-            <div className="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center">
-              <XCircle className="w-10 h-10 text-red-500" />
+          <div className="flex flex-col items-center space-y-3 py-4">
+            <div className="w-12 h-12 bg-rose-50 text-rose-600 border border-rose-200 rounded-full flex items-center justify-center">
+              <XCircle className="w-7 h-7" strokeWidth={2.5} />
             </div>
-            <p className="text-red-400 font-medium">Authentication Failed</p>
-            <p className="text-sm text-gray-400">{errorMsg}</p>
+            <p className="text-slate-900 font-semibold text-sm">Authentication Failed</p>
+            <p className="text-xs text-rose-600">{errorMsg}</p>
             <button 
               onClick={() => navigate('/?workspace=quicko')}
-              className="mt-4 px-6 py-2 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors"
+              className="mt-4 px-5 py-2.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium rounded-xl text-sm transition-colors cursor-pointer shadow-xs"
             >
               Back to Dashboard
             </button>

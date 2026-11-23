@@ -152,27 +152,27 @@ export default function PropFirmAccounts({ accounts, user, setAccounts, firmName
   };
 
   return (
-    <div className="space-y-3">
-      <div className="flex flex-row justify-between items-center gap-3 px-1 mb-2">
+    <div className="space-y-4">
+      <div className="flex flex-row justify-between items-center gap-3 px-0.5">
         <div>
-          <p className="text-xl sm:text-2xl font-semibold text-slate-900 tracking-tight flex items-center">
+          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900">
             Funded Accounts
-          </p>
-          <p className="text-xs text-slate-500 font-bold mt-0.5">Track your live funded accounts</p>
+          </h2>
+          <p className="text-xs text-slate-500 mt-0.5">Track your live funded accounts and drawdowns</p>
         </div>
       </div>
 
-      <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
-        <div className="px-3 py-2 border-b border-slate-200 flex justify-between items-center bg-slate-50/45 gap-4">
-          <span className="text-xs font-bold text-slate-700 capitalize shrink-0">
+      <div className="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
+        <div className="px-4 py-3 border-b border-slate-100 flex justify-between items-center bg-slate-50/60 gap-4">
+          <span className="text-xs font-semibold text-slate-700 shrink-0">
             Active Accounts ({accounts.length})
           </span>
           <input 
             type="text" 
-            placeholder="Search by Firm or Account No..." 
+            placeholder="Search by firm or account..." 
             value={searchQuery} 
             onChange={(e) => setSearchQuery(e.target.value)} 
-            className="text-xs p-1.5 px-3 border border-slate-200 rounded-lg focus:ring-1 focus:ring-emerald-500 w-full max-w-[180px] bg-white text-slate-800"
+            className="text-xs py-1.5 px-3 border border-slate-200 rounded-xl focus:outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-300 w-full max-w-[200px] bg-white text-slate-900 placeholder:text-slate-400 font-medium"
           />
         </div>
 
@@ -185,23 +185,23 @@ export default function PropFirmAccounts({ accounts, user, setAccounts, firmName
           <div className="overflow-x-auto text-xs">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="bg-slate-50/20 text-xs font-bold text-slate-500 border-b border-slate-100">
-                  <th className="p-2 px-3 whitespace-nowrap">Firm / Account</th>
-                  <th className="p-2 whitespace-nowrap">Status</th>
-                  <th className="p-2 whitespace-nowrap">Balance vs Start</th>
-                  <th className="p-2 whitespace-nowrap">Drawdown Limits</th>
-                  <th className="p-2 whitespace-nowrap">Total Payouts</th>
-                  <th className="p-2 text-right whitespace-nowrap">Actions</th>
+                <tr className="bg-slate-50/80 text-[11px] font-semibold text-slate-600 border-b border-slate-200">
+                  <th className="p-2.5 px-4 whitespace-nowrap">Firm / Account</th>
+                  <th className="p-2.5 whitespace-nowrap">Status</th>
+                  <th className="p-2.5 whitespace-nowrap">Balance vs Start</th>
+                  <th className="p-2.5 whitespace-nowrap">Drawdown Limits</th>
+                  <th className="p-2.5 whitespace-nowrap">Total Payouts</th>
+                  <th className="p-2.5 text-right whitespace-nowrap">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 text-slate-700 ">
+              <tbody className="divide-y divide-slate-100 text-slate-700">
                 {accounts
                   .filter(a => !searchQuery || 
                     a.firmName.toLowerCase().includes(searchQuery.toLowerCase()) || 
                     a.accountName.toLowerCase().includes(searchQuery.toLowerCase()) || 
                     (a.accountNumber && a.accountNumber.toLowerCase().includes(searchQuery.toLowerCase())))
                   .map(a => {
-                  const isDrawdownWarning = a.currentBalance <= a.maxDrawdownLimit * 1.05; // 5% away from breach
+                  const isDrawdownWarning = a.currentBalance <= a.maxDrawdownLimit * 1.05;
                   
                   let isLocked = false;
                   if (a.status === 'Breached') {
@@ -211,66 +211,66 @@ export default function PropFirmAccounts({ accounts, user, setAccounts, firmName
                   const accountPayouts = payouts.filter(p => p.accountId === a.id && p.status === 'Paid').reduce((sum, p) => sum + p.amount, 0);
 
                   return (
-                    <tr key={a.id} className={`${isDrawdownWarning && a.status === 'Active' ? 'bg-rose-50/30' : ''}`}>
-                      <td className="p-2 px-3 whitespace-nowrap">
-                        <div className="font-semibold text-slate-800">{a.firmName}</div>
-                        <div className="text-xs text-slate-500 font-bold mt-0.5">{a.accountName} {a.accountNumber ? `(#${a.accountNumber})` : ''}</div>
+                    <tr key={a.id} className={`hover:bg-slate-50/50 transition-colors ${isDrawdownWarning && a.status === 'Active' ? 'bg-rose-50/40' : ''}`}>
+                      <td className="p-2.5 px-4 whitespace-nowrap">
+                        <div className="font-semibold text-slate-900">{a.firmName}</div>
+                        <div className="text-[11px] text-slate-500 font-medium mt-0.5">{a.accountName} {a.accountNumber ? `(#${a.accountNumber})` : ''}</div>
                       </td>
-                      <td className="p-2 whitespace-nowrap">
+                      <td className="p-2.5 whitespace-nowrap">
                         <div className="flex flex-col items-start gap-1">
-                          <span className={`inline-block px-1.5 py-0.5 rounded text-xs font-bold ${
-                            a.status === 'Active' ? 'bg-emerald-100 text-emerald-800' :
-                            a.status === 'Breached' ? 'bg-rose-100 text-rose-800' :
-                            'bg-blue-100 text-blue-800'
+                          <span className={`inline-block px-2 py-0.5 rounded-lg text-[11px] font-medium border ${
+                            a.status === 'Active' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' :
+                            a.status === 'Breached' ? 'bg-rose-50 text-rose-700 border-rose-200' :
+                            'bg-slate-100 text-slate-700 border-slate-200'
                           }`}>
                             {a.status}
                           </span>
                           {isDrawdownWarning && a.status === 'Active' && (
-                            <span className="text-xs font-bold px-1.5 py-0.5 rounded bg-rose-100 text-rose-700 flex items-center gap-1">
+                            <span className="text-[10px] font-medium px-1.5 py-0.5 rounded-md bg-rose-50 text-rose-700 border border-rose-200 flex items-center gap-1">
                               <AlertTriangle size={8} /> Warning
                             </span>
                           )}
                         </div>
                       </td>
-                      <td className="p-2 w-48 whitespace-nowrap">
+                      <td className="p-2.5 w-48 whitespace-nowrap">
                         <div className="flex justify-between items-end mb-1">
-                          <span className={`text-xs font-bold font-mono tabular-nums ${a.currentBalance >= a.accountSize ? 'text-emerald-600' : 'text-slate-800'}`}>
+                          <span className={`text-xs font-semibold font-mono tabular-nums ${a.currentBalance >= a.accountSize ? 'text-emerald-700' : 'text-slate-900'}`}>
                             ${a.currentBalance.toLocaleString()}
                           </span>
                         </div>
-                        <div className="w-full h-1 bg-slate-200 rounded-full overflow-hidden flex">
+                        <div className="w-full h-1.5 bg-slate-100 border border-slate-200 rounded-full overflow-hidden flex">
                           <div 
-                            className={`h-full ${a.currentBalance < a.accountSize ? 'bg-amber-500' : 'bg-emerald-500'}`} 
+                            className={`h-full rounded-full ${a.currentBalance < a.accountSize ? 'bg-amber-500' : 'bg-emerald-600'}`} 
                             style={{ width: `${Math.max(0, Math.min(100, ((a.currentBalance - a.maxDrawdownLimit) / (a.accountSize - a.maxDrawdownLimit)) * 100))}%` }} 
                           />
                         </div>
-                        <div className="flex justify-between mt-1 text-[8px] font-bold text-slate-400">
-                          <span className="text-rose-500">DD: ${a.maxDrawdownLimit.toLocaleString()}</span>
+                        <div className="flex justify-between mt-1 text-[10px] font-medium text-slate-400">
+                          <span className="text-rose-600">DD: ${a.maxDrawdownLimit.toLocaleString()}</span>
                           <span>Start: ${a.accountSize.toLocaleString()}</span>
                         </div>
                       </td>
-                      <td className="p-2 whitespace-nowrap">
-                        <div className="text-xs">
-                          <p className="text-slate-500 font-bold flex items-center gap-1"><TrendingDown size={10} className="text-amber-500" /> Daily Loss: <span className="font-mono tabular-nums text-slate-800">${a.dailyLossLimit.toLocaleString()}</span></p>
+                      <td className="p-2.5 whitespace-nowrap">
+                        <div className="text-xs space-y-0.5">
+                          <p className="text-slate-500 font-medium flex items-center gap-1"><TrendingDown size={11} className="text-amber-500" /> Daily Loss: <span className="font-mono tabular-nums font-semibold text-slate-900">${a.dailyLossLimit.toLocaleString()}</span></p>
                           {a.profitTarget && (
-                            <p className="text-slate-500 font-bold flex items-center gap-1 mt-0.5"><CheckCircle size={10} className="text-emerald-500" /> Target: <span className="font-mono tabular-nums text-slate-800">${a.profitTarget.toLocaleString()}</span></p>
+                            <p className="text-slate-500 font-medium flex items-center gap-1"><CheckCircle size={11} className="text-emerald-500" /> Target: <span className="font-mono tabular-nums font-semibold text-slate-900">${a.profitTarget.toLocaleString()}</span></p>
                           )}
                         </div>
                       </td>
-                      <td className="p-2 whitespace-nowrap">
-                        <div className="text-xs font-bold font-mono tabular-nums text-emerald-600">
+                      <td className="p-2.5 whitespace-nowrap">
+                        <div className="text-xs font-semibold font-mono tabular-nums text-emerald-700">
                           ${accountPayouts.toLocaleString()}
                         </div>
                       </td>
-                      <td className="p-2 text-right whitespace-nowrap">
+                      <td className="p-2.5 text-right whitespace-nowrap">
                         {isLocked ? (
-                          <div className="flex justify-end gap-1.5 text-slate-300" title="Locked (Account is Breached and closed)">
+                          <div className="flex justify-end gap-1.5 text-slate-300" title="Locked (Account is Breached)">
                             <Lock size={12} className="m-1" />
                           </div>
                         ) : (
                           <div className="flex justify-end gap-1.5 text-slate-500">
-                            <button onClick={() => openEditModal(a)} className="p-1 hover:text-slate-900 rounded cursor-pointer transition-colors"><Edit2 size={12} /></button>
-                            <button onClick={() => handleDelete(a.id)} className="p-1 hover:text-red-650 rounded cursor-pointer transition-colors"><Trash2 size={12} /></button>
+                            <button onClick={() => openEditModal(a)} className="p-1 hover:text-slate-900 rounded-md cursor-pointer transition-colors"><Edit2 size={13} /></button>
+                            <button onClick={() => handleDelete(a.id)} className="p-1 hover:text-rose-600 rounded-md cursor-pointer transition-colors"><Trash2 size={13} /></button>
                           </div>
                         )}
                       </td>
@@ -283,101 +283,96 @@ export default function PropFirmAccounts({ accounts, user, setAccounts, firmName
         )}
       </div>
 
-      
-        {isModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm">
-            <div className="bg-white rounded-lg shadow-sm w-full max-w-lg flex flex-col max-h-[95vh]">
-              <div className="flex justify-between items-center p-4 border-b border-slate-100 shrink-0">
-                <h3 className="font-bold text-slate-800">{editingId ? 'Edit Account' : 'New Account'}</h3>
-                <button type="button" onClick={() => setIsModalOpen(false)} className="text-slate-400 hover:text-slate-600 cursor-pointer"><X size={20} /></button>
-              </div>
-              <form onSubmit={handleSubmit} className="p-4 space-y-4 overflow-y-auto scrollbar-thin">
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-bold text-slate-500 capitalize mb-1">Firm Name</label>
-                    <input required type="text" list="account-firm-names" value={firmName} onChange={e => setFirmName(e.target.value)} className="w-full p-2 border border-slate-200 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-emerald-500 font-medium" placeholder="FTMO, TopStep..." />
-                    <datalist id="account-firm-names">
-                      {firmNames.map((firm, i) => <option key={i} value={firm} />)}
-                    </datalist>
-                  </div>
-                  <div>
-                    <label className="block text-xs font-bold text-slate-500 capitalize mb-1">Account Name</label>
-                    <input required type="text" value={accountName} onChange={e => setAccountName(e.target.value)} className="w-full p-2 border border-slate-200 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-emerald-500 font-medium" placeholder="Acc-12345" />
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-xs font-bold text-slate-500 capitalize mb-1">Account Number / Login (Optional)</label>
-                  <input type="text" value={accountNumber} onChange={e => setAccountNumber(e.target.value)} className="w-full p-2 border border-slate-200 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-emerald-500 font-medium" placeholder="e.g. 5051234" />
-                </div>
-                
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-bold text-slate-500 capitalize mb-1">Account Size ($)</label>
-                    <input required type="number" value={accountSize} onChange={e => setAccountSize(e.target.value ? Number(e.target.value) : '')} className="w-full p-2 border border-slate-200 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-emerald-500 font-medium" placeholder="100000" />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-bold text-slate-500 capitalize mb-1">Current Balance ($)</label>
-                    <input required type="number" step="0.01" value={currentBalance} onChange={e => setCurrentBalance(e.target.value ? Number(e.target.value) : '')} className="w-full p-2 border border-slate-200 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-emerald-500 font-medium font-semibold text-emerald-600" placeholder="100000" />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-bold text-slate-500 capitalize mb-1">Status</label>
-                  <select value={status} onChange={e => setStatus(e.target.value as any)} className="w-full p-2 border border-slate-200 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-emerald-500 font-medium">
-                    <option value="Active">Active</option>
-                    <option value="Breached">Breached</option>
-                    <option value="Passed">Passed</option>
-                  </select>
-                </div>
-
-                <div className="bg-slate-50 p-3 rounded-lg border border-slate-100 space-y-3">
-                  <h4 className="text-xs font-bold text-slate-600 flex items-center gap-1"><AlertTriangle size={14} className="text-amber-500" /> Risk Management</h4>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-bold text-slate-500 capitalize mb-1">Max Drawdown Limit ($)</label>
-                      <input required type="number" value={maxDrawdownLimit} onChange={e => setMaxDrawdownLimit(e.target.value ? Number(e.target.value) : '')} className="w-full p-2 text-sm border border-slate-200 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-emerald-500 font-medium" placeholder="90000" />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-bold text-slate-500 capitalize mb-1">Daily Loss Limit ($)</label>
-                      <input required type="number" value={dailyLossLimit} onChange={e => setDailyLossLimit(e.target.value ? Number(e.target.value) : '')} className="w-full p-2 text-sm border border-slate-200 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-emerald-500 font-medium" placeholder="95000" />
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-bold text-slate-500 capitalize mb-1">Profit Target ($) (Optional)</label>
-                      <input type="number" value={profitTarget} onChange={e => setProfitTarget(e.target.value ? Number(e.target.value) : '')} className="w-full p-2 text-sm border border-slate-200 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-emerald-500 font-medium" placeholder="110000" />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-bold text-slate-500 capitalize mb-1">Payout Format</label>
-                      <select value={payoutFrequency} onChange={e => setPayoutFrequency(e.target.value as any)} className="w-full p-2 text-sm border border-slate-200 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-emerald-500 font-medium">
-                        <option value="Bi-Weekly">Bi-Weekly</option>
-                        <option value="Weekly">Weekly</option>
-                        <option value="Monthly">Monthly</option>
-                        <option value="Daily">Daily</option>
-                        <option value="On-Demand">On-Demand</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-xs font-bold text-slate-500 capitalize mb-1">Expected Payout Date (Optional)</label>
-                    <input type="date" value={nextPayoutDate} onChange={e => setNextPayoutDate(e.target.value)} className="w-full p-2 text-sm border border-slate-200 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-emerald-500 font-medium" />
-                  </div>
-                </div>
-                
-                <div className="pt-4 border-t border-slate-100 flex gap-2 justify-end shrink-0 sticky bottom-0 bg-white">
-                  <button type="button" onClick={() => setIsModalOpen(false)} className="px-4 py-2 font-medium text-slate-700 hover:bg-slate-100 rounded-xl transition-colors cursor-pointer">Cancel</button>
-                  <button type="submit" disabled={isSaving} className="px-4 py-2 font-medium bg-slate-900 text-white hover:bg-slate-800 active:bg-slate-950 disabled:opacity-60 disabled:cursor-not-allowed rounded-xl transition-colors shadow-sm flex items-center gap-2 cursor-pointer">
-                    {isSaving ? <span className="text-xs">Saving...</span> : <><CheckCircle size={16} />Save</>}
-                  </button>
-                </div>
-              </form>
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs">
+          <div className="bg-white rounded-2xl shadow-xl border border-slate-200 w-full max-w-lg flex flex-col max-h-[92vh]">
+            <div className="flex justify-between items-center p-5 border-b border-slate-100 shrink-0">
+              <h3 className="font-bold text-slate-900 text-base">{editingId ? 'Edit Account' : 'New Account'}</h3>
+              <button type="button" onClick={() => setIsModalOpen(false)} className="text-slate-400 hover:text-slate-600 cursor-pointer"><X size={18} /></button>
             </div>
+            <form onSubmit={handleSubmit} className="p-5 space-y-4 overflow-y-auto">
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-medium text-slate-600 mb-1.5">Firm Name</label>
+                  <input required type="text" list="account-firm-names" value={firmName} onChange={e => setFirmName(e.target.value)} className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition-all font-medium placeholder:text-slate-400" placeholder="FTMO, TopStep..." />
+                  <datalist id="account-firm-names">
+                    {firmNames.map((firm, i) => <option key={i} value={firm} />)}
+                  </datalist>
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-slate-600 mb-1.5">Account Name</label>
+                  <input required type="text" value={accountName} onChange={e => setAccountName(e.target.value)} className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition-all font-medium placeholder:text-slate-400" placeholder="Acc-12345" />
+                </div>
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-slate-600 mb-1.5">Account Number / Login (Optional)</label>
+                <input type="text" value={accountNumber} onChange={e => setAccountNumber(e.target.value)} className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition-all font-medium placeholder:text-slate-400" placeholder="e.g. 5051234" />
+              </div>
+              
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-medium text-slate-600 mb-1.5">Account Size ($)</label>
+                  <input required type="number" value={accountSize} onChange={e => setAccountSize(e.target.value ? Number(e.target.value) : '')} className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 font-mono tabular-nums focus:outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition-all font-medium placeholder:text-slate-400" placeholder="100000" />
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-slate-600 mb-1.5">Current Balance ($)</label>
+                  <input required type="number" step="0.01" value={currentBalance} onChange={e => setCurrentBalance(e.target.value ? Number(e.target.value) : '')} className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 font-mono tabular-nums focus:outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition-all font-medium placeholder:text-slate-400 text-emerald-700" placeholder="100000" />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-medium text-slate-600 mb-1.5">Status</label>
+                <select value={status} onChange={e => setStatus(e.target.value as any)} className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition-all font-medium">
+                  <option value="Active">Active</option>
+                  <option value="Breached">Breached</option>
+                  <option value="Passed">Passed</option>
+                </select>
+              </div>
+
+              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
+                <h4 className="text-xs font-semibold text-slate-800 flex items-center gap-1.5"><AlertTriangle size={14} className="text-amber-500" /> Risk Management</h4>
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-[11px] font-medium text-slate-500 mb-1">Max Drawdown Limit ($)</label>
+                    <input required type="number" value={maxDrawdownLimit} onChange={e => setMaxDrawdownLimit(e.target.value ? Number(e.target.value) : '')} className="w-full bg-white border border-slate-200 rounded-xl p-2 text-xs text-slate-900 font-mono tabular-nums focus:outline-none focus:border-slate-400 font-medium" placeholder="90000" />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] font-medium text-slate-500 mb-1">Daily Loss Limit ($)</label>
+                    <input required type="number" value={dailyLossLimit} onChange={e => setDailyLossLimit(e.target.value ? Number(e.target.value) : '')} className="w-full bg-white border border-slate-200 rounded-xl p-2 text-xs text-slate-900 font-mono tabular-nums focus:outline-none focus:border-slate-400 font-medium" placeholder="95000" />
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-[11px] font-medium text-slate-500 mb-1">Profit Target ($) (Optional)</label>
+                    <input type="number" value={profitTarget} onChange={e => setProfitTarget(e.target.value ? Number(e.target.value) : '')} className="w-full bg-white border border-slate-200 rounded-xl p-2 text-xs text-slate-900 font-mono tabular-nums focus:outline-none focus:border-slate-400 font-medium" placeholder="110000" />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] font-medium text-slate-500 mb-1">Payout Format</label>
+                    <select value={payoutFrequency} onChange={e => setPayoutFrequency(e.target.value as any)} className="w-full bg-white border border-slate-200 rounded-xl p-2 text-xs text-slate-900 focus:outline-none focus:border-slate-400 font-medium">
+                      <option value="Bi-Weekly">Bi-Weekly</option>
+                      <option value="Weekly">Weekly</option>
+                      <option value="Monthly">Monthly</option>
+                      <option value="Daily">Daily</option>
+                      <option value="On-Demand">On-Demand</option>
+                    </select>
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-[11px] font-medium text-slate-500 mb-1">Expected Payout Date (Optional)</label>
+                  <input type="date" value={nextPayoutDate} onChange={e => setNextPayoutDate(e.target.value)} className="w-full bg-white border border-slate-200 rounded-xl p-2 text-xs text-slate-900 focus:outline-none focus:border-slate-400 font-medium" />
+                </div>
+              </div>
+              
+              <div className="pt-3 border-t border-slate-100 flex gap-2 justify-end shrink-0 sticky bottom-0 bg-white">
+                <button type="button" onClick={() => setIsModalOpen(false)} className="px-4 py-2 font-medium text-slate-700 hover:bg-slate-100 rounded-xl text-xs sm:text-sm transition-colors cursor-pointer">Cancel</button>
+                <button type="submit" disabled={isSaving} className="px-4 py-2 font-medium bg-slate-900 text-white hover:bg-slate-800 active:bg-slate-950 disabled:opacity-60 disabled:cursor-not-allowed rounded-xl text-xs sm:text-sm transition-colors shadow-xs flex items-center gap-1.5 cursor-pointer">
+                  {isSaving ? <span className="text-xs">Saving...</span> : <><CheckCircle size={14} />Save</>}
+                </button>
+              </div>
+            </form>
           </div>
-        )}
-      
+        </div>
+      )}
     </div>
   );
 }
-
-
-

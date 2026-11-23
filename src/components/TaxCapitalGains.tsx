@@ -350,16 +350,16 @@ export default function TaxCapitalGains({ holdings, livePrices = {}, userSetting
 
   return (
     <div className="space-y-4">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-3 bg-white p-4 border border-slate-200 rounded-xl">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-3 bg-white p-4 sm:p-5 border border-slate-200 rounded-2xl shadow-xs">
         <div>
-          <h2 className="text-base font-semibold text-slate-900">Capital gains & tax ledger</h2>
+          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900">Capital gains & tax ledger</h2>
           <p className="text-xs text-slate-500 mt-0.5">Estimating STCG/LTCG taxes under 2024 budget rules and 80C relief benchmarks</p>
         </div>
         <div className="flex gap-2 text-xs">
           <select 
             value={selectedFY} 
             onChange={(e) => setSelectedFY(e.target.value)}
-            className="bg-white border border-slate-200 rounded-lg py-1.5 px-2.5 font-medium text-slate-700 outline-none"
+            className="bg-white border border-slate-200 rounded-xl py-2 px-3 font-medium text-slate-700 outline-none text-xs sm:text-sm focus:border-slate-400"
           >
             <option value="2024-25">FY 2024-25</option>
             <option value="2025-26">FY 2025-26</option>
@@ -368,19 +368,19 @@ export default function TaxCapitalGains({ holdings, livePrices = {}, userSetting
 
           <button
             onClick={exportPDFStatement}
-            className="bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white py-1.5 px-3 rounded-xl flex items-center gap-1.5 font-medium cursor-pointer transition-colors"
+            className="bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white py-2 px-3.5 rounded-xl flex items-center gap-1.5 font-medium cursor-pointer transition-colors text-xs sm:text-sm shadow-xs"
           >
             <Download size={14} /> Export tax statement
           </button>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         
         {/* Left Side: Capital gains breakdown card */}
         <div className="lg:col-span-2 space-y-3">
-          <div className="bg-white border border-slate-200 rounded-xl p-4 space-y-3">
-            <div className="flex items-center gap-2 border-b border-slate-100 pb-2">
+          <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs space-y-3">
+            <div className="flex items-center gap-2 border-b border-slate-100 pb-2.5">
               <Percent className="text-slate-700" size={16} />
               <h3 className="font-semibold text-sm text-slate-900">Capital gains computation (FY {selectedFY})</h3>
             </div>
@@ -391,34 +391,34 @@ export default function TaxCapitalGains({ holdings, livePrices = {}, userSetting
               <div className="space-y-3">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {/* Short term card */}
-                  <div className="border border-slate-200 p-3.5 rounded-lg space-y-2 bg-white">
+                  <div className="border border-slate-200 p-4 rounded-xl space-y-2 bg-slate-50/50">
                     <div className="flex justify-between items-center text-xs text-slate-500 font-medium">
                       <span>Short-term gains (STCG)</span>
-                      <span className="bg-slate-100 text-slate-700 px-2 py-0.5 rounded text-[11px] font-mono tabular-nums">Held &lt; 365 days</span>
+                      <span className="bg-white border border-slate-200 text-slate-700 px-2 py-0.5 rounded-md text-[11px] font-mono tabular-nums">Held &lt; 365 days</span>
                     </div>
-                    <p className="text-xl font-semibold font-mono tabular-nums text-slate-900">
+                    <p className="text-xl font-bold font-mono tabular-nums text-slate-900">
                       ₹{aggregateGains.stcgGains.toLocaleString('en-IN', { maximumFractionDigits: 1 })}
                     </p>
-                    <div className="flex justify-between text-xs text-slate-500 pt-2 border-t border-slate-100">
+                    <div className="flex justify-between text-xs text-slate-500 pt-2 border-t border-slate-200/60">
                       <span>Tax rate:</span>
                       <span className="font-medium text-slate-800">20% under 2024 budget</span>
                     </div>
-                    <div className="flex justify-between text-xs text-rose-600 font-medium">
+                    <div className="flex justify-between text-xs text-rose-700 font-medium">
                       <span>Estimated tax:</span>
-                      <span className="font-mono tabular-nums">₹{stcgTax.toLocaleString('en-IN', { maximumFractionDigits: 1 })}</span>
+                      <span className="font-mono tabular-nums font-semibold">₹{stcgTax.toLocaleString('en-IN', { maximumFractionDigits: 1 })}</span>
                     </div>
                   </div>
 
                   {/* Long term card */}
-                  <div className="border border-slate-200 p-3.5 rounded-lg space-y-2 bg-white">
+                  <div className="border border-slate-200 p-4 rounded-xl space-y-2 bg-slate-50/50">
                     <div className="flex justify-between items-center text-xs text-slate-500 font-medium">
                       <span>Long-term gains (LTCG)</span>
-                      <span className="bg-slate-100 text-slate-700 px-2 py-0.5 rounded text-[11px] font-mono tabular-nums">Held &gt; 365 days</span>
+                      <span className="bg-white border border-slate-200 text-slate-700 px-2 py-0.5 rounded-md text-[11px] font-mono tabular-nums">Held &gt; 365 days</span>
                     </div>
-                    <p className="text-xl font-semibold font-mono tabular-nums text-slate-900">
+                    <p className="text-xl font-bold font-mono tabular-nums text-slate-900">
                       ₹{aggregateGains.ltcgGains.toLocaleString('en-IN', { maximumFractionDigits: 1 })}
                     </p>
-                    <div className="flex justify-between text-xs text-slate-500 pt-2 border-t border-slate-100">
+                    <div className="flex justify-between text-xs text-slate-500 pt-2 border-t border-slate-200/60">
                       <span>LTCG threshold exemption:</span>
                       <span className="font-medium text-slate-800 font-mono tabular-nums">₹1,25,000</span>
                     </div>
@@ -426,25 +426,25 @@ export default function TaxCapitalGains({ holdings, livePrices = {}, userSetting
                       <span>Tax rate (above exempt):</span>
                       <span className="font-medium text-slate-800">12.5%</span>
                     </div>
-                    <div className="flex justify-between text-xs text-rose-600 font-medium">
+                    <div className="flex justify-between text-xs text-rose-700 font-medium">
                       <span>Estimated tax:</span>
-                      <span className="font-mono tabular-nums">₹{ltcgTax.toLocaleString('en-IN', { maximumFractionDigits: 1 })}</span>
+                      <span className="font-mono tabular-nums font-semibold">₹{ltcgTax.toLocaleString('en-IN', { maximumFractionDigits: 1 })}</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-slate-900 text-white rounded-xl p-2 flex justify-between items-center">
+                <div className="bg-slate-900 text-white rounded-xl p-3.5 flex justify-between items-center shadow-xs">
                   <div>
-                    <h5 className="font-bold text-xs text-slate-400 capitalize ">Aggregate Estimated Gains Tax Liability</h5>
-                    <p className="text-xs text-slate-500 mt-0.5">Indicative tax payable based on total profit declarations.</p>
+                    <h5 className="font-semibold text-xs text-slate-300">Aggregate Estimated Gains Tax Liability</h5>
+                    <p className="text-xs text-slate-400 mt-0.5">Indicative tax payable based on total profit declarations.</p>
                   </div>
                   <div className="text-right font-mono tabular-nums">
-                    <span className="text-lg font-semibold text-rose-400">₹{totalTaxLiability.toLocaleString('en-IN', { maximumFractionDigits: 1 })}</span>
+                    <span className="text-lg font-bold text-rose-300">₹{totalTaxLiability.toLocaleString('en-IN', { maximumFractionDigits: 1 })}</span>
                   </div>
                 </div>
 
                 {/* Footnote warnings */}
-                <div className="p-1 bg-amber-50 border border-amber-100 rounded-xl flex gap-1.5 items-start text-xs text-amber-800 leading-relaxed ">
+                <div className="p-2.5 bg-amber-50 border border-amber-200 rounded-xl flex gap-2 items-start text-xs text-amber-800 leading-relaxed">
                   <ShieldAlert size={14} className="text-amber-600 shrink-0 mt-0.5" />
                   <p>
                     <strong>Federal Compliance Note:</strong> In budget terms modified on July 23, 2024, equity LTCG tax increased from 10% to 12.5% while the free threshold shifted to ₹1.25L. STCG increased to 20%. Ensure correct acquisition period mappings before making files.
@@ -457,53 +457,53 @@ export default function TaxCapitalGains({ holdings, livePrices = {}, userSetting
 
         {/* Right Side: Section 80C Tracker Card */}
         <div className="space-y-3">
-          <div className="bg-white border border-slate-200 rounded-lg p-2 shadow-sm space-y-2">
-            <div className="flex items-center gap-1 border-b border-slate-100 pb-1.5">
+          <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs space-y-3">
+            <div className="flex items-center gap-1.5 border-b border-slate-100 pb-2">
               <Pocket className="text-slate-800" size={16} />
-              <h3 className="font-bold text-xs text-slate-700 font-display">Section 80C Tax Savings Tracker</h3>
+              <h3 className="font-semibold text-sm text-slate-900">Section 80C Tax Savings Tracker</h3>
             </div>
             
             {/* Limit Progress bar */}
             <div className="space-y-1.5">
-              <div className="flex justify-between items-center text-xs font-bold text-slate-500 font-mono tabular-nums">
+              <div className="flex justify-between items-center text-xs font-medium text-slate-600 font-mono tabular-nums">
                 <span>Deduction Base</span>
                 <span>₹{total80C.toLocaleString()} / ₹1,50,000 max</span>
               </div>
-              <div className="h-2.5 w-full bg-slate-100 rounded-full overflow-hidden border border-slate-200">
+              <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden border border-slate-200">
                 <div 
-                  className={`h-full rounded-full transition-all duration-300 ${percent80C === 100 ? 'bg-emerald-500' : 'bg-slate-900'}`}
+                  className={`h-full rounded-full transition-all duration-300 ${percent80C === 100 ? 'bg-emerald-600' : 'bg-slate-900'}`}
                   style={{ width: `${percent80C}%` }}
                 />
               </div>
               <div className="flex justify-between text-xs leading-relaxed mt-1">
                 <span className="text-slate-500">Term coverage: <strong className="text-slate-700 font-mono tabular-nums">{percent80C.toFixed(0)}%</strong></span>
                 {remaining80C > 0 ? (
-                  <span className="text-blue-600 font-bold">Lacks ₹{remaining80C.toLocaleString()} more</span>
+                  <span className="text-slate-700 font-medium">Lacks ₹{remaining80C.toLocaleString()} more</span>
                 ) : (
-                  <span className="text-emerald-600 font-bold flex items-center gap-0.5">✔ limit reached!</span>
+                  <span className="text-emerald-700 font-medium flex items-center gap-0.5">✔ limit reached!</span>
                 )}
               </div>
             </div>
 
             {/* List Declarations */}
-            <div className="space-y-1 border-t border-slate-100 pt-1">
-              <div className="flex justify-between text-xs font-bold text-slate-500">
+            <div className="space-y-1.5 border-t border-slate-100 pt-2">
+              <div className="flex justify-between text-[11px] font-medium text-slate-500">
                 <span>ACTIVE DECLARATIONS</span>
-                <span>MOUNTED</span>
+                <span>AMOUNT</span>
               </div>
               {declarations.map(d => (
-                <div key={d.id} className="flex justify-between items-center bg-slate-50/50 p-1 border border-slate-100 rounded-lg text-xs ">
+                <div key={d.id} className="flex justify-between items-center bg-slate-50 p-2 border border-slate-200 rounded-xl text-xs">
                   <div>
-                    <span className="font-semibold text-slate-900 bg-white border border-slate-100 px-1 py-0.5 rounded text-xs">{d.category}</span>
-                    <span className="text-xs text-slate-700 ml-1.5">{d.note}</span>
+                    <span className="font-medium text-slate-900 bg-white border border-slate-200 px-1.5 py-0.5 rounded-md text-[11px]">{d.category}</span>
+                    <span className="text-xs text-slate-600 ml-1.5">{d.note}</span>
                   </div>
-                  <div className="flex items-center gap-1 font-mono tabular-nums">
-                    <span className="font-bold">₹{d.amount.toLocaleString()}</span>
+                  <div className="flex items-center gap-1.5 font-mono tabular-nums">
+                    <span className="font-semibold text-slate-900">₹{d.amount.toLocaleString()}</span>
                     <button 
                       onClick={() => handleDeleteDeclaration(d.id)}
-                      className="text-slate-400 hover:text-red-500 p-0.5 transition-colors cursor-pointer"
+                      className="text-slate-400 hover:text-rose-600 p-0.5 transition-colors cursor-pointer"
                     >
-                      <Trash2 size={11} />
+                      <Trash2 size={12} />
                     </button>
                   </div>
                 </div>
@@ -511,13 +511,13 @@ export default function TaxCapitalGains({ holdings, livePrices = {}, userSetting
             </div>
 
             {/* Form Declaration */}
-            <form onSubmit={handleAddDeclaration} className="space-y-1.5 border-t border-slate-100 pt-1.5 text-xs ">
+            <form onSubmit={handleAddDeclaration} className="space-y-2 border-t border-slate-100 pt-2.5 text-xs">
               <div>
-                <label className="block text-slate-500 font-bold text-xs mb-1">DEDUCTION CATEGORY</label>
+                <label className="block text-slate-600 font-medium text-xs mb-1">Deduction Category</label>
                 <select 
                   value={newCat} 
                   onChange={(e: any) => setNewCat(e.target.value)}
-                  className="w-full bg-white border border-slate-200 rounded-lg p-1.5 text-xs focus:ring-1 focus:ring-slate-900"
+                  className="w-full bg-white border border-slate-200 rounded-xl p-2 text-xs font-medium text-slate-800 focus:outline-none focus:border-slate-400"
                 >
                   <option value="ELSS">ELSS Mutual Fund</option>
                   <option value="PPF">Public Provident Fund (PPF)</option>
@@ -528,35 +528,35 @@ export default function TaxCapitalGains({ holdings, livePrices = {}, userSetting
                 </select>
               </div>
 
-              <div className="grid grid-cols-2 gap-1">
+              <div className="grid grid-cols-2 gap-2">
                 <div>
-                  <label className="block text-slate-500 font-bold text-xs mb-1">AMOUNT (₹)</label>
+                  <label className="block text-slate-600 font-medium text-xs mb-1">Amount (₹)</label>
                   <input 
                     type="number"
                     required
                     placeholder="15000"
                     value={newAmt}
                     onChange={(e) => setNewAmt(e.target.value)}
-                    className="w-full bg-white border border-slate-200 rounded-lg p-1.5 text-xs"
+                    className="w-full bg-white border border-slate-200 rounded-xl p-2 text-xs font-medium text-slate-800 focus:outline-none focus:border-slate-400"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-500 font-bold text-xs mb-1">NOTE</label>
+                  <label className="block text-slate-600 font-medium text-xs mb-1">Note</label>
                   <input 
                     type="text"
                     placeholder="e.g. SBI, LIC"
                     value={newNote}
                     onChange={(e) => setNewNote(e.target.value)}
-                    className="w-full bg-white border border-slate-200 rounded-lg p-1.5 text-xs"
+                    className="w-full bg-white border border-slate-200 rounded-xl p-2 text-xs font-medium text-slate-800 focus:outline-none focus:border-slate-400"
                   />
                 </div>
               </div>
 
               <button
                 type="submit"
-                className="w-full py-1.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white rounded-xl font-medium flex items-center justify-center gap-1 cursor-pointer transition-all text-xs shadow-xs"
+                className="w-full py-2 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white rounded-xl font-medium flex items-center justify-center gap-1.5 cursor-pointer transition-colors text-xs shadow-xs"
               >
-                <Plus size={12} /> Log Tax Deductible
+                <Plus size={13} /> Log Tax Deductible
               </button>
             </form>
           </div>
@@ -565,25 +565,25 @@ export default function TaxCapitalGains({ holdings, livePrices = {}, userSetting
       </div>
 
       {/* Quicko Advanced Tax Services */}
-      <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-xs mt-4 relative overflow-hidden">
-        <div className="flex items-center gap-2 mb-4">
-          <div className="bg-slate-900 p-1.5 rounded-lg text-white">
-             <Percent size={16} />
+      <div className="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs mt-4">
+        <div className="flex items-center gap-2.5 mb-4 pb-3 border-b border-slate-100">
+          <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center text-white shrink-0">
+             <Percent size={15} className="text-emerald-400" />
           </div>
           <div>
-            <h3 className="font-semibold text-slate-900 text-sm">Quicko Tax Services</h3>
+            <h3 className="font-bold tracking-tight text-slate-900 text-sm sm:text-base">Quicko Tax Services</h3>
             <p className="text-slate-500 text-xs">Sandbox API connection for Form 16 & ITR status</p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Form 16 Parser */}
-          <div className="bg-slate-50 border border-slate-200 rounded-lg p-3">
-            <h4 className="text-slate-900 text-xs font-semibold mb-1.5 flex items-center gap-1.5">
-              <FileText size={14} className="text-slate-600"/> Form 16 Auto-Parser
+          <div className="bg-slate-50 border border-slate-200 rounded-xl p-4">
+            <h4 className="text-slate-900 text-xs font-semibold mb-1 flex items-center gap-1.5">
+              <FileText size={14} className="text-slate-700"/> Form 16 Auto-Parser
             </h4>
             <p className="text-slate-600 text-xs mb-3 leading-relaxed">
-              Upload your Form 16 PDF. We will parse your Gross Salary and TDS directly into the Tax Planner.
+              Upload your Form 16 PDF to auto-extract Gross Salary and TDS directly into the Tax Planner.
             </p>
             <div className="relative">
               <input 
@@ -593,27 +593,27 @@ export default function TaxCapitalGains({ holdings, livePrices = {}, userSetting
                 disabled={form16Loading}
                 className="absolute inset-0 w-full h-full opacity-0 cursor-pointer disabled:cursor-not-allowed" 
               />
-              <div className={`bg-white border border-dashed ${form16Error ? 'border-rose-400' : 'border-slate-300 hover:border-slate-400'} rounded-lg p-4 flex flex-col items-center justify-center transition-colors text-center h-24`}>
+              <div className={`bg-white border-2 border-dashed ${form16Error ? 'border-rose-300 bg-rose-50/40' : 'border-slate-300 hover:border-slate-400'} rounded-xl p-4 flex flex-col items-center justify-center transition-colors text-center h-24`}>
                 {form16Loading ? (
                   <div className="flex flex-col items-center">
-                    <Loader2 className="animate-spin text-slate-700 mb-2" size={18} />
+                    <Loader2 className="animate-spin text-slate-700 mb-1.5" size={18} />
                     <span className="text-slate-700 text-xs font-medium">Parsing PDF...</span>
                   </div>
                 ) : (
                   <>
                     <UploadCloud size={20} className={form16Error ? 'text-rose-500 mb-1' : 'text-slate-500 mb-1'} />
-                    <span className="text-slate-700 text-xs font-medium">{form16Error ? 'Upload failed - retry' : 'Click or drag Form 16 PDF here'}</span>
+                    <span className="text-slate-800 text-xs font-medium">{form16Error ? 'Upload failed - retry' : 'Click or drag Form 16 PDF here'}</span>
                   </>
                 )}
               </div>
             </div>
-            {form16Error && <p className="text-rose-700 text-xs mt-2 bg-rose-50 p-1.5 rounded border border-rose-200">{form16Error}</p>}
+            {form16Error && <p className="text-rose-700 text-xs mt-2 bg-rose-50 p-2 rounded-xl border border-rose-200">{form16Error}</p>}
           </div>
 
           {/* ITR Status Tracker */}
-          <div className="bg-slate-50 border border-slate-200 rounded-lg p-3 flex flex-col">
-            <h4 className="text-slate-900 text-xs font-semibold mb-1.5 flex items-center gap-1.5">
-              <Search size={14} className="text-slate-600"/> ITR Status Check
+          <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col">
+            <h4 className="text-slate-900 text-xs font-semibold mb-1 flex items-center gap-1.5">
+              <Search size={14} className="text-slate-700"/> ITR Status Check
             </h4>
             <p className="text-slate-600 text-xs mb-3 leading-relaxed">
               Track your Income Tax Return status directly from the ITD portal via Quicko API.
@@ -626,32 +626,32 @@ export default function TaxCapitalGains({ holdings, livePrices = {}, userSetting
                 value={itrPan}
                 onChange={e => setItrPan(e.target.value.toUpperCase())}
                 maxLength={10}
-                className="bg-white border border-slate-200 rounded-lg p-1.5 px-2.5 text-xs text-slate-900 placeholder-slate-400 w-full focus:border-slate-400 focus:outline-none uppercase font-mono tabular-nums"
+                className="bg-white border border-slate-200 rounded-xl p-2 px-3 text-xs text-slate-900 placeholder-slate-400 w-full focus:border-slate-400 focus:outline-none uppercase font-mono tabular-nums font-medium"
               />
               <button 
                 type="submit"
                 disabled={itrLoading}
-                className="bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white px-3 py-1.5 rounded-xl text-xs font-medium transition-colors disabled:opacity-50 whitespace-nowrap flex items-center justify-center min-w-[70px] cursor-pointer"
+                className="bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white px-3.5 py-2 rounded-xl text-xs font-medium transition-colors disabled:opacity-50 whitespace-nowrap flex items-center justify-center min-w-[75px] cursor-pointer shadow-xs"
               >
-                {itrLoading ? <Loader2 size={14} className="animate-spin" /> : 'Check status'}
+                {itrLoading ? <Loader2 size={14} className="animate-spin text-white" /> : 'Check status'}
               </button>
             </form>
 
-            {itrError && <p className="text-rose-700 text-xs mt-1 bg-rose-50 p-1.5 rounded border border-rose-200">{itrError}</p>}
+            {itrError && <p className="text-rose-700 text-xs mt-1 bg-rose-50 p-2 rounded-xl border border-rose-200">{itrError}</p>}
             
             {itrStatus && !itrError && (
-              <div className="mt-auto bg-white border border-emerald-200 rounded-lg p-2.5 text-xs text-slate-800 space-y-1">
-                <div className="flex justify-between items-center border-b border-slate-100 pb-1 mb-1">
-                  <span className="font-medium text-emerald-700 flex items-center gap-1"><CheckCircle size={12} className="text-emerald-600"/> Status: {itrStatus.status}</span>
-                  <span className="bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded font-mono tabular-nums text-[11px]">AY {itrStatus.assessmentYear}</span>
+              <div className="mt-auto bg-white border border-slate-200 rounded-xl p-3 text-xs text-slate-800 space-y-1.5">
+                <div className="flex justify-between items-center border-b border-slate-100 pb-1.5 mb-1">
+                  <span className="font-semibold text-emerald-700 flex items-center gap-1"><CheckCircle size={12} className="text-emerald-600"/> Status: {itrStatus.status}</span>
+                  <span className="bg-slate-100 text-slate-600 px-2 py-0.5 rounded-md font-mono tabular-nums text-[11px] font-medium">AY {itrStatus.assessmentYear}</span>
                 </div>
                 <div className="flex justify-between text-slate-600">
                   <span>Filing date:</span>
-                  <span className="font-mono tabular-nums text-slate-900">{itrStatus.filingDate}</span>
+                  <span className="font-mono tabular-nums text-slate-900 font-medium">{itrStatus.filingDate}</span>
                 </div>
                 <div className="flex justify-between text-slate-600">
                   <span>Expected refund:</span>
-                  <span className="font-mono tabular-nums font-semibold text-emerald-600">₹{itrStatus.refundAmount?.toLocaleString()}</span>
+                  <span className="font-mono tabular-nums font-semibold text-emerald-700">₹{itrStatus.refundAmount?.toLocaleString()}</span>
                 </div>
               </div>
             )}
@@ -660,13 +660,13 @@ export default function TaxCapitalGains({ holdings, livePrices = {}, userSetting
       </div>
 
       {/* Full Width Tax Planner */}
-      <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-xs mt-4">
-        <div className="flex items-center gap-2 mb-4">
-          <div className="bg-slate-900 p-1.5 rounded-lg text-white">
-            <Landmark size={16} />
+      <div className="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs mt-4">
+        <div className="flex items-center gap-2.5 mb-4 pb-3 border-b border-slate-100">
+          <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center text-white shrink-0">
+            <Landmark size={15} className="text-emerald-400" />
           </div>
           <div>
-            <h3 className="font-semibold text-slate-900 text-sm">Salary Tax Planner (FY 2024-25)</h3>
+            <h3 className="font-bold tracking-tight text-slate-900 text-sm sm:text-base">Salary Tax Planner (FY 2024-25)</h3>
             <p className="text-slate-500 text-xs">Old vs New tax regime comparative estimator</p>
           </div>
         </div>
@@ -678,7 +678,7 @@ export default function TaxCapitalGains({ holdings, livePrices = {}, userSetting
               type="number" 
               value={grossSalary} 
               onChange={(e) => saveGrossSalary(parseInt(e.target.value) || 0)}
-              className="w-full text-base font-semibold font-mono tabular-nums p-2 bg-white border border-slate-200 rounded-lg focus:border-slate-400 focus:outline-none text-slate-900"
+              className="w-full text-base font-semibold font-mono tabular-nums px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl focus:border-slate-400 focus:outline-none text-slate-900"
             />
             <p className="text-xs text-slate-500 leading-relaxed">
               Assumes standard deduction (₹50,000 Old / ₹75,000 New) and mapped 80C deductions (₹{total80C.toLocaleString()}).
@@ -687,40 +687,40 @@ export default function TaxCapitalGains({ holdings, livePrices = {}, userSetting
 
           <div className="w-full md:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-3">
             {/* Old Regime Box */}
-            <div className={`p-3.5 rounded-lg border transition-all ${recommendedRegime === 'OLD REGIME' ? 'border-emerald-300 bg-emerald-50/40' : 'border-slate-200 bg-white'}`}>
+            <div className={`p-4 rounded-xl border transition-all ${recommendedRegime === 'OLD REGIME' ? 'border-emerald-300 bg-emerald-50/30' : 'border-slate-200 bg-slate-50/50'}`}>
               <div className="flex justify-between items-center">
-                <h4 className="text-xs font-semibold text-slate-700">Old tax regime</h4>
+                <h4 className="text-xs font-semibold text-slate-800">Old tax regime</h4>
                 {recommendedRegime === 'OLD REGIME' && (
                   <span className="bg-emerald-100 text-emerald-800 text-[10px] font-medium px-2 py-0.5 rounded-full">Recommended</span>
                 )}
               </div>
-              <p className="text-2xl font-semibold font-mono tabular-nums text-slate-900 my-1.5">₹{oldTotalWithCess.toLocaleString('en-IN', { maximumFractionDigits: 0 })}</p>
-              <div className="text-xs text-slate-600 space-y-1 mt-2 pt-2 border-t border-slate-100 font-mono tabular-nums">
+              <p className="text-2xl font-bold font-mono tabular-nums text-slate-900 my-1.5">₹{oldTotalWithCess.toLocaleString('en-IN', { maximumFractionDigits: 0 })}</p>
+              <div className="text-xs text-slate-600 space-y-1 mt-2 pt-2 border-t border-slate-200/60 font-mono tabular-nums">
                 <p className="flex justify-between"><span className="font-sans text-slate-500">Taxable base:</span> ₹{netIncomeOld.toLocaleString('en-IN')}</p>
                 <p className="flex justify-between"><span className="font-sans text-slate-500">80C used:</span> ₹{total80C.toLocaleString('en-IN')}</p>
                 <p className="flex justify-between"><span className="font-sans text-slate-500">Std. deduction:</span> ₹50,000</p>
               </div>
               {recommendedRegime === 'OLD REGIME' && (
-                <div className="mt-2.5 text-xs font-medium text-emerald-700">Saves ₹{taxSaved.toLocaleString('en-IN')} vs New Regime</div>
+                <div className="mt-2.5 text-xs font-semibold text-emerald-700">Saves ₹{taxSaved.toLocaleString('en-IN')} vs New Regime</div>
               )}
             </div>
 
             {/* New Regime Box */}
-            <div className={`p-3.5 rounded-lg border transition-all ${recommendedRegime === 'NEW REGIME' ? 'border-emerald-300 bg-emerald-50/40' : 'border-slate-200 bg-white'}`}>
+            <div className={`p-4 rounded-xl border transition-all ${recommendedRegime === 'NEW REGIME' ? 'border-emerald-300 bg-emerald-50/30' : 'border-slate-200 bg-slate-50/50'}`}>
               <div className="flex justify-between items-center">
-                <h4 className="text-xs font-semibold text-slate-700">New tax regime</h4>
+                <h4 className="text-xs font-semibold text-slate-800">New tax regime</h4>
                 {recommendedRegime === 'NEW REGIME' && (
                   <span className="bg-emerald-100 text-emerald-800 text-[10px] font-medium px-2 py-0.5 rounded-full">Recommended</span>
                 )}
               </div>
-              <p className="text-2xl font-semibold font-mono tabular-nums text-slate-900 my-1.5">₹{newTotalWithCess.toLocaleString('en-IN', { maximumFractionDigits: 0 })}</p>
-              <div className="text-xs text-slate-600 space-y-1 mt-2 pt-2 border-t border-slate-100 font-mono tabular-nums">
+              <p className="text-2xl font-bold font-mono tabular-nums text-slate-900 my-1.5">₹{newTotalWithCess.toLocaleString('en-IN', { maximumFractionDigits: 0 })}</p>
+              <div className="text-xs text-slate-600 space-y-1 mt-2 pt-2 border-t border-slate-200/60 font-mono tabular-nums">
                 <p className="flex justify-between"><span className="font-sans text-slate-500">Taxable base:</span> ₹{netIncomeNew.toLocaleString('en-IN')}</p>
                 <p className="flex justify-between"><span className="font-sans text-slate-500">80C:</span> Not applicable</p>
                 <p className="flex justify-between"><span className="font-sans text-slate-500">Std. deduction:</span> ₹75,000</p>
               </div>
               {recommendedRegime === 'NEW REGIME' && (
-                <div className="mt-2.5 text-xs font-medium text-emerald-700">Saves ₹{taxSaved.toLocaleString('en-IN')} vs Old Regime</div>
+                <div className="mt-2.5 text-xs font-semibold text-emerald-700">Saves ₹{taxSaved.toLocaleString('en-IN')} vs Old Regime</div>
               )}
             </div>
           </div>

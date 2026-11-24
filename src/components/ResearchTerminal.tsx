@@ -65,8 +65,8 @@ function generateMockOptionChain() {
   for (let i = 0; i < 20; i++) {
     data.push({
       strike_price: strike,
-      call_options: { market_data: { oi: Math.floor(Math.random() * 200000 + 10000), ltp: (Math.random() * 150 + 5).toFixed(2) } },
-      put_options: { market_data: { oi: Math.floor(Math.random() * 200000 + 10000), ltp: (Math.random() * 150 + 5).toFixed(2) } }
+      call_options: { market_data: { oi: Math.floor(Math.random() * 200000 + 10000), ltp: +(Math.random() * 150 + 5).toFixed(2) } },
+      put_options: { market_data: { oi: Math.floor(Math.random() * 200000 + 10000), ltp: +(Math.random() * 150 + 5).toFixed(2) } }
     });
     strike += 20;
   }

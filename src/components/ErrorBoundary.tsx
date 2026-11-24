@@ -39,7 +39,8 @@ export class ErrorBoundary extends Component<Props, State> {
   public render() {
     if (this.state.hasError) {
       const isChunkError = this.state.error?.message?.includes('dynamically imported module') ||
-                           this.state.error?.message?.includes('Loading chunk');
+                           this.state.error?.message?.includes('Loading chunk') ||
+                           this.state.error?.message?.includes('Failed to fetch');
 
       return (
         <div className="min-h-screen flex items-center justify-center bg-slate-50 p-4">
@@ -52,7 +53,7 @@ export class ErrorBoundary extends Component<Props, State> {
                 ? 'A new update was deployed to the server. Please reload the app to get the latest features.'
                 : 'An unexpected error occurred in this view.'}
             </p>
-            <div className="flex gap-2">
+            <div className="flex gap-2 mb-3">
               <button
                 onClick={() => window.location.reload()}
                 className="flex-1 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium py-3 px-4 rounded-xl text-sm transition-colors cursor-pointer shadow-xs"
@@ -69,6 +70,14 @@ export class ErrorBoundary extends Component<Props, State> {
                 Return Home
               </button>
             </div>
+            {this.state.error && !isChunkError && (
+              <details className="mt-4 text-left">
+                <summary className="text-xs text-slate-400 hover:text-slate-600 cursor-pointer font-medium">Error Details</summary>
+                <pre className="text-[11px] text-rose-600 font-mono bg-rose-50/70 p-2.5 rounded-xl border border-rose-200 mt-2 overflow-auto max-h-28 whitespace-pre-wrap">
+                  {this.state.error.message || String(this.state.error)}
+                </pre>
+              </details>
+            )}
           </div>
         </div>
       );

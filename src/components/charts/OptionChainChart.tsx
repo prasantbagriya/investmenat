@@ -30,8 +30,8 @@ const OptionChainChart: React.FC<OptionChainChartProps> = ({ data, theme = 'ligh
     let minDiff = Infinity;
     let idx = 0;
     sortedData.forEach((row, i) => {
-      const callLTP = row.call_options?.market_data?.ltp || 0;
-      const putLTP = row.put_options?.market_data?.ltp || 0;
+      const callLTP = Number(row.call_options?.market_data?.ltp) || 0;
+      const putLTP = Number(row.put_options?.market_data?.ltp) || 0;
       if (callLTP > 0 && putLTP > 0) {
         const diff = Math.abs(callLTP - putLTP);
         if (diff < minDiff) {
@@ -53,8 +53,8 @@ const OptionChainChart: React.FC<OptionChainChartProps> = ({ data, theme = 'ligh
     let supportStrike = 0;
 
     sortedData.forEach(row => {
-      const cOI = row.call_options?.market_data?.oi || 0;
-      const pOI = row.put_options?.market_data?.oi || 0;
+      const cOI = Number(row.call_options?.market_data?.oi) || 0;
+      const pOI = Number(row.put_options?.market_data?.oi) || 0;
 
       totalCallOI += cOI;
       totalPutOI += pOI;
@@ -118,11 +118,12 @@ const OptionChainChart: React.FC<OptionChainChartProps> = ({ data, theme = 'ligh
     }
   }, [atmIndex, sortedData.length, view]);
 
-  const formatNum = (num: number) => {
-    if (!num) return '-';
-    if (num > 100000) return (num / 100000).toFixed(2) + 'L';
-    if (num > 1000) return (num / 1000).toFixed(2) + 'K';
-    return num.toString();
+  const formatNum = (num: any) => {
+    const n = Number(num);
+    if (!n || isNaN(n)) return '-';
+    if (n > 100000) return (n / 100000).toFixed(2) + 'L';
+    if (n > 1000) return (n / 1000).toFixed(2) + 'K';
+    return n.toString();
   };
 
   if (!data || data.length === 0) {
@@ -171,10 +172,10 @@ const OptionChainChart: React.FC<OptionChainChartProps> = ({ data, theme = 'ligh
           {/* Body */}
           <div ref={scrollRef} className="flex-1 overflow-y-auto scroll-smooth">
             {sortedData.map((row, idx) => {
-              const callLTP = row.call_options?.market_data?.ltp || 0;
-              const putLTP = row.put_options?.market_data?.ltp || 0;
-              const callOI = row.call_options?.market_data?.oi || 0;
-              const putOI = row.put_options?.market_data?.oi || 0;
+              const callLTP = Number(row.call_options?.market_data?.ltp) || 0;
+              const putLTP = Number(row.put_options?.market_data?.ltp) || 0;
+              const callOI = Number(row.call_options?.market_data?.oi) || 0;
+              const putOI = Number(row.put_options?.market_data?.oi) || 0;
 
               const callOiPercent = maxOI ? (callOI / maxOI) * 100 : 0;
               const putOiPercent = maxOI ? (putOI / maxOI) * 100 : 0;
@@ -200,7 +201,7 @@ const OptionChainChart: React.FC<OptionChainChartProps> = ({ data, theme = 'ligh
                       style={{ width: `${callOiPercent}%` }}
                     />
                     <div className="w-20 text-left z-10 font-mono tabular-nums text-xs text-slate-500">{formatNum(callOI)}</div>
-                    <div className="w-16 text-right z-10 font-mono tabular-nums font-medium text-slate-900">{callLTP ? callLTP.toFixed(2) : '-'}</div>
+                    <div className="w-16 text-right z-10 font-mono tabular-nums font-medium text-slate-900">{callLTP > 0 ? callLTP.toFixed(2) : '-'}</div>
                     <div className="w-24 text-right z-10 opacity-0 group-hover:opacity-100 transition-opacity">
                       <button className="px-3 py-1 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white rounded-xl text-xs font-medium shadow-sm transition-all transform hover:scale-105">
                         BUY CE
@@ -225,7 +226,7 @@ const OptionChainChart: React.FC<OptionChainChartProps> = ({ data, theme = 'ligh
                         BUY PE
                       </button>
                     </div>
-                    <div className="w-16 text-left z-10 font-mono tabular-nums font-medium text-slate-900">{putLTP ? putLTP.toFixed(2) : '-'}</div>
+                    <div className="w-16 text-left z-10 font-mono tabular-nums font-medium text-slate-900">{putLTP > 0 ? putLTP.toFixed(2) : '-'}</div>
                     <div className="w-20 text-right z-10 font-mono tabular-nums text-xs text-slate-500">{formatNum(putOI)}</div>
                   </div>
                 </div>

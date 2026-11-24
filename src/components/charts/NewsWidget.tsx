@@ -73,7 +73,7 @@ const NewsWidget = ({ theme = 'light', instrumentKey, compact = false }: NewsWid
     return (
       <div className="w-full h-full min-h-[60vh] flex flex-col items-center justify-center bg-white p-6 text-center">
         <AlertTriangle size={32} className="text-amber-500 mb-3" />
-        <p className="text-sm font-bold text-slate-700">{error}</p>
+        <p className="text-sm font-medium text-slate-700">{error}</p>
         <p className="text-xs text-slate-500 mt-2">Connect to Upstox to view real-time market updates.</p>
       </div>
     );
@@ -83,7 +83,7 @@ const NewsWidget = ({ theme = 'light', instrumentKey, compact = false }: NewsWid
     return (
       <div className="w-full h-full min-h-[60vh] flex flex-col items-center justify-center bg-white p-6 text-center">
         <Newspaper size={32} className="text-slate-300 mb-3" />
-        <p className="text-sm font-bold text-slate-700">No News Found</p>
+        <p className="text-sm font-medium text-slate-700">No News Found</p>
         <p className="text-xs text-slate-500 mt-2">No recent news articles available for this selection.</p>
       </div>
     );
@@ -98,7 +98,7 @@ const NewsWidget = ({ theme = 'light', instrumentKey, compact = false }: NewsWid
             href={item.article_link}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex gap-4 p-4 rounded-xl border border-slate-100 hover:border-blue-200 hover:bg-blue-50/50 transition-all group"
+            className="flex gap-4 p-4 rounded-xl border border-slate-100 hover:border-slate-300 hover:bg-slate-50/80 transition-all group"
           >
             {item.thumbnail && !compact && (
               <img 
@@ -108,7 +108,7 @@ const NewsWidget = ({ theme = 'light', instrumentKey, compact = false }: NewsWid
               />
             )}
             <div className="flex-1 min-w-0 flex flex-col justify-center">
-              <h4 className={`font-bold text-slate-900 group-hover:text-blue-700 transition-colors leading-tight mb-2 ${compact ? 'text-sm' : 'text-base'}`}>
+              <h4 className={`font-medium text-slate-900 group-hover:text-slate-900 transition-colors leading-tight mb-2 ${compact ? 'text-sm' : 'text-base'}`}>
                 {item.heading}
               </h4>
               
@@ -116,7 +116,7 @@ const NewsWidget = ({ theme = 'light', instrumentKey, compact = false }: NewsWid
                 {item.summary}
               </p>
               
-              <div className="flex items-center gap-3 text-xs font-bold text-slate-400 capitalize mt-auto">
+              <div className="flex items-center gap-3 text-xs font-medium text-slate-500 capitalize mt-auto">
                 <span className="flex items-center gap-1"><Clock size={12} /> {new Date(item.published_time).toLocaleString()}</span>
               </div>
             </div>

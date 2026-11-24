@@ -159,7 +159,7 @@ export default function StockTerminal() {
   return (
     <div className={`flex flex-col ${isFullscreen ? 'fixed inset-0 z-50 bg-slate-50' : 'h-[calc(100vh-80px)] overflow-y-auto'}`}>
       {/* Header bar */}
-      <div className="bg-white border-b border-slate-200 px-4 py-3 flex flex-col md:flex-row items-start md:items-center justify-between shadow-sm gap-3">
+      <div className="bg-white border-b border-slate-200/80 px-4 py-3 flex flex-col md:flex-row items-start md:items-center justify-between shadow-xs gap-3">
         <div className="flex flex-wrap items-center gap-2 md:gap-4 w-full md:w-auto">
           <div className="flex items-center gap-2">
             <Activity className="text-slate-900" size={24} />
@@ -184,7 +184,7 @@ export default function StockTerminal() {
             </button>
           </form>
           
-          {loading && <span className="text-xs text-indigo-500 font-bold animate-pulse flex items-center gap-1"><RefreshCw size={12} className="animate-spin" /> Loading data...</span>}
+          {loading && <span className="text-xs text-slate-600 font-medium animate-pulse flex items-center gap-1"><RefreshCw size={12} className="animate-spin text-slate-800" /> Loading data...</span>}
           {error && <span className="text-xs text-rose-500 font-bold">{error}</span>}
         </div>
         
@@ -202,7 +202,7 @@ export default function StockTerminal() {
           )}
           <button 
             onClick={toggleFullscreen}
-            className="p-2 text-slate-500 hover:text-slate-900 hover:bg-slate-100 rounded-xl transition-colors"
+            className="p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-xl border border-slate-200/80 shadow-xs transition-all cursor-pointer"
             title="Toggle Fullscreen"
           >
             {isFullscreen ? <Minimize size={20} /> : <Maximize size={20} />}
@@ -219,8 +219,8 @@ export default function StockTerminal() {
         {/* Fundamentals Sidebar */}
         <div className="w-full md:w-80 bg-slate-50 md:border-l border-slate-200 overflow-y-auto flex flex-col shadow-inner">
           <div className="p-4 border-b border-slate-200 bg-white sticky top-0 z-10">
-            <h2 className="text-xs font-semibold text-slate-400 capitalize mb-1">Company Overview</h2>
-            <h3 className="font-bold text-slate-900 break-all text-sm leading-tight">
+            <h2 className="text-xs font-medium text-slate-500 capitalize mb-1">Company Overview</h2>
+            <h3 className="font-semibold text-slate-900 break-all text-sm leading-tight">
               {fundamentals?.company_name || symbol.split('|')[1]}
             </h3>
           </div>
@@ -229,38 +229,38 @@ export default function StockTerminal() {
             {fundamentals ? (
               <>
                 <div>
-                  <h4 className="text-xs font-bold text-slate-500 capitalize mb-2">Valuation Metrics</h4>
+                  <h4 className="text-xs font-semibold text-slate-700 capitalize mb-2">Valuation Metrics</h4>
                   <div className="grid grid-cols-2 gap-3">
-                    <div className="bg-white p-2 rounded-lg border border-slate-200 shadow-sm">
-                      <p className="text-xs text-slate-500 font-bold mb-0.5">P/E Ratio</p>
-                      <p className="font-mono tabular-nums font-bold text-slate-800">{fundamentals.pe ? fundamentals.pe.toFixed(2) : 'N/A'}</p>
+                    <div className="bg-white p-2.5 rounded-xl border border-slate-200/80 shadow-xs">
+                      <p className="text-xs text-slate-500 font-medium mb-0.5">P/E Ratio</p>
+                      <p className="font-mono tabular-nums font-semibold text-slate-900">{fundamentals.pe ? fundamentals.pe.toFixed(2) : 'N/A'}</p>
                     </div>
-                    <div className="bg-white p-2 rounded-lg border border-slate-200 shadow-sm">
-                      <p className="text-xs text-slate-500 font-bold mb-0.5">P/B Ratio</p>
-                      <p className="font-mono tabular-nums font-bold text-slate-800">{fundamentals.pb ? fundamentals.pb.toFixed(2) : 'N/A'}</p>
+                    <div className="bg-white p-2.5 rounded-xl border border-slate-200/80 shadow-xs">
+                      <p className="text-xs text-slate-500 font-medium mb-0.5">P/B Ratio</p>
+                      <p className="font-mono tabular-nums font-semibold text-slate-900">{fundamentals.pb ? fundamentals.pb.toFixed(2) : 'N/A'}</p>
                     </div>
-                    <div className="bg-white p-2 rounded-lg border border-slate-200 shadow-sm">
-                      <p className="text-xs text-slate-500 font-bold mb-0.5">Dividend Yield</p>
-                      <p className="font-mono tabular-nums font-bold text-slate-800">{fundamentals.dividend_yield ? fundamentals.dividend_yield.toFixed(2) + '%' : 'N/A'}</p>
+                    <div className="bg-white p-2.5 rounded-xl border border-slate-200/80 shadow-xs">
+                      <p className="text-xs text-slate-500 font-medium mb-0.5">Dividend Yield</p>
+                      <p className="font-mono tabular-nums font-semibold text-slate-900">{fundamentals.dividend_yield ? fundamentals.dividend_yield.toFixed(2) + '%' : 'N/A'}</p>
                     </div>
-                    <div className="bg-white p-2 rounded-lg border border-slate-200 shadow-sm">
-                      <p className="text-xs text-slate-500 font-bold mb-0.5">EPS (TTM)</p>
-                      <p className="font-mono tabular-nums font-bold text-slate-800">{fundamentals.eps_ttm ? '₹' + fundamentals.eps_ttm.toFixed(2) : 'N/A'}</p>
+                    <div className="bg-white p-2.5 rounded-xl border border-slate-200/80 shadow-xs">
+                      <p className="text-xs text-slate-500 font-medium mb-0.5">EPS (TTM)</p>
+                      <p className="font-mono tabular-nums font-semibold text-slate-900">{fundamentals.eps_ttm ? '₹' + fundamentals.eps_ttm.toFixed(2) : 'N/A'}</p>
                     </div>
                   </div>
                 </div>
 
                 <div>
-                  <h4 className="text-xs font-bold text-slate-500 capitalize mb-2">52 Week Range</h4>
-                  <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
+                  <h4 className="text-xs font-semibold text-slate-700 capitalize mb-2">52 Week Range</h4>
+                  <div className="bg-white p-3.5 rounded-xl border border-slate-200/80 shadow-xs">
                     <div className="flex justify-between items-center mb-2">
                       <div>
-                        <p className="text-xs text-slate-400 font-bold">52W Low</p>
-                        <p className="font-mono tabular-nums font-bold text-rose-600">₹{fundamentals.fifty_two_week_low}</p>
+                        <p className="text-xs text-slate-500 font-medium">52W Low</p>
+                        <p className="font-mono tabular-nums font-semibold text-rose-600">₹{fundamentals.fifty_two_week_low}</p>
                       </div>
                       <div className="text-right">
-                        <p className="text-xs text-slate-400 font-bold">52W High</p>
-                        <p className="font-mono tabular-nums font-bold text-emerald-600">₹{fundamentals.fifty_two_week_high}</p>
+                        <p className="text-xs text-slate-500 font-medium">52W High</p>
+                        <p className="font-mono tabular-nums font-semibold text-emerald-600">₹{fundamentals.fifty_two_week_high}</p>
                       </div>
                     </div>
                     {quote?.last_price && fundamentals.fifty_two_week_low && fundamentals.fifty_two_week_high && (
@@ -278,23 +278,23 @@ export default function StockTerminal() {
                 </div>
 
                 <div>
-                  <h4 className="text-xs font-bold text-slate-500 capitalize mb-2">Financials</h4>
-                  <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden text-xs">
+                  <h4 className="text-xs font-semibold text-slate-700 capitalize mb-2">Financials</h4>
+                  <div className="bg-white rounded-xl border border-slate-200/80 shadow-xs overflow-hidden text-xs">
                     <div className="flex justify-between p-2 border-b border-slate-100">
                       <span className="text-slate-500 font-medium">Market Cap</span>
-                      <span className="font-mono tabular-nums font-bold text-slate-800">{fundamentals.mcap ? `₹${(fundamentals.mcap / 10000000).toFixed(2)} Cr` : 'N/A'}</span>
+                      <span className="font-mono tabular-nums font-semibold text-slate-900">{fundamentals.mcap ? `₹${(fundamentals.mcap / 10000000).toFixed(2)} Cr` : 'N/A'}</span>
                     </div>
                     <div className="flex justify-between p-2 border-b border-slate-100">
                       <span className="text-slate-500 font-medium">ROE</span>
-                      <span className="font-mono tabular-nums font-bold text-slate-800">{fundamentals.roe ? fundamentals.roe.toFixed(2) + '%' : 'N/A'}</span>
+                      <span className="font-mono tabular-nums font-semibold text-slate-900">{fundamentals.roe ? fundamentals.roe.toFixed(2) + '%' : 'N/A'}</span>
                     </div>
                     <div className="flex justify-between p-2 border-b border-slate-100">
                       <span className="text-slate-500 font-medium">ROCE</span>
-                      <span className="font-mono tabular-nums font-bold text-slate-800">{fundamentals.roce ? fundamentals.roce.toFixed(2) + '%' : 'N/A'}</span>
+                      <span className="font-mono tabular-nums font-semibold text-slate-900">{fundamentals.roce ? fundamentals.roce.toFixed(2) + '%' : 'N/A'}</span>
                     </div>
                     <div className="flex justify-between p-2">
                       <span className="text-slate-500 font-medium">Book Value</span>
-                      <span className="font-mono tabular-nums font-bold text-slate-800">{fundamentals.book_value ? `₹${fundamentals.book_value.toFixed(2)}` : 'N/A'}</span>
+                      <span className="font-mono tabular-nums font-semibold text-slate-900">{fundamentals.book_value ? `₹${fundamentals.book_value.toFixed(2)}` : 'N/A'}</span>
                     </div>
                   </div>
                 </div>

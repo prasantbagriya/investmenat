@@ -152,7 +152,7 @@ const OptionChainChart: React.FC<OptionChainChartProps> = ({ data, theme = 'ligh
       {view === 'table' && (
         <>
           {/* Header */}
-          <div className="flex bg-slate-900 text-white text-xs font-bold capitalize sticky top-0 z-20 shadow-md">
+          <div className="flex bg-slate-900 text-white text-xs font-medium capitalize sticky top-0 z-20 shadow-xs">
             <div className="flex-1 flex justify-between items-center px-4 py-2.5 border-r border-slate-700 bg-rose-950/20">
               <span className="w-20 text-left text-slate-300">Call OI</span>
               <span className="w-16 text-right text-slate-200">LTP</span>
@@ -200,7 +200,7 @@ const OptionChainChart: React.FC<OptionChainChartProps> = ({ data, theme = 'ligh
                       style={{ width: `${callOiPercent}%` }}
                     />
                     <div className="w-20 text-left z-10 font-mono tabular-nums text-xs text-slate-500">{formatNum(callOI)}</div>
-                    <div className="w-16 text-right z-10 font-mono tabular-nums font-bold text-slate-800">{callLTP ? callLTP.toFixed(2) : '-'}</div>
+                    <div className="w-16 text-right z-10 font-mono tabular-nums font-medium text-slate-900">{callLTP ? callLTP.toFixed(2) : '-'}</div>
                     <div className="w-24 text-right z-10 opacity-0 group-hover:opacity-100 transition-opacity">
                       <button className="px-3 py-1 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white rounded-xl text-xs font-medium shadow-sm transition-all transform hover:scale-105">
                         BUY CE
@@ -225,7 +225,7 @@ const OptionChainChart: React.FC<OptionChainChartProps> = ({ data, theme = 'ligh
                         BUY PE
                       </button>
                     </div>
-                    <div className="w-16 text-left z-10 font-mono tabular-nums font-bold text-slate-800">{putLTP ? putLTP.toFixed(2) : '-'}</div>
+                    <div className="w-16 text-left z-10 font-mono tabular-nums font-medium text-slate-900">{putLTP ? putLTP.toFixed(2) : '-'}</div>
                     <div className="w-20 text-right z-10 font-mono tabular-nums text-xs text-slate-500">{formatNum(putOI)}</div>
                   </div>
                 </div>
@@ -244,7 +244,7 @@ const OptionChainChart: React.FC<OptionChainChartProps> = ({ data, theme = 'ligh
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
             {/* PCR Card */}
             <div className="bg-white p-5 rounded-xl shadow-xs border border-slate-200">
-              <p className="text-xs text-slate-500 font-bold capitalize mb-2">Put-Call Ratio (PCR)</p>
+              <p className="text-xs text-slate-500 font-medium capitalize mb-2">Put-Call Ratio (PCR)</p>
               <div className="flex items-end gap-2">
                 <span className={`text-4xl font-semibold tracking-tighter ${parseFloat(analytics.pcr) > 1 ? 'text-emerald-500' : 'text-red-500'}`}>{analytics.pcr}</span>
                 <span className="text-sm font-bold text-slate-600 mb-1.5">{analytics.pcrSentiment}</span>
@@ -259,7 +259,7 @@ const OptionChainChart: React.FC<OptionChainChartProps> = ({ data, theme = 'ligh
               </div>
               <p className="text-xs text-slate-500 font-bold capitalize mb-2 relative z-10">Max Pain Strike</p>
               <div className="flex items-end gap-2 relative z-10">
-                <span className="text-4xl font-semibold tracking-tighter text-blue-600">{maxPain}</span>
+                <span className="text-4xl font-semibold tracking-tighter text-slate-900">{maxPain}</span>
               </div>
               <p className="text-xs text-slate-400 mt-2 leading-tight relative z-10">The strike where option sellers face the least payout (minimum pain).</p>
             </div>
@@ -267,29 +267,29 @@ const OptionChainChart: React.FC<OptionChainChartProps> = ({ data, theme = 'ligh
             {/* Support Card */}
             <div className="bg-white p-5 rounded-xl shadow-xs border border-emerald-200 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-full h-1 bg-emerald-400" />
-              <p className="text-xs text-emerald-600 font-bold capitalize mb-2">Highest Support (Put OI)</p>
+              <p className="text-xs text-emerald-600 font-medium capitalize mb-2">Highest Support (Put OI)</p>
               <div className="flex items-end gap-2 mb-1">
                 <span className="text-4xl font-semibold tracking-tighter text-emerald-600">{analytics.supportStrike}</span>
               </div>
-              <span className="text-xs font-bold text-slate-500 font-mono tabular-nums bg-slate-100 px-2 py-0.5 rounded-xl">{formatNum(analytics.maxPutOI)} OI</span>
+              <span className="text-xs font-medium text-slate-600 font-mono tabular-nums bg-slate-100 px-2 py-0.5 rounded-xl">{formatNum(analytics.maxPutOI)} OI</span>
             </div>
 
             {/* Resistance Card */}
             <div className="bg-white p-5 rounded-xl shadow-xs border border-red-200 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-full h-1 bg-red-400" />
-              <p className="text-xs text-red-600 font-bold capitalize mb-2">Highest Resistance (Call OI)</p>
+              <p className="text-xs text-rose-600 font-medium capitalize mb-2">Highest Resistance (Call OI)</p>
               <div className="flex items-end gap-2 mb-1">
                 <span className="text-4xl font-semibold tracking-tighter text-red-600">{analytics.resistanceStrike}</span>
               </div>
-              <span className="text-xs font-bold text-slate-500 font-mono tabular-nums bg-slate-100 px-2 py-0.5 rounded-xl">{formatNum(analytics.maxCallOI)} OI</span>
+              <span className="text-xs font-medium text-slate-600 font-mono tabular-nums bg-slate-100 px-2 py-0.5 rounded-xl">{formatNum(analytics.maxCallOI)} OI</span>
             </div>
           </div>
           
           {/* Visual Distribution Chart */}
           <div className="bg-white p-6 rounded-xl shadow-xs border border-slate-200">
              <div className="flex items-center justify-between mb-6">
-                <h4 className="text-sm font-bold text-slate-800">Open Interest Distribution (Calls vs Puts)</h4>
-                <div className="flex items-center gap-4 text-xs font-bold">
+                <h4 className="text-sm font-semibold text-slate-900">Open Interest Distribution (Calls vs Puts)</h4>
+                <div className="flex items-center gap-4 text-xs font-medium">
                   <div className="flex items-center gap-1.5"><div className="w-3 h-3 bg-red-400 rounded-sm" /> Call OI (Resistance)</div>
                   <div className="flex items-center gap-1.5"><div className="w-3 h-3 bg-emerald-400 rounded-sm" /> Put OI (Support)</div>
                 </div>

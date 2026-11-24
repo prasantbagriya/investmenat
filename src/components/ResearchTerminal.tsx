@@ -17,16 +17,16 @@ import { upstoxApi } from '../services/upstoxApi';
 type TabId = 'dashboard' | 'candlestick' | 'options' | 'portfolio' | 'heatmap' | 'pnl' | 'order' | 'fundamentals' | 'calendar' | 'news' | 'kline';
 
 const TABS = [
-  { id: 'candlestick' as TabId, label: 'Historical Chart', icon: LineChart, color: 'text-blue-500', desc: 'View detailed candlestick patterns and technical analysis.' },
-  { id: 'fundamentals' as TabId, label: 'Fundamental Details', icon: Building2, color: 'text-cyan-500', desc: 'View company profile, financials, and key metrics.' },
-  { id: 'calendar' as TabId, label: 'Economic Calendar', icon: CalendarDays, color: 'text-rose-500', desc: 'Track global economic events and indicators.' },
-  { id: 'news' as TabId, label: 'Market News', icon: Newspaper, color: 'text-purple-500', desc: 'Get the latest top stories and market news globally.' },
-  { id: 'options' as TabId, label: 'Option Chain', icon: BarChart2, color: 'text-indigo-500', desc: 'Analyze strike prices, open interest, and LTP for options.' },
-  { id: 'order' as TabId, label: 'Order Execution', icon: Zap, color: 'text-purple-500', desc: 'Place buy and sell orders directly to your Upstox account.' },
-  { id: 'portfolio' as TabId, label: 'Portfolio Analytics', icon: PieChart, color: 'text-emerald-500', desc: 'Visualize your holdings distribution and exposure.' },
-  { id: 'heatmap' as TabId, label: 'Market Heatmap', icon: Globe, color: 'text-orange-500', desc: 'Spot top gainers and losers in the market at a glance.' },
-  { id: 'pnl' as TabId, label: 'P&L Tracker', icon: TrendingUp, color: 'text-yellow-500', desc: 'Track your realized and unrealized profit & loss over time.' },
-  { id: 'kline' as TabId, label: 'Advanced Kline Chart', icon: Activity, color: 'text-fuchsia-500', desc: 'New isolated workspace with persistent drawings and indicators.' },
+  { id: 'candlestick' as TabId, label: 'Historical Chart', icon: LineChart, color: 'text-slate-900', desc: 'View detailed candlestick patterns and technical analysis.' },
+  { id: 'fundamentals' as TabId, label: 'Fundamental Details', icon: Building2, color: 'text-slate-900', desc: 'View company profile, financials, and key metrics.' },
+  { id: 'calendar' as TabId, label: 'Economic Calendar', icon: CalendarDays, color: 'text-slate-900', desc: 'Track global economic events and indicators.' },
+  { id: 'news' as TabId, label: 'Market News', icon: Newspaper, color: 'text-slate-900', desc: 'Get the latest top stories and market news globally.' },
+  { id: 'options' as TabId, label: 'Option Chain', icon: BarChart2, color: 'text-slate-900', desc: 'Analyze strike prices, open interest, and LTP for options.' },
+  { id: 'order' as TabId, label: 'Order Execution', icon: Zap, color: 'text-slate-900', desc: 'Place buy and sell orders directly to your Upstox account.' },
+  { id: 'portfolio' as TabId, label: 'Portfolio Analytics', icon: PieChart, color: 'text-slate-900', desc: 'Visualize your holdings distribution and exposure.' },
+  { id: 'heatmap' as TabId, label: 'Market Heatmap', icon: Globe, color: 'text-slate-900', desc: 'Spot top gainers and losers in the market at a glance.' },
+  { id: 'pnl' as TabId, label: 'P&L Tracker', icon: TrendingUp, color: 'text-slate-900', desc: 'Track your realized and unrealized profit & loss over time.' },
+  { id: 'kline' as TabId, label: 'Advanced Kline Chart', icon: Activity, color: 'text-slate-900', desc: 'New isolated workspace with persistent drawings and indicators.' },
 ];
 
 const POPULAR_STOCKS = [
@@ -506,7 +506,7 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
           </div>
           <a
             href="/brokers"
-            className="shrink-0 flex items-center gap-1 bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold px-2.5 py-1.5 rounded-xl transition-colors"
+            className="shrink-0 flex items-center gap-1 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white text-xs font-medium px-3 py-1.5 rounded-xl transition-all shadow-xs"
           >
             <ExternalLink size={11} /> Connect Upstox
           </a>
@@ -530,21 +530,21 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
           <div className="absolute top-2 left-4 sm:top-8 sm:left-4 flex items-center gap-2">
             <button 
               onClick={() => window.dispatchEvent(new Event('open-nav-drawer'))}
-              className="flex items-center justify-center p-2 bg-white text-slate-600 rounded-xl shadow-sm border border-slate-200 hover:bg-slate-50 hover:text-slate-900 transition-colors cursor-pointer"
+              className="flex items-center justify-center p-2 bg-white text-slate-600 rounded-xl shadow-xs border border-slate-200 hover:bg-slate-50 hover:text-slate-900 transition-colors cursor-pointer"
             >
               <List size={20} />
             </button>
             <button 
               onClick={() => navigate('/')}
-              className="flex items-center gap-2 px-3 py-2 bg-white text-slate-600 rounded-xl shadow-sm border border-slate-200 hover:bg-slate-50 hover:text-slate-900 transition-colors cursor-pointer"
+              className="flex items-center gap-2 px-3 py-2 bg-white text-slate-600 rounded-xl shadow-xs border border-slate-200 hover:bg-slate-50 hover:text-slate-900 transition-colors cursor-pointer"
             >
               <Home size={16} />
               <span className="text-sm font-medium hidden sm:inline">Main App</span>
             </button>
           </div>
           <div className="text-center mb-8 mt-12 sm:mt-0">
-            <h2 className="text-3xl font-semibold text-slate-900 mb-2">Research Dashboard</h2>
-            <p className="text-slate-500 font-medium">Select a tool below to analyze the market and your portfolio.</p>
+            <h2 className="text-2xl sm:text-3xl font-semibold text-slate-900 mb-1 tracking-tight">Research Dashboard</h2>
+            <p className="text-xs sm:text-sm text-slate-500 font-medium">Select a tool below to analyze the market and your portfolio.</p>
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -558,12 +558,12 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
                     setActiveTab(tab.id);
                   }
                 }}
-                className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs hover:border-slate-300 hover:-translate-y-1 transition-all flex flex-col items-start text-left group cursor-pointer"
+                className="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200/80 shadow-xs hover:border-slate-300 hover:shadow-sm transition-all flex flex-col items-start text-left group cursor-pointer"
               >
-                <div className={`p-3 rounded-xl bg-slate-50 mb-4 group-hover:bg-slate-100 transition-colors ${tab.color}`}>
+                <div className="p-3 rounded-xl bg-slate-100 text-slate-900 group-hover:bg-slate-900 group-hover:text-white transition-all mb-4">
                   <tab.icon size={28} />
                 </div>
-                <h3 className="text-lg font-semibold text-slate-800 mb-1">{tab.label}</h3>
+                <h3 className="text-base sm:text-lg font-semibold text-slate-900 mb-1">{tab.label}</h3>
                 <p className="text-xs text-slate-500 font-medium leading-relaxed">{tab.desc}</p>
               </button>
             ))}
@@ -573,24 +573,24 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
         <>
         {/* ✨ LIVE MARKET QUOTE STRIP ✨ */}
         {marketQuote && (
-          <div className="mx-4 mt-4 bg-white px-4 py-3 rounded-xl border border-slate-200 shadow-sm flex flex-wrap gap-6 items-center">
+          <div className="mx-2 sm:mx-4 mt-3 bg-white px-4 py-3 rounded-2xl border border-slate-200/80 shadow-xs flex flex-wrap gap-6 items-center">
             <div>
-              <p className="text-xs font-bold text-slate-400 ">LTP</p>
-              <p className="text-xl font-semibold text-slate-800">₹{marketQuote.last_price}</p>
+              <p className="text-xs font-medium text-slate-500">LTP</p>
+              <p className="text-lg font-semibold text-slate-900 font-mono tabular-nums">₹{marketQuote.last_price}</p>
             </div>
             <div className={marketQuote.net_change > 0 ? 'text-emerald-600' : 'text-rose-600'}>
-              <p className="text-xs font-bold ">CHANGE</p>
-              <p className="text-md font-bold">
+              <p className="text-xs font-medium text-slate-500">CHANGE</p>
+              <p className="text-sm font-semibold font-mono tabular-nums">
                 {marketQuote.net_change > 0 ? '+' : ''}{marketQuote.net_change} ({marketQuote.net_change > 0 ? '+' : ''}{((marketQuote.net_change / (marketQuote.last_price - marketQuote.net_change)) * 100).toFixed(2)}%)
               </p>
             </div>
             <div className="hidden sm:block">
-              <p className="text-xs font-bold text-slate-400 ">VOLUME</p>
-              <p className="text-md font-bold text-slate-700">{marketQuote.volume?.toLocaleString() || 0}</p>
+              <p className="text-xs font-medium text-slate-500">VOLUME</p>
+              <p className="text-sm font-semibold font-mono tabular-nums text-slate-800">{marketQuote.volume?.toLocaleString() || 0}</p>
             </div>
             <div className="hidden md:block">
-              <p className="text-xs font-bold text-slate-400 ">OPEN INTEREST</p>
-              <p className="text-md font-bold text-slate-700">{marketQuote.oi?.toLocaleString() || 0}</p>
+              <p className="text-xs font-medium text-slate-500">OPEN INTEREST</p>
+              <p className="text-sm font-semibold font-mono tabular-nums text-slate-800">{marketQuote.oi?.toLocaleString() || 0}</p>
             </div>
           </div>
         )}
@@ -612,7 +612,7 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
                   className={`shrink-0 px-3 py-1.5 rounded-xl text-xs font-medium transition-all border shadow-sm ${
                     instrumentKey === s.key
                       ? 'bg-slate-900 text-white border-slate-900'
-                      : 'bg-white text-slate-600 border-slate-200 hover:border-slate-400 hover:shadow-md'
+                      : 'bg-white text-slate-600 border-slate-200 hover:border-slate-300 hover:text-slate-900'
                   }`}
                 >
                   {s.label}
@@ -620,9 +620,9 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
               ))}
             </div>
           )}
-        <div className={`bg-white rounded-none border border-slate-200/60 overflow-hidden ring-1 ring-slate-900/5 ${activeTab === 'candlestick' ? 'h-full flex flex-col !border-none !ring-0 !rounded-none !bg-transparent' : ''}`}>
+        <div className={`bg-white rounded-2xl border border-slate-200/80 shadow-xs overflow-hidden ${activeTab === 'candlestick' ? 'h-full flex flex-col !border-none !ring-0 !rounded-none !bg-transparent !shadow-none' : ''}`}>
           {activeTab !== 'candlestick' && (
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 px-4 py-4 bg-slate-50/50 border-b border-slate-100">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 px-4 py-3 bg-slate-50/50 border-b border-slate-200/80">
             <div className="flex items-center gap-3">
               <button 
                 onClick={() => window.dispatchEvent(new Event('open-nav-drawer'))}
@@ -638,7 +638,7 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
               >
                 <ArrowLeft size={16} />
               </button>
-              <div className={`p-2 rounded-xl bg-white border border-slate-100 ${activeTabDef.color}`}>
+              <div className="p-2 rounded-xl bg-slate-100 text-slate-900 border border-slate-200/60">
                 <activeTabDef.icon size={16} />
               </div>
               <div className="flex items-center gap-3">
@@ -702,7 +702,7 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
                                 setShowSearchDropdown(false);
                               }}
                             >
-                              <span className="text-xs font-bold text-slate-800">{s.label}</span>
+                              <span className="text-xs font-medium text-slate-900">{s.label}</span>
                               <span className="text-xs text-slate-400 font-mono tabular-nums px-1.5 py-0.5 bg-slate-100 rounded-xl">{s.key.split('|')[0]}</span>
                             </div>
                           ))
@@ -726,10 +726,10 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
                   )}
 
                   <div className="flex items-center gap-1 pl-2 border-l border-slate-200 ml-1 pr-1 py-1">
-                    <button type="submit" className="px-4 py-1.5 bg-slate-900 text-white rounded-xl hover:bg-black transition-all text-xs font-medium shadow-sm">
+                    <button type="submit" className="px-3.5 py-1.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white rounded-xl transition-all text-xs font-medium shadow-xs cursor-pointer">
                       Search
                     </button>
-                    <button type="button" onClick={() => setShowNewsSidebar(!showNewsSidebar)} className={`p-1.5 rounded-xl transition-all ${showNewsSidebar ? 'bg-blue-100 text-blue-600' : 'text-slate-500 hover:text-slate-900 hover:bg-slate-100'}`} title="Toggle News Sidebar">
+                    <button type="button" onClick={() => setShowNewsSidebar(!showNewsSidebar)} className={`p-1.5 rounded-xl transition-all cursor-pointer ${showNewsSidebar ? 'bg-slate-900 text-white' : 'text-slate-500 hover:text-slate-900 hover:bg-slate-100'}`} title="Toggle News Sidebar">
                       <Newspaper size={14} />
                     </button>
                     <button type="button" onClick={fetchData} className="p-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-100 rounded-xl transition-all" title="Refresh">
@@ -797,13 +797,13 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
               {errorMsg ? (
                 <div className="flex-1 flex flex-col items-center justify-center p-8 text-center bg-white/50 m-4 rounded-xl border border-red-100">
                   <AlertTriangle size={32} className="text-red-400 mb-3" />
-                  <p className="text-sm font-bold text-slate-800">{errorMsg}</p>
+                  <p className="text-sm font-semibold text-slate-800">{errorMsg}</p>
                   <p className="text-xs text-slate-500 mt-2 max-w-md">Try checking if the selected Expiry Date is a valid F&O expiry (like Thursday), or try clicking 'Disconnect Upstox' to reconnect.</p>
                 </div>
               ) : optionChainData.length === 0 && !isLoading ? (
                 <div className="flex-1 flex flex-col items-center justify-center p-8 text-center bg-white/50 m-4 rounded-xl border border-slate-200">
                   <div className="text-slate-400 mb-2"><BarChart2 size={32} /></div>
-                  <p className="text-sm font-bold text-slate-700">No Option Chain Data Found</p>
+                  <p className="text-sm font-semibold text-slate-700">No Option Chain Data Found</p>
                   <p className="text-xs text-slate-500 mt-1 max-w-sm">Please ensure the selected date ({expiryDate}) is a valid expiry day for this symbol. Options only expire on specific days (like Thursdays for Nifty).</p>
                 </div>
               ) : (
@@ -847,7 +847,7 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
         {showNewsSidebar && (
           <div className="w-[350px] border-l border-slate-200 bg-white shadow-xl z-20 flex flex-col h-full overflow-hidden shrink-0">
             <div className="p-3 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
-              <h3 className="text-sm font-bold text-slate-800 flex items-center gap-2"><Newspaper size={16} className="text-blue-600"/> Live News</h3>
+              <h3 className="text-sm font-semibold text-slate-900 flex items-center gap-2"><Newspaper size={16} className="text-slate-900"/> Live News</h3>
               <button onClick={() => setShowNewsSidebar(false)} className="text-slate-400 hover:text-slate-800 p-1 hover:bg-slate-200 rounded-xl font-medium text-xs">X</button>
             </div>
             <div className="flex-1 overflow-y-auto">

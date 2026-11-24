@@ -91,7 +91,7 @@ const FundamentalsWidget = ({ instrumentKey }: FundamentalsWidgetProps) => {
 
   if (isBinance) {
     if (isLoadingCrypto) {
-      return <div className="w-full h-full bg-white flex items-center justify-center p-6"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div></div>;
+      return <div className="w-full h-full bg-white flex items-center justify-center p-6"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-slate-900"></div></div>;
     }
     
     if (!cryptoData?.ticker) {
@@ -104,9 +104,9 @@ const FundamentalsWidget = ({ instrumentKey }: FundamentalsWidgetProps) => {
     return (
       <div className="w-full h-full bg-white flex flex-col overflow-y-auto custom-scrollbar">
         <div className="p-4 border-b border-slate-100 bg-slate-50/50">
-          <h2 className="text-xl font-bold text-slate-800">{tvSymbol.replace('BINANCE:', '')}</h2>
+          <h2 className="text-xl font-semibold text-slate-900">{tvSymbol.replace('BINANCE:', '')}</h2>
           <div className="flex items-baseline gap-3 mt-1">
-            <span className="text-2xl font-bold">${parseFloat(ticker.lastPrice).toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+            <span className="text-2xl font-semibold font-mono tabular-nums text-slate-900">${parseFloat(ticker.lastPrice).toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
             <span className={`text-sm font-semibold ${priceChangeColor}`}>
               {parseFloat(ticker.priceChange) > 0 ? '+' : ''}{parseFloat(ticker.priceChange).toLocaleString()} ({parseFloat(ticker.priceChangePercent).toFixed(2)}%)
             </span>
@@ -114,7 +114,7 @@ const FundamentalsWidget = ({ instrumentKey }: FundamentalsWidgetProps) => {
         </div>
         
         <div className="p-4 flex-1">
-          <h3 className="text-sm font-bold text-slate-400 capitalize mb-4">Crypto Metrics (24H)</h3>
+          <h3 className="text-xs font-semibold text-slate-500 capitalize mb-4">Crypto Metrics (24H)</h3>
           
           <div className="grid grid-cols-2 gap-4">
             <div className="bg-slate-50 p-3 rounded-xl border border-slate-200/80">
@@ -165,7 +165,7 @@ const FundamentalsWidget = ({ instrumentKey }: FundamentalsWidgetProps) => {
         <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mb-4 border border-slate-200">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#64748b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 22h20"/><path d="M17 2v20"/><path d="M22 17H2"/><path d="M7 2v20"/><path d="M22 7H2"/></svg>
         </div>
-        <h3 className="text-xl font-bold text-slate-800 mb-2">Fundamentals Not Available</h3>
+        <h3 className="text-xl font-semibold text-slate-900 mb-2">Fundamentals Not Available</h3>
         <p className="text-slate-500 text-sm max-w-sm">
           Fundamental data (Balance Sheet, Income Statement, etc.) is only available for individual company stocks, not for market indices or forex.
         </p>

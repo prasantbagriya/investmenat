@@ -163,19 +163,19 @@ const AdvancedChartWidget = ({
         {/* Layout Grid Dropdown */}
         {showLayoutMenu && onLayoutChange && (
           <div className={`absolute sm:top-[40px] top-[260px] z-50 bg-white shadow-xs border border-slate-200 rounded-xl p-2 grid grid-cols-3 gap-2 transition-all duration-300 right-[50px] ${activeSidePanel ? 'sm:right-[480px]' : 'sm:right-[80px]'}`}>
-             <button onClick={() => onLayoutChange('1')} className={`p-3 border rounded-xl flex justify-center items-center ${chartLayout === '1' ? 'border-blue-500 bg-blue-50' : 'border-slate-200 hover:border-slate-300'}`} title="1 Chart">
+             <button onClick={() => onLayoutChange('1')} className={`p-3 border rounded-xl flex justify-center items-center ${chartLayout === '1' ? 'border-slate-900 bg-slate-100 text-slate-900' : 'border-slate-200 hover:border-slate-300'}`} title="1 Chart">
                <div className="w-6 h-6 border-2 border-slate-400 rounded-sm"></div>
              </button>
-             <button onClick={() => onLayoutChange('split-v')} className={`p-3 border rounded-xl flex justify-center items-center ${chartLayout === 'split-v' ? 'border-blue-500 bg-blue-50' : 'border-slate-200 hover:border-slate-300'}`} title="2 Charts (Vertical)">
+             <button onClick={() => onLayoutChange('split-v')} className={`p-3 border rounded-xl flex justify-center items-center ${chartLayout === 'split-v' ? 'border-slate-900 bg-slate-100 text-slate-900' : 'border-slate-200 hover:border-slate-300'}`} title="2 Charts (Vertical)">
                <div className="w-6 h-6 flex gap-1"><div className="flex-1 border-2 border-slate-400 rounded-sm"></div><div className="flex-1 border-2 border-slate-400 rounded-sm"></div></div>
              </button>
-             <button onClick={() => onLayoutChange('split-h')} className={`p-3 border rounded-xl flex justify-center items-center ${chartLayout === 'split-h' ? 'border-blue-500 bg-blue-50' : 'border-slate-200 hover:border-slate-300'}`} title="2 Charts (Horizontal)">
+             <button onClick={() => onLayoutChange('split-h')} className={`p-3 border rounded-xl flex justify-center items-center ${chartLayout === 'split-h' ? 'border-slate-900 bg-slate-100 text-slate-900' : 'border-slate-200 hover:border-slate-300'}`} title="2 Charts (Horizontal)">
                <div className="w-6 h-6 flex flex-col gap-1"><div className="flex-1 border-2 border-slate-400 rounded-sm"></div><div className="flex-1 border-2 border-slate-400 rounded-sm"></div></div>
              </button>
-             <button onClick={() => onLayoutChange('grid-4')} className={`p-3 border rounded-xl flex justify-center items-center ${chartLayout === 'grid-4' ? 'border-blue-500 bg-blue-50' : 'border-slate-200 hover:border-slate-300'}`} title="4 Charts">
+             <button onClick={() => onLayoutChange('grid-4')} className={`p-3 border rounded-xl flex justify-center items-center ${chartLayout === 'grid-4' ? 'border-slate-900 bg-slate-100 text-slate-900' : 'border-slate-200 hover:border-slate-300'}`} title="4 Charts">
                <div className="w-6 h-6 grid grid-cols-2 gap-1"><div className="border-2 border-slate-400 rounded-sm"></div><div className="border-2 border-slate-400 rounded-sm"></div><div className="border-2 border-slate-400 rounded-sm"></div><div className="border-2 border-slate-400 rounded-sm"></div></div>
              </button>
-             <button onClick={() => onLayoutChange('grid-8')} className={`p-3 border rounded-xl flex justify-center items-center ${chartLayout === 'grid-8' ? 'border-blue-500 bg-blue-50' : 'border-slate-200 hover:border-slate-300'}`} title="8 Charts">
+             <button onClick={() => onLayoutChange('grid-8')} className={`p-3 border rounded-xl flex justify-center items-center ${chartLayout === 'grid-8' ? 'border-slate-900 bg-slate-100 text-slate-900' : 'border-slate-200 hover:border-slate-300'}`} title="8 Charts">
                <div className="w-6 h-6 grid grid-cols-4 grid-rows-2 gap-[2px]">
                  <div className="border-[1.5px] border-slate-400 rounded-[1px]"></div>
                  <div className="border-[1.5px] border-slate-400 rounded-[1px]"></div>
@@ -193,7 +193,7 @@ const AdvancedChartWidget = ({
         {/* Watchlist Edit Modal (TradingView Style) */}
         {showWatchlistMenu && onAddWatchlistSymbol && (
           <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-[1px]">
-            <div className={`w-[600px] max-w-[95%] flex flex-col shadow-2xl rounded-lg border ${theme === 'dark' ? 'bg-[#1e222d] border-[#434651] text-[#d1d4dc]' : 'bg-white border-[#e0e3eb] text-[#131722]'}`}>
+            <div className={`w-[600px] max-w-[95%] flex flex-col shadow-xl rounded-2xl border ${theme === 'dark' ? 'bg-[#1e222d] border-[#434651] text-[#d1d4dc]' : 'bg-white border-slate-200 text-slate-900'}`}>
               {/* Header */}
               <div className={`flex justify-between items-center px-6 py-4 border-b ${theme === 'dark' ? 'border-[#2a2e39]' : 'border-[#e0e3eb]'}`}>
                 <h4 className="text-lg font-medium m-0 leading-none">Search & Watchlist</h4>
@@ -204,7 +204,7 @@ const AdvancedChartWidget = ({
                         onAddWatchlistSymbol(tvSymbol);
                       }
                     }} 
-                    className={`text-[12px] px-3 py-1.5 rounded-full border ${theme === 'dark' ? 'border-[#434651] hover:bg-[#434651] text-white' : 'border-[#e0e3eb] hover:bg-slate-100 text-black'} transition-colors whitespace-nowrap`}
+                    className={`text-[12px] px-3 py-1.5 rounded-xl border ${theme === 'dark' ? 'border-[#434651] hover:bg-[#434651] text-white' : 'border-[#e0e3eb] hover:bg-slate-100 text-black'} transition-colors whitespace-nowrap`}
                   >
                     + Add Current Chart
                   </button>
@@ -261,7 +261,7 @@ const AdvancedChartWidget = ({
                                 setNewSymbol('');
                                 setSearchResults([]);
                               }}
-                              className={`p-1 rounded-full ${theme === 'dark' ? 'hover:bg-[#434651] text-[#d1d4dc]' : 'hover:bg-slate-200 text-[#131722]'} transition-colors flex items-center justify-center border ${theme === 'dark' ? 'border-[#434651]' : 'border-slate-200'}`}
+                              className={`p-1.5 rounded-xl ${theme === 'dark' ? 'hover:bg-[#434651] text-[#d1d4dc]' : 'hover:bg-slate-200 text-[#131722]'} transition-colors flex items-center justify-center border ${theme === 'dark' ? 'border-[#434651]' : 'border-slate-200'}`}
                               title="Add to Watchlist"
                             >
                               <Plus size={16} strokeWidth={3} />

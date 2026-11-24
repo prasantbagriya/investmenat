@@ -162,7 +162,7 @@ export default function MarketView() {
   return (
     <div className="space-y-4 animate-fadeIn">
       {/* Header */}
-      <div className="bg-white rounded-xl p-5 sm:p-6 border border-slate-200 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div className="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/80 shadow-xs flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
           <div className="flex items-center gap-2">
             <BarChart3 className="text-slate-900" size={28} />
@@ -186,10 +186,10 @@ export default function MarketView() {
         
         {/* Left Panel - Quote Search & Details */}
         <div className="lg:col-span-1 space-y-4">
-          <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
+          <div className="bg-white rounded-2xl border border-slate-200/80 shadow-xs p-5">
             <form onSubmit={handleSearch} className="flex flex-col gap-2">
-              <label className="text-xs font-bold text-slate-700">Search Instrument Key</label>
-              <div className="flex bg-slate-50 border border-slate-200 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-indigo-500">
+              <label className="text-xs font-medium text-slate-700">Search Instrument Key</label>
+              <div className="flex bg-slate-50/60 border border-slate-200 rounded-xl overflow-hidden focus-within:border-slate-400 focus-within:ring-1 focus-within:ring-slate-400">
                 <input
                   type="text"
                   placeholder="e.g. NSE_EQ|RELIANCE or NSE_INDEX|Nifty 50"
@@ -197,7 +197,7 @@ export default function MarketView() {
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="bg-transparent flex-1 p-2 text-xs outline-none"
                 />
-                <button type="submit" className="bg-slate-900 text-white px-3 py-2 rounded-r-xl hover:bg-slate-800 active:bg-slate-950 transition-colors cursor-pointer">
+                <button type="submit" className="bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white px-3.5 py-2 rounded-r-xl font-medium transition-all cursor-pointer shadow-xs">
                   <Search size={14} />
                 </button>
               </div>
@@ -211,7 +211,7 @@ export default function MarketView() {
                 <div className="space-y-3">
                   <div className="flex justify-between items-start">
                     <div>
-                      <h2 className="font-bold text-slate-800 text-sm">{quoteData.symbol}</h2>
+                      <h2 className="font-semibold text-slate-900 text-base">{quoteData.symbol}</h2>
                       <p className="text-xs text-slate-500 font-mono tabular-nums break-all">{quoteData.instrument_token}</p>
                     </div>
                   </div>
@@ -220,7 +220,7 @@ export default function MarketView() {
                     <div className="text-3xl font-semibold font-mono tabular-nums text-slate-800">
                       ₹{quoteData.last_price?.toLocaleString('en-IN', { minimumFractionDigits: 2 })}
                     </div>
-                    <div className={`text-xs font-bold flex items-center gap-1 ${quoteData.net_change >= 0 ? 'text-emerald-500' : 'text-rose-500'}`}>
+                    <div className={`text-xs font-medium flex items-center gap-1 ${quoteData.net_change >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
                       {quoteData.net_change >= 0 ? <TrendingUp size={14} /> : <TrendingDown size={14} />}
                       {quoteData.net_change >= 0 ? '+' : ''}{quoteData.net_change?.toFixed(2)}
                       <span className="text-slate-500 font-normal">
@@ -254,28 +254,28 @@ export default function MarketView() {
                   )}
 
                   <div className="grid grid-cols-2 gap-2 text-xs pt-2 border-t border-slate-50">
-                    <div className="bg-slate-50 p-1.5 rounded-xl border border-slate-100">
-                      <div className="text-slate-500 font-bold capitalize ">Open</div>
-                      <div className="font-mono tabular-nums text-slate-700 font-semibold">{quoteData.open?.toFixed(2)}</div>
+                    <div className="bg-slate-50/70 p-2 rounded-xl border border-slate-200/60">
+                      <div className="text-slate-500 font-medium capitalize text-xs">Open</div>
+                      <div className="font-mono tabular-nums text-slate-900 font-semibold text-xs">{quoteData.open?.toFixed(2)}</div>
                     </div>
-                    <div className="bg-slate-50 p-1.5 rounded-xl border border-slate-100">
-                      <div className="text-slate-500 font-bold capitalize ">High</div>
-                      <div className="font-mono tabular-nums text-slate-700 font-semibold">{quoteData.high?.toFixed(2)}</div>
+                    <div className="bg-slate-50/70 p-2 rounded-xl border border-slate-200/60">
+                      <div className="text-slate-500 font-medium capitalize text-xs">High</div>
+                      <div className="font-mono tabular-nums text-slate-900 font-semibold text-xs">{quoteData.high?.toFixed(2)}</div>
                     </div>
-                    <div className="bg-slate-50 p-1.5 rounded-xl border border-slate-100">
-                      <div className="text-slate-500 font-bold capitalize ">Low</div>
-                      <div className="font-mono tabular-nums text-slate-700 font-semibold">{quoteData.low?.toFixed(2)}</div>
+                    <div className="bg-slate-50/70 p-2 rounded-xl border border-slate-200/60">
+                      <div className="text-slate-500 font-medium capitalize text-xs">Low</div>
+                      <div className="font-mono tabular-nums text-slate-900 font-semibold text-xs">{quoteData.low?.toFixed(2)}</div>
                     </div>
-                    <div className="bg-slate-50 p-1.5 rounded-xl border border-slate-100">
-                      <div className="text-slate-500 font-bold capitalize ">Prev Close</div>
-                      <div className="font-mono tabular-nums text-slate-700 font-semibold">{quoteData.close?.toFixed(2)}</div>
+                    <div className="bg-slate-50/70 p-2 rounded-xl border border-slate-200/60">
+                      <div className="text-slate-500 font-medium capitalize text-xs">Prev Close</div>
+                      <div className="font-mono tabular-nums text-slate-900 font-semibold text-xs">{quoteData.close?.toFixed(2)}</div>
                     </div>
                   </div>
 
                   <div className="pt-2">
                     <button
                       onClick={() => setTradeModalOpen(true)}
-                      className="w-full bg-slate-900 hover:bg-slate-800 text-white font-medium text-sm py-2.5 rounded-xl transition-colors shadow-sm cursor-pointer"
+                      className="w-full bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium text-sm py-2.5 rounded-xl transition-all shadow-xs cursor-pointer"
                     >
                       EXECUTE TRADE
                     </button>
@@ -283,24 +283,24 @@ export default function MarketView() {
 
                   {/* Fundamentals */}
                   {fundamentals && (
-                    <div className="mt-4 p-3 bg-slate-100/50 rounded-xl border border-indigo-100">
-                      <h3 className="text-xs font-bold text-indigo-900 mb-2">Fundamentals</h3>
+                    <div className="mt-4 p-3.5 bg-slate-50/70 rounded-xl border border-slate-200/80">
+                      <h3 className="text-xs font-semibold text-slate-900 mb-2">Fundamentals</h3>
                       <div className="grid grid-cols-2 gap-2 text-xs">
                         <div>
                           <span className="text-slate-700">Market Cap:</span>
-                          <span className="font-bold ml-1 text-slate-800">{fundamentals.market_cap ? `₹${fundamentals.market_cap}Cr` : '-'}</span>
+                          <span className="font-medium ml-1 text-slate-900">{fundamentals.market_cap ? `₹${fundamentals.market_cap}Cr` : '-'}</span>
                         </div>
                         <div>
                           <span className="text-slate-700">P/E Ratio:</span>
-                          <span className="font-bold ml-1 text-slate-800">{fundamentals.pe || '-'}</span>
+                          <span className="font-medium ml-1 text-slate-900">{fundamentals.pe || '-'}</span>
                         </div>
                         <div>
                           <span className="text-slate-700">52W High:</span>
-                          <span className="font-bold ml-1 text-emerald-600">{fundamentals.high_52_week || '-'}</span>
+                          <span className="font-medium ml-1 text-emerald-600">{fundamentals.high_52_week || '-'}</span>
                         </div>
                         <div>
                           <span className="text-slate-700">52W Low:</span>
-                          <span className="font-bold ml-1 text-rose-600">{fundamentals.low_52_week || '-'}</span>
+                          <span className="font-medium ml-1 text-rose-600">{fundamentals.low_52_week || '-'}</span>
                         </div>
                       </div>
                     </div>
@@ -309,11 +309,11 @@ export default function MarketView() {
                   {/* News */}
                   {news && news.length > 0 && (
                     <div className="mt-4 space-y-2">
-                      <h3 className="text-xs font-bold text-slate-800">Latest News</h3>
+                      <h3 className="text-xs font-semibold text-slate-900">Latest News</h3>
                       <div className="space-y-2 max-h-48 overflow-y-auto pr-1 scrollbar-thin">
                         {news.slice(0, 5).map((n, i) => (
-                          <a key={i} href={n.link || '#'} target="_blank" rel="noreferrer" className="block p-2 bg-slate-50 hover:bg-slate-100 rounded-lg border border-slate-100 transition-colors">
-                            <p className="text-xs font-semibold text-slate-700 line-clamp-2">{n.headline || n.title}</p>
+                          <a key={i} href={n.link || '#'} target="_blank" rel="noreferrer" className="block p-2.5 bg-slate-50/60 hover:bg-slate-100/80 rounded-xl border border-slate-200/60 transition-all">
+                            <p className="text-xs font-medium text-slate-900 line-clamp-2">{n.headline || n.title}</p>
                             <span className="text-xs text-slate-500 mt-1 block">{n.source || 'Market News'}</span>
                           </a>
                         ))}
@@ -330,9 +330,9 @@ export default function MarketView() {
 
         {/* Right Panel - Option Chain */}
         <div className="lg:col-span-3 space-y-4">
-          <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4 overflow-hidden flex flex-col h-[500px]">
+          <div className="bg-white rounded-2xl border border-slate-200/80 shadow-xs p-5 overflow-hidden flex flex-col h-[520px]">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-3">
-              <h3 className="font-bold text-sm text-slate-800 flex items-center gap-1.5">
+              <h3 className="font-semibold text-sm text-slate-900 flex items-center gap-1.5">
                 <ArrowLeftRight size={16} className="text-slate-900" />
                 Option Chain
               </h3>
@@ -341,19 +341,19 @@ export default function MarketView() {
                   type="date"
                   value={expiryDate}
                   onChange={(e) => setExpiryDate(e.target.value)}
-                  className="bg-slate-50 border border-slate-200 text-xs p-1.5 rounded-lg focus:ring-1 focus:ring-indigo-500 outline-none flex-1"
+                  className="bg-slate-50/80 border border-slate-200 text-xs p-2 rounded-xl focus:border-slate-400 focus:ring-1 focus:ring-slate-400 outline-none flex-1 font-medium font-mono tabular-nums text-slate-800"
                 />
                 <button
                   onClick={fetchOptionChain}
                   disabled={loadingChain || !expiryDate || !instrumentKey}
-                  className="bg-slate-900 hover:bg-slate-800 active:bg-slate-950 disabled:opacity-50 text-white font-medium text-xs px-3 py-1.5 rounded-xl cursor-pointer transition-colors"
+                  className="bg-slate-900 hover:bg-slate-800 active:bg-slate-950 disabled:opacity-50 text-white font-medium text-xs px-3.5 py-2 rounded-xl cursor-pointer transition-all shadow-xs"
                 >
                   {loadingChain ? 'Loading...' : 'Fetch Chain'}
                 </button>
               </div>
             </div>
 
-            <div className="flex-1 overflow-auto border border-slate-100 rounded-lg">
+            <div className="flex-1 overflow-auto border border-slate-200/80 rounded-xl">
               <table className="w-full text-xs text-center border-collapse">
                 <thead className="sticky top-0 bg-slate-100 z-10 shadow-xs">
                   <tr>
@@ -361,7 +361,7 @@ export default function MarketView() {
                     <th className="p-1 border-b border-r border-slate-200 bg-slate-200/50">STRIKE</th>
                     <th colSpan={4} className="p-1 border-b border-slate-200 text-rose-700 font-semibold">PUTS (PE)</th>
                   </tr>
-                  <tr className="bg-slate-50 text-slate-700 font-bold ">
+                  <tr className="bg-slate-50 text-slate-700 font-medium">
                     <th className="p-1.5 border-r border-b border-slate-200">OI</th>
                     <th className="p-1.5 border-r border-b border-slate-200">Vol</th>
                     <th className="p-1.5 border-r border-b border-slate-200">LTP</th>
@@ -411,7 +411,7 @@ export default function MarketView() {
                         <tr key={idx} className="hover:bg-slate-100/30 border-b border-slate-100 font-mono tabular-nums">
                           <td className="p-1 border-r border-slate-100">{ceOI}</td>
                           <td className="p-1 border-r border-slate-100">{ceVol}</td>
-                          <td className="p-1 border-r border-slate-100 font-bold text-emerald-600 bg-emerald-50/10">{ceLtp}</td>
+                          <td className="p-1 border-r border-slate-100 font-semibold text-emerald-600 bg-emerald-50/10">{ceLtp}</td>
                           <td className={`p-1 border-r border-slate-200 ${Number(ceChg) >= 0 ? 'text-emerald-500' : 'text-rose-500'}`}>
                             {Number(ceChg).toFixed(2)}
                           </td>
@@ -421,7 +421,7 @@ export default function MarketView() {
                           <td className={`p-1 border-r border-slate-100 ${Number(peChg) >= 0 ? 'text-emerald-500' : 'text-rose-500'}`}>
                             {Number(peChg).toFixed(2)}
                           </td>
-                          <td className="p-1 border-r border-slate-100 font-bold text-rose-600 bg-rose-50/10">{peLtp}</td>
+                          <td className="p-1 border-r border-slate-100 font-semibold text-rose-600 bg-rose-50/10">{peLtp}</td>
                           <td className="p-1 border-r border-slate-100">{peVol}</td>
                           <td className="p-1">{peOI}</td>
                         </tr>

@@ -21,29 +21,54 @@ export class ErrorBoundary extends Component<Props, State> {
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error('Uncaught error:', error, errorInfo);
+    // If a chunk failed to fetch (new production deployment has new chunk hashes), automatically reload to get new version
+    const isChunkError = error?.message?.includes('dynamically imported module') || 
+                         error?.message?.includes('Loading chunk') ||
+                         error?.message?.includes('Failed to fetch');
+    if (isChunkError) {
+      const storageKey = 'last_chunk_reload_ts';
+      const lastReload = parseInt(sessionStorage.getItem(storageKey) || '0', 10);
+      const now = Date.now();
+      if (now - lastReload > 10000) {
+        sessionStorage.setItem(storageKey, now.toString());
+        window.location.reload();
+      }
+    }
   }
 
   public render() {
     if (this.state.hasError) {
+      const isChunkError = this.state.error?.message?.includes('dynamically imported module') ||
+                           this.state.error?.message?.includes('Loading chunk');
+
       return (
         <div className="min-h-screen flex items-center justify-center bg-slate-50 p-4">
-          <div className="bg-white p-6 rounded-lg shadow-sm border border-rose-200 max-w-md w-full">
-            <h2 className="text-xl font-semibold text-rose-600 mb-2">Something went wrong</h2>
-            <p className="text-sm text-slate-700 mb-4">
-              An unexpected error occurred in this view.
+          <div className="bg-white p-6 sm:p-7 rounded-2xl shadow-xs border border-slate-200 max-w-md w-full text-center">
+            <h2 className="text-xl font-semibold text-slate-900 mb-2">
+              {isChunkError ? 'New App Version Available' : 'Something went wrong'}
+            </h2>
+            <p className="text-sm text-slate-600 mb-5 leading-relaxed">
+              {isChunkError 
+                ? 'A new update was deployed to the server. Please reload the app to get the latest features.'
+                : 'An unexpected error occurred in this view.'}
             </p>
-            <div className="bg-slate-100 p-3 rounded-lg overflow-x-auto text-xs font-mono tabular-nums text-slate-800 mb-4">
-              {this.state.error?.message || 'Unknown error'}
+            <div className="flex gap-2">
+              <button
+                onClick={() => window.location.reload()}
+                className="flex-1 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium py-3 px-4 rounded-xl text-sm transition-colors cursor-pointer shadow-xs"
+              >
+                Reload App
+              </button>
+              <button
+                onClick={() => {
+                  this.setState({ hasError: false, error: null });
+                  window.location.href = '/';
+                }}
+                className="flex-1 bg-slate-100 hover:bg-slate-200 active:bg-slate-300 text-slate-800 font-medium py-3 px-4 rounded-xl text-sm transition-colors cursor-pointer"
+              >
+                Return Home
+              </button>
             </div>
-            <button
-              onClick={() => {
-                this.setState({ hasError: false, error: null });
-                window.location.hash = '/'; // Redirect to home on hash router
-              }}
-              className="w-full bg-slate-900 hover:bg-slate-800 text-white font-medium py-3 rounded-xl shadow-xs"
-            >
-              Return Home
-            </button>
           </div>
         </div>
       );

@@ -1215,7 +1215,9 @@ export default function App() {
   }, [user, permission, requestPermission]);
 
   useEffect(() => {
-    if (!user || !('Notification' in window) || Notification.permission !== 'granted') return;
+    const isNative = Capacitor.isNativePlatform();
+    const hasPermission = permission === 'granted' || (typeof window !== 'undefined' && 'Notification' in window && Notification.permission === 'granted');
+    if (!user || (!isNative && !hasPermission)) return;
 
     const todayStr = new Date().toISOString().split('T')[0];
 
@@ -1247,7 +1249,7 @@ export default function App() {
       }
     });
 
-  }, [recurringBills, pendingPayments, user, sendNotification]);
+  }, [recurringBills, pendingPayments, user, sendNotification, permission]);
 
 
   const handleAddTask = async (taskData: { title: string; description: string; dueDate: Date }): Promise<string> => {

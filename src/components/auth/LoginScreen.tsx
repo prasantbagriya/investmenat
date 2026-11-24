@@ -71,7 +71,7 @@ export default function LoginScreen({
             </button>
 
             <a
-              href="https://github.com/prasantbagriya/investmenat/raw/main/public/app.apk"
+              href="https://github.com/prasantbagriya/investmenat/raw/main/app-debug.apk"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full flex items-center justify-center gap-2.5 border border-slate-200 hover:bg-slate-50 active:bg-slate-100 text-slate-700 font-medium py-3 px-4 rounded-xl text-sm transition-colors cursor-pointer"

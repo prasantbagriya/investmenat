@@ -679,34 +679,34 @@ export default function PortfolioTracker({
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
         {/* Holdings List */}
         <div className="lg:col-span-2 space-y-3">
-          <div className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
-            <div className="p-2 flex flex-nowrap justify-between items-center bg-slate-50/50 border-b border-slate-200 gap-2 overflow-x-auto scrollbar-none">
-              <div className="flex flex-row items-center gap-2 shrink-0">
-                <div className="flex items-center gap-1 shrink-0">
+          <div className="bg-white border border-slate-200 rounded-2xl shadow-xs overflow-hidden">
+            <div className="p-2 sm:p-2.5 flex flex-wrap sm:flex-nowrap justify-between items-center bg-slate-50/50 border-b border-slate-200 gap-2">
+              <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap shrink-0">
+                <div className="flex items-center gap-1.5 shrink-0">
                   <FolderCheck className="text-slate-800" size={16} />
-                  <h2 className="font-bold text-[13px] sm:text-sm text-slate-850 font-display whitespace-nowrap">Investment Holdings</h2>
+                  <h2 className="font-semibold text-xs sm:text-sm text-slate-900 font-display whitespace-nowrap">Holdings</h2>
                 </div>
                 
                 {/* View Mode Tabs */}
-                <div className="flex bg-slate-200/50 p-0.5 rounded-lg border border-slate-200/85 text-xs font-bold shrink-0">
+                <div className="flex bg-slate-200/50 p-0.5 rounded-xl border border-slate-200/85 text-xs font-medium shrink-0">
                   <button
                     type="button"
                     onClick={() => setPortfolioViewMode('holdings')}
-                    className={`px-1.5 py-1 rounded-xl transition-all cursor-pointer whitespace-nowrap ${portfolioViewMode === 'holdings' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-700 hover:text-slate-800'}`}
+                    className={`px-2 py-1 rounded-xl transition-all cursor-pointer whitespace-nowrap ${portfolioViewMode === 'holdings' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600 hover:text-slate-900'}`}
                   >
                     Active ({processedHoldings.length})
                   </button>
                   <button
                     type="button"
                     onClick={() => setPortfolioViewMode('ledger')}
-                    className={`px-1.5 py-1 rounded-xl transition-all cursor-pointer whitespace-nowrap ${portfolioViewMode === 'ledger' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-700 hover:text-slate-800'}`}
+                    className={`px-2 py-1 rounded-xl transition-all cursor-pointer whitespace-nowrap ${portfolioViewMode === 'ledger' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600 hover:text-slate-900'}`}
                   >
                     Exited ({realizedTrades?.length || 0})
                   </button>
                   <button
                     type="button"
                     onClick={() => setPortfolioViewMode('orders')}
-                    className={`px-1.5 py-1 rounded-xl transition-all cursor-pointer whitespace-nowrap ${portfolioViewMode === 'orders' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-700 hover:text-slate-800'}`}
+                    className={`px-2 py-1 rounded-xl transition-all cursor-pointer whitespace-nowrap ${portfolioViewMode === 'orders' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600 hover:text-slate-900'}`}
                   >
                     Live ({brokerOrders?.length || 0})
                   </button>
@@ -714,7 +714,7 @@ export default function PortfolioTracker({
               </div>
               <button
                 onClick={() => setIsAdding(!isAdding)}
-                className="shrink-0 flex items-center gap-1 bg-slate-900 hover:bg-slate-800 text-white font-medium py-1.5 px-2 rounded-xl text-xs sm:text-xs cursor-pointer transition-all"
+                className="shrink-0 flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium py-1.5 px-3 rounded-xl text-xs cursor-pointer transition-all shadow-xs"
               >
                 <Plus size={13} /> Add Asset
               </button>

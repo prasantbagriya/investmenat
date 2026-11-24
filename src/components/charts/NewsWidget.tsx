@@ -104,7 +104,7 @@ const NewsWidget = ({ theme = 'light', instrumentKey, compact = false }: NewsWid
               <img 
                 src={item.thumbnail} 
                 alt="Thumbnail" 
-                className="w-32 h-32 object-cover rounded-lg shrink-0 border border-slate-200 shadow-sm"
+                className="w-32 h-32 object-cover rounded-xl shrink-0 border border-slate-200 shadow-xs"
               />
             )}
             <div className="flex-1 min-w-0 flex flex-col justify-center">

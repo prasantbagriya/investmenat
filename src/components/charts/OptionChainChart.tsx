@@ -130,19 +130,19 @@ const OptionChainChart: React.FC<OptionChainChartProps> = ({ data, theme = 'ligh
   }
 
   return (
-    <div className="w-full h-full flex flex-col bg-white rounded-lg overflow-hidden border border-slate-200 shadow-sm relative">
+    <div className="w-full h-full flex flex-col bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-xs relative">
       {/* Toggle View Header */}
       <div className="flex items-center justify-between p-2 bg-slate-50 border-b border-slate-200">
-        <div className="flex bg-slate-200/50 p-1 rounded-lg">
+        <div className="flex bg-slate-200/50 p-1 rounded-xl">
           <button
             onClick={() => setView('table')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium transition-colors ${view === 'table' ? 'bg-white text-blue-600 shadow-sm' : 'text-slate-600 hover:text-slate-900'}`}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium transition-colors ${view === 'table' ? 'bg-white text-slate-900 shadow-xs font-medium' : 'text-slate-600 hover:text-slate-900 font-medium'}`}
           >
             <TableIcon size={14} /> Chain Table
           </button>
           <button
             onClick={() => setView('analytics')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium transition-colors ${view === 'analytics' ? 'bg-white text-purple-600 shadow-sm' : 'text-slate-600 hover:text-slate-900'}`}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium transition-colors ${view === 'analytics' ? 'bg-white text-slate-900 shadow-xs font-medium' : 'text-slate-600 hover:text-slate-900 font-medium'}`}
           >
             <BarChart2 size={14} /> Analytics
           </button>
@@ -243,7 +243,7 @@ const OptionChainChart: React.FC<OptionChainChartProps> = ({ data, theme = 'ligh
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
             {/* PCR Card */}
-            <div className="bg-white p-5 rounded-lg shadow-sm border border-slate-200">
+            <div className="bg-white p-5 rounded-xl shadow-xs border border-slate-200">
               <p className="text-xs text-slate-500 font-bold capitalize mb-2">Put-Call Ratio (PCR)</p>
               <div className="flex items-end gap-2">
                 <span className={`text-4xl font-semibold tracking-tighter ${parseFloat(analytics.pcr) > 1 ? 'text-emerald-500' : 'text-red-500'}`}>{analytics.pcr}</span>
@@ -253,7 +253,7 @@ const OptionChainChart: React.FC<OptionChainChartProps> = ({ data, theme = 'ligh
             </div>
             
             {/* Max Pain Card */}
-            <div className="bg-white p-5 rounded-lg shadow-sm border border-slate-200 relative overflow-hidden">
+            <div className="bg-white p-5 rounded-xl shadow-xs border border-slate-200 relative overflow-hidden">
               <div className="absolute top-0 right-0 p-4 opacity-5">
                  <BarChart2 size={64} />
               </div>
@@ -265,7 +265,7 @@ const OptionChainChart: React.FC<OptionChainChartProps> = ({ data, theme = 'ligh
             </div>
 
             {/* Support Card */}
-            <div className="bg-white p-5 rounded-lg shadow-sm border border-emerald-200 relative overflow-hidden">
+            <div className="bg-white p-5 rounded-xl shadow-xs border border-emerald-200 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-full h-1 bg-emerald-400" />
               <p className="text-xs text-emerald-600 font-bold capitalize mb-2">Highest Support (Put OI)</p>
               <div className="flex items-end gap-2 mb-1">
@@ -275,7 +275,7 @@ const OptionChainChart: React.FC<OptionChainChartProps> = ({ data, theme = 'ligh
             </div>
 
             {/* Resistance Card */}
-            <div className="bg-white p-5 rounded-lg shadow-sm border border-red-200 relative overflow-hidden">
+            <div className="bg-white p-5 rounded-xl shadow-xs border border-red-200 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-full h-1 bg-red-400" />
               <p className="text-xs text-red-600 font-bold capitalize mb-2">Highest Resistance (Call OI)</p>
               <div className="flex items-end gap-2 mb-1">
@@ -286,7 +286,7 @@ const OptionChainChart: React.FC<OptionChainChartProps> = ({ data, theme = 'ligh
           </div>
           
           {/* Visual Distribution Chart */}
-          <div className="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+          <div className="bg-white p-6 rounded-xl shadow-xs border border-slate-200">
              <div className="flex items-center justify-between mb-6">
                 <h4 className="text-sm font-bold text-slate-800">Open Interest Distribution (Calls vs Puts)</h4>
                 <div className="flex items-center gap-4 text-xs font-bold">
@@ -309,7 +309,7 @@ const OptionChainChart: React.FC<OptionChainChartProps> = ({ data, theme = 'ligh
                         <span className="opacity-0 group-hover:opacity-100 text-slate-400 transition-opacity">{formatNum(callOI)}</span>
                         <div className="h-5 bg-rose-500 rounded-l transition-all duration-500" style={{ width: `${cPct}%` }} />
                       </div>
-                      <div className={`w-20 text-center font-semibold text-sm py-1 border-x border-slate-200 ${isATM ? 'text-yellow-700 bg-yellow-100 rounded-lg shadow-sm border-0' : 'text-slate-600'}`}>
+                      <div className={`w-20 text-center font-semibold text-sm py-1 border-x border-slate-200 ${isATM ? 'text-yellow-700 bg-yellow-100 rounded-xl shadow-xs border-0' : 'text-slate-600'}`}>
                         {row.strike_price}
                       </div>
                       <div className="flex-1 flex justify-start items-center gap-2">

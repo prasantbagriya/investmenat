@@ -117,26 +117,26 @@ const FundamentalsWidget = ({ instrumentKey }: FundamentalsWidgetProps) => {
           <h3 className="text-sm font-bold text-slate-400 capitalize mb-4">Crypto Metrics (24H)</h3>
           
           <div className="grid grid-cols-2 gap-4">
-            <div className="bg-slate-50 p-3 rounded-lg border border-slate-100">
+            <div className="bg-slate-50 p-3 rounded-xl border border-slate-200/80">
               <div className="text-xs text-slate-500 mb-1">24h High</div>
               <div className="font-semibold text-slate-800">${parseFloat(ticker.highPrice).toLocaleString()}</div>
             </div>
-            <div className="bg-slate-50 p-3 rounded-lg border border-slate-100">
+            <div className="bg-slate-50 p-3 rounded-xl border border-slate-200/80">
               <div className="text-xs text-slate-500 mb-1">24h Low</div>
               <div className="font-semibold text-slate-800">${parseFloat(ticker.lowPrice).toLocaleString()}</div>
             </div>
             
-            <div className="bg-slate-50 p-3 rounded-lg border border-slate-100">
+            <div className="bg-slate-50 p-3 rounded-xl border border-slate-200/80">
               <div className="text-xs text-slate-500 mb-1">24h Volume (Coin)</div>
               <div className="font-semibold text-slate-800">{parseFloat(ticker.volume).toLocaleString(undefined, { maximumFractionDigits: 0 })}</div>
             </div>
-            <div className="bg-slate-50 p-3 rounded-lg border border-slate-100">
+            <div className="bg-slate-50 p-3 rounded-xl border border-slate-200/80">
               <div className="text-xs text-slate-500 mb-1">24h Volume (USDT)</div>
               <div className="font-semibold text-slate-800">${(parseFloat(ticker.quoteVolume) / 1000000).toFixed(2)}M</div>
             </div>
             
             {oi && (
-              <div className="bg-slate-50 p-3 rounded-lg border border-slate-100 col-span-2">
+              <div className="bg-slate-50 p-3 rounded-xl border border-slate-200/80 col-span-2">
                 <div className="text-xs text-slate-500 mb-1">Open Interest (Futures)</div>
                 <div className="font-semibold text-slate-800 flex justify-between">
                   <span>{parseFloat(oi.openInterest).toLocaleString()} {tvSymbol.replace('BINANCE:', '').replace('USDT', '')}</span>
@@ -146,7 +146,7 @@ const FundamentalsWidget = ({ instrumentKey }: FundamentalsWidgetProps) => {
             )}
             
             {funding && (
-              <div className="bg-slate-50 p-3 rounded-lg border border-slate-100 col-span-2">
+              <div className="bg-slate-50 p-3 rounded-xl border border-slate-200/80 col-span-2">
                 <div className="text-xs text-slate-500 mb-1">Current Funding Rate</div>
                 <div className="font-semibold text-slate-800">
                   {(parseFloat(funding.lastFundingRate) * 100).toFixed(4)}%

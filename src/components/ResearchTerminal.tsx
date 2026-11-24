@@ -539,7 +539,7 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
               className="flex items-center gap-2 px-3 py-2 bg-white text-slate-600 rounded-xl shadow-sm border border-slate-200 hover:bg-slate-50 hover:text-slate-900 transition-colors cursor-pointer"
             >
               <Home size={16} />
-              <span className="text-sm font-bold hidden sm:inline">Main App</span>
+              <span className="text-sm font-medium hidden sm:inline">Main App</span>
             </button>
           </div>
           <div className="text-center mb-8 mt-12 sm:mt-0">
@@ -558,9 +558,9 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
                     setActiveTab(tab.id);
                   }
                 }}
-                className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-xs hover:border-slate-300 hover:-translate-y-1 transition-all flex flex-col items-start text-left group cursor-pointer"
+                className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs hover:border-slate-300 hover:-translate-y-1 transition-all flex flex-col items-start text-left group cursor-pointer"
               >
-                <div className={`p-3 rounded-lg bg-slate-50 mb-4 group-hover:bg-slate-100 transition-colors ${tab.color}`}>
+                <div className={`p-3 rounded-xl bg-slate-50 mb-4 group-hover:bg-slate-100 transition-colors ${tab.color}`}>
                   <tab.icon size={28} />
                 </div>
                 <h3 className="text-lg font-semibold text-slate-800 mb-1">{tab.label}</h3>
@@ -669,7 +669,7 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
                   const newCharts = [...chartSymbols];
                   newCharts[activeChartIndex] = finalKey;
                   setChartSymbols(newCharts);
-                }} className="flex items-center bg-white p-1 border border-slate-100 rounded-lg shadow-sm w-full lg:w-[500px]">
+                }} className="flex items-center bg-white p-1 border border-slate-200 rounded-xl shadow-xs w-full lg:w-[500px]">
                   <div className="relative flex-1 flex items-center min-w-[200px]">
                     <Search size={14} className="absolute left-3 text-slate-400" />
                     <input
@@ -687,7 +687,7 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
                     
                     {/* Custom Autocomplete Dropdown */}
                     {showSearchDropdown && (
-                      <div className="absolute top-full left-0 mt-2 w-full bg-white border border-slate-200 rounded-lg shadow-xl z-50 overflow-hidden max-h-60 overflow-y-auto">
+                      <div className="absolute top-full left-0 mt-2 w-full bg-white border border-slate-200 rounded-xl shadow-xl z-50 overflow-hidden max-h-60 overflow-y-auto">
                         {POPULAR_STOCKS.filter(s => s.label.toLowerCase().includes(inputKey.toLowerCase()) || s.key.toLowerCase().includes(inputKey.toLowerCase())).length > 0 ? (
                           POPULAR_STOCKS.filter(s => s.label.toLowerCase().includes(inputKey.toLowerCase()) || s.key.toLowerCase().includes(inputKey.toLowerCase())).map(s => (
                             <div 
@@ -865,9 +865,9 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
               { label: 'Losers', value: heatmapData.filter(s => s.change < 0).length, color: 'text-rose-600', bg: 'bg-rose-50' },
               { label: 'Unchanged', value: heatmapData.filter(s => s.change === 0).length, color: 'text-slate-500', bg: 'bg-slate-50' },
             ].map(stat => (
-              <div key={stat.label} className={`${stat.bg} rounded-lg p-4 text-center border border-slate-100`}>
+              <div key={stat.label} className={`${stat.bg} rounded-xl p-4 text-center border border-slate-100`}>
                 <div className={`text-2xl font-semibold ${stat.color}`}>{stat.value}</div>
-                <div className="text-xs font-bold text-slate-500 mt-1">{stat.label}</div>
+                <div className="text-xs font-medium text-slate-500 mt-1">{stat.label}</div>
               </div>
             ))}
           </div>

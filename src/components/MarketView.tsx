@@ -4,6 +4,7 @@ import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'rec
 import { motion, AnimatePresence } from 'motion/react';
 import TradeExecutionModal from './TradeExecutionModal';
 import { proxyFetch } from '../utils/proxyFetch';
+import { fetchForexFactoryCalendar, ForexFactoryEvent, getImpactDetails, getCountryFlag, formatEventTime } from '../services/forexFactoryService';
 
 interface MarketQuote {
   instrument_token: string;
@@ -25,6 +26,7 @@ export default function MarketView() {
   const [instrumentKey, setInstrumentKey] = useState('NSE_INDEX|Nifty 50');
   const [quoteData, setQuoteData] = useState<MarketQuote | null>(null);
   const [loadingQuote, setLoadingQuote] = useState(false);
+  const [ffEvents, setFfEvents] = useState<ForexFactoryEvent[]>([]);
   
   const [news, setNews] = useState<any[]>([]);
   const [fundamentals, setFundamentals] = useState<any | null>(null);
@@ -151,6 +153,10 @@ export default function MarketView() {
       fetchNewsAndFundamentals(key);
     }
   };
+
+  useEffect(() => {
+    fetchForexFactoryCalendar().then(data => setFfEvents(data || []));
+  }, []);
 
   useEffect(() => {
     if (upstoxToken && instrumentKey) {
@@ -319,7 +325,46 @@ export default function MarketView() {
                         ))}
                       </div>
                     </div>
-                  )}
+                    {ffEvents.length === 0 ? (
+                      <p className="text-[11px] text-slate-400 py-1">No upcoming events found.</p>
+                    ) : (
+                      <div className="space-y-1.5 max-h-56 overflow-y-auto pr-1 scrollbar-thin divide-y divide-slate-100">
+                        {ffEvents.slice(0, 6).map((item, i) => {
+                          const impact = getImpactDetails(item.impact);
+                          const { timeLabel, dateLabel } = formatEventTime(item.date);
+                          const flag = getCountryFlag(item.country);
+                          const ffUrl = item.url || `https://www.forexfactory.com/calendar?day=${encodeURIComponent(item.date.split('T')[0] || '')}`;
+                          return (
+                            <a
+                              key={i}
+                              href={ffUrl}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="block p-2 bg-slate-50/80 hover:bg-slate-100/80 rounded-lg border border-slate-200/60 transition-colors"
+                            >
+                              <div className="flex items-center justify-between text-[11px] mb-1">
+                                <span className="flex items-center gap-1 font-semibold text-slate-800">
+                                  <span>{flag}</span>
+                                  <span>{item.country}</span>
+                                  <span className={`px-1.5 py-0.2 rounded text-[9px] font-medium border ${impact.badgeClass}`}>
+                                    {item.impact}
+                                  </span>
+                                </span>
+                                <span className="font-mono text-slate-400 text-[10px] tabular-nums">{timeLabel || dateLabel}</span>
+                              </div>
+                              <p className="text-xs font-medium text-slate-800 line-clamp-2 leading-snug">{item.title}</p>
+                              {(item.forecast || item.previous) && (
+                                <div className="flex items-center gap-2 mt-1 text-[10px] font-mono tabular-nums text-slate-500">
+                                  {item.forecast && <span>Exp: <strong className="text-slate-700">{item.forecast}</strong></span>}
+                                  {item.previous && <span>Prev: {item.previous}</span>}
+                                </div>
+                              )}
+                            </a>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
                 </div>
               ) : (
                 <div className="text-center text-slate-500 text-xs py-4">No quote loaded</div>

@@ -1,0 +1,679 @@
+{
+  "nodes": [
+    {
+      "id": "file:functions/lib/dhanProxy.js",
+      "type": "file",
+      "name": "dhanProxy.js",
+      "filePath": "functions/lib/dhanProxy.js",
+      "summary": "dhanProxy.js in functions/lib/dhanProxy.js",
+      "tags": [
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:functions/lib/dhanProxy.js:setupDhanRoutes",
+      "type": "function",
+      "name": "setupDhanRoutes",
+      "filePath": "functions/lib/dhanProxy.js",
+      "summary": "Function setupDhanRoutes in dhanProxy.js",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:functions/lib/index.js",
+      "type": "file",
+      "name": "index.js",
+      "filePath": "functions/lib/index.js",
+      "summary": "Application entry point module.",
+      "tags": [
+        "entry-point"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:functions/lib/index.js:cleanPrivateKey",
+      "type": "function",
+      "name": "cleanPrivateKey",
+      "filePath": "functions/lib/index.js",
+      "summary": "Function cleanPrivateKey in index.js",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:functions/lib/kiteProxy.js",
+      "type": "file",
+      "name": "kiteProxy.js",
+      "filePath": "functions/lib/kiteProxy.js",
+      "summary": "kiteProxy.js in functions/lib/kiteProxy.js",
+      "tags": [
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:functions/lib/kiteProxy.js:setupKiteRoutes",
+      "type": "function",
+      "name": "setupKiteRoutes",
+      "filePath": "functions/lib/kiteProxy.js",
+      "summary": "Function setupKiteRoutes in kiteProxy.js",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:functions/lib/src/angelProxy.js",
+      "type": "file",
+      "name": "angelProxy.js",
+      "filePath": "functions/lib/src/angelProxy.js",
+      "summary": "angelProxy.js in functions/lib/src/angelProxy.js",
+      "tags": [
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:functions/lib/src/angelProxy.js:setupAngelRoutes",
+      "type": "function",
+      "name": "setupAngelRoutes",
+      "filePath": "functions/lib/src/angelProxy.js",
+      "summary": "Function setupAngelRoutes in angelProxy.js",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:functions/lib/src/dhanProxy.js",
+      "type": "file",
+      "name": "dhanProxy.js",
+      "filePath": "functions/lib/src/dhanProxy.js",
+      "summary": "dhanProxy.js in functions/lib/src/dhanProxy.js",
+      "tags": [
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:functions/lib/src/dhanProxy.js:setupDhanRoutes",
+      "type": "function",
+      "name": "setupDhanRoutes",
+      "filePath": "functions/lib/src/dhanProxy.js",
+      "summary": "Function setupDhanRoutes in dhanProxy.js",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:functions/lib/src/index.js",
+      "type": "file",
+      "name": "index.js",
+      "filePath": "functions/lib/src/index.js",
+      "summary": "Application entry point module.",
+      "tags": [
+        "entry-point"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:functions/lib/src/index.js:cleanPrivateKey",
+      "type": "function",
+      "name": "cleanPrivateKey",
+      "filePath": "functions/lib/src/index.js",
+      "summary": "Function cleanPrivateKey in index.js",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:functions/lib/src/kiteProxy.js",
+      "type": "file",
+      "name": "kiteProxy.js",
+      "filePath": "functions/lib/src/kiteProxy.js",
+      "summary": "kiteProxy.js in functions/lib/src/kiteProxy.js",
+      "tags": [
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:functions/lib/src/kiteProxy.js:setupKiteRoutes",
+      "type": "function",
+      "name": "setupKiteRoutes",
+      "filePath": "functions/lib/src/kiteProxy.js",
+      "summary": "Function setupKiteRoutes in kiteProxy.js",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:functions/lib/src/upstoxProxy.js",
+      "type": "file",
+      "name": "upstoxProxy.js",
+      "filePath": "functions/lib/src/upstoxProxy.js",
+      "summary": "upstoxProxy.js in functions/lib/src/upstoxProxy.js",
+      "tags": [
+        "code"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:functions/lib/src/upstoxProxy.js:setupUpstoxRoutes",
+      "type": "function",
+      "name": "setupUpstoxRoutes",
+      "filePath": "functions/lib/src/upstoxProxy.js",
+      "summary": "Function setupUpstoxRoutes in upstoxProxy.js",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:functions/lib/upstoxProxy.js",
+      "type": "file",
+      "name": "upstoxProxy.js",
+      "filePath": "functions/lib/upstoxProxy.js",
+      "summary": "upstoxProxy.js in functions/lib/upstoxProxy.js",
+      "tags": [
+        "code"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:functions/lib/upstoxProxy.js:setupUpstoxRoutes",
+      "type": "function",
+      "name": "setupUpstoxRoutes",
+      "filePath": "functions/lib/upstoxProxy.js",
+      "summary": "Function setupUpstoxRoutes in upstoxProxy.js",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "config:functions/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "functions/package.json",
+      "summary": "Configuration file controlling package.json settings.",
+      "tags": [
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:functions/src/angelProxy.ts",
+      "type": "file",
+      "name": "angelProxy.ts",
+      "filePath": "functions/src/angelProxy.ts",
+      "summary": "angelProxy.ts in functions/src/angelProxy.ts",
+      "tags": [
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:functions/src/angelProxy.ts:setupAngelRoutes",
+      "type": "function",
+      "name": "setupAngelRoutes",
+      "filePath": "functions/src/angelProxy.ts",
+      "summary": "Function setupAngelRoutes in angelProxy.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:functions/src/dhanProxy.ts",
+      "type": "file",
+      "name": "dhanProxy.ts",
+      "filePath": "functions/src/dhanProxy.ts",
+      "summary": "dhanProxy.ts in functions/src/dhanProxy.ts",
+      "tags": [
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:functions/src/dhanProxy.ts:setupDhanRoutes",
+      "type": "function",
+      "name": "setupDhanRoutes",
+      "filePath": "functions/src/dhanProxy.ts",
+      "summary": "Function setupDhanRoutes in dhanProxy.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:functions/src/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "functions/src/index.ts",
+      "summary": "Application entry point module.",
+      "tags": [
+        "entry-point"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:functions/src/index.ts:cleanPrivateKey",
+      "type": "function",
+      "name": "cleanPrivateKey",
+      "filePath": "functions/src/index.ts",
+      "summary": "Function cleanPrivateKey in index.ts",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:functions/src/kiteProxy.ts",
+      "type": "file",
+      "name": "kiteProxy.ts",
+      "filePath": "functions/src/kiteProxy.ts",
+      "summary": "kiteProxy.ts in functions/src/kiteProxy.ts",
+      "tags": [
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:functions/src/kiteProxy.ts:setupKiteRoutes",
+      "type": "function",
+      "name": "setupKiteRoutes",
+      "filePath": "functions/src/kiteProxy.ts",
+      "summary": "Function setupKiteRoutes in kiteProxy.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:functions/src/upstoxProxy.ts",
+      "type": "file",
+      "name": "upstoxProxy.ts",
+      "filePath": "functions/src/upstoxProxy.ts",
+      "summary": "upstoxProxy.ts in functions/src/upstoxProxy.ts",
+      "tags": [
+        "code"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:functions/src/upstoxProxy.ts:setupUpstoxRoutes",
+      "type": "function",
+      "name": "setupUpstoxRoutes",
+      "filePath": "functions/src/upstoxProxy.ts",
+      "summary": "Function setupUpstoxRoutes in upstoxProxy.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "config:functions/tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "functions/tsconfig.json",
+      "summary": "Configuration file controlling tsconfig.json settings.",
+      "tags": [
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:kiteProxy.ts",
+      "type": "file",
+      "name": "kiteProxy.ts",
+      "filePath": "kiteProxy.ts",
+      "summary": "kiteProxy.ts in kiteProxy.ts",
+      "tags": [
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:kiteProxy.ts:setupKiteRoutes",
+      "type": "function",
+      "name": "setupKiteRoutes",
+      "filePath": "kiteProxy.ts",
+      "summary": "Function setupKiteRoutes in kiteProxy.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:migrate.py",
+      "type": "file",
+      "name": "migrate.py",
+      "filePath": "migrate.py",
+      "summary": "migrate.py in migrate.py",
+      "tags": [
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:migrate.py:route_repl",
+      "type": "function",
+      "name": "route_repl",
+      "filePath": "migrate.py",
+      "summary": "Function route_repl in migrate.py",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:patchHooks.ts",
+      "type": "file",
+      "name": "patchHooks.ts",
+      "filePath": "patchHooks.ts",
+      "summary": "React custom hook providing state and lifecycle logic.",
+      "tags": [
+        "hook"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:public/data/forexfactory_calendar.json",
+      "type": "config",
+      "name": "forexfactory_calendar.json",
+      "filePath": "public/data/forexfactory_calendar.json",
+      "summary": "Configuration file controlling forexfactory_calendar.json settings.",
+      "tags": [
+        "configuration",
+        "financial-data"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:public/firebase-messaging-sw.js",
+      "type": "file",
+      "name": "firebase-messaging-sw.js",
+      "filePath": "public/firebase-messaging-sw.js",
+      "summary": "firebase-messaging-sw.js in public/firebase-messaging-sw.js",
+      "tags": [
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:send-notification.js",
+      "type": "file",
+      "name": "send-notification.js",
+      "filePath": "send-notification.js",
+      "summary": "send-notification.js in send-notification.js",
+      "tags": [
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:send-notification.js:sendNotifications",
+      "type": "function",
+      "name": "sendNotifications",
+      "filePath": "send-notification.js",
+      "summary": "Function sendNotifications in send-notification.js",
+      "tags": [
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server.cjs",
+      "type": "file",
+      "name": "server.cjs",
+      "filePath": "server.cjs",
+      "summary": "server.cjs in server.cjs",
+      "tags": [
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server.cjs:appendToLog",
+      "type": "function",
+      "name": "appendToLog",
+      "filePath": "server.cjs",
+      "summary": "Function appendToLog in server.cjs",
+      "tags": [
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server.cjs:startApp",
+      "type": "function",
+      "name": "startApp",
+      "filePath": "server.cjs",
+      "summary": "Function startApp in server.cjs",
+      "tags": [
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:investmant.sqlite",
+      "type": "file",
+      "name": "investmant.sqlite",
+      "filePath": "investmant.sqlite",
+      "summary": "investmant.sqlite in investmant.sqlite",
+      "tags": [
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:public/.htaccess",
+      "type": "file",
+      "name": ".htaccess",
+      "filePath": "public/.htaccess",
+      "summary": ".htaccess in public/.htaccess",
+      "tags": [
+        "code"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:functions/lib/dhanProxy.js",
+      "target": "function:functions/lib/dhanProxy.js:setupDhanRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:functions/lib/index.js",
+      "target": "function:functions/lib/index.js:cleanPrivateKey",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:functions/lib/kiteProxy.js",
+      "target": "function:functions/lib/kiteProxy.js:setupKiteRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:functions/lib/src/angelProxy.js",
+      "target": "function:functions/lib/src/angelProxy.js:setupAngelRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:functions/lib/src/dhanProxy.js",
+      "target": "function:functions/lib/src/dhanProxy.js:setupDhanRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:functions/lib/src/index.js",
+      "target": "function:functions/lib/src/index.js:cleanPrivateKey",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:functions/lib/src/kiteProxy.js",
+      "target": "function:functions/lib/src/kiteProxy.js:setupKiteRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:functions/lib/src/upstoxProxy.js",
+      "target": "function:functions/lib/src/upstoxProxy.js:setupUpstoxRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:functions/lib/upstoxProxy.js",
+      "target": "function:functions/lib/upstoxProxy.js:setupUpstoxRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:functions/src/angelProxy.ts",
+      "target": "function:functions/src/angelProxy.ts:setupAngelRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:functions/src/angelProxy.ts",
+      "target": "function:functions/src/angelProxy.ts:setupAngelRoutes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:functions/src/dhanProxy.ts",
+      "target": "function:functions/src/dhanProxy.ts:setupDhanRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:functions/src/dhanProxy.ts",
+      "target": "function:functions/src/dhanProxy.ts:setupDhanRoutes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:functions/src/index.ts",
+      "target": "function:functions/src/index.ts:cleanPrivateKey",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:functions/src/kiteProxy.ts",
+      "target": "function:functions/src/kiteProxy.ts:setupKiteRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:functions/src/kiteProxy.ts",
+      "target": "function:functions/src/kiteProxy.ts:setupKiteRoutes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:functions/src/upstoxProxy.ts",
+      "target": "function:functions/src/upstoxProxy.ts:setupUpstoxRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:functions/src/upstoxProxy.ts",
+      "target": "function:functions/src/upstoxProxy.ts:setupUpstoxRoutes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "config:functions/tsconfig.json",
+      "target": "file:src/App.tsx",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:kiteProxy.ts",
+      "target": "function:kiteProxy.ts:setupKiteRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:kiteProxy.ts",
+      "target": "function:kiteProxy.ts:setupKiteRoutes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:migrate.py",
+      "target": "function:migrate.py:route_repl",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:migrate.py",
+      "target": "function:migrate.py:route_repl",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:send-notification.js",
+      "target": "function:send-notification.js:sendNotifications",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:server.cjs",
+      "target": "function:server.cjs:appendToLog",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:server.cjs",
+      "target": "function:server.cjs:startApp",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    }
+  ]
+}

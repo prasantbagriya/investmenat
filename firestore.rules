@@ -138,6 +138,15 @@ service cloud.firestore {
       allow update: if isSignedIn() && resource.data.userId == request.auth.uid && request.resource.data.userId == request.auth.uid;
       allow delete: if isSignedIn() && resource.data.userId == request.auth.uid;
     }
+
+    // ─── Push Notification FCM Tokens ─────────────────────────────────
+    match /fcmTokens/{tokenId} {
+      allow read: if isSignedIn() && (resource.data.userId == request.auth.uid || resource.data.userId == 'shared_user_session');
+      allow create: if isSignedIn() && (request.resource.data.userId == request.auth.uid || request.resource.data.userId == 'shared_user_session');
+      allow update: if isSignedIn() && (resource.data.userId == request.auth.uid || resource.data.userId == 'shared_user_session');
+      allow delete: if isSignedIn() && (resource.data.userId == request.auth.uid || resource.data.userId == 'shared_user_session');
+    }
+
     // ─── Prop Firm Collections ───────────────────────────────────────
     match /propFirmAccounts/{id} {
       allow read: if isSignedIn() && resource.data.userId == request.auth.uid;

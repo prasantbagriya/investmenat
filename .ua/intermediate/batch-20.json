@@ -1,0 +1,1024 @@
+{
+  "nodes": [
+    {
+      "id": "file:src/components/PhysicalAssetsManager.tsx",
+      "type": "file",
+      "name": "PhysicalAssetsManager.tsx",
+      "filePath": "src/components/PhysicalAssetsManager.tsx",
+      "summary": "React UI component for PhysicalAssetsManager.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/PhysicalAssetsManager.tsx:PhysicalAssetsManager",
+      "type": "function",
+      "name": "PhysicalAssetsManager",
+      "filePath": "src/components/PhysicalAssetsManager.tsx",
+      "summary": "Function PhysicalAssetsManager in PhysicalAssetsManager.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/PortfolioTracker.tsx",
+      "type": "file",
+      "name": "PortfolioTracker.tsx",
+      "filePath": "src/components/PortfolioTracker.tsx",
+      "summary": "React UI component for PortfolioTracker.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/PortfolioTracker.tsx:PortfolioTracker",
+      "type": "function",
+      "name": "PortfolioTracker",
+      "filePath": "src/components/PortfolioTracker.tsx",
+      "summary": "Function PortfolioTracker in PortfolioTracker.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/QuickoWorkspace/AadhaarVerification.tsx",
+      "type": "file",
+      "name": "AadhaarVerification.tsx",
+      "filePath": "src/components/QuickoWorkspace/AadhaarVerification.tsx",
+      "summary": "React UI component for AadhaarVerification.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/QuickoWorkspace/AadhaarVerification.tsx:AadhaarVerification",
+      "type": "function",
+      "name": "AadhaarVerification",
+      "filePath": "src/components/QuickoWorkspace/AadhaarVerification.tsx",
+      "summary": "Function AadhaarVerification in AadhaarVerification.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/QuickoWorkspace/BankVerification.tsx",
+      "type": "file",
+      "name": "BankVerification.tsx",
+      "filePath": "src/components/QuickoWorkspace/BankVerification.tsx",
+      "summary": "React UI component for BankVerification.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/QuickoWorkspace/BankVerification.tsx:BankVerification",
+      "type": "function",
+      "name": "BankVerification",
+      "filePath": "src/components/QuickoWorkspace/BankVerification.tsx",
+      "summary": "Function BankVerification in BankVerification.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/QuickoWorkspace/BrokerageParser.tsx",
+      "type": "file",
+      "name": "BrokerageParser.tsx",
+      "filePath": "src/components/QuickoWorkspace/BrokerageParser.tsx",
+      "summary": "React UI component for BrokerageParser.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/QuickoWorkspace/BrokerageParser.tsx:BrokerageParser",
+      "type": "function",
+      "name": "BrokerageParser",
+      "filePath": "src/components/QuickoWorkspace/BrokerageParser.tsx",
+      "summary": "Function BrokerageParser in BrokerageParser.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/QuickoWorkspace/GstinSearch.tsx",
+      "type": "file",
+      "name": "GstinSearch.tsx",
+      "filePath": "src/components/QuickoWorkspace/GstinSearch.tsx",
+      "summary": "React UI component for GstinSearch.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/QuickoWorkspace/GstinSearch.tsx:GstinSearch",
+      "type": "function",
+      "name": "GstinSearch",
+      "filePath": "src/components/QuickoWorkspace/GstinSearch.tsx",
+      "summary": "Function GstinSearch in GstinSearch.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/QuickoWorkspace/PanVerification.tsx",
+      "type": "file",
+      "name": "PanVerification.tsx",
+      "filePath": "src/components/QuickoWorkspace/PanVerification.tsx",
+      "summary": "React UI component for PanVerification.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/QuickoWorkspace/PanVerification.tsx:PanVerification",
+      "type": "function",
+      "name": "PanVerification",
+      "filePath": "src/components/QuickoWorkspace/PanVerification.tsx",
+      "summary": "Function PanVerification in PanVerification.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/QuickoWorkspace/QuickoCallback.tsx",
+      "type": "file",
+      "name": "QuickoCallback.tsx",
+      "filePath": "src/components/QuickoWorkspace/QuickoCallback.tsx",
+      "summary": "React UI component for QuickoCallback.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/QuickoWorkspace/QuickoCallback.tsx:QuickoCallback",
+      "type": "function",
+      "name": "QuickoCallback",
+      "filePath": "src/components/QuickoWorkspace/QuickoCallback.tsx",
+      "summary": "Function QuickoCallback in QuickoCallback.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/QuickoWorkspace/QuickoConnect.tsx",
+      "type": "file",
+      "name": "QuickoConnect.tsx",
+      "filePath": "src/components/QuickoWorkspace/QuickoConnect.tsx",
+      "summary": "React UI component for QuickoConnect.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/QuickoWorkspace/QuickoConnect.tsx:QuickoConnect",
+      "type": "function",
+      "name": "QuickoConnect",
+      "filePath": "src/components/QuickoWorkspace/QuickoConnect.tsx",
+      "summary": "Function QuickoConnect in QuickoConnect.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/RecurringBills.tsx",
+      "type": "file",
+      "name": "RecurringBills.tsx",
+      "filePath": "src/components/RecurringBills.tsx",
+      "summary": "React UI component for RecurringBills.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/RecurringBills.tsx:RecurringBills",
+      "type": "function",
+      "name": "RecurringBills",
+      "filePath": "src/components/RecurringBills.tsx",
+      "summary": "Function RecurringBills in RecurringBills.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/ResearchTerminal.tsx",
+      "type": "file",
+      "name": "ResearchTerminal.tsx",
+      "filePath": "src/components/ResearchTerminal.tsx",
+      "summary": "React UI component for ResearchTerminal.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/ResearchTerminal.tsx:generateMockCandlesticks",
+      "type": "function",
+      "name": "generateMockCandlesticks",
+      "filePath": "src/components/ResearchTerminal.tsx",
+      "summary": "Function generateMockCandlesticks in ResearchTerminal.tsx",
+      "tags": [
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/ResearchTerminal.tsx:generateMockOptionChain",
+      "type": "function",
+      "name": "generateMockOptionChain",
+      "filePath": "src/components/ResearchTerminal.tsx",
+      "summary": "Function generateMockOptionChain in ResearchTerminal.tsx",
+      "tags": [
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/ResearchTerminal.tsx:generateMockHeatmapData",
+      "type": "function",
+      "name": "generateMockHeatmapData",
+      "filePath": "src/components/ResearchTerminal.tsx",
+      "summary": "Function generateMockHeatmapData in ResearchTerminal.tsx",
+      "tags": [
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/ResearchTerminal.tsx:generateMockPortfolio",
+      "type": "function",
+      "name": "generateMockPortfolio",
+      "filePath": "src/components/ResearchTerminal.tsx",
+      "summary": "Function generateMockPortfolio in ResearchTerminal.tsx",
+      "tags": [
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/ResearchTerminal.tsx:ResearchTerminal",
+      "type": "function",
+      "name": "ResearchTerminal",
+      "filePath": "src/components/ResearchTerminal.tsx",
+      "summary": "Function ResearchTerminal in ResearchTerminal.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/SavingsGoals.tsx",
+      "type": "file",
+      "name": "SavingsGoals.tsx",
+      "filePath": "src/components/SavingsGoals.tsx",
+      "summary": "React UI component for SavingsGoals.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/SavingsGoals.tsx:SavingsGoals",
+      "type": "function",
+      "name": "SavingsGoals",
+      "filePath": "src/components/SavingsGoals.tsx",
+      "summary": "Function SavingsGoals in SavingsGoals.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/SettingsManager.tsx",
+      "type": "file",
+      "name": "SettingsManager.tsx",
+      "filePath": "src/components/SettingsManager.tsx",
+      "summary": "React UI component for SettingsManager.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/SettingsManager.tsx:SettingsManager",
+      "type": "function",
+      "name": "SettingsManager",
+      "filePath": "src/components/SettingsManager.tsx",
+      "summary": "Function SettingsManager in SettingsManager.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/SipTracker.tsx",
+      "type": "file",
+      "name": "SipTracker.tsx",
+      "filePath": "src/components/SipTracker.tsx",
+      "summary": "React UI component for SipTracker.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/SipTracker.tsx:SipTracker",
+      "type": "function",
+      "name": "SipTracker",
+      "filePath": "src/components/SipTracker.tsx",
+      "summary": "Function SipTracker in SipTracker.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/StockTerminal.tsx",
+      "type": "file",
+      "name": "StockTerminal.tsx",
+      "filePath": "src/components/StockTerminal.tsx",
+      "summary": "React UI component for StockTerminal.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/StockTerminal.tsx:StockTerminal",
+      "type": "function",
+      "name": "StockTerminal",
+      "filePath": "src/components/StockTerminal.tsx",
+      "summary": "Function StockTerminal in StockTerminal.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/TaskCard.tsx",
+      "type": "file",
+      "name": "TaskCard.tsx",
+      "filePath": "src/components/TaskCard.tsx",
+      "summary": "React UI component for TaskCard.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/TaskCard.tsx:TaskCard",
+      "type": "function",
+      "name": "TaskCard",
+      "filePath": "src/components/TaskCard.tsx",
+      "summary": "Function TaskCard in TaskCard.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/TasksSection.tsx",
+      "type": "file",
+      "name": "TasksSection.tsx",
+      "filePath": "src/components/TasksSection.tsx",
+      "summary": "React UI component for TasksSection.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/TasksSection.tsx:TasksSection",
+      "type": "function",
+      "name": "TasksSection",
+      "filePath": "src/components/TasksSection.tsx",
+      "summary": "Function TasksSection in TasksSection.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/TaxCapitalGains.tsx",
+      "type": "file",
+      "name": "TaxCapitalGains.tsx",
+      "filePath": "src/components/TaxCapitalGains.tsx",
+      "summary": "React UI component for TaxCapitalGains.",
+      "tags": [
+        "component",
+        "service"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/TaxCapitalGains.tsx:TaxCapitalGains",
+      "type": "function",
+      "name": "TaxCapitalGains",
+      "filePath": "src/components/TaxCapitalGains.tsx",
+      "summary": "Function TaxCapitalGains in TaxCapitalGains.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/TradeExecutionModal.tsx",
+      "type": "file",
+      "name": "TradeExecutionModal.tsx",
+      "filePath": "src/components/TradeExecutionModal.tsx",
+      "summary": "React UI component for TradeExecutionModal.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/TradeExecutionModal.tsx:TradeExecutionModal",
+      "type": "function",
+      "name": "TradeExecutionModal",
+      "filePath": "src/components/TradeExecutionModal.tsx",
+      "summary": "Function TradeExecutionModal in TradeExecutionModal.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/TransactionTracker.tsx",
+      "type": "file",
+      "name": "TransactionTracker.tsx",
+      "filePath": "src/components/TransactionTracker.tsx",
+      "summary": "React UI component for TransactionTracker.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/TransactionTracker.tsx:TransactionTracker",
+      "type": "function",
+      "name": "TransactionTracker",
+      "filePath": "src/components/TransactionTracker.tsx",
+      "summary": "Function TransactionTracker in TransactionTracker.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/UpstoxOrderTicket.tsx",
+      "type": "file",
+      "name": "UpstoxOrderTicket.tsx",
+      "filePath": "src/components/UpstoxOrderTicket.tsx",
+      "summary": "React UI component for UpstoxOrderTicket.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/UpstoxOrderTicket.tsx:UpstoxOrderTicket",
+      "type": "function",
+      "name": "UpstoxOrderTicket",
+      "filePath": "src/components/UpstoxOrderTicket.tsx",
+      "summary": "Function UpstoxOrderTicket in UpstoxOrderTicket.tsx",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/WealthForecaster.tsx",
+      "type": "file",
+      "name": "WealthForecaster.tsx",
+      "filePath": "src/components/WealthForecaster.tsx",
+      "summary": "React UI component for WealthForecaster.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/WealthForecaster.tsx:WealthForecaster",
+      "type": "function",
+      "name": "WealthForecaster",
+      "filePath": "src/components/WealthForecaster.tsx",
+      "summary": "Function WealthForecaster in WealthForecaster.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/WorkspaceSuite.tsx",
+      "type": "file",
+      "name": "WorkspaceSuite.tsx",
+      "filePath": "src/components/WorkspaceSuite.tsx",
+      "summary": "React UI component for WorkspaceSuite.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/WorkspaceSuite.tsx:WorkspaceSuite",
+      "type": "function",
+      "name": "WorkspaceSuite",
+      "filePath": "src/components/WorkspaceSuite.tsx",
+      "summary": "Function WorkspaceSuite in WorkspaceSuite.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/auth/LoginScreen.tsx",
+      "type": "file",
+      "name": "LoginScreen.tsx",
+      "filePath": "src/components/auth/LoginScreen.tsx",
+      "summary": "React UI component for LoginScreen.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/auth/LoginScreen.tsx:LoginScreen",
+      "type": "function",
+      "name": "LoginScreen",
+      "filePath": "src/components/auth/LoginScreen.tsx",
+      "summary": "Function LoginScreen in LoginScreen.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/auth/MigrationModal.tsx",
+      "type": "file",
+      "name": "MigrationModal.tsx",
+      "filePath": "src/components/auth/MigrationModal.tsx",
+      "summary": "React UI component for MigrationModal.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/auth/MigrationModal.tsx:MigrationModal",
+      "type": "function",
+      "name": "MigrationModal",
+      "filePath": "src/components/auth/MigrationModal.tsx",
+      "summary": "Function MigrationModal in MigrationModal.tsx",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/components/PhysicalAssetsManager.tsx",
+      "target": "function:src/components/PhysicalAssetsManager.tsx:PhysicalAssetsManager",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/PhysicalAssetsManager.tsx",
+      "target": "function:src/components/PhysicalAssetsManager.tsx:PhysicalAssetsManager",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/PortfolioTracker.tsx",
+      "target": "function:src/components/PortfolioTracker.tsx:PortfolioTracker",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/PortfolioTracker.tsx",
+      "target": "function:src/components/PortfolioTracker.tsx:PortfolioTracker",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/QuickoWorkspace/AadhaarVerification.tsx",
+      "target": "function:src/components/QuickoWorkspace/AadhaarVerification.tsx:AadhaarVerification",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/QuickoWorkspace/AadhaarVerification.tsx",
+      "target": "function:src/components/QuickoWorkspace/AadhaarVerification.tsx:AadhaarVerification",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/QuickoWorkspace/BankVerification.tsx",
+      "target": "function:src/components/QuickoWorkspace/BankVerification.tsx:BankVerification",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/QuickoWorkspace/BankVerification.tsx",
+      "target": "function:src/components/QuickoWorkspace/BankVerification.tsx:BankVerification",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/QuickoWorkspace/BrokerageParser.tsx",
+      "target": "function:src/components/QuickoWorkspace/BrokerageParser.tsx:BrokerageParser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/QuickoWorkspace/BrokerageParser.tsx",
+      "target": "function:src/components/QuickoWorkspace/BrokerageParser.tsx:BrokerageParser",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/QuickoWorkspace/GstinSearch.tsx",
+      "target": "function:src/components/QuickoWorkspace/GstinSearch.tsx:GstinSearch",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/QuickoWorkspace/GstinSearch.tsx",
+      "target": "function:src/components/QuickoWorkspace/GstinSearch.tsx:GstinSearch",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/QuickoWorkspace/PanVerification.tsx",
+      "target": "function:src/components/QuickoWorkspace/PanVerification.tsx:PanVerification",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/QuickoWorkspace/PanVerification.tsx",
+      "target": "function:src/components/QuickoWorkspace/PanVerification.tsx:PanVerification",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/QuickoWorkspace/QuickoCallback.tsx",
+      "target": "function:src/components/QuickoWorkspace/QuickoCallback.tsx:QuickoCallback",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/QuickoWorkspace/QuickoCallback.tsx",
+      "target": "function:src/components/QuickoWorkspace/QuickoCallback.tsx:QuickoCallback",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/QuickoWorkspace/QuickoConnect.tsx",
+      "target": "function:src/components/QuickoWorkspace/QuickoConnect.tsx:QuickoConnect",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/QuickoWorkspace/QuickoConnect.tsx",
+      "target": "function:src/components/QuickoWorkspace/QuickoConnect.tsx:QuickoConnect",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/RecurringBills.tsx",
+      "target": "function:src/components/RecurringBills.tsx:RecurringBills",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/RecurringBills.tsx",
+      "target": "function:src/components/RecurringBills.tsx:RecurringBills",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/ResearchTerminal.tsx",
+      "target": "function:src/components/ResearchTerminal.tsx:generateMockCandlesticks",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/ResearchTerminal.tsx",
+      "target": "function:src/components/ResearchTerminal.tsx:generateMockOptionChain",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/ResearchTerminal.tsx",
+      "target": "function:src/components/ResearchTerminal.tsx:generateMockHeatmapData",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/ResearchTerminal.tsx",
+      "target": "function:src/components/ResearchTerminal.tsx:generateMockPortfolio",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/ResearchTerminal.tsx",
+      "target": "function:src/components/ResearchTerminal.tsx:ResearchTerminal",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/ResearchTerminal.tsx",
+      "target": "function:src/components/ResearchTerminal.tsx:ResearchTerminal",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/components/ResearchTerminal.tsx:ResearchTerminal",
+      "target": "function:src/components/ResearchTerminal.tsx:generateMockCandlesticks",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/components/ResearchTerminal.tsx:ResearchTerminal",
+      "target": "function:src/components/ResearchTerminal.tsx:generateMockOptionChain",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/components/ResearchTerminal.tsx:ResearchTerminal",
+      "target": "function:src/components/ResearchTerminal.tsx:generateMockPortfolio",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/components/ResearchTerminal.tsx:ResearchTerminal",
+      "target": "function:src/components/ResearchTerminal.tsx:generateMockHeatmapData",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/SavingsGoals.tsx",
+      "target": "function:src/components/SavingsGoals.tsx:SavingsGoals",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/SavingsGoals.tsx",
+      "target": "function:src/components/SavingsGoals.tsx:SavingsGoals",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/SettingsManager.tsx",
+      "target": "function:src/components/SettingsManager.tsx:SettingsManager",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/SettingsManager.tsx",
+      "target": "function:src/components/SettingsManager.tsx:SettingsManager",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/SipTracker.tsx",
+      "target": "function:src/components/SipTracker.tsx:SipTracker",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/SipTracker.tsx",
+      "target": "function:src/components/SipTracker.tsx:SipTracker",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/StockTerminal.tsx",
+      "target": "function:src/components/StockTerminal.tsx:StockTerminal",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/StockTerminal.tsx",
+      "target": "function:src/components/StockTerminal.tsx:StockTerminal",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/TaskCard.tsx",
+      "target": "function:src/components/TaskCard.tsx:TaskCard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/TaskCard.tsx",
+      "target": "function:src/components/TaskCard.tsx:TaskCard",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/TasksSection.tsx",
+      "target": "function:src/components/TasksSection.tsx:TasksSection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/TasksSection.tsx",
+      "target": "function:src/components/TasksSection.tsx:TasksSection",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/TaxCapitalGains.tsx",
+      "target": "function:src/components/TaxCapitalGains.tsx:TaxCapitalGains",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/TaxCapitalGains.tsx",
+      "target": "function:src/components/TaxCapitalGains.tsx:TaxCapitalGains",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/TradeExecutionModal.tsx",
+      "target": "function:src/components/TradeExecutionModal.tsx:TradeExecutionModal",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/TradeExecutionModal.tsx",
+      "target": "function:src/components/TradeExecutionModal.tsx:TradeExecutionModal",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/TransactionTracker.tsx",
+      "target": "function:src/components/TransactionTracker.tsx:TransactionTracker",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/TransactionTracker.tsx",
+      "target": "function:src/components/TransactionTracker.tsx:TransactionTracker",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/UpstoxOrderTicket.tsx",
+      "target": "function:src/components/UpstoxOrderTicket.tsx:UpstoxOrderTicket",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/WealthForecaster.tsx",
+      "target": "function:src/components/WealthForecaster.tsx:WealthForecaster",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/WealthForecaster.tsx",
+      "target": "function:src/components/WealthForecaster.tsx:WealthForecaster",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/WorkspaceSuite.tsx",
+      "target": "function:src/components/WorkspaceSuite.tsx:WorkspaceSuite",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/WorkspaceSuite.tsx",
+      "target": "function:src/components/WorkspaceSuite.tsx:WorkspaceSuite",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/auth/LoginScreen.tsx",
+      "target": "function:src/components/auth/LoginScreen.tsx:LoginScreen",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/auth/LoginScreen.tsx",
+      "target": "function:src/components/auth/LoginScreen.tsx:LoginScreen",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/auth/MigrationModal.tsx",
+      "target": "function:src/components/auth/MigrationModal.tsx:MigrationModal",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/auth/MigrationModal.tsx",
+      "target": "function:src/components/auth/MigrationModal.tsx:MigrationModal",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

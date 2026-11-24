@@ -1,6 +1,6 @@
-import React, { memo, useEffect, useState } from 'react';
-import { ExternalLink, Clock, Newspaper, AlertTriangle } from 'lucide-react';
-import { upstoxApi } from '../../services/upstoxApi';
+import React, { memo, useEffect, useState, useMemo } from 'react';
+import { ExternalLink, Clock, RefreshCw, Search, Filter, AlertCircle, Calendar } from 'lucide-react';
+import { fetchForexFactoryCalendar, ForexFactoryEvent, getImpactDetails, getCountryFlag, formatEventTime } from '../../services/forexFactoryService';
 
 interface NewsWidgetProps {
   theme?: 'light' | 'dark';
@@ -8,68 +8,91 @@ interface NewsWidgetProps {
   compact?: boolean;
 }
 
-const NewsWidget = ({ theme = 'light', instrumentKey, compact = false }: NewsWidgetProps) => {
-  const [news, setNews] = useState<any[]>([]);
+const NewsWidget = ({ theme = 'light', compact = false }: NewsWidgetProps) => {
+  const [events, setEvents] = useState<ForexFactoryEvent[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedImpact, setSelectedImpact] = useState<string>('all'); // 'all', 'high', 'medium', 'low'
+  const [selectedCurrency, setSelectedCurrency] = useState<string>('all');
+  const [timeFilter, setTimeFilter] = useState<'all' | 'today' | 'upcoming'>('all');
+
+  const loadData = async () => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      const data = await fetchForexFactoryCalendar();
+      if (!data || data.length === 0) {
+        setError('No Forex Factory events currently available.');
+      } else {
+        setEvents(data);
+      }
+    } catch (err: any) {
+      setError(err.message || 'Failed to fetch Forex Factory calendar');
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchNews = async () => {
-      const token = localStorage.getItem('upstox_access_token');
-      setIsLoading(true);
-      setError(null);
-      
-      try {
-        if (!token) {
-          // If no token, maybe we just show empty or a message
-          setError("Upstox connection required for live market news.");
-          setIsLoading(false);
-          return;
-        }
+    loadData();
+    // Auto refresh every 5 minutes
+    const interval = setInterval(loadData, 5 * 60 * 1000);
+    return () => clearInterval(interval);
+  }, []);
 
-        let category: 'instrument_keys' | 'positions' = 'positions';
-        let keys: string[] = [];
+  const currencies = useMemo(() => {
+    const set = new Set<string>();
+    events.forEach(e => {
+      if (e.country) set.add(e.country.toUpperCase());
+    });
+    return Array.from(set).sort();
+  }, [events]);
 
-        if (instrumentKey) {
-          category = 'instrument_keys';
-          keys = [instrumentKey];
-        }
-
-        const response = await upstoxApi.getNews(token, category, keys);
-        
-        if (response?.data) {
-          // Flatten the news data from different instrument keys if needed
-          let allNews: any[] = [];
-          Object.values(response.data).forEach((articles: any) => {
-            if (Array.isArray(articles)) {
-              allNews = [...allNews, ...articles];
-            }
-          });
-          
-          // Sort by publish time descending
-          allNews.sort((a, b) => b.published_time - a.published_time);
-          setNews(allNews);
-        }
-      } catch (err: any) {
-        setError(err.message || 'Failed to fetch news');
-      } finally {
-        setIsLoading(false);
+  const filteredEvents = useMemo(() => {
+    return events.filter(e => {
+      // Impact filter
+      if (selectedImpact !== 'all') {
+        const norm = (e.impact || '').toLowerCase();
+        if (selectedImpact === 'high' && !norm.includes('high')) return false;
+        if (selectedImpact === 'medium' && (!norm.includes('med') && !norm.includes('high'))) return false;
+        if (selectedImpact === 'low' && !norm.includes('low')) return false;
       }
-    };
 
-    fetchNews();
-  }, [instrumentKey]);
+      // Currency filter
+      if (selectedCurrency !== 'all' && e.country.toUpperCase() !== selectedCurrency.toUpperCase()) {
+        return false;
+      }
 
-  if (isLoading) {
+      // Time filter
+      if (timeFilter !== 'all') {
+        const { isToday, isPast } = formatEventTime(e.date);
+        if (timeFilter === 'today' && !isToday) return false;
+        if (timeFilter === 'upcoming' && isPast) return false;
+      }
+
+      // Search query
+      if (searchQuery.trim()) {
+        const q = searchQuery.toLowerCase();
+        const titleMatch = (e.title || '').toLowerCase().includes(q);
+        const countryMatch = (e.country || '').toLowerCase().includes(q);
+        if (!titleMatch && !countryMatch) return false;
+      }
+
+      return true;
+    });
+  }, [events, selectedImpact, selectedCurrency, timeFilter, searchQuery]);
+
+  if (isLoading && events.length === 0) {
     return (
-      <div className="w-full h-full min-h-[60vh] flex flex-col items-center justify-center bg-white p-4">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-slate-900 mb-4"></div>
-        <p className="text-xs text-slate-500 font-medium">Fetching live news...</p>
+      <div className="w-full h-full min-h-[350px] flex flex-col items-center justify-center bg-white p-6 text-center">
+        <RefreshCw className="animate-spin text-slate-700 w-7 h-7 mb-3" />
+        <p className="text-xs text-slate-500 font-medium">Loading Forex Factory Calendar...</p>
       </div>
     );
   }
 
-  if (error) {
+  if (error && events.length === 0) {
     return (
       <div className="w-full h-full min-h-[60vh] flex flex-col items-center justify-center bg-white p-6 text-center">
         <AlertTriangle size={32} className="text-amber-500 mb-3" />
@@ -79,7 +102,8 @@ const NewsWidget = ({ theme = 'light', instrumentKey, compact = false }: NewsWid
     );
   }
 
-  if (news.length === 0) {
+  // COMPACT SIDEBAR VIEW
+  if (compact) {
     return (
       <div className="w-full h-full min-h-[60vh] flex flex-col items-center justify-center bg-white p-6 text-center">
         <Newspaper size={32} className="text-slate-300 mb-3" />

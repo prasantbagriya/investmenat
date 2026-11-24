@@ -1,0 +1,360 @@
+{
+  "nodes": [
+    {
+      "id": "document:.agents/skills/firebase_ai_logic_basics/SKILL.md",
+      "type": "document",
+      "name": "SKILL.md",
+      "filePath": ".agents/skills/firebase_ai_logic_basics/SKILL.md",
+      "summary": "Documentation describing SKILL.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_app_hosting_basics/SKILL.md",
+      "type": "document",
+      "name": "SKILL.md",
+      "filePath": ".agents/skills/firebase_app_hosting_basics/SKILL.md",
+      "summary": "Documentation describing SKILL.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_auth_basics/SKILL.md",
+      "type": "document",
+      "name": "SKILL.md",
+      "filePath": ".agents/skills/firebase_auth_basics/SKILL.md",
+      "summary": "Documentation describing SKILL.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_basics/SKILL.md",
+      "type": "document",
+      "name": "SKILL.md",
+      "filePath": ".agents/skills/firebase_basics/SKILL.md",
+      "summary": "Documentation describing SKILL.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_crashlytics/SKILL.md",
+      "type": "document",
+      "name": "SKILL.md",
+      "filePath": ".agents/skills/firebase_crashlytics/SKILL.md",
+      "summary": "Documentation describing SKILL.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/firebase_crashlytics/references/android_setup.md",
+      "type": "document",
+      "name": "android_setup.md",
+      "filePath": ".agents/skills/firebase_crashlytics/references/android_setup.md",
+      "summary": "Documentation describing android_setup.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_crashlytics/references/ios_setup.md",
+      "type": "document",
+      "name": "ios_setup.md",
+      "filePath": ".agents/skills/firebase_crashlytics/references/ios_setup.md",
+      "summary": "Documentation describing ios_setup.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_firestore/SKILL.md",
+      "type": "document",
+      "name": "SKILL.md",
+      "filePath": ".agents/skills/firebase_firestore/SKILL.md",
+      "summary": "Documentation describing SKILL.md.",
+      "tags": [
+        "documentation",
+        "state-management"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_hosting_basics/SKILL.md",
+      "type": "document",
+      "name": "SKILL.md",
+      "filePath": ".agents/skills/firebase_hosting_basics/SKILL.md",
+      "summary": "Documentation describing SKILL.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/firebase_hosting_basics/references/configuration.md",
+      "type": "document",
+      "name": "configuration.md",
+      "filePath": ".agents/skills/firebase_hosting_basics/references/configuration.md",
+      "summary": "Documentation describing configuration.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_hosting_basics/references/deploying.md",
+      "type": "document",
+      "name": "deploying.md",
+      "filePath": ".agents/skills/firebase_hosting_basics/references/deploying.md",
+      "summary": "Documentation describing deploying.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/firebase_remote_config_basics/SKILL.md",
+      "type": "document",
+      "name": "SKILL.md",
+      "filePath": ".agents/skills/firebase_remote_config_basics/SKILL.md",
+      "summary": "Documentation describing SKILL.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_remote_config_basics/references/android_setup.md",
+      "type": "document",
+      "name": "android_setup.md",
+      "filePath": ".agents/skills/firebase_remote_config_basics/references/android_setup.md",
+      "summary": "Documentation describing android_setup.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_remote_config_basics/references/ios_setup.md",
+      "type": "document",
+      "name": "ios_setup.md",
+      "filePath": ".agents/skills/firebase_remote_config_basics/references/ios_setup.md",
+      "summary": "Documentation describing ios_setup.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_security_rules_auditor/SKILL.md",
+      "type": "document",
+      "name": "SKILL.md",
+      "filePath": ".agents/skills/firebase_security_rules_auditor/SKILL.md",
+      "summary": "Documentation describing SKILL.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/xcode_project_setup/SKILL.md",
+      "type": "document",
+      "name": "SKILL.md",
+      "filePath": ".agents/skills/xcode_project_setup/SKILL.md",
+      "summary": "Documentation describing SKILL.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java",
+      "type": "file",
+      "name": "ExampleInstrumentedTest.java",
+      "filePath": "android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java",
+      "summary": "ExampleInstrumentedTest.java in android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java",
+      "tags": [
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java:useAppContext",
+      "type": "function",
+      "name": "useAppContext",
+      "filePath": "android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java",
+      "summary": "Function useAppContext in ExampleInstrumentedTest.java",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java:ExampleInstrumentedTest",
+      "type": "class",
+      "name": "ExampleInstrumentedTest",
+      "filePath": "android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java",
+      "summary": "Class ExampleInstrumentedTest with 1 methods in ExampleInstrumentedTest.java",
+      "tags": [
+        "class",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:android/app/src/main/java/com/investmant/app/MainActivity.java",
+      "type": "file",
+      "name": "MainActivity.java",
+      "filePath": "android/app/src/main/java/com/investmant/app/MainActivity.java",
+      "summary": "MainActivity.java in android/app/src/main/java/com/investmant/app/MainActivity.java",
+      "tags": [
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:android/app/src/main/java/com/investmant/app/MainActivity.java:MainActivity",
+      "type": "class",
+      "name": "MainActivity",
+      "filePath": "android/app/src/main/java/com/investmant/app/MainActivity.java",
+      "summary": "Class MainActivity with 0 methods in MainActivity.java",
+      "tags": [
+        "class",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.antigravity/a39c1d0e-5393-41a4-ad08-fef23e53161c.pbtxt",
+      "type": "file",
+      "name": "a39c1d0e-5393-41a4-ad08-fef23e53161c.pbtxt",
+      "filePath": ".antigravity/a39c1d0e-5393-41a4-ad08-fef23e53161c.pbtxt",
+      "summary": "a39c1d0e-5393-41a4-ad08-fef23e53161c.pbtxt in .antigravity/a39c1d0e-5393-41a4-ad08-fef23e53161c.pbtxt",
+      "tags": [
+        "code"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:.firebaserc",
+      "type": "file",
+      "name": ".firebaserc",
+      "filePath": ".firebaserc",
+      "summary": ".firebaserc in .firebaserc",
+      "tags": [
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.htaccess",
+      "type": "file",
+      "name": ".htaccess",
+      "filePath": ".htaccess",
+      "summary": ".htaccess in .htaccess",
+      "tags": [
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:android/app/proguard-rules.pro",
+      "type": "file",
+      "name": "proguard-rules.pro",
+      "filePath": "android/app/proguard-rules.pro",
+      "summary": "proguard-rules.pro in android/app/proguard-rules.pro",
+      "tags": [
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:android/app/src/main/AndroidManifest.xml",
+      "type": "config",
+      "name": "AndroidManifest.xml",
+      "filePath": "android/app/src/main/AndroidManifest.xml",
+      "summary": "Configuration file controlling AndroidManifest.xml settings.",
+      "tags": [
+        "configuration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml",
+      "type": "config",
+      "name": "ic_launcher_foreground.xml",
+      "filePath": "android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml",
+      "summary": "Configuration file controlling ic_launcher_foreground.xml settings.",
+      "tags": [
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:android/app/src/main/res/drawable/ic_launcher_background.xml",
+      "type": "config",
+      "name": "ic_launcher_background.xml",
+      "filePath": "android/app/src/main/res/drawable/ic_launcher_background.xml",
+      "summary": "Configuration file controlling ic_launcher_background.xml settings.",
+      "tags": [
+        "configuration"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java",
+      "target": "function:android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java:useAppContext",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java",
+      "target": "function:android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java:useAppContext",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java",
+      "target": "class:android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java:ExampleInstrumentedTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java",
+      "target": "class:android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java:ExampleInstrumentedTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:android/app/src/main/java/com/investmant/app/MainActivity.java",
+      "target": "class:android/app/src/main/java/com/investmant/app/MainActivity.java:MainActivity",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:android/app/src/main/java/com/investmant/app/MainActivity.java",
+      "target": "class:android/app/src/main/java/com/investmant/app/MainActivity.java:MainActivity",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

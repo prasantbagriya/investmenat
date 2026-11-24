@@ -1,0 +1,49 @@
+{
+  "nodes": [
+    {
+      "id": "document:.agents/skills/firebase_ai_logic_basics/references/flutter_setup.md",
+      "type": "document",
+      "name": "flutter_setup.md",
+      "filePath": ".agents/skills/firebase_ai_logic_basics/references/flutter_setup.md",
+      "summary": "Documentation describing flutter_setup.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_ai_logic_basics/references/ios_setup.md",
+      "type": "document",
+      "name": "ios_setup.md",
+      "filePath": ".agents/skills/firebase_ai_logic_basics/references/ios_setup.md",
+      "summary": "Documentation describing ios_setup.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_ai_logic_basics/references/usage_patterns_android.md",
+      "type": "document",
+      "name": "usage_patterns_android.md",
+      "filePath": ".agents/skills/firebase_ai_logic_basics/references/usage_patterns_android.md",
+      "summary": "Documentation describing usage_patterns_android.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_ai_logic_basics/references/usage_patterns_web.md",
+      "type": "document",
+      "name": "usage_patterns_web.md",
+      "filePath": ".agents/skills/firebase_ai_logic_basics/references/usage_patterns_web.md",
+      "summary": "Documentation describing usage_patterns_web.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": []
+}

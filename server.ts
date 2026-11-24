@@ -681,8 +681,16 @@ If the input is for Trading (e.g., deposits to a Brokerage/Prop Firm), tag it as
   setupKiteRoutes(app);
   setupBinanceRoutes(app);
 
-  // Economic Calendar Proxy (Bypasses Cloudflare/CORS)
-  app.get("/api/ff_calendar", async (req, res) => {
+  // Economic Calendar Proxy (Bypasses Cloudflare/CORS) with in-memory caching and fallback
+  let ffCalendarCache: { data: any; timestamp: number } | null = null;
+  const FF_CACHE_TTL = 15 * 60 * 1000; // 15 mins
+
+  const handleFFCalendar = async (req: express.Request, res: express.Response) => {
+    // 1. Serve from cache if fresh
+    if (ffCalendarCache && Date.now() - ffCalendarCache.timestamp < FF_CACHE_TTL) {
+      return res.json(ffCalendarCache.data);
+    }
+
     try {
       console.log(`[FF Calendar Proxy] Fetching from nfs.faireconomy.media`);
       const apiResponse = await fetch(`https://nfs.faireconomy.media/ff_calendar_thisweek.json`, {
@@ -692,16 +700,40 @@ If the input is for Trading (e.g., deposits to a Brokerage/Prop Firm), tag it as
           "Accept-Language": "en-US,en;q=0.9"
         }
       });
-      if (!apiResponse.ok) {
-        return res.status(apiResponse.status).json({ error: "Failed to fetch from FF" });
+      if (apiResponse.ok) {
+        const data = await apiResponse.json();
+        ffCalendarCache = { data, timestamp: Date.now() };
+        return res.json(data);
       }
-      const data = await apiResponse.json();
-      res.json(data);
+      // If 429 or error, fallback to memory cache if available
+      if (ffCalendarCache) {
+        console.warn(`[FF Calendar Proxy] Upstream returned ${apiResponse.status}, serving stale cache`);
+        return res.json(ffCalendarCache.data);
+      }
+      // If no memory cache, check public/data fallback file
+      const fallbackPath = path.join(process.cwd(), 'public', 'data', 'forexfactory_calendar.json');
+      if (fs.existsSync(fallbackPath)) {
+        const fileData = JSON.parse(fs.readFileSync(fallbackPath, 'utf-8'));
+        ffCalendarCache = { data: fileData, timestamp: Date.now() };
+        return res.json(fileData);
+      }
+      return res.status(apiResponse.status).json({ error: "Failed to fetch from FF" });
     } catch (e: any) {
       console.error("[FF Calendar Proxy] Error:", e);
+      if (ffCalendarCache) {
+        return res.json(ffCalendarCache.data);
+      }
+      const fallbackPath = path.join(process.cwd(), 'public', 'data', 'forexfactory_calendar.json');
+      if (fs.existsSync(fallbackPath)) {
+        const fileData = JSON.parse(fs.readFileSync(fallbackPath, 'utf-8'));
+        return res.json(fileData);
+      }
       res.status(500).json({ error: e.message || String(e) });
     }
-  });
+  };
+
+  app.get("/api/ff_calendar", handleFFCalendar);
+  app.get("/api/forexfactory/calendar", handleFFCalendar);
 
   // In-memory cache store
   interface CacheEntry<T> {

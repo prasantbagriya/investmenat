@@ -1,0 +1,175 @@
+{
+  "nodes": [
+    {
+      "id": "config:.env.example",
+      "type": "config",
+      "name": ".env.example",
+      "filePath": ".env.example",
+      "summary": "Configuration file controlling .env.example settings.",
+      "tags": [
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "summary": "Documentation describing README.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:firebase-applet-config.json",
+      "type": "config",
+      "name": "firebase-applet-config.json",
+      "filePath": "firebase-applet-config.json",
+      "summary": "Configuration file controlling firebase-applet-config.json settings.",
+      "tags": [
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:firebase-blueprint.json",
+      "type": "config",
+      "name": "firebase-blueprint.json",
+      "filePath": "firebase-blueprint.json",
+      "summary": "Configuration file controlling firebase-blueprint.json settings.",
+      "tags": [
+        "configuration"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "config:firebase.json",
+      "type": "config",
+      "name": "firebase.json",
+      "filePath": "firebase.json",
+      "summary": "Configuration file controlling firebase.json settings.",
+      "tags": [
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:firestore_sync.json",
+      "type": "config",
+      "name": "firestore_sync.json",
+      "filePath": "firestore_sync.json",
+      "summary": "Configuration file controlling firestore_sync.json settings.",
+      "tags": [
+        "configuration",
+        "state-management"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "config:metadata.json",
+      "type": "config",
+      "name": "metadata.json",
+      "filePath": "metadata.json",
+      "summary": "Configuration file controlling metadata.json settings.",
+      "tags": [
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "package.json",
+      "summary": "Configuration file controlling package.json settings.",
+      "tags": [
+        "configuration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:render.yaml",
+      "type": "config",
+      "name": "render.yaml",
+      "filePath": "render.yaml",
+      "summary": "Configuration file controlling render.yaml settings.",
+      "tags": [
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:security_spec.md",
+      "type": "document",
+      "name": "security_spec.md",
+      "filePath": "security_spec.md",
+      "summary": "Documentation describing security_spec.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "tsconfig.json",
+      "summary": "Configuration file controlling tsconfig.json settings.",
+      "tags": [
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:build-apk.ps1",
+      "type": "file",
+      "name": "build-apk.ps1",
+      "filePath": "build-apk.ps1",
+      "summary": "build-apk.ps1 in build-apk.ps1",
+      "tags": [
+        "script"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:index.html",
+      "type": "file",
+      "name": "index.html",
+      "filePath": "index.html",
+      "summary": "index.html in index.html",
+      "tags": [
+        "entry-point"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:market-info.html",
+      "type": "file",
+      "name": "market-info.html",
+      "filePath": "market-info.html",
+      "summary": "market-info.html in market-info.html",
+      "tags": [
+        "financial-data"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "config:package.json",
+      "target": "file:src/App.tsx",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:tsconfig.json",
+      "target": "file:src/App.tsx",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

@@ -3,6 +3,7 @@ import { ethers } from 'ethers';
 import { Wallet, Send, ArrowDownToLine, RefreshCw, Key, ShieldCheck, Copy, Eye, EyeOff, ExternalLink, Mail } from 'lucide-react';
 import toast from 'react-hot-toast';
 import CryptoJS from 'crypto-js';
+import { proxyFetch } from '../utils/proxyFetch';
 
 const STORAGE_KEY = 'trustvalot-wallet-v5-secure'; // Legacy
 const META_KEY = 'trustvalot-wallet-v5-metadata';
@@ -33,7 +34,7 @@ const hashPassword = (password: string) => {
 
 const NETWORKS = {
   ethereum: { name: 'Ethereum', rpc: 'https://eth.drpc.org', symbol: 'ETH', explorer: 'https://etherscan.io/address/' },
-  bnb: { name: 'BNB Chain', rpc: 'https://bsc.drpc.org', symbol: 'BNB', explorer: 'https://bscscan.com/address/' },
+  bnb: { name: 'BNB Chain', rpc: 'https://bsc-dataseed.binance.org', symbol: 'BNB', explorer: 'https://bscscan.com/address/' },
   polygon: { name: 'Polygon', rpc: 'https://polygon.drpc.org', symbol: 'MATIC', explorer: 'https://polygonscan.com/address/' },
 };
 
@@ -418,7 +419,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
       const totpCode = prompt("Enter your Authenticator Code to authorize pack export:");
       if (!totpCode) { setIsExporting(false); return; }
       const totpCiphertext = encryptData({ timestamp: Date.now(), action: "pack_export" }, totpCode);
-      const totpRes = await fetch("http://localhost:3000/api/pack/export-temporal", {
+      const totpRes = await proxyFetch("/api/pack/export-temporal", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ e2eNode: getE2ENode(route), ciphertext: totpCiphertext })
@@ -507,7 +508,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
 
       // 5. Re-register TOTP on server
       if (pack.temporalSecret) {
-        const serverRes = await fetch("http://localhost:3000/api/pack/import-temporal", {
+        const serverRes = await proxyFetch("/api/pack/import-temporal", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ e2eNode: getE2ENode(pack.route), temporalSecret: pack.temporalSecret })
@@ -549,7 +550,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
 
     setIsSending(true);
     try {
-      const res = await fetch("http://localhost:3000/api/send-crypto-otp", {
+      const res = await proxyFetch("/api/send-crypto-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ e2eNode: getE2ENode(routeToUse) })
@@ -604,7 +605,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
       const totpPayload = { timestamp: Date.now(), action: "verify_totp" };
       const totpCiphertext = encryptData(totpPayload, totpInput);
       
-      const totpRes = await fetch("http://localhost:3000/api/totp/verify", {
+      const totpRes = await proxyFetch("/api/totp/verify", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ e2eNode: getE2ENode(sendRoute), ciphertext: totpCiphertext })
@@ -616,7 +617,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
       const payload = { timestamp: Date.now(), action: "verify_crypto" };
       const ciphertext = encryptData(payload, otpInput);
 
-      const verifyRes = await fetch("http://localhost:3000/api/verify-crypto-otp", {
+      const verifyRes = await proxyFetch("/api/verify-crypto-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ e2eNode: getE2ENode(sendRoute), ciphertext })
@@ -699,7 +700,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
   const handleSendBindEmailOtp = async () => {
     if (!setupBoundRoute) return toast.error("Enter an email first");
     try {
-      const res = await fetch("http://localhost:3000/api/send-crypto-otp", {
+      const res = await proxyFetch("/api/send-crypto-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ e2eNode: getE2ENode(setupBoundRoute) })
@@ -720,7 +721,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
       const payload = { timestamp: Date.now(), action: "verify_crypto" };
       const ciphertext = encryptData(payload, setupBoundRouteOtp);
 
-      const res = await fetch("http://localhost:3000/api/verify-crypto-otp", {
+      const res = await proxyFetch("/api/verify-crypto-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ e2eNode: getE2ENode(setupBoundRoute), ciphertext })
@@ -770,7 +771,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
     
     setIsVerifyingOtp(true);
     try {
-      const res = await fetch("http://localhost:3000/api/send-crypto-otp", {
+      const res = await proxyFetch("/api/send-crypto-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ e2eNode: getE2ENode(routeToUse) })
@@ -804,7 +805,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
       const totpPayload = { timestamp: Date.now(), action: "verify_totp" };
       const totpCiphertext = encryptData(totpPayload, totpInput);
       
-      const totpRes = await fetch("http://localhost:3000/api/totp/verify", {
+      const totpRes = await proxyFetch("/api/totp/verify", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ e2eNode: getE2ENode(setupTotpRoute), ciphertext: totpCiphertext })
@@ -816,7 +817,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
       const payload = { timestamp: Date.now(), action: "verify_crypto" };
       const ciphertext = encryptData(payload, otpInput);
 
-      const verifyRes = await fetch("http://localhost:3000/api/verify-crypto-otp", {
+      const verifyRes = await proxyFetch("/api/verify-crypto-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ e2eNode: getE2ENode(setupTotpRoute), ciphertext })
@@ -855,7 +856,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
     if (!routeToUse) return toast.error("Please enter routing destination to setup TOTP");
     setIsSettingUpTotp(true);
     try {
-      const res = await fetch("http://localhost:3000/api/totp/generate", {
+      const res = await proxyFetch("/api/totp/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ e2eNode: getE2ENode(routeToUse) })
@@ -875,7 +876,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
     if (!totpSetupCode || totpSetupCode.length !== 6) return toast.error("Enter 6 digit code");
     setIsSettingUpTotp(true);
     try {
-      const res = await fetch("http://localhost:3000/api/totp/confirm", {
+      const res = await proxyFetch("/api/totp/confirm", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ e2eNode: getE2ENode(setupTotpRoute), secret: totpSecret, token: totpSetupCode })
@@ -978,8 +979,8 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
     return (
       <div className="bg-white border border-slate-200 rounded-xl p-6 sm:p-10 shadow-sm max-w-2xl mx-auto w-full text-left">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
-            <ShieldCheck size={24} className="text-purple-700" />
+          <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center">
+            <ShieldCheck size={24} className="text-slate-700" />
           </div>
           <div>
             <h2 className="text-xl sm:text-2xl font-semibold text-slate-900">Import Secure Pack</h2>
@@ -1020,7 +1021,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
               value={importPackPassword}
               onChange={e => setImportPackPassword(e.target.value)}
               placeholder="Enter the Pack Password..."
-              className="w-full bg-slate-50 border border-slate-200 text-slate-900 rounded-xl px-4 py-3 text-sm font-medium focus:ring-0 focus:border-purple-400 outline-none transition-colors"
+              className="w-full bg-slate-50 border border-slate-200 text-slate-900 rounded-xl px-4 py-3 text-sm font-medium focus:ring-0 focus:border-slate-400 outline-none transition-colors"
             />
           </div>
 
@@ -1066,9 +1067,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
               </div>
             </div>
             <div className="bg-slate-950 rounded-xl p-4 sm:p-6 text-white shadow-md border border-slate-800 relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-8 opacity-10">
-                <Wallet size={120} />
-              </div>
+
               <div className="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
                 <div>
                   <p className="text-slate-400 font-medium text-xs sm:text-sm mb-1 capitalize ">Wallet Address</p>
@@ -1381,7 +1380,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                         Verify &amp; Lock
                       </button>
                     </div>
-                    <p className="text-xs text-purple-700 font-medium">⚠️ This Routing Password is separate from your Master Password. Store it safely — it cannot be recovered.</p>
+                    <p className="text-xs text-slate-700 font-medium">⚠️ This Routing Password is separate from your Master Password. Store it safely — it cannot be recovered.</p>
                   </div>
                 )}
               </div>
@@ -1393,7 +1392,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                 </h3>
                 {!localStorage.getItem(ROUTING_SECRET_KEY) ? (
                   <>
-                    <p className="text-purple-700 text-xs sm:text-sm font-medium mb-3">
+                    <p className="text-slate-700 text-xs sm:text-sm font-medium mb-3">
                       ⚡ <strong>Action Required:</strong> Create a Routing Password to fully isolate your routing destination from your Master Password.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-2">
@@ -1557,8 +1556,8 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
       {activeTab === 'security' && (
         <div className={`border rounded-xl p-4 sm:p-6 w-full mt-2 transition-all ${hasExportedPack ? 'bg-slate-800/60 border-slate-700 opacity-70' : 'bg-slate-900 border-slate-800'}`}>
           <div className="flex items-center gap-3 mb-3">
-            <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${hasExportedPack ? 'bg-slate-700' : 'bg-purple-800/60'}`}>
-              <ShieldCheck size={20} className={hasExportedPack ? 'text-slate-400' : 'text-purple-300'} />
+            <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${hasExportedPack ? 'bg-slate-700' : 'bg-slate-800'}`}>
+              <ShieldCheck size={20} className={hasExportedPack ? 'text-slate-400' : 'text-slate-400'} />
             </div>
             <div>
               <h3 className={`font-semibold text-sm sm:text-base ${hasExportedPack ? 'text-slate-400' : 'text-white'}`}>Export Secure Pack</h3>
@@ -1576,7 +1575,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
             </>
           ) : (
             <>
-              <p className="text-purple-200 text-xs font-medium mb-4 leading-relaxed">
+              <p className="text-slate-300 text-xs font-medium mb-4 leading-relaxed">
                 Creates a <strong>.tvpack</strong> file containing your private key, seed phrase, routing destination, and Authenticator secret — all encrypted with a <strong>12+ character Pack Password</strong>. Use it to restore your complete wallet on any device instantly.
               </p>
               <div className="flex flex-col sm:flex-row gap-2">
@@ -1596,7 +1595,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                   {isExporting ? 'Exporting...' : 'Export'}
                 </button>
               </div>
-              <p className="text-purple-400 text-xs font-medium mt-2">⚠️ Keep the .tvpack file and Pack Password separately. If lost, there is NO recovery.</p>
+              <p className="text-slate-400 text-xs font-medium mt-2">⚠️ Keep the .tvpack file and Pack Password separately. If lost, there is NO recovery.</p>
             </>
           )}
         </div>

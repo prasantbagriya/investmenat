@@ -1,0 +1,2128 @@
+{
+  "nodes": [
+    {
+      "id": "file:src/main.tsx",
+      "type": "file",
+      "name": "main.tsx",
+      "filePath": "src/main.tsx",
+      "summary": "React UI component for main.",
+      "tags": [
+        "component",
+        "entry-point"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/services/angelApi.ts",
+      "type": "file",
+      "name": "angelApi.ts",
+      "filePath": "src/services/angelApi.ts",
+      "summary": "Service module handling API requests and business logic.",
+      "tags": [
+        "service"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/services/angelApi.ts:searchAngelInstruments",
+      "type": "function",
+      "name": "searchAngelInstruments",
+      "filePath": "src/services/angelApi.ts",
+      "summary": "Function searchAngelInstruments in angelApi.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/services/angelApi.ts:getAngelQuote",
+      "type": "function",
+      "name": "getAngelQuote",
+      "filePath": "src/services/angelApi.ts",
+      "summary": "Function getAngelQuote in angelApi.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/services/angelApi.ts:fetchAngelBars",
+      "type": "function",
+      "name": "fetchAngelBars",
+      "filePath": "src/services/angelApi.ts",
+      "summary": "Function fetchAngelBars in angelApi.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/services/binanceApi.ts",
+      "type": "file",
+      "name": "binanceApi.ts",
+      "filePath": "src/services/binanceApi.ts",
+      "summary": "Service module handling API requests and business logic.",
+      "tags": [
+        "service"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/services/binanceApi.ts:syncBinanceTime",
+      "type": "function",
+      "name": "syncBinanceTime",
+      "filePath": "src/services/binanceApi.ts",
+      "summary": "Function syncBinanceTime in binanceApi.ts",
+      "tags": [
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/services/binanceApi.ts:makeSignedRequest",
+      "type": "function",
+      "name": "makeSignedRequest",
+      "filePath": "src/services/binanceApi.ts",
+      "summary": "Function makeSignedRequest in binanceApi.ts",
+      "tags": [
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/services/binanceApi.ts:getBinanceTicker24hr",
+      "type": "function",
+      "name": "getBinanceTicker24hr",
+      "filePath": "src/services/binanceApi.ts",
+      "summary": "Function getBinanceTicker24hr in binanceApi.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/services/binanceApi.ts:searchBinance",
+      "type": "function",
+      "name": "searchBinance",
+      "filePath": "src/services/binanceApi.ts",
+      "summary": "Function searchBinance in binanceApi.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/services/binanceApi.ts:getBinanceOpenInterest",
+      "type": "function",
+      "name": "getBinanceOpenInterest",
+      "filePath": "src/services/binanceApi.ts",
+      "summary": "Function getBinanceOpenInterest in binanceApi.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/services/binanceApi.ts:getBinanceFundingRate",
+      "type": "function",
+      "name": "getBinanceFundingRate",
+      "filePath": "src/services/binanceApi.ts",
+      "summary": "Function getBinanceFundingRate in binanceApi.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/services/binanceApi.ts:getBinanceAccountBalances",
+      "type": "function",
+      "name": "getBinanceAccountBalances",
+      "filePath": "src/services/binanceApi.ts",
+      "summary": "Function getBinanceAccountBalances in binanceApi.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/services/binanceApi.ts:getBinanceOpenOrders",
+      "type": "function",
+      "name": "getBinanceOpenOrders",
+      "filePath": "src/services/binanceApi.ts",
+      "summary": "Function getBinanceOpenOrders in binanceApi.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/services/binanceApi.ts:getBinanceTradeHistory",
+      "type": "function",
+      "name": "getBinanceTradeHistory",
+      "filePath": "src/services/binanceApi.ts",
+      "summary": "Function getBinanceTradeHistory in binanceApi.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/services/binanceApi.ts:getBinanceSymbol",
+      "type": "function",
+      "name": "getBinanceSymbol",
+      "filePath": "src/services/binanceApi.ts",
+      "summary": "Function getBinanceSymbol in binanceApi.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/services/binanceApi.ts:mapPeriodToInterval",
+      "type": "function",
+      "name": "mapPeriodToInterval",
+      "filePath": "src/services/binanceApi.ts",
+      "summary": "Function mapPeriodToInterval in binanceApi.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/services/binanceApi.ts:fetchBinanceBars",
+      "type": "function",
+      "name": "fetchBinanceBars",
+      "filePath": "src/services/binanceApi.ts",
+      "summary": "Function fetchBinanceBars in binanceApi.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/services/binanceApi.ts:subscribeToBinanceTicks",
+      "type": "function",
+      "name": "subscribeToBinanceTicks",
+      "filePath": "src/services/binanceApi.ts",
+      "summary": "Function subscribeToBinanceTicks in binanceApi.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/services/fmpApi.ts",
+      "type": "file",
+      "name": "fmpApi.ts",
+      "filePath": "src/services/fmpApi.ts",
+      "summary": "Service module handling API requests and business logic.",
+      "tags": [
+        "service"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/services/fmpApi.ts:searchCompanies",
+      "type": "function",
+      "name": "searchCompanies",
+      "filePath": "src/services/fmpApi.ts",
+      "summary": "Function searchCompanies in fmpApi.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/services/fmpApi.ts:getQuote",
+      "type": "function",
+      "name": "getQuote",
+      "filePath": "src/services/fmpApi.ts",
+      "summary": "Function getQuote in fmpApi.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/services/fmpApi.ts:getCompanyProfile",
+      "type": "function",
+      "name": "getCompanyProfile",
+      "filePath": "src/services/fmpApi.ts",
+      "summary": "Function getCompanyProfile in fmpApi.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/services/fmpApi.ts:getIncomeStatement",
+      "type": "function",
+      "name": "getIncomeStatement",
+      "filePath": "src/services/fmpApi.ts",
+      "summary": "Function getIncomeStatement in fmpApi.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/services/fmpApi.ts:fetchFmpBars",
+      "type": "function",
+      "name": "fetchFmpBars",
+      "filePath": "src/services/fmpApi.ts",
+      "summary": "Function fetchFmpBars in fmpApi.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/services/forexFactoryService.ts",
+      "type": "file",
+      "name": "forexFactoryService.ts",
+      "filePath": "src/services/forexFactoryService.ts",
+      "summary": "Service module handling API requests and business logic.",
+      "tags": [
+        "service",
+        "financial-data"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/services/forexFactoryService.ts:fetchForexFactoryCalendar",
+      "type": "function",
+      "name": "fetchForexFactoryCalendar",
+      "filePath": "src/services/forexFactoryService.ts",
+      "summary": "Function fetchForexFactoryCalendar in forexFactoryService.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/services/forexFactoryService.ts:getImpactDetails",
+      "type": "function",
+      "name": "getImpactDetails",
+      "filePath": "src/services/forexFactoryService.ts",
+      "summary": "Function getImpactDetails in forexFactoryService.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/services/forexFactoryService.ts:getCountryFlag",
+      "type": "function",
+      "name": "getCountryFlag",
+      "filePath": "src/services/forexFactoryService.ts",
+      "summary": "Function getCountryFlag in forexFactoryService.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/services/forexFactoryService.ts:formatEventTime",
+      "type": "function",
+      "name": "formatEventTime",
+      "filePath": "src/services/forexFactoryService.ts",
+      "summary": "Function formatEventTime in forexFactoryService.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/services/mt5Api.ts",
+      "type": "file",
+      "name": "mt5Api.ts",
+      "filePath": "src/services/mt5Api.ts",
+      "summary": "Service module handling API requests and business logic.",
+      "tags": [
+        "service"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/services/mt5Api.ts:initMetaApiConnection",
+      "type": "function",
+      "name": "initMetaApiConnection",
+      "filePath": "src/services/mt5Api.ts",
+      "summary": "Function initMetaApiConnection in mt5Api.ts",
+      "tags": [
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/services/mt5Api.ts:fetchMT5Bars",
+      "type": "function",
+      "name": "fetchMT5Bars",
+      "filePath": "src/services/mt5Api.ts",
+      "summary": "Function fetchMT5Bars in mt5Api.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/services/mt5Api.ts:subscribeToTicks",
+      "type": "function",
+      "name": "subscribeToTicks",
+      "filePath": "src/services/mt5Api.ts",
+      "summary": "Function subscribeToTicks in mt5Api.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/services/quickoService.ts",
+      "type": "file",
+      "name": "quickoService.ts",
+      "filePath": "src/services/quickoService.ts",
+      "summary": "Service module handling API requests and business logic.",
+      "tags": [
+        "service"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/services/quickoService.ts:verifyPan",
+      "type": "function",
+      "name": "verifyPan",
+      "filePath": "src/services/quickoService.ts",
+      "summary": "Function verifyPan in quickoService.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/services/quickoService.ts:calculateTaxes",
+      "type": "function",
+      "name": "calculateTaxes",
+      "filePath": "src/services/quickoService.ts",
+      "summary": "Function calculateTaxes in quickoService.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/services/quickoService.ts:verifyBankAccount",
+      "type": "function",
+      "name": "verifyBankAccount",
+      "filePath": "src/services/quickoService.ts",
+      "summary": "Function verifyBankAccount in quickoService.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/services/quickoService.ts:parseForm16",
+      "type": "function",
+      "name": "parseForm16",
+      "filePath": "src/services/quickoService.ts",
+      "summary": "Function parseForm16 in quickoService.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/services/quickoService.ts:checkITRStatus",
+      "type": "function",
+      "name": "checkITRStatus",
+      "filePath": "src/services/quickoService.ts",
+      "summary": "Function checkITRStatus in quickoService.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/services/quickoService.ts:verifyAadhaar",
+      "type": "function",
+      "name": "verifyAadhaar",
+      "filePath": "src/services/quickoService.ts",
+      "summary": "Function verifyAadhaar in quickoService.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/services/quickoService.ts:verifyGstin",
+      "type": "function",
+      "name": "verifyGstin",
+      "filePath": "src/services/quickoService.ts",
+      "summary": "Function verifyGstin in quickoService.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/services/quickoService.ts:parseContractNote",
+      "type": "function",
+      "name": "parseContractNote",
+      "filePath": "src/services/quickoService.ts",
+      "summary": "Function parseContractNote in quickoService.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/services/quickoService.ts:connectQuickoOAuth",
+      "type": "function",
+      "name": "connectQuickoOAuth",
+      "filePath": "src/services/quickoService.ts",
+      "summary": "Function connectQuickoOAuth in quickoService.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/services/quickoService.ts:exchangeQuickoToken",
+      "type": "function",
+      "name": "exchangeQuickoToken",
+      "filePath": "src/services/quickoService.ts",
+      "summary": "Function exchangeQuickoToken in quickoService.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/services/quickoService.ts:getUserDetails",
+      "type": "function",
+      "name": "getUserDetails",
+      "filePath": "src/services/quickoService.ts",
+      "summary": "Function getUserDetails in quickoService.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/services/quickoService.ts:getTaxPayer",
+      "type": "function",
+      "name": "getTaxPayer",
+      "filePath": "src/services/quickoService.ts",
+      "summary": "Function getTaxPayer in quickoService.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/services/quickoService.ts:getItrDetails",
+      "type": "function",
+      "name": "getItrDetails",
+      "filePath": "src/services/quickoService.ts",
+      "summary": "Function getItrDetails in quickoService.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/services/quickoService.ts:getTaxComputation",
+      "type": "function",
+      "name": "getTaxComputation",
+      "filePath": "src/services/quickoService.ts",
+      "summary": "Function getTaxComputation in quickoService.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/services/upstoxApi.ts",
+      "type": "file",
+      "name": "upstoxApi.ts",
+      "filePath": "src/services/upstoxApi.ts",
+      "summary": "Service module handling API requests and business logic.",
+      "tags": [
+        "service"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/services/upstoxApi.ts:post",
+      "type": "function",
+      "name": "post",
+      "filePath": "src/services/upstoxApi.ts",
+      "summary": "Function post in upstoxApi.ts",
+      "tags": [
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/types.ts",
+      "type": "file",
+      "name": "types.ts",
+      "filePath": "src/types.ts",
+      "summary": "types.ts in src/types.ts",
+      "tags": [
+        "type-definition"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/utils/cloudSync.ts",
+      "type": "file",
+      "name": "cloudSync.ts",
+      "filePath": "src/utils/cloudSync.ts",
+      "summary": "Utility helper functions used across the application.",
+      "tags": [
+        "utility"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/utils/cloudSync.ts:restoreFromCloud",
+      "type": "function",
+      "name": "restoreFromCloud",
+      "filePath": "src/utils/cloudSync.ts",
+      "summary": "Function restoreFromCloud in cloudSync.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/utils/cloudSync.ts:triggerDebouncedSync",
+      "type": "function",
+      "name": "triggerDebouncedSync",
+      "filePath": "src/utils/cloudSync.ts",
+      "summary": "Function triggerDebouncedSync in cloudSync.ts",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/utils/cloudSync.ts:initCloudSyncInterceptor",
+      "type": "function",
+      "name": "initCloudSyncInterceptor",
+      "filePath": "src/utils/cloudSync.ts",
+      "summary": "Function initCloudSyncInterceptor in cloudSync.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/utils/cloudSync.ts:resetCloudSyncInterceptor",
+      "type": "function",
+      "name": "resetCloudSyncInterceptor",
+      "filePath": "src/utils/cloudSync.ts",
+      "summary": "Function resetCloudSyncInterceptor in cloudSync.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/utils/csvExport.ts",
+      "type": "file",
+      "name": "csvExport.ts",
+      "filePath": "src/utils/csvExport.ts",
+      "summary": "Utility helper functions used across the application.",
+      "tags": [
+        "utility"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/utils/csvExport.ts:exportTransactionsToCSV",
+      "type": "function",
+      "name": "exportTransactionsToCSV",
+      "filePath": "src/utils/csvExport.ts",
+      "summary": "Function exportTransactionsToCSV in csvExport.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/utils/csvExport.ts:exportFullLedgerToCSV",
+      "type": "function",
+      "name": "exportFullLedgerToCSV",
+      "filePath": "src/utils/csvExport.ts",
+      "summary": "Function exportFullLedgerToCSV in csvExport.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/utils/dateUtils.ts",
+      "type": "file",
+      "name": "dateUtils.ts",
+      "filePath": "src/utils/dateUtils.ts",
+      "summary": "Utility helper functions used across the application.",
+      "tags": [
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/utils/dateUtils.ts:isEntryLocked",
+      "type": "function",
+      "name": "isEntryLocked",
+      "filePath": "src/utils/dateUtils.ts",
+      "summary": "Function isEntryLocked in dateUtils.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/utils/fallbackManager.ts",
+      "type": "file",
+      "name": "fallbackManager.ts",
+      "filePath": "src/utils/fallbackManager.ts",
+      "summary": "Utility helper functions used across the application.",
+      "tags": [
+        "utility"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/utils/fallbackManager.ts:mergeWithFallback",
+      "type": "function",
+      "name": "mergeWithFallback",
+      "filePath": "src/utils/fallbackManager.ts",
+      "summary": "Function mergeWithFallback in fallbackManager.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/utils/fallbackManager.ts:flushFallbacksToCloud",
+      "type": "function",
+      "name": "flushFallbacksToCloud",
+      "filePath": "src/utils/fallbackManager.ts",
+      "summary": "Function flushFallbacksToCloud in fallbackManager.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/utils/financeHelpers.ts",
+      "type": "file",
+      "name": "financeHelpers.ts",
+      "filePath": "src/utils/financeHelpers.ts",
+      "summary": "Utility helper functions used across the application.",
+      "tags": [
+        "utility"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/utils/financeHelpers.ts:calculateXIRR",
+      "type": "function",
+      "name": "calculateXIRR",
+      "filePath": "src/utils/financeHelpers.ts",
+      "summary": "Function calculateXIRR in financeHelpers.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/utils/financeHelpers.ts:calculateFdMaturity",
+      "type": "function",
+      "name": "calculateFdMaturity",
+      "filePath": "src/utils/financeHelpers.ts",
+      "summary": "Function calculateFdMaturity in financeHelpers.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/utils/financeHelpers.ts:fetchStockPrice",
+      "type": "function",
+      "name": "fetchStockPrice",
+      "filePath": "src/utils/financeHelpers.ts",
+      "summary": "Function fetchStockPrice in financeHelpers.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/utils/financeHelpers.ts:fetchMutualFundNav",
+      "type": "function",
+      "name": "fetchMutualFundNav",
+      "filePath": "src/utils/financeHelpers.ts",
+      "summary": "Function fetchMutualFundNav in financeHelpers.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/utils/financeHelpers.ts:fetchStockSearch",
+      "type": "function",
+      "name": "fetchStockSearch",
+      "filePath": "src/utils/financeHelpers.ts",
+      "summary": "Function fetchStockSearch in financeHelpers.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/utils/financeHelpers.ts:parseBankSMS",
+      "type": "function",
+      "name": "parseBankSMS",
+      "filePath": "src/utils/financeHelpers.ts",
+      "summary": "Function parseBankSMS in financeHelpers.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/utils/proxyFetch.ts",
+      "type": "file",
+      "name": "proxyFetch.ts",
+      "filePath": "src/utils/proxyFetch.ts",
+      "summary": "Utility helper functions used across the application.",
+      "tags": [
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/utils/proxyFetch.ts:proxyFetch",
+      "type": "function",
+      "name": "proxyFetch",
+      "filePath": "src/utils/proxyFetch.ts",
+      "summary": "Function proxyFetch in proxyFetch.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/utils/technicalAnalysis.ts",
+      "type": "file",
+      "name": "technicalAnalysis.ts",
+      "filePath": "src/utils/technicalAnalysis.ts",
+      "summary": "Utility helper functions used across the application.",
+      "tags": [
+        "utility"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/utils/technicalAnalysis.ts:calculateSMA",
+      "type": "function",
+      "name": "calculateSMA",
+      "filePath": "src/utils/technicalAnalysis.ts",
+      "summary": "Function calculateSMA in technicalAnalysis.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/utils/technicalAnalysis.ts:calculateEMA",
+      "type": "function",
+      "name": "calculateEMA",
+      "filePath": "src/utils/technicalAnalysis.ts",
+      "summary": "Function calculateEMA in technicalAnalysis.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/utils/technicalAnalysis.ts:calculateRSI",
+      "type": "function",
+      "name": "calculateRSI",
+      "filePath": "src/utils/technicalAnalysis.ts",
+      "summary": "Function calculateRSI in technicalAnalysis.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/utils/technicalAnalysis.ts:calculateMACD",
+      "type": "function",
+      "name": "calculateMACD",
+      "filePath": "src/utils/technicalAnalysis.ts",
+      "summary": "Function calculateMACD in technicalAnalysis.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/utils/useTaskReminder.ts",
+      "type": "file",
+      "name": "useTaskReminder.ts",
+      "filePath": "src/utils/useTaskReminder.ts",
+      "summary": "Utility helper functions used across the application.",
+      "tags": [
+        "utility"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/utils/useTaskReminder.ts:useTaskReminder",
+      "type": "function",
+      "name": "useTaskReminder",
+      "filePath": "src/utils/useTaskReminder.ts",
+      "summary": "Function useTaskReminder in useTaskReminder.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/vite-env.d.ts",
+      "type": "file",
+      "name": "vite-env.d.ts",
+      "filePath": "src/vite-env.d.ts",
+      "summary": "vite-env.d.ts in src/vite-env.d.ts",
+      "tags": [
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/website/AboutUs.tsx",
+      "type": "file",
+      "name": "AboutUs.tsx",
+      "filePath": "src/website/AboutUs.tsx",
+      "summary": "React UI component for AboutUs.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/website/AboutUs.tsx:AboutUs",
+      "type": "function",
+      "name": "AboutUs",
+      "filePath": "src/website/AboutUs.tsx",
+      "summary": "Function AboutUs in AboutUs.tsx",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/website/ContactUs.tsx",
+      "type": "file",
+      "name": "ContactUs.tsx",
+      "filePath": "src/website/ContactUs.tsx",
+      "summary": "React UI component for ContactUs.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/website/ContactUs.tsx:ContactUs",
+      "type": "function",
+      "name": "ContactUs",
+      "filePath": "src/website/ContactUs.tsx",
+      "summary": "Function ContactUs in ContactUs.tsx",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/website/CookiesPolicy.tsx",
+      "type": "file",
+      "name": "CookiesPolicy.tsx",
+      "filePath": "src/website/CookiesPolicy.tsx",
+      "summary": "React UI component for CookiesPolicy.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/website/CookiesPolicy.tsx:CookiesPolicy",
+      "type": "function",
+      "name": "CookiesPolicy",
+      "filePath": "src/website/CookiesPolicy.tsx",
+      "summary": "Function CookiesPolicy in CookiesPolicy.tsx",
+      "tags": [
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/website/HomePage.tsx",
+      "type": "file",
+      "name": "HomePage.tsx",
+      "filePath": "src/website/HomePage.tsx",
+      "summary": "React UI component for HomePage.",
+      "tags": [
+        "component",
+        "routing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/website/HomePage.tsx:HomePage",
+      "type": "function",
+      "name": "HomePage",
+      "filePath": "src/website/HomePage.tsx",
+      "summary": "Function HomePage in HomePage.tsx",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/website/PrivacyPolicy.tsx",
+      "type": "file",
+      "name": "PrivacyPolicy.tsx",
+      "filePath": "src/website/PrivacyPolicy.tsx",
+      "summary": "React UI component for PrivacyPolicy.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/website/PrivacyPolicy.tsx:PrivacyPolicy",
+      "type": "function",
+      "name": "PrivacyPolicy",
+      "filePath": "src/website/PrivacyPolicy.tsx",
+      "summary": "Function PrivacyPolicy in PrivacyPolicy.tsx",
+      "tags": [
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/website/TermsConditions.tsx",
+      "type": "file",
+      "name": "TermsConditions.tsx",
+      "filePath": "src/website/TermsConditions.tsx",
+      "summary": "React UI component for TermsConditions.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/website/TermsConditions.tsx:TermsConditions",
+      "type": "function",
+      "name": "TermsConditions",
+      "filePath": "src/website/TermsConditions.tsx",
+      "summary": "Function TermsConditions in TermsConditions.tsx",
+      "tags": [
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/index.css",
+      "type": "file",
+      "name": "index.css",
+      "filePath": "src/index.css",
+      "summary": "index.css in src/index.css",
+      "tags": [
+        "entry-point"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/services/angelApi.ts",
+      "target": "function:src/services/angelApi.ts:searchAngelInstruments",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/angelApi.ts",
+      "target": "function:src/services/angelApi.ts:searchAngelInstruments",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/angelApi.ts",
+      "target": "function:src/services/angelApi.ts:getAngelQuote",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/angelApi.ts",
+      "target": "function:src/services/angelApi.ts:getAngelQuote",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/angelApi.ts",
+      "target": "function:src/services/angelApi.ts:fetchAngelBars",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/angelApi.ts",
+      "target": "function:src/services/angelApi.ts:fetchAngelBars",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/binanceApi.ts",
+      "target": "function:src/services/binanceApi.ts:syncBinanceTime",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/binanceApi.ts",
+      "target": "function:src/services/binanceApi.ts:makeSignedRequest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/binanceApi.ts",
+      "target": "function:src/services/binanceApi.ts:getBinanceTicker24hr",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/binanceApi.ts",
+      "target": "function:src/services/binanceApi.ts:getBinanceTicker24hr",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/binanceApi.ts",
+      "target": "function:src/services/binanceApi.ts:searchBinance",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/binanceApi.ts",
+      "target": "function:src/services/binanceApi.ts:searchBinance",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/binanceApi.ts",
+      "target": "function:src/services/binanceApi.ts:getBinanceOpenInterest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/binanceApi.ts",
+      "target": "function:src/services/binanceApi.ts:getBinanceOpenInterest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/binanceApi.ts",
+      "target": "function:src/services/binanceApi.ts:getBinanceFundingRate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/binanceApi.ts",
+      "target": "function:src/services/binanceApi.ts:getBinanceFundingRate",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/binanceApi.ts",
+      "target": "function:src/services/binanceApi.ts:getBinanceAccountBalances",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/binanceApi.ts",
+      "target": "function:src/services/binanceApi.ts:getBinanceAccountBalances",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/binanceApi.ts",
+      "target": "function:src/services/binanceApi.ts:getBinanceOpenOrders",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/binanceApi.ts",
+      "target": "function:src/services/binanceApi.ts:getBinanceOpenOrders",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/binanceApi.ts",
+      "target": "function:src/services/binanceApi.ts:getBinanceTradeHistory",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/binanceApi.ts",
+      "target": "function:src/services/binanceApi.ts:getBinanceTradeHistory",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/binanceApi.ts",
+      "target": "function:src/services/binanceApi.ts:getBinanceSymbol",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/binanceApi.ts",
+      "target": "function:src/services/binanceApi.ts:getBinanceSymbol",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/binanceApi.ts",
+      "target": "function:src/services/binanceApi.ts:mapPeriodToInterval",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/binanceApi.ts",
+      "target": "function:src/services/binanceApi.ts:mapPeriodToInterval",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/binanceApi.ts",
+      "target": "function:src/services/binanceApi.ts:fetchBinanceBars",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/binanceApi.ts",
+      "target": "function:src/services/binanceApi.ts:fetchBinanceBars",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/binanceApi.ts",
+      "target": "function:src/services/binanceApi.ts:subscribeToBinanceTicks",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/binanceApi.ts",
+      "target": "function:src/services/binanceApi.ts:subscribeToBinanceTicks",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/services/binanceApi.ts:makeSignedRequest",
+      "target": "function:src/services/binanceApi.ts:syncBinanceTime",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/services/binanceApi.ts:getBinanceAccountBalances",
+      "target": "function:src/services/binanceApi.ts:makeSignedRequest",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/services/binanceApi.ts:getBinanceOpenOrders",
+      "target": "function:src/services/binanceApi.ts:makeSignedRequest",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/services/binanceApi.ts:getBinanceTradeHistory",
+      "target": "function:src/services/binanceApi.ts:makeSignedRequest",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/services/binanceApi.ts:fetchBinanceBars",
+      "target": "function:src/services/binanceApi.ts:getBinanceSymbol",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/services/binanceApi.ts:fetchBinanceBars",
+      "target": "function:src/services/binanceApi.ts:mapPeriodToInterval",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/services/binanceApi.ts:subscribeToBinanceTicks",
+      "target": "function:src/services/binanceApi.ts:getBinanceSymbol",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/services/binanceApi.ts:subscribeToBinanceTicks",
+      "target": "function:src/services/binanceApi.ts:mapPeriodToInterval",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/fmpApi.ts",
+      "target": "function:src/services/fmpApi.ts:searchCompanies",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/fmpApi.ts",
+      "target": "function:src/services/fmpApi.ts:searchCompanies",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/fmpApi.ts",
+      "target": "function:src/services/fmpApi.ts:getQuote",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/fmpApi.ts",
+      "target": "function:src/services/fmpApi.ts:getQuote",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/fmpApi.ts",
+      "target": "function:src/services/fmpApi.ts:getCompanyProfile",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/fmpApi.ts",
+      "target": "function:src/services/fmpApi.ts:getCompanyProfile",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/fmpApi.ts",
+      "target": "function:src/services/fmpApi.ts:getIncomeStatement",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/fmpApi.ts",
+      "target": "function:src/services/fmpApi.ts:getIncomeStatement",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/fmpApi.ts",
+      "target": "function:src/services/fmpApi.ts:fetchFmpBars",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/fmpApi.ts",
+      "target": "function:src/services/fmpApi.ts:fetchFmpBars",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/forexFactoryService.ts",
+      "target": "function:src/services/forexFactoryService.ts:fetchForexFactoryCalendar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/forexFactoryService.ts",
+      "target": "function:src/services/forexFactoryService.ts:fetchForexFactoryCalendar",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/forexFactoryService.ts",
+      "target": "function:src/services/forexFactoryService.ts:getImpactDetails",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/forexFactoryService.ts",
+      "target": "function:src/services/forexFactoryService.ts:getImpactDetails",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/forexFactoryService.ts",
+      "target": "function:src/services/forexFactoryService.ts:getCountryFlag",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/forexFactoryService.ts",
+      "target": "function:src/services/forexFactoryService.ts:getCountryFlag",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/forexFactoryService.ts",
+      "target": "function:src/services/forexFactoryService.ts:formatEventTime",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/forexFactoryService.ts",
+      "target": "function:src/services/forexFactoryService.ts:formatEventTime",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/mt5Api.ts",
+      "target": "function:src/services/mt5Api.ts:initMetaApiConnection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/mt5Api.ts",
+      "target": "function:src/services/mt5Api.ts:fetchMT5Bars",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/mt5Api.ts",
+      "target": "function:src/services/mt5Api.ts:fetchMT5Bars",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/mt5Api.ts",
+      "target": "function:src/services/mt5Api.ts:subscribeToTicks",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/mt5Api.ts",
+      "target": "function:src/services/mt5Api.ts:subscribeToTicks",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/services/mt5Api.ts:fetchMT5Bars",
+      "target": "function:src/services/mt5Api.ts:initMetaApiConnection",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/services/mt5Api.ts:subscribeToTicks",
+      "target": "function:src/services/mt5Api.ts:initMetaApiConnection",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/quickoService.ts",
+      "target": "function:src/services/quickoService.ts:verifyPan",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/quickoService.ts",
+      "target": "function:src/services/quickoService.ts:verifyPan",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/quickoService.ts",
+      "target": "function:src/services/quickoService.ts:calculateTaxes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/quickoService.ts",
+      "target": "function:src/services/quickoService.ts:calculateTaxes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/quickoService.ts",
+      "target": "function:src/services/quickoService.ts:verifyBankAccount",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/quickoService.ts",
+      "target": "function:src/services/quickoService.ts:verifyBankAccount",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/quickoService.ts",
+      "target": "function:src/services/quickoService.ts:parseForm16",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/quickoService.ts",
+      "target": "function:src/services/quickoService.ts:parseForm16",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/quickoService.ts",
+      "target": "function:src/services/quickoService.ts:checkITRStatus",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/quickoService.ts",
+      "target": "function:src/services/quickoService.ts:checkITRStatus",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/quickoService.ts",
+      "target": "function:src/services/quickoService.ts:verifyAadhaar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/quickoService.ts",
+      "target": "function:src/services/quickoService.ts:verifyAadhaar",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/quickoService.ts",
+      "target": "function:src/services/quickoService.ts:verifyGstin",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/quickoService.ts",
+      "target": "function:src/services/quickoService.ts:verifyGstin",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/quickoService.ts",
+      "target": "function:src/services/quickoService.ts:parseContractNote",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/quickoService.ts",
+      "target": "function:src/services/quickoService.ts:parseContractNote",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/quickoService.ts",
+      "target": "function:src/services/quickoService.ts:connectQuickoOAuth",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/quickoService.ts",
+      "target": "function:src/services/quickoService.ts:connectQuickoOAuth",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/quickoService.ts",
+      "target": "function:src/services/quickoService.ts:exchangeQuickoToken",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/quickoService.ts",
+      "target": "function:src/services/quickoService.ts:exchangeQuickoToken",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/quickoService.ts",
+      "target": "function:src/services/quickoService.ts:getUserDetails",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/quickoService.ts",
+      "target": "function:src/services/quickoService.ts:getUserDetails",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/quickoService.ts",
+      "target": "function:src/services/quickoService.ts:getTaxPayer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/quickoService.ts",
+      "target": "function:src/services/quickoService.ts:getTaxPayer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/quickoService.ts",
+      "target": "function:src/services/quickoService.ts:getItrDetails",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/quickoService.ts",
+      "target": "function:src/services/quickoService.ts:getItrDetails",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/quickoService.ts",
+      "target": "function:src/services/quickoService.ts:getTaxComputation",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/services/quickoService.ts",
+      "target": "function:src/services/quickoService.ts:getTaxComputation",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/services/upstoxApi.ts",
+      "target": "function:src/services/upstoxApi.ts:post",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/utils/cloudSync.ts",
+      "target": "function:src/utils/cloudSync.ts:restoreFromCloud",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/utils/cloudSync.ts",
+      "target": "function:src/utils/cloudSync.ts:restoreFromCloud",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/utils/cloudSync.ts",
+      "target": "function:src/utils/cloudSync.ts:triggerDebouncedSync",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/utils/cloudSync.ts",
+      "target": "function:src/utils/cloudSync.ts:initCloudSyncInterceptor",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/utils/cloudSync.ts",
+      "target": "function:src/utils/cloudSync.ts:initCloudSyncInterceptor",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/utils/cloudSync.ts",
+      "target": "function:src/utils/cloudSync.ts:resetCloudSyncInterceptor",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/utils/cloudSync.ts",
+      "target": "function:src/utils/cloudSync.ts:resetCloudSyncInterceptor",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/utils/cloudSync.ts:initCloudSyncInterceptor",
+      "target": "function:src/utils/cloudSync.ts:triggerDebouncedSync",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/utils/cloudSync.ts:initCloudSyncInterceptor",
+      "target": "function:src/utils/cloudSync.ts:triggerDebouncedSync",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/utils/cloudSync.ts:initCloudSyncInterceptor",
+      "target": "function:src/utils/cloudSync.ts:triggerDebouncedSync",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/utils/csvExport.ts",
+      "target": "function:src/utils/csvExport.ts:exportTransactionsToCSV",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/utils/csvExport.ts",
+      "target": "function:src/utils/csvExport.ts:exportTransactionsToCSV",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/utils/csvExport.ts",
+      "target": "function:src/utils/csvExport.ts:exportFullLedgerToCSV",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/utils/csvExport.ts",
+      "target": "function:src/utils/csvExport.ts:exportFullLedgerToCSV",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/utils/dateUtils.ts",
+      "target": "function:src/utils/dateUtils.ts:isEntryLocked",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/utils/dateUtils.ts",
+      "target": "function:src/utils/dateUtils.ts:isEntryLocked",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/utils/fallbackManager.ts",
+      "target": "function:src/utils/fallbackManager.ts:mergeWithFallback",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/utils/fallbackManager.ts",
+      "target": "function:src/utils/fallbackManager.ts:mergeWithFallback",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/utils/fallbackManager.ts",
+      "target": "function:src/utils/fallbackManager.ts:flushFallbacksToCloud",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/utils/fallbackManager.ts",
+      "target": "function:src/utils/fallbackManager.ts:flushFallbacksToCloud",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/utils/financeHelpers.ts",
+      "target": "function:src/utils/financeHelpers.ts:calculateXIRR",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/utils/financeHelpers.ts",
+      "target": "function:src/utils/financeHelpers.ts:calculateXIRR",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/utils/financeHelpers.ts",
+      "target": "function:src/utils/financeHelpers.ts:calculateFdMaturity",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/utils/financeHelpers.ts",
+      "target": "function:src/utils/financeHelpers.ts:calculateFdMaturity",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/utils/financeHelpers.ts",
+      "target": "function:src/utils/financeHelpers.ts:fetchStockPrice",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/utils/financeHelpers.ts",
+      "target": "function:src/utils/financeHelpers.ts:fetchStockPrice",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/utils/financeHelpers.ts",
+      "target": "function:src/utils/financeHelpers.ts:fetchMutualFundNav",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/utils/financeHelpers.ts",
+      "target": "function:src/utils/financeHelpers.ts:fetchMutualFundNav",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/utils/financeHelpers.ts",
+      "target": "function:src/utils/financeHelpers.ts:fetchStockSearch",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/utils/financeHelpers.ts",
+      "target": "function:src/utils/financeHelpers.ts:fetchStockSearch",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/utils/financeHelpers.ts",
+      "target": "function:src/utils/financeHelpers.ts:parseBankSMS",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/utils/financeHelpers.ts",
+      "target": "function:src/utils/financeHelpers.ts:parseBankSMS",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/utils/proxyFetch.ts",
+      "target": "function:src/utils/proxyFetch.ts:proxyFetch",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/utils/proxyFetch.ts",
+      "target": "function:src/utils/proxyFetch.ts:proxyFetch",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/utils/technicalAnalysis.ts",
+      "target": "function:src/utils/technicalAnalysis.ts:calculateSMA",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/utils/technicalAnalysis.ts",
+      "target": "function:src/utils/technicalAnalysis.ts:calculateSMA",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/utils/technicalAnalysis.ts",
+      "target": "function:src/utils/technicalAnalysis.ts:calculateEMA",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/utils/technicalAnalysis.ts",
+      "target": "function:src/utils/technicalAnalysis.ts:calculateEMA",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/utils/technicalAnalysis.ts",
+      "target": "function:src/utils/technicalAnalysis.ts:calculateRSI",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/utils/technicalAnalysis.ts",
+      "target": "function:src/utils/technicalAnalysis.ts:calculateRSI",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/utils/technicalAnalysis.ts",
+      "target": "function:src/utils/technicalAnalysis.ts:calculateMACD",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/utils/technicalAnalysis.ts",
+      "target": "function:src/utils/technicalAnalysis.ts:calculateMACD",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/utils/technicalAnalysis.ts:calculateMACD",
+      "target": "function:src/utils/technicalAnalysis.ts:calculateEMA",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/utils/technicalAnalysis.ts:calculateMACD",
+      "target": "function:src/utils/technicalAnalysis.ts:calculateEMA",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/utils/technicalAnalysis.ts:calculateMACD",
+      "target": "function:src/utils/technicalAnalysis.ts:calculateEMA",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/utils/useTaskReminder.ts",
+      "target": "function:src/utils/useTaskReminder.ts:useTaskReminder",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/utils/useTaskReminder.ts",
+      "target": "function:src/utils/useTaskReminder.ts:useTaskReminder",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/website/AboutUs.tsx",
+      "target": "function:src/website/AboutUs.tsx:AboutUs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/website/ContactUs.tsx",
+      "target": "function:src/website/ContactUs.tsx:ContactUs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/website/CookiesPolicy.tsx",
+      "target": "function:src/website/CookiesPolicy.tsx:CookiesPolicy",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/website/HomePage.tsx",
+      "target": "function:src/website/HomePage.tsx:HomePage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/website/PrivacyPolicy.tsx",
+      "target": "function:src/website/PrivacyPolicy.tsx:PrivacyPolicy",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/website/TermsConditions.tsx",
+      "target": "function:src/website/TermsConditions.tsx:TermsConditions",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    }
+  ]
+}

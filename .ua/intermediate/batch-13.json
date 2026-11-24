@@ -1,0 +1,39 @@
+{
+  "nodes": [
+    {
+      "id": "config:android/app/google-services.json",
+      "type": "config",
+      "name": "google-services.json",
+      "filePath": "android/app/google-services.json",
+      "summary": "Configuration file controlling google-services.json settings.",
+      "tags": [
+        "configuration",
+        "service"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:android/app/build.gradle",
+      "type": "config",
+      "name": "build.gradle",
+      "filePath": "android/app/build.gradle",
+      "summary": "Configuration file controlling build.gradle settings.",
+      "tags": [
+        "configuration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:android/app/capacitor.build.gradle",
+      "type": "config",
+      "name": "capacitor.build.gradle",
+      "filePath": "android/app/capacitor.build.gradle",
+      "summary": "Configuration file controlling capacitor.build.gradle settings.",
+      "tags": [
+        "configuration"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

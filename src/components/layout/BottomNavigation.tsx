@@ -3,7 +3,7 @@ import {
   ArrowLeftRight, TrendingUp, LayoutDashboard, Clock, 
   Bell, Repeat, CalendarRange, Landmark, Percent,
   ChevronLeft, ChevronRight, Activity, LineChart, Users, Eye, Wallet, ShieldCheck,
-  Fingerprint, Building2, Receipt, Link as LinkIcon
+  Fingerprint, Building2, Receipt, Link as LinkIcon, Send, ArrowDownToLine
 } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -44,10 +44,10 @@ export default function BottomNavigation({
   ];
 
   const cryptoTabs = [
-    { id: 'crypto-wallet', label: 'Dashboard', icon: Wallet },
-    { id: 'crypto-send', label: 'Send', icon: Activity },
-    { id: 'crypto-receive', label: 'Receive', icon: Users },
-    { id: 'crypto-security', label: 'Security', icon: Eye },
+    { id: 'crypto-wallet', label: 'Wallet', icon: Wallet },
+    { id: 'crypto-send', label: 'Send', icon: Send },
+    { id: 'crypto-receive', label: 'Receive', icon: ArrowDownToLine },
+    { id: 'crypto-security', label: 'Security', icon: ShieldCheck },
   ];
 
   const quickoTabs = [

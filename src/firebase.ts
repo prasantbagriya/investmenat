@@ -21,6 +21,10 @@ setPersistence(auth, indexedDBLocalPersistence).catch(err => {
 });
 // Initialize provider and configure Google Sheets scope permissions
 export const googleProvider = new GoogleAuthProvider();
+export const BASIC_GOOGLE_SCOPES = [
+  'https://www.googleapis.com/auth/spreadsheets',
+  'https://www.googleapis.com/auth/drive.file'
+];
 export const ALL_GOOGLE_SCOPES = [
   'https://www.googleapis.com/auth/spreadsheets',
   'https://www.googleapis.com/auth/contacts',
@@ -41,12 +45,11 @@ export const ALL_GOOGLE_SCOPES = [
   'https://www.googleapis.com/auth/classroom.announcements.readonly'
 ];
 
-ALL_GOOGLE_SCOPES.forEach(scope => googleProvider.addScope(scope));
+BASIC_GOOGLE_SCOPES.forEach(scope => googleProvider.addScope(scope));
 
-// Force Google to show the consent screen again so it asks for the new Drive scopes
+// Use select_account for smooth, friction-free login without scary permission warnings
 googleProvider.setCustomParameters({
-  prompt: 'consent',
-  access_type: 'offline' // Good for getting refresh tokens if needed
+  prompt: 'select_account'
 });
 
 // Memory cache for the OAuth access token

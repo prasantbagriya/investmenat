@@ -1,0 +1,27 @@
+{
+  "nodes": [
+    {
+      "id": "service:Dockerfile",
+      "type": "service",
+      "name": "Dockerfile",
+      "filePath": "Dockerfile",
+      "summary": "Infrastructure service specification.",
+      "tags": [
+        "infrastructure"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "service:.dockerignore",
+      "type": "service",
+      "name": ".dockerignore",
+      "filePath": ".dockerignore",
+      "summary": "Infrastructure or configuration service.",
+      "tags": [
+        "infrastructure"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

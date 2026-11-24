@@ -1,0 +1,94 @@
+{
+  "nodes": [
+    {
+      "id": "file:src/website/WebsiteLayout.tsx",
+      "type": "file",
+      "name": "WebsiteLayout.tsx",
+      "filePath": "src/website/WebsiteLayout.tsx",
+      "summary": "React UI component for WebsiteLayout.",
+      "tags": [
+        "component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/website/WebsiteLayout.tsx:WebsiteLayout",
+      "type": "function",
+      "name": "WebsiteLayout",
+      "filePath": "src/website/WebsiteLayout.tsx",
+      "summary": "Function WebsiteLayout in WebsiteLayout.tsx",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:test_btc.ts",
+      "type": "file",
+      "name": "test_btc.ts",
+      "filePath": "test_btc.ts",
+      "summary": "test_btc.ts in test_btc.ts",
+      "tags": [
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:upstoxProxy.ts",
+      "type": "file",
+      "name": "upstoxProxy.ts",
+      "filePath": "upstoxProxy.ts",
+      "summary": "upstoxProxy.ts in upstoxProxy.ts",
+      "tags": [
+        "code"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:upstoxProxy.ts:setupUpstoxRoutes",
+      "type": "function",
+      "name": "setupUpstoxRoutes",
+      "filePath": "upstoxProxy.ts",
+      "summary": "Function setupUpstoxRoutes in upstoxProxy.ts",
+      "tags": [
+        "function",
+        "exported"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:vite.config.ts",
+      "type": "file",
+      "name": "vite.config.ts",
+      "filePath": "vite.config.ts",
+      "summary": "vite.config.ts in vite.config.ts",
+      "tags": [
+        "code"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/website/WebsiteLayout.tsx",
+      "target": "function:src/website/WebsiteLayout.tsx:WebsiteLayout",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:upstoxProxy.ts",
+      "target": "function:upstoxProxy.ts:setupUpstoxRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:upstoxProxy.ts",
+      "target": "function:upstoxProxy.ts:setupUpstoxRoutes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

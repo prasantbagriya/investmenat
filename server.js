@@ -1279,7 +1279,12 @@ If the input is for Trading (e.g., deposits to a Brokerage/Prop Firm), tag it as
   setupAngelRoutes(app);
   setupKiteRoutes(app);
   setupBinanceRoutes(app);
-  app.get("/api/ff_calendar", async (req, res) => {
+  let ffCalendarCache = null;
+  const FF_CACHE_TTL = 15 * 60 * 1e3;
+  const handleFFCalendar = async (req, res) => {
+    if (ffCalendarCache && Date.now() - ffCalendarCache.timestamp < FF_CACHE_TTL) {
+      return res.json(ffCalendarCache.data);
+    }
     try {
       console.log(`[FF Calendar Proxy] Fetching from nfs.faireconomy.media`);
       const apiResponse = await fetch(`https://nfs.faireconomy.media/ff_calendar_thisweek.json`, {
@@ -1289,16 +1294,37 @@ If the input is for Trading (e.g., deposits to a Brokerage/Prop Firm), tag it as
           "Accept-Language": "en-US,en;q=0.9"
         }
       });
-      if (!apiResponse.ok) {
-        return res.status(apiResponse.status).json({ error: "Failed to fetch from FF" });
+      if (apiResponse.ok) {
+        const data = await apiResponse.json();
+        ffCalendarCache = { data, timestamp: Date.now() };
+        return res.json(data);
       }
-      const data = await apiResponse.json();
-      res.json(data);
+      if (ffCalendarCache) {
+        console.warn(`[FF Calendar Proxy] Upstream returned ${apiResponse.status}, serving stale cache`);
+        return res.json(ffCalendarCache.data);
+      }
+      const fallbackPath = path.join(process.cwd(), "public", "data", "forexfactory_calendar.json");
+      if (fs.existsSync(fallbackPath)) {
+        const fileData = JSON.parse(fs.readFileSync(fallbackPath, "utf-8"));
+        ffCalendarCache = { data: fileData, timestamp: Date.now() };
+        return res.json(fileData);
+      }
+      return res.status(apiResponse.status).json({ error: "Failed to fetch from FF" });
     } catch (e) {
       console.error("[FF Calendar Proxy] Error:", e);
+      if (ffCalendarCache) {
+        return res.json(ffCalendarCache.data);
+      }
+      const fallbackPath = path.join(process.cwd(), "public", "data", "forexfactory_calendar.json");
+      if (fs.existsSync(fallbackPath)) {
+        const fileData = JSON.parse(fs.readFileSync(fallbackPath, "utf-8"));
+        return res.json(fileData);
+      }
       res.status(500).json({ error: e.message || String(e) });
     }
-  });
+  };
+  app.get("/api/ff_calendar", handleFFCalendar);
+  app.get("/api/forexfactory/calendar", handleFFCalendar);
   const stockCache = /* @__PURE__ */ new Map();
   const mfCache = /* @__PURE__ */ new Map();
   const searchCache = /* @__PURE__ */ new Map();

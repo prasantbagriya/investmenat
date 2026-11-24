@@ -1,0 +1,82 @@
+{
+  "nodes": [
+    {
+      "id": "document:.agents/skills/firebase_basics/references/setup/android_studio.md",
+      "type": "document",
+      "name": "android_studio.md",
+      "filePath": ".agents/skills/firebase_basics/references/setup/android_studio.md",
+      "summary": "Documentation describing android_studio.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/firebase_basics/references/setup/antigravity.md",
+      "type": "document",
+      "name": "antigravity.md",
+      "filePath": ".agents/skills/firebase_basics/references/setup/antigravity.md",
+      "summary": "Documentation describing antigravity.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_basics/references/setup/claude_code.md",
+      "type": "document",
+      "name": "claude_code.md",
+      "filePath": ".agents/skills/firebase_basics/references/setup/claude_code.md",
+      "summary": "Documentation describing claude_code.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/firebase_basics/references/setup/cursor.md",
+      "type": "document",
+      "name": "cursor.md",
+      "filePath": ".agents/skills/firebase_basics/references/setup/cursor.md",
+      "summary": "Documentation describing cursor.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_basics/references/setup/gemini_cli.md",
+      "type": "document",
+      "name": "gemini_cli.md",
+      "filePath": ".agents/skills/firebase_basics/references/setup/gemini_cli.md",
+      "summary": "Documentation describing gemini_cli.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/firebase_basics/references/setup/github_copilot.md",
+      "type": "document",
+      "name": "github_copilot.md",
+      "filePath": ".agents/skills/firebase_basics/references/setup/github_copilot.md",
+      "summary": "Documentation describing github_copilot.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/firebase_basics/references/setup/other_agents.md",
+      "type": "document",
+      "name": "other_agents.md",
+      "filePath": ".agents/skills/firebase_basics/references/setup/other_agents.md",
+      "summary": "Documentation describing other_agents.md.",
+      "tags": [
+        "documentation"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": []
+}

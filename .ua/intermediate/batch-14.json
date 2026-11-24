@@ -1,0 +1,38 @@
+{
+  "nodes": [
+    {
+      "id": "config:android/app/src/main/res/values/ic_launcher_background.xml",
+      "type": "config",
+      "name": "ic_launcher_background.xml",
+      "filePath": "android/app/src/main/res/values/ic_launcher_background.xml",
+      "summary": "Configuration file controlling ic_launcher_background.xml settings.",
+      "tags": [
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:android/app/src/main/res/values/strings.xml",
+      "type": "config",
+      "name": "strings.xml",
+      "filePath": "android/app/src/main/res/values/strings.xml",
+      "summary": "Configuration file controlling strings.xml settings.",
+      "tags": [
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:android/app/src/main/res/values/styles.xml",
+      "type": "config",
+      "name": "styles.xml",
+      "filePath": "android/app/src/main/res/values/styles.xml",
+      "summary": "Configuration file controlling styles.xml settings.",
+      "tags": [
+        "configuration"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

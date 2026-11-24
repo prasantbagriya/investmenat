@@ -231,7 +231,7 @@ export default function Dashboard({
           <p className="text-xs text-slate-500 font-medium">{monthLabel}</p>
         </div>
         
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-2">
           <button 
             onClick={() => navigateMonth('prev')}
             className="p-1.5 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-xl transition-colors cursor-pointer"
@@ -265,7 +265,7 @@ export default function Dashboard({
             onClick={() => onNavigateToTab(overdueCcBillsCount > 0 ? 'credit-cards' : 'pending')}
             className="text-xs font-medium bg-rose-900 hover:bg-rose-800 text-white px-3 py-1.5 rounded-xl transition-colors cursor-pointer shrink-0"
           >
-            Settle Now
+            Settle now
           </button>
         </div>
       )}
@@ -370,6 +370,18 @@ export default function Dashboard({
                 <span className="font-mono tabular-nums text-slate-700 font-medium">₹{financialMonthlyStats.generalExpenses.toLocaleString()}</span>
               </div>
             </div>
+
+            <div className="mt-3 text-xs space-y-1">
+              <div className="flex justify-between items-center text-slate-600">
+                <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Recurring bills</span>
+                <span className="font-mono tabular-nums text-slate-900 font-medium">?{financialMonthlyStats.autoBillsAmount.toLocaleString()}</span>
+              </div>
+              <div className="flex justify-between items-center text-slate-600 border-t border-slate-100 pt-1">
+                <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-indigo-500"></span> Other expenses</span>
+                <span className="font-mono tabular-nums text-slate-900 font-medium">?{financialMonthlyStats.generalExpenses.toLocaleString()}</span>
+              </div>
+            </div>
+
           </div>
 
           <div className="pt-2 border-t border-slate-100">
@@ -377,7 +389,7 @@ export default function Dashboard({
               <span>Savings Rate</span>
               <span className="text-slate-900 font-mono tabular-nums font-semibold">{financialMonthlyStats.savingsRate}%</span>
             </div>
-            <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden border border-slate-200">
+            <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
               <div 
                 className="h-full bg-slate-900 rounded-full transition-all"
                 style={{ width: `${Math.min(financialMonthlyStats.savingsRate, 100)}%` }}

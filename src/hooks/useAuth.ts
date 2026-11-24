@@ -66,6 +66,8 @@ export function useAuth() {
             localStorage.removeItem('guest_user_id');
           }
         }
+        localStorage.removeItem('isOfflineMode');
+        localStorage.removeItem('guest_user_id');
       }
       setUser(usr);
       setAuthLoading(false);

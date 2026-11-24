@@ -16,8 +16,9 @@ export const db = _customDbId
   ? initializeFirestore(app, { ignoreUndefinedProperties: true }, _customDbId)
   : initializeFirestore(app, { ignoreUndefinedProperties: true });
 export const auth = getAuth(app);
-setPersistence(auth, indexedDBLocalPersistence).catch(err => {
-  console.warn("[Firebase] Failed to set indexedDB persistence:", err);
+// Use browserLocalPersistence so the Google session stays permanently saved in localStorage
+setPersistence(auth, browserLocalPersistence).catch(err => {
+  console.warn("[Firebase] Failed to set browserLocalPersistence:", err);
 });
 // Initialize provider and configure Google Sheets scope permissions
 export const googleProvider = new GoogleAuthProvider();
@@ -85,6 +86,7 @@ export function setAccessToken(token: string | null) {
 // Handle redirect result on load
 export async function handleRedirectResult() {
   try {
+    await setPersistence(auth, browserLocalPersistence).catch(() => {});
     const result = await getRedirectResult(auth);
     if (result) {
       const credential = GoogleAuthProvider.credentialFromResult(result);
@@ -103,6 +105,10 @@ if (typeof window !== 'undefined') {
 // Google login utility
 export async function signInWithGoogle() {
   try {
+    await setPersistence(auth, browserLocalPersistence).catch(() => {});
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('isOfflineMode');
+    }
     const provider = googleProvider;
     
     if (Capacitor.isNativePlatform()) {

@@ -325,6 +325,17 @@ export default function MarketView() {
                         ))}
                       </div>
                     </div>
+                  )}
+
+                  {/* Forex Factory Live Economic News */}
+                  <div className="mt-4 space-y-2 border-t border-slate-150 pt-3">
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-xs font-semibold text-slate-900 flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse" />
+                        Forex Factory Economic News
+                      </h3>
+                      <span className="text-[10px] text-slate-400 font-mono">Live</span>
+                    </div>
                     {ffEvents.length === 0 ? (
                       <p className="text-[11px] text-slate-400 py-1">No upcoming events found.</p>
                     ) : (

@@ -604,6 +604,8 @@ export default function App() {
       setAuthLoading(false);
 
       if (usr && !usr.uid.startsWith('guest_offline_')) {
+        localStorage.removeItem('isOfflineMode');
+        localStorage.removeItem('guest_user_id');
         // Proactively refresh Google OAuth token on initial load
         refreshGoogleTokenIfNeeded(usr.uid).catch(console.error);
         // ✅ Activate cloud sync interceptor for this logged-in user
@@ -621,6 +623,40 @@ export default function App() {
     });
     return () => unsubscribe();
   }, []);
+
+  // Proactive Session Keep-Alive: Keep Google Firebase session permanently logged in
+  useEffect(() => {
+    if (!user || user.uid.startsWith('guest_offline_')) return;
+
+    const tokenRefreshTimer = setInterval(async () => {
+      try {
+        if (auth.currentUser) {
+          await auth.currentUser.getIdToken(true);
+        }
+      } catch (err) {
+        console.warn('[Firebase Auth] Proactive keep-alive token refresh error:', err);
+      }
+    }, 15 * 60 * 1000);
+
+    const handleVisibility = async () => {
+      if (document.visibilityState === 'visible' && auth.currentUser) {
+        try {
+          await auth.currentUser.getIdToken(false);
+        } catch (err) {
+          console.warn('[Firebase Auth] Visibility token check failed:', err);
+        }
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibility);
+    window.addEventListener('focus', handleVisibility);
+
+    return () => {
+      clearInterval(tokenRefreshTimer);
+      document.removeEventListener('visibilitychange', handleVisibility);
+      window.removeEventListener('focus', handleVisibility);
+    };
+  }, [user]);
 
   // Firestore syncs
   useEffect(() => {
@@ -1675,6 +1711,7 @@ export default function App() {
 
   // Sign-In Google action wrapper
   const handleGoogleSignIn = () => {
+    localStorage.removeItem('isOfflineMode');
     signInWithGoogle().catch((err) => {
       console.error(err);
       const errorMsg = err?.message || '';

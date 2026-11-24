@@ -300,14 +300,14 @@ export const LedgerList: React.FC<LedgerListProps> = ({ onSelectProfile, userId,
                   <button
                     type="button"
                     onClick={() => setNewProfileType('gave')}
-                    className={`flex-1 text-xs py-1 rounded transition-colors font-semibold ${newProfileType === 'gave' ? 'bg-white shadow-xs text-emerald-600' : 'text-slate-500 hover:text-slate-700'}`}
+                    className={`flex-1 text-xs py-1 rounded-xl transition-colors font-semibold ${newProfileType === 'gave' ? 'bg-white shadow-xs text-emerald-600' : 'text-slate-500 hover:text-slate-700'}`}
                   >
                     I Gave (They Owe Me)
                   </button>
                   <button
                     type="button"
                     onClick={() => setNewProfileType('got')}
-                    className={`flex-1 text-xs py-1 rounded transition-colors font-semibold ${newProfileType === 'got' ? 'bg-white shadow-xs text-rose-600' : 'text-slate-500 hover:text-slate-700'}`}
+                    className={`flex-1 text-xs py-1 rounded-xl transition-colors font-semibold ${newProfileType === 'got' ? 'bg-white shadow-xs text-rose-600' : 'text-slate-500 hover:text-slate-700'}`}
                   >
                     I Got (I Owe Them)
                   </button>
@@ -318,13 +318,13 @@ export const LedgerList: React.FC<LedgerListProps> = ({ onSelectProfile, userId,
               <button 
                 type="button" 
                 onClick={() => setShowAddForm(false)}
-                className="px-3 py-1.5 text-slate-700 hover:text-slate-900 hover:bg-slate-50 font-semibold text-xs rounded transition-colors"
+                className="px-3 py-1.5 text-slate-700 hover:text-slate-900 hover:bg-slate-50 font-semibold text-xs rounded-xl transition-colors"
               >
                 Cancel
               </button>
               <button 
                 type="submit"
-                className="px-4 py-1.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium rounded text-xs transition-colors cursor-pointer"
+                className="px-4 py-1.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium rounded-xl text-xs transition-colors cursor-pointer"
               >
                 Save
               </button>
@@ -385,7 +385,7 @@ export const LedgerList: React.FC<LedgerListProps> = ({ onSelectProfile, userId,
                   </div>
                   <button 
                     onClick={(e) => { e.stopPropagation(); handleDeleteProfile(profile.id); }}
-                    className="p-1.5 text-slate-400 hover:text-rose-600 rounded transition-colors"
+                    className="p-1.5 text-slate-400 hover:text-rose-600 rounded-xl transition-colors"
                   >
                     <Trash2 size={14} />
                   </button>

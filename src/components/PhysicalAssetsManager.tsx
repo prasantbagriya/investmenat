@@ -100,16 +100,16 @@ export default function PhysicalAssetsManager({ assets, onAdd, onEdit, onDelete 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            className="bg-white p-4 rounded-lg border border-slate-200 shadow-sm relative"
+            className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs relative"
           >
             <button
               type="button"
               onClick={() => setIsFormOpen(false)}
-              className="absolute top-3 right-3 text-slate-400 hover:text-slate-600 p-1 cursor-pointer transition-colors"
+              className="absolute top-3 right-3 text-slate-400 hover:text-slate-700 hover:bg-slate-100 p-1.5 rounded-full cursor-pointer transition-colors"
             >
               <X size={16} />
             </button>
-            <h3 className="font-bold text-slate-800 mb-3 text-sm flex items-center gap-1.5 border-b border-slate-100 pb-2">
+            <h3 className="font-semibold text-slate-900 mb-3 text-sm flex items-center gap-1.5 border-b border-slate-100 pb-2">
               {editingId ? <><Edit2 size={14} className="text-slate-900" /> Update Asset Valuation</> : <><Plus size={14} className="text-slate-900" /> Add New Physical Asset</>}
             </h3>
             <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-3">

@@ -45,7 +45,7 @@ export default function IndicatorsModal({ theme, onClose, onAddIndicator }: Indi
       >
         <div className="flex items-center justify-between p-4 border-b" style={{ borderColor: border }}>
           <h2 className="text-xl font-bold">Indicators, metrics, and strategies</h2>
-          <button onClick={onClose} className="p-1 hover:opacity-70 rounded transition-opacity"><X size={24} /></button>
+          <button onClick={onClose} className="p-1 hover:opacity-70 rounded-xl transition-opacity"><X size={24} /></button>
         </div>
         
         <div className="flex items-center gap-3 px-4 py-3 border-b" style={{ borderColor: border }}>

@@ -60,7 +60,7 @@ export default function PanVerification() {
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium py-2.5 px-4 rounded-xl text-sm transition-colors cursor-pointer shadow-xs disabled:opacity-60"
+          className="w-full flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium py-3 px-4 rounded-xl text-sm transition-colors cursor-pointer shadow-xs disabled:opacity-60"
         >
           {isLoading ? (
             <Loader2 size={16} className="animate-spin text-white" />
@@ -73,7 +73,7 @@ export default function PanVerification() {
       {result && (
         <div className="mt-6 p-4 sm:p-5 bg-slate-50 border border-slate-200 rounded-xl">
           <div className="flex items-center gap-2.5 mb-4 border-b border-slate-200/80 pb-3">
-            <div className="w-7 h-7 bg-emerald-100 text-emerald-700 rounded-lg flex items-center justify-center shrink-0">
+            <div className="w-7 h-7 bg-emerald-100 text-emerald-700 rounded-xl flex items-center justify-center shrink-0">
               <CheckCircle size={15} strokeWidth={2.5} />
             </div>
             <div>

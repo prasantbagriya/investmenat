@@ -594,7 +594,7 @@ Please write a short, professional, and optimized description (2-3 sentences max
                         type="button"
                         onClick={handleOptimizeDescription}
                         disabled={isOptimizing || !title.trim()}
-                        className="flex items-center gap-1 text-xs font-medium text-slate-900 hover:text-slate-900 bg-slate-100 hover:bg-slate-100 px-2 py-0.5 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="flex items-center gap-1 text-xs font-medium text-slate-900 hover:text-slate-900 bg-slate-100 hover:bg-slate-100 px-2 py-0.5 rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         {isOptimizing ? (
                           <><div className="w-3 h-3 border-2 border-slate-200 border-t-indigo-600 rounded-full animate-spin" /> Optimizing...</>
@@ -606,13 +606,13 @@ Please write a short, professional, and optimized description (2-3 sentences max
 
                     {/* Formatting Toolbar */}
                     <div className="flex items-center gap-1 bg-slate-50 border border-b-0 border-slate-200 rounded-t-xl px-2 py-1">
-                      <button type="button" onClick={() => insertFormatting('**', '**')} className="p-1 hover:bg-slate-200 rounded text-slate-600" title="Bold">
+                      <button type="button" onClick={() => insertFormatting('**', '**')} className="p-1 hover:bg-slate-200 rounded-xl text-slate-600" title="Bold">
                         <Bold size={12} />
                       </button>
-                      <button type="button" onClick={() => insertFormatting('*', '*')} className="p-1 hover:bg-slate-200 rounded text-slate-600" title="Italic">
+                      <button type="button" onClick={() => insertFormatting('*', '*')} className="p-1 hover:bg-slate-200 rounded-xl text-slate-600" title="Italic">
                         <Italic size={12} />
                       </button>
-                      <button type="button" onClick={() => insertFormatting('- ')} className="p-1 hover:bg-slate-200 rounded text-slate-600" title="Bullet List">
+                      <button type="button" onClick={() => insertFormatting('- ')} className="p-1 hover:bg-slate-200 rounded-xl text-slate-600" title="Bullet List">
                         <ListIcon size={12} />
                       </button>
                     </div>
@@ -774,7 +774,7 @@ Please write a short, professional, and optimized description (2-3 sentences max
                   type="button"
                   onClick={fetchCalendarEvents}
                   disabled={isLoadingEvents}
-                  className="p-1 hover:bg-slate-100 text-slate-500 hover:text-slate-700 rounded transition-colors cursor-pointer"
+                  className="p-1 hover:bg-slate-100 text-slate-500 hover:text-slate-700 rounded-xl transition-colors cursor-pointer"
                   title="Refresh calendar feed"
                 >
                   <RefreshCw size={12} className={isLoadingEvents ? 'animate-spin' : ''} />
@@ -828,7 +828,7 @@ Please write a short, professional, and optimized description (2-3 sentences max
                                 });
                                 toast.success('Task imported to Scheduler successfully.');
                               }}
-                              className="text-slate-900 font-bold hover:underline"
+                              className="text-slate-900 font-medium hover:underline"
                             >
                               + Import to Scheduler
                             </button>

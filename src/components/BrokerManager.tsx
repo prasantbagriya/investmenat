@@ -446,41 +446,41 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
         <div className="md:col-span-3 bg-white rounded-xl p-2 border border-slate-200 shadow-sm flex flex-row md:flex-col gap-1 overflow-x-auto no-scrollbar">
           <button
             onClick={() => setActiveTab('upstox')}
-            className={`flex items-center gap-2 p-3 rounded-lg text-sm font-bold transition-all whitespace-nowrap ${
+            className={`flex items-center gap-2 p-3 rounded-xl text-sm font-medium transition-all whitespace-nowrap ${
               activeTab === 'upstox' ? 'bg-slate-100 text-slate-900' : 'text-slate-600 hover:bg-slate-50'
             }`}
           >
-            <div className="w-6 h-6 rounded bg-slate-900 text-white flex items-center justify-center font-semibold text-xs">U</div>
+            <div className="w-6 h-6 rounded-xl bg-slate-900 text-white flex items-center justify-center font-semibold text-xs">U</div>
             Upstox API
           </button>
           
           <button
             onClick={() => setActiveTab('dhan')}
-            className={`flex items-center gap-2 p-3 rounded-lg text-sm font-bold transition-all whitespace-nowrap ${
+            className={`flex items-center gap-2 p-3 rounded-xl text-sm font-medium transition-all whitespace-nowrap ${
               activeTab === 'dhan' ? 'bg-emerald-50 text-emerald-700' : 'text-slate-600 hover:bg-slate-50'
             }`}
           >
-            <div className="w-6 h-6 rounded bg-emerald-600 text-white flex items-center justify-center font-semibold text-xs">D</div>
+            <div className="w-6 h-6 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-semibold text-xs">D</div>
             Dhan HQ API
           </button>
           
           <button
             onClick={() => setActiveTab('angel')}
-            className={`flex items-center gap-2 p-3 rounded-lg text-sm font-bold transition-all whitespace-nowrap ${
+            className={`flex items-center gap-2 p-3 rounded-xl text-sm font-medium transition-all whitespace-nowrap ${
               activeTab === 'angel' ? 'bg-orange-50 text-orange-700' : 'text-slate-600 hover:bg-slate-50'
             }`}
           >
-            <div className="w-6 h-6 rounded bg-orange-600 text-white flex items-center justify-center font-semibold text-xs">A</div>
+            <div className="w-6 h-6 rounded-xl bg-orange-600 text-white flex items-center justify-center font-semibold text-xs">A</div>
             Angel SmartAPI
           </button>
           
           <button
             onClick={() => setActiveTab('binance')}
-            className={`flex items-center gap-2 p-3 rounded-lg text-sm font-bold transition-all whitespace-nowrap ${
+            className={`flex items-center gap-2 p-3 rounded-xl text-sm font-medium transition-all whitespace-nowrap ${
               activeTab === 'binance' ? 'bg-yellow-50 text-yellow-700' : 'text-slate-600 hover:bg-slate-50'
             }`}
           >
-            <div className="w-6 h-6 rounded bg-yellow-500 text-slate-900 flex items-center justify-center font-semibold text-xs">B</div>
+            <div className="w-6 h-6 rounded-xl bg-yellow-500 text-slate-900 flex items-center justify-center font-semibold text-xs">B</div>
             Binance API
           </button>
         </div>
@@ -618,7 +618,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                                   {(o.status === 'open' || o.status === 'pending') && (
                                     <button 
                                       onClick={() => handleCancelUpstoxOrder(o.order_id)}
-                                      className="text-rose-500 hover:text-rose-700 p-1 bg-rose-50 rounded-md font-bold"
+                                      className="text-slate-600 hover:text-rose-600 p-1.5 bg-slate-100 hover:bg-rose-50 rounded-xl font-medium cursor-pointer"
                                     >Cancel</button>
                                   )}
                                 </div>
@@ -917,7 +917,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                       onClick={() => setSmartIsActive(!smartIsActive)}
                       className={`px-1.5 py-1.5 text-xs font-medium rounded-xl transition-all cursor-pointer ${
                         smartIsActive 
-                          ? 'bg-rose-500 hover:bg-rose-600 text-white' 
+                          ? 'bg-slate-800 hover:bg-slate-700 text-white' 
                           : 'bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium'
                       }`}
                     >
@@ -988,10 +988,10 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                           <InfoTooltip text="Algo trading orders placed from these apps will be executed (max 5 apps)." />
                         </h4>
                         <div className="flex items-center gap-1.5">
-                          <span className="text-xs bg-slate-200/80 text-slate-700 font-bold px-1.5 py-0.5 rounded capitalize">API Type: Trading</span>
+                          <span className="text-xs bg-slate-200/80 text-slate-700 font-bold px-1.5 py-0.5 rounded-xl capitalize">API Type: Trading</span>
                         </div>
                       </div>
-                      <p className="text-xs font-semibold text-rose-600 bg-rose-50/50 p-1.5 rounded border border-rose-100 mt-1">
+                      <p className="text-xs font-semibold text-rose-600 bg-rose-50/50 p-1.5 rounded-xl border border-rose-100 mt-1">
                         ⚠️ Primary IP and Secondary IP can be updated once in a week only.
                       </p>
                     </div>
@@ -999,7 +999,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                     <div className="p-1 border-b border-slate-100 bg-slate-50/20 flex flex-wrap gap-2 items-center justify-between text-xs">
                       <div className="flex items-center gap-1">
                         <span className="text-slate-500 font-bold capitalize text-xs">API Key:</span>
-                        <span className="font-mono tabular-nums bg-slate-100 px-1 py-1 rounded select-all font-semibold text-slate-705">
+                        <span className="font-mono tabular-nums bg-slate-100 px-1 py-1 rounded-xl select-all font-semibold text-slate-705">
                           {angelApiKey || 'fy2JiRJ2'}
                         </span>
                         <button 
@@ -1015,7 +1015,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                       
                       <button
                         onClick={() => setIsFormExpanded(true)}
-                        className="bg-slate-900 hover:bg-slate-800 text-white font-medium text-xs px-1 py-1 rounded shrink-0 transition-colors cursor-pointer"
+                        className="bg-slate-900 hover:bg-slate-800 text-white font-medium text-xs px-2 py-1 rounded-xl shrink-0 transition-colors cursor-pointer"
                       >
                         + ADD APP
                       </button>
@@ -1275,7 +1275,7 @@ export default function BrokerManager({ user }: BrokerManagerProps) {
                 <div className="pt-2">
                   <button
                     onClick={handleSaveBinanceKeys}
-                    className="w-full bg-yellow-500 hover:bg-yellow-600 text-slate-900 font-medium text-sm py-3 rounded-xl transition-colors shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium text-sm py-3 rounded-xl shadow-xs transition-colors shadow-sm flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <ShieldCheck size={18} /> Save & Connect Binance
                   </button>

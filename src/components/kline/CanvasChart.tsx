@@ -885,7 +885,7 @@ export default function CanvasChart({ data, theme, chartType = 'candle_solid', s
       
       {contextMenu && (
         <div 
-          className="absolute z-50 rounded py-1 text-sm font-medium border shadow-lg"
+          className="absolute z-50 rounded-xl py-1 text-sm font-medium border shadow-lg"
           style={{ 
             left: contextMenu.x, 
             top: contextMenu.y,

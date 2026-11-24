@@ -130,7 +130,7 @@ export default function EconomicCalendar({ theme }: EconomicCalendarProps) {
         <div className="flex items-center gap-2">
           <button 
             onClick={() => setShowFilters(!showFilters)}
-            className="flex items-center gap-1 text-xs px-2 py-1.5 rounded font-medium transition-colors cursor-pointer whitespace-nowrap"
+            className="flex items-center gap-1 text-xs px-2 py-1.5 rounded-xl font-medium transition-colors cursor-pointer whitespace-nowrap"
             style={{ 
               backgroundColor: showFilters ? (theme === 'dark' ? '#131722' : '#000000') : (theme === 'dark' ? '#1E222D' : '#F0F3FA'),
               color: showFilters ? '#FFFFFF' : text,
@@ -179,7 +179,7 @@ export default function EconomicCalendar({ theme }: EconomicCalendarProps) {
                 <button
                   key={currency}
                   onClick={() => toggleCurrency(currency)}
-                  className="px-2 py-0.5 rounded font-bold"
+                  className="px-2 py-0.5 rounded-xl font-medium"
                   style={{
                     backgroundColor: selectedCurrencies.includes(currency) ? (theme === 'dark' ? '#2B2B36' : '#E0E3EB') : 'transparent',
                     color: text,
@@ -204,7 +204,7 @@ export default function EconomicCalendar({ theme }: EconomicCalendarProps) {
             <p>Loading economic calendar...</p>
           </div>
         ) : error ? (
-          <div className="p-4 rounded border border-red-500/20 bg-red-500/10 text-red-500 flex flex-col items-center text-center gap-2 m-4">
+          <div className="p-4 rounded-xl border border-red-500/20 bg-red-500/10 text-red-500 flex flex-col items-center text-center gap-2 m-4">
             <AlertTriangle size={20} />
             {error}
           </div>

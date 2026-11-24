@@ -106,7 +106,7 @@ export default function GstinSearch() {
               </div>
               <div className="sm:col-span-2">
                 <span className="text-slate-500 text-[11px] font-medium block mb-0.5">Principal Place of Business</span>
-                <p className="font-medium text-slate-600 flex items-start gap-1.5 bg-white p-2.5 rounded-lg border border-slate-200">
+                <p className="font-medium text-slate-600 flex items-start gap-1.5 bg-white p-2.5 rounded-xl border border-slate-200">
                   <MapPin size={14} className="text-slate-400 shrink-0 mt-0.5" />
                   {result.address}
                 </p>

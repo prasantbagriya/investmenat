@@ -618,7 +618,7 @@ export default function TransactionTracker({
                 <button
                   type="button"
                   onClick={() => setIsFormOpen(false)}
-                  className="px-1.5 py-1.5 text-slate-700 hover:text-slate-900 hover:bg-slate-50 font-bold text-xs"
+                  className="px-1.5 py-1.5 text-slate-700 hover:text-slate-900 hover:bg-slate-50 font-medium text-xs rounded-xl"
                 >
                   Cancel
                 </button>
@@ -777,7 +777,7 @@ export default function TransactionTracker({
                   return (
                   <tr key={t.id} className="hover:bg-slate-50/30">
                     <td className="p-2 px-2">
-                      <span className={`inline-block px-1.5 py-0.5 rounded text-xs font-bold ${t.type === 'income' ? 'bg-emerald-100 text-emerald-800' : t.type === 'refund' ? 'bg-slate-100 text-slate-900' : t.type === 'transfer' ? 'bg-blue-100 text-blue-800' : 'bg-slate-100 text-slate-700'}`}>
+                      <span className={`inline-block px-1.5 py-0.5 rounded-xl text-xs font-bold ${t.type === 'income' ? 'bg-emerald-100 text-emerald-800' : t.type === 'refund' ? 'bg-slate-100 text-slate-900' : t.type === 'transfer' ? 'bg-blue-100 text-blue-800' : 'bg-slate-100 text-slate-700'}`}>
                         {t.type === 'income' ? 'CREDIT' : t.type === 'refund' ? 'REFUND' : t.type === 'transfer' ? 'TRANSFER' : 'DEBIT'}
                       </span>
                     </td>
@@ -792,8 +792,8 @@ export default function TransactionTracker({
                         </div>
                       ) : (
                         <div className="flex justify-end gap-1.5 text-slate-500">
-                          <button onClick={() => startEdit(t)} className="p-1 hover:text-slate-900 rounded cursor-pointer"><Edit2 size={11} /></button>
-                          <button onClick={() => onDeleteTransaction(t.id)} className="p-1 hover:text-red-650 rounded cursor-pointer"><Trash2 size={11} /></button>
+                          <button onClick={() => startEdit(t)} className="p-1 hover:text-slate-900 rounded-xl cursor-pointer"><Edit2 size={11} /></button>
+                          <button onClick={() => onDeleteTransaction(t.id)} className="p-1 hover:text-red-650 rounded-xl cursor-pointer"><Trash2 size={11} /></button>
                         </div>
                       )}
                     </td>

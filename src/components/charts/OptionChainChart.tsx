@@ -136,13 +136,13 @@ const OptionChainChart: React.FC<OptionChainChartProps> = ({ data, theme = 'ligh
         <div className="flex bg-slate-200/50 p-1 rounded-lg">
           <button
             onClick={() => setView('table')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-colors ${view === 'table' ? 'bg-white text-blue-600 shadow-sm' : 'text-slate-600 hover:text-slate-900'}`}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium transition-colors ${view === 'table' ? 'bg-white text-blue-600 shadow-sm' : 'text-slate-600 hover:text-slate-900'}`}
           >
             <TableIcon size={14} /> Chain Table
           </button>
           <button
             onClick={() => setView('analytics')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-colors ${view === 'analytics' ? 'bg-white text-purple-600 shadow-sm' : 'text-slate-600 hover:text-slate-900'}`}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium transition-colors ${view === 'analytics' ? 'bg-white text-purple-600 shadow-sm' : 'text-slate-600 hover:text-slate-900'}`}
           >
             <BarChart2 size={14} /> Analytics
           </button>
@@ -202,7 +202,7 @@ const OptionChainChart: React.FC<OptionChainChartProps> = ({ data, theme = 'ligh
                     <div className="w-20 text-left z-10 font-mono tabular-nums text-xs text-slate-500">{formatNum(callOI)}</div>
                     <div className="w-16 text-right z-10 font-mono tabular-nums font-bold text-slate-800">{callLTP ? callLTP.toFixed(2) : '-'}</div>
                     <div className="w-24 text-right z-10 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <button className="px-3 py-1 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white rounded text-xs font-medium shadow-sm transition-all transform hover:scale-105">
+                      <button className="px-3 py-1 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white rounded-xl text-xs font-medium shadow-sm transition-all transform hover:scale-105">
                         BUY CE
                       </button>
                     </div>
@@ -221,7 +221,7 @@ const OptionChainChart: React.FC<OptionChainChartProps> = ({ data, theme = 'ligh
                       style={{ width: `${putOiPercent}%` }}
                     />
                     <div className="w-24 text-left z-10 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <button className="px-3 py-1 bg-pink-600 hover:bg-pink-700 text-white rounded text-xs font-medium shadow-sm transition-all transform hover:scale-105">
+                      <button className="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white rounded-xl text-xs font-medium shadow-xs transition-all transform hover:scale-105">
                         BUY PE
                       </button>
                     </div>
@@ -271,7 +271,7 @@ const OptionChainChart: React.FC<OptionChainChartProps> = ({ data, theme = 'ligh
               <div className="flex items-end gap-2 mb-1">
                 <span className="text-4xl font-semibold tracking-tighter text-emerald-600">{analytics.supportStrike}</span>
               </div>
-              <span className="text-xs font-bold text-slate-500 font-mono tabular-nums bg-slate-100 px-2 py-0.5 rounded">{formatNum(analytics.maxPutOI)} OI</span>
+              <span className="text-xs font-bold text-slate-500 font-mono tabular-nums bg-slate-100 px-2 py-0.5 rounded-xl">{formatNum(analytics.maxPutOI)} OI</span>
             </div>
 
             {/* Resistance Card */}
@@ -281,7 +281,7 @@ const OptionChainChart: React.FC<OptionChainChartProps> = ({ data, theme = 'ligh
               <div className="flex items-end gap-2 mb-1">
                 <span className="text-4xl font-semibold tracking-tighter text-red-600">{analytics.resistanceStrike}</span>
               </div>
-              <span className="text-xs font-bold text-slate-500 font-mono tabular-nums bg-slate-100 px-2 py-0.5 rounded">{formatNum(analytics.maxCallOI)} OI</span>
+              <span className="text-xs font-bold text-slate-500 font-mono tabular-nums bg-slate-100 px-2 py-0.5 rounded-xl">{formatNum(analytics.maxCallOI)} OI</span>
             </div>
           </div>
           
@@ -304,7 +304,7 @@ const OptionChainChart: React.FC<OptionChainChartProps> = ({ data, theme = 'ligh
                   const isATM = row.strike_price === sortedData[atmIndex]?.strike_price;
                   
                   return (
-                    <div key={row.strike_price} className="flex items-center gap-4 text-xs font-mono tabular-nums group hover:bg-slate-50 p-1 rounded transition-colors">
+                    <div key={row.strike_price} className="flex items-center gap-4 text-xs font-mono tabular-nums group hover:bg-slate-50 p-1 rounded-xl transition-colors">
                       <div className="flex-1 flex justify-end items-center gap-2">
                         <span className="opacity-0 group-hover:opacity-100 text-slate-400 transition-opacity">{formatNum(callOI)}</span>
                         <div className="h-5 bg-rose-500 rounded-l transition-all duration-500" style={{ width: `${cPct}%` }} />

@@ -234,7 +234,7 @@ export const LedgerProfileView: React.FC<LedgerProfileViewProps> = ({
               return (
                 <div key={tx.id} className={`flex flex-col max-w-[85%] ${isGave ? 'self-end items-end' : 'self-start items-start'}`}>
                   
-                  <div className={`p-3 rounded shadow-xs border group relative min-w-[140px] ${isGave ? 'bg-rose-50 border-rose-100 rounded-tr-sm' : 'bg-emerald-50 border-emerald-100 rounded-tl-sm'}`}>
+                  <div className={`p-3 rounded-xl shadow-xs border group relative min-w-[140px] ${isGave ? 'bg-rose-50 border-rose-100 rounded-tr-sm' : 'bg-emerald-50 border-emerald-100 rounded-tl-sm'}`}>
                     
                     <div className="flex items-center justify-between gap-4">
                       <span className={`text-lg font-bold font-mono tabular-nums ${isGave ? 'text-rose-700' : 'text-emerald-700'}`}>
@@ -283,17 +283,17 @@ export const LedgerProfileView: React.FC<LedgerProfileViewProps> = ({
               <button 
                 type="button"
                 onClick={(e) => { e.preventDefault(); e.stopPropagation(); setShowTxForm('gave'); }}
-                className="flex-1 bg-rose-50 hover:bg-rose-100 border border-rose-200 text-rose-700 font-bold py-2.5 px-3 rounded shadow-xs flex items-center justify-center gap-1.5 active:scale-[0.98] transition-all"
+                className="flex-1 bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 font-medium py-3 px-3 rounded-xl shadow-xs flex items-center justify-center gap-1.5 active:scale-[0.98] transition-all cursor-pointer"
               >
-                <TrendingDown size={14} className="text-rose-600" /> 
+                <TrendingDown size={14} className="text-slate-600" /> 
                 <span className="text-xs ">You Gave <span className="opacity-70 font-normal">(-)</span></span>
               </button>
               <button 
                 type="button"
                 onClick={(e) => { e.preventDefault(); e.stopPropagation(); setShowTxForm('got'); }}
-                className="flex-1 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-700 font-bold py-2.5 px-3 rounded shadow-xs flex items-center justify-center gap-1.5 active:scale-[0.98] transition-all"
+                className="flex-1 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium py-3 px-3 rounded-xl shadow-xs flex items-center justify-center gap-1.5 active:scale-[0.98] transition-all cursor-pointer"
               >
-                <TrendingUp size={14} className="text-emerald-600" /> 
+                <TrendingUp size={14} className="text-emerald-400" /> 
                 <span className="text-xs ">You Got <span className="opacity-70 font-normal">(+)</span></span>
               </button>
             </div>

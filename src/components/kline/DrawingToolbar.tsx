@@ -38,7 +38,7 @@ export default function DrawingToolbar({
       >
         <button
           onClick={() => onSelectMode(id)}
-          className="w-full flex items-center justify-center p-2 rounded transition-colors"
+          className="w-full flex items-center justify-center p-2 rounded-xl transition-colors"
           style={{ 
             color: isActive ? activeIcon : text, 
             background: isActive ? activeBg : 'transparent' 
@@ -132,7 +132,7 @@ export default function DrawingToolbar({
         <div className="mt-2 w-full px-1">
           <button
             onClick={onClearAll}
-            className="w-full flex items-center justify-center p-2 rounded transition-colors"
+            className="w-full flex items-center justify-center p-2 rounded-xl transition-colors"
             style={{ color: text }}
             onMouseEnter={e => e.currentTarget.style.background = hoverBg}
             onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
@@ -148,7 +148,7 @@ export default function DrawingToolbar({
         <div className="w-full px-1 pb-4">
           <button
             onClick={() => navigate('/')}
-            className="w-full flex items-center justify-center p-2 rounded transition-colors"
+            className="w-full flex items-center justify-center p-2 rounded-xl transition-colors"
             style={{ color: text }}
             onMouseEnter={e => e.currentTarget.style.background = hoverBg}
             onMouseLeave={e => e.currentTarget.style.background = 'transparent'}

@@ -949,7 +949,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                     <div className="flex flex-col sm:flex-row items-center justify-between gap-2 border-b border-slate-100 pb-2">
                       <div>
                         <h3 className="text-sm font-semibold text-slate-900 capitalize flex items-center gap-1.5 pb-0.5">
-                          <FolderOpen className="text-slate-800" size={16} /> Google Drive File Library <button type="button" onClick={() => setShowCreateUI(!showCreateUI)} className="ml-3 bg-slate-100 hover:bg-slate-200 text-slate-700 px-2 py-0.5 rounded text-xs font-medium transition-colors">{showCreateUI ? "Hide Form" : "+ Create"}</button>
+                          <FolderOpen className="text-slate-800" size={16} /> Google Drive File Library <button type="button" onClick={() => setShowCreateUI(!showCreateUI)} className="ml-3 bg-slate-100 hover:bg-slate-200 text-slate-700 px-2 py-0.5 rounded-xl text-xs font-medium transition-colors">{showCreateUI ? "Hide Form" : "+ Create"}</button>
                         </h3>
                         <p className="text-xs text-slate-700">Search and read documents directly inside Drive cloud storage.</p>
                       </div>
@@ -993,7 +993,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                           <button
                             type="submit"
                             disabled={isUploading}
-                            className="w-full bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-semibold text-xs capitalize py-1 rounded transition-colors shrink-0 flex items-center justify-center gap-1"
+                            className="w-full bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-semibold text-xs capitalize py-1 rounded-xl transition-colors shrink-0 flex items-center justify-center gap-1"
                           >
                             {isUploading ? <RefreshCw size={11} className="animate-spin" /> : <Upload size={11} />} Create File in Drive
                           </button>
@@ -1035,7 +1035,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                   <div className="space-y-2 animate-fadeIn">
                     <div className="border-b border-slate-100 pb-1">
                       <h3 className="text-sm font-semibold text-slate-900 capitalize flex items-center gap-1.5 pb-0.5">
-                        <Mail className="text-red-500" size={16} /> Secure Gmail Mailbox <button type="button" onClick={() => setShowCreateUI(!showCreateUI)} className="ml-3 bg-red-50 hover:bg-red-100 text-red-600 px-2 py-0.5 rounded text-xs font-medium transition-colors">{showCreateUI ? "Cancel" : "Compose Email"}</button>
+                        <Mail className="text-red-500" size={16} /> Secure Gmail Mailbox <button type="button" onClick={() => setShowCreateUI(!showCreateUI)} className="ml-3 bg-red-50 hover:bg-red-100 text-red-600 px-2 py-0.5 rounded-xl text-xs font-medium transition-colors">{showCreateUI ? "Cancel" : "Compose Email"}</button>
                       </h3>
                       <p className="text-xs text-slate-700">Dispatch messages and query inbox feeds using verified credentials.</p>
                     </div>
@@ -1072,7 +1072,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                           <button
                             type="submit"
                             disabled={isSendingEmail}
-                            className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold text-xs capitalize py-1 rounded-md transition-colors flex items-center justify-center gap-1"
+                            className="w-full bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium text-xs capitalize py-2 rounded-xl shadow-xs transition-colors flex items-center justify-center gap-1"
                           >
                             {isSendingEmail ? <RefreshCw size={11} className="animate-spin" /> : <Send size={11} />} Dispatch Email Message
                           </button>
@@ -1104,7 +1104,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                                     setGmailSubject(email.subject?.startsWith('Re:') ? email.subject : `Re: ${email.subject}`);
                                     setGmailBody(`\n\n--- On ${email.date}, ${email.from} wrote:\n ${email.snippet}`);
                                   }}
-                                  className="text-xs font-medium text-red-600 hover:text-red-800 flex items-center gap-0.5 px-1 py-0.5 rounded hover:bg-red-50 cursor-pointer"
+                                  className="text-xs font-medium text-red-600 hover:text-red-800 flex items-center gap-0.5 px-1 py-0.5 rounded-xl hover:bg-red-50 cursor-pointer"
                                 >
                                   <Send size={8} /> Reply
                                 </button>
@@ -1124,7 +1124,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                       <Video size={24} />
                     </div>
                     <h3 className="text-sm font-semibold text-slate-900 capitalize leading-relaxed">
-                      Instant Google Meet Rooms Creator <button type="button" onClick={() => setShowCreateUI(!showCreateUI)} className="ml-3 bg-slate-100 hover:bg-slate-200 text-slate-800 px-2 py-0.5 rounded text-xs font-medium transition-colors">{showCreateUI ? "Hide Form" : "+ Create Meet"}</button>
+                      Instant Google Meet Rooms Creator <button type="button" onClick={() => setShowCreateUI(!showCreateUI)} className="ml-3 bg-slate-100 hover:bg-slate-200 text-slate-800 px-2 py-0.5 rounded-xl text-xs font-medium transition-colors">{showCreateUI ? "Hide Form" : "+ Create Meet"}</button>
                     </h3>
                     <p className="text-xs text-slate-700 max-w-sm mx-auto leading-relaxed ">
                       Schedule a custom online audio/video space instantly. We negotiate your scope credentials with standard calendar integrations to return a valid joining link.
@@ -1200,7 +1200,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                     <div className="border-b border-slate-100 pb-1 flex flex-col sm:flex-row justify-between items-center gap-1">
                       <div>
                         <h3 className="text-sm font-semibold text-slate-900 capitalize flex items-center gap-1.5 pb-0.5">
-                          <CheckSquare className="text-slate-800" size={16} /> Google Tasks synchronization <button type="button" onClick={() => setShowCreateUI(!showCreateUI)} className="ml-3 bg-slate-100 hover:bg-slate-200 text-slate-700 px-2 py-0.5 rounded text-xs font-medium transition-colors">{showCreateUI ? "Hide Form" : "+ Create"}</button>
+                          <CheckSquare className="text-slate-800" size={16} /> Google Tasks synchronization <button type="button" onClick={() => setShowCreateUI(!showCreateUI)} className="ml-3 bg-slate-100 hover:bg-slate-200 text-slate-700 px-2 py-0.5 rounded-xl text-xs font-medium transition-colors">{showCreateUI ? "Hide Form" : "+ Create"}</button>
                         </h3>
                         <p className="text-xs text-slate-700">Map local checklists directly with official Google Tasks schedules.</p>
                       </div>
@@ -1244,7 +1244,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                           />
                           <button
                             type="submit"
-                            className="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-semibold text-xs capitalize py-1 rounded transition-colors shrink-0 flex items-center justify-center gap-1"
+                            className="w-full bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium text-xs capitalize py-2 rounded-xl shadow-xs transition-colors shrink-0 flex items-center justify-center gap-1"
                           >
                             <Plus size={12} /> Add to Google Tasks
                           </button>
@@ -1300,7 +1300,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                     <div className="border-b border-slate-100 pb-1 flex flex-col sm:flex-row justify-between items-center gap-1">
                       <div>
                         <h3 className="text-sm font-semibold text-slate-900 capitalize flex items-center gap-1.5 pb-0.5">
-                          <MessageSquare className="text-indigo-650" size={16} /> Google Chat Rooms <button type="button" onClick={() => setShowCreateUI(!showCreateUI)} className="ml-3 bg-slate-100 hover:bg-slate-200 text-slate-800 px-2 py-0.5 rounded text-xs font-medium transition-colors">{showCreateUI ? "Cancel" : "Post Message"}</button>
+                          <MessageSquare className="text-indigo-650" size={16} /> Google Chat Rooms <button type="button" onClick={() => setShowCreateUI(!showCreateUI)} className="ml-3 bg-slate-100 hover:bg-slate-200 text-slate-800 px-2 py-0.5 rounded-xl text-xs font-medium transition-colors">{showCreateUI ? "Cancel" : "Post Message"}</button>
                         </h3>
                         <p className="text-xs text-slate-700">Post messages inside security room alerts or corporate threads.</p>
                       </div>
@@ -1385,7 +1385,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                   <div className="space-y-2 animate-fadeIn">
                     <div className="border-b border-slate-100 pb-1">
                       <h3 className="text-sm font-semibold text-slate-900 capitalize flex items-center gap-1.5 pb-0.5">
-                        <FileText className="text-slate-800" size={16} /> Google Forms <button type="button" onClick={() => setShowCreateUI(!showCreateUI)} className="ml-3 bg-slate-100 hover:bg-slate-200 text-slate-700 px-2 py-0.5 rounded text-xs font-medium transition-colors">{showCreateUI ? "Hide Form" : "+ Create"}</button>
+                        <FileText className="text-slate-800" size={16} /> Google Forms <button type="button" onClick={() => setShowCreateUI(!showCreateUI)} className="ml-3 bg-slate-100 hover:bg-slate-200 text-slate-700 px-2 py-0.5 rounded-xl text-xs font-medium transition-colors">{showCreateUI ? "Hide Form" : "+ Create"}</button>
                       </h3>
                       <p className="text-xs text-slate-700">View active surveys, question structures, and spreadsheet links.</p>
                     </div>
@@ -1405,7 +1405,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                           />
                           <button
                             type="submit"
-                            className="w-full bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-semibold text-xs capitalize py-1 rounded transition-colors shrink-0 flex items-center justify-center gap-1"
+                            className="w-full bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-semibold text-xs capitalize py-1 rounded-xl transition-colors shrink-0 flex items-center justify-center gap-1"
                           >
                             <Plus size={11} /> Create Form inside Drive
                           </button>
@@ -1456,7 +1456,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                       {selectedCourse && (
                         <button
                           onClick={() => setSelectedCourse(null)}
-                          className="text-xs font-bold text-amber-700 bg-amber-50 hover:bg-amber-100 px-2 py-1 rounded flex items-center gap-1 transition-colors"
+                          className="text-xs font-medium text-amber-700 bg-amber-50 hover:bg-amber-100 px-2 py-1 rounded-xl flex items-center gap-1 transition-colors"
                         >
                           <ChevronRight size={12} className="rotate-180" /> Back to Courses
                         </button>
@@ -1481,7 +1481,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                               className="p-2 bg-slate-50/40 border border-slate-200 rounded-xl flex flex-col justify-between hover:border-amber-400 cursor-pointer transition-all text-left space-y-1 "
                             >
                               <div className="space-y-1">
-                                <span className="text-xs font-semibold bg-amber-50 text-amber-700 px-1 py-0.5 rounded capitalize ">Course ACTIVE</span>
+                                <span className="text-xs font-semibold bg-amber-50 text-amber-700 px-1 py-0.5 rounded-xl capitalize ">Course ACTIVE</span>
                                 <h4 className="text-xs font-bold text-slate-800 line-clamp-1 leading-tight">{course.name}</h4>
                                 {course.section && (
                                   <p className="text-xs text-slate-700 font-bold">Section: {course.section}</p>
@@ -1521,7 +1521,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                                   <div className="flex justify-between items-start gap-1">
                                     <h5 className="text-xs font-bold text-slate-800 line-clamp-2 leading-tight">{cw.title}</h5>
                                     {cw.dueDate && (
-                                      <span className="text-xs font-semibold bg-red-50 text-red-600 px-1 py-0.5 rounded shrink-0">
+                                      <span className="text-xs font-semibold bg-red-50 text-red-600 px-1 py-0.5 rounded-xl shrink-0">
                                         Due {cw.dueDate.month}/{cw.dueDate.day}
                                       </span>
                                     )}
@@ -1586,7 +1586,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                   <div className="space-y-2 animate-fadeIn">
                     <div className="border-b border-slate-100 pb-1">
                       <h3 className="text-sm font-semibold text-slate-900 capitalize flex items-center gap-1.5 pb-0.5">
-                        <FileText className="text-slate-800" size={16} /> Google Docs Integration <button type="button" onClick={() => setShowCreateUI(!showCreateUI)} className="ml-3 bg-slate-100 hover:bg-slate-200 text-slate-700 px-2 py-0.5 rounded text-xs font-medium transition-colors">{showCreateUI ? "Hide Form" : "+ Create"}</button>
+                        <FileText className="text-slate-800" size={16} /> Google Docs Integration <button type="button" onClick={() => setShowCreateUI(!showCreateUI)} className="ml-3 bg-slate-100 hover:bg-slate-200 text-slate-700 px-2 py-0.5 rounded-xl text-xs font-medium transition-colors">{showCreateUI ? "Hide Form" : "+ Create"}</button>
                       </h3>
                       <p className="text-xs text-slate-700">Create, edit, and read dynamic Google Documents instantly.</p>
                     </div>
@@ -1623,7 +1623,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                           <button
                             type="submit"
                             disabled={isLoading}
-                            className="w-full bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium text-xs capitalize py-1 rounded transition-colors shrink-0 flex items-center justify-center gap-1 cursor-pointer"
+                            className="w-full bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium text-xs capitalize py-1 rounded-xl transition-colors shrink-0 flex items-center justify-center gap-1 cursor-pointer"
                           >
                             <Plus size={11} /> Create Blank Doc
                           </button>
@@ -1665,7 +1665,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                   <div className="space-y-2 animate-fadeIn">
                     <div className="border-b border-slate-100 pb-1">
                       <h3 className="text-sm font-semibold text-slate-900 capitalize flex items-center gap-1.5 pb-0.5">
-                        <Presentation className="text-slate-800" size={16} /> Google Slides API <button type="button" onClick={() => setShowCreateUI(!showCreateUI)} className="ml-3 bg-slate-100 hover:bg-slate-200 text-slate-700 px-2 py-0.5 rounded text-xs font-medium transition-colors">{showCreateUI ? "Hide Form" : "+ Create"}</button>
+                        <Presentation className="text-slate-800" size={16} /> Google Slides API <button type="button" onClick={() => setShowCreateUI(!showCreateUI)} className="ml-3 bg-slate-100 hover:bg-slate-200 text-slate-700 px-2 py-0.5 rounded-xl text-xs font-medium transition-colors">{showCreateUI ? "Hide Form" : "+ Create"}</button>
                       </h3>
                       <p className="text-xs text-slate-700">Create dynamic presentation decks for clients and pitches.</p>
                     </div>
@@ -1702,7 +1702,7 @@ export default function WorkspaceSuite({ user, onNavigateToTab }: WorkspaceSuite
                           <button
                             type="submit"
                             disabled={isLoading}
-                            className="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-medium text-xs capitalize py-1 rounded transition-colors shrink-0 flex items-center justify-center gap-1 cursor-pointer"
+                            className="w-full bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium text-xs capitalize py-2 rounded-xl shadow-xs transition-colors shrink-0 flex items-center justify-center gap-1 cursor-pointer"
                           >
                             <Plus size={11} /> Create Blank Deck
                           </button>

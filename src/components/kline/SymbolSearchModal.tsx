@@ -94,7 +94,7 @@ export default function SymbolSearchModal({ theme, onClose, onSelect }: SymbolSe
             onChange={e => setQuery(e.target.value)}
             className="flex-1 bg-transparent text-xl font-medium outline-none placeholder:text-gray-500"
           />
-          <button onClick={onClose} className="p-1 hover:opacity-70 rounded transition-opacity"><X size={24} /></button>
+          <button onClick={onClose} className="p-1 hover:opacity-70 rounded-xl transition-opacity"><X size={24} /></button>
         </div>
 
         <div className="flex items-center gap-4 px-4 border-b overflow-x-auto no-scrollbar" style={{ borderColor: border }}>

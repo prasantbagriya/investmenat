@@ -168,7 +168,7 @@ export default function CsvImportWizard({ onAddTransaction, bankAccounts, onClos
                     <div className="flex items-center gap-1.5 mt-0.5 text-xs font-bold text-slate-500 capitalize ">
                       <span>{item.date}</span>
                       <span>•</span>
-                      <span className="bg-slate-100 px-1 rounded text-slate-600">{item.category}</span>
+                      <span className="bg-slate-100 px-1 rounded-xl text-slate-600">{item.category}</span>
                       <span>•</span>
                       <span className="text-indigo-500">{bankName}</span>
                     </div>

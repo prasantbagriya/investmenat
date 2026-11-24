@@ -734,14 +734,14 @@ export default function PortfolioTracker({
                       <button
                         type="button"
                         onClick={() => { setType('stock'); setAssetClass('Equity'); }}
-                        className={`px-1 py-1.5 rounded-xl font-bold ${type === 'stock' ? 'bg-slate-900 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-600'}`}
+                        className={`px-1 py-1.5 rounded-xl font-medium ${type === 'stock' ? 'bg-slate-900 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-600'}`}
                       >
                         Indian Stock (Equity)
                       </button>
                       <button
                         type="button"
                         onClick={() => { setType('mf'); setAssetClass('Equity'); }}
-                        className={`px-1 py-1.5 rounded-xl font-bold ${type === 'mf' ? 'bg-slate-900 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-600'}`}
+                        className={`px-1 py-1.5 rounded-xl font-medium ${type === 'mf' ? 'bg-slate-900 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-600'}`}
                       >
                         Mutual Fund
                       </button>
@@ -823,7 +823,7 @@ export default function PortfolioTracker({
                                 });
                                 setAssetClass(p.class as any);
                               }}
-                              className="text-xs bg-white hover:bg-slate-100 border border-slate-200 transition-colors px-1.5 py-0.5 rounded text-slate-600 font-medium cursor-pointer"
+                              className="text-xs bg-white hover:bg-slate-100 border border-slate-200 transition-colors px-1.5 py-0.5 rounded-xl text-slate-600 font-medium cursor-pointer"
                             >
                               +{p.symbol}
                             </button>
@@ -996,7 +996,7 @@ export default function PortfolioTracker({
                           id="deductCashFromWallet"
                           checked={deductCashFromWallet}
                           onChange={(e) => setDeductCashFromWallet(e.target.checked)}
-                          className="rounded border-slate-300 text-slate-900 focus:ring-slate-800"
+                          className="rounded-xl border-slate-300 text-slate-900 focus:ring-slate-800"
                         />
                         <label htmlFor="deductCashFromWallet" className="font-medium text-slate-705 cursor-pointer">
                           Deduct total purchase cost from Investment Cash Wallet
@@ -1377,14 +1377,14 @@ export default function PortfolioTracker({
                       <button
                         type="button"
                         onClick={() => setWatchType('stock')}
-                        className={`px-1 py-1 rounded font-bold text-xs ${watchType === 'stock' ? 'bg-slate-900 text-white' : 'bg-white text-slate-600'}`}
+                        className={`px-1 py-1 rounded-xl font-medium text-xs ${watchType === 'stock' ? 'bg-slate-900 text-white' : 'bg-white text-slate-600'}`}
                       >
                         Indian Stock
                       </button>
                       <button
                         type="button"
                         onClick={() => setWatchType('mf')}
-                        className={`px-1 py-1 rounded font-bold text-xs ${watchType === 'mf' ? 'bg-slate-900 text-white' : 'bg-white text-slate-600'}`}
+                        className={`px-1 py-1 rounded-xl font-medium text-xs ${watchType === 'mf' ? 'bg-slate-900 text-white' : 'bg-white text-slate-600'}`}
                       >
                         Mutual Fund
                       </button>
@@ -1418,13 +1418,13 @@ export default function PortfolioTracker({
                       <button
                         type="button"
                         onClick={() => setIsAddingWatch(false)}
-                        className="px-1 py-1 border border-slate-200 text-slate-700 rounded text-xs font-medium cursor-pointer"
+                        className="px-1 py-1 border border-slate-200 text-slate-700 rounded-xl text-xs font-medium cursor-pointer"
                       >
                         Cancel
                       </button>
                       <button
                         type="submit"
-                        className="px-1.5 py-1 bg-slate-900 text-white rounded text-xs font-medium cursor-pointer"
+                        className="px-1.5 py-1 bg-slate-900 text-white rounded-xl text-xs font-medium cursor-pointer"
                       >
                         Watch
                       </button>
@@ -1450,7 +1450,7 @@ export default function PortfolioTracker({
                     <div key={item.id} className="flex items-center justify-between p-1.5 border border-slate-100 hover:border-slate-200 rounded-xl transition-all">
                       <div className="truncate max-w-[130px]">
                         <p className="font-bold text-slate-800 truncate text-xs" title={nameStr}>{nameStr}</p>
-                        <p className="text-xs text-slate-500 capitalize w-fit px-1 bg-slate-50 rounded mt-0.5">{item.type}</p>
+                        <p className="text-xs text-slate-500 capitalize w-fit px-1 bg-slate-50 rounded-xl mt-0.5">{item.type}</p>
                       </div>
 
                       <div className="flex items-center gap-1">
@@ -1683,7 +1683,7 @@ export default function PortfolioTracker({
                     id="addProceedsToCash"
                     checked={addProceedsToCash}
                     onChange={(e) => setAddProceedsToCash(e.target.checked)}
-                    className="rounded border-slate-300 text-slate-900 focus:ring-slate-800"
+                    className="rounded-xl border-slate-300 text-slate-900 focus:ring-slate-800"
                   />
                   <label htmlFor="addProceedsToCash" className="text-xs font-medium text-slate-600 cursor-pointer">
                     Credit gross trade proceeds directly back to Investment Cash Wallet

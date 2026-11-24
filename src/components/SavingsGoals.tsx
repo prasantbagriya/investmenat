@@ -302,14 +302,14 @@ export default function SavingsGoals({
                 <button
                   type="button"
                   onClick={() => setIsFormOpen(false)}
-                  className="px-1 py-1.5 text-slate-700 hover:text-slate-900 hover:bg-slate-50 font-semibold text-xs rounded transition-colors"
+                  className="px-1 py-1.5 text-slate-700 hover:text-slate-900 hover:bg-slate-50 font-semibold text-xs rounded-xl transition-colors"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="px-2 py-1.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium rounded text-xs transition-colors disabled:opacity-40 cursor-pointer"
+                  className="px-2 py-1.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium rounded-xl text-xs transition-colors disabled:opacity-40 cursor-pointer"
                   id="form-goal-submit"
                 >
                   {isSubmitting ? 'Syncing...' : editingId ? 'Update Target' : 'Create Campaign'}
@@ -390,19 +390,19 @@ export default function SavingsGoals({
                           placeholder="Sum"
                           value={quickAmount}
                           onChange={(e) => setQuickAmount(e.target.value)}
-                          className="w-full pl-2 pr-1 py-1 text-xs border border-slate-200 rounded focus:outline-hidden"
+                          className="w-full pl-2 pr-1 py-1 text-xs border border-slate-200 rounded-xl focus:outline-hidden"
                           id={`quick-input-${g.id}`}
                         />
                       </div>
                       <button
                         onClick={() => handleQuickContribution(g)}
-                        className="bg-slate-900 hover:bg-slate-800 text-white font-medium text-xs px-1 py-1 rounded cursor-pointer"
+                        className="bg-slate-900 hover:bg-slate-800 text-white font-medium text-xs px-1 py-1 rounded-xl cursor-pointer"
                       >
                         Deposit
                       </button>
                       <button
                         onClick={() => setContributingId(null)}
-                        className="text-slate-500 hover:text-slate-955 p-1"
+                        className="text-slate-400 hover:text-slate-700 hover:bg-slate-100 p-1 rounded-xl cursor-pointer"
                       >
                         <X size={12} />
                       </button>
@@ -414,7 +414,7 @@ export default function SavingsGoals({
                           setContributingId(g.id);
                           setQuickAmount('');
                         }}
-                        className="text-xs text-slate-700 hover:text-slate-950 font-medium text-left flex items-center gap-1 cursor-pointer "
+                        className="text-xs text-slate-700 hover:text-slate-900 font-medium text-left flex items-center gap-1 cursor-pointer"
                       >
                         <Plus size={12} /> Live capital deposit
                       </button>
@@ -427,7 +427,7 @@ export default function SavingsGoals({
                     <div className="flex gap-1.5">
                       <button
                         onClick={() => startEdit(g)}
-                        className="p-1 text-slate-500 hover:text-slate-955 transition-colors cursor-pointer"
+                        className="p-1 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-xl transition-colors cursor-pointer"
                         title="Edit target fields"
                       >
                         <Edit2 size={11} />
@@ -438,7 +438,7 @@ export default function SavingsGoals({
                             onDeleteGoal(g.id).catch(console.error);
                           }
                         }}
-                        className="p-1 text-slate-500 hover:text-red-655 transition-colors cursor-pointer"
+                        className="p-1 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-xl transition-colors cursor-pointer"
                         title="Delete goal"
                       >
                         <Trash2 size={11} />

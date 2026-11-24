@@ -244,14 +244,14 @@ export default function BudgetLimits({
                 <button
                   type="button"
                   onClick={() => setIsFormOpen(false)}
-                  className="px-1 py-1.5 text-slate-700 hover:text-slate-900 hover:bg-slate-50 font-semibold text-xs rounded transition-colors"
+                  className="px-1 py-1.5 text-slate-700 hover:text-slate-900 hover:bg-slate-50 font-semibold text-xs rounded-xl transition-colors"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="px-2 py-1.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium rounded text-xs transition-colors disabled:opacity-40 cursor-pointer"
+                  className="px-2 py-1.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium rounded-xl text-xs transition-colors disabled:opacity-40 cursor-pointer"
                   id="form-limit-submit"
                 >
                   {isSubmitting ? 'Syncing...' : 'Establish Limit'}
@@ -318,7 +318,7 @@ export default function BudgetLimits({
                           onDeleteLimit(b.id).catch(console.error);
                         }
                       }}
-                      className="p-1.5 text-slate-500 hover:text-red-650 hover:bg-neutral-50 rounded transition-colors cursor-pointer"
+                      className="p-1.5 text-slate-500 hover:text-red-650 hover:bg-neutral-50 rounded-xl transition-colors cursor-pointer"
                       title="Deallocate budget limit"
                     >
                       <Trash2 size={14} />

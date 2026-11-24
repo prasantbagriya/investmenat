@@ -189,8 +189,8 @@ export default function WatchlistSidebar({ theme, activeSymbol, onSymbolSelect, 
                   <ChevronDown size={14} style={{ color: subtext }} />
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <button style={{ color: subtext }} className="p-1 rounded hover:opacity-70 transition-opacity"><Plus size={16} /></button>
-                  <button style={{ color: subtext }} className="p-1 rounded hover:opacity-70 transition-opacity"><Settings size={15} /></button>
+                  <button style={{ color: subtext }} className="p-1 rounded-xl hover:opacity-70 transition-opacity"><Plus size={16} /></button>
+                  <button style={{ color: subtext }} className="p-1 rounded-xl hover:opacity-70 transition-opacity"><Settings size={15} /></button>
                 </div>
               </div>
 
@@ -253,7 +253,7 @@ export default function WatchlistSidebar({ theme, activeSymbol, onSymbolSelect, 
                 <div className="px-4 py-4 flex flex-col gap-1 overflow-y-auto no-scrollbar">
                   <div className="flex items-center gap-1 text-[13px] font-medium" style={{ color: subtext }}>
                     {activeSymbol} • {companyProfile ? companyProfile.exchangeShortName : 'CRYPTO'}
-                    <span className="text-xs px-1 py-0.5 rounded text-black bg-gray-200 dark:bg-[#2b2b43] dark:text-white ml-1">
+                    <span className="text-xs px-1 py-0.5 rounded-xl text-black bg-gray-200 dark:bg-[#2b2b43] dark:text-white ml-1">
                       {companyProfile ? 'Stock' : 'Index'}
                     </span>
                   </div>
@@ -312,7 +312,7 @@ export default function WatchlistSidebar({ theme, activeSymbol, onSymbolSelect, 
                 <select 
                   value={newsMarket} 
                   onChange={(e) => setNewsMarket(e.target.value as any)}
-                  className="bg-transparent border outline-none text-xs px-2 py-1 rounded"
+                  className="bg-transparent border outline-none text-xs px-2 py-1 rounded-xl"
                   style={{ borderColor: '#e0e3eb', color: '#000000' }}
                 >
                   <option value="all">All News</option>
@@ -423,10 +423,10 @@ export default function WatchlistSidebar({ theme, activeSymbol, onSymbolSelect, 
 
         {/* Mobile: single row, no gaps. Desktop: grouped columns */}
         <div className="flex flex-row md:flex-col items-center w-full h-full md:w-full md:h-auto md:gap-2 md:px-1 md:py-0">
-          <button onClick={() => { setActiveTab('watchlist'); if (onToggleCollapse) onToggleCollapse(activeTab === 'watchlist' && !isCollapsed ? 'collapse' : 'watchlist'); }} className={`flex-1 md:flex-none md:w-full flex justify-center p-2 rounded transition-colors ${activeTab === 'watchlist' && !isCollapsed ? (theme === 'dark' ? 'bg-white text-black' : 'bg-black text-white') : 'hover:bg-gray-100 dark:hover:bg-[#2a2e39]'}`} style={{ color: activeTab === 'watchlist' && !isCollapsed ? undefined : subtext }} title="Watchlist">
+          <button onClick={() => { setActiveTab('watchlist'); if (onToggleCollapse) onToggleCollapse(activeTab === 'watchlist' && !isCollapsed ? 'collapse' : 'watchlist'); }} className={`flex-1 md:flex-none md:w-full flex justify-center p-2 rounded-xl transition-colors ${activeTab === 'watchlist' && !isCollapsed ? (theme === 'dark' ? 'bg-white text-black' : 'bg-black text-white') : 'hover:bg-gray-100 dark:hover:bg-[#2a2e39]'}`} style={{ color: activeTab === 'watchlist' && !isCollapsed ? undefined : subtext }} title="Watchlist">
             <List size={20} />
           </button>
-          <button onClick={() => { setActiveTab('data'); if (onToggleCollapse) onToggleCollapse(activeTab === 'data' && !isCollapsed ? 'collapse' : 'data'); }} className={`flex-1 md:flex-none md:w-full flex justify-center p-2 rounded transition-colors ${activeTab === 'data' && !isCollapsed ? (theme === 'dark' ? 'bg-white text-black' : 'bg-black text-white') : 'hover:bg-gray-100 dark:hover:bg-[#2a2e39]'}`} style={{ color: activeTab === 'data' && !isCollapsed ? undefined : subtext }} title="Data Window">
+          <button onClick={() => { setActiveTab('data'); if (onToggleCollapse) onToggleCollapse(activeTab === 'data' && !isCollapsed ? 'collapse' : 'data'); }} className={`flex-1 md:flex-none md:w-full flex justify-center p-2 rounded-xl transition-colors ${activeTab === 'data' && !isCollapsed ? (theme === 'dark' ? 'bg-white text-black' : 'bg-black text-white') : 'hover:bg-gray-100 dark:hover:bg-[#2a2e39]'}`} style={{ color: activeTab === 'data' && !isCollapsed ? undefined : subtext }} title="Data Window">
             <LayoutGrid size={20} />
           </button>
         </div>
@@ -434,13 +434,13 @@ export default function WatchlistSidebar({ theme, activeSymbol, onSymbolSelect, 
         <div className="hidden md:block w-6 h-px bg-gray-200 dark:bg-[#2B2B36] flex-shrink-0" />
 
         <div className="flex flex-row md:flex-col items-center w-full h-full md:w-full md:h-auto md:gap-2 md:px-1 md:py-0">
-          <button onClick={() => { setActiveTab('news'); if (onToggleCollapse) onToggleCollapse(activeTab === 'news' && !isCollapsed ? 'collapse' : 'news'); }} className={`flex-1 md:flex-none md:w-full flex justify-center p-2 rounded transition-colors ${activeTab === 'news' && !isCollapsed ? (theme === 'dark' ? 'bg-white text-black' : 'bg-black text-white') : 'hover:bg-gray-100 dark:hover:bg-[#2a2e39]'}`} style={{ color: activeTab === 'news' && !isCollapsed ? undefined : subtext }} title="Market News">
+          <button onClick={() => { setActiveTab('news'); if (onToggleCollapse) onToggleCollapse(activeTab === 'news' && !isCollapsed ? 'collapse' : 'news'); }} className={`flex-1 md:flex-none md:w-full flex justify-center p-2 rounded-xl transition-colors ${activeTab === 'news' && !isCollapsed ? (theme === 'dark' ? 'bg-white text-black' : 'bg-black text-white') : 'hover:bg-gray-100 dark:hover:bg-[#2a2e39]'}`} style={{ color: activeTab === 'news' && !isCollapsed ? undefined : subtext }} title="Market News">
             <Newspaper size={20} />
           </button>
-          <button className="flex-1 md:flex-none md:w-full flex justify-center p-2 rounded transition-colors hover:bg-gray-100 dark:hover:bg-[#2a2e39]" style={{ color: subtext }} title="Hotlists">
+          <button className="flex-1 md:flex-none md:w-full flex justify-center p-2 rounded-xl transition-colors hover:bg-gray-100 dark:hover:bg-[#2a2e39]" style={{ color: subtext }} title="Hotlists">
             <Flame size={20} />
           </button>
-          <button onClick={() => { setActiveTab('calendar'); if (onToggleCollapse) onToggleCollapse(activeTab === 'calendar' && !isCollapsed ? 'collapse' : 'calendar'); }} className={`flex-1 md:flex-none md:w-full flex justify-center p-2 rounded transition-colors ${activeTab === 'calendar' && !isCollapsed ? (theme === 'dark' ? 'bg-white text-black' : 'bg-black text-white') : 'hover:bg-gray-100 dark:hover:bg-[#2a2e39]'}`} style={{ color: activeTab === 'calendar' && !isCollapsed ? undefined : subtext }} title="Economic Calendar">
+          <button onClick={() => { setActiveTab('calendar'); if (onToggleCollapse) onToggleCollapse(activeTab === 'calendar' && !isCollapsed ? 'collapse' : 'calendar'); }} className={`flex-1 md:flex-none md:w-full flex justify-center p-2 rounded-xl transition-colors ${activeTab === 'calendar' && !isCollapsed ? (theme === 'dark' ? 'bg-white text-black' : 'bg-black text-white') : 'hover:bg-gray-100 dark:hover:bg-[#2a2e39]'}`} style={{ color: activeTab === 'calendar' && !isCollapsed ? undefined : subtext }} title="Economic Calendar">
             <Calendar size={20} />
           </button>
         </div>
@@ -448,10 +448,10 @@ export default function WatchlistSidebar({ theme, activeSymbol, onSymbolSelect, 
         <div className="hidden md:block w-6 h-px bg-gray-200 dark:bg-[#2B2B36] flex-shrink-0" />
 
         <div className="flex flex-row md:flex-col items-center w-full h-full md:w-full md:h-auto md:gap-2 md:px-1 md:py-0 md:mt-auto">
-          <button className="flex-1 md:flex-none md:w-full flex justify-center p-2 rounded transition-colors hover:bg-gray-100 dark:hover:bg-[#2a2e39]" style={{ color: subtext }} title="Alerts">
+          <button className="flex-1 md:flex-none md:w-full flex justify-center p-2 rounded-xl transition-colors hover:bg-gray-100 dark:hover:bg-[#2a2e39]" style={{ color: subtext }} title="Alerts">
             <Bell size={20} />
           </button>
-          <button className="flex-1 md:flex-none md:w-full flex justify-center p-2 rounded transition-colors hover:bg-gray-100 dark:hover:bg-[#2a2e39]" style={{ color: subtext }} title="Chats & Ideas">
+          <button className="flex-1 md:flex-none md:w-full flex justify-center p-2 rounded-xl transition-colors hover:bg-gray-100 dark:hover:bg-[#2a2e39]" style={{ color: subtext }} title="Chats & Ideas">
             <MessageSquare size={20} />
           </button>
         </div>

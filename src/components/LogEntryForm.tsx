@@ -252,14 +252,14 @@ export default function LogEntryForm({ onAddTransaction, bankAccounts = [], isFo
                 <button
                   type="button"
                   onClick={() => setIsFormOpen(false)}
-                  className="px-3 py-1.5 text-slate-700 hover:text-slate-900 hover:bg-slate-50 font-medium text-xs rounded transition-colors cursor-pointer"
+                  className="px-3 py-1.5 text-slate-700 hover:text-slate-900 hover:bg-slate-50 font-medium text-xs rounded-xl transition-colors cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="px-4 py-1.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium rounded text-xs transition-colors disabled:opacity-40 cursor-pointer shadow-sm"
+                  className="px-4 py-1.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium rounded-xl text-xs transition-colors disabled:opacity-40 cursor-pointer shadow-sm"
                 >
                   {isSubmitting ? 'Syncing...' : 'Save Log'}
                 </button>

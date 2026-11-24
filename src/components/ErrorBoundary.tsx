@@ -40,7 +40,7 @@ export class ErrorBoundary extends Component<Props, State> {
                 this.setState({ hasError: false, error: null });
                 window.location.hash = '/'; // Redirect to home on hash router
               }}
-              className="w-full bg-slate-900 text-white font-bold py-2 rounded-xl"
+              className="w-full bg-slate-900 hover:bg-slate-800 text-white font-medium py-3 rounded-xl shadow-xs"
             >
               Return Home
             </button>

@@ -609,7 +609,7 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
                     newCharts[activeChartIndex] = s.key;
                     setChartSymbols(newCharts);
                   }}
-                  className={`shrink-0 px-3 py-1.5 rounded-xl text-xs font-bold transition-all border shadow-sm ${
+                  className={`shrink-0 px-3 py-1.5 rounded-xl text-xs font-medium transition-all border shadow-sm ${
                     instrumentKey === s.key
                       ? 'bg-slate-900 text-white border-slate-900'
                       : 'bg-white text-slate-600 border-slate-200 hover:border-slate-400 hover:shadow-md'
@@ -651,7 +651,7 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
                 {isConnected && (
                   <button 
                     onClick={() => { localStorage.removeItem('upstox_access_token'); window.location.reload(); }} 
-                    className="ml-2 text-xs font-bold bg-red-50 text-red-600 px-2 py-1 rounded-xl border border-red-200 hover:bg-red-100 transition-colors shadow-sm"
+                    className="ml-2 text-xs font-medium bg-slate-100 text-slate-700 px-2 py-1 rounded-xl border border-red-200 hover:bg-red-100 transition-colors shadow-sm"
                   >
                     Disconnect Upstox
                   </button>
@@ -703,7 +703,7 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
                               }}
                             >
                               <span className="text-xs font-bold text-slate-800">{s.label}</span>
-                              <span className="text-xs text-slate-400 font-mono tabular-nums px-1.5 py-0.5 bg-slate-100 rounded">{s.key.split('|')[0]}</span>
+                              <span className="text-xs text-slate-400 font-mono tabular-nums px-1.5 py-0.5 bg-slate-100 rounded-xl">{s.key.split('|')[0]}</span>
                             </div>
                           ))
                         ) : (
@@ -848,7 +848,7 @@ export default function ResearchTerminal({ userSettings, onUpdateSettings, liveP
           <div className="w-[350px] border-l border-slate-200 bg-white shadow-xl z-20 flex flex-col h-full overflow-hidden shrink-0">
             <div className="p-3 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
               <h3 className="text-sm font-bold text-slate-800 flex items-center gap-2"><Newspaper size={16} className="text-blue-600"/> Live News</h3>
-              <button onClick={() => setShowNewsSidebar(false)} className="text-slate-400 hover:text-slate-800 p-1 hover:bg-slate-200 rounded font-medium text-xs">X</button>
+              <button onClick={() => setShowNewsSidebar(false)} className="text-slate-400 hover:text-slate-800 p-1 hover:bg-slate-200 rounded-xl font-medium text-xs">X</button>
             </div>
             <div className="flex-1 overflow-y-auto">
               <NewsWidget theme="light" instrumentKey={instrumentKey} compact={true} />

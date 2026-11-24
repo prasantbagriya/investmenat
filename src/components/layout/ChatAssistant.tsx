@@ -102,7 +102,7 @@ export default function ChatAssistant({ bankAccounts, transactions, physicalAsse
               </div>
               <button 
                 onClick={() => setIsOpen(false)}
-                className="p-1 hover:bg-slate-800 rounded transition-colors"
+                className="p-1 hover:bg-slate-800 rounded-xl transition-colors"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -147,13 +147,13 @@ export default function ChatAssistant({ bankAccounts, transactions, physicalAsse
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Type a message..."
-                  className="flex-1 bg-gray-50 border border-gray-300 rounded text-sm px-3 py-2 focus:outline-none focus:border-slate-500"
+                  className="flex-1 bg-gray-50 border border-gray-300 rounded-xl text-sm px-3 py-2 focus:outline-none focus:border-slate-500"
                   disabled={isLoading}
                 />
                 <button
                   type="submit"
                   disabled={!input.trim() || isLoading}
-                  className="p-2 bg-slate-900 text-white rounded hover:bg-slate-800 active:bg-slate-950 disabled:opacity-50 transition-colors"
+                  className="p-2 bg-slate-900 text-white rounded-xl hover:bg-slate-800 active:bg-slate-950 disabled:opacity-50 transition-colors"
                 >
                   <Send className="w-4 h-4" />
                 </button>

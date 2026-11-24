@@ -776,13 +776,13 @@ export default function ContactsManager({
                       ) : (
                         <div className="flex flex-col gap-1 w-full">
                           {OwedAmount > 0 && (
-                            <div className="flex items-center justify-between text-emerald-600 bg-emerald-50/50 p-1 px-1 rounded">
+                            <div className="flex items-center justify-between text-emerald-600 bg-emerald-50/50 p-1 px-1 rounded-xl">
                               <span className="flex items-center gap-1"><ArrowUpRight size={10} /> Owed to me:</span>
                               <span className="font-bold">₹{OwedAmount.toLocaleString('en-IN')}</span>
                             </div>
                           )}
                           {OweAmount > 0 && (
-                            <div className="flex items-center justify-between text-rose-500 bg-rose-50/50 p-1 px-1 rounded">
+                            <div className="flex items-center justify-between text-rose-500 bg-rose-50/50 p-1 px-1 rounded-xl">
                               <span className="flex items-center gap-1"><ArrowDownLeft size={10} /> I owe them:</span>
                               <span className="font-bold">₹{OweAmount.toLocaleString('en-IN')}</span>
                             </div>
@@ -793,7 +793,7 @@ export default function ContactsManager({
                     
                     <button
                       onClick={() => setExpandedContact(expandedContact === contact.resourceName ? null : contact.resourceName)}
-                      className="mt-2 w-full text-center text-xs font-bold text-slate-700 hover:text-slate-900 border border-slate-100 bg-slate-50 hover:bg-slate-100 py-1 rounded-md transition-colors"
+                      className="mt-2 w-full text-center text-xs font-medium text-slate-700 hover:text-slate-900 border border-slate-200 rounded-xl bg-slate-50 hover:bg-slate-100 py-1 rounded-md transition-colors"
                     >
                       {expandedContact === contact.resourceName ? 'Hide Track Record' : 'View Track Record'}
                     </button>
@@ -806,7 +806,7 @@ export default function ContactsManager({
                           if (history.length === 0) return <p className="text-xs text-slate-500">No transactions recorded.</p>;
                           
                           return history.map(h => (
-                            <div key={h.id} className="flex items-center justify-between text-xs bg-white border border-slate-100 p-1 rounded">
+                            <div key={h.id} className="flex items-center justify-between text-xs bg-white border border-slate-100 p-1 rounded-xl">
                               <div className="flex items-center gap-1">
                                 {h.completed ? <CheckCircle2 size={10} className="text-emerald-500" /> : <Clock size={10} className="text-amber-500" />}
                                 <span className={h.completed ? 'text-slate-700 line-through' : 'text-slate-800'}>{h.dueDate}</span>
@@ -1033,14 +1033,14 @@ export default function ContactsManager({
                   type="button"
                   onClick={() => setIsDueFormOpen(false)}
                   disabled={isDueSubmitting}
-                  className="px-3 py-1.5 text-slate-700 hover:text-slate-900 font-semibold text-xs rounded transition-colors"
+                  className="px-3 py-1.5 text-slate-700 hover:text-slate-900 font-semibold text-xs rounded-xl transition-colors"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={isDueSubmitting}
-                  className="flex items-center gap-1 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-semibold text-xs px-4 py-1.5 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex items-center gap-1 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-semibold text-xs px-4 py-1.5 rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Save size={14} />
                   {isDueSubmitting ? 'Linking...' : 'Save & Link'}

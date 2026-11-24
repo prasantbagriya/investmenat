@@ -120,7 +120,7 @@ export default function FinnhubNews({ category, theme }: FinnhubNewsProps) {
             value={tempKeyword}
             onChange={(e) => setTempKeyword(e.target.value)}
             placeholder="Set keyword alert (e.g. BTC, Fed)"
-            className="w-full text-xs px-3 py-1.5 rounded outline-none border"
+            className="w-full text-xs px-3 py-1.5 rounded-xl outline-none border"
             style={{ 
               backgroundColor: theme === 'dark' ? '#131722' : '#ffffff',
               borderColor: border,
@@ -130,7 +130,7 @@ export default function FinnhubNews({ category, theme }: FinnhubNewsProps) {
         </div>
         <button 
           onClick={handleSaveAlert}
-          className="p-1.5 rounded transition-colors bg-slate-900 hover:bg-slate-800 text-white flex-shrink-0"
+          className="p-1.5 rounded-xl transition-colors bg-slate-900 hover:bg-slate-800 text-white flex-shrink-0"
           title="Save Alert"
         >
           {alertKeyword === tempKeyword && tempKeyword.length > 0 ? <Check size={14} /> : <Bell size={14} />}
@@ -145,7 +145,7 @@ export default function FinnhubNews({ category, theme }: FinnhubNewsProps) {
             <p className="text-xs">Loading market news...</p>
           </div>
         ) : error ? (
-          <div className="p-4 rounded border border-red-500/20 bg-red-500/10 text-red-500 text-xs flex flex-col items-center text-center gap-2">
+          <div className="p-4 rounded-xl border border-red-500/20 bg-red-500/10 text-red-500 text-xs flex flex-col items-center text-center gap-2">
             <AlertTriangle size={20} />
             {error}
           </div>
@@ -179,7 +179,7 @@ export default function FinnhubNews({ category, theme }: FinnhubNewsProps) {
                   <img 
                     src={item.image} 
                     alt={item.headline}
-                    className="w-full h-24 object-cover rounded mb-2 bg-slate-200 dark:bg-slate-800"
+                    className="w-full h-24 object-cover rounded-xl mb-2 bg-slate-200 dark:bg-slate-800"
                     onError={(e) => {
                       (e.target as HTMLImageElement).style.display = 'none';
                     }}

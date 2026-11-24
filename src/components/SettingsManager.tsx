@@ -495,7 +495,7 @@ export default function SettingsManager({
                 ) : (
                   <button
                     onClick={() => handleOAuthLogin(config.id)}
-                    className="w-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-medium py-1.5 rounded-lg transition-colors flex items-center justify-center gap-1.5"
+                    className="w-full bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white text-xs font-medium py-2.5 rounded-xl transition-colors shadow-xs flex items-center justify-center gap-1.5 cursor-pointer"
                   >
                     <AlertCircle size={14} /> Connect via Google
                   </button>

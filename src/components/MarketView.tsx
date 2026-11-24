@@ -197,7 +197,7 @@ export default function MarketView() {
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="bg-transparent flex-1 p-2 text-xs outline-none"
                 />
-                <button type="submit" className="bg-slate-900 text-white p-2 hover:bg-slate-800 active:bg-slate-950 transition-colors cursor-pointer">
+                <button type="submit" className="bg-slate-900 text-white px-3 py-2 rounded-r-xl hover:bg-slate-800 active:bg-slate-950 transition-colors cursor-pointer">
                   <Search size={14} />
                 </button>
               </div>
@@ -254,19 +254,19 @@ export default function MarketView() {
                   )}
 
                   <div className="grid grid-cols-2 gap-2 text-xs pt-2 border-t border-slate-50">
-                    <div className="bg-slate-50 p-1.5 rounded border border-slate-100">
+                    <div className="bg-slate-50 p-1.5 rounded-xl border border-slate-100">
                       <div className="text-slate-500 font-bold capitalize ">Open</div>
                       <div className="font-mono tabular-nums text-slate-700 font-semibold">{quoteData.open?.toFixed(2)}</div>
                     </div>
-                    <div className="bg-slate-50 p-1.5 rounded border border-slate-100">
+                    <div className="bg-slate-50 p-1.5 rounded-xl border border-slate-100">
                       <div className="text-slate-500 font-bold capitalize ">High</div>
                       <div className="font-mono tabular-nums text-slate-700 font-semibold">{quoteData.high?.toFixed(2)}</div>
                     </div>
-                    <div className="bg-slate-50 p-1.5 rounded border border-slate-100">
+                    <div className="bg-slate-50 p-1.5 rounded-xl border border-slate-100">
                       <div className="text-slate-500 font-bold capitalize ">Low</div>
                       <div className="font-mono tabular-nums text-slate-700 font-semibold">{quoteData.low?.toFixed(2)}</div>
                     </div>
-                    <div className="bg-slate-50 p-1.5 rounded border border-slate-100">
+                    <div className="bg-slate-50 p-1.5 rounded-xl border border-slate-100">
                       <div className="text-slate-500 font-bold capitalize ">Prev Close</div>
                       <div className="font-mono tabular-nums text-slate-700 font-semibold">{quoteData.close?.toFixed(2)}</div>
                     </div>

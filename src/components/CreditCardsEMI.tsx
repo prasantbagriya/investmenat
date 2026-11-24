@@ -362,7 +362,7 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [], bankAccounts =
               <div className="flex gap-2">
                 <button
                   onClick={() => { setPayingBill(null); setPayingEmi(null); setSelectedBank(''); }}
-                  className="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2 rounded-md text-sm transition-colors"
+                  className="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-800 font-medium py-2.5 rounded-xl text-sm transition-colors"
                 >
                   Cancel
                 </button>
@@ -371,7 +371,7 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [], bankAccounts =
                     if (payingBill) handleConfirmPayBill(payingBill, selectedBank);
                     else if (payingEmi) handleConfirmPayEmi(payingEmi, selectedBank);
                   }}
-                  className="flex-1 bg-slate-900 hover:bg-slate-800 text-white font-medium py-2 rounded-lg text-sm transition-colors"
+                  className="flex-1 bg-slate-900 hover:bg-slate-800 text-white font-medium py-2.5 rounded-xl text-sm transition-colors shadow-xs"
                 >
                   Confirm Pay
                 </button>
@@ -424,13 +424,13 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [], bankAccounts =
       <div className="flex gap-1 bg-slate-100 p-1 rounded-lg w-full max-w-xs border border-slate-200/50">
         <button
           onClick={() => setActiveTab('cards')}
-          className={`flex-1 py-1.5 text-xs font-medium rounded-md transition-colors ${activeTab === 'cards' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-500 hover:text-slate-700'}`}
+          className={`flex-1 py-1.5 text-xs font-medium rounded-xl transition-colors ${activeTab === 'cards' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-500 hover:text-slate-700'}`}
         >
           Card bills
         </button>
         <button
           onClick={() => setActiveTab('emis')}
-          className={`flex-1 py-1.5 text-xs font-medium rounded-md transition-colors ${activeTab === 'emis' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-500 hover:text-slate-700'}`}
+          className={`flex-1 py-1.5 text-xs font-medium rounded-xl transition-colors ${activeTab === 'emis' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-500 hover:text-slate-700'}`}
         >
           Loans & EMIs
         </button>
@@ -450,7 +450,7 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [], bankAccounts =
                 <CreditCard size={16} className="text-slate-900" />
                 {editingCard ? 'Edit Card Bill' : 'Add New Card Bill'}
               </h3>
-              <button onClick={resetCardForm} className="text-slate-500 hover:text-slate-600 p-1 rounded cursor-pointer"><X size={16} /></button>
+              <button onClick={resetCardForm} className="text-slate-500 hover:text-slate-600 p-1 rounded-xl cursor-pointer"><X size={16} /></button>
             </div>
             <form onSubmit={handleSaveCard} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
               <div>
@@ -518,7 +518,7 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [], bankAccounts =
                 <BarChart2 size={16} className="text-slate-900" />
                 {editingEmi ? 'Edit EMI' : 'Add New EMI'}
               </h3>
-              <button onClick={resetEmiForm} className="text-slate-500 hover:text-slate-600 p-1 rounded cursor-pointer"><X size={16} /></button>
+              <button onClick={resetEmiForm} className="text-slate-500 hover:text-slate-600 p-1 rounded-xl cursor-pointer"><X size={16} /></button>
             </div>
             <form onSubmit={handleSaveEmi} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
               <div>
@@ -621,10 +621,10 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [], bankAccounts =
                   key={bill.id}
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className={`bg-white border rounded p-3 shadow-xs flex items-center justify-between gap-3 ${isOverdue ? 'border-red-200 bg-red-50/40' : isDueSoon ? 'border-amber-200 bg-amber-50/30' : 'border-slate-200'}`}
+                  className={`bg-white border rounded-xl p-3 shadow-xs flex items-center justify-between gap-3 ${isOverdue ? 'border-red-200 bg-red-50/40' : isDueSoon ? 'border-amber-200 bg-amber-50/30' : 'border-slate-200'}`}
                 >
                   <div className="flex items-center gap-3 flex-1 min-w-0">
-                    <div className={`w-10 h-10 rounded flex items-center justify-center shrink-0 ${bill.isPaid ? 'bg-emerald-100 text-emerald-600' : isOverdue ? 'bg-red-100 text-red-600' : 'bg-slate-100 text-slate-900'}`}>
+                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${bill.isPaid ? 'bg-emerald-100 text-emerald-600' : isOverdue ? 'bg-red-100 text-red-600' : 'bg-slate-100 text-slate-900'}`}>
                       {bill.isPaid ? <CheckCircle size={18} /> : isOverdue ? <AlertCircle size={18} /> : <CreditCard size={18} />}
                     </div>
                     <div className="min-w-0">
@@ -659,8 +659,8 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [], bankAccounts =
                       </div>
                     ) : (
                       <>
-                        <button onClick={() => fillCardForm(bill)} className="p-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-100 rounded cursor-pointer"><Edit2 size={14} /></button>
-                        <button onClick={() => handleDeleteCard(bill.id)} className="p-1.5 text-slate-500 hover:text-red-600 hover:bg-red-50 rounded cursor-pointer"><Trash2 size={14} /></button>
+                        <button onClick={() => fillCardForm(bill)} className="p-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-100 rounded-xl cursor-pointer"><Edit2 size={14} /></button>
+                        <button onClick={() => handleDeleteCard(bill.id)} className="p-1.5 text-slate-500 hover:text-red-600 hover:bg-red-50 rounded-xl cursor-pointer"><Trash2 size={14} /></button>
                       </>
                     )}
                   </div>
@@ -707,7 +707,7 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [], bankAccounts =
                         <div className="flex items-center gap-2 mb-1">
                           <p className="font-bold text-slate-900 text-sm">{emi.itemName}</p>
                           {emi.loanType && (
-                            <span className="text-xs font-bold bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded border border-slate-200 capitalize shrink-0">
+                            <span className="text-xs font-bold bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded-xl border border-slate-200 capitalize shrink-0">
                               {emi.loanType}
                             </span>
                           )}
@@ -783,8 +783,8 @@ export function CreditCardsEMI({ user, ccBills = [], ccEmis = [], bankAccounts =
                             </div>
                           ) : (
                             <>
-                              <button onClick={() => fillEmiForm(emi)} className="p-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-100 rounded cursor-pointer"><Edit2 size={14} /></button>
-                              <button onClick={() => handleDeleteEmi(emi.id)} className="p-1.5 text-slate-500 hover:text-red-600 hover:bg-red-50 rounded cursor-pointer"><Trash2 size={14} /></button>
+                              <button onClick={() => fillEmiForm(emi)} className="p-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-100 rounded-xl cursor-pointer"><Edit2 size={14} /></button>
+                              <button onClick={() => handleDeleteEmi(emi.id)} className="p-1.5 text-slate-500 hover:text-red-600 hover:bg-red-50 rounded-xl cursor-pointer"><Trash2 size={14} /></button>
                             </>
                           )}
                           

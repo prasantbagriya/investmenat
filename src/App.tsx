@@ -2315,7 +2315,7 @@ export default function App() {
                     setSnoozeTime(now.toTimeString().substring(0, 5));
                     setActiveToasts((prev) => prev.filter((t) => t.id !== toast.id));
                   }}
-                  className="px-2 py-1 text-xs font-medium bg-slate-800 text-slate-200 hover:bg-slate-700 rounded transition-colors cursor-pointer"
+                  className="px-2 py-1 text-xs font-medium bg-slate-800 text-slate-200 hover:bg-slate-700 rounded-xl transition-colors cursor-pointer"
                 >
                   Snooze
                 </button>

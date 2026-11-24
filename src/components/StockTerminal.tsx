@@ -177,9 +177,9 @@ export default function StockTerminal() {
               value={inputSymbol}
               onChange={(e) => setInputSymbol(e.target.value)}
               placeholder="e.g. NSE_EQ|INE002A01018"
-              className="bg-slate-100 border border-slate-200 rounded-l-lg px-3 py-1.5 text-sm w-full md:w-64 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              className="bg-slate-100 border border-slate-200 rounded-l-xl px-3 py-2 text-sm w-full md:w-64 focus:outline-none focus:border-slate-400 font-medium"
             />
-            <button type="submit" className="bg-slate-900 text-white px-3 py-1.5 rounded-r-lg font-medium text-sm hover:bg-slate-800 active:bg-slate-950 transition-colors">
+            <button type="submit" className="bg-slate-900 text-white px-4 py-2 rounded-r-xl font-medium text-sm hover:bg-slate-800 active:bg-slate-950 transition-colors cursor-pointer shadow-xs">
               Load
             </button>
           </form>

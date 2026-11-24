@@ -319,7 +319,7 @@ export default function PropFirmChallenges({ challenges, user, setChallenges, ac
                 <input required type="number" value={accountSize} onChange={e => setAccountSize(e.target.value ? Number(e.target.value) : '')} className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 font-mono tabular-nums focus:outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition-all font-medium placeholder:text-slate-400" placeholder="100000" />
               </div>
               <div className="flex items-center gap-2">
-                <input type="checkbox" id="isGiveawayCheckbox" checked={isGiveaway} onChange={e => setIsGiveaway(e.target.checked)} className="rounded border-slate-300 text-slate-900 focus:ring-slate-400 w-4 h-4 cursor-pointer" />
+                <input type="checkbox" id="isGiveawayCheckbox" checked={isGiveaway} onChange={e => setIsGiveaway(e.target.checked)} className="rounded-xl border-slate-300 text-slate-900 focus:ring-slate-400 w-4 h-4 cursor-pointer" />
                 <label htmlFor="isGiveawayCheckbox" className="text-xs font-medium text-slate-700 cursor-pointer">Won in a Giveaway (Free Account)</label>
               </div>
               {!isGiveaway && (

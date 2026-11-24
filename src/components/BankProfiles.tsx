@@ -287,11 +287,11 @@ export default function BankProfiles({
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-xl relative"
+            className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xl relative"
           >
             <button
               onClick={closeForm}
-              className="absolute top-3 right-3 text-slate-500 hover:text-slate-600 p-1 cursor-pointer"
+              className="absolute top-3 right-3 text-slate-400 hover:text-slate-700 hover:bg-slate-100 p-1.5 rounded-full cursor-pointer transition-colors"
             >
               <X size={16} />
             </button>
@@ -352,7 +352,7 @@ export default function BankProfiles({
                 </div>
               )}
               <div className="md:col-span-2 pt-2">
-                <button type="submit" className="w-full px-4 py-1.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium rounded text-xs transition-colors cursor-pointer flex items-center justify-center gap-1.5">
+                <button type="submit" className="w-full px-4 py-1.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium rounded-xl text-xs transition-colors cursor-pointer flex items-center justify-center gap-1.5">
                   <Save size={14} /> {editingBank ? 'Save Changes' : 'Save Account'}
                 </button>
               </div>
@@ -402,7 +402,7 @@ export default function BankProfiles({
                           <div className="flex items-center gap-1">
                             <button
                               onClick={(e) => openEditForm(b, e)}
-                              className="p-2 text-slate-400 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors"
+                              className="p-2 text-slate-400 hover:text-slate-900 hover:bg-slate-100 rounded-xl transition-colors"
                               title="Edit profile"
                             >
                               <Edit2 size={14} />
@@ -664,11 +664,11 @@ export default function BankProfiles({
               initial={{ scale: 0.95 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.95 }}
-              className="bg-white rounded-lg shadow-xl w-full max-w-md overflow-hidden"
+              className="bg-white rounded-2xl shadow-xl w-full max-w-md overflow-hidden border border-slate-200"
             >
               <div className="flex justify-between items-center p-4 border-b border-slate-100 bg-slate-50">
-                <h3 className="font-bold text-slate-800 ">Withdraw / Exchange</h3>
-                <button onClick={() => setIsWithdrawModalOpen(false)} className="text-slate-400 hover:text-slate-600"><X size={18} /></button>
+                <h3 className="font-semibold text-slate-900">Withdraw / Exchange</h3>
+                <button onClick={() => setIsWithdrawModalOpen(false)} className="text-slate-400 hover:text-slate-700 hover:bg-slate-200 p-1.5 rounded-full cursor-pointer transition-colors"><X size={18} /></button>
               </div>
               <form onSubmit={handleWithdrawSubmit} className="p-4 space-y-4">
                 {selectedBank.accountType === 'Crypto Wallet' && selectedBank.cryptoBalances && (

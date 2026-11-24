@@ -130,7 +130,7 @@ const AdvancedChartWidget = ({
         {isPrimary && (
           <div className={`hidden sm:flex absolute top-[3px] z-50 gap-0 transition-all duration-300 opacity-100 ${activeSidePanel ? 'right-[480px]' : 'right-[80px]'}`}>
             {onLayoutChange && (
-              <button onClick={() => { setShowLayoutMenu(!showLayoutMenu); setShowWatchlistMenu(false); }} className={`p-1.5 rounded hover:bg-slate-500/20 transition-colors flex items-center justify-center w-[36px] h-[36px] ${showLayoutMenu ? (theme === 'dark' ? 'text-white' : 'text-black') : theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`} title="Chart Layout">
+              <button onClick={() => { setShowLayoutMenu(!showLayoutMenu); setShowWatchlistMenu(false); }} className={`p-1.5 rounded-xl hover:bg-slate-500/20 transition-colors flex items-center justify-center w-[36px] h-[36px] ${showLayoutMenu ? (theme === 'dark' ? 'text-white' : 'text-black') : theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`} title="Chart Layout">
                  <LayoutGrid size={22} strokeWidth={1.5} />
               </button>
             )}
@@ -163,19 +163,19 @@ const AdvancedChartWidget = ({
         {/* Layout Grid Dropdown */}
         {showLayoutMenu && onLayoutChange && (
           <div className={`absolute sm:top-[40px] top-[260px] z-50 bg-white shadow-xs border border-slate-200 rounded-xl p-2 grid grid-cols-3 gap-2 transition-all duration-300 right-[50px] ${activeSidePanel ? 'sm:right-[480px]' : 'sm:right-[80px]'}`}>
-             <button onClick={() => onLayoutChange('1')} className={`p-3 border rounded flex justify-center items-center ${chartLayout === '1' ? 'border-blue-500 bg-blue-50' : 'border-slate-200 hover:border-slate-300'}`} title="1 Chart">
+             <button onClick={() => onLayoutChange('1')} className={`p-3 border rounded-xl flex justify-center items-center ${chartLayout === '1' ? 'border-blue-500 bg-blue-50' : 'border-slate-200 hover:border-slate-300'}`} title="1 Chart">
                <div className="w-6 h-6 border-2 border-slate-400 rounded-sm"></div>
              </button>
-             <button onClick={() => onLayoutChange('split-v')} className={`p-3 border rounded flex justify-center items-center ${chartLayout === 'split-v' ? 'border-blue-500 bg-blue-50' : 'border-slate-200 hover:border-slate-300'}`} title="2 Charts (Vertical)">
+             <button onClick={() => onLayoutChange('split-v')} className={`p-3 border rounded-xl flex justify-center items-center ${chartLayout === 'split-v' ? 'border-blue-500 bg-blue-50' : 'border-slate-200 hover:border-slate-300'}`} title="2 Charts (Vertical)">
                <div className="w-6 h-6 flex gap-1"><div className="flex-1 border-2 border-slate-400 rounded-sm"></div><div className="flex-1 border-2 border-slate-400 rounded-sm"></div></div>
              </button>
-             <button onClick={() => onLayoutChange('split-h')} className={`p-3 border rounded flex justify-center items-center ${chartLayout === 'split-h' ? 'border-blue-500 bg-blue-50' : 'border-slate-200 hover:border-slate-300'}`} title="2 Charts (Horizontal)">
+             <button onClick={() => onLayoutChange('split-h')} className={`p-3 border rounded-xl flex justify-center items-center ${chartLayout === 'split-h' ? 'border-blue-500 bg-blue-50' : 'border-slate-200 hover:border-slate-300'}`} title="2 Charts (Horizontal)">
                <div className="w-6 h-6 flex flex-col gap-1"><div className="flex-1 border-2 border-slate-400 rounded-sm"></div><div className="flex-1 border-2 border-slate-400 rounded-sm"></div></div>
              </button>
-             <button onClick={() => onLayoutChange('grid-4')} className={`p-3 border rounded flex justify-center items-center ${chartLayout === 'grid-4' ? 'border-blue-500 bg-blue-50' : 'border-slate-200 hover:border-slate-300'}`} title="4 Charts">
+             <button onClick={() => onLayoutChange('grid-4')} className={`p-3 border rounded-xl flex justify-center items-center ${chartLayout === 'grid-4' ? 'border-blue-500 bg-blue-50' : 'border-slate-200 hover:border-slate-300'}`} title="4 Charts">
                <div className="w-6 h-6 grid grid-cols-2 gap-1"><div className="border-2 border-slate-400 rounded-sm"></div><div className="border-2 border-slate-400 rounded-sm"></div><div className="border-2 border-slate-400 rounded-sm"></div><div className="border-2 border-slate-400 rounded-sm"></div></div>
              </button>
-             <button onClick={() => onLayoutChange('grid-8')} className={`p-3 border rounded flex justify-center items-center ${chartLayout === 'grid-8' ? 'border-blue-500 bg-blue-50' : 'border-slate-200 hover:border-slate-300'}`} title="8 Charts">
+             <button onClick={() => onLayoutChange('grid-8')} className={`p-3 border rounded-xl flex justify-center items-center ${chartLayout === 'grid-8' ? 'border-blue-500 bg-blue-50' : 'border-slate-200 hover:border-slate-300'}`} title="8 Charts">
                <div className="w-6 h-6 grid grid-cols-4 grid-rows-2 gap-[2px]">
                  <div className="border-[1.5px] border-slate-400 rounded-[1px]"></div>
                  <div className="border-[1.5px] border-slate-400 rounded-[1px]"></div>
@@ -208,7 +208,7 @@ const AdvancedChartWidget = ({
                   >
                     + Add Current Chart
                   </button>
-                  <button onClick={() => setShowWatchlistMenu(false)} className={`flex items-center justify-center p-1 rounded transition-colors ${theme === 'dark' ? 'hover:bg-[#2a2e39] text-[#787b86]' : 'hover:bg-[#f0f3fa] text-[#787b86]'}`}>
+                  <button onClick={() => setShowWatchlistMenu(false)} className={`flex items-center justify-center p-1 rounded-xl transition-colors ${theme === 'dark' ? 'hover:bg-[#2a2e39] text-[#787b86]' : 'hover:bg-[#f0f3fa] text-[#787b86]'}`}>
                      <X size={20} />
                   </button>
                 </div>
@@ -229,12 +229,12 @@ const AdvancedChartWidget = ({
                       }
                     }}
                     placeholder="Type symbol (e.g. NSE:TCS)"
-                    className={`w-full px-3 py-2 text-[15px] outline-none focus:outline-none focus:ring-0 border rounded ${theme === 'dark' ? 'bg-[#2a2e39] border-[#434651] text-white focus:border-white' : 'bg-white border-[#e0e3eb] text-black focus:border-black'} transition-colors capitalize`}
+                    className={`w-full px-3 py-2 text-[15px] outline-none focus:outline-none focus:ring-0 border rounded-xl ${theme === 'dark' ? 'bg-[#2a2e39] border-[#434651] text-white focus:border-white' : 'bg-white border-[#e0e3eb] text-black focus:border-black'} transition-colors capitalize`}
                   />
                   
                   {/* Search Autocomplete Dropdown */}
                   {searchResults.length > 0 && (
-                    <div className={`absolute top-full left-0 right-0 mt-1 z-50 max-h-64 overflow-y-auto rounded shadow-xl border ${theme === 'dark' ? 'bg-[#1e222d] border-[#434651]' : 'bg-white border-[#e0e3eb]'}`}>
+                    <div className={`absolute top-full left-0 right-0 mt-1 z-50 max-h-64 overflow-y-auto rounded-xl shadow-xl border ${theme === 'dark' ? 'bg-[#1e222d] border-[#434651]' : 'bg-white border-[#e0e3eb]'}`}>
                       {searchResults.map((item, idx) => (
                         <div 
                           key={idx} 
@@ -250,7 +250,7 @@ const AdvancedChartWidget = ({
                             <span className={`text-[12px] mt-0.5 ${theme === 'dark' ? 'text-[#787b86]' : 'text-[#787b86]'}`}>{item.description}</span>
                           </div>
                           <div className="flex items-center gap-4">
-                            <span className={`text-xs font-bold px-1.5 py-0.5 rounded ${theme === 'dark' ? 'bg-[#2a2e39] text-[#d1d4dc]' : 'bg-[#f0f3fa] text-[#131722]'}`}>
+                            <span className={`text-xs font-bold px-1.5 py-0.5 rounded-xl ${theme === 'dark' ? 'bg-[#2a2e39] text-[#d1d4dc]' : 'bg-[#f0f3fa] text-[#131722]'}`}>
                               {item.exchange}
                             </span>
                             <button 
@@ -280,7 +280,7 @@ const AdvancedChartWidget = ({
                       setSearchResults([]);
                     }
                   }}
-                  className={`px-6 py-2 h-[42px] ${theme === 'dark' ? 'bg-black hover:bg-[#131722]' : 'bg-black hover:bg-slate-800'} text-white rounded text-[15px] font-medium transition-colors`}
+                  className={`px-6 py-2 h-[42px] ${theme === 'dark' ? 'bg-black hover:bg-[#131722]' : 'bg-black hover:bg-slate-800'} text-white rounded-xl text-[15px] font-medium transition-colors`}
                 >
                   Add
                 </button>
@@ -293,9 +293,9 @@ const AdvancedChartWidget = ({
                 ) : (
                   <div className="flex flex-col gap-1">
                     {watchlistSymbols?.map(sym => (
-                      <div key={sym} className={`group flex justify-between items-center px-3 py-2 rounded ${theme === 'dark' ? 'hover:bg-[#2a2e39]' : 'hover:bg-[#f0f3fa]'} transition-colors cursor-default`}>
+                      <div key={sym} className={`group flex justify-between items-center px-3 py-2 rounded-xl ${theme === 'dark' ? 'hover:bg-[#2a2e39]' : 'hover:bg-[#f0f3fa]'} transition-colors cursor-default`}>
                         <span className="font-semibold text-[14px]">{sym}</span>
-                        <button onClick={() => onRemoveWatchlistSymbol && onRemoveWatchlistSymbol(sym)} className={`opacity-0 group-hover:opacity-100 flex items-center justify-center p-1 rounded transition-all ${theme === 'dark' ? 'hover:bg-[#434651] text-[#787b86] hover:text-white' : 'hover:bg-[#e0e3eb] text-[#787b86] hover:text-black'}`}>
+                        <button onClick={() => onRemoveWatchlistSymbol && onRemoveWatchlistSymbol(sym)} className={`opacity-0 group-hover:opacity-100 flex items-center justify-center p-1 rounded-xl transition-all ${theme === 'dark' ? 'hover:bg-[#434651] text-[#787b86] hover:text-white' : 'hover:bg-[#e0e3eb] text-[#787b86] hover:text-black'}`}>
                           <X size={16} />
                         </button>
                       </div>
@@ -313,7 +313,7 @@ const AdvancedChartWidget = ({
               <h3 className={`font-bold text-sm ${theme === 'dark' ? 'text-slate-200' : 'text-slate-800'}`}>
                 {activeSidePanel === 'news' ? 'Market News' : activeSidePanel === 'calendar' ? 'Economic Calendar' : 'Fundamental Details'}
               </h3>
-              <button onClick={() => setActiveSidePanel(null)} className={`p-1 rounded ${theme === 'dark' ? 'hover:bg-slate-700 text-slate-400' : 'hover:bg-slate-200 text-slate-500'}`}>
+              <button onClick={() => setActiveSidePanel(null)} className={`p-1 rounded-xl ${theme === 'dark' ? 'hover:bg-slate-700 text-slate-400' : 'hover:bg-slate-200 text-slate-500'}`}>
                 <X size={16} strokeWidth={2.5} />
               </button>
             </div>

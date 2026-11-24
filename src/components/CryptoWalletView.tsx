@@ -931,8 +931,8 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
           <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
             {newSeed.split(' ').map((word, i) => (
               <div key={i} className="bg-white border border-slate-100 rounded-lg p-2 text-center flex flex-col shadow-sm">
-                <span className="text-xs text-slate-400 font-bold mb-1">{i + 1}</span>
-                <span className="font-mono tabular-nums text-slate-800 font-bold text-sm">{word}</span>
+                <span className="text-xs text-slate-400 font-medium mb-1">{i + 1}</span>
+                <span className="font-mono tabular-nums text-slate-800 font-medium text-sm">{word}</span>
               </div>
             ))}
           </div>
@@ -989,7 +989,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
 
         <div className="space-y-4">
           <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1.5">Pack Content</label>
+            <label className="block text-xs font-medium text-slate-700 mb-1.5">Pack Content</label>
             <textarea
               value={importPackText}
               onChange={e => setImportPackText(e.target.value)}
@@ -1014,7 +1014,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1.5">Pack Password (12+ characters)</label>
+            <label className="block text-xs font-medium text-slate-700 mb-1.5">Pack Password (12+ characters)</label>
             <input
               type="password"
               value={importPackPassword}
@@ -1089,7 +1089,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                 <button 
                   onClick={() => fetchBalances(wallet.address, wallet.btcAddress)}
                   disabled={isLoading}
-                  className="w-full md:w-auto flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-white rounded-xl font-bold transition-colors disabled:opacity-50"
+                  className="w-full md:w-auto flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-white rounded-xl font-medium transition-colors disabled:opacity-50"
                 >
                   <RefreshCw size={18} className={isLoading ? "animate-spin" : ""} />
                   Refresh
@@ -1108,10 +1108,10 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                 <div key={asset.symbol} className="bg-white border border-slate-200 rounded-xl p-3 sm:p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-2 sm:mb-3">
-                      <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-700">
+                      <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center font-medium text-slate-700">
                         {asset.symbol[0]}
                       </div>
-                      <span className="text-xs sm:text-xs font-bold px-2 py-1 bg-emerald-100 text-emerald-700 rounded-full">Mainnet</span>
+                      <span className="text-xs sm:text-xs font-medium px-2 py-1 bg-emerald-100 text-emerald-700 rounded-full">Mainnet</span>
                     </div>
                     <p className="text-slate-500 font-medium text-xs sm:text-sm">{asset.net.name}</p>
                   </div>
@@ -1122,7 +1122,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                     <div className="flex items-center gap-1">
                       <button 
                         onClick={() => copyToClipboard(asset.symbol === 'BTC' ? wallet.btcAddress! : wallet.address, `${asset.net.name} Address Copied!`)}
-                        className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors shrink-0"
+                        className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-xl transition-colors shrink-0"
                         title={`Copy ${asset.net.name} Address`}
                       >
                         <Copy size={16} />
@@ -1155,12 +1155,12 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                             <Send size={16} />
                           </div>
                           <div>
-                            <p className="text-sm font-bold text-slate-900">Sent {tx.asset}</p>
+                            <p className="text-sm font-medium text-slate-900">Sent {tx.asset}</p>
                             <p className="text-xs sm:text-xs text-slate-500 font-mono tabular-nums">{tx.to.slice(0, 6)}...{tx.to.slice(-4)}</p>
                           </div>
                         </div>
                         <div className="text-right">
-                          <p className="text-sm font-bold text-slate-900">-{tx.amount} {tx.asset}</p>
+                          <p className="text-sm font-medium text-slate-900">-{tx.amount} {tx.asset}</p>
                           <p className="text-xs text-slate-500">{new Date(tx.date).toLocaleDateString()}</p>
                         </div>
                       </div>
@@ -1192,7 +1192,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
             
             <form onSubmit={handleSend} className="space-y-3 sm:space-y-4 w-full">
               <div>
-                <label className="block text-xs sm:text-sm font-bold text-slate-700 mb-1.5 sm:mb-2">Select Asset</label>
+                <label className="block text-xs sm:text-sm font-medium text-slate-700 mb-1.5 sm:mb-2">Select Asset</label>
                 <select 
                   value={sendAsset} 
                   onChange={e => setSendAsset(e.target.value)}
@@ -1213,7 +1213,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
               </div>
               
               <div>
-                <label className="block text-xs sm:text-sm font-bold text-slate-700 mb-1.5 sm:mb-2">Recipient Address</label>
+                <label className="block text-xs sm:text-sm font-medium text-slate-700 mb-1.5 sm:mb-2">Recipient Address</label>
                 <input 
                   type="text" 
                   value={sendAddress}
@@ -1231,7 +1231,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
               )}
 
               <div>
-                <label className="block text-xs sm:text-sm font-bold text-slate-700 mb-1.5 sm:mb-2">Amount</label>
+                <label className="block text-xs sm:text-sm font-medium text-slate-700 mb-1.5 sm:mb-2">Amount</label>
                 <input 
                   type="number" 
                   step="any"
@@ -1313,7 +1313,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                   <Key size={18} /> Master Wallet Password
                 </h3>
                 <p className="text-slate-500 text-xs sm:text-sm font-medium mb-3 sm:mb-4">
-                  Set a permanent password to encrypt your seed phrase locally. <span className="text-red-500 font-bold">WARNING: If you forget this password, there is NO recovery option. You will lose access forever.</span>
+                  Set a permanent password to encrypt your seed phrase locally. <span className="text-red-500 font-medium">WARNING: If you forget this password, there is NO recovery option. You will lose access forever.</span>
                 </p>
                 <div className="flex flex-col sm:flex-row gap-2">
                   <input
@@ -1452,7 +1452,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
               {hasRevealedSeed && !showSeed ? (
                 <div className="bg-white border border-amber-200 rounded-xl p-4 sm:p-6 text-center mt-2">
                   <ShieldCheck size={32} className="text-amber-500 mx-auto mb-3" />
-                  <h4 className="font-bold text-slate-800 mb-1">Phrase Already Backed Up</h4>
+                  <h4 className="font-medium text-slate-800 mb-1">Phrase Already Backed Up</h4>
                   <p className="text-sm text-slate-500 font-medium">For maximum security, your seed phrase can only be viewed once on this device. You have already revealed it previously.</p>
                 </div>
               ) : (
@@ -1465,15 +1465,15 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                     {!showSeed ? (
                       <div className="absolute inset-0 bg-slate-50/90 backdrop-blur-sm rounded-xl flex flex-col items-center justify-center cursor-pointer" onClick={handleRevealClick}>
                         <Eye size={24} className="text-slate-400 mb-2" />
-                        <span className="text-xs sm:text-sm font-bold text-slate-600">Click to verify and reveal seed phrase</span>
+                        <span className="text-xs sm:text-sm font-medium text-slate-600">Click to verify and reveal seed phrase</span>
                       </div>
                     ) : null}
                     
                     <div className="grid grid-cols-3 md:grid-cols-4 gap-2 sm:gap-3">
                       {wallet.seedPhrase ? wallet.seedPhrase.split(' ').map((word, i) => (
                         <div key={i} className="bg-slate-50 border border-slate-100 rounded-lg p-1.5 sm:p-2 text-center flex flex-col">
-                          <span className="text-xs sm:text-xs text-slate-400 font-bold">{i + 1}</span>
-                          <span className="font-mono tabular-nums text-slate-800 font-bold text-xs sm:text-sm">{word}</span>
+                          <span className="text-xs sm:text-xs text-slate-400 font-medium">{i + 1}</span>
+                          <span className="font-mono tabular-nums text-slate-800 font-medium text-xs sm:text-sm">{word}</span>
                         </div>
                       )) : null}
                     </div>
@@ -1485,7 +1485,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                         setShowSeed(false);
                         setHasRevealedSeed(true); // Permanent block after hiding
                         setWallet(prev => prev ? { ...prev, seedPhrase: '' } : null);
-                      }} className="w-full sm:w-auto justify-center text-xs sm:text-sm font-bold text-slate-500 hover:text-slate-800 flex items-center gap-1 bg-white sm:bg-transparent border sm:border-transparent border-slate-200 py-2 sm:py-0 rounded-lg">
+                      }} className="w-full sm:w-auto justify-center text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 flex items-center gap-1 bg-white sm:bg-transparent border sm:border-transparent border-slate-200 py-2 sm:py-0 rounded-xl cursor-pointer">
                         <EyeOff size={16} /> Hide Phrase Permanently
                       </button>
                       <button onClick={() => copyToClipboard(wallet.seedPhrase)} className="w-full sm:w-auto justify-center text-xs sm:text-sm font-medium text-slate-700 hover:text-slate-900 flex items-center gap-1 bg-slate-100 sm:bg-transparent py-2 sm:py-0 rounded-xl">
@@ -1608,7 +1608,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
           <div className="bg-white rounded-lg shadow-xl w-full max-w-sm overflow-hidden flex flex-col p-6 text-center my-8 relative">
             
             {/* Countdown Timer Badge */}
-            <div className="absolute top-4 right-4 bg-red-100 text-red-600 font-bold px-2.5 py-1 rounded-xl text-xs font-mono tabular-nums flex items-center gap-1 border border-red-200">
+            <div className="absolute top-4 right-4 bg-red-100 text-red-600 font-medium px-2.5 py-1 rounded-xl text-xs font-mono tabular-nums flex items-center gap-1 border border-red-200">
               <RefreshCw size={10} className={otpTimeLeft > 0 ? "animate-spin" : ""} />
               00:{otpTimeLeft.toString().padStart(2, '0')}
             </div>
@@ -1623,7 +1623,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
             </p>
             
             <div className="mb-4 text-left">
-              <label className="block text-xs font-bold text-slate-700 mb-1">
+              <label className="block text-xs font-medium text-slate-700 mb-1">
                 Auth Token (sent to routing destination)
               </label>
               <input 
@@ -1632,12 +1632,12 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                 value={otpInput}
                 onChange={e => setOtpInput(e.target.value)}
                 placeholder="000000" 
-                className="w-full bg-slate-50 border border-slate-200 text-slate-900 rounded-xl px-4 py-3 text-center text-xl font-mono tabular-nums font-bold focus:ring-0 focus:border-slate-900 outline-none transition-colors"
+                className="w-full bg-slate-50 border border-slate-200 text-slate-900 rounded-xl px-4 py-3 text-center text-xl font-mono tabular-nums font-medium focus:ring-0 focus:border-slate-900 outline-none transition-colors"
               />
             </div>
             
             <div className="mb-6 text-left">
-              <label className="block text-xs font-bold text-slate-700 mb-1">
+              <label className="block text-xs font-medium text-slate-700 mb-1">
                 Google Authenticator Code
               </label>
               <input 
@@ -1646,13 +1646,13 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                 value={totpInput}
                 onChange={e => setTotpInput(e.target.value)}
                 placeholder="000000" 
-                className="w-full bg-slate-50 border border-slate-200 text-slate-900 rounded-xl px-4 py-3 text-center text-xl font-mono tabular-nums font-bold focus:ring-0 focus:border-slate-900 outline-none transition-colors"
+                className="w-full bg-slate-50 border border-slate-200 text-slate-900 rounded-xl px-4 py-3 text-center text-xl font-mono tabular-nums font-medium focus:ring-0 focus:border-slate-900 outline-none transition-colors"
               />
             </div>
 
             {hasCustomPw && (
               <div className="mb-6 text-left">
-                <label className="block text-xs font-bold text-slate-700 mb-1">
+                <label className="block text-xs font-medium text-slate-700 mb-1">
                   Master Wallet Password
                 </label>
                 <input 
@@ -1660,7 +1660,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
                   value={pwInput}
                   onChange={e => setPwInput(e.target.value)}
                   placeholder="Enter your password..." 
-                  className="w-full bg-slate-50 border border-slate-200 text-slate-900 rounded-xl px-4 py-3 text-center text-lg font-bold focus:ring-0 focus:border-slate-900 outline-none transition-colors"
+                  className="w-full bg-slate-50 border border-slate-200 text-slate-900 rounded-xl px-4 py-3 text-center text-lg font-medium focus:ring-0 focus:border-slate-900 outline-none transition-colors"
                 />
               </div>
             )}
@@ -1668,7 +1668,7 @@ export default function CryptoWalletView({ activeTab = 'dashboard' }: { activeTa
             <div className="flex gap-3">
               <button 
                 onClick={() => { setShowOtpModal(false); setOtpInput(''); setTotpInput(''); }}
-                className="flex-1 py-3 border border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50"
+                className="flex-1 py-3 border border-slate-200 text-slate-700 font-medium rounded-xl hover:bg-slate-50"
               >
                 Cancel
               </button>

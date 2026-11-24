@@ -61,7 +61,7 @@ export default function AadhaarVerification() {
           <button 
             type="submit"
             disabled={loading}
-            className="w-full flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium py-2.5 px-4 rounded-xl text-sm transition-colors cursor-pointer shadow-xs disabled:opacity-60"
+            className="w-full flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white font-medium py-3 px-4 rounded-xl text-sm transition-colors cursor-pointer shadow-xs disabled:opacity-60"
           >
             {loading ? <Loader2 size={16} className="animate-spin text-white" /> : 'Fetch KYC Details'}
           </button>
@@ -77,7 +77,7 @@ export default function AadhaarVerification() {
         {result && !error && (
           <div className="mt-6 p-4 sm:p-5 bg-slate-50 border border-slate-200 rounded-xl">
             <div className="flex items-center gap-2.5 mb-4 border-b border-slate-200/80 pb-3">
-              <div className="w-7 h-7 bg-emerald-100 text-emerald-700 rounded-lg flex items-center justify-center shrink-0">
+              <div className="w-7 h-7 bg-emerald-100 text-emerald-700 rounded-xl flex items-center justify-center shrink-0">
                 <CheckCircle size={15} strokeWidth={2.5} />
               </div>
               <div>
@@ -87,15 +87,15 @@ export default function AadhaarVerification() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-              <div className="bg-white p-3 rounded-lg border border-slate-200">
+              <div className="bg-white p-3 rounded-xl border border-slate-200">
                 <span className="text-slate-500 font-medium block text-[11px]">Full Name</span>
                 <p className="font-semibold text-slate-900 mt-1">{result.name}</p>
               </div>
-              <div className="bg-white p-3 rounded-lg border border-slate-200">
+              <div className="bg-white p-3 rounded-xl border border-slate-200">
                 <span className="text-slate-500 font-medium block text-[11px]">DOB / Gender</span>
                 <p className="font-mono tabular-nums font-semibold text-slate-900 mt-1">{result.dob} / {result.gender}</p>
               </div>
-              <div className="sm:col-span-2 bg-white p-3 rounded-lg border border-slate-200">
+              <div className="sm:col-span-2 bg-white p-3 rounded-xl border border-slate-200">
                 <span className="text-slate-500 font-medium block text-[11px]">Registered Address</span>
                 <p className="text-slate-700 font-medium mt-1 leading-relaxed">{result.address}</p>
               </div>

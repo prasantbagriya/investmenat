@@ -95,19 +95,19 @@ export default function BrokerageParser() {
                 <BarChart3 size={15} className="text-emerald-400" />
                 <span className="text-xs font-semibold">Extracted Summary</span>
               </div>
-              <span className="bg-white/10 px-2 py-0.5 rounded text-xs font-medium">{result.broker}</span>
+              <span className="bg-white/10 px-2 py-0.5 rounded-xl text-xs font-medium">{result.broker}</span>
             </div>
             
             <div className="p-4 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
-              <div className="bg-white p-3 rounded-lg border border-slate-200">
+              <div className="bg-white p-3 rounded-xl border border-slate-200">
                 <span className="text-slate-500 text-[11px] font-medium block mb-1">Total Trades Found</span>
                 <p className="font-semibold text-slate-900 text-lg font-mono tabular-nums">{result.tradeCount}</p>
               </div>
-              <div className="bg-white p-3 rounded-lg border border-slate-200">
+              <div className="bg-white p-3 rounded-xl border border-slate-200">
                 <span className="text-slate-500 text-[11px] font-medium block mb-1">Total Turnover</span>
                 <p className="font-semibold text-slate-900 text-lg font-mono tabular-nums">₹{result.totalTurnover.toLocaleString('en-IN')}</p>
               </div>
-              <div className="bg-white p-3 rounded-lg border border-slate-200">
+              <div className="bg-white p-3 rounded-xl border border-slate-200">
                 <span className="text-slate-500 text-[11px] font-medium block mb-1">Net Realized Gain/Loss</span>
                 <p className={`font-semibold text-lg font-mono tabular-nums ${result.netRealizedGain >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
                   {result.netRealizedGain >= 0 ? '+' : ''}₹{result.netRealizedGain.toLocaleString('en-IN')}

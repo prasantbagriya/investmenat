@@ -31,7 +31,7 @@ export default function ChartSettingsModal({ theme, onClose }: ChartSettingsModa
       >
         <div className="flex items-center justify-between p-4 border-b" style={{ borderColor: border }}>
           <h2 className="text-lg font-bold">Chart settings</h2>
-          <button onClick={onClose} className="p-1 hover:opacity-70 rounded">
+          <button onClick={onClose} className="p-1 hover:opacity-70 rounded-xl">
             <X size={20} />
           </button>
         </div>
@@ -62,22 +62,22 @@ export default function ChartSettingsModal({ theme, onClose }: ChartSettingsModa
                 <div className="flex items-center justify-between">
                   <span>Body</span>
                   <div className="flex gap-2">
-                    <div className="w-6 h-6 border rounded" style={{ background: TV_CONFIG.candleStyle.upColor }} />
-                    <div className="w-6 h-6 border rounded" style={{ background: TV_CONFIG.candleStyle.downColor }} />
+                    <div className="w-6 h-6 border rounded-xl" style={{ background: TV_CONFIG.candleStyle.upColor }} />
+                    <div className="w-6 h-6 border rounded-xl" style={{ background: TV_CONFIG.candleStyle.downColor }} />
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
                   <span>Borders</span>
                   <div className="flex gap-2">
-                    <div className="w-6 h-6 border rounded" style={{ background: TV_CONFIG.candleStyle.borderUpColor }} />
-                    <div className="w-6 h-6 border rounded" style={{ background: TV_CONFIG.candleStyle.borderDownColor }} />
+                    <div className="w-6 h-6 border rounded-xl" style={{ background: TV_CONFIG.candleStyle.borderUpColor }} />
+                    <div className="w-6 h-6 border rounded-xl" style={{ background: TV_CONFIG.candleStyle.borderDownColor }} />
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
                   <span>Wick</span>
                   <div className="flex gap-2">
-                    <div className="w-6 h-6 border rounded" style={{ background: TV_CONFIG.candleStyle.wickUpColor }} />
-                    <div className="w-6 h-6 border rounded" style={{ background: TV_CONFIG.candleStyle.wickDownColor }} />
+                    <div className="w-6 h-6 border rounded-xl" style={{ background: TV_CONFIG.candleStyle.wickUpColor }} />
+                    <div className="w-6 h-6 border rounded-xl" style={{ background: TV_CONFIG.candleStyle.wickDownColor }} />
                   </div>
                 </div>
               </div>
@@ -87,15 +87,15 @@ export default function ChartSettingsModal({ theme, onClose }: ChartSettingsModa
               <div className="flex flex-col gap-4 text-sm">
                 <div className="flex items-center justify-between">
                   <span>Background</span>
-                  <div className="w-6 h-6 border rounded" style={{ background: isDark ? TV_CONFIG.colors.dark.bg : TV_CONFIG.colors.light.bg }} />
+                  <div className="w-6 h-6 border rounded-xl" style={{ background: isDark ? TV_CONFIG.colors.dark.bg : TV_CONFIG.colors.light.bg }} />
                 </div>
                 <div className="flex items-center justify-between">
                   <span>Vert grid lines</span>
-                  <div className="w-6 h-6 border rounded" style={{ background: isDark ? TV_CONFIG.colors.dark.grid : TV_CONFIG.colors.light.grid }} />
+                  <div className="w-6 h-6 border rounded-xl" style={{ background: isDark ? TV_CONFIG.colors.dark.grid : TV_CONFIG.colors.light.grid }} />
                 </div>
                 <div className="flex items-center justify-between">
                   <span>Horz grid lines</span>
-                  <div className="w-6 h-6 border rounded" style={{ background: isDark ? TV_CONFIG.colors.dark.grid : TV_CONFIG.colors.light.grid }} />
+                  <div className="w-6 h-6 border rounded-xl" style={{ background: isDark ? TV_CONFIG.colors.dark.grid : TV_CONFIG.colors.light.grid }} />
                 </div>
                 <div className="flex items-center justify-between">
                   <span>Watermark</span>
@@ -112,8 +112,8 @@ export default function ChartSettingsModal({ theme, onClose }: ChartSettingsModa
         
         {/* Footer */}
         <div className="p-4 border-t flex justify-end gap-2" style={{ borderColor: border }}>
-          <button onClick={onClose} className="px-4 py-2 border rounded hover:opacity-80" style={{ borderColor: border }}>Cancel</button>
-          <button onClick={onClose} className="px-4 py-2 rounded text-white bg-black dark:bg-white dark:text-black hover:opacity-80 transition-opacity">OK</button>
+          <button onClick={onClose} className="px-4 py-2 border rounded-xl hover:opacity-80" style={{ borderColor: border }}>Cancel</button>
+          <button onClick={onClose} className="px-4 py-2 rounded-xl text-white bg-black dark:bg-white dark:text-black hover:opacity-80 transition-opacity">OK</button>
         </div>
       </div>
     </div>

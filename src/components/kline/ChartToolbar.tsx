@@ -89,7 +89,7 @@ export default function ChartToolbar({
   const ToolButton = ({ icon: Icon, label, onClick, active = false }: any) => (
     <button 
       onClick={onClick}
-      className={`p-1.5 flex items-center justify-center rounded transition-colors`}
+      className={`p-1.5 flex items-center justify-center rounded-xl transition-colors`}
       style={{ color: active ? activeBg : text, background: active ? (dark ? '#1e222d' : '#f0f3fa') : 'transparent' }}
       onMouseEnter={e => { if (!active) e.currentTarget.style.background = hoverBg; }}
       onMouseLeave={e => { if (!active) e.currentTarget.style.background = 'transparent'; }}
@@ -123,7 +123,7 @@ export default function ChartToolbar({
             window.dispatchEvent(new Event('close-watchlist-sidebar'));
           }}
           style={{ background: showSymbolSearch ? hoverBg : 'transparent' }}
-          className="flex items-center gap-1.5 px-2 py-1 rounded font-bold text-[15px] hover:opacity-90 transition tracking-tight"
+          className="flex items-center gap-1.5 px-2 py-1 rounded-xl font-medium text-[15px] hover:opacity-90 transition tracking-tight"
         >
           <div className="flex items-center justify-center w-5 h-5 rounded-full text-xs text-white" style={{ background: '#f23645' }}>
             {symbol.charAt(0)}
@@ -156,7 +156,7 @@ export default function ChartToolbar({
             style={{
               color: timeframe === tf ? activeBg : text,
             }}
-            className="px-2 py-1 rounded text-[13px] font-semibold transition-colors"
+            className="px-2 py-1 rounded-xl text-[13px] font-semibold transition-colors"
             onMouseEnter={e => { if (timeframe !== tf) e.currentTarget.style.background = hoverBg; }}
             onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}
           >
@@ -229,7 +229,7 @@ export default function ChartToolbar({
         <ToolButton icon={LayoutGrid} label="Select Layout" onClick={() => setShowLayoutMenu(!showLayoutMenu)} />
         {showLayoutMenu && (
           <div style={{ background: bg, border: `1px solid ${border}`, color: text }}
-           className="absolute top-full right-0 mt-1 w-32 rounded  z-50 overflow-hidden py-1"
+           className="absolute top-full right-0 mt-1 w-32 rounded-xl  z-50 overflow-hidden py-1"
           >
             {[
               { id: '1x1', label: '1 Chart' },

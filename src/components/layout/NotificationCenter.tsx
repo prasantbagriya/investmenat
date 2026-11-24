@@ -113,20 +113,20 @@ export default function NotificationCenter({
                                 min={todayStr}
                                 value={skipData.date}
                                 onChange={(e) => setSkipData({ id: b.id, date: e.target.value })}
-                                className="flex-1 text-xs px-2 py-1.5 border border-slate-300 rounded focus:outline-none"
+                                className="flex-1 text-xs px-2 py-1.5 border border-slate-300 rounded-xl focus:outline-none"
                               />
                               <button 
                                 onClick={() => {
                                   onSkipBill(b, skipData.date);
                                   setSkipData(null);
                                 }}
-                                className="bg-slate-900 text-white p-1.5 rounded hover:bg-slate-800 transition-colors cursor-pointer"
+                                className="bg-slate-900 text-white p-1.5 rounded-xl hover:bg-slate-800 transition-colors cursor-pointer"
                               >
                                 <Check size={14} />
                               </button>
                               <button 
                                 onClick={() => setSkipData(null)}
-                                className="bg-slate-200 text-slate-600 p-1.5 rounded hover:bg-slate-300 transition-colors cursor-pointer"
+                                className="bg-slate-200 text-slate-600 p-1.5 rounded-xl hover:bg-slate-300 transition-colors cursor-pointer"
                               >
                                 <X size={14} />
                               </button>
@@ -179,14 +179,14 @@ export default function NotificationCenter({
                                 min={todayStr}
                                 value={rescheduleData.date}
                                 onChange={(e) => setRescheduleData({ id: p.id, date: e.target.value })}
-                                className="flex-1 text-xs px-2 py-1.5 border border-slate-300 rounded focus:outline-none"
+                                className="flex-1 text-xs px-2 py-1.5 border border-slate-300 rounded-xl focus:outline-none"
                               />
                               <button 
                                 onClick={() => {
                                   onReschedulePending(p, rescheduleData.date);
                                   setRescheduleData(null);
                                 }}
-                                className="bg-slate-900 text-white p-1.5 rounded hover:bg-slate-800 transition-colors cursor-pointer"
+                                className="bg-slate-900 text-white p-1.5 rounded-xl hover:bg-slate-800 transition-colors cursor-pointer"
                               >
                                 <Check size={14} />
                               </button>

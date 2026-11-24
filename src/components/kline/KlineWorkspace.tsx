@@ -227,7 +227,7 @@ export default function KlineWorkspace() {
               setShowWatchlist(!showWatchlist);
               if (!showWatchlist) window.dispatchEvent(new Event('close-symbol-search'));
             }}
-            className="fixed right-2 top-2 p-1.5 rounded-md bg-black dark:bg-white text-white dark:text-black z-[100]  text-xs font-bold"
+            className="fixed right-2 top-2 px-3 py-1.5 rounded-xl bg-slate-900 text-white z-[100] text-xs font-medium cursor-pointer shadow-xs"
           >
             {showWatchlist ? 'Close' : 'Watchlist'}
           </button>

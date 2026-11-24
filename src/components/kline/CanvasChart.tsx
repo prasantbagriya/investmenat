@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Plus, Minus, RotateCcw } from 'lucide-react';
 import { TV_CONFIG } from './chartConfig';
 
 export interface CandleData {
@@ -561,6 +562,39 @@ export default function CanvasChart({ data, theme, chartType = 'candle_solid', s
     }
   };
 
+  const zoomAt = (factor: number, clientX?: number) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const isSmall = rect.width < 500;
+    const yAxisWidth = isSmall ? 45 : Y_AXIS_WIDTH;
+    const chartWidth = rect.width - yAxisWidth;
+    const rightMargin = 50;
+
+    const xPos = clientX !== undefined ? (clientX - rect.left) : (chartWidth / 2);
+    const clampedX = Math.max(0, Math.min(xPos, chartWidth));
+
+    const oldWidth = stateRef.current.candleWidth;
+    const newWidth = Math.max(1.5, Math.min(oldWidth * factor, 80));
+    if (Math.abs(newWidth - oldWidth) < 0.0001) return;
+
+    // Anchor at clampedX so the candle under the mouse/finger stays in the exact same spot
+    const distanceToRight = chartWidth - rightMargin - clampedX + stateRef.current.offsetX;
+    const indexAtPoint = distanceToRight / oldWidth;
+
+    stateRef.current.candleWidth = newWidth;
+    stateRef.current.offsetX += indexAtPoint * (newWidth - oldWidth);
+
+    // Bound offset to prevent chart flying away
+    if (data && data.length > 0) {
+      const totalWidth = data.length * newWidth;
+      const maxOffset = totalWidth + chartWidth * 0.5;
+      const minOffset = -chartWidth * 0.8;
+      stateRef.current.offsetX = Math.max(minOffset, Math.min(stateRef.current.offsetX, maxOffset));
+    }
+
+    scheduleDraw();
+  };
+
   const scheduleDraw = () => {
     if (drawRef.current) cancelAnimationFrame(drawRef.current);
     drawRef.current = requestAnimationFrame(draw);
@@ -570,6 +604,7 @@ export default function CanvasChart({ data, theme, chartType = 'candle_solid', s
     const handleResize = () => {
       if (!containerRef.current) return;
       const { clientWidth, clientHeight } = containerRef.current;
+      if (clientWidth === 0 || clientHeight === 0) return;
       const dpr = window.devicePixelRatio || 1;
       [bgCanvasRef, mainCanvasRef, crosshairCanvasRef].forEach(ref => {
         if (ref.current) {
@@ -588,13 +623,17 @@ export default function CanvasChart({ data, theme, chartType = 'candle_solid', s
 
     handleResize();
     
+    window.addEventListener('resize', handleResize);
     if (!containerRef.current) return;
     const observer = new ResizeObserver(() => {
       handleResize();
     });
     observer.observe(containerRef.current);
     
-    return () => observer.disconnect();
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      observer.disconnect();
+    };
   }, [theme]);
 
   useEffect(() => {
@@ -725,16 +764,13 @@ export default function CanvasChart({ data, theme, chartType = 'candle_solid', s
       scheduleDraw();
     };
 
-    const handleDoubleClick = (e: MouseEvent) => {
-      const rect = container.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const chartWidth = rect.width - Y_AXIS_WIDTH;
-      if (x > chartWidth) {
-        stateRef.current.isAutoFit = true;
-        stateRef.current.yStretch = 1;
-        stateRef.current.yOffset = 0;
-        scheduleDraw();
-      }
+    const handleDoubleClick = () => {
+      stateRef.current.isAutoFit = true;
+      stateRef.current.yStretch = 1;
+      stateRef.current.yOffset = 0;
+      stateRef.current.candleWidth = 8;
+      stateRef.current.offsetX = 0;
+      scheduleDraw();
     };
 
     const handlePointerUp = (e: PointerEvent) => {
@@ -776,22 +812,8 @@ export default function CanvasChart({ data, theme, chartType = 'candle_solid', s
 
     const handleWheel = (e: WheelEvent) => {
       e.preventDefault();
-      const zoomFactor = e.deltaY < 0 ? 1.015 : 0.985;
-      const newWidth = Math.max(1, Math.min(stateRef.current.candleWidth * zoomFactor, 100));
-      
-      if (stateRef.current.mousePos) {
-        const chartWidth = container.clientWidth - Y_AXIS_WIDTH;
-        const rightMargin = 50;
-        const xPos = stateRef.current.mousePos.x;
-        if (xPos < chartWidth) {
-          const distanceToRight = chartWidth - rightMargin - xPos + stateRef.current.offsetX;
-          const indexAtMouse = distanceToRight / stateRef.current.candleWidth;
-          stateRef.current.offsetX = distanceToRight - (indexAtMouse * newWidth);
-        }
-      }
-      
-      stateRef.current.candleWidth = newWidth;
-      scheduleDraw();
+      const factor = Math.exp(-e.deltaY * 0.002);
+      zoomAt(factor, e.clientX);
     };
 
     const handleContextMenu = (e: MouseEvent) => {
@@ -799,48 +821,38 @@ export default function CanvasChart({ data, theme, chartType = 'candle_solid', s
       setContextMenu({ x: e.offsetX, y: e.offsetY });
     };
 
-    let initialPinchDistance = -1;
-    let initialCandleWidth = -1;
+    let lastPinchDist = -1;
 
     const handleTouchStart = (e: TouchEvent) => {
       if (e.touches.length === 2) {
         e.preventDefault();
-        const dx = e.touches[0].clientX - e.touches[1].clientX;
-        const dy = e.touches[0].clientY - e.touches[1].clientY;
-        initialPinchDistance = Math.hypot(dx, dy);
-        initialCandleWidth = stateRef.current.candleWidth;
+        const t0 = e.touches[0];
+        const t1 = e.touches[1];
+        lastPinchDist = Math.hypot(t0.clientX - t1.clientX, t0.clientY - t1.clientY);
       }
     };
 
     const handleTouchMove = (e: TouchEvent) => {
-      if (e.touches.length === 2 && initialPinchDistance > 0) {
+      if (e.touches.length === 2 && lastPinchDist > 0) {
         e.preventDefault();
-        const dx = e.touches[0].clientX - e.touches[1].clientX;
-        const dy = e.touches[0].clientY - e.touches[1].clientY;
-        const currentDistance = Math.hypot(dx, dy);
-        const ratio = currentDistance / initialPinchDistance;
+        const t0 = e.touches[0];
+        const t1 = e.touches[1];
+        const dist = Math.hypot(t0.clientX - t1.clientX, t0.clientY - t1.clientY);
+        const centerX = (t0.clientX + t1.clientX) / 2;
         
-        const newWidth = Math.max(1, Math.min(initialCandleWidth * ratio, 100));
-        
-        if (stateRef.current.mousePos) {
-          const chartWidth = container.clientWidth - Y_AXIS_WIDTH;
-          const rightMargin = 50;
-          const xPos = stateRef.current.mousePos.x;
-          if (xPos < chartWidth) {
-            const distanceToRight = chartWidth - rightMargin - xPos + stateRef.current.offsetX;
-            const indexAtMouse = distanceToRight / stateRef.current.candleWidth;
-            stateRef.current.offsetX = distanceToRight - (indexAtMouse * newWidth);
+        if (dist > 10 && lastPinchDist > 10) {
+          const factor = dist / lastPinchDist;
+          if (Math.abs(factor - 1) > 0.005) {
+            zoomAt(factor, centerX);
+            lastPinchDist = dist;
           }
         }
-        
-        stateRef.current.candleWidth = newWidth;
-        scheduleDraw();
       }
     };
 
     const handleTouchEnd = (e: TouchEvent) => {
       if (e.touches.length < 2) {
-        initialPinchDistance = -1;
+        lastPinchDist = -1;
       }
     };
 
@@ -883,6 +895,45 @@ export default function CanvasChart({ data, theme, chartType = 'candle_solid', s
       <canvas ref={mainCanvasRef} className="absolute inset-0 pointer-events-none" />
       <canvas ref={crosshairCanvasRef} className="absolute inset-0 pointer-events-none" />
       
+      {/* Floating Zoom & Scale Controls */}
+      <div 
+        className="absolute bottom-10 right-14 z-30 flex items-center gap-1 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs p-1 rounded-xl border border-slate-200 dark:border-slate-800 shadow-xs"
+        onClick={e => e.stopPropagation()}
+      >
+        <button
+          type="button"
+          onClick={(e) => { e.stopPropagation(); zoomAt(1.25); }}
+          className="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold transition-colors cursor-pointer"
+          title="Zoom In"
+        >
+          <Plus size={14} />
+        </button>
+        <button
+          type="button"
+          onClick={(e) => { e.stopPropagation(); zoomAt(0.8); }}
+          className="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold transition-colors cursor-pointer"
+          title="Zoom Out"
+        >
+          <Minus size={14} />
+        </button>
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            stateRef.current.candleWidth = 8;
+            stateRef.current.offsetX = 0;
+            stateRef.current.isAutoFit = true;
+            stateRef.current.yStretch = 1;
+            stateRef.current.yOffset = 0;
+            scheduleDraw();
+          }}
+          className="px-2 h-7 flex items-center gap-1 justify-center rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 text-[11px] font-medium transition-colors cursor-pointer"
+          title="Reset Zoom & Scale"
+        >
+          <RotateCcw size={11} /> Reset
+        </button>
+      </div>
+
       {contextMenu && (
         <div 
           className="absolute z-50 rounded-xl py-1 text-sm font-medium border shadow-lg"

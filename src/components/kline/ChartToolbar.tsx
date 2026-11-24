@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Search, ChevronDown, Activity, BarChart2, LineChart, 
   Settings, Undo2, Redo2, Maximize, Camera, Zap, FileJson, AlarmClock, LayoutGrid,
-  Check, Star
+  Check, Star, ArrowLeft
 } from 'lucide-react';
 import SymbolSearchModal from './SymbolSearchModal';
 import IndicatorsModal from './IndicatorsModal';
@@ -42,6 +43,7 @@ export default function ChartToolbar({
   layoutType,
   onLayoutChange
 }: ChartToolbarProps) {
+  const navigate = useNavigate();
   const dark = theme === 'dark';
   const bg       = dark ? '#131722' : '#ffffff';
   const border   = dark ? '#2b2b43' : '#e0e3eb';
@@ -104,6 +106,15 @@ export default function ChartToolbar({
       style={{ background: bg, borderBottom: `1px solid ${border}`, color: text, userSelect: 'none' }}
       className="flex items-center px-2 py-1 text-sm relative z-10 w-full overflow-x-auto no-scrollbar whitespace-nowrap"
     >
+      {/* ─── Back to Research Button ─── */}
+      <button
+        onClick={() => navigate('/market')}
+        className="flex items-center justify-center p-1.5 rounded-xl hover:bg-black/5 dark:hover:bg-white/10 text-slate-700 dark:text-slate-200 mr-1.5 transition-colors cursor-pointer"
+        title="Back to Research Dashboard"
+      >
+        <ArrowLeft size={16} />
+      </button>
+
       {/* ─── Profile / Menu (Leftmost) ─── */}
       <div 
         className="flex flex-col gap-0.5 cursor-pointer mr-2 p-1" 

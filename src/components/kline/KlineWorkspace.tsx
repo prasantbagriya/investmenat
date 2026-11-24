@@ -42,7 +42,8 @@ export default function KlineWorkspace() {
 
   const [symbol, setSymbol] = useState('BTCUSDT');
   const [timeframe, setTimeframe] = useState('1D');
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth < 768 : false);
+  const [showDrawingToolbar, setShowDrawingToolbar] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -222,28 +223,38 @@ export default function KlineWorkspace() {
           />
         </div>
         {isMobile && (
-          <button 
-            onClick={() => {
-              setShowWatchlist(!showWatchlist);
-              if (!showWatchlist) window.dispatchEvent(new Event('close-symbol-search'));
-            }}
-            className="fixed right-2 top-2 px-3 py-1.5 rounded-xl bg-slate-900 text-white z-[100] text-xs font-medium cursor-pointer shadow-xs"
-          >
-            {showWatchlist ? 'Close' : 'Watchlist'}
-          </button>
+          <div className="fixed right-2 top-2 z-[100] flex items-center gap-1.5">
+            <button 
+              onClick={() => setShowDrawingToolbar(!showDrawingToolbar)}
+              className="px-2.5 py-1.5 rounded-xl bg-slate-800 text-white text-xs font-medium cursor-pointer shadow-xs"
+            >
+              {showDrawingToolbar ? 'Hide Tools' : 'Tools'}
+            </button>
+            <button 
+              onClick={() => {
+                setShowWatchlist(!showWatchlist);
+                if (!showWatchlist) window.dispatchEvent(new Event('close-symbol-search'));
+              }}
+              className="px-2.5 py-1.5 rounded-xl bg-slate-900 text-white text-xs font-medium cursor-pointer shadow-xs"
+            >
+              {showWatchlist ? 'Close' : 'Watchlist'}
+            </button>
+          </div>
         )}
       </div>
 
       {/* Main Workspace */}
       <div className="flex flex-1 overflow-hidden relative">
-        <div className={`w-[52px] border-r border-[#e0e3eb] dark:border-[#2B2B36] bg-white dark:bg-[#131722] flex-col items-center shrink-0 z-10 flex`}>
-          <DrawingToolbar 
-            theme={theme}
-            activeMode={activeMode} 
-            onSelectMode={(mode) => setActiveMode(mode)} 
-            onClearAll={handleClearDrawings}
-          />
-        </div>
+        {(!isMobile || showDrawingToolbar) && (
+          <div className="w-[48px] sm:w-[52px] border-r border-[#e0e3eb] dark:border-[#2B2B36] bg-white dark:bg-[#131722] flex-col items-center shrink-0 z-10 flex">
+            <DrawingToolbar 
+              theme={theme}
+              activeMode={activeMode} 
+              onSelectMode={(mode) => setActiveMode(mode)} 
+              onClearAll={handleClearDrawings}
+            />
+          </div>
+        )}
 
         {/* Custom Canvas Chart Container (Multi-Chart Grid) */}
         <div className="flex-1 flex flex-col relative bg-white dark:bg-[#131722] overflow-hidden">

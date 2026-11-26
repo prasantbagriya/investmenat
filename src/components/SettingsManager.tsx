@@ -10,7 +10,7 @@ import InfoTooltip from './InfoTooltip';
 import GooglePicker from './GooglePicker';
 import BrokerManager from './BrokerManager';
 import toast from 'react-hot-toast';
-import { testGeminiApiKey, GEMINI_MODEL } from '../services/clientGemini';
+import { testGeminiApiKey, GEMINI_MODEL, getApiKey } from '../services/clientGemini';
 interface SettingsManagerProps {
   user: any;
   userSettings: UserSettings | null;
@@ -80,7 +80,7 @@ export default function SettingsManager({
   }, [userSettings?.integrations]);
 
   // Gemini AI Key configuration
-  const [geminiKeyInput, setGeminiKeyInput] = useState(() => localStorage.getItem('custom_gemini_api_key') || '');
+  const [geminiKeyInput, setGeminiKeyInput] = useState(() => localStorage.getItem('custom_gemini_api_key') || getApiKey());
   const [testingGemini, setTestingGemini] = useState(false);
   const [geminiTestStatus, setGeminiTestStatus] = useState<{ success?: boolean; message?: string } | null>(null);
 

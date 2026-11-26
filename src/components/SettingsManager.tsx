@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { 
   Settings, FileSpreadsheet, Users, ShieldCheck, ShieldAlert, Check, RefreshCw, 
   HelpCircle, Trash2, Key, Info, ExternalLink, Link2, Copy, AlertTriangle, Play,
-  Calendar, FolderOpen, Mail, Video, CheckSquare, MessageSquare, FileText, GraduationCap, Presentation, Image, AlertCircle
+  Calendar, FolderOpen, Mail, Video, CheckSquare, MessageSquare, FileText, GraduationCap, Presentation, Image, AlertCircle, Sparkles
 } from 'lucide-react';
 import { getAccessToken, setAccessToken, signInWithGoogle, linkGoogleAccount, auth } from '../firebase';
 import { UserSettings } from '../types';
@@ -10,6 +10,7 @@ import InfoTooltip from './InfoTooltip';
 import GooglePicker from './GooglePicker';
 import BrokerManager from './BrokerManager';
 import toast from 'react-hot-toast';
+import { testGeminiApiKey, GEMINI_MODEL } from '../services/clientGemini';
 interface SettingsManagerProps {
   user: any;
   userSettings: UserSettings | null;
@@ -77,6 +78,39 @@ export default function SettingsManager({
     setIsSlidesLinked(getIntegrationState('slides'));
     setIsPhotosLinked(getIntegrationState('photos'));
   }, [userSettings?.integrations]);
+
+  // Gemini AI Key configuration
+  const [geminiKeyInput, setGeminiKeyInput] = useState(() => localStorage.getItem('custom_gemini_api_key') || '');
+  const [testingGemini, setTestingGemini] = useState(false);
+  const [geminiTestStatus, setGeminiTestStatus] = useState<{ success?: boolean; message?: string } | null>(null);
+
+  const handleSaveGeminiKey = () => {
+    const trimmed = geminiKeyInput.trim();
+    if (trimmed) {
+      localStorage.setItem('custom_gemini_api_key', trimmed);
+      toast.success('Gemini API Key saved successfully!');
+    } else {
+      localStorage.removeItem('custom_gemini_api_key');
+      toast.success('Custom Gemini API Key cleared.');
+    }
+    setGeminiTestStatus(null);
+  };
+
+  const handleTestGemini = async () => {
+    setTestingGemini(true);
+    setGeminiTestStatus(null);
+    try {
+      const res = await testGeminiApiKey(geminiKeyInput.trim());
+      setGeminiTestStatus(res);
+      if (res.success) {
+        toast.success(res.message);
+      } else {
+        toast.error(res.message);
+      }
+    } finally {
+      setTestingGemini(false);
+    }
+  };
 
   // Removed custom config states since Firebase handles OAuth automatically
   const [manualAccessToken, setManualAccessToken] = useState('');
@@ -440,6 +474,101 @@ export default function SettingsManager({
             {user?.displayName || 'Authorized User'}
           </div>
           <div className="text-xs font-mono tabular-nums text-slate-500 mt-0.5">{user?.email || 'No email linked'}</div>
+        </div>
+      </div>
+
+      {/* GOOGLE GEMINI AI CONFIGURATION */}
+      <div className="bg-gradient-to-br from-indigo-50/50 via-white to-blue-50/40 border border-indigo-200/80 rounded-2xl p-4 sm:p-5 shadow-xs">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3.5 border-b border-indigo-100/70">
+          <div className="flex items-center gap-3">
+            <div className="p-2.5 bg-gradient-to-br from-indigo-600 to-blue-600 text-white rounded-xl shadow-xs">
+              <Sparkles size={20} className="animate-pulse" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h3 className="text-sm sm:text-base font-semibold text-slate-900">Google Gemini AI Engine</h3>
+                <span className="bg-indigo-100/80 text-indigo-700 text-[11px] font-mono font-medium px-2 py-0.5 rounded-full border border-indigo-200/60">
+                  {GEMINI_MODEL}
+                </span>
+              </div>
+              <p className="text-xs text-slate-500 mt-0.5">
+                Powers AI Assistant, Bank SMS Parser, Receipt OCR, Subscriptions & CSV Importer
+              </p>
+            </div>
+          </div>
+          <a
+            href="https://aistudio.google.com/apikey"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-xs font-medium text-indigo-600 hover:text-indigo-700 hover:underline px-2.5 py-1.5 bg-indigo-50 rounded-lg transition-colors border border-indigo-100 self-start sm:self-auto"
+          >
+            <span>Get Free Key</span>
+            <ExternalLink size={12} />
+          </a>
+        </div>
+
+        <div className="mt-4 space-y-3">
+          <div>
+            <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+              Gemini Auth / API Key
+            </label>
+            <div className="flex flex-col sm:flex-row gap-2">
+              <div className="relative flex-1">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                  <Key size={14} />
+                </div>
+                <input
+                  type="password"
+                  value={geminiKeyInput}
+                  onChange={(e) => setGeminiKeyInput(e.target.value)}
+                  placeholder="Paste your Gemini Auth Key (e.g. AQ... or AIza...)"
+                  className="w-full pl-9 pr-3 py-2 text-xs font-mono bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition-all placeholder:font-sans placeholder:text-slate-400"
+                />
+              </div>
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={handleSaveGeminiKey}
+                  className="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold rounded-xl transition-colors cursor-pointer shadow-xs active:scale-[0.98]"
+                >
+                  Save Key
+                </button>
+                <button
+                  type="button"
+                  onClick={handleTestGemini}
+                  disabled={testingGemini}
+                  className="px-3.5 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200/80 text-xs font-semibold rounded-xl transition-colors cursor-pointer flex items-center gap-1.5 disabled:opacity-50"
+                >
+                  <RefreshCw size={12} className={testingGemini ? 'animate-spin' : ''} />
+                  <span>{testingGemini ? 'Testing...' : 'Test AI Key'}</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Test Status Banner */}
+          {geminiTestStatus && (
+            <div className={`p-3 rounded-xl border text-xs flex items-start gap-2 ${
+              geminiTestStatus.success
+                ? 'bg-emerald-50 border-emerald-200 text-emerald-800'
+                : 'bg-rose-50 border-rose-200 text-rose-800'
+            }`}>
+              {geminiTestStatus.success ? (
+                <Check size={16} className="text-emerald-600 shrink-0 mt-0.5" />
+              ) : (
+                <AlertCircle size={16} className="text-rose-600 shrink-0 mt-0.5" />
+              )}
+              <div className="flex-1">
+                <p className="font-semibold">{geminiTestStatus.success ? 'Gemini AI Connected!' : 'Connection Test Failed'}</p>
+                <p className="mt-0.5 text-[11px] leading-relaxed opacity-90">{geminiTestStatus.message}</p>
+              </div>
+            </div>
+          )}
+
+          <div className="flex items-center gap-2 pt-1 text-[11px] text-slate-500">
+            <Info size={13} className="shrink-0 text-slate-400" />
+            <span>Key is safely stored in your browser's private storage (localStorage) and never exposed or sent to third parties.</span>
+          </div>
         </div>
       </div>
 

@@ -3,19 +3,49 @@
  * Enables direct AI inference in Browser & Native APK without requiring a Node.js backend.
  */
 
-const getApiKey = (): string => {
-  return (
-    import.meta.env.VITE_GEMINI_API_KEY ||
-    (typeof window !== 'undefined' ? localStorage.getItem('custom_gemini_api_key') : '') ||
-    ''
-  );
+export const getApiKey = (): string => {
+  if (typeof window !== 'undefined') {
+    const custom = localStorage.getItem('custom_gemini_api_key');
+    if (custom && custom.trim()) return custom.trim();
+  }
+  return import.meta.env.VITE_GEMINI_API_KEY || '';
 };
-const GEMINI_MODEL = 'gemini-3.8-flash';
+export const GEMINI_MODEL = 'gemini-3.8-flash';
+
+export async function testGeminiApiKey(keyToTest?: string): Promise<{ success: boolean; message: string }> {
+  const key = (keyToTest || getApiKey()).trim();
+  if (!key) {
+    return { success: false, message: 'Gemini API key is empty. Please enter a valid key.' };
+  }
+  try {
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${key}`;
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ contents: [{ parts: [{ text: 'Hello' }] }] })
+    });
+
+    if (!res.ok) {
+      const errJson = await res.json().catch(() => ({}));
+      const msg = errJson?.error?.message || `HTTP ${res.status}`;
+      return { success: false, message: msg };
+    }
+
+    const data = await res.json();
+    const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
+    if (reply) {
+      return { success: true, message: `Connected successfully to ${GEMINI_MODEL}!` };
+    }
+    return { success: false, message: 'Empty response received from Gemini.' };
+  } catch (err: any) {
+    return { success: false, message: err.message || 'Network error while testing Gemini API.' };
+  }
+}
 
 async function callGeminiRest(payload: any): Promise<any> {
   const apiKey = getApiKey();
   if (!apiKey) {
-    throw new Error('Gemini API key is not configured. Please set VITE_GEMINI_API_KEY or save in Settings.');
+    throw new Error('Gemini API key is not configured. Please set your key in Settings ➔ Gemini AI.');
   }
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${apiKey}`;
   const res = await fetch(url, {
@@ -25,8 +55,12 @@ async function callGeminiRest(payload: any): Promise<any> {
   });
 
   if (!res.ok) {
-    const errText = await res.text();
-    throw new Error(`Gemini API Error (${res.status}): ${errText}`);
+    const errData = await res.json().catch(() => null);
+    const errMsg = errData?.error?.message || `HTTP ${res.status}`;
+    if (res.status === 401 || errMsg.toLowerCase().includes('not valid') || errMsg.toLowerCase().includes('unsupported')) {
+      throw new Error(`Gemini API key invalid ya revoked hai. Kripya Settings ➔ Gemini AI mein nayi key enter karein. (${errMsg})`);
+    }
+    throw new Error(`Gemini API Error (${res.status}): ${errMsg}`);
   }
 
   const data = await res.json();

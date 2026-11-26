@@ -536,9 +536,7 @@ async function startServer() {
       if (!text) return res.status(400).json({ error: "Missing text payload" });
 
       const apiKey = process.env.GEMINI_API_KEY;
-      if (!apiKey) {
-        return res.status(500).json({ error: "GEMINI_API_KEY not configured on server" });
-      }
+      if (!apiKey) return res.status(500).json({ error: "GEMINI_API_KEY is not configured in .env" });
 
       const ai = new GoogleGenAI({ apiKey });
 
@@ -571,7 +569,7 @@ Matching Bank Account: Identify which Bank Account this SMS belongs to by checki
 If the input is for Trading (e.g., deposits to a Brokerage/Prop Firm), tag it as 'Investment/Trading' category specifically.`;
 
       const response = await ai.models.generateContent({
-        model: 'gemini-2.5-flash',
+        model: 'gemini-3.8-flash',
         contents: prompt,
         config: {
           temperature: 0.1
@@ -988,9 +986,7 @@ If the input is for Trading (e.g., deposits to a Brokerage/Prop Firm), tag it as
       }
 
       const apiKey = process.env.GEMINI_API_KEY;
-      if (!apiKey) {
-        return res.status(500).json({ error: "GEMINI_API_KEY not configured on server" });
-      }
+      if (!apiKey) return res.status(500).json({ error: "GEMINI_API_KEY is not configured in .env" });
 
       console.log(`[CSV-AI] Processing CSV text length: ${csvText.length}`);
 
@@ -1025,7 +1021,7 @@ ${csvText}
 `;
 
       const result = await ai.models.generateContent({
-        model: 'gemini-2.5-flash',
+        model: 'gemini-3.8-flash',
         contents: prompt,
         config: {
           responseMimeType: "application/json",
@@ -1049,7 +1045,7 @@ ${csvText}
     try {
       const { message, context } = req.body;
       const apiKey = process.env.GEMINI_API_KEY;
-      if (!apiKey) return res.status(500).json({ error: "No GEMINI_API_KEY" });
+      if (!apiKey) return res.status(500).json({ error: "GEMINI_API_KEY is not configured in .env" });
 
       const ai = new GoogleGenAI({ apiKey });
       const prompt = `You are a highly professional, expert AI Financial Assistant for the app InvestMant. 
@@ -1061,10 +1057,9 @@ User's Query: ${message}
 Provide a concise, highly analytical, and tailored response. Use clear markdown formatting (bolding, lists) to make it easy to read.`;
 
       const response = await ai.models.generateContent({
-        model: "gemini-2.5-flash",
+        model: "gemini-3.8-flash",
         contents: prompt,
         config: {
-          responseMimeType: "application/json",
           temperature: 0.1
         }
       });
@@ -1081,7 +1076,7 @@ Provide a concise, highly analytical, and tailored response. Use clear markdown 
     try {
       const { base64Image } = req.body;
       const apiKey = process.env.GEMINI_API_KEY;
-      if (!apiKey) return res.status(500).json({ error: "No GEMINI_API_KEY" });
+      if (!apiKey) return res.status(500).json({ error: "GEMINI_API_KEY is not configured in .env" });
 
       const ai = new GoogleGenAI({ apiKey });
       const prompt = `You are an expert OCR and financial data extractor. You are provided with an image of a receipt or bill.
@@ -1095,7 +1090,7 @@ Extract the transaction details and output EXACTLY a JSON object with this struc
 Output ONLY the raw JSON object, without any markdown blocks or formatting.`;
 
       const response = await ai.models.generateContent({
-        model: "gemini-2.5-flash",
+        model: "gemini-3.8-flash",
         contents: [
           { inlineData: { data: base64Image, mimeType: "image/jpeg" } },
           prompt
@@ -1121,7 +1116,7 @@ Output ONLY the raw JSON object, without any markdown blocks or formatting.`;
     try {
       const { emailSnippets } = req.body;
       const apiKey = process.env.GEMINI_API_KEY;
-      if (!apiKey) return res.status(500).json({ error: "No GEMINI_API_KEY" });
+      if (!apiKey) return res.status(500).json({ error: "GEMINI_API_KEY is not configured in .env" });
 
       const ai = new GoogleGenAI({ apiKey });
       const prompt = `You are an AI that extracts recurring subscriptions from email snippets.
@@ -1138,7 +1133,7 @@ Extract any active recurring subscriptions. Output EXACTLY a JSON array of objec
 Output ONLY the raw JSON array, without any markdown blocks or formatting.`;
 
       const response = await ai.models.generateContent({
-        model: "gemini-2.5-flash",
+        model: "gemini-3.8-flash",
         contents: prompt,
       });
 

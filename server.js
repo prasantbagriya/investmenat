@@ -1162,9 +1162,7 @@ async function startServer() {
       const { text, pendingPayments = [], recurringBills = [] } = req.body;
       if (!text) return res.status(400).json({ error: "Missing text payload" });
       const apiKey = process.env.GEMINI_API_KEY;
-      if (!apiKey) {
-        return res.status(500).json({ error: "GEMINI_API_KEY not configured on server" });
-      }
+      if (!apiKey) return res.status(500).json({ error: "GEMINI_API_KEY is not configured in .env" });
       const ai = new GoogleGenAI({ apiKey });
       const pendingList = pendingPayments.map((p) => `[ID: ${p.id}] ${p.person} owes/owed \u20B9${p.amount} on ${p.dueDate}`).join("\n");
       const billsList = recurringBills.map((b) => `[ID: ${b.id}] ${b.title} of \u20B9${b.amount} due on ${b.nextDueDate}`).join("\n");
@@ -1193,7 +1191,7 @@ Matching Pending/Bills: If the SMS perfectly matches the amount and context of a
 Matching Bank Account: Identify which Bank Account this SMS belongs to by checking the bank name (e.g. HDFC, SBI) or the account number suffix (e.g. a/c XX1234). If it matches, set its ID in "matched_bank_account_id". Otherwise leave blank.
 If the input is for Trading (e.g., deposits to a Brokerage/Prop Firm), tag it as 'Investment/Trading' category specifically.`;
       const response = await ai.models.generateContent({
-        model: "gemini-2.5-flash",
+        model: "gemini-3.8-flash",
         contents: prompt,
         config: {
           temperature: 0.1
@@ -1516,9 +1514,7 @@ If the input is for Trading (e.g., deposits to a Brokerage/Prop Firm), tag it as
         return res.status(400).json({ error: "csvText is required" });
       }
       const apiKey = process.env.GEMINI_API_KEY;
-      if (!apiKey) {
-        return res.status(500).json({ error: "GEMINI_API_KEY not configured on server" });
-      }
+      if (!apiKey) return res.status(500).json({ error: "GEMINI_API_KEY is not configured in .env" });
       console.log(`[CSV-AI] Processing CSV text length: ${csvText.length}`);
       const ai = new GoogleGenAI({ apiKey });
       const bankContext = bankAccounts && Array.isArray(bankAccounts) && bankAccounts.length > 0 ? `Here are the user's available bank accounts:
@@ -1548,7 +1544,7 @@ Raw CSV Text:
 ${csvText}
 `;
       const result = await ai.models.generateContent({
-        model: "gemini-2.5-flash",
+        model: "gemini-3.8-flash",
         contents: prompt,
         config: {
           responseMimeType: "application/json",
@@ -1567,7 +1563,7 @@ ${csvText}
     try {
       const { message, context } = req.body;
       const apiKey = process.env.GEMINI_API_KEY;
-      if (!apiKey) return res.status(500).json({ error: "No GEMINI_API_KEY" });
+      if (!apiKey) return res.status(500).json({ error: "GEMINI_API_KEY is not configured in .env" });
       const ai = new GoogleGenAI({ apiKey });
       const prompt = `You are a highly professional, expert AI Financial Assistant for the app InvestMant. 
 Context of user's current finances (bank balances, recent transactions, assets, net worth):
@@ -1577,10 +1573,9 @@ User's Query: ${message}
 
 Provide a concise, highly analytical, and tailored response. Use clear markdown formatting (bolding, lists) to make it easy to read.`;
       const response = await ai.models.generateContent({
-        model: "gemini-2.5-flash",
+        model: "gemini-3.8-flash",
         contents: prompt,
         config: {
-          responseMimeType: "application/json",
           temperature: 0.1
         }
       });
@@ -1594,7 +1589,7 @@ Provide a concise, highly analytical, and tailored response. Use clear markdown 
     try {
       const { base64Image } = req.body;
       const apiKey = process.env.GEMINI_API_KEY;
-      if (!apiKey) return res.status(500).json({ error: "No GEMINI_API_KEY" });
+      if (!apiKey) return res.status(500).json({ error: "GEMINI_API_KEY is not configured in .env" });
       const ai = new GoogleGenAI({ apiKey });
       const prompt = `You are an expert OCR and financial data extractor. You are provided with an image of a receipt or bill.
 Extract the transaction details and output EXACTLY a JSON object with this structure:
@@ -1606,7 +1601,7 @@ Extract the transaction details and output EXACTLY a JSON object with this struc
 }
 Output ONLY the raw JSON object, without any markdown blocks or formatting.`;
       const response = await ai.models.generateContent({
-        model: "gemini-2.5-flash",
+        model: "gemini-3.8-flash",
         contents: [
           { inlineData: { data: base64Image, mimeType: "image/jpeg" } },
           prompt
@@ -1628,7 +1623,7 @@ Output ONLY the raw JSON object, without any markdown blocks or formatting.`;
     try {
       const { emailSnippets } = req.body;
       const apiKey = process.env.GEMINI_API_KEY;
-      if (!apiKey) return res.status(500).json({ error: "No GEMINI_API_KEY" });
+      if (!apiKey) return res.status(500).json({ error: "GEMINI_API_KEY is not configured in .env" });
       const ai = new GoogleGenAI({ apiKey });
       const prompt = `You are an AI that extracts recurring subscriptions from email snippets.
 Here are recent emails that match 'subscription' or 'invoice':
@@ -1643,7 +1638,7 @@ Extract any active recurring subscriptions. Output EXACTLY a JSON array of objec
 }]
 Output ONLY the raw JSON array, without any markdown blocks or formatting.`;
       const response = await ai.models.generateContent({
-        model: "gemini-2.5-flash",
+        model: "gemini-3.8-flash",
         contents: prompt
       });
       let cleanJson = response.text || "[]";

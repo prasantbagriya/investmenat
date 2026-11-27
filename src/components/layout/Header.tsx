@@ -83,8 +83,8 @@ export default function Header({
   };
 
   return (
-    <header className="bg-white border-b border-slate-200 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
+    <header className="bg-white border-b border-slate-200 sticky top-0 z-50 w-full">
+      <div className="w-full mx-auto px-2 sm:px-3 lg:px-4">
         <div className="flex justify-between items-center h-14">
           
           {/* Logo and Menu Trigger */}
